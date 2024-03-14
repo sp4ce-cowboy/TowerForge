@@ -14,7 +14,6 @@ class GameScene: SKScene {
         let textureNames = ["melee-1", "melee-2"]
         let tfTextures = TFTextures(textureNames: textureNames, textureAtlasName: "Sprites", mainTextureName: "melee-1")
         let animatableNode = TFAnimatableNode(textures: tfTextures, height: 300, width: 300, animatableKey: "melee")
-        animatableNode.position = CGPoint(x: 100, y: 100)
         addChild(animatableNode)
         animatableNode.playAnimation()
     }
