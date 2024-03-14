@@ -24,6 +24,10 @@
 		52DF5FE62BA33AF300135367 /* TFNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FE52BA33AF300135367 /* TFNode.swift */; };
 		52DF5FE92BA33F9700135367 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FE82BA33F9700135367 /* Animatable.swift */; };
 		52DF5FEB2BA3400C00135367 /* TFAnimatableNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FEA2BA3400C00135367 /* TFAnimatableNode.swift */; };
+		52DF5FED2BA34D0300135367 /* TFComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FEC2BA34D0300135367 /* TFComponent.swift */; };
+		52DF5FEF2BA34EA000135367 /* TFEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FEE2BA34EA000135367 /* TFEntity.swift */; };
+		52DF5FF32BA351E100135367 /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FF22BA351E100135367 /* SpriteComponent.swift */; };
+		52DF5FF52BA3575100135367 /* collateDiagrams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FF42BA3575100135367 /* collateDiagrams.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +68,10 @@
 		52DF5FE52BA33AF300135367 /* TFNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFNode.swift; sourceTree = "<group>"; };
 		52DF5FE82BA33F9700135367 /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 		52DF5FEA2BA3400C00135367 /* TFAnimatableNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFAnimatableNode.swift; sourceTree = "<group>"; };
+		52DF5FEC2BA34D0300135367 /* TFComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFComponent.swift; sourceTree = "<group>"; };
+		52DF5FEE2BA34EA000135367 /* TFEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFEntity.swift; sourceTree = "<group>"; };
+		52DF5FF22BA351E100135367 /* SpriteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
+		52DF5FF42BA3575100135367 /* collateDiagrams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = collateDiagrams.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +133,7 @@
 				52DF5FB12BA32B2300135367 /* Main.storyboard */,
 				52DF5FB42BA32B2600135367 /* Assets.xcassets */,
 				52DF5FB62BA32B2600135367 /* LaunchScreen.storyboard */,
+				52DF5FF42BA3575100135367 /* collateDiagrams.swift */,
 			);
 			path = TowerForge;
 			sourceTree = "<group>";
@@ -150,8 +159,11 @@
 		52DF5FDB2BA32CEF00135367 /* LevelManager */ = {
 			isa = PBXGroup;
 			children = (
+				52DF5FF02BA3519D00135367 /* Components */,
 				52DF5FDC2BA32D4A00135367 /* Entities */,
 				52DF5FDD2BA32D7E00135367 /* EntityManager.swift */,
+				52DF5FEC2BA34D0300135367 /* TFComponent.swift */,
+				52DF5FEE2BA34EA000135367 /* TFEntity.swift */,
 			);
 			path = LevelManager;
 			sourceTree = "<group>";
@@ -187,6 +199,14 @@
 				52DF5FE82BA33F9700135367 /* Animatable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		52DF5FF02BA3519D00135367 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				52DF5FF22BA351E100135367 /* SpriteComponent.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,13 +343,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				52DF5FAE2BA32B2300135367 /* GameScene.swift in Sources */,
+				52DF5FF32BA351E100135367 /* SpriteComponent.swift in Sources */,
 				52DF5FB02BA32B2300135367 /* GameViewController.swift in Sources */,
 				52DF5FDE2BA32D7E00135367 /* EntityManager.swift in Sources */,
 				52DF5FE62BA33AF300135367 /* TFNode.swift in Sources */,
 				52DF5FE92BA33F9700135367 /* Animatable.swift in Sources */,
 				52DF5FE12BA3349600135367 /* TFTextures.swift in Sources */,
 				52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */,
+				52DF5FF52BA3575100135367 /* collateDiagrams.swift in Sources */,
 				52DF5FEB2BA3400C00135367 /* TFAnimatableNode.swift in Sources */,
+				52DF5FEF2BA34EA000135367 /* TFEntity.swift in Sources */,
+				52DF5FED2BA34D0300135367 /* TFComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
