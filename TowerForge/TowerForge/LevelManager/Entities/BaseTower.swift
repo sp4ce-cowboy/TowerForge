@@ -8,22 +8,22 @@
 import Foundation
 
 class BaseTower: TFEntity {
-    init(textureNames: [String], size: CGSize, key: String, position: CGPoint, maxHealth: Float) {
+    init(textureNames: [String], size: CGSize, key: String, position: CGPoint, maxHealth: CGFloat) {
         super.init()
 
         createHealthComponent(maxHealth: maxHealth)
         createSpriteComponent(textureNames: textureNames, size: size, key: key, position: position)
     }
 
-    private func createHealthComponent(maxHealth: Float) {
+    private func createHealthComponent(maxHealth: CGFloat) {
         let healthComponent = HealthComponent(maxHealth: maxHealth)
         healthComponent.didAddToEntity(self)
-        self.components.append(healthComponent)
+        self.addComponent(healthComponent)
     }
 
     private func createSpriteComponent(textureNames: [String], size: CGSize, key: String, position: CGPoint) {
         let spriteComponent = SpriteComponent(textureNames: textureNames, height: size.height, width: size.width, position: position, animatableKey: key)
         spriteComponent.didAddToEntity(self)
-        self.components.append(spriteComponent)
+        self.addComponent(spriteComponent)
     }
 }
