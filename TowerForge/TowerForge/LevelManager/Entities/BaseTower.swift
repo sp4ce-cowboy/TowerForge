@@ -17,13 +17,15 @@ class BaseTower: TFEntity {
 
     private func createHealthComponent(maxHealth: CGFloat) {
         let healthComponent = HealthComponent(maxHealth: maxHealth)
-        healthComponent.didAddToEntity(self)
         self.addComponent(healthComponent)
     }
 
     private func createSpriteComponent(textureNames: [String], size: CGSize, key: String, position: CGPoint) {
-        let spriteComponent = SpriteComponent(textureNames: textureNames, height: size.height, width: size.width, position: position, animatableKey: key)
-        spriteComponent.didAddToEntity(self)
+        let spriteComponent = SpriteComponent(textureNames: textureNames,
+                                              height: size.height,
+                                              width: size.width,
+                                              position: position,
+                                              animatableKey: key)
         self.addComponent(spriteComponent)
     }
 }

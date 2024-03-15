@@ -8,6 +8,7 @@
 import Foundation
 
 class DamageComponent: TFComponent {
+    // Defines the damage that should be dealt on collision
     public var damage: CGFloat
 
     init(damage: CGFloat) {

@@ -34,6 +34,7 @@ class TFEntity {
         guard !hasComponent(ofType: type(of: component)) else {
             return
         }
+        component.didAddToEntity(self)
         components[component.id] = (component)
     }
 
@@ -41,7 +42,7 @@ class TFEntity {
         guard let componentToBeRemoved = component(ofType: T.self) else {
             return
         }
-        
+        componentToBeRemoved.willRemoveFromEntity()
         components.removeValue(forKey: componentToBeRemoved.id)
     }
 }

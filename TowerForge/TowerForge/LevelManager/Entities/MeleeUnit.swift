@@ -15,13 +15,11 @@ class MeleeUnit: BaseUnit {
     static let damage = 10.0
 
     init(position: CGPoint) {
-        super.init(textureNames: MeleeUnit.textureNames, size: MeleeUnit.size, key: MeleeUnit.key, position: position, maxHealth: MeleeUnit.maxHealth)
-        createDamageComponent()
-    }
-
-    private func createDamageComponent() {
-        let damageComponent = DamageComponent(damage: MeleeUnit.damage)
-        damageComponent.didAddToEntity(self)
-        self.addComponent(damageComponent)
+        super.init(textureNames: MeleeUnit.textureNames,
+                   size: MeleeUnit.size,
+                   key: MeleeUnit.key,
+                   position: position,
+                   maxHealth: MeleeUnit.maxHealth)
+        self.addComponent(DamageComponent(damage: MeleeUnit.damage))
     }
 }
