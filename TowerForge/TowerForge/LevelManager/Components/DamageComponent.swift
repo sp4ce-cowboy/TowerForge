@@ -7,7 +7,11 @@
 
 import Foundation
 
-/// TODO 3 : Once entity is made, do this
 class DamageComponent: TFComponent {
-    
+    public var damage: CGFloat
+
+    init(damage: CGFloat) {
+        self.damage = damage
+        super.init()
+    }
 }
