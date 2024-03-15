@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BaseProjectiles: TFEntity {
+class BaseProjectile: TFEntity {
     init(textureNames: [String], size: CGSize, key: String, position: CGPoint) {
         super.init()
 
