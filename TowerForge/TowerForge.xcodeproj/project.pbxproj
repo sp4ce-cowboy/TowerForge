@@ -18,6 +18,20 @@
 		52DF5FC22BA32B2600135367 /* TowerForgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FC12BA32B2600135367 /* TowerForgeTests.swift */; };
 		52DF5FCC2BA32B2600135367 /* TowerForgeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FCB2BA32B2600135367 /* TowerForgeUITests.swift */; };
 		52DF5FCE2BA32B2600135367 /* TowerForgeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FCD2BA32B2600135367 /* TowerForgeUITestsLaunchTests.swift */; };
+		52DF5FDE2BA32D7E00135367 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FDD2BA32D7E00135367 /* EntityManager.swift */; };
+		52DF5FE12BA3349600135367 /* TFTextures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FE02BA3349600135367 /* TFTextures.swift */; };
+		52DF5FE42BA3391200135367 /* TFTexturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FE32BA3391200135367 /* TFTexturesTests.swift */; };
+		52DF5FE62BA33AF300135367 /* TFNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FE52BA33AF300135367 /* TFNode.swift */; };
+		52DF5FE92BA33F9700135367 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FE82BA33F9700135367 /* Animatable.swift */; };
+		52DF5FEB2BA3400C00135367 /* TFAnimatableNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FEA2BA3400C00135367 /* TFAnimatableNode.swift */; };
+		52DF5FED2BA34D0300135367 /* TFComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FEC2BA34D0300135367 /* TFComponent.swift */; };
+		52DF5FEF2BA34EA000135367 /* TFEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FEE2BA34EA000135367 /* TFEntity.swift */; };
+		52DF5FF32BA351E100135367 /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FF22BA351E100135367 /* SpriteComponent.swift */; };
+		52DF5FF52BA3575100135367 /* collateDiagrams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FF42BA3575100135367 /* collateDiagrams.swift */; };
+		52DF5FF92BA35D2B00135367 /* MovableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FF82BA35D2B00135367 /* MovableComponent.swift */; };
+		52DF5FFB2BA3601400135367 /* HealthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FFA2BA3601400135367 /* HealthComponent.swift */; };
+		52DF5FFD2BA3608000135367 /* DamageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FFC2BA3608000135367 /* DamageComponent.swift */; };
+		52DF5FFF2BA3656500135367 /* ShootingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FFE2BA3656500135367 /* ShootingComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +66,20 @@
 		52DF5FC72BA32B2600135367 /* TowerForgeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TowerForgeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DF5FCB2BA32B2600135367 /* TowerForgeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerForgeUITests.swift; sourceTree = "<group>"; };
 		52DF5FCD2BA32B2600135367 /* TowerForgeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerForgeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		52DF5FDD2BA32D7E00135367 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
+		52DF5FE02BA3349600135367 /* TFTextures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFTextures.swift; sourceTree = "<group>"; };
+		52DF5FE32BA3391200135367 /* TFTexturesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFTexturesTests.swift; sourceTree = "<group>"; };
+		52DF5FE52BA33AF300135367 /* TFNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFNode.swift; sourceTree = "<group>"; };
+		52DF5FE82BA33F9700135367 /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
+		52DF5FEA2BA3400C00135367 /* TFAnimatableNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFAnimatableNode.swift; sourceTree = "<group>"; };
+		52DF5FEC2BA34D0300135367 /* TFComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFComponent.swift; sourceTree = "<group>"; };
+		52DF5FEE2BA34EA000135367 /* TFEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFEntity.swift; sourceTree = "<group>"; };
+		52DF5FF22BA351E100135367 /* SpriteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
+		52DF5FF42BA3575100135367 /* collateDiagrams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = collateDiagrams.swift; sourceTree = "<group>"; };
+		52DF5FF82BA35D2B00135367 /* MovableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovableComponent.swift; sourceTree = "<group>"; };
+		52DF5FFA2BA3601400135367 /* HealthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthComponent.swift; sourceTree = "<group>"; };
+		52DF5FFC2BA3608000135367 /* DamageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageComponent.swift; sourceTree = "<group>"; };
+		52DF5FFE2BA3656500135367 /* ShootingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootingComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +130,9 @@
 		52DF5FA62BA32B2300135367 /* TowerForge */ = {
 			isa = PBXGroup;
 			children = (
+				52DF5FE72BA33F8800135367 /* Protocols */,
+				52DF5FDF2BA3347C00135367 /* TFCore */,
+				52DF5FDB2BA32CEF00135367 /* LevelManager */,
 				52DF5FA72BA32B2300135367 /* AppDelegate.swift */,
 				52DF5FA92BA32B2300135367 /* GameScene.sks */,
 				52DF5FAB2BA32B2300135367 /* Actions.sks */,
@@ -110,6 +141,7 @@
 				52DF5FB12BA32B2300135367 /* Main.storyboard */,
 				52DF5FB42BA32B2600135367 /* Assets.xcassets */,
 				52DF5FB62BA32B2600135367 /* LaunchScreen.storyboard */,
+				52DF5FF42BA3575100135367 /* collateDiagrams.swift */,
 			);
 			path = TowerForge;
 			sourceTree = "<group>";
@@ -117,6 +149,7 @@
 		52DF5FC02BA32B2600135367 /* TowerForgeTests */ = {
 			isa = PBXGroup;
 			children = (
+				52DF5FE22BA3386400135367 /* TFCoreTests */,
 				52DF5FC12BA32B2600135367 /* TowerForgeTests.swift */,
 			);
 			path = TowerForgeTests;
@@ -129,6 +162,63 @@
 				52DF5FCD2BA32B2600135367 /* TowerForgeUITestsLaunchTests.swift */,
 			);
 			path = TowerForgeUITests;
+			sourceTree = "<group>";
+		};
+		52DF5FDB2BA32CEF00135367 /* LevelManager */ = {
+			isa = PBXGroup;
+			children = (
+				52DF5FF02BA3519D00135367 /* Components */,
+				52DF5FDC2BA32D4A00135367 /* Entities */,
+				52DF5FDD2BA32D7E00135367 /* EntityManager.swift */,
+				52DF5FEC2BA34D0300135367 /* TFComponent.swift */,
+				52DF5FEE2BA34EA000135367 /* TFEntity.swift */,
+			);
+			path = LevelManager;
+			sourceTree = "<group>";
+		};
+		52DF5FDC2BA32D4A00135367 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		52DF5FDF2BA3347C00135367 /* TFCore */ = {
+			isa = PBXGroup;
+			children = (
+				52DF5FE02BA3349600135367 /* TFTextures.swift */,
+				52DF5FE52BA33AF300135367 /* TFNode.swift */,
+				52DF5FEA2BA3400C00135367 /* TFAnimatableNode.swift */,
+			);
+			path = TFCore;
+			sourceTree = "<group>";
+		};
+		52DF5FE22BA3386400135367 /* TFCoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				52DF5FE32BA3391200135367 /* TFTexturesTests.swift */,
+			);
+			path = TFCoreTests;
+			sourceTree = "<group>";
+		};
+		52DF5FE72BA33F8800135367 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				52DF5FE82BA33F9700135367 /* Animatable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		52DF5FF02BA3519D00135367 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				52DF5FF22BA351E100135367 /* SpriteComponent.swift */,
+				52DF5FF82BA35D2B00135367 /* MovableComponent.swift */,
+				52DF5FFA2BA3601400135367 /* HealthComponent.swift */,
+				52DF5FFC2BA3608000135367 /* DamageComponent.swift */,
+				52DF5FFE2BA3656500135367 /* ShootingComponent.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,9 +354,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52DF5FFF2BA3656500135367 /* ShootingComponent.swift in Sources */,
 				52DF5FAE2BA32B2300135367 /* GameScene.swift in Sources */,
+				52DF5FF32BA351E100135367 /* SpriteComponent.swift in Sources */,
 				52DF5FB02BA32B2300135367 /* GameViewController.swift in Sources */,
+				52DF5FF92BA35D2B00135367 /* MovableComponent.swift in Sources */,
+				52DF5FDE2BA32D7E00135367 /* EntityManager.swift in Sources */,
+				52DF5FFD2BA3608000135367 /* DamageComponent.swift in Sources */,
+				52DF5FE62BA33AF300135367 /* TFNode.swift in Sources */,
+				52DF5FE92BA33F9700135367 /* Animatable.swift in Sources */,
+				52DF5FE12BA3349600135367 /* TFTextures.swift in Sources */,
 				52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */,
+				52DF5FF52BA3575100135367 /* collateDiagrams.swift in Sources */,
+				52DF5FEB2BA3400C00135367 /* TFAnimatableNode.swift in Sources */,
+				52DF5FEF2BA34EA000135367 /* TFEntity.swift in Sources */,
+				52DF5FED2BA34D0300135367 /* TFComponent.swift in Sources */,
+				52DF5FFB2BA3601400135367 /* HealthComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52DF5FC22BA32B2600135367 /* TowerForgeTests.swift in Sources */,
+				52DF5FE42BA3391200135367 /* TFTexturesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
