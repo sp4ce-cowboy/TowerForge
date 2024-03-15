@@ -13,6 +13,7 @@
 		3C9955AD2BA483B100D33FA5 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955AC2BA483B100D33FA5 /* System.swift */; };
 		3C9955AF2BA48FD200D33FA5 /* MeleeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955AE2BA48FD200D33FA5 /* MeleeUnit.swift */; };
 		3C9955B12BA4ACA100D33FA5 /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955B02BA4ACA100D33FA5 /* Arrow.swift */; };
+		3C9955B42BA4B12000D33FA5 /* ArrowTower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955B32BA4B12000D33FA5 /* ArrowTower.swift */; };
 		52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FA72BA32B2300135367 /* AppDelegate.swift */; };
 		52DF5FAA2BA32B2300135367 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52DF5FA92BA32B2300135367 /* GameScene.sks */; };
 		52DF5FAC2BA32B2300135367 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52DF5FAB2BA32B2300135367 /* Actions.sks */; };
@@ -64,6 +65,7 @@
 		3C9955AC2BA483B100D33FA5 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		3C9955AE2BA48FD200D33FA5 /* MeleeUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeleeUnit.swift; sourceTree = "<group>"; };
 		3C9955B02BA4ACA100D33FA5 /* Arrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrow.swift; sourceTree = "<group>"; };
+		3C9955B32BA4B12000D33FA5 /* ArrowTower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowTower.swift; sourceTree = "<group>"; };
 		52DF5FA42BA32B2300135367 /* TowerForge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TowerForge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DF5FA72BA32B2300135367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52DF5FA92BA32B2300135367 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				3C9955A42BA47DC600D33FA5 /* BaseProjectile.swift */,
 				3C9955AE2BA48FD200D33FA5 /* MeleeUnit.swift */,
 				3C9955B02BA4ACA100D33FA5 /* Arrow.swift */,
+				3C9955B32BA4B12000D33FA5 /* ArrowTower.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				52DF5FFD2BA3608000135367 /* DamageComponent.swift in Sources */,
 				3C9955AD2BA483B100D33FA5 /* System.swift in Sources */,
 				52DF5FE62BA33AF300135367 /* TFNode.swift in Sources */,
+				3C9955B42BA4B12000D33FA5 /* ArrowTower.swift in Sources */,
 				52DF5FE92BA33F9700135367 /* Animatable.swift in Sources */,
 				3C9955AF2BA48FD200D33FA5 /* MeleeUnit.swift in Sources */,
 				52DF5FE12BA3349600135367 /* TFTextures.swift in Sources */,
