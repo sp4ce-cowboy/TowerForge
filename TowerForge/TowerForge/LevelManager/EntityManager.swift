@@ -37,7 +37,7 @@ class EntityManager {
 
         return entity.component(ofType: type)
     }
-    
+
     func components<T: TFComponent>(ofType type: T.Type) -> [T] {
         entities.compactMap{ $0.component(ofType: type) }
     }

@@ -10,16 +10,16 @@ import Foundation
 class TFComponent: Identifiable {
     public var id = UUID()
     weak var entity : TFEntity?
-    
+
     init() {
         // No initialisation logic needed as of now
     }
-    
+
     // Notify when the component is added to an entity. This reference provides components other access to components from the same entity, to allow collaboration in the ECS framework
     func didAddToEntity(_ entity: TFEntity) {
         self.entity = entity
     }
-    
+
     func willRemoveFromEntity() {
         self.entity = nil
     }

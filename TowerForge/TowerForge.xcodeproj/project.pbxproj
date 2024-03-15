@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955A02BA47DA500D33FA5 /* BaseTower.swift */; };
+		3C9955A32BA47DBB00D33FA5 /* BaseUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955A22BA47DBB00D33FA5 /* BaseUnit.swift */; };
+		3C9955A52BA47DC600D33FA5 /* BaseProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955A42BA47DC600D33FA5 /* BaseProjectile.swift */; };
+		3C9955AD2BA483B100D33FA5 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955AC2BA483B100D33FA5 /* System.swift */; };
+		3C9955AF2BA48FD200D33FA5 /* MeleeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955AE2BA48FD200D33FA5 /* MeleeUnit.swift */; };
+		3C9955B12BA4ACA100D33FA5 /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955B02BA4ACA100D33FA5 /* Arrow.swift */; };
 		52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FA72BA32B2300135367 /* AppDelegate.swift */; };
 		52DF5FAA2BA32B2300135367 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52DF5FA92BA32B2300135367 /* GameScene.sks */; };
 		52DF5FAC2BA32B2300135367 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52DF5FAB2BA32B2300135367 /* Actions.sks */; };
@@ -52,6 +58,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C9955A02BA47DA500D33FA5 /* BaseTower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTower.swift; sourceTree = "<group>"; };
+		3C9955A22BA47DBB00D33FA5 /* BaseUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUnit.swift; sourceTree = "<group>"; };
+		3C9955A42BA47DC600D33FA5 /* BaseProjectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProjectile.swift; sourceTree = "<group>"; };
+		3C9955AC2BA483B100D33FA5 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		3C9955AE2BA48FD200D33FA5 /* MeleeUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeleeUnit.swift; sourceTree = "<group>"; };
+		3C9955B02BA4ACA100D33FA5 /* Arrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrow.swift; sourceTree = "<group>"; };
 		52DF5FA42BA32B2300135367 /* TowerForge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TowerForge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DF5FA72BA32B2300135367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52DF5FA92BA32B2300135367 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -107,6 +119,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C99559F2BA47D3E00D33FA5 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				3C9955A02BA47DA500D33FA5 /* BaseTower.swift */,
+				3C9955A22BA47DBB00D33FA5 /* BaseUnit.swift */,
+				3C9955A42BA47DC600D33FA5 /* BaseProjectile.swift */,
+				3C9955AE2BA48FD200D33FA5 /* MeleeUnit.swift */,
+				3C9955B02BA4ACA100D33FA5 /* Arrow.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		52DF5F9B2BA32B2200135367 = {
 			isa = PBXGroup;
 			children = (
@@ -167,20 +191,14 @@
 		52DF5FDB2BA32CEF00135367 /* LevelManager */ = {
 			isa = PBXGroup;
 			children = (
+				3C99559F2BA47D3E00D33FA5 /* Entities */,
 				52DF5FF02BA3519D00135367 /* Components */,
-				52DF5FDC2BA32D4A00135367 /* Entities */,
 				52DF5FDD2BA32D7E00135367 /* EntityManager.swift */,
 				52DF5FEC2BA34D0300135367 /* TFComponent.swift */,
+				3C9955AC2BA483B100D33FA5 /* System.swift */,
 				52DF5FEE2BA34EA000135367 /* TFEntity.swift */,
 			);
 			path = LevelManager;
-			sourceTree = "<group>";
-		};
-		52DF5FDC2BA32D4A00135367 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entities;
 			sourceTree = "<group>";
 		};
 		52DF5FDF2BA3347C00135367 /* TFCore */ = {
@@ -231,6 +249,7 @@
 				52DF5FA02BA32B2200135367 /* Sources */,
 				52DF5FA12BA32B2200135367 /* Frameworks */,
 				52DF5FA22BA32B2200135367 /* Resources */,
+				3C9955B22BA4AE6900D33FA5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -349,23 +368,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3C9955B22BA4AE6900D33FA5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		52DF5FA02BA32B2200135367 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */,
+				3C9955A52BA47DC600D33FA5 /* BaseProjectile.swift in Sources */,
 				52DF5FFF2BA3656500135367 /* ShootingComponent.swift in Sources */,
 				52DF5FAE2BA32B2300135367 /* GameScene.swift in Sources */,
+				3C9955A32BA47DBB00D33FA5 /* BaseUnit.swift in Sources */,
 				52DF5FF32BA351E100135367 /* SpriteComponent.swift in Sources */,
 				52DF5FB02BA32B2300135367 /* GameViewController.swift in Sources */,
 				52DF5FF92BA35D2B00135367 /* MovableComponent.swift in Sources */,
 				52DF5FDE2BA32D7E00135367 /* EntityManager.swift in Sources */,
 				52DF5FFD2BA3608000135367 /* DamageComponent.swift in Sources */,
+				3C9955AD2BA483B100D33FA5 /* System.swift in Sources */,
 				52DF5FE62BA33AF300135367 /* TFNode.swift in Sources */,
 				52DF5FE92BA33F9700135367 /* Animatable.swift in Sources */,
+				3C9955AF2BA48FD200D33FA5 /* MeleeUnit.swift in Sources */,
 				52DF5FE12BA3349600135367 /* TFTextures.swift in Sources */,
 				52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */,
 				52DF5FF52BA3575100135367 /* collateDiagrams.swift in Sources */,
+				3C9955B12BA4ACA100D33FA5 /* Arrow.swift in Sources */,
 				52DF5FEB2BA3400C00135367 /* TFAnimatableNode.swift in Sources */,
 				52DF5FEF2BA34EA000135367 /* TFEntity.swift in Sources */,
 				52DF5FED2BA34D0300135367 /* TFComponent.swift in Sources */,
@@ -553,6 +598,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U3Y75HAMMQ;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -567,9 +613,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nus.TowerForge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -581,6 +631,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U3Y75HAMMQ;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -595,9 +646,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nus.TowerForge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

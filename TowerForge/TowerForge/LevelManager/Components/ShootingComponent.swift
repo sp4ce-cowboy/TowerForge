@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 /// TODO 4 : Once entity is completed
 class ShootingComponent: TFComponent {
     
