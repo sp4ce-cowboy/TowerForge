@@ -8,5 +8,11 @@
 import Foundation
 
 class TFEntity {
-    /// TODO-1 : Zheng-ze
+    let id: UUID
+    var components: [TFComponent]
+
+    init() {
+        id = UUID()
+        components = []
+    }
 }

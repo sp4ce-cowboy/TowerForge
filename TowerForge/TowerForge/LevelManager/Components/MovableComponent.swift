@@ -11,7 +11,7 @@ class MovableComponent: TFComponent {
     public var velocity: CGVector
     public var position: CGPoint
     
-    init(velocity: CGVector, position: CGPoint) {
+    init(position: CGPoint, velocity: CGVector = .zero) {
         self.velocity = velocity
         self.position = position
         super.init()
