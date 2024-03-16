@@ -8,17 +8,28 @@
 import Foundation
 
 class BaseUnit: TFEntity {
-    init(textureNames: [String], size: CGSize, key: String, position: CGPoint, maxHealth: CGFloat) {
+    init(textureNames: [String],
+         size: CGSize,
+         key: String,
+         position: CGPoint,
+         maxHealth: CGFloat,
+         entityManager: EntityManager,
+         velocity: CGVector) {
         super.init()
 
-        createHealthComponent(maxHealth: maxHealth)
+        createHealthComponent(maxHealth: maxHealth, entityManager: entityManager)
         createSpriteComponent(textureNames: textureNames, size: size, key: key, position: position)
-        createMovableComponent(position: position)
+        createMovableComponent(position: position, velocity: velocity)
+        createPositionComponent(position: position)
     }
 
-    private func createHealthComponent(maxHealth: CGFloat) {
-        let healthComponent = HealthComponent(maxHealth: maxHealth)
+    private func createHealthComponent(maxHealth: CGFloat, entityManager: EntityManager) {
+        let healthComponent = HealthComponent(maxHealth: maxHealth, entityManager: entityManager)
         self.addComponent(healthComponent)
+    }
+    private func createPositionComponent(position: CGPoint) {
+        let positionComponent = PositionComponent(position: position)
+        self.addComponent(positionComponent)
     }
 
     private func createSpriteComponent(textureNames: [String], size: CGSize, key: String, position: CGPoint) {
@@ -30,8 +41,8 @@ class BaseUnit: TFEntity {
         self.addComponent(spriteComponent)
     }
 
-    private func createMovableComponent(position: CGPoint) {
-        let movableComponent = MovableComponent(position: position)
+    private func createMovableComponent(position: CGPoint, velocity: CGVector) {
+        let movableComponent = MovableComponent(position: position, velocity: velocity)
         self.addComponent(movableComponent)
     }
 }

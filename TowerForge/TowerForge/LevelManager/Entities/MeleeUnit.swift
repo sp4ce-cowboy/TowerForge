@@ -14,12 +14,15 @@ class MeleeUnit: BaseUnit {
     static let maxHealth = 100.0
     static let damage = 10.0
 
-    init(position: CGPoint) {
+    init(position: CGPoint, entityManager: EntityManager, attackRate: TimeInterval, velocity: CGVector) {
         super.init(textureNames: MeleeUnit.textureNames,
                    size: MeleeUnit.size,
                    key: MeleeUnit.key,
                    position: position,
-                   maxHealth: MeleeUnit.maxHealth)
-        self.addComponent(DamageComponent(damage: MeleeUnit.damage))
+                   maxHealth: MeleeUnit.maxHealth, entityManager: entityManager, velocity: velocity)
+        self.addComponent(DamageComponent(attackRate: attackRate,
+                                          attackPower: MeleeUnit.damage,
+                                          temporary: false,
+                                          entityManager: entityManager))
     }
 }
