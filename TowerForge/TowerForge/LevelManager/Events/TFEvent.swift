@@ -13,3 +13,9 @@ protocol TFEvent {
     
     func execute(in target: EventTarget) -> EventOutput
 }
+
+extension TFEvent {
+    func concurrentlyWith(_ otherEvent: TFEvent) -> TFEvent {
+        ConcurrentEvent(self, otherEvent)
+    }
+}

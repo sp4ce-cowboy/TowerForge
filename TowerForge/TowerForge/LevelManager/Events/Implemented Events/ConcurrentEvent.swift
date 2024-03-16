@@ -14,7 +14,7 @@ struct ConcurrentEvent: TFEvent {
     private let event1: TFEvent
     private let event2: TFEvent
 
-    init(event1: TFEvent, event2: TFEvent) {
+    init(_ event1: TFEvent, _ event2: TFEvent) {
         self.timestamp = event1.timestamp
         self.entityId = event1.entityId
         self.event1 = event1
