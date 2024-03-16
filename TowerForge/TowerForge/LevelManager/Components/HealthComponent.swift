@@ -8,23 +8,23 @@
 import Foundation
 
 class HealthComponent: TFComponent {
-    public var currentHealth: Int
-    public var maxHealth: Int
-    
-    init(maxHealth: Int) {
+    public var currentHealth: CGFloat
+    public var maxHealth: CGFloat
+
+    init(maxHealth: CGFloat) {
         self.currentHealth = maxHealth
         self.maxHealth = maxHealth
         super.init()
     }
-    
-    func decreaseHealth(amount: Int) {
+
+    func decreaseHealth(amount: CGFloat) {
         self.currentHealth -= amount
     }
-    
-    func increaseHealth(amount: Int) {
+
+    func increaseHealth(amount: CGFloat) {
         self.currentHealth = min(self.currentHealth + amount, self.maxHealth)
     }
-    
+
     func restoreHealth() {
         self.currentHealth = maxHealth
     }
