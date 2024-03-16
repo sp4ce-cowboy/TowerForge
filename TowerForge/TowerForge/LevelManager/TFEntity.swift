@@ -9,7 +9,7 @@ import Foundation
 
 class TFEntity {
     let id: UUID
-    private(set) var components: [UUID: TFComponent]
+    private(set) var components: [String: TFComponent]
 
     init() {
         id = UUID()
@@ -17,13 +17,7 @@ class TFEntity {
     }
 
     func component<T: TFComponent>(ofType type: T.Type) -> T? {
-        for component in components.values {
-            guard let component = component as? T else {
-                continue
-            }
-            return component
-        }
-        return nil
+        return components[String(describing: T.self)] as? T
     }
 
     func hasComponent<T: TFComponent>(ofType type: T.Type) -> Bool {
@@ -35,7 +29,7 @@ class TFEntity {
             return
         }
         component.didAddToEntity(self)
-        components[component.id] = (component)
+        components[String(describing: type(of: component).self)] = (component)
     }
 
     func removeComponent<T: TFComponent>(ofType type: T.Type) {
@@ -43,6 +37,6 @@ class TFEntity {
             return
         }
         componentToBeRemoved.willRemoveFromEntity()
-        components.removeValue(forKey: componentToBeRemoved.id)
+        components.removeValue(forKey: String(describing: T.self))
     }
 }

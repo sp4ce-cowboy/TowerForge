@@ -24,7 +24,8 @@ class MovableComponent: TFComponent {
             return
         }
         
-        positionComponent.position.x += velocity.dx * CGFloat(deltaTime)
-        positionComponent.position.y += velocity.dy * CGFloat(deltaTime)
+        let finalX = positionComponent.position.x + velocity.dx * CGFloat(deltaTime)
+        let finalY = positionComponent.position.y + velocity.dy * CGFloat(deltaTime)
+        positionComponent.changeTo(to: CGPoint(x: finalX, y: finalY))
     }
 }

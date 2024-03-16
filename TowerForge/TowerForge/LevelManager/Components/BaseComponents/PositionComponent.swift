@@ -15,4 +15,12 @@ class PositionComponent: TFComponent {
         self.position = position
         super.init()
     }
+    
+    func changeTo(to position: CGPoint) {
+        guard let entity = entity, let spriteComponent = entity.component(ofType: SpriteComponent.self) else {
+            return
+        }
+        self.position = position
+        spriteComponent.node.position = position
+    }
 }
