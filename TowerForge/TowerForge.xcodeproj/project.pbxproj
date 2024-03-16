@@ -7,17 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C769A722BA58DE700F454F9 /* MovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C769A712BA58DE700F454F9 /* MovementSystem.swift */; };
+		3C769A742BA591BD00F454F9 /* SpawnSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C769A732BA591BD00F454F9 /* SpawnSystem.swift */; };
 		3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955A02BA47DA500D33FA5 /* BaseTower.swift */; };
 		3C9955A32BA47DBB00D33FA5 /* BaseUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955A22BA47DBB00D33FA5 /* BaseUnit.swift */; };
 		3C9955A52BA47DC600D33FA5 /* BaseProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955A42BA47DC600D33FA5 /* BaseProjectile.swift */; };
-		3C9955AD2BA483B100D33FA5 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955AC2BA483B100D33FA5 /* System.swift */; };
+		3C9955AD2BA483B100D33FA5 /* TFSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955AC2BA483B100D33FA5 /* TFSystem.swift */; };
 		3C9955AF2BA48FD200D33FA5 /* MeleeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955AE2BA48FD200D33FA5 /* MeleeUnit.swift */; };
 		3C9955B12BA4ACA100D33FA5 /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955B02BA4ACA100D33FA5 /* Arrow.swift */; };
 		3C9955B42BA4B12000D33FA5 /* ArrowTower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955B32BA4B12000D33FA5 /* ArrowTower.swift */; };
+		3C9955BA2BA5637200D33FA5 /* DamageEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955B92BA5637200D33FA5 /* DamageEvent.swift */; };
+		3C9955BC2BA563A800D33FA5 /* TFEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955BB2BA563A800D33FA5 /* TFEvent.swift */; };
 		3C9955BE2BA57E4B00D33FA5 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955BD2BA57E4B00D33FA5 /* EventManager.swift */; };
 		3C9955C02BA57E5500D33FA5 /* EventTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955BF2BA57E5500D33FA5 /* EventTarget.swift */; };
 		3C9955C22BA5838900D33FA5 /* EventOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955C12BA5838900D33FA5 /* EventOutput.swift */; };
+		3C9955C52BA585DD00D33FA5 /* HealthSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955C42BA585DD00D33FA5 /* HealthSystem.swift */; };
 		3C9955C82BA5865C00D33FA5 /* ConcurrentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955C72BA5865C00D33FA5 /* ConcurrentEvent.swift */; };
+		3C9955CA2BA5888F00D33FA5 /* SpawnEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955C92BA5888F00D33FA5 /* SpawnEvent.swift */; };
+		3C9955CC2BA5889800D33FA5 /* MoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955CB2BA5889800D33FA5 /* MoveEvent.swift */; };
 		52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FA72BA32B2300135367 /* AppDelegate.swift */; };
 		52DF5FAA2BA32B2300135367 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52DF5FA92BA32B2300135367 /* GameScene.sks */; };
 		52DF5FAC2BA32B2300135367 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52DF5FAB2BA32B2300135367 /* Actions.sks */; };
@@ -63,18 +70,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C769A712BA58DE700F454F9 /* MovementSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
+		3C769A732BA591BD00F454F9 /* SpawnSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnSystem.swift; sourceTree = "<group>"; };
 		3C9955A02BA47DA500D33FA5 /* BaseTower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTower.swift; sourceTree = "<group>"; };
 		3C9955A22BA47DBB00D33FA5 /* BaseUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUnit.swift; sourceTree = "<group>"; };
 		3C9955A42BA47DC600D33FA5 /* BaseProjectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProjectile.swift; sourceTree = "<group>"; };
-		3C9955AC2BA483B100D33FA5 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		3C9955AC2BA483B100D33FA5 /* TFSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFSystem.swift; sourceTree = "<group>"; };
 		3C9955AE2BA48FD200D33FA5 /* MeleeUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeleeUnit.swift; sourceTree = "<group>"; };
 		3C9955B02BA4ACA100D33FA5 /* Arrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrow.swift; sourceTree = "<group>"; };
 		3C9955B32BA4B12000D33FA5 /* ArrowTower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowTower.swift; sourceTree = "<group>"; };
+		3C9955B92BA5637200D33FA5 /* DamageEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEvent.swift; sourceTree = "<group>"; };
 		3C9955BB2BA563A800D33FA5 /* TFEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFEvent.swift; sourceTree = "<group>"; };
 		3C9955BD2BA57E4B00D33FA5 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		3C9955BF2BA57E5500D33FA5 /* EventTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTarget.swift; sourceTree = "<group>"; };
 		3C9955C12BA5838900D33FA5 /* EventOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventOutput.swift; sourceTree = "<group>"; };
+		3C9955C42BA585DD00D33FA5 /* HealthSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthSystem.swift; sourceTree = "<group>"; };
 		3C9955C72BA5865C00D33FA5 /* ConcurrentEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentEvent.swift; sourceTree = "<group>"; };
+		3C9955C92BA5888F00D33FA5 /* SpawnEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnEvent.swift; sourceTree = "<group>"; };
+		3C9955CB2BA5889800D33FA5 /* MoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEvent.swift; sourceTree = "<group>"; };
 		52DF5FA42BA32B2300135367 /* TowerForge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TowerForge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DF5FA72BA32B2300135367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52DF5FA92BA32B2300135367 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -155,9 +168,22 @@
 			path = Events;
 			sourceTree = "<group>";
 		};
+		3C9955C32BA585CD00D33FA5 /* Systems */ = {
+			isa = PBXGroup;
+			children = (
+				3C9955C42BA585DD00D33FA5 /* HealthSystem.swift */,
+				3C769A712BA58DE700F454F9 /* MovementSystem.swift */,
+				3C769A732BA591BD00F454F9 /* SpawnSystem.swift */,
+			);
+			path = Systems;
+			sourceTree = "<group>";
+		};
 		3C9955C62BA585FD00D33FA5 /* Implemented Events */ = {
 			isa = PBXGroup;
 			children = (
+				3C9955B92BA5637200D33FA5 /* DamageEvent.swift */,
+				3C9955C92BA5888F00D33FA5 /* SpawnEvent.swift */,
+				3C9955CB2BA5889800D33FA5 /* MoveEvent.swift */,
 				3C9955C72BA5865C00D33FA5 /* ConcurrentEvent.swift */,
 			);
 			path = "Implemented Events";
@@ -223,11 +249,13 @@
 		52DF5FDB2BA32CEF00135367 /* LevelManager */ = {
 			isa = PBXGroup;
 			children = (
+				3C9955C32BA585CD00D33FA5 /* Systems */,
+				3C9955B82BA5620A00D33FA5 /* Events */,
 				3C99559F2BA47D3E00D33FA5 /* Entities */,
 				52DF5FF02BA3519D00135367 /* Components */,
 				52DF5FDD2BA32D7E00135367 /* EntityManager.swift */,
 				52DF5FEC2BA34D0300135367 /* TFComponent.swift */,
-				3C9955AC2BA483B100D33FA5 /* System.swift */,
+				3C9955AC2BA483B100D33FA5 /* TFSystem.swift */,
 				52DF5FEE2BA34EA000135367 /* TFEntity.swift */,
 			);
 			path = LevelManager;
@@ -428,17 +456,20 @@
 				3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */,
 				3C9955A52BA47DC600D33FA5 /* BaseProjectile.swift in Sources */,
 				52DF5FFF2BA3656500135367 /* ShootingComponent.swift in Sources */,
+				3C9955CC2BA5889800D33FA5 /* MoveEvent.swift in Sources */,
 				3C9955C22BA5838900D33FA5 /* EventOutput.swift in Sources */,
 				52DF5FAE2BA32B2300135367 /* GameScene.swift in Sources */,
 				3C9955A32BA47DBB00D33FA5 /* BaseUnit.swift in Sources */,
+				3C9955BA2BA5637200D33FA5 /* DamageEvent.swift in Sources */,
+				3C9955CA2BA5888F00D33FA5 /* SpawnEvent.swift in Sources */,
 				52DF5FF32BA351E100135367 /* SpriteComponent.swift in Sources */,
 				52DF5FB02BA32B2300135367 /* GameViewController.swift in Sources */,
 				3C9955C02BA57E5500D33FA5 /* EventTarget.swift in Sources */,
 				52DF5FF92BA35D2B00135367 /* MovableComponent.swift in Sources */,
 				52DF5FDE2BA32D7E00135367 /* EntityManager.swift in Sources */,
 				52DF5FFD2BA3608000135367 /* DamageComponent.swift in Sources */,
-				3C9955AD2BA483B100D33FA5 /* System.swift in Sources */,
 				3C9955C82BA5865C00D33FA5 /* ConcurrentEvent.swift in Sources */,
+				3C9955AD2BA483B100D33FA5 /* TFSystem.swift in Sources */,
 				3C9955BE2BA57E4B00D33FA5 /* EventManager.swift in Sources */,
 				52DF5FE62BA33AF300135367 /* TFNode.swift in Sources */,
 				3C9955B42BA4B12000D33FA5 /* ArrowTower.swift in Sources */,
@@ -446,12 +477,16 @@
 				3C9955AF2BA48FD200D33FA5 /* MeleeUnit.swift in Sources */,
 				52DF5FE12BA3349600135367 /* TFTextures.swift in Sources */,
 				52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */,
+				3C769A742BA591BD00F454F9 /* SpawnSystem.swift in Sources */,
 				52DF5FF52BA3575100135367 /* collateDiagrams.swift in Sources */,
 				3C9955B12BA4ACA100D33FA5 /* Arrow.swift in Sources */,
+				3C769A722BA58DE700F454F9 /* MovementSystem.swift in Sources */,
 				52DF5FEB2BA3400C00135367 /* TFAnimatableNode.swift in Sources */,
 				52DF5FEF2BA34EA000135367 /* TFEntity.swift in Sources */,
 				52DF5FED2BA34D0300135367 /* TFComponent.swift in Sources */,
+				3C9955C52BA585DD00D33FA5 /* HealthSystem.swift in Sources */,
 				52DF5FFB2BA3601400135367 /* HealthComponent.swift in Sources */,
+				3C9955BC2BA563A800D33FA5 /* TFEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
