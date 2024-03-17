@@ -30,7 +30,7 @@ class TFEntity {
         self.component(ofType: type) != nil
     }
 
-    func addComponent(_ component: TFComponent) {
+    func addComponent<T: TFComponent>(_ component: T) {
         guard !hasComponent(ofType: type(of: component)) else {
             return
         }
