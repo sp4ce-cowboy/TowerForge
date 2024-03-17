@@ -8,26 +8,16 @@
 import Foundation
 
 class BaseTower: TFEntity {
-    init(textureNames: [String],
-         size: CGSize,
-         key: String,
-         position: CGPoint,
-         maxHealth: CGFloat,
-         entityManager: EntityManager) {
+    init(textureNames: [String], size: CGSize, key: String, position: CGPoint, maxHealth: CGFloat) {
         super.init()
 
-        createHealthComponent(maxHealth: maxHealth, entityManager: entityManager)
+        createHealthComponent(maxHealth: maxHealth)
         createSpriteComponent(textureNames: textureNames, size: size, key: key, position: position)
-        createPositionComponent(position: position)
     }
 
-    private func createHealthComponent(maxHealth: CGFloat, entityManager: EntityManager) {
-        let healthComponent = HealthComponent(maxHealth: maxHealth, entityManager: entityManager)
+    private func createHealthComponent(maxHealth: CGFloat) {
+        let healthComponent = HealthComponent(maxHealth: maxHealth)
         self.addComponent(healthComponent)
-    }
-    private func createPositionComponent(position: CGPoint) {
-        let positionComponent = PositionComponent(position: position)
-        self.addComponent(positionComponent)
     }
 
     private func createSpriteComponent(textureNames: [String], size: CGSize, key: String, position: CGPoint) {
