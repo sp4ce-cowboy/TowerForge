@@ -21,6 +21,5 @@ class PositionComponent: TFComponent {
             return
         }
         self.position = position
-        spriteComponent.node.position = position
     }
 }

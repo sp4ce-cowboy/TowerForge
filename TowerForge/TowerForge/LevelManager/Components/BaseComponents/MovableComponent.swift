@@ -20,12 +20,14 @@ class MovableComponent: TFComponent {
 
     override func update(deltaTime: TimeInterval) {
         guard let entity = entity,
-              let positionComponent = entity.component(ofType: PositionComponent.self) else {
+              let positionComponent = entity.component(ofType: PositionComponent.self),
+              let spriteComponent = entity.component(ofType: SpriteComponent.self) else {
             return
         }
         
         let finalX = positionComponent.position.x + velocity.dx * CGFloat(deltaTime)
         let finalY = positionComponent.position.y + velocity.dy * CGFloat(deltaTime)
         positionComponent.changeTo(to: CGPoint(x: finalX, y: finalY))
+        spriteComponent.node.position = positionComponent.position
     }
 }
