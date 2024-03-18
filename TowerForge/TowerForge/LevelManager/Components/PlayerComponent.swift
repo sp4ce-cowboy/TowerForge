@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-enum Player: Int {
+public enum Player: Int {
     case ownPlayer = 1
     case oppositePlayer = 2
     
@@ -33,37 +33,9 @@ enum Player: Int {
 
 class PlayerComponent: TFComponent {
     public var player: Player
-    public var lifeLeft: Int
-    public var points = 0
-    private var lastPointIncrease = TimeInterval(0)
-    private var pointInterval: TimeInterval
-    private var pointsPerInterval: Int = 10
-    
-    init(player: Player, initialLifeCount: Int, pointInterval: TimeInterval) {
+    init(player: Player) {
         self.player = player
-        self.lifeLeft = initialLifeCount
-        self.pointInterval = pointInterval
         super.init()
-    }
-    
-    func decreaseLife() -> Int {
-        self.lifeLeft -= 1
-        return self.lifeLeft
-    }
-    
-    func increaseLife() -> Int {
-        self.lifeLeft += 1
-        return self.lifeLeft
-    }
-    
-    override func update(deltaTime: TimeInterval) {
-        super.update(deltaTime: deltaTime)
-        
-        // Points update
-        if(CACurrentMediaTime() - lastPointIncrease > pointInterval) {
-            lastPointIncrease = CACurrentMediaTime()
-            points += self.pointsPerInterval
-        }
     }
 }
 

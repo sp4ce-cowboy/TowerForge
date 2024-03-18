@@ -2,7 +2,7 @@
 //  TFComponent.swift
 //  TowerForge
 //
-//  Created by MacBook Pro on 14/03/24.
+//  Created by Vanessa Mae on 14/03/24.
 //
 
 import Foundation
@@ -18,7 +18,8 @@ class TFComponent: Identifiable {
     func update(deltaTime: TimeInterval) {} // To be overriden by its inheriters
 
     // Notify when the component is added to an entity.
-    // This reference provides components other access to components from the same entity, to allow collaboration in the ECS framework
+    // This reference provides components other access to components 
+    // from the same entity, to allow collaboration in the ECS framework
     func didAddToEntity(_ entity: TFEntity) {
         self.entity = entity
     }
