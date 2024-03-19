@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SceneManagerDelegate {
-    func showMenuScene() To be added
+    func showMenuScene()
     func showLevelScene()
     func showGameLevelScene(level: Int)
 }

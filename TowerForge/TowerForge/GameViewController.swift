@@ -13,20 +13,7 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let view = self.view as? SKView {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                // Present the scene
-                view.presentScene(scene)
-            }
-
-            view.ignoresSiblingOrder = true
-
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+        showGameLevelScene(level: 1) // TODO : Change hardcoded level value
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -59,10 +46,12 @@ extension GameViewController: SceneManagerDelegate {
         }
     }
     func showScene(scene: SKScene) {
-        if let view = self.view as! SKView? {
+        if let view = self.view as? SKView {
             scene.scaleMode = .aspectFill
             view.presentScene(scene)
             view.ignoresSiblingOrder = true // to render nodes more efficiently
+            view.showsFPS = true
+            view.showsNodeCount = true
         }
     }
 }
