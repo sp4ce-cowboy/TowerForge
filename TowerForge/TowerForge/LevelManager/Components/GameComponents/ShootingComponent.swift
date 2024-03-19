@@ -2,7 +2,7 @@
 //  ShootingComponent.swift
 //  TowerForge
 //
-//  Created by MacBook Pro on 15/03/24.
+//  Created by Vanessa Mae on 15/03/24.
 //
 
 import Foundation
@@ -61,14 +61,10 @@ class ShootingComponent: TFComponent {
                 guard let arrowSpriteComponent = arrow.component(ofType: SpriteComponent.self) else {
                     return
                 }
-                
                 // Check if can attack
-                if(CACurrentMediaTime() - lastShotTime > fireRate) {
+                if CACurrentMediaTime() - lastShotTime > fireRate {
                     lastShotTime = CACurrentMediaTime()
                 }
-                
-            }
-            
-        }
+            }        }
     }
 }

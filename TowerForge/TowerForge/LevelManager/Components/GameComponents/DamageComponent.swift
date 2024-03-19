@@ -2,7 +2,7 @@
 //  MeleeComponent.swift
 //  TowerForge
 //
-//  Created by MacBook Pro on 17/03/24.
+//  Created by Vanessa Mae on 17/03/24.
 //
 
 import Foundation
@@ -15,7 +15,6 @@ class DamageComponent: TFComponent {
     private let entityManager: EntityManager
     private let temporary: Bool
     public let attackPower: CGFloat
-    
     init(attackRate: TimeInterval, attackPower: CGFloat, temporary: Bool, entityManager: EntityManager) {
         self.attackRate = attackRate
         self.attackPower = attackPower
@@ -46,7 +45,7 @@ class DamageComponent: TFComponent {
                   let oppositeHealthComponent = entity.component(ofType: HealthComponent.self) else {
                 return
             }
-            
+
             // Check collision with opposite team sprite component
             if(oppositeSpriteComponent.node.calculateAccumulatedFrame().intersects(spriteComponent.node.calculateAccumulatedFrame())) {
                 
