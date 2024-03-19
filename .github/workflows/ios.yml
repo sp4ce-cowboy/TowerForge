@@ -24,7 +24,7 @@ jobs:
       - name: Build
         env:
           scheme: ${{ 'default' }}
-          platform: ${{ 'iPadOS Simulator' }}
+          platform: ${{ 'iOS Simulator' }}
         run: |
           cd TowerForge
           # xcrun xctrace returns via stderr, not the expected stdout (see https://developer.apple.com/forums/thread/663959)
@@ -37,7 +37,7 @@ jobs:
       - name: Test
         env:
           scheme: ${{ 'default' }}
-          platform: ${{ 'iPadOS Simulator' }}
+          platform: ${{ 'iOS Simulator' }}
         run: |
           cd TowerForge
           # xcrun xctrace returns via stderr, not the expected stdout (see https://developer.apple.com/forums/thread/663959)
