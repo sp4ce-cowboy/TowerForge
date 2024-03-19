@@ -2,7 +2,7 @@
 //  Team.swift
 //  TowerForge
 //
-//  Created by MacBook Pro on 17/03/24.
+//  Created by Vanessa Mae on 17/03/24.
 //
 
 import Foundation
@@ -10,12 +10,14 @@ import Foundation
 class Team: TFEntity {
     static let lifeCount = 5
     static let pointsInterval = TimeInterval(0.5)
-    override init() {
+    public var player: Player
+    init(player: Player) {
+        self.player = player
         super.init()
-        createPlayerComponent()
+        createPlayerComponent(player: player)
     }
-    private func createPlayerComponent() {
-        let playerComponent = PlayerComponent(player: .ownPlayer, initialLifeCount: Team.lifeCount, pointInterval: Team.pointsInterval)
+    private func createPlayerComponent(player: Player) {
+        let playerComponent = PlayerComponent(player: player)
         self.addComponent(playerComponent)
     }
 }
