@@ -9,7 +9,8 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-
+    var sceneManagerDelegate: SceneManagerDelegate?
+    
     private var lastUpdatedTimeInterval = TimeInterval(0)
     private var entityManager: EntityManager?
 

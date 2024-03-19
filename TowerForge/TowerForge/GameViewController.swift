@@ -41,3 +41,28 @@ class GameViewController: UIViewController {
         true
     }
 }
+
+extension GameViewController: SceneManagerDelegate {
+    func showMenuScene() {
+        let menuScene = MenuScene()
+        menuScene.sceneManagerDelegate = self
+        showScene(scene: menuScene)
+    }
+    func showLevelScene() {
+        // TODO : to implement after Keith is done
+    }
+    func showGameLevelScene(level: Int) {
+        if let gameScene = SKScene(fileNamed: "GameScene") as? GameScene {
+            // Present the scene
+            gameScene.sceneManagerDelegate = self
+            showScene(scene: gameScene)
+        }
+    }
+    func showScene(scene: SKScene) {
+        if let view = self.view as! SKView? {
+            scene.scaleMode = .aspectFill
+            view.presentScene(scene)
+            view.ignoresSiblingOrder = true // to render nodes more efficiently
+        }
+    }
+}
