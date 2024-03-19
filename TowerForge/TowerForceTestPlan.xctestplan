@@ -1,0 +1,32 @@
+{
+  "configurations" : [
+    {
+      "id" : "7B4B9C82-9166-4790-89DB-195C4DBD2C39",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:TowerForge.xcodeproj",
+        "identifier" : "52DF5FBC2BA32B2600135367",
+        "name" : "TowerForgeTests"
+      }
+    },
+    {
+      "enabled" : false,
+      "target" : {
+        "containerPath" : "container:TowerForge.xcodeproj",
+        "identifier" : "52DF5FC62BA32B2600135367",
+        "name" : "TowerForgeUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
