@@ -20,6 +20,10 @@ class SoldierUnit: BaseUnit {
                    key: SoldierUnit.key,
                    position: position,
                    maxHealth: SoldierUnit.maxHealth, entityManager: entityManager, velocity: velocity)
-        self.addComponent(ShootingComponent(fireRate: attackRate, range: 1.0, entityManager: entityManager, attackPower: 10.0))
+
+        self.addComponent(ShootingComponent(fireRate: attackRate,
+                                            range: 1.0,
+                                            entityManager: entityManager,
+                                            attackPower: 10.0))
     }
 }

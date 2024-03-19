@@ -8,8 +8,8 @@
 import Foundation
 
 class HealthComponent: TFComponent {
-    public var currentHealth: CGFloat
-    public var maxHealth: CGFloat
+    var currentHealth: CGFloat
+    var maxHealth: CGFloat
     private let entityManager: EntityManager
 
     init(maxHealth: CGFloat, entityManager: EntityManager) {
@@ -18,7 +18,7 @@ class HealthComponent: TFComponent {
         self.entityManager = entityManager
         super.init()
     }
-    
+
     override func update(deltaTime: TimeInterval) {
         if self.currentHealth <= 0 {
             guard let entity = entity,

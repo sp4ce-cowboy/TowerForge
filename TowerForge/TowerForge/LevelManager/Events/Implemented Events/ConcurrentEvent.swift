@@ -24,7 +24,7 @@ struct ConcurrentEvent: TFEvent {
     func execute(in target: any EventTarget) -> EventOutput {
         var eventOutput = event1.execute(in: target)
         let eventOutput2 = event2.execute(in: target)
-        
+
         eventOutput.combine(with: eventOutput2)
 
         return eventOutput

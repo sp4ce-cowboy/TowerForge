@@ -9,8 +9,8 @@ import Foundation
 import CoreGraphics
 
 class MovableComponent: TFComponent {
-    public var velocity: CGVector
-    public var position: CGPoint
+    var velocity: CGVector
+    var position: CGPoint
 
     init(position: CGPoint, velocity: CGVector = .zero) {
         self.velocity = velocity
@@ -24,7 +24,7 @@ class MovableComponent: TFComponent {
               let spriteComponent = entity.component(ofType: SpriteComponent.self) else {
             return
         }
-        
+
         let finalX = positionComponent.position.x + velocity.dx * CGFloat(deltaTime)
         let finalY = positionComponent.position.y + velocity.dy * CGFloat(deltaTime)
         positionComponent.changeTo(to: CGPoint(x: finalX, y: finalY))

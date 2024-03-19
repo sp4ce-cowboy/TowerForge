@@ -9,8 +9,8 @@ import Foundation
 import SpriteKit
 
 class TFTextures {
-    public var textures: [SKTexture]
-    public var mainTexture: SKTexture
+    var textures: [SKTexture]
+    var mainTexture: SKTexture
 
     init(textureNames: [String], textureAtlasName: String, mainTextureName: String? = nil) {
         let textureAtlas = SKTextureAtlas(named: textureAtlasName)

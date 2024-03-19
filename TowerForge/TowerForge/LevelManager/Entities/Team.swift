@@ -15,7 +15,9 @@ class Team: TFEntity {
         createPlayerComponent()
     }
     private func createPlayerComponent() {
-        let playerComponent = PlayerComponent(player: .ownPlayer, initialLifeCount: Team.lifeCount, pointInterval: Team.pointsInterval)
+        let playerComponent = PlayerComponent(player: .ownPlayer,
+                                              initialLifeCount: Team.lifeCount,
+                                              pointInterval: Team.pointsInterval)
         self.addComponent(playerComponent)
     }
 }

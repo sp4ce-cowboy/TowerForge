@@ -14,8 +14,8 @@ class DamageComponent: TFComponent {
     private var lastAttackTime = TimeInterval(0)
     private let entityManager: EntityManager
     private let temporary: Bool
-    public let attackPower: CGFloat
-    
+    let attackPower: CGFloat
+
     init(attackRate: TimeInterval, attackPower: CGFloat, temporary: Bool, entityManager: EntityManager) {
         self.attackRate = attackRate
         self.attackPower = attackPower
@@ -23,16 +23,16 @@ class DamageComponent: TFComponent {
         self.temporary = temporary
         super.init()
     }
-    
+
     override func update(deltaTime: TimeInterval) {
         super.update(deltaTime: deltaTime)
-        
+
         // Required components for the current Melee
         guard let entity = entity,
               let spriteComponent = entity.component(ofType: SpriteComponent.self) else {
             return
         }
-        
+
         // Loop opposite team's entities
         for entity in entityManager.entities {
             guard let playerComponent = entity.component(ofType: PlayerComponent.self) else {
@@ -46,18 +46,20 @@ class DamageComponent: TFComponent {
                   let oppositeHealthComponent = entity.component(ofType: HealthComponent.self) else {
                 return
             }
-            
+
             // Check collision with opposite team sprite component
-            if(oppositeSpriteComponent.node.calculateAccumulatedFrame().intersects(spriteComponent.node.calculateAccumulatedFrame())) {
-                
+            if oppositeSpriteComponent.node
+                .calculateAccumulatedFrame().intersects(
+                    spriteComponent.node.calculateAccumulatedFrame()) {
+
                 // Check if can attack
-                if(CACurrentMediaTime() - lastAttackTime > attackRate) {
+                if CACurrentMediaTime() - lastAttackTime > attackRate {
                     lastAttackTime = CACurrentMediaTime()
                     oppositeHealthComponent.decreaseHealth(amount: attackPower)
                 }
-                
+
             }
-            
+
             // If only used once, then remove from entity
             if temporary {
                 entityManager.removeEntity(with: entity.id)

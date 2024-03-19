@@ -10,9 +10,9 @@ import SpriteKit
 import CoreGraphics
 
 class TFNode: SKSpriteNode {
-    public var textures: TFTextures?
-    public var width: CGFloat
-    public var height: CGFloat
+    var textures: TFTextures?
+    var width: CGFloat
+    var height: CGFloat
 
     init(textures: TFTextures?, height: CGFloat, width: CGFloat) {
         if let textures = textures {

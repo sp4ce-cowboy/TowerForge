@@ -13,7 +13,7 @@ class ShootingComponent: TFComponent {
     var range: CGFloat
     private var lastShotTime = TimeInterval(0)
     private let entityManager: EntityManager
-    public let attackPower: CGFloat
+    let attackPower: CGFloat
 
     init(fireRate: TimeInterval, range: CGFloat, entityManager: EntityManager, attackPower: CGFloat) {
         self.fireRate = fireRate
@@ -25,14 +25,14 @@ class ShootingComponent: TFComponent {
 
     override func update(deltaTime: TimeInterval) {
         super.update(deltaTime: deltaTime)
-        
+
         // Required components for the current Melee
         guard let entity = entity,
               let spriteComponent = entity.component(ofType: SpriteComponent.self),
               let positionComponent = entity.component(ofType: PositionComponent.self) else {
             return
         }
-        
+
         // Loop opposite team's entities
         for entity in entityManager.entities {
             guard let playerComponent = entity.component(ofType: PlayerComponent.self) else {
@@ -47,12 +47,12 @@ class ShootingComponent: TFComponent {
                   let oppositePositionComponent = entity.component(ofType: PositionComponent.self) else {
                 return
             }
-            
+
             // Get the horizontal distance
             let distanceBetween = (positionComponent.position.x - oppositePositionComponent.position.x)
-            
+
             // Check if within range
-            if(distanceBetween < range) {
+            if distanceBetween < range {
                 // TODO : Change the hard coded velocity value
                 let arrow = Arrow(position: positionComponent.position,
                                   velocity: playerComponent.player.getDirectionVelocity(),
@@ -61,14 +61,14 @@ class ShootingComponent: TFComponent {
                 guard let arrowSpriteComponent = arrow.component(ofType: SpriteComponent.self) else {
                     return
                 }
-                
+
                 // Check if can attack
-                if(CACurrentMediaTime() - lastShotTime > fireRate) {
+                if CACurrentMediaTime() - lastShotTime > fireRate {
                     lastShotTime = CACurrentMediaTime()
                 }
-                
+
             }
-            
+
         }
     }
 }
