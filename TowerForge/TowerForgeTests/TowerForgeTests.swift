@@ -1,10 +1,3 @@
-//
-//  TowerForgeTests.swift
-//  TowerForgeTests
-//
-//  Created by MacBook Pro on 14/03/24.
-//
-
 import XCTest
 @testable import TowerForge
 

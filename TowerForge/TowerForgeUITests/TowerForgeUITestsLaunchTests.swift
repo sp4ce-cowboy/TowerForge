@@ -1,10 +1,3 @@
-//
-//  TowerForgeUITestsLaunchTests.swift
-//  TowerForgeUITests
-//
-//  Created by MacBook Pro on 14/03/24.
-//
-
 import XCTest
 
 final class TowerForgeUITestsLaunchTests: XCTestCase {
