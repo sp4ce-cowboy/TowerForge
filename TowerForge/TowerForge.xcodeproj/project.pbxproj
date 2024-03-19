@@ -122,6 +122,7 @@
 		52DF5FF82BA35D2B00135367 /* MovableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovableComponent.swift; sourceTree = "<group>"; };
 		52DF5FFA2BA3601400135367 /* HealthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthComponent.swift; sourceTree = "<group>"; };
 		52DF5FFE2BA3656500135367 /* ShootingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootingComponent.swift; sourceTree = "<group>"; };
+		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +211,7 @@
 		52DF5F9B2BA32B2200135367 = {
 			isa = PBXGroup;
 			children = (
+				BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */,
 				52DF5FA62BA32B2300135367 /* TowerForge */,
 				52DF5FC02BA32B2600135367 /* TowerForgeTests */,
 				52DF5FCA2BA32B2600135367 /* TowerForgeUITests */,

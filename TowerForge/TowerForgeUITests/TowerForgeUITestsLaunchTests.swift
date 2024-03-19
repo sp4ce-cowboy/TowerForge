@@ -11,6 +11,7 @@ final class TowerForgeUITestsLaunchTests: XCTestCase {
     }
 
     func testLaunch() throws {
+
         let app = XCUIApplication()
         app.launch()
 
