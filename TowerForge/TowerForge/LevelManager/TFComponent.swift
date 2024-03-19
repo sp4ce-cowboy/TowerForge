@@ -8,7 +8,7 @@
 import Foundation
 
 class TFComponent: Identifiable {
-    public var id = UUID()
+    var id = UUID()
     weak var entity: TFEntity?
 
     init() {
@@ -20,6 +20,7 @@ class TFComponent: Identifiable {
     // Notify when the component is added to an entity.
     // This reference provides components other access to components 
     // from the same entity, to allow collaboration in the ECS framework
+
     func didAddToEntity(_ entity: TFEntity) {
         self.entity = entity
     }

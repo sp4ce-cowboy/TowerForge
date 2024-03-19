@@ -11,7 +11,7 @@ import SpriteKit
 public enum Player: Int {
     case ownPlayer = 1
     case oppositePlayer = 2
-    
+
     func getOppositePlayer() -> Player {
         switch self {
         case .ownPlayer:
@@ -20,7 +20,7 @@ public enum Player: Int {
             return .ownPlayer
         }
     }
-    
+
     func getDirectionVelocity() -> CGVector {
         switch self {
         case .ownPlayer:
@@ -32,11 +32,9 @@ public enum Player: Int {
 }
 
 class PlayerComponent: TFComponent {
-    public var player: Player
+    var player: Player
     init(player: Player) {
         self.player = player
         super.init()
     }
 }
-
-

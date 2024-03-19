@@ -8,7 +8,7 @@
 import Foundation
 
 class CostComponent: TFComponent {
-    public var cost: CGFloat
+    var cost: CGFloat
     init(cost: CGFloat) {
         self.cost = cost
     }

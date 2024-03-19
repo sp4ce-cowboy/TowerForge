@@ -9,8 +9,8 @@ import Foundation
 import SpriteKit
 
 class HomeComponent: TFComponent {
-    public var lifeLeft: Int
-    public var points = 0
+    var lifeLeft: Int
+    var points = 0
     private var lastPointIncrease = TimeInterval(0)
     private var pointInterval: TimeInterval
     private var pointsPerInterval: Int = 10
@@ -30,11 +30,9 @@ class HomeComponent: TFComponent {
     override func update(deltaTime: TimeInterval) {
         super.update(deltaTime: deltaTime)
         // Points update
-        if(CACurrentMediaTime() - lastPointIncrease > pointInterval) {
+        if CACurrentMediaTime() - lastPointIncrease > pointInterval {
             lastPointIncrease = CACurrentMediaTime()
             points += self.pointsPerInterval
         }
     }
 }
-
-

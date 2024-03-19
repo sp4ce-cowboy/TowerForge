@@ -8,7 +8,7 @@
 import Foundation
 
 class UnitGenerator {
-    public static func spawnMelee(at position: CGPoint, player: Player, entityManager: EntityManager) {
+    static func spawnMelee(at position: CGPoint, player: Player, entityManager: EntityManager) {
         // TODO: Change the default value and abstract as constant
         let unit = MeleeUnit(position: position,
                              entityManager: entityManager,
@@ -19,7 +19,7 @@ class UnitGenerator {
         spriteComponent?.node.position = position
         entityManager.add(unit)
     }
-    public static func spawnSoldier(at position: CGPoint, player: Player, entityManager: EntityManager) {
+    static func spawnSoldier(at position: CGPoint, player: Player, entityManager: EntityManager) {
         // TODO: Change the default value and abstract as constant
         let unit = SoldierUnit(position: position,
                                entityManager: entityManager,

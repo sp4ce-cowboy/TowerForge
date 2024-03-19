@@ -9,21 +9,27 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-    
+
     private var lastUpdatedTimeInterval = TimeInterval(0)
     private var entityManager: EntityManager?
 
     override func didMove(to view: SKView) {
         entityManager = EntityManager()
-        guard var entityManager = entityManager else {
+        guard let entityManager = entityManager else {
             return
         }
         let meleeUnit = MeleeUnit(position: CGPoint(x: 0, y: 100),
-                                  entityManager: entityManager, attackRate: 1.0, velocity: CGVector(dx: 10.0, dy: 0.0), team: Team(player: .ownPlayer))
+                                  entityManager: entityManager, attackRate: 1.0,
+                                  velocity: CGVector(dx: 10.0, dy: 0.0),
+                                  team: Team(player: .ownPlayer))
+
         let soldierUnit = SoldierUnit(position: CGPoint(x: 0, y: 50), entityManager: entityManager,
                                       attackRate: 1.0,
-                                      velocity: CGVector(dx: 10.0, dy: 0.0), team: Team(player: .ownPlayer))
-        let arrowTower = ArrowTower(position: CGPoint(x:0, y: 100), entityManager: entityManager)
+                                      velocity: CGVector(dx: 10.0, dy: 0.0),
+                                      team: Team(player: .ownPlayer))
+
+        let arrowTower = ArrowTower(position: CGPoint(x: 0, y: 100), entityManager: entityManager)
+
         entityManager.add(meleeUnit)
         entityManager.add(soldierUnit)
         entityManager.add(arrowTower)

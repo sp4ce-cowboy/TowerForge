@@ -1,10 +1,3 @@
-//
-//  TowerForgeUITestsLaunchTests.swift
-//  TowerForgeUITests
-//
-//  Created by Vanessa Mae on 14/03/24.
-//
-
 import XCTest
 
 final class TowerForgeUITestsLaunchTests: XCTestCase {
@@ -18,6 +11,7 @@ final class TowerForgeUITestsLaunchTests: XCTestCase {
     }
 
     func testLaunch() throws {
+
         let app = XCUIApplication()
         app.launch()
 

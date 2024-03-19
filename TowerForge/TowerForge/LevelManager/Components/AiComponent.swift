@@ -21,7 +21,7 @@ class AiComponent: TFComponent {
         self.chosenUnit = UnitType.possibleUnits.randomElement() ?? .melee
         super.init()
     }
-    
+
     override func update(deltaTime: TimeInterval) {
         guard let homeComponent = entity?.component(ofType: HomeComponent.self) else {
             return

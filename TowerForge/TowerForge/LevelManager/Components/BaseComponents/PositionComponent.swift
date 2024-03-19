@@ -10,10 +10,12 @@ import CoreGraphics
 
 class PositionComponent: TFComponent {
     var position: CGPoint
+
     init(position: CGPoint) {
         self.position = position
         super.init()
     }
+
     func changeTo(to position: CGPoint) {
         guard let entity = entity, let spriteComponent = entity.component(ofType: SpriteComponent.self) else {
             return

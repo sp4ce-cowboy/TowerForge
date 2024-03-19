@@ -28,6 +28,7 @@ class BaseProjectile: TFEntity {
         let positionComponent = PositionComponent(position: position)
         self.addComponent(positionComponent)
     }
+
     private func createMovableComponent(position: CGPoint, velocity: CGVector) {
         let movableComponent = MovableComponent(position: position, velocity: velocity)
         self.addComponent(movableComponent)

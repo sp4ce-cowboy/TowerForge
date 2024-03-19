@@ -8,7 +8,7 @@
 import Foundation
 
 class BaseUnit: TFEntity, HasCost {
-    var cost: Int    
+    var cost: Int
     init(textureNames: [String],
          size: CGSize,
          key: String,

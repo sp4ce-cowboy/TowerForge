@@ -8,7 +8,7 @@
 import Foundation
 
 class SpriteComponent: TFComponent {
-    public var node: TFAnimatableNode
+    var node: TFAnimatableNode
 
     init(textureNames: [String], height: CGFloat, width: CGFloat, position: CGPoint, animatableKey: String) {
         let textures = TFTextures(textureNames: textureNames, textureAtlasName: "Sprites")

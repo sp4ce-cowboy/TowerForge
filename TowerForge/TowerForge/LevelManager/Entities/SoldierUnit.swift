@@ -25,6 +25,7 @@ class SoldierUnit: BaseUnit {
                    cost: SoldierUnit.cost,
                    velocity: velocity,
                    team: team)
+
         self.addComponent(ShootingComponent(fireRate: attackRate,
                                             range: 1.0,
                                             entityManager: entityManager,

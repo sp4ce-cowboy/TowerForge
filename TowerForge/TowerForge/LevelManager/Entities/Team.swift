@@ -10,12 +10,13 @@ import Foundation
 class Team: TFEntity {
     static let lifeCount = 5
     static let pointsInterval = TimeInterval(0.5)
-    public var player: Player
+    var player: Player
     init(player: Player) {
         self.player = player
         super.init()
         createPlayerComponent(player: player)
     }
+
     private func createPlayerComponent(player: Player) {
         let playerComponent = PlayerComponent(player: player)
         self.addComponent(playerComponent)
