@@ -2,7 +2,7 @@
 //  GameScene.swift
 //  TowerForge
 //
-//  Created by MacBook Pro on 14/03/24.
+//  Created by Vanessa Mae on 14/03/24.
 //
 
 import SpriteKit
@@ -14,29 +14,25 @@ class GameScene: SKScene {
     private var entityManager: EntityManager?
 
     override func didMove(to view: SKView) {
-//        let textureNames = ["melee-1", "melee-2"]
-//        let tfTextures = TFTextures(textureNames: 
-//        textureNames, textureAtlasName: "Sprites", mainTextureName: "melee-1")
-//        let animatableNode = TFAnimatableNode(textures: tfTextures, height: 300, width: 300, animatableKey: "melee")
-//        addChild(animatableNode)
-//        animatableNode.playAnimation()
         entityManager = EntityManager()
         guard let entityManager = entityManager else {
             return
         }
-
         let meleeUnit = MeleeUnit(position: CGPoint(x: 0, y: 100),
-                                  entityManager: entityManager,
-                                  attackRate: 1.0, velocity:
-                                    CGVector(dx: 10.0, dy: 0.0))
+                                  entityManager: entityManager, attackRate: 1.0,
+                                  velocity: CGVector(dx: 10.0, dy: 0.0),
+                                  team: Team(player: .ownPlayer))
 
-        let soldierUnit = SoldierUnit(position: CGPoint(x: 0, y: 50),
-                                      entityManager: entityManager,
+        let soldierUnit = SoldierUnit(position: CGPoint(x: 0, y: 50), entityManager: entityManager,
                                       attackRate: 1.0,
-                                      velocity: CGVector(dx: 10.0, dy: 0.0))
+                                      velocity: CGVector(dx: 10.0, dy: 0.0),
+                                      team: Team(player: .ownPlayer))
 
         let arrowTower = ArrowTower(position: CGPoint(x: 0, y: 100), entityManager: entityManager)
+
         entityManager.add(meleeUnit)
+        entityManager.add(soldierUnit)
+        entityManager.add(arrowTower)
         guard let sprite = meleeUnit.component(ofType: SpriteComponent.self),
              let soldierSprite = soldierUnit.component(ofType: SpriteComponent.self),
         let arrowTowerSprite = arrowTower.component(ofType: SpriteComponent.self) else {

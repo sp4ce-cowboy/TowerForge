@@ -7,20 +7,24 @@
 
 import Foundation
 
-class BaseUnit: TFEntity {
+class BaseUnit: TFEntity, HasCost {
+    var cost: Int
     init(textureNames: [String],
          size: CGSize,
          key: String,
          position: CGPoint,
          maxHealth: CGFloat,
          entityManager: EntityManager,
-         velocity: CGVector) {
+         cost: Int,
+         velocity: CGVector,
+         team: Team) {
+        self.cost = cost
         super.init()
-
         createHealthComponent(maxHealth: maxHealth, entityManager: entityManager)
         createSpriteComponent(textureNames: textureNames, size: size, key: key, position: position)
         createMovableComponent(position: position, velocity: velocity)
         createPositionComponent(position: position)
+        createPlayerComponent(team: team)
     }
 
     private func createHealthComponent(maxHealth: CGFloat, entityManager: EntityManager) {
@@ -44,5 +48,9 @@ class BaseUnit: TFEntity {
     private func createMovableComponent(position: CGPoint, velocity: CGVector) {
         let movableComponent = MovableComponent(position: position, velocity: velocity)
         self.addComponent(movableComponent)
+    }
+    private func createPlayerComponent(team: Team) {
+        let playerComponent = PlayerComponent(player: team.player)
+        self.addComponent(playerComponent)
     }
 }
