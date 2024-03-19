@@ -1,4 +1,4 @@
-name: iPadOS Build and Test Automation for TowerForge
+name: iOS Starter Workflow
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build and Test default scheme using any available iPad simulator
+    name: Build and Test default scheme using any available iPhone simulator
     runs-on: macos-latest
 
     steps:
