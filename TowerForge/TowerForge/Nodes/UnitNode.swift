@@ -9,21 +9,27 @@ import SpriteKit
 
 class UnitNode: TFSpriteNode {
     var unitType: UnitType?
+    var teamController: TeamController?
     var unitTitleLabel: SKLabelNode!
     var unitCostLabel: SKLabelNode!
     var backgroundNode: SKSpriteNode!
     // TODO : Make it more good looking
     convenience init(unitType: UnitType, textures: TFTextures) {
-        self.unitType = unitType
         self.init(textures: textures, height: 20.0, width: 10.0)
         self.setupUnitTitleLabel(text: unitType.title)
         self.setupUnitCostLabel(cost: unitType.cost)
+        self.unitType = unitType
         
         backgroundNode = SKSpriteNode(color: UIColor.blue, size: self.size)
         backgroundNode.zPosition = -1
         addChild(backgroundNode)
     }
-    
+    func sellUnit() {
+        guard let teamController = teamController else {
+            return
+        }
+        teamController.spawn()
+    }
     private func setupUnitTitleLabel(text: String) {
         unitTitleLabel = SKLabelNode()
         unitTitleLabel.name = "unitTitle"

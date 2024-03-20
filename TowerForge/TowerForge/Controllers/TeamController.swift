@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol TeamController {
+    func spawn()
+}

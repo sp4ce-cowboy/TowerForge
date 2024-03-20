@@ -7,8 +7,11 @@
 
 import Foundation
 
+protocol UnitNodeDelegate: AnyObject {
+    func unitNodeDidSell(unitType: UnitType)
+}
+
 class UnitSelectionNode: TFSpriteNode {
-    //var teamController: TeamController?
     var availablePoints: Int = 0 {
         didSet {
             updateUnitAlphas()
@@ -26,7 +29,6 @@ class UnitSelectionNode: TFSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     private func updateUnitAlphas() {
         for unitNode in unitNodes {
             if let unit = unitNode.unitType {
