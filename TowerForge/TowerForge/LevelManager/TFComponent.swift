@@ -24,7 +24,7 @@ class TFComponent: Identifiable {
     func didAddToEntity(_ entity: TFEntity) {
         self.entity = entity
     }
-
+    
     func willRemoveFromEntity() {
         self.entity = nil
     }

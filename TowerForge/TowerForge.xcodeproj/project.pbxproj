@@ -268,18 +268,10 @@
 		5295A2082BAAE14B005018A8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5295A20B2BAAE20B005018A8 /* UnitControllers */,
 				52DF5FAF2BA32B2300135367 /* GameViewController.swift */,
 				5295A20E2BAAE7CF005018A8 /* TeamController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		5295A20B2BAAE20B005018A8 /* UnitControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UnitControllers;
 			sourceTree = "<group>";
 		};
 		52DF5F9B2BA32B2200135367 = {

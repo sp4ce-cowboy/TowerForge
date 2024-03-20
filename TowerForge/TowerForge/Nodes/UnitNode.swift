@@ -2,34 +2,38 @@
 //  UnitNode.swift
 //  TowerForge
 //
-//  Created by MacBook Pro on 20/03/24.
+//  Created by Vanessa Mae on 20/03/24.
 //
 
 import SpriteKit
 
+protocol UnitNodeDelegate: AnyObject {
+    func unitNodeDidSelect(_ unitNode: UnitNode)
+    func unitNodeDidSpawn(_ position: CGPoint)
+}
+
+
 class UnitNode: TFSpriteNode {
     var unitType: UnitType?
-    var purchasable: Bool = false
+    weak var delegate: UnitNodeDelegate?
+    var purchasable: Bool = true
     var teamController: TeamController?
     var unitTitleLabel: SKLabelNode!
     var unitCostLabel: SKLabelNode!
     var backgroundNode: SKSpriteNode!
-    // TODO : Make it more good looking
+    
     convenience init(unitType: UnitType, textures: TFTextures) {
         self.init(textures: textures, height: 20.0, width: 10.0)
         self.setupUnitTitleLabel(text: unitType.title)
         self.setupUnitCostLabel(cost: unitType.cost)
         self.unitType = unitType
         
+        self.zPosition = 10.0
+        isUserInteractionEnabled = true
+        
         backgroundNode = SKSpriteNode(color: UIColor.blue, size: self.size)
         backgroundNode.zPosition = -1
         addChild(backgroundNode)
-    }
-    func sellUnit(position: CGPoint) {
-        guard let teamController = teamController else {
-            return
-        }
-        teamController.spawn(position: position)
     }
     private func setupUnitTitleLabel(text: String) {
         unitTitleLabel = SKLabelNode()
@@ -42,7 +46,6 @@ class UnitNode: TFSpriteNode {
         unitTitleLabel.horizontalAlignmentMode = .center
         self.addChild(unitTitleLabel)
     }
-    
     private func setupUnitCostLabel(cost amount: Int) {
         unitCostLabel = SKLabelNode()
         unitCostLabel.name = "unitLabel"
@@ -60,10 +63,9 @@ class UnitNode: TFSpriteNode {
             return
         }
         let location = touch.location(in: self)
-        
         // Check if the touch is inside the node
         if self.contains(location) {
-            self.sellUnit(position: location)
+            delegate?.unitNodeDidSelect(self)
         }
     }
 }

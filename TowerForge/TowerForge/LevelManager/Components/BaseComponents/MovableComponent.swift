@@ -32,6 +32,5 @@ class MovableComponent: TFComponent {
 
         positionComponent.changeTo(to: CGPoint(x: finalX, y: finalY))
         spriteComponent.node.position = positionComponent.position
-        print(spriteComponent.node.position)
     }
 }

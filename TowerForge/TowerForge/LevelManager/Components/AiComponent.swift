@@ -20,15 +20,15 @@ class AiComponent: TFComponent {
         guard let homeComponent = entity?.component(ofType: HomeComponent.self) else {
             return
         }
-        if chosenUnit == .melee && homeComponent.points >= MeleeUnit.cost {
-            // TODO: Remove hard code of CGPoints
-            UnitGenerator.spawnMelee(at: CGPoint(x: 0, y: 10), player: .oppositePlayer, entityManager: entityManager)
-            self.chosenUnit = UnitType.possibleUnits.randomElement() ?? .melee
-        }
-        if chosenUnit == .soldier && homeComponent.points >= SoldierUnit.cost {
-            // TODO: Remove hard code of CGPoints
-            UnitGenerator.spawnSoldier(at: CGPoint(x: 0, y: 10), player: .oppositePlayer, entityManager: entityManager)
-            self.chosenUnit = UnitType.possibleUnits.randomElement() ?? .melee
-        }
+//        if chosenUnit == .melee && homeComponent.points >= MeleeUnit.cost {
+//            // TODO: Remove hard code of CGPoints
+//            UnitGenerator.spawnMelee(at: CGPoint(x: 0, y: 10), player: .oppositePlayer, entityManager: entityManager)
+//            self.chosenUnit = UnitType.possibleUnits.randomElement() ?? .melee
+//        }
+//        if chosenUnit == .soldier && homeComponent.points >= SoldierUnit.cost {
+//            // TODO: Remove hard code of CGPoints
+//            UnitGenerator.spawnSoldier(at: CGPoint(x: 0, y: 10), player: .oppositePlayer, entityManager: entityManager)
+//            self.chosenUnit = UnitType.possibleUnits.randomElement() ?? .melee
+//        }
     }
 }

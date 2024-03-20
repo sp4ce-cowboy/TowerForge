@@ -8,44 +8,33 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, UnitSelectionNodeDelegate {
     var sceneManagerDelegate: SceneManagerDelegate?
     
     private var lastUpdatedTimeInterval = TimeInterval(0)
     private var entityManager: EntityManager?
+    private var selectionNode: UnitSelectionNode?
 
     override func didMove(to view: SKView) {
         entityManager = EntityManager()
         guard let entityManager = entityManager else {
             return
         }
-        let meleeUnit = MeleeUnit(position: CGPoint(x: 0, y: 100),
-                                  entityManager: entityManager, attackRate: 1.0,
-                                  velocity: CGVector(dx: 10.0, dy: 0.0),
-                                  team: Team(player: .ownPlayer))
-
-        let soldierUnit = SoldierUnit(position: CGPoint(x: 0, y: 50), entityManager: entityManager,
-                                      attackRate: 1.0,
-                                      velocity: CGVector(dx: 10.0, dy: 0.0),
-                                      team: Team(player: .ownPlayer))
-
-        let arrowTower = ArrowTower(position: CGPoint(x: 0, y: 100), entityManager: entityManager)
-
-        entityManager.add(meleeUnit)
-        entityManager.add(soldierUnit)
-        entityManager.add(arrowTower)
-        guard let sprite = meleeUnit.component(ofType: SpriteComponent.self),
-             let soldierSprite = soldierUnit.component(ofType: SpriteComponent.self),
-        let arrowTowerSprite = arrowTower.component(ofType: SpriteComponent.self) else {
+        selectionNode = UnitSelectionNode()
+        guard var selectionNode = selectionNode else {
             return
         }
-        addChild(sprite.node)
-        addChild(soldierSprite.node)
-        addChild(arrowTowerSprite.node)
-        sprite.node.playAnimation()
-        soldierSprite.node.playAnimation()
+        selectionNode.delegate = self
+        addChild(selectionNode)
     }
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first, let selectionNode = selectionNode else {
+            return
+        }
+        let location = touch.location(in: self)
+        selectionNode.unitNodeDidSpawn(location)
+    }
+    
     override func update(_ currentTime: TimeInterval) {
         guard let entityManager = entityManager else {
             return
@@ -56,5 +45,11 @@ class GameScene: SKScene {
         let changeInTime = currentTime - lastUpdatedTimeInterval
         lastUpdatedTimeInterval = currentTime
         entityManager.update(changeInTime)
+    }
+    func unitSelectionNodeDidSpawn(unitType: UnitType, position: CGPoint) {
+        guard var entityManager = entityManager else {
+            return
+        }
+        UnitGenerator.spawnUnit(ofType: unitType, at: position, player: Player.ownPlayer, entityManager: entityManager, scene: self)
     }
 }
