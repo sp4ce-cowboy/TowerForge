@@ -7,12 +7,6 @@
 
 import Foundation
 
-enum UnitType {
-    case melee
-    case soldier
-    static let possibleUnits = [melee, soldier]
-}
-
 class AiComponent: TFComponent {
     private var entityManager: EntityManager
     private var chosenUnit: UnitType
