@@ -9,6 +9,7 @@ import SpriteKit
 
 class UnitNode: TFSpriteNode {
     var unitType: UnitType?
+    var purchasable: Bool = false
     var teamController: TeamController?
     var unitTitleLabel: SKLabelNode!
     var unitCostLabel: SKLabelNode!
@@ -24,11 +25,11 @@ class UnitNode: TFSpriteNode {
         backgroundNode.zPosition = -1
         addChild(backgroundNode)
     }
-    func sellUnit() {
+    func sellUnit(position: CGPoint) {
         guard let teamController = teamController else {
             return
         }
-        teamController.spawn()
+        teamController.spawn(position: position)
     }
     private func setupUnitTitleLabel(text: String) {
         unitTitleLabel = SKLabelNode()
@@ -52,5 +53,17 @@ class UnitNode: TFSpriteNode {
         unitCostLabel.verticalAlignmentMode = .bottom
         unitCostLabel.horizontalAlignmentMode = .center
         self.addChild(unitCostLabel)
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        if !purchasable {
+            return
+        }
+        let location = touch.location(in: self)
+        
+        // Check if the touch is inside the node
+        if self.contains(location) {
+            self.sellUnit(position: location)
+        }
     }
 }

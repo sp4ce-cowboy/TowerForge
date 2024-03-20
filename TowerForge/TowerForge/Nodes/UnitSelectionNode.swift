@@ -34,8 +34,10 @@ class UnitSelectionNode: TFSpriteNode {
             if let unit = unitNode.unitType {
                 if unit.cost <= availablePoints {
                     unitNode.alpha = 1.0
+                    unitNode.purchasable = true
                 } else {
                     unitNode.alpha = 0.5
+                    unitNode.purchasable = false
                 }
             }
         }

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol TeamController {
-    func spawn()
+    func spawn(position: CGPoint)
 }
