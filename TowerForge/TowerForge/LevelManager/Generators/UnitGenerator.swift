@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 class UnitGenerator {
-    public static func spawnUnit(ofType type: UnitType, at position: CGPoint, player: Player, entityManager: EntityManager, scene: SKScene) {
+    static func spawnUnit(ofType type: UnitType, at position: CGPoint, player: Player, entityManager: EntityManager, scene: SKScene) {
             switch type {
             case .melee:
                 spawnMelee(at: position, player: player, entityManager: entityManager, scene: scene)
@@ -17,7 +17,7 @@ class UnitGenerator {
                 spawnSoldier(at: position, player: player, entityManager: entityManager, scene: scene)
             }
         }
-    public static func spawnMelee(at position: CGPoint, player: Player, entityManager: EntityManager, scene: SKScene) {
+    static func spawnMelee(at position: CGPoint, player: Player, entityManager: EntityManager, scene: SKScene) {
         // TODO: Change the default value and abstract as constant
         let unit = MeleeUnit(position: position,
                              entityManager: entityManager,
@@ -32,7 +32,7 @@ class UnitGenerator {
             node.playAnimation()
         }
     }
-    public static func spawnSoldier(at position: CGPoint, player: Player, entityManager: EntityManager, scene: SKScene) {
+    static func spawnSoldier(at position: CGPoint, player: Player, entityManager: EntityManager, scene: SKScene) {
         // TODO: Change the default value and abstract as constant
         let unit = SoldierUnit(position: position,
                                entityManager: entityManager,

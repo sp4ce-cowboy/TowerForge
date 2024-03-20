@@ -10,9 +10,9 @@ import SpriteKit
 import CoreGraphics
 
 class TFSpriteNode: SKSpriteNode {
-    public var textures: TFTextures?
-    public var width: CGFloat
-    public var height: CGFloat
+    var textures: TFTextures?
+    var width: CGFloat
+    var height: CGFloat
 
     init(textures: TFTextures?, height: CGFloat, width: CGFloat) {
         if let textures = textures {
@@ -22,7 +22,11 @@ class TFSpriteNode: SKSpriteNode {
         self.height = height
         super.init(texture: textures?.mainTexture, color: .clear, size: CGSize(width: width, height: height))
     }
-
+    init(imageName: String, height: CGFloat, width: CGFloat) {
+        self.width = width
+        self.height = height
+        super.init(texture: SKTexture(imageNamed: imageName), color: .clear, size: CGSize(width: width, height: height))
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

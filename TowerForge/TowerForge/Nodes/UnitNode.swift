@@ -12,39 +12,26 @@ protocol UnitNodeDelegate: AnyObject {
     func unitNodeDidSpawn(_ position: CGPoint)
 }
 
-
 class UnitNode: TFSpriteNode {
     var unitType: UnitType?
     weak var delegate: UnitNodeDelegate?
-    var purchasable: Bool = true
+    var purchasable = true
     var teamController: TeamController?
     var unitTitleLabel: SKLabelNode!
     var unitCostLabel: SKLabelNode!
     var backgroundNode: SKSpriteNode!
-    
-    convenience init(unitType: UnitType, textures: TFTextures) {
-        self.init(textures: textures, height: 20.0, width: 10.0)
-        self.setupUnitTitleLabel(text: unitType.title)
+
+    convenience init(unitType: UnitType) {
+        self.init(imageName: unitType.title, height: 200.0, width: 140.0)
         self.setupUnitCostLabel(cost: unitType.cost)
         self.unitType = unitType
-        
+
         self.zPosition = 10.0
         isUserInteractionEnabled = true
-        
+
         backgroundNode = SKSpriteNode(color: UIColor.blue, size: self.size)
         backgroundNode.zPosition = -1
         addChild(backgroundNode)
-    }
-    private func setupUnitTitleLabel(text: String) {
-        unitTitleLabel = SKLabelNode()
-        unitTitleLabel.name = "unitTitle"
-        unitTitleLabel.fontColor = .yellow
-        unitTitleLabel.fontSize = 30.0
-        unitTitleLabel.text = text
-        unitTitleLabel.zPosition = 10.0
-        unitTitleLabel.verticalAlignmentMode = .bottom
-        unitTitleLabel.horizontalAlignmentMode = .center
-        self.addChild(unitTitleLabel)
     }
     private func setupUnitCostLabel(cost amount: Int) {
         unitCostLabel = SKLabelNode()
@@ -62,10 +49,7 @@ class UnitNode: TFSpriteNode {
         if !purchasable {
             return
         }
-        let location = touch.location(in: self)
-        // Check if the touch is inside the node
-        if self.contains(location) {
-            delegate?.unitNodeDidSelect(self)
-        }
+        delegate?.unitNodeDidSelect(self)
+
     }
 }

@@ -9,23 +9,23 @@ import SpriteKit
 
 class TFButton: SKSpriteNode {
     var defaultButton: SKSpriteNode
-    var buttonAction: (Int) -> ()
+    var buttonAction: (Int) -> Void
     var index: Int
-    
-    init(buttonImage: String, buttonAction: @escaping (Int) -> (), index: Int) {
+
+    init(buttonImage: String, buttonAction: @escaping (Int) -> Void, index: Int) {
         defaultButton = SKSpriteNode(imageNamed: buttonImage)
         self.buttonAction = buttonAction
         self.index = index
         super.init(texture: nil, color: .clear, size: defaultButton.size)
-        
+
         isUserInteractionEnabled = true
         addChild(defaultButton)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         defaultButton.alpha = 0.9
     }
@@ -39,5 +39,5 @@ class TFButton: SKSpriteNode {
             defaultButton.alpha = 1.0
         }
     }
-    
+
 }

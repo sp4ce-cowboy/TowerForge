@@ -11,26 +11,23 @@ enum UnitType {
     case melee
     case soldier
     static let possibleUnits = [melee, soldier]
-    
+
     var cost: Int {
         switch self {
-        case .melee: return MeleeUnit.cost
-        case .soldier: return SoldierUnit.cost
+        case .melee:
+            return MeleeUnit.cost
+        case .soldier:
+            return SoldierUnit.cost
         }
     }
-    
+
     // TODO: A better way to do this
     var title: String {
         switch self {
-        case .melee: return "Melee"
-        case .soldier: return "Soldier"
-        }
-    }
-    
-    var textures: [String] {
-        switch self {
-        case .melee: return MeleeUnit.textureNames
-        case .soldier: return SoldierUnit.textureNames
+        case .melee:
+            return "melee"
+        case .soldier:
+            return "soldier"
         }
     }
 }

@@ -22,23 +22,16 @@ class UnitSelectionNode: TFSpriteNode, UnitNodeDelegate {
     var unitNodes: [UnitNode] = []
     var selectedNode: UnitNode?
     init() {
-        super.init(textures: nil, height: 30.0, width: 100.0)
+        super.init(textures: nil, height: 200.0, width: 100.0)
+
         isUserInteractionEnabled = true
-        super.position = CGPoint(x: 100, y: 100)
-        let horizontalSpacing: CGFloat = 50.0
-        var currentXPosition: CGFloat = 0.0
-        
-        for (index, unit) in UnitType.possibleUnits.enumerated() {
-            let unitNode = UnitNode(unitType: unit, textures: TFTextures(textureNames: unit.textures, textureAtlasName: "Sprite"))
+        for unit in UnitType.possibleUnits {
+            let unitNode = UnitNode(unitType: unit)
+            unitNodes.append(unitNode)
             unitNode.delegate = self
             addChild(unitNode)
-            
-            // Adjust x position
-            unitNode.position = CGPoint(x: currentXPosition, y: 0.0)
-            currentXPosition += unitNode.size.width + horizontalSpacing
         }
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -60,7 +53,7 @@ class UnitSelectionNode: TFSpriteNode, UnitNodeDelegate {
             selectedNode = unitNode
         }
     }
-    
+
     func unitNodeDidSpawn(_ position: CGPoint) {
         guard let selectedUnitType = self.selectedNode?.unitType else {
             return
