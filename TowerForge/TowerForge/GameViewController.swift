@@ -10,23 +10,18 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
+    private var scene: GameScene?
+    private var gameWorld: GameWorld?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        if let view = self.view as? SKView {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                // Present the scene
-                view.presentScene(scene)
-            }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setUp()
+    }
 
-            view.ignoresSiblingOrder = true
-
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        scene = nil
+        gameWorld = nil
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -39,5 +34,38 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         true
+    }
+
+    private func setUp() {
+        setUpScene()
+        setUpGameWorld()
+    }
+
+    private func setUpScene() {
+        if let view = self.view as? SKView {
+            // Load the SKScene from 'GameScene.sks'
+            if let scene = GameScene(fileNamed: "GameScene") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                // Present the scene
+                view.presentScene(scene)
+                self.scene = scene
+                scene.updateDelegate = self
+            }
+
+            view.ignoresSiblingOrder = true
+            view.showsFPS = true
+            view.showsNodeCount = true
+        }
+    }
+
+    private func setUpGameWorld() {
+        self.gameWorld = GameWorld(scene: scene)
+    }
+}
+
+extension GameViewController: SceneUpdateDelegate {
+    func update(deltaTime: TimeInterval) {
+        gameWorld?.update(deltaTime: deltaTime)
     }
 }
