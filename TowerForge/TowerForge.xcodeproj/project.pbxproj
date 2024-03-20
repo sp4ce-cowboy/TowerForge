@@ -33,6 +33,12 @@
 		52578B872BA6209700B4D76C /* DamageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52578B862BA6209700B4D76C /* DamageComponent.swift */; };
 		52578B8C2BA627B200B4D76C /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52578B8B2BA627B200B4D76C /* Team.swift */; };
 		527E3A242BA613F000FE1628 /* PlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527E3A232BA613EF00FE1628 /* PlayerComponent.swift */; };
+		5295A2022BA9FBD9005018A8 /* SceneManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2012BA9FBD9005018A8 /* SceneManagerDelegate.swift */; };
+		5295A2042BA9FED4005018A8 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2032BA9FED4005018A8 /* MenuScene.swift */; };
+		5295A2072BAA02FD005018A8 /* TFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2062BAA02FD005018A8 /* TFButton.swift */; };
+		5295A20F2BAAE7CF005018A8 /* TeamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A20E2BAAE7CF005018A8 /* TeamController.swift */; };
+		5295A2132BAAEA16005018A8 /* UnitNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2122BAAEA16005018A8 /* UnitNode.swift */; };
+		5295A2152BAAF335005018A8 /* UnitSelectionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2142BAAF335005018A8 /* UnitSelectionNode.swift */; };
 		529F91882BA6D7A7009551D9 /* SoldierUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F91872BA6D7A7009551D9 /* SoldierUnit.swift */; };
 		52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FA72BA32B2300135367 /* AppDelegate.swift */; };
 		52DF5FAA2BA32B2300135367 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52DF5FA92BA32B2300135367 /* GameScene.sks */; };
@@ -48,7 +54,7 @@
 		52DF5FDE2BA32D7E00135367 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FDD2BA32D7E00135367 /* EntityManager.swift */; };
 		52DF5FE12BA3349600135367 /* TFTextures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FE02BA3349600135367 /* TFTextures.swift */; };
 		52DF5FE42BA3391200135367 /* TFTexturesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FE32BA3391200135367 /* TFTexturesTests.swift */; };
-		52DF5FE62BA33AF300135367 /* TFNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FE52BA33AF300135367 /* TFNode.swift */; };
+		52DF5FE62BA33AF300135367 /* TFSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FE52BA33AF300135367 /* TFSpriteNode.swift */; };
 		52DF5FE92BA33F9700135367 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FE82BA33F9700135367 /* Animatable.swift */; };
 		52DF5FEB2BA3400C00135367 /* TFAnimatableNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FEA2BA3400C00135367 /* TFAnimatableNode.swift */; };
 		52DF5FED2BA34D0300135367 /* TFComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FEC2BA34D0300135367 /* TFComponent.swift */; };
@@ -103,6 +109,12 @@
 		52578B862BA6209700B4D76C /* DamageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageComponent.swift; sourceTree = "<group>"; };
 		52578B8B2BA627B200B4D76C /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		527E3A232BA613EF00FE1628 /* PlayerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerComponent.swift; sourceTree = "<group>"; };
+		5295A2012BA9FBD9005018A8 /* SceneManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManagerDelegate.swift; sourceTree = "<group>"; };
+		5295A2032BA9FED4005018A8 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		5295A2062BAA02FD005018A8 /* TFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFButton.swift; sourceTree = "<group>"; };
+		5295A20E2BAAE7CF005018A8 /* TeamController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamController.swift; sourceTree = "<group>"; };
+		5295A2122BAAEA16005018A8 /* UnitNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitNode.swift; sourceTree = "<group>"; };
+		5295A2142BAAF335005018A8 /* UnitSelectionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitSelectionNode.swift; sourceTree = "<group>"; };
 		529F91872BA6D7A7009551D9 /* SoldierUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldierUnit.swift; sourceTree = "<group>"; };
 		52DF5FA42BA32B2300135367 /* TowerForge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TowerForge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DF5FA72BA32B2300135367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,7 +133,7 @@
 		52DF5FDD2BA32D7E00135367 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
 		52DF5FE02BA3349600135367 /* TFTextures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFTextures.swift; sourceTree = "<group>"; };
 		52DF5FE32BA3391200135367 /* TFTexturesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFTexturesTests.swift; sourceTree = "<group>"; };
-		52DF5FE52BA33AF300135367 /* TFNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFNode.swift; sourceTree = "<group>"; };
+		52DF5FE52BA33AF300135367 /* TFSpriteNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFSpriteNode.swift; sourceTree = "<group>"; };
 		52DF5FE82BA33F9700135367 /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 		52DF5FEA2BA3400C00135367 /* TFAnimatableNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFAnimatableNode.swift; sourceTree = "<group>"; };
 		52DF5FEC2BA34D0300135367 /* TFComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFComponent.swift; sourceTree = "<group>"; };
@@ -234,6 +246,34 @@
 			path = BaseComponents;
 			sourceTree = "<group>";
 		};
+		5295A2002BA9FB97005018A8 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				52DF5FA92BA32B2300135367 /* GameScene.sks */,
+				52DF5FAD2BA32B2300135367 /* GameScene.swift */,
+				5295A2032BA9FED4005018A8 /* MenuScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		5295A2052BAA0208005018A8 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				5295A2122BAAEA16005018A8 /* UnitNode.swift */,
+				5295A2142BAAF335005018A8 /* UnitSelectionNode.swift */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		5295A2082BAAE14B005018A8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				52DF5FAF2BA32B2300135367 /* GameViewController.swift */,
+				5295A20E2BAAE7CF005018A8 /* TeamController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		52DF5F9B2BA32B2200135367 = {
 			isa = PBXGroup;
 			children = (
@@ -258,17 +298,18 @@
 		52DF5FA62BA32B2300135367 /* TowerForge */ = {
 			isa = PBXGroup;
 			children = (
+				5295A2082BAAE14B005018A8 /* Controllers */,
+				5295A2052BAA0208005018A8 /* Nodes */,
+				5295A2002BA9FB97005018A8 /* Scenes */,
 				52DF5FE72BA33F8800135367 /* Protocols */,
 				52DF5FDF2BA3347C00135367 /* TFCore */,
 				52DF5FDB2BA32CEF00135367 /* LevelManager */,
 				52DF5FA72BA32B2300135367 /* AppDelegate.swift */,
-				52DF5FA92BA32B2300135367 /* GameScene.sks */,
 				52DF5FAB2BA32B2300135367 /* Actions.sks */,
-				52DF5FAD2BA32B2300135367 /* GameScene.swift */,
-				52DF5FAF2BA32B2300135367 /* GameViewController.swift */,
 				52DF5FB12BA32B2300135367 /* Main.storyboard */,
 				52DF5FB42BA32B2600135367 /* Assets.xcassets */,
 				52DF5FB62BA32B2600135367 /* LaunchScreen.storyboard */,
+				5295A2012BA9FBD9005018A8 /* SceneManagerDelegate.swift */,
 			);
 			path = TowerForge;
 			sourceTree = "<group>";
@@ -310,8 +351,9 @@
 		52DF5FDF2BA3347C00135367 /* TFCore */ = {
 			isa = PBXGroup;
 			children = (
+				5295A2062BAA02FD005018A8 /* TFButton.swift */,
 				52DF5FE02BA3349600135367 /* TFTextures.swift */,
-				52DF5FE52BA33AF300135367 /* TFNode.swift */,
+				52DF5FE52BA33AF300135367 /* TFSpriteNode.swift */,
 				52DF5FEA2BA3400C00135367 /* TFAnimatableNode.swift */,
 			);
 			path = TFCore;
@@ -502,6 +544,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */,
+				5295A20F2BAAE7CF005018A8 /* TeamController.swift in Sources */,
 				3C9955A52BA47DC600D33FA5 /* BaseProjectile.swift in Sources */,
 				52578B8C2BA627B200B4D76C /* Team.swift in Sources */,
 				52DF5FFF2BA3656500135367 /* ShootingComponent.swift in Sources */,
@@ -513,21 +556,24 @@
 				3C9955A32BA47DBB00D33FA5 /* BaseUnit.swift in Sources */,
 				3C9955BA2BA5637200D33FA5 /* DamageEvent.swift in Sources */,
 				3C9955CA2BA5888F00D33FA5 /* SpawnEvent.swift in Sources */,
+				5295A2132BAAEA16005018A8 /* UnitNode.swift in Sources */,
 				52DF5FF32BA351E100135367 /* SpriteComponent.swift in Sources */,
 				52578B872BA6209700B4D76C /* DamageComponent.swift in Sources */,
 				52DF5FB02BA32B2300135367 /* GameViewController.swift in Sources */,
 				529F91882BA6D7A7009551D9 /* SoldierUnit.swift in Sources */,
 				520062522BA8DA09000DBA30 /* UnitGenerator.swift in Sources */,
 				3C9955C02BA57E5500D33FA5 /* EventTarget.swift in Sources */,
+				5295A2152BAAF335005018A8 /* UnitSelectionNode.swift in Sources */,
 				52DF5FF92BA35D2B00135367 /* MovableComponent.swift in Sources */,
 				52DF5FDE2BA32D7E00135367 /* EntityManager.swift in Sources */,
 				3C9955C82BA5865C00D33FA5 /* ConcurrentEvent.swift in Sources */,
 				3C9955AD2BA483B100D33FA5 /* TFSystem.swift in Sources */,
 				3C9955BE2BA57E4B00D33FA5 /* EventManager.swift in Sources */,
-				52DF5FE62BA33AF300135367 /* TFNode.swift in Sources */,
+				52DF5FE62BA33AF300135367 /* TFSpriteNode.swift in Sources */,
 				3C9955B42BA4B12000D33FA5 /* ArrowTower.swift in Sources */,
 				52DF5FE92BA33F9700135367 /* Animatable.swift in Sources */,
 				3C9955AF2BA48FD200D33FA5 /* MeleeUnit.swift in Sources */,
+				5295A2022BA9FBD9005018A8 /* SceneManagerDelegate.swift in Sources */,
 				52DF5FE12BA3349600135367 /* TFTextures.swift in Sources */,
 				520062582BA8ED73000DBA30 /* HomeComponent.swift in Sources */,
 				52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */,
@@ -535,6 +581,7 @@
 				3C9955B12BA4ACA100D33FA5 /* Arrow.swift in Sources */,
 				3C769A722BA58DE700F454F9 /* MovementSystem.swift in Sources */,
 				52DF5FEB2BA3400C00135367 /* TFAnimatableNode.swift in Sources */,
+				5295A2042BA9FED4005018A8 /* MenuScene.swift in Sources */,
 				52DF5FEF2BA34EA000135367 /* TFEntity.swift in Sources */,
 				52DF5FED2BA34D0300135367 /* TFComponent.swift in Sources */,
 				527E3A242BA613F000FE1628 /* PlayerComponent.swift in Sources */,
@@ -542,6 +589,7 @@
 				520062562BA8E026000DBA30 /* HasCost.swift in Sources */,
 				52DF5FFB2BA3601400135367 /* HealthComponent.swift in Sources */,
 				3C9955BC2BA563A800D33FA5 /* TFEvent.swift in Sources */,
+				5295A2072BAA02FD005018A8 /* TFButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

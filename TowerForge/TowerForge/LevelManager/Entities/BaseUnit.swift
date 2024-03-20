@@ -7,6 +7,31 @@
 
 import Foundation
 
+enum UnitType {
+    case melee
+    case soldier
+    static let possibleUnits = [melee, soldier]
+
+    var cost: Int {
+        switch self {
+        case .melee:
+            return MeleeUnit.cost
+        case .soldier:
+            return SoldierUnit.cost
+        }
+    }
+
+    // TODO: A better way to do this
+    var title: String {
+        switch self {
+        case .melee:
+            return "melee"
+        case .soldier:
+            return "soldier"
+        }
+    }
+}
+
 class BaseUnit: TFEntity, HasCost {
     var cost: Int
     init(textureNames: [String],
