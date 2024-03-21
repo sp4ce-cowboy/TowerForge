@@ -26,7 +26,7 @@ class UnitSelectionNode: TFSpriteNode, UnitNodeDelegate {
         super.init(textures: nil, height: 200.0, width: 100.0)
 
         isUserInteractionEnabled = true
-        let possibleUnits: [(BaseUnit & Spawnable).Type] = [SoldierUnit.self, MeleeUnit.self]
+        let possibleUnits: [(BaseUnit & Spawnable).Type] = SpawnableEntities.possibleUnits
         for type in possibleUnits {
             let unitNode = UnitNode(ofType: type)
             unitNodes.append(unitNode)
