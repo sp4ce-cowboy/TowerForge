@@ -10,10 +10,6 @@ class SpawnSystem: TFSystem {
         self.eventManager = eventManager
     }
 
-    func update(within time: CGFloat) {
-
-    }
-
     /// Spawns the provided entity
     /// - Parameter entity: The TFEntity to be spawned
     func handleSpawn(with entity: TFEntity) {

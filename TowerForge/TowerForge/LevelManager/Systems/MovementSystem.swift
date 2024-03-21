@@ -10,10 +10,6 @@ class MovementSystem: TFSystem {
         self.eventManager = eventManager
     }
 
-    func update(within time: CGFloat) {
-
-    }
-
     /// Handles movement for the entity associated with the specified UUID according
     /// to the provided displacement vector.
     ///

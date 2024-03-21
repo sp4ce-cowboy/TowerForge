@@ -10,10 +10,6 @@ class HealthSystem: TFSystem {
         self.eventManager = eventManager
     }
 
-    func update(within time: CGFloat) {
-
-    }
-
     /// Modifies the health of the entity associated with the specified UUID according
     /// to the provided healthpoints amount.
     /// - Parameters:

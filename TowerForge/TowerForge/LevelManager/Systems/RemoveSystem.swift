@@ -10,10 +10,6 @@ class RemoveSystem: TFSystem {
         self.eventManager = eventManager
     }
 
-    func update(within time: CGFloat) {
-
-    }
-
     /// Removes the provided entity
     /// - Parameter entityId: The UUID of the associated TFEntity to be removed
     func handleRemove(for entityId: UUID) {

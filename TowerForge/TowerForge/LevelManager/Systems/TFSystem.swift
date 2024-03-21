@@ -1,6 +1,5 @@
 import Foundation
 
-///
 /// Base protocol for all systems in TowerForge to conform to.
 /// All systems must:
 /// - contain information about their active status
@@ -14,6 +13,12 @@ protocol TFSystem {
     func update(within time: CGFloat)
 }
 
+/// This extension adds a default update implementation for a given system
+extension TFSystem {
+    func update(within time: CGFloat) { }
+}
+
+/// This extension adds the ability to modify the system's current activity state
 extension TFSystem {
     mutating func activateSystem() {
         isActive = true
