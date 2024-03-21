@@ -20,6 +20,8 @@ class AiComponent: TFComponent {
         guard let homeComponent = entity?.component(ofType: HomeComponent.self), let chosenUnit = chosenUnit else {
             return
         }
-//        UnitGenerator.spawn(ofType: chosenUnit, at: CGPoint(x: 0, y: 10), player: .oppositePlayer, entityManager: entityManager)
+        let unit = UnitGenerator.spawn(ofType: chosenUnit, at: CGPoint(x: 0, y: 10), player: .oppositePlayer,
+                                       entityManager: entityManager)
+        entityManager.add(unit)
     }
 }

@@ -13,6 +13,7 @@ class GameWorld {
     private var systemManager: SystemManager
     private var eventManager: EventManager
     private var selectionNode: UnitSelectionNode
+    private var renderer: Renderer?
 
     init(scene: GameScene?) {
         self.scene = scene
@@ -20,6 +21,23 @@ class GameWorld {
         systemManager = SystemManager()
         eventManager = EventManager()
         selectionNode = UnitSelectionNode()
+        renderer = Renderer(target: self, scene: scene)
+
+        self.setUpSelectionNode()
+    }
+
+    func update(deltaTime: TimeInterval) {
+        systemManager.update(deltaTime)
+        eventManager.executeEvents(in: self)
+        entityManager.update(deltaTime)
+        renderer?.render()
+    }
+
+    func spawnUnit(at location: CGPoint) {
+        selectionNode.unitNodeDidSpawn(location)
+    }
+
+    private func setUpSelectionNode() {
 
         selectionNode.delegate = self
         scene?.addChild(selectionNode)
@@ -36,16 +54,6 @@ class GameWorld {
             verticalY += verticalSpacing
         }
     }
-
-    func update(deltaTime: TimeInterval) {
-        systemManager.update(deltaTime)
-        eventManager.executeEvents(in: self)
-        entityManager.update(deltaTime)
-    }
-
-    func spawnUnit(at location: CGPoint) {
-        selectionNode.unitNodeDidSpawn(location)
-    }
 }
 
 extension GameWorld: EventTarget {
@@ -56,10 +64,14 @@ extension GameWorld: EventTarget {
 
 extension GameWorld: UnitSelectionNodeDelegate {
     func unitSelectionNodeDidSpawn<T: BaseUnit & Spawnable>(ofType type: T.Type, position: CGPoint) {
-        guard let scene = scene else {
-            return
-        }
-        UnitGenerator.spawn(ofType: type, at: position, player: Player.ownPlayer,
-                            entityManager: entityManager, scene: scene)
+        let unit = UnitGenerator.spawn(ofType: type, at: position, player: Player.ownPlayer,
+                                       entityManager: entityManager)
+        entityManager.add(unit)
+    }
+}
+
+extension GameWorld: Renderable {
+    func entitiesToRender() -> [TFEntity] {
+        entityManager.entities
     }
 }

@@ -30,6 +30,8 @@
 		3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF9CB22BAB1F42004D170E /* SystemManager.swift */; };
 		3CCF9CB72BAB2877004D170E /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF9CB62BAB2877004D170E /* MainMenuViewController.swift */; };
 		3CE9514B2BAC83FA008B2785 /* SpawnableEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9514A2BAC83FA008B2785 /* SpawnableEntities.swift */; };
+		3CE9514F2BAC8936008B2785 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9514E2BAC8936008B2785 /* Renderer.swift */; };
+		3CE951512BAC8955008B2785 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE951502BAC8955008B2785 /* Renderable.swift */; };
 		5200624E2BA8D597000DBA30 /* AiComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200624D2BA8D597000DBA30 /* AiComponent.swift */; };
 		520062522BA8DA09000DBA30 /* UnitGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520062512BA8DA09000DBA30 /* UnitGenerator.swift */; };
 		520062562BA8E026000DBA30 /* Spawnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520062552BA8E026000DBA30 /* Spawnable.swift */; };
@@ -111,6 +113,8 @@
 		3CCF9CB22BAB1F42004D170E /* SystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemManager.swift; sourceTree = "<group>"; };
 		3CCF9CB62BAB2877004D170E /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		3CE9514A2BAC83FA008B2785 /* SpawnableEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnableEntities.swift; sourceTree = "<group>"; };
+		3CE9514E2BAC8936008B2785 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		3CE951502BAC8955008B2785 /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
 		5200624D2BA8D597000DBA30 /* AiComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiComponent.swift; sourceTree = "<group>"; };
 		520062512BA8DA09000DBA30 /* UnitGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitGenerator.swift; sourceTree = "<group>"; };
 		520062552BA8E026000DBA30 /* Spawnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spawnable.swift; sourceTree = "<group>"; };
@@ -237,6 +241,15 @@
 			path = "Base Entities";
 			sourceTree = "<group>";
 		};
+		3CE9514D2BAC8925008B2785 /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				3CE9514E2BAC8936008B2785 /* Renderer.swift */,
+				3CE951502BAC8955008B2785 /* Renderable.swift */,
+			);
+			path = Rendering;
+			sourceTree = "<group>";
+		};
 		5200624C2BA8D574000DBA30 /* GameComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +331,7 @@
 		52DF5FA62BA32B2300135367 /* TowerForge */ = {
 			isa = PBXGroup;
 			children = (
+				3CE9514D2BAC8925008B2785 /* Rendering */,
 				5295A2082BAAE14B005018A8 /* Controllers */,
 				5295A2052BAA0208005018A8 /* Nodes */,
 				5295A2002BA9FB97005018A8 /* Scenes */,
@@ -587,6 +601,7 @@
 				3CE9514B2BAC83FA008B2785 /* SpawnableEntities.swift in Sources */,
 				52578B872BA6209700B4D76C /* DamageComponent.swift in Sources */,
 				52DF5FB02BA32B2300135367 /* GameViewController.swift in Sources */,
+				3CE951512BAC8955008B2785 /* Renderable.swift in Sources */,
 				529F91882BA6D7A7009551D9 /* SoldierUnit.swift in Sources */,
 				520062522BA8DA09000DBA30 /* UnitGenerator.swift in Sources */,
 				3C9955C02BA57E5500D33FA5 /* EventTarget.swift in Sources */,
@@ -607,6 +622,7 @@
 				52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */,
 				3C769A742BA591BD00F454F9 /* SpawnSystem.swift in Sources */,
 				3C9955B12BA4ACA100D33FA5 /* Arrow.swift in Sources */,
+				3CE9514F2BAC8936008B2785 /* Renderer.swift in Sources */,
 				3C769A722BA58DE700F454F9 /* MovementSystem.swift in Sources */,
 				52DF5FEB2BA3400C00135367 /* TFAnimatableNode.swift in Sources */,
 				5295A2042BA9FED4005018A8 /* MenuScene.swift in Sources */,
