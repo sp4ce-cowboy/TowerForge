@@ -31,6 +31,5 @@ class MovableComponent: TFComponent {
         let finalY = positionComponent.position.y + (velocity.dy * CGFloat(deltaTime) * directionVelocity.dy)
 
         positionComponent.changeTo(to: CGPoint(x: finalX, y: finalY))
-        spriteComponent.node.position = positionComponent.position
     }
 }

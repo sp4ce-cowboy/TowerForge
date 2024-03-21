@@ -39,20 +39,27 @@ class Renderer {
 
     private func update(entity: TFEntity) {
         guard let spriteComponent = entity.component(ofType: SpriteComponent.self),
+              let positionComponent = entity.component(ofType: PositionComponent.self),
+              let node = renderedNodes[entity.id] else {
+            return
+        }
+
+        node.position = positionComponent.position
+    }
+
+    private func addAndCache(entity: TFEntity) {
+        guard let spriteComponent = entity.component(ofType: SpriteComponent.self),
               let positionComponent = entity.component(ofType: PositionComponent.self) else {
             return
         }
 
-        spriteComponent.node.position = positionComponent.position
-    }
-
-    private func addAndCache(entity: TFEntity) {
-        guard let spriteComponent = entity.component(ofType: SpriteComponent.self) else {
-            return
-        }
-
-        renderedNodes[entity.id] = spriteComponent.node
-        scene?.addChild(spriteComponent.node)
+        let node = TFAnimatableNode(textures: spriteComponent.textures,
+                                    height: spriteComponent.height,
+                                    width: spriteComponent.width,
+                                    animatableKey: spriteComponent.animatableKey)
+        node.position = positionComponent.position
+        renderedNodes[entity.id] = node
+        scene?.addChild(node)
     }
 
     private func removeAndUncache(with id: UUID) {

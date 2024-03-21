@@ -48,17 +48,17 @@ class DamageComponent: TFComponent {
             }
 
             // Check collision with opposite team sprite component
-            if oppositeSpriteComponent.node
-                .calculateAccumulatedFrame().intersects(
-                    spriteComponent.node.calculateAccumulatedFrame()) {
-
-                // Check if can attack
-                if CACurrentMediaTime() - lastAttackTime > attackRate {
-                    lastAttackTime = CACurrentMediaTime()
-                    oppositeHealthComponent.decreaseHealth(amount: attackPower)
-                }
-
-            }
+//            if oppositeSpriteComponent.node
+//                .calculateAccumulatedFrame().intersects(
+//                    spriteComponent.node.calculateAccumulatedFrame()) {
+//
+//                // Check if can attack
+//                if CACurrentMediaTime() - lastAttackTime > attackRate {
+//                    lastAttackTime = CACurrentMediaTime()
+//                    oppositeHealthComponent.decreaseHealth(amount: attackPower)
+//                }
+//
+//            }
 
             // If only used once, then remove from entity
             if temporary {
