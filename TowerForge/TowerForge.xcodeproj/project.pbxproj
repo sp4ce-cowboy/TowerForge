@@ -28,6 +28,8 @@
 		3CCF9CAF2BAB1A96004D170E /* SceneUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF9CAE2BAB1A96004D170E /* SceneUpdateDelegate.swift */; };
 		3CCF9CB12BAB1BCE004D170E /* GameWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF9CB02BAB1BCE004D170E /* GameWorld.swift */; };
 		3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF9CB22BAB1F42004D170E /* SystemManager.swift */; };
+		3CCF9CB52BAB27DC004D170E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF9CB42BAB27DC004D170E /* ViewController.swift */; };
+		3CCF9CB72BAB2877004D170E /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF9CB62BAB2877004D170E /* MainMenuViewController.swift */; };
 		5200624E2BA8D597000DBA30 /* AiComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200624D2BA8D597000DBA30 /* AiComponent.swift */; };
 		520062522BA8DA09000DBA30 /* UnitGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520062512BA8DA09000DBA30 /* UnitGenerator.swift */; };
 		520062562BA8E026000DBA30 /* HasCost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520062552BA8E026000DBA30 /* HasCost.swift */; };
@@ -101,6 +103,8 @@
 		3CCF9CAE2BAB1A96004D170E /* SceneUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneUpdateDelegate.swift; sourceTree = "<group>"; };
 		3CCF9CB02BAB1BCE004D170E /* GameWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWorld.swift; sourceTree = "<group>"; };
 		3CCF9CB22BAB1F42004D170E /* SystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemManager.swift; sourceTree = "<group>"; };
+		3CCF9CB42BAB27DC004D170E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3CCF9CB62BAB2877004D170E /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		5200624D2BA8D597000DBA30 /* AiComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiComponent.swift; sourceTree = "<group>"; };
 		520062512BA8DA09000DBA30 /* UnitGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitGenerator.swift; sourceTree = "<group>"; };
 		520062552BA8E026000DBA30 /* HasCost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasCost.swift; sourceTree = "<group>"; };
@@ -273,9 +277,11 @@
 				52DF5FAD2BA32B2300135367 /* GameScene.swift */,
 				3CCF9CB02BAB1BCE004D170E /* GameWorld.swift */,
 				52DF5FAF2BA32B2300135367 /* GameViewController.swift */,
+				3CCF9CB62BAB2877004D170E /* MainMenuViewController.swift */,
 				52DF5FB12BA32B2300135367 /* Main.storyboard */,
 				52DF5FB42BA32B2600135367 /* Assets.xcassets */,
 				52DF5FB62BA32B2600135367 /* LaunchScreen.storyboard */,
+				3CCF9CB42BAB27DC004D170E /* ViewController.swift */,
 			);
 			path = TowerForge;
 			sourceTree = "<group>";
@@ -515,6 +521,7 @@
 				3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */,
 				3C9955A52BA47DC600D33FA5 /* BaseProjectile.swift in Sources */,
 				52578B8C2BA627B200B4D76C /* Team.swift in Sources */,
+				3CCF9CB72BAB2877004D170E /* MainMenuViewController.swift in Sources */,
 				52DF5FFF2BA3656500135367 /* ShootingComponent.swift in Sources */,
 				3C9955CC2BA5889800D33FA5 /* MoveEvent.swift in Sources */,
 				5200624E2BA8D597000DBA30 /* AiComponent.swift in Sources */,
@@ -540,6 +547,7 @@
 				3C9955B42BA4B12000D33FA5 /* ArrowTower.swift in Sources */,
 				52DF5FE92BA33F9700135367 /* Animatable.swift in Sources */,
 				3C9955AF2BA48FD200D33FA5 /* MeleeUnit.swift in Sources */,
+				3CCF9CB52BAB27DC004D170E /* ViewController.swift in Sources */,
 				52DF5FE12BA3349600135367 /* TFTextures.swift in Sources */,
 				520062582BA8ED73000DBA30 /* HomeComponent.swift in Sources */,
 				52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */,

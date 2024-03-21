@@ -47,8 +47,6 @@ class GameViewController: UIViewController {
             if let scene = GameScene(fileNamed: "GameScene") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
-                // Present the scene
-                view.presentScene(scene)
                 self.scene = scene
                 scene.updateDelegate = self
             }
@@ -56,6 +54,9 @@ class GameViewController: UIViewController {
             view.ignoresSiblingOrder = true
             view.showsFPS = true
             view.showsNodeCount = true
+
+            // Present the scene
+            view.presentScene(scene)
         }
     }
 

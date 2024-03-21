@@ -49,6 +49,7 @@ class GameWorld {
     func update(deltaTime: TimeInterval) {
         systemManager.update(deltaTime)
         eventManager.executeEvents(in: self)
+        entityManager.update(deltaTime)
     }
 }
 
