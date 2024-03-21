@@ -10,17 +10,15 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-    private var scene: GameScene?
     private var gameWorld: GameWorld?
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setUp()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        showGameLevelScene(level: 1) // TODO : Change hardcoded level value
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        scene = nil
         gameWorld = nil
     }
 
@@ -36,37 +34,46 @@ class GameViewController: UIViewController {
         true
     }
 
-    private func setUp() {
-        setUpScene()
-        setUpGameWorld()
-    }
-
-    private func setUpScene() {
-        if let view = self.view as? SKView {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = GameScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                self.scene = scene
-                scene.updateDelegate = self
-            }
-
-            view.ignoresSiblingOrder = true
-            view.showsFPS = true
-            view.showsNodeCount = true
-
-            // Present the scene
-            view.presentScene(scene)
-        }
-    }
-
-    private func setUpGameWorld() {
+    private func setUpGameWorld(scene: GameScene) {
         self.gameWorld = GameWorld(scene: scene)
     }
 }
 
 extension GameViewController: SceneUpdateDelegate {
+    func touch(at location: CGPoint) {
+        gameWorld?.spawnUnit(at: location)
+    }
+
     func update(deltaTime: TimeInterval) {
         gameWorld?.update(deltaTime: deltaTime)
+    }
+}
+
+extension GameViewController: SceneManagerDelegate {
+    func showMenuScene() {
+        let menuScene = MenuScene()
+        menuScene.sceneManagerDelegate = self
+        showScene(scene: menuScene)
+    }
+    func showLevelScene() {
+        // TODO : to implement after Keith is done
+    }
+    func showGameLevelScene(level: Int) {
+        if let gameScene = GameScene(fileNamed: "GameScene") {
+            // Present the scene
+            gameScene.sceneManagerDelegate = self
+            gameScene.updateDelegate = self
+            showScene(scene: gameScene)
+            setUpGameWorld(scene: gameScene)
+        }
+    }
+    func showScene(scene: SKScene) {
+        if let view = self.view as? SKView {
+            scene.scaleMode = .aspectFill
+            view.presentScene(scene)
+            view.ignoresSiblingOrder = true // to render nodes more efficiently
+            view.showsFPS = true
+            view.showsNodeCount = true
+        }
     }
 }

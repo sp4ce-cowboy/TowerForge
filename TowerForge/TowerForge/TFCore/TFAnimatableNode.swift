@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class TFAnimatableNode: TFNode, Animatable {
+class TFAnimatableNode: TFSpriteNode, Animatable {
     var animatableAction: SKAction?
     var animatableKey: String
 

@@ -9,4 +9,5 @@ import Foundation
 
 protocol SceneUpdateDelegate: AnyObject {
     func update(deltaTime: TimeInterval)
+    func touch(at location: CGPoint)
 }
