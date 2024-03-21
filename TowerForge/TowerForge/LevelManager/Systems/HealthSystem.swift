@@ -11,16 +11,24 @@ class HealthSystem: TFSystem {
     }
 
     func update(within time: CGFloat) {
-
+        return
     }
 
-    func modifyHealth(for entityId: UUID, with hp: CGFloat) {
+    /// Modifies the health of the entity associated with the specified UUID according
+    /// to the provided healthpoints amount.
+    /// - Parameters:
+    ///   - entityId: UUID of the entity whose health component is to be modified
+    ///   - hp: Value of the required adjustment of health. Can be positive or negative.
+    func modifyHealth(for entityId: UUID, with hp: CGFloat) -> Bool {
+        /*guard isActive else { TODO: Implement boolean check
+            return
+        }*/
         guard let currentEntity = entityManager?.getEntity(with: entityId),
               let healthComponent = currentEntity.component(ofType: HealthComponent.self) else {
-            return
+            return false
         }
 
-        healthComponent.decreaseHealth(amount: hp)
+        healthComponent.adjustHealth(amount: hp)
+        return healthComponent.isZero
     }
-
 }

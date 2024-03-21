@@ -63,6 +63,8 @@
 		52DF5FF92BA35D2B00135367 /* MovableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FF82BA35D2B00135367 /* MovableComponent.swift */; };
 		52DF5FFB2BA3601400135367 /* HealthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FFA2BA3601400135367 /* HealthComponent.swift */; };
 		52DF5FFF2BA3656500135367 /* ShootingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FFE2BA3656500135367 /* ShootingComponent.swift */; };
+		BA47C9CA2BAC373500DF0714 /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47C9C92BAC373500DF0714 /* RemoveEvent.swift */; };
+		BA47C9CC2BAC380800DF0714 /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47C9CB2BAC380800DF0714 /* RemoveSystem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +144,8 @@
 		52DF5FF82BA35D2B00135367 /* MovableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovableComponent.swift; sourceTree = "<group>"; };
 		52DF5FFA2BA3601400135367 /* HealthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthComponent.swift; sourceTree = "<group>"; };
 		52DF5FFE2BA3656500135367 /* ShootingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootingComponent.swift; sourceTree = "<group>"; };
+		BA47C9C92BAC373500DF0714 /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
+		BA47C9CB2BAC380800DF0714 /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,6 +210,7 @@
 				3C9955C42BA585DD00D33FA5 /* HealthSystem.swift */,
 				3C769A712BA58DE700F454F9 /* MovementSystem.swift */,
 				3C769A732BA591BD00F454F9 /* SpawnSystem.swift */,
+				BA47C9CB2BAC380800DF0714 /* RemoveSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -217,6 +222,7 @@
 				3C9955C92BA5888F00D33FA5 /* SpawnEvent.swift */,
 				3C9955CB2BA5889800D33FA5 /* MoveEvent.swift */,
 				3C9955C72BA5865C00D33FA5 /* ConcurrentEvent.swift */,
+				BA47C9C92BAC373500DF0714 /* RemoveEvent.swift */,
 			);
 			path = "Implemented Events";
 			sourceTree = "<group>";
@@ -586,6 +592,7 @@
 				52DF5FB02BA32B2300135367 /* GameViewController.swift in Sources */,
 				529F91882BA6D7A7009551D9 /* SoldierUnit.swift in Sources */,
 				520062522BA8DA09000DBA30 /* UnitGenerator.swift in Sources */,
+				BA47C9CA2BAC373500DF0714 /* RemoveEvent.swift in Sources */,
 				3C9955C02BA57E5500D33FA5 /* EventTarget.swift in Sources */,
 				5295A2152BAAF335005018A8 /* UnitSelectionNode.swift in Sources */,
 				52DF5FF92BA35D2B00135367 /* MovableComponent.swift in Sources */,
@@ -596,6 +603,7 @@
 				52DF5FE62BA33AF300135367 /* TFSpriteNode.swift in Sources */,
 				3C9955B42BA4B12000D33FA5 /* ArrowTower.swift in Sources */,
 				52DF5FE92BA33F9700135367 /* Animatable.swift in Sources */,
+				BA47C9CC2BAC380800DF0714 /* RemoveSystem.swift in Sources */,
 				3C9955AF2BA48FD200D33FA5 /* MeleeUnit.swift in Sources */,
 				5295A2022BA9FBD9005018A8 /* SceneManagerDelegate.swift in Sources */,
 				52DF5FE12BA3349600135367 /* TFTextures.swift in Sources */,

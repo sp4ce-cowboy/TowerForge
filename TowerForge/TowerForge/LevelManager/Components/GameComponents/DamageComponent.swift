@@ -55,7 +55,7 @@ class DamageComponent: TFComponent {
                 // Check if can attack
                 if CACurrentMediaTime() - lastAttackTime > attackRate {
                     lastAttackTime = CACurrentMediaTime()
-                    oppositeHealthComponent.decreaseHealth(amount: attackPower)
+                    oppositeHealthComponent.adjustHealth(amount: attackPower)
                 }
 
             }

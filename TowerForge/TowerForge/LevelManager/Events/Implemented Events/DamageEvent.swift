@@ -21,7 +21,13 @@ struct DamageEvent: TFEvent {
 
     func execute(in target: any EventTarget) -> EventOutput {
         let healthSystem = target.system(ofType: HealthSystem.self)
-        healthSystem.modifyHealth(for: entityId, with: damage)
+        let healthIsZero = healthSystem.modifyHealth(for: entityId, with: damage)
+        if healthIsZero {
+            var newEventOutput = EventOutput()
+            newEventOutput.add(RemoveEvent(on: entityId, at: timestamp))
+            return newEventOutput
+        }
+
         return EventOutput()
     }
 }
