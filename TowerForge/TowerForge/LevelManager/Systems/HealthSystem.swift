@@ -11,7 +11,7 @@ class HealthSystem: TFSystem {
     }
 
     func update(within time: CGFloat) {
-        return
+
     }
 
     /// Modifies the health of the entity associated with the specified UUID according
