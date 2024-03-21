@@ -21,7 +21,6 @@ class MovableComponent: TFComponent {
     override func update(deltaTime: TimeInterval) {
         guard let entity = entity,
               let positionComponent = entity.component(ofType: PositionComponent.self),
-              let spriteComponent = entity.component(ofType: SpriteComponent.self),
               let playerComponent = entity.component(ofType: PlayerComponent.self) else {
             return
         }

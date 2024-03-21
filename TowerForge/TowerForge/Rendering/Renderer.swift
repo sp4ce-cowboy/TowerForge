@@ -38,8 +38,7 @@ class Renderer {
     }
 
     private func update(entity: TFEntity) {
-        guard let spriteComponent = entity.component(ofType: SpriteComponent.self),
-              let positionComponent = entity.component(ofType: PositionComponent.self),
+        guard let positionComponent = entity.component(ofType: PositionComponent.self),
               let node = renderedNodes[entity.id] else {
             return
         }
