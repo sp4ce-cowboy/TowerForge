@@ -9,10 +9,15 @@ import Foundation
 
 class TFEntity {
     let id: UUID
-    private(set) var components: [UUID: TFComponent]
+    private(set) var components: [UUID: TFComponent] // Should we change this to Set?
 
     init() {
         id = UUID()
+        components = Dictionary()
+    }
+
+    init(withId id: UUID) {
+        self.id = id
         components = Dictionary()
     }
 

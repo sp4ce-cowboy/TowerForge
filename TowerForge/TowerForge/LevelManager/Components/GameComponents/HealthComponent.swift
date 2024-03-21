@@ -10,7 +10,7 @@ import Foundation
 class HealthComponent: TFComponent {
     var currentHealth: CGFloat
     var maxHealth: CGFloat
-    private let entityManager: EntityManager
+    private var entityManager: EntityManager
 
     init(maxHealth: CGFloat, entityManager: EntityManager) {
         self.currentHealth = maxHealth

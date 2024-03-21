@@ -18,7 +18,7 @@ class EntityManager {
         Array(entitiesMap.values)
     }
 
-    func entity(with id: UUID) -> TFEntity? {
+    func getEntity(with id: UUID) -> TFEntity? {
         entitiesMap[id]
     }
 
@@ -31,7 +31,7 @@ class EntityManager {
     }
 
     func component<T: TFComponent>(ofType type: T.Type, of entityId: UUID) -> T? {
-        guard let entity = entity(with: entityId) else {
+        guard let entity = getEntity(with: entityId) else {
             return nil
         }
 

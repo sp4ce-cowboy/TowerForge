@@ -19,7 +19,8 @@ struct MoveEvent: TFEvent {
     }
 
     func execute(in target: any EventTarget) -> EventOutput {
-        target.system(ofType: MovementSystem.self) // TODO: Handle Move Event
+        let movementSystem = target.system(ofType: MovementSystem.self)
+        movementSystem.handleMovement(for: entityId, with: displacement)
         return EventOutput()
     }
 }

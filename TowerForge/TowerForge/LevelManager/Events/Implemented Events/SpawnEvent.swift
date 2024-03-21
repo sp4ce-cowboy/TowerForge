@@ -1,13 +1,6 @@
-//
-//  SpawnEvent.swift
-//  TowerForge
-//
-//  Created by Zheng Ze on 16/3/24.
-//
-
 import Foundation
 
-struct SpawnEvent<T: TFEntity>: TFEvent {
+struct SpawnEvent: TFEvent {
     let timestamp: TimeInterval
     let entityId: UUID
 
@@ -22,7 +15,10 @@ struct SpawnEvent<T: TFEntity>: TFEvent {
     }
 
     func execute(in target: any EventTarget) -> EventOutput {
-        target.system(ofType: SpawnSystem.self) // TODO: Handle Spawn Event
+        let spawnSystem = target.system(ofType: SpawnSystem.self)
+        var entity = TFEntity(withId: entityId)
+        entity.addComponent(MovableComponent(position: position, velocity: velocity))
+        spawnSystem.handleSpawn(with: entity)
         return EventOutput()
     }
 }

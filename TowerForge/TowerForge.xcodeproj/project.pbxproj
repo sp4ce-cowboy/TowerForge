@@ -173,6 +173,8 @@
 		3C99559F2BA47D3E00D33FA5 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				52DF5FDD2BA32D7E00135367 /* EntityManager.swift */,
+				52DF5FEE2BA34EA000135367 /* TFEntity.swift */,
 				3C9955A02BA47DA500D33FA5 /* BaseTower.swift */,
 				3C9955A22BA47DBB00D33FA5 /* BaseUnit.swift */,
 				3C9955A42BA47DC600D33FA5 /* BaseProjectile.swift */,
@@ -200,6 +202,7 @@
 		3C9955C32BA585CD00D33FA5 /* Systems */ = {
 			isa = PBXGroup;
 			children = (
+				3C9955AC2BA483B100D33FA5 /* TFSystem.swift */,
 				3C9955C42BA585DD00D33FA5 /* HealthSystem.swift */,
 				3C769A712BA58DE700F454F9 /* MovementSystem.swift */,
 				3C769A732BA591BD00F454F9 /* SpawnSystem.swift */,
@@ -249,7 +252,7 @@
 		5295A2002BA9FB97005018A8 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				52DF5FA92BA32B2300135367 /* GameScene.sks */,
+				BA47C9C72BAC0C7900DF0714 /* SKScenes */,
 				52DF5FAD2BA32B2300135367 /* GameScene.swift */,
 				5295A2032BA9FED4005018A8 /* MenuScene.swift */,
 			);
@@ -298,18 +301,14 @@
 		52DF5FA62BA32B2300135367 /* TowerForge */ = {
 			isa = PBXGroup;
 			children = (
+				52DF5FB42BA32B2600135367 /* Assets.xcassets */,
+				BA47C9C62BAC0C2500DF0714 /* Main */,
 				5295A2082BAAE14B005018A8 /* Controllers */,
 				5295A2052BAA0208005018A8 /* Nodes */,
 				5295A2002BA9FB97005018A8 /* Scenes */,
 				52DF5FE72BA33F8800135367 /* Protocols */,
 				52DF5FDF2BA3347C00135367 /* TFCore */,
 				52DF5FDB2BA32CEF00135367 /* LevelManager */,
-				52DF5FA72BA32B2300135367 /* AppDelegate.swift */,
-				52DF5FAB2BA32B2300135367 /* Actions.sks */,
-				52DF5FB12BA32B2300135367 /* Main.storyboard */,
-				52DF5FB42BA32B2600135367 /* Assets.xcassets */,
-				52DF5FB62BA32B2600135367 /* LaunchScreen.storyboard */,
-				5295A2012BA9FBD9005018A8 /* SceneManagerDelegate.swift */,
 			);
 			path = TowerForge;
 			sourceTree = "<group>";
@@ -317,8 +316,8 @@
 		52DF5FC02BA32B2600135367 /* TowerForgeTests */ = {
 			isa = PBXGroup;
 			children = (
+				BA47C9C82BAC0CA600DF0714 /* MainTests */,
 				52DF5FE22BA3386400135367 /* TFCoreTests */,
-				52DF5FC12BA32B2600135367 /* TowerForgeTests.swift */,
 			);
 			path = TowerForgeTests;
 			sourceTree = "<group>";
@@ -340,10 +339,6 @@
 				3C9955B82BA5620A00D33FA5 /* Events */,
 				3C99559F2BA47D3E00D33FA5 /* Entities */,
 				52DF5FF02BA3519D00135367 /* Components */,
-				52DF5FDD2BA32D7E00135367 /* EntityManager.swift */,
-				52DF5FEC2BA34D0300135367 /* TFComponent.swift */,
-				3C9955AC2BA483B100D33FA5 /* TFSystem.swift */,
-				52DF5FEE2BA34EA000135367 /* TFEntity.swift */,
 			);
 			path = LevelManager;
 			sourceTree = "<group>";
@@ -379,6 +374,7 @@
 		52DF5FF02BA3519D00135367 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				52DF5FEC2BA34D0300135367 /* TFComponent.swift */,
 				5200624C2BA8D574000DBA30 /* GameComponents */,
 				52578B882BA620A900B4D76C /* BaseComponents */,
 				527E3A232BA613EF00FE1628 /* PlayerComponent.swift */,
@@ -386,6 +382,34 @@
 				520062572BA8ED73000DBA30 /* HomeComponent.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		BA47C9C62BAC0C2500DF0714 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				52DF5FB12BA32B2300135367 /* Main.storyboard */,
+				52DF5FB62BA32B2600135367 /* LaunchScreen.storyboard */,
+				52DF5FA72BA32B2300135367 /* AppDelegate.swift */,
+				5295A2012BA9FBD9005018A8 /* SceneManagerDelegate.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		BA47C9C72BAC0C7900DF0714 /* SKScenes */ = {
+			isa = PBXGroup;
+			children = (
+				52DF5FAB2BA32B2300135367 /* Actions.sks */,
+				52DF5FA92BA32B2300135367 /* GameScene.sks */,
+			);
+			path = SKScenes;
+			sourceTree = "<group>";
+		};
+		BA47C9C82BAC0CA600DF0714 /* MainTests */ = {
+			isa = PBXGroup;
+			children = (
+				52DF5FC12BA32B2600135367 /* TowerForgeTests.swift */,
+			);
+			path = MainTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
