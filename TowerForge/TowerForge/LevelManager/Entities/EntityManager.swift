@@ -45,7 +45,7 @@ class EntityManager {
     // TODO update to be changed to systems
     func update(_ deltaTime: TimeInterval) {
         for entity in entities {
-            for component in entity.components.values {
+            for component in entity.components {
                 component.update(deltaTime: deltaTime)
             }
         }

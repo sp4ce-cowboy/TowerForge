@@ -66,6 +66,7 @@
 		BA47C9CA2BAC373500DF0714 /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47C9C92BAC373500DF0714 /* RemoveEvent.swift */; };
 		BA47C9CC2BAC380800DF0714 /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47C9CB2BAC380800DF0714 /* RemoveSystem.swift */; };
 		BA47C9D12BAC3A7B00DF0714 /* DamageEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47C9D02BAC3A7B00DF0714 /* DamageEventTests.swift */; };
+		BA47C9D42BAC445C00DF0714 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA47C9D32BAC445C00DF0714 /* Enums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,7 @@
 		BA47C9C92BAC373500DF0714 /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		BA47C9CB2BAC380800DF0714 /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
 		BA47C9D02BAC3A7B00DF0714 /* DamageEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEventTests.swift; sourceTree = "<group>"; };
+		BA47C9D32BAC445C00DF0714 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -311,6 +313,7 @@
 			children = (
 				52DF5FB42BA32B2600135367 /* Assets.xcassets */,
 				BA47C9C62BAC0C2500DF0714 /* Main */,
+				BA47C9D22BAC444D00DF0714 /* Commons */,
 				5295A2082BAAE14B005018A8 /* Controllers */,
 				5295A2052BAA0208005018A8 /* Nodes */,
 				5295A2002BA9FB97005018A8 /* Scenes */,
@@ -427,6 +430,14 @@
 				BA47C9D02BAC3A7B00DF0714 /* DamageEventTests.swift */,
 			);
 			path = EventsTests;
+			sourceTree = "<group>";
+		};
+		BA47C9D22BAC444D00DF0714 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				BA47C9D32BAC445C00DF0714 /* Enums.swift */,
+			);
+			path = Commons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -586,6 +597,7 @@
 			files = (
 				3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */,
 				5295A20F2BAAE7CF005018A8 /* TeamController.swift in Sources */,
+				BA47C9D42BAC445C00DF0714 /* Enums.swift in Sources */,
 				3C9955A52BA47DC600D33FA5 /* BaseProjectile.swift in Sources */,
 				52578B8C2BA627B200B4D76C /* Team.swift in Sources */,
 				52DF5FFF2BA3656500135367 /* ShootingComponent.swift in Sources */,

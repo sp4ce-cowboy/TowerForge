@@ -7,8 +7,9 @@
 
 import Foundation
 
-class TFComponent: Identifiable {
-    var id = UUID()
+class TFComponent: Identifiable, Hashable {
+
+    var componentType: Enums.Components = .Default
     weak var entity: TFEntity?
 
     init() {
@@ -27,5 +28,13 @@ class TFComponent: Identifiable {
 
     func willRemoveFromEntity() {
         self.entity = nil
+    }
+
+    static func == (lhs: TFComponent, rhs: TFComponent) -> Bool {
+        lhs.componentType == rhs.componentType
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(componentType)
     }
 }

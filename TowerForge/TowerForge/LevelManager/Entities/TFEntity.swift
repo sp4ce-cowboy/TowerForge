@@ -9,20 +9,18 @@ import Foundation
 
 class TFEntity {
     let id: UUID
-    private(set) var components: [UUID: TFComponent] // Should we change this to Set?
+    private(set) var components: Set<TFComponent> = []
 
     init() {
         id = UUID()
-        components = Dictionary()
     }
 
     init(withId id: UUID) {
         self.id = id
-        components = Dictionary()
     }
 
     func component<T: TFComponent>(ofType type: T.Type) -> T? {
-        for component in components.values {
+        for component in components {
             guard let component = component as? T else {
                 continue
             }
@@ -40,7 +38,12 @@ class TFEntity {
             return
         }
         component.didAddToEntity(self)
-        components[component.id] = (component)
+        components.insert(component)
+    }
+
+    /// Adds component if it does not exist and overrides if it does
+    func updateComponent<T: TFComponent>(_ component: T) {
+        components.update(with: component)
     }
 
     func removeComponent<T: TFComponent>(ofType type: T.Type) {
@@ -48,6 +51,6 @@ class TFEntity {
             return
         }
         componentToBeRemoved.willRemoveFromEntity()
-        components.removeValue(forKey: componentToBeRemoved.id)
+        components.remove(componentToBeRemoved)
     }
 }
