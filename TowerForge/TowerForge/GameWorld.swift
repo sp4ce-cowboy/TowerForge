@@ -30,10 +30,9 @@ class GameWorld {
         let verticalSpacing = selectionNode.frame.height
         var verticalY = 10.0
         // Position unit nodes vertically aligned
-        for (index, unitNode) in selectionNode.unitNodes.enumerated() {
+        for unitNode in selectionNode.unitNodes {
             unitNode.position = CGPoint(x: selectionNode.frame.width / 2,
                                         y: verticalY)
-            print(unitNode.position)
             verticalY += verticalSpacing
         }
     }
@@ -56,11 +55,11 @@ extension GameWorld: EventTarget {
 }
 
 extension GameWorld: UnitSelectionNodeDelegate {
-    func unitSelectionNodeDidSpawn(unitType: UnitType, position: CGPoint) {
+    func unitSelectionNodeDidSpawn<T: BaseUnit & Spawnable>(ofType type: T.Type, position: CGPoint) {
         guard let scene = scene else {
             return
         }
-        print("here")
-        UnitGenerator.spawnUnit(ofType: unitType, at: position, player: Player.ownPlayer, entityManager: entityManager, scene: scene)
+        UnitGenerator.spawn(ofType: type, at: position, player: Player.ownPlayer,
+                            entityManager: entityManager, scene: scene)
     }
 }

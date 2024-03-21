@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol SceneManagerDelegate {
+protocol SceneManagerDelegate: AnyObject {
     func showMenuScene()
     func showLevelScene()
     func showGameLevelScene(level: Int)

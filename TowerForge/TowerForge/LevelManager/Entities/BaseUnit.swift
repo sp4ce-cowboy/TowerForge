@@ -32,7 +32,7 @@ enum UnitType {
     }
 }
 
-class BaseUnit: TFEntity, HasCost {
+class BaseUnit: TFEntity {
     var cost: Int
     init(textureNames: [String],
          size: CGSize,

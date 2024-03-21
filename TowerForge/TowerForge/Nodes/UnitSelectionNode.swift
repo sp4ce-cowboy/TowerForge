@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol UnitSelectionNodeDelegate: AnyObject {
-    func unitSelectionNodeDidSpawn(unitType: UnitType, position: CGPoint)
+    func unitSelectionNodeDidSpawn<T: BaseUnit & Spawnable>(ofType type: T.Type, position: CGPoint)
 }
 
 class UnitSelectionNode: TFSpriteNode, UnitNodeDelegate {
@@ -21,33 +21,37 @@ class UnitSelectionNode: TFSpriteNode, UnitNodeDelegate {
     }
     var unitNodes: [UnitNode] = []
     var selectedNode: UnitNode?
+
     init() {
         super.init(textures: nil, height: 200.0, width: 100.0)
 
         isUserInteractionEnabled = true
-        for unit in UnitType.possibleUnits {
-            let unitNode = UnitNode(unitType: unit)
+        let possibleUnits: [(BaseUnit & Spawnable).Type] = [SoldierUnit.self, MeleeUnit.self]
+        for type in possibleUnits {
+            let unitNode = UnitNode(ofType: type)
             unitNodes.append(unitNode)
             unitNode.delegate = self
             addChild(unitNode)
         }
     }
+
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     private func updateUnitAlphas() {
         for unitNode in unitNodes {
-            if let unit = unitNode.unitType {
-                if unit.cost <= availablePoints {
-                    unitNode.alpha = 1.0
-                    unitNode.purchasable = true
-                } else {
-                    unitNode.alpha = 0.5
-                    unitNode.purchasable = false
-                }
+            if unitNode.type.cost <= availablePoints {
+                unitNode.alpha = 1.0
+                unitNode.purchasable = true
+            } else {
+                unitNode.alpha = 0.5
+                unitNode.purchasable = false
             }
         }
     }
+
     func unitNodeDidSelect(_ unitNode: UnitNode) {
         if unitNode.purchasable {
             selectedNode = unitNode
@@ -55,9 +59,9 @@ class UnitSelectionNode: TFSpriteNode, UnitNodeDelegate {
     }
 
     func unitNodeDidSpawn(_ position: CGPoint) {
-        guard let selectedUnitType = self.selectedNode?.unitType else {
+        guard let selectedType = self.selectedNode?.type else {
             return
         }
-        delegate?.unitSelectionNodeDidSpawn(unitType: selectedUnitType, position: position)
+        delegate?.unitSelectionNodeDidSpawn(ofType: selectedType, position: position)
     }
 }
