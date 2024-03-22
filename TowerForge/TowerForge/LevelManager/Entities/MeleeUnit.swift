@@ -25,7 +25,6 @@ class MeleeUnit: BaseUnit, Spawnable {
                    position: position,
                    maxHealth: MeleeUnit.maxHealth,
                    entityManager: entityManager,
-                   cost: MeleeUnit.cost,
                    velocity: MeleeUnit.velocity,
                    team: team)
         self.addComponent(DamageComponent(attackRate: MeleeUnit.attackRate,

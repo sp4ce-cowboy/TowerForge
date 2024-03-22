@@ -15,7 +15,10 @@ protocol TFEvent {
 }
 
 extension TFEvent {
-    func concurrentlyWith(_ otherEvent: TFEvent) -> TFEvent {
-        ConcurrentEvent(self, otherEvent)
+    func concurrentlyWith(_ otherEvent: TFEvent?) -> TFEvent {
+        guard let otherEvent = otherEvent else {
+            return self
+        }
+        return ConcurrentEvent(self, otherEvent)
     }
 }

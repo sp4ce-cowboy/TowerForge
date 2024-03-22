@@ -24,6 +24,7 @@ class BaseProjectile: TFEntity {
                                               animatableKey: key)
         self.addComponent(spriteComponent)
     }
+
     private func createPositionComponent(position: CGPoint) {
         let positionComponent = PositionComponent(position: position)
         self.addComponent(positionComponent)

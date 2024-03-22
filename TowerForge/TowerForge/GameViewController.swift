@@ -47,6 +47,22 @@ extension GameViewController: SceneUpdateDelegate {
     func update(deltaTime: TimeInterval) {
         gameWorld?.update(deltaTime: deltaTime)
     }
+
+    func contactBegin(between nodeA: TFAnimatableNode, and nodeB: TFAnimatableNode) {
+        guard let nameA = nodeA.name, let nameB = nodeB.name,
+              let idA = UUID(uuidString: nameA), let idB = UUID(uuidString: nameB) else {
+            return
+        }
+        gameWorld?.handleContact(between: idA, and: idB)
+    }
+
+    func contactEnd(between nodeA: TFAnimatableNode, and nodeB: TFAnimatableNode) {
+        guard let nameA = nodeA.name, let nameB = nodeB.name,
+              let idA = UUID(uuidString: nameA), let idB = UUID(uuidString: nameB) else {
+            return
+        }
+        gameWorld?.handleSeparation(between: idA, and: idB)
+    }
 }
 
 extension GameViewController: SceneManagerDelegate {

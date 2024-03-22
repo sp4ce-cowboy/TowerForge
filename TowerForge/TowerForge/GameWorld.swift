@@ -37,8 +37,23 @@ class GameWorld {
         selectionNode.unitNodeDidSpawn(location)
     }
 
-    private func setUpSelectionNode() {
+    func handleContact(between idA: UUID, and idB: UUID) {
+        guard let entityA = entityManager.entity(with: idA), let entityB = entityManager.entity(with: idB),
+              let event = entityA.collide(with: entityB) else {
+            return
+        }
 
+        eventManager.add(event)
+    }
+
+    func handleSeparation(between idA: UUID, and idB: UUID) {
+        guard let entityA = entityManager.entity(with: idA), let entityB = entityManager.entity(with: idB) else {
+            return
+        }
+        // TODO: Handle any separation logic here.
+    }
+
+    private func setUpSelectionNode() {
         selectionNode.delegate = self
         scene?.addChild(selectionNode)
         // Position unit selection node on the left side of the screen

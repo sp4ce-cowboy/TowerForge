@@ -33,23 +33,40 @@ enum UnitType {
 }
 
 class BaseUnit: TFEntity {
-    var cost: Int
     init(textureNames: [String],
          size: CGSize,
          key: String,
          position: CGPoint,
          maxHealth: CGFloat,
          entityManager: EntityManager,
-         cost: Int,
          velocity: CGVector,
          team: Team) {
-        self.cost = cost
         super.init()
         createHealthComponent(maxHealth: maxHealth, entityManager: entityManager)
         createSpriteComponent(textureNames: textureNames, size: size, key: key, position: position)
         createMovableComponent(position: position, velocity: velocity)
         createPositionComponent(position: position)
         createPlayerComponent(team: team)
+    }
+
+    override func collide(with other: any Collidable) -> TFEvent? {
+        guard let healthComponent = self.component(ofType: HealthComponent.self) else {
+            return nil
+        }
+
+        if let superEvent = super.collide(with: other) {
+            return superEvent.concurrentlyWith(other.collide(with: healthComponent))
+        }
+        return other.collide(with: healthComponent)
+    }
+
+    override func collide(with damageComponent: DamageComponent) -> TFEvent? {
+        guard let healthComponent = self.component(ofType: HealthComponent.self) else {
+            return nil
+        }
+
+        // No call to super here as super is done on collide with Collidable above.
+        return DamageEvent(on: self.id, at: Date().timeIntervalSince1970, with: damageComponent.attackPower)
     }
 
     private func createHealthComponent(maxHealth: CGFloat, entityManager: EntityManager) {

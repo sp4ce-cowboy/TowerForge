@@ -25,7 +25,6 @@ class SoldierUnit: BaseUnit, Spawnable {
                    position: position,
                    maxHealth: SoldierUnit.maxHealth,
                    entityManager: entityManager,
-                   cost: SoldierUnit.cost,
                    velocity: SoldierUnit.velocity,
                    team: team)
 

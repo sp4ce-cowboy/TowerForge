@@ -14,7 +14,7 @@ class Renderer {
 
     private var renderedNodes: [UUID: TFAnimatableNode] = [:]
 
-    init(target: Renderable, scene: SKScene?) {
+    init(target: Renderable, scene: GameScene?) {
         self.target = target
         self.scene = scene
     }
@@ -57,6 +57,7 @@ class Renderer {
                                     width: spriteComponent.width,
                                     animatableKey: spriteComponent.animatableKey)
         node.position = positionComponent.position
+        node.name = entity.id.uuidString
         renderedNodes[entity.id] = node
         scene?.addChild(node)
     }

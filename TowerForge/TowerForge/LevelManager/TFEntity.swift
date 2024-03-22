@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TFEntity {
+class TFEntity: Collidable {
     let id: UUID
     private(set) var components: [UUID: TFComponent]
 
@@ -44,5 +44,18 @@ class TFEntity {
         }
         componentToBeRemoved.willRemoveFromEntity()
         components.removeValue(forKey: componentToBeRemoved.id)
+    }
+
+    // To be overriden by sub classes as needed
+    func collide(with other: any Collidable) -> TFEvent? {
+        nil
+    }
+
+    func collide(with damageComponent: DamageComponent) -> TFEvent? {
+        nil
+    }
+
+    func collide(with healthComponent: HealthComponent) -> TFEvent? {
+        nil
     }
 }
