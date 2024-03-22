@@ -26,6 +26,7 @@ class GameWorld {
         grid = Grid(entityManager: entityManager)
         renderer = Renderer(target: self, scene: scene)
 
+        self.setUpSystems()
         self.setUpSelectionNode()
     }
 
@@ -79,6 +80,13 @@ class GameWorld {
             return
         }
         // TODO: Handle any separation logic here.
+    }
+
+    private func setUpSystems() {
+        systemManager.add(system: HealthSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: MovementSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: RemoveSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: SpawnSystem(entityManager: entityManager, eventManager: eventManager))
     }
 
     private func setUpSelectionNode() {

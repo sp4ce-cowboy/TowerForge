@@ -39,7 +39,7 @@ class TFEntity: Collidable {
     }
 
     func removeComponent<T: TFComponent>(ofType type: T.Type) {
-        guard let componentToBeRemoved = component(ofType: T.self) else {
+        guard let componentToBeRemoved = component(ofType: type.self) else {
             return
         }
         componentToBeRemoved.willRemoveFromEntity()
