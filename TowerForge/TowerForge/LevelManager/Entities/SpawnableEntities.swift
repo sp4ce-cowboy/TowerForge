@@ -8,6 +8,5 @@
 import Foundation
 
 struct SpawnableEntities {
-    static let possibleUnits: [(BaseUnit & Spawnable).Type] = [MeleeUnit.self,
-                                                               SoldierUnit.self]
+    static let playerSpawnableEntities: [(TFEntity & PlayerSpawnable).Type] = [MeleeUnit.self, SoldierUnit.self]
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MeleeUnit: BaseUnit, Spawnable {
+class MeleeUnit: BaseUnit, PlayerSpawnable {
     static let title: String = "melee"
     static let textureNames = ["melee-1", "melee-2"]
     static let size = CGSize(width: 100, height: 100)

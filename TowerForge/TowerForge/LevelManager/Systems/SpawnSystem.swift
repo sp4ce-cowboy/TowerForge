@@ -15,5 +15,4 @@ class SpawnSystem: TFSystem {
     func handleSpawn(with entity: TFEntity) {
         entityManager?.add(entity)
     }
-
 }

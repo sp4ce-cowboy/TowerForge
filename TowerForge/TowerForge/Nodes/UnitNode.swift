@@ -13,7 +13,7 @@ protocol UnitNodeDelegate: AnyObject {
 }
 
 class UnitNode: TFSpriteNode {
-    let type: (BaseUnit & Spawnable).Type
+    let type: (TFEntity & PlayerSpawnable).Type
     weak var delegate: UnitNodeDelegate?
     var purchasable = true
     var teamController: TeamController?
@@ -21,7 +21,7 @@ class UnitNode: TFSpriteNode {
     var unitCostLabel: SKLabelNode!
     var backgroundNode: SKSpriteNode!
 
-    init<T: BaseUnit & Spawnable>(ofType type: T.Type) {
+    init<T: TFEntity & PlayerSpawnable>(ofType type: T.Type) {
         self.type = type
         super.init(imageName: type.title, height: 200.0, width: 140.0)
 

@@ -9,10 +9,10 @@ import Foundation
 
 class AiComponent: TFComponent {
     private var entityManager: EntityManager
-    private var chosenUnit: (BaseUnit & Spawnable).Type?
+    private var chosenUnit: (TFEntity & PlayerSpawnable).Type?
     init(entityManager: EntityManager) {
         self.entityManager = entityManager
-        self.chosenUnit = SpawnableEntities.possibleUnits.randomElement()
+        self.chosenUnit = SpawnableEntities.playerSpawnableEntities.randomElement()
         super.init()
     }
 

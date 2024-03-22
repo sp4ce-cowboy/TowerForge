@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol UnitSelectionNodeDelegate: AnyObject {
-    func unitSelectionNodeDidSpawn<T: BaseUnit & Spawnable>(ofType type: T.Type, position: CGPoint)
+    func unitSelectionNodeDidSpawn<T: TFEntity & PlayerSpawnable>(ofType type: T.Type, position: CGPoint)
 }
 
 class UnitSelectionNode: TFSpriteNode, UnitNodeDelegate {
@@ -26,7 +26,7 @@ class UnitSelectionNode: TFSpriteNode, UnitNodeDelegate {
         super.init(textures: nil, height: 200.0, width: 100.0)
 
         isUserInteractionEnabled = true
-        let possibleUnits: [(BaseUnit & Spawnable).Type] = SpawnableEntities.possibleUnits
+        let possibleUnits: [(TFEntity & PlayerSpawnable).Type] = SpawnableEntities.playerSpawnableEntities
         for type in possibleUnits {
             let unitNode = UnitNode(ofType: type)
             unitNodes.append(unitNode)
