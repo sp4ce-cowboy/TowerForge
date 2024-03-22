@@ -22,8 +22,9 @@ class EventManager {
         while !eventQueue.isEmpty {
             let currentEvent = eventQueue.removeFirst()
 
-            let output = currentEvent.execute(in: target)
-            output.events.forEach { eventQueue.append($0) }
+            if let output = currentEvent.execute(in: target) {
+                output.events.forEach { eventQueue.append($0) }
+            }
         }
     }
 }

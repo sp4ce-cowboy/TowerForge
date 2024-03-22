@@ -1,10 +1,3 @@
-//
-//  MoveEvent.swift
-//  TowerForge
-//
-//  Created by Zheng Ze on 16/3/24.
-//
-
 import Foundation
 
 struct MoveEvent: TFEvent {
@@ -18,8 +11,11 @@ struct MoveEvent: TFEvent {
         self.displacement = displacement
     }
 
-    func execute(in target: any EventTarget) -> EventOutput {
-        target.system(ofType: MovementSystem.self) // TODO: Handle Move Event
+    func execute(in target: any EventTarget) -> EventOutput? {
+        guard let movementSystem = target.system(ofType: MovementSystem.self) else {
+            return nil
+        }
+        movementSystem.handleMovement(for: entityId, with: displacement)
         return EventOutput()
     }
 }

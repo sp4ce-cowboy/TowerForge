@@ -11,7 +11,9 @@ protocol TFEvent {
     var timestamp: TimeInterval { get }
     var entityId: UUID { get }
 
-    func execute(in target: EventTarget) -> EventOutput
+    /// Execute method returns an optional EventOutput as not all event executions
+    /// will return an EventOutput
+    func execute(in target: EventTarget) -> EventOutput?
 }
 
 extension TFEvent {
