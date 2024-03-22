@@ -13,6 +13,7 @@ class GameWorld {
     private var systemManager: SystemManager
     private var eventManager: EventManager
     private var selectionNode: UnitSelectionNode
+    private var grid: Grid
     private var renderer: Renderer?
 
     init(scene: GameScene?) {
@@ -21,6 +22,7 @@ class GameWorld {
         systemManager = SystemManager()
         eventManager = EventManager()
         selectionNode = UnitSelectionNode()
+        grid = Grid(entityManager: entityManager)
         renderer = Renderer(target: self, scene: scene)
 
         self.setUpSelectionNode()
@@ -54,7 +56,7 @@ class GameWorld {
     }
 
     private func setUpSelectionNode() {
-        selectionNode.delegate = self
+        selectionNode.delegate = grid
         scene?.addChild(selectionNode)
         // Position unit selection node on the left side of the screen
         selectionNode.position = CGPoint(x: selectionNode.frame.width / 2, y: scene?.frame.midY ?? 300)
@@ -74,14 +76,6 @@ class GameWorld {
 extension GameWorld: EventTarget {
     func system<T: TFSystem>(ofType type: T.Type) -> T? {
         systemManager.system(ofType: type)
-    }
-}
-
-extension GameWorld: UnitSelectionNodeDelegate {
-    func unitSelectionNodeDidSpawn<T: BaseUnit & Spawnable>(ofType type: T.Type, position: CGPoint) {
-        let unit = UnitGenerator.spawn(ofType: type, at: position, player: Player.ownPlayer,
-                                       entityManager: entityManager)
-        entityManager.add(unit)
     }
 }
 
