@@ -24,7 +24,7 @@ class HealthSystem: TFSystem {
             return false
         }
 
-        healthComponent.decreaseHealth(amount: hp)
+        healthComponent.adjustHealth(amount: hp)
         return healthComponent.isZero
     }
 }
