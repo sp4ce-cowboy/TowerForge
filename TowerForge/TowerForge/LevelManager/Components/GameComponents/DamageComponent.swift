@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CoreGraphics
 import SpriteKit
 
 class DamageComponent: TFComponent {
@@ -26,8 +25,8 @@ class DamageComponent: TFComponent {
         CACurrentMediaTime() - lastAttackTime >= attackRate
     }
 
-    func damage(_ healthComponent: HealthComponent) -> DamageEvent? {
-        guard canDamage, let entityId = healthComponent.entity?.id else {
+    func damage(_ healthComponent: HealthComponent) -> TFEvent? {
+        guard canDamage, let enemyId = healthComponent.entity?.id, let id = entity?.id else {
             return nil
         }
 
@@ -38,6 +37,11 @@ class DamageComponent: TFComponent {
         }
 
         lastAttackTime = CACurrentMediaTime()
-        return DamageEvent(on: entityId, at: lastAttackTime, with: attackPower)
+        let event = DamageEvent(on: enemyId, at: lastAttackTime, with: attackPower)
+
+        if temporary {
+            return event.concurrentlyWith(RemoveEvent(on: id, at: lastAttackTime))
+        }
+        return event
     }
 }

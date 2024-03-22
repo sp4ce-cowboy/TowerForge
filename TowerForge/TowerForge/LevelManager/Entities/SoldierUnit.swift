@@ -27,7 +27,7 @@ class SoldierUnit: BaseUnit, PlayerSpawnable {
                    position: position,
                    maxHealth: SoldierUnit.maxHealth,
                    velocity: SoldierUnit.velocity,
-                   team: Team(player: .oppositePlayer))
+                   team: team)
 
         self.addComponent(ShootingComponent(fireRate: SoldierUnit.attackRate,
                                             range: SoldierUnit.range,

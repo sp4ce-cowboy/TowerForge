@@ -6,20 +6,24 @@
 //
 
 import Foundation
+import SpriteKit
 
-class Arrow: BaseProjectile {
+class Arrow: BaseProjectile, Spawnable {
     static let textureNames: [String] = []
     static let size = CGSize(width: 10, height: 10)
     static let key = "arrow"
     static let damage = 5.0
+    static let attackRate = 1.0
+    static let velocity = CGVector(dx: 100, dy: 0)
 
-    init(position: CGPoint, velocity: CGVector, attackRate: TimeInterval) {
+    required init(position: CGPoint, team: Team) {
         super.init(textureNames: Arrow.textureNames,
                    size: Arrow.size,
                    key: Arrow.key,
                    position: position,
-                   velocity: velocity)
-        self.addComponent(DamageComponent(attackRate: attackRate,
+                   team: team,
+                   velocity: Arrow.velocity)
+        self.addComponent(DamageComponent(attackRate: Arrow.attackRate,
                                           attackPower: Arrow.damage,
                                           temporary: true))
     }

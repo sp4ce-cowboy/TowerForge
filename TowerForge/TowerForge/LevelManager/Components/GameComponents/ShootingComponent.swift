@@ -21,49 +21,28 @@ class ShootingComponent: TFComponent {
         super.init()
     }
 
-//    override func update(deltaTime: TimeInterval) {
-//        super.update(deltaTime: deltaTime)
-//
-//        // Required components for the current Melee
-//        guard let entity = entity,
-//              let spriteComponent = entity.component(ofType: SpriteComponent.self),
-//              let positionComponent = entity.component(ofType: PositionComponent.self) else {
-//            return
-//        }
-//
-//        // Loop opposite team's entities
-//        for entity in entityManager.entities {
-//            guard let playerComponent = entity.component(ofType: PlayerComponent.self) else {
-//                return
-//            }
-//            if playerComponent.player == .ownPlayer {
-//                return
-//            }
-//            // Get opposite team's components
-//            guard let oppositeSpriteComponent = entity.component(ofType: SpriteComponent.self),
-//                  let oppositeHealthComponent = entity.component(ofType: HealthComponent.self),
-//                  let oppositePositionComponent = entity.component(ofType: PositionComponent.self) else {
-//                return
-//            }
-//
-//            // Get the horizontal distance
-//            let distanceBetween = (positionComponent.position.x - oppositePositionComponent.position.x)
-//
-//            // Check if within range
-//            if distanceBetween < range {
-//                // TODO : Change the hard coded velocity value
-//                let arrow = Arrow(position: positionComponent.position,
-//                                  velocity: playerComponent.player.getDirectionVelocity(),
-//                                  attackRate: 1.0,
-//                                  entityManager: entityManager)
-//                guard let arrowSpriteComponent = arrow.component(ofType: SpriteComponent.self) else {
-//                    return
-//                }
-//
-//                // Check if can attack
-//                if CACurrentMediaTime() - lastShotTime > fireRate {
-//                    lastShotTime = CACurrentMediaTime()
-//                }
-//            }
-//        }
+    var canShoot: Bool {
+        CACurrentMediaTime() - lastShotTime >= fireRate
+    }
+
+    func shoot(_ healthComponent: HealthComponent) -> SpawnEvent? {
+        guard canShoot, let entityA = self.entity, let entityB = healthComponent.entity else {
+            return nil
+        }
+
+        guard let playerA = entityA.component(ofType: PlayerComponent.self)?.player,
+              let playerB = entityB.component(ofType: PlayerComponent.self)?.player,
+              playerA != playerB else {
+            return nil
+        }
+
+        guard let positionA = entityA.component(ofType: PositionComponent.self)?.position,
+              let positionB = entityB.component(ofType: PositionComponent.self)?.position,
+              abs(positionA.x - positionB.x) <= range else {
+            return nil
+        }
+
+        lastShotTime = CACurrentMediaTime()
+        return SpawnEvent(ofType: Arrow.self, timestamp: lastShotTime, position: positionA, team: Team(player: playerA))
+    }
 }

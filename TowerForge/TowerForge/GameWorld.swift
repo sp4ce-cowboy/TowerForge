@@ -86,6 +86,7 @@ class GameWorld {
         systemManager.add(system: MovementSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: RemoveSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: SpawnSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: ShootingSystem(entityManager: entityManager, eventManager: eventManager))
     }
 
     private func setUpSelectionNode() {
