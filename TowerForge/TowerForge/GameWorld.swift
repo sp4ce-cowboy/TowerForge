@@ -30,6 +30,7 @@ class GameWorld {
         renderer = Renderer(target: self, scene: scene)
 
         self.setUpSelectionNode()
+        self.setupTeam()
     }
 
     func update(deltaTime: TimeInterval) {
@@ -45,6 +46,12 @@ class GameWorld {
 
     func spawnUnit(at location: CGPoint) {
         selectionNode.unitNodeDidSpawn(location)
+    }
+    func setupTeam() {
+        let ownTeam = Team(player: .ownPlayer, entityManager: entityManager)
+        let oppositeTeam = Team(player: .oppositePlayer, entityManager: entityManager)
+        entityManager.add(ownTeam)
+        entityManager.add(oppositeTeam)
     }
 
     // TODO: Move contact handling to a system

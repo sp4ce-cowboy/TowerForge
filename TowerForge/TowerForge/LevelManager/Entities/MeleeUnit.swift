@@ -18,7 +18,7 @@ class MeleeUnit: BaseUnit, Spawnable {
     static let attackRate = 1.0
     static let velocity = CGVector(dx: 10.0, dy: 0.0)
 
-    required init(position: CGPoint, entityManager: EntityManager, team: Team) {
+    required init(position: CGPoint, entityManager: EntityManager, player: Player) {
         super.init(textureNames: MeleeUnit.textureNames,
                    size: MeleeUnit.size,
                    key: MeleeUnit.key,
@@ -26,7 +26,7 @@ class MeleeUnit: BaseUnit, Spawnable {
                    maxHealth: MeleeUnit.maxHealth,
                    entityManager: entityManager,
                    velocity: MeleeUnit.velocity,
-                   team: team)
+                   player: player)
         self.addComponent(DamageComponent(attackRate: MeleeUnit.attackRate,
                                           attackPower: MeleeUnit.damage,
                                           temporary: false,
