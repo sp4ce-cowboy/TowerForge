@@ -3,23 +3,18 @@ import Foundation
 struct SpawnEvent: TFEvent {
     let timestamp: TimeInterval
     let entityId: UUID
+    let entity: TFEntity
 
-    private let position: CGPoint
-    private let velocity: CGVector
-
-    init(timestamp: TimeInterval, entityId: UUID, position: CGPoint, velocity: CGVector) {
+    init<T: TFEntity & Spawnable>(ofType type: T.Type, timestamp: TimeInterval, position: CGPoint, team: Team) {
+        self.entity = type.init(position: position, team: team)
         self.timestamp = timestamp
-        self.entityId = entityId
-        self.position = position
-        self.velocity = velocity
+        self.entityId = entity.id
     }
 
     func execute(in target: any EventTarget) -> EventOutput? {
         guard let spawnSystem = target.system(ofType: SpawnSystem.self) else {
             return nil
         }
-        var entity = TFEntity()
-        entity.addComponent(MovableComponent(position: position, velocity: velocity))
         spawnSystem.handleSpawn(with: entity)
         return EventOutput()
     }
