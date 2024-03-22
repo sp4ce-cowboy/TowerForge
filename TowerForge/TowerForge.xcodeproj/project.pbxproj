@@ -75,6 +75,7 @@
 		9B8696552BAD759F0002377C /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8696542BAD759F0002377C /* Grid.swift */; };
 		BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */; };
 		BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */; };
+		BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D412BAD9885009F0FFB /* DamageEventTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +167,7 @@
 		9B8696542BAD759F0002377C /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
 		BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
+		BA443D412BAD9885009F0FFB /* DamageEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEventTests.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -376,6 +378,7 @@
 		52DF5FC02BA32B2600135367 /* TowerForgeTests */ = {
 			isa = PBXGroup;
 			children = (
+				BA443D402BAD9872009F0FFB /* EventTests */,
 				52DF5FE22BA3386400135367 /* TFCoreTests */,
 				52DF5FC12BA32B2600135367 /* TowerForgeTests.swift */,
 			);
@@ -446,6 +449,14 @@
 				520062572BA8ED73000DBA30 /* HomeComponent.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		BA443D402BAD9872009F0FFB /* EventTests */ = {
+			isa = PBXGroup;
+			children = (
+				BA443D412BAD9885009F0FFB /* DamageEventTests.swift */,
+			);
+			path = EventTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -671,6 +682,7 @@
 			files = (
 				52DF5FC22BA32B2600135367 /* TowerForgeTests.swift in Sources */,
 				52DF5FE42BA3391200135367 /* TFTexturesTests.swift in Sources */,
+				BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
