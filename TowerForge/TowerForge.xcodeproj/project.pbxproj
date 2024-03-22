@@ -71,6 +71,7 @@
 		52DF5FF92BA35D2B00135367 /* MovableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FF82BA35D2B00135367 /* MovableComponent.swift */; };
 		52DF5FFB2BA3601400135367 /* HealthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FFA2BA3601400135367 /* HealthComponent.swift */; };
 		52DF5FFF2BA3656500135367 /* ShootingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FFE2BA3656500135367 /* ShootingComponent.swift */; };
+		9B8696552BAD759F0002377C /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8696542BAD759F0002377C /* Grid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +159,7 @@
 		52DF5FF82BA35D2B00135367 /* MovableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovableComponent.swift; sourceTree = "<group>"; };
 		52DF5FFA2BA3601400135367 /* HealthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthComponent.swift; sourceTree = "<group>"; };
 		52DF5FFE2BA3656500135367 /* ShootingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootingComponent.swift; sourceTree = "<group>"; };
+		9B8696542BAD759F0002377C /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -356,6 +358,7 @@
 				52DF5FB12BA32B2300135367 /* Main.storyboard */,
 				52DF5FB42BA32B2600135367 /* Assets.xcassets */,
 				52DF5FB62BA32B2600135367 /* LaunchScreen.storyboard */,
+				9B8696542BAD759F0002377C /* Grid.swift */,
 			);
 			path = TowerForge;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				5295A2132BAAEA16005018A8 /* UnitNode.swift in Sources */,
 				52DF5FF32BA351E100135367 /* SpriteComponent.swift in Sources */,
 				3CE9514B2BAC83FA008B2785 /* SpawnableEntities.swift in Sources */,
+				9B8696552BAD759F0002377C /* Grid.swift in Sources */,
 				52578B872BA6209700B4D76C /* DamageComponent.swift in Sources */,
 				52DF5FB02BA32B2300135367 /* GameViewController.swift in Sources */,
 				3CE951512BAC8955008B2785 /* Renderable.swift in Sources */,
