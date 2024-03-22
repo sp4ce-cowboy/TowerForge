@@ -13,7 +13,7 @@ class Arrow: BaseProjectile {
     static let key = "arrow"
     static let damage = 5.0
 
-    init(position: CGPoint, velocity: CGVector, attackRate: TimeInterval, entityManager: EntityManager) {
+    init(position: CGPoint, velocity: CGVector, attackRate: TimeInterval) {
         super.init(textureNames: Arrow.textureNames,
                    size: Arrow.size,
                    key: Arrow.key,
@@ -21,8 +21,7 @@ class Arrow: BaseProjectile {
                    velocity: velocity)
         self.addComponent(DamageComponent(attackRate: attackRate,
                                           attackPower: Arrow.damage,
-                                          temporary: true,
-                                          entityManager: entityManager))
+                                          temporary: true))
     }
 
     override func collide(with other: any Collidable) -> TFEvent? {

@@ -37,7 +37,6 @@ class GameWorld {
 
         systemManager.update(deltaTime)
         eventManager.executeEvents(in: self)
-        entityManager.update(deltaTime)
         renderer?.render()
     }
 

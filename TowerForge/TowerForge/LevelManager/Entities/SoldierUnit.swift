@@ -16,22 +16,19 @@ class SoldierUnit: BaseUnit, Spawnable {
     static let damage = 10.0
     static var cost = 5
     static let attackRate = 10.0
-    static let velocity = CGVector(dx: 10.0, dy: 0.0)
+    static let velocity = CGVector(dx: -10.0, dy: 0.0)
 
-    required init(position: CGPoint, entityManager: EntityManager, team: Team) {
+    required init(position: CGPoint, team: Team) {
         super.init(textureNames: SoldierUnit.textureNames,
                    size: SoldierUnit.size,
                    key: SoldierUnit.key,
                    position: position,
                    maxHealth: SoldierUnit.maxHealth,
-                   entityManager: entityManager,
                    velocity: SoldierUnit.velocity,
                    team: team)
 
         self.addComponent(ShootingComponent(fireRate: SoldierUnit.attackRate,
                                             range: 1.0,
-                                            entityManager: entityManager,
-                                            attackPower: 10.0
-                                           ))
+                                            attackPower: 10.0))
     }
 }

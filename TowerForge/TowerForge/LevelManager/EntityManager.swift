@@ -41,13 +41,4 @@ class EntityManager {
     func components<T: TFComponent>(ofType type: T.Type) -> [T] {
         entities.compactMap { $0.component(ofType: type) }
     }
-
-    // TODO update to be changed to systems
-    func update(_ deltaTime: TimeInterval) {
-        for entity in entities {
-            for component in entity.components.values {
-                component.update(deltaTime: deltaTime)
-            }
-        }
-    }
 }

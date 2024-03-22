@@ -18,19 +18,17 @@ class MeleeUnit: BaseUnit, Spawnable {
     static let attackRate = 1.0
     static let velocity = CGVector(dx: 10.0, dy: 0.0)
 
-    required init(position: CGPoint, entityManager: EntityManager, team: Team) {
+    required init(position: CGPoint, team: Team) {
         super.init(textureNames: MeleeUnit.textureNames,
                    size: MeleeUnit.size,
                    key: MeleeUnit.key,
                    position: position,
                    maxHealth: MeleeUnit.maxHealth,
-                   entityManager: entityManager,
                    velocity: MeleeUnit.velocity,
                    team: team)
         self.addComponent(DamageComponent(attackRate: MeleeUnit.attackRate,
                                           attackPower: MeleeUnit.damage,
-                                          temporary: false,
-                                          entityManager: entityManager))
+                                          temporary: false))
     }
 
     override func collide(with other: any Collidable) -> (any TFEvent)? {

@@ -1,7 +1,7 @@
 import Foundation
 
 class RemoveSystem: TFSystem {
-    var isActive = false
+    var isActive = true
     weak var entityManager: EntityManager?
     weak var eventManager: EventManager?
 

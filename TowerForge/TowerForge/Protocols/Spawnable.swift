@@ -8,7 +8,7 @@
 import Foundation
 
 protocol Spawnable {
-    init(position: CGPoint, entityManager: EntityManager, team: Team)
+    init(position: CGPoint, team: Team)
     static var cost: Int { get set }
     static var title: String { get }
 }

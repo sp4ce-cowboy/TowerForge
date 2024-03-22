@@ -20,10 +20,9 @@ class ArrowTower: BaseTower {
                    size: ArrowTower.size,
                    key: ArrowTower.key,
                    position: position,
-                   maxHealth: ArrowTower.maxHealth, entityManager: entityManager)
+                   maxHealth: ArrowTower.maxHealth)
         self.addComponent(ShootingComponent(fireRate: ArrowTower.fireRate,
                                             range: 1.0,
-                                            entityManager: entityManager,
                                             attackPower: ArrowTower.damage))
     }
 }

@@ -13,11 +13,10 @@ class BaseUnit: TFEntity {
          key: String,
          position: CGPoint,
          maxHealth: CGFloat,
-         entityManager: EntityManager,
          velocity: CGVector,
          team: Team) {
         super.init()
-        createHealthComponent(maxHealth: maxHealth, entityManager: entityManager)
+        createHealthComponent(maxHealth: maxHealth)
         createSpriteComponent(textureNames: textureNames, size: size, key: key, position: position)
         createMovableComponent(position: position, velocity: velocity)
         createPositionComponent(position: position)
@@ -44,10 +43,11 @@ class BaseUnit: TFEntity {
         return damageComponent.damage(healthComponent)
     }
 
-    private func createHealthComponent(maxHealth: CGFloat, entityManager: EntityManager) {
-        let healthComponent = HealthComponent(maxHealth: maxHealth, entityManager: entityManager)
+    private func createHealthComponent(maxHealth: CGFloat) {
+        let healthComponent = HealthComponent(maxHealth: maxHealth)
         self.addComponent(healthComponent)
     }
+
     private func createPositionComponent(position: CGPoint) {
         let positionComponent = PositionComponent(position: position)
         self.addComponent(positionComponent)
@@ -66,6 +66,7 @@ class BaseUnit: TFEntity {
         let movableComponent = MovableComponent(position: position, velocity: velocity)
         self.addComponent(movableComponent)
     }
+
     private func createPlayerComponent(team: Team) {
         let playerComponent = PlayerComponent(player: team.player)
         self.addComponent(playerComponent)

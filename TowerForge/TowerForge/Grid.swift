@@ -18,10 +18,9 @@ class Grid: UnitSelectionNodeDelegate {
         self.noOfRows = DEFAULT_NO_OF_ROWS
     }
 
-    func unitSelectionNodeDidSpawn<T: BaseUnit & Spawnable>(ofType type: T.Type, position: CGPoint) {
+    func unitSelectionNodeDidSpawn<T: TFEntity & PlayerSpawnable>(ofType type: T.Type, position: CGPoint) {
         let snapPosition = CGPoint(x: position.x, y: snapYPosition(yPosition: position.y))
-        let unit = UnitGenerator.spawn(ofType: type, at: snapPosition, player: Player.ownPlayer,
-                                       entityManager: entityManager)
+        let unit = UnitGenerator.spawn(ofType: type, at: snapPosition, player: Player.ownPlayer)
         entityManager.add(unit)
     }
 

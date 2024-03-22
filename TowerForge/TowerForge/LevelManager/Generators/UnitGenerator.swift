@@ -9,9 +9,8 @@ import Foundation
 import SpriteKit
 
 class UnitGenerator {
-    static func spawn<T: BaseUnit & Spawnable>(ofType type: T.Type, at position: CGPoint,
-                                               player: Player, entityManager: EntityManager) -> T {
-        let unit = type.init(position: position, entityManager: entityManager, team: Team(player: player))
+    static func spawn<T: TFEntity & PlayerSpawnable>(ofType type: T.Type, at position: CGPoint, player: Player) -> T {
+        let unit = type.init(position: position, team: Team(player: player))
         return unit
     }
 }

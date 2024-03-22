@@ -12,14 +12,12 @@ import SpriteKit
 class DamageComponent: TFComponent {
     private let attackRate: TimeInterval
     private var lastAttackTime = TimeInterval(0)
-    private let entityManager: EntityManager
     private let temporary: Bool
     let attackPower: CGFloat
 
-    init(attackRate: TimeInterval, attackPower: CGFloat, temporary: Bool, entityManager: EntityManager) {
+    init(attackRate: TimeInterval, attackPower: CGFloat, temporary: Bool) {
         self.attackRate = attackRate
         self.attackPower = attackPower
-        self.entityManager = entityManager
         self.temporary = temporary
         super.init()
     }
