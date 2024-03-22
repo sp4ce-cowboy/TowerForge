@@ -73,6 +73,9 @@
 		52DF5FFB2BA3601400135367 /* HealthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FFA2BA3601400135367 /* HealthComponent.swift */; };
 		52DF5FFF2BA3656500135367 /* ShootingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FFE2BA3656500135367 /* ShootingComponent.swift */; };
 		9B8696552BAD759F0002377C /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8696542BAD759F0002377C /* Grid.swift */; };
+		BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */; };
+		BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */; };
+		BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D412BAD9885009F0FFB /* DamageEventTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +165,9 @@
 		52DF5FFA2BA3601400135367 /* HealthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthComponent.swift; sourceTree = "<group>"; };
 		52DF5FFE2BA3656500135367 /* ShootingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootingComponent.swift; sourceTree = "<group>"; };
 		9B8696542BAD759F0002377C /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
+		BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
+		BA443D412BAD9885009F0FFB /* DamageEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEventTests.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -219,9 +225,11 @@
 		3C9955C32BA585CD00D33FA5 /* Systems */ = {
 			isa = PBXGroup;
 			children = (
+				3C9955AC2BA483B100D33FA5 /* TFSystem.swift */,
 				3C9955C42BA585DD00D33FA5 /* HealthSystem.swift */,
 				3C769A712BA58DE700F454F9 /* MovementSystem.swift */,
 				3C769A732BA591BD00F454F9 /* SpawnSystem.swift */,
+				BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -233,6 +241,7 @@
 				3C9955C92BA5888F00D33FA5 /* SpawnEvent.swift */,
 				3C9955CB2BA5889800D33FA5 /* MoveEvent.swift */,
 				3C9955C72BA5865C00D33FA5 /* ConcurrentEvent.swift */,
+				BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */,
 			);
 			path = "Implemented Events";
 			sourceTree = "<group>";
@@ -296,6 +305,7 @@
 		5295A2002BA9FB97005018A8 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				52DF5FAB2BA32B2300135367 /* Actions.sks */,
 				52DF5FA92BA32B2300135367 /* GameScene.sks */,
 				52DF5FAD2BA32B2300135367 /* GameScene.swift */,
 				5295A2032BA9FED4005018A8 /* MenuScene.swift */,
@@ -346,6 +356,8 @@
 		52DF5FA62BA32B2300135367 /* TowerForge */ = {
 			isa = PBXGroup;
 			children = (
+				52DF5FB42BA32B2600135367 /* Assets.xcassets */,
+				BA443D432BAD98CD009F0FFB /* AppMain */,
 				3CE9514D2BAC8925008B2785 /* Rendering */,
 				5295A2082BAAE14B005018A8 /* Controllers */,
 				5295A2052BAA0208005018A8 /* Nodes */,
@@ -355,12 +367,7 @@
 				3CCF9CAE2BAB1A96004D170E /* SceneUpdateDelegate.swift */,
 				5295A2012BA9FBD9005018A8 /* SceneManagerDelegate.swift */,
 				52DF5FDB2BA32CEF00135367 /* LevelManager */,
-				52DF5FA72BA32B2300135367 /* AppDelegate.swift */,
-				52DF5FAB2BA32B2300135367 /* Actions.sks */,
 				3CCF9CB02BAB1BCE004D170E /* GameWorld.swift */,
-				52DF5FB12BA32B2300135367 /* Main.storyboard */,
-				52DF5FB42BA32B2600135367 /* Assets.xcassets */,
-				52DF5FB62BA32B2600135367 /* LaunchScreen.storyboard */,
 				9B8696542BAD759F0002377C /* Grid.swift */,
 			);
 			path = TowerForge;
@@ -369,6 +376,7 @@
 		52DF5FC02BA32B2600135367 /* TowerForgeTests */ = {
 			isa = PBXGroup;
 			children = (
+				BA443D402BAD9872009F0FFB /* EventTests */,
 				52DF5FE22BA3386400135367 /* TFCoreTests */,
 				52DF5FC12BA32B2600135367 /* TowerForgeTests.swift */,
 			);
@@ -396,7 +404,6 @@
 				52DF5FDD2BA32D7E00135367 /* EntityManager.swift */,
 				3CCF9CB22BAB1F42004D170E /* SystemManager.swift */,
 				52DF5FEC2BA34D0300135367 /* TFComponent.swift */,
-				3C9955AC2BA483B100D33FA5 /* TFSystem.swift */,
 				52DF5FEE2BA34EA000135367 /* TFEntity.swift */,
 			);
 			path = LevelManager;
@@ -440,6 +447,24 @@
 				520062572BA8ED73000DBA30 /* HomeComponent.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		BA443D402BAD9872009F0FFB /* EventTests */ = {
+			isa = PBXGroup;
+			children = (
+				BA443D412BAD9885009F0FFB /* DamageEventTests.swift */,
+			);
+			path = EventTests;
+			sourceTree = "<group>";
+		};
+		BA443D432BAD98CD009F0FFB /* AppMain */ = {
+			isa = PBXGroup;
+			children = (
+				52DF5FB12BA32B2300135367 /* Main.storyboard */,
+				52DF5FB62BA32B2600135367 /* LaunchScreen.storyboard */,
+				52DF5FA72BA32B2300135367 /* AppDelegate.swift */,
+			);
+			path = AppMain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -605,6 +630,7 @@
 				52578B8C2BA627B200B4D76C /* Team.swift in Sources */,
 				3CCF9CB72BAB2877004D170E /* MainMenuViewController.swift in Sources */,
 				52DF5FFF2BA3656500135367 /* ShootingComponent.swift in Sources */,
+				BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */,
 				3C9955CC2BA5889800D33FA5 /* MoveEvent.swift in Sources */,
 				5200624E2BA8D597000DBA30 /* AiComponent.swift in Sources */,
 				3C9955C22BA5838900D33FA5 /* EventOutput.swift in Sources */,
@@ -653,6 +679,7 @@
 				520062562BA8E026000DBA30 /* Spawnable.swift in Sources */,
 				52DF5FFB2BA3601400135367 /* HealthComponent.swift in Sources */,
 				3C9955BC2BA563A800D33FA5 /* TFEvent.swift in Sources */,
+				BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */,
 				5295A2072BAA02FD005018A8 /* TFButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -663,6 +690,7 @@
 			files = (
 				52DF5FC22BA32B2600135367 /* TowerForgeTests.swift in Sources */,
 				52DF5FE42BA3391200135367 /* TFTexturesTests.swift in Sources */,
+				BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

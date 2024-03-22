@@ -11,6 +11,9 @@ class HealthComponent: TFComponent {
     var currentHealth: CGFloat
     var maxHealth: CGFloat
     private let entityManager: EntityManager
+    var isZero: Bool {
+        currentHealth.isZero
+    }
 
     init(maxHealth: CGFloat, entityManager: EntityManager) {
         self.currentHealth = maxHealth
@@ -30,10 +33,21 @@ class HealthComponent: TFComponent {
         }
     }
 
+    /// Adjusts health by the specified amount.
+    func adjustHealth(amount: CGFloat) {
+         if amount < 0 {
+             decreaseHealth(amount: abs(amount))
+         } else {
+             increaseHealth(amount: amount)
+         }
+     }
+
+    /// Decreases currentHealth by the specified amount with a floor of 0.
     func decreaseHealth(amount: CGFloat) {
-        self.currentHealth -= amount
+        self.currentHealth = max(self.currentHealth - amount, 0)
     }
 
+    /// Increases currentHealth by the specific amount with a ceiling of maxHealth
     func increaseHealth(amount: CGFloat) {
         self.currentHealth = min(self.currentHealth + amount, self.maxHealth)
     }
