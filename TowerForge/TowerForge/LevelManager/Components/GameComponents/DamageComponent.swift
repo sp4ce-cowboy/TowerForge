@@ -24,47 +24,22 @@ class DamageComponent: TFComponent {
         super.init()
     }
 
-    override func update(deltaTime: TimeInterval) {
-        super.update(deltaTime: deltaTime)
+    var canDamage: Bool {
+        CACurrentMediaTime() - lastAttackTime >= attackRate
+    }
 
-        // Required components for the current Melee
-        guard let entity = entity,
-              let spriteComponent = entity.component(ofType: SpriteComponent.self) else {
-            return
+    func damage(_ healthComponent: HealthComponent) -> DamageEvent? {
+        guard canDamage, let entityId = healthComponent.entity?.id else {
+            return nil
         }
-        
-        // TODO: Shift damage logic to damage event and handled by health system.
-        // Loop opposite team's entities
-//        for entity in entityManager.entities {
-//            guard let playerComponent = entity.component(ofType: PlayerComponent.self) else {
-//                return
-//            }
-//            if playerComponent.player == .ownPlayer {
-//                return
-//            }
-//            // Get opposite team's components
-//            guard let oppositeSpriteComponent = entity.component(ofType: SpriteComponent.self),
-//                  let oppositeHealthComponent = entity.component(ofType: HealthComponent.self) else {
-//                return
-//            }
-//
-//            // Check collision with opposite team sprite component
-//            if oppositeSpriteComponent.node
-//                .calculateAccumulatedFrame().intersects(
-//                    spriteComponent.node.calculateAccumulatedFrame()) {
-//
-//                // Check if can attack
-//                if CACurrentMediaTime() - lastAttackTime > attackRate {
-//                    lastAttackTime = CACurrentMediaTime()
-//                    oppositeHealthComponent.decreaseHealth(amount: attackPower)
-//                }
-//
-//            }
-//
-//            // If only used once, then remove from entity
-//            if temporary {
-//                entityManager.removeEntity(with: entity.id)
-//            }
-//        }
+
+        guard let teamA = self.entity?.component(ofType: PlayerComponent.self)?.player,
+              let teamB = healthComponent.entity?.component(ofType: PlayerComponent.self)?.player,
+              teamA != teamB else {
+            return nil
+        }
+
+        lastAttackTime = CACurrentMediaTime()
+        return DamageEvent(on: entityId, at: lastAttackTime, with: attackPower)
     }
 }

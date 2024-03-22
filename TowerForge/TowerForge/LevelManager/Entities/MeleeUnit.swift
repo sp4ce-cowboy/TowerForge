@@ -15,7 +15,7 @@ class MeleeUnit: BaseUnit, Spawnable {
     static let maxHealth = 100.0
     static let damage = 10.0
     static var cost = 10
-    static let attackRate = 10.0
+    static let attackRate = 1.0
     static let velocity = CGVector(dx: 10.0, dy: 0.0)
 
     required init(position: CGPoint, entityManager: EntityManager, team: Team) {
@@ -45,10 +45,9 @@ class MeleeUnit: BaseUnit, Spawnable {
     }
 
     override func collide(with healthComponent: HealthComponent) -> (any TFEvent)? {
-        guard let entityId = healthComponent.entity?.id,
-              let damageComponent = self.component(ofType: DamageComponent.self) else {
+        guard let damageComponent = self.component(ofType: DamageComponent.self) else {
             return nil
         }
-        return DamageEvent(on: entityId, at: Date().timeIntervalSince1970, with: damageComponent.attackPower)
+        return damageComponent.damage(healthComponent)
     }
 }

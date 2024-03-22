@@ -39,16 +39,16 @@ class GameScene: SKScene {
 
 extension GameScene: SKPhysicsContactDelegate {
     public func didBegin(_ contact: SKPhysicsContact) {
-        guard let nodeA = contact.bodyA.node as? TFAnimatableNode,
-              let nodeB = contact.bodyB.node as? TFAnimatableNode else {
+        guard let nodeA = contact.bodyA.node as? TFSpriteNode,
+              let nodeB = contact.bodyB.node as? TFSpriteNode else {
             return
         }
         updateDelegate?.contactBegin(between: nodeA, and: nodeB)
     }
 
     public func didEnd(_ contact: SKPhysicsContact) {
-        guard let nodeA = contact.bodyA.node as? TFAnimatableNode,
-              let nodeB = contact.bodyB.node as? TFAnimatableNode else {
+        guard let nodeA = contact.bodyA.node as? TFSpriteNode,
+              let nodeB = contact.bodyB.node as? TFSpriteNode else {
             return
         }
 

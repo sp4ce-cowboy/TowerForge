@@ -34,7 +34,7 @@ class TFSpriteNode: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // Only for collision detection
     private func setUpPhysicsBody() {
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: width, height: height))
