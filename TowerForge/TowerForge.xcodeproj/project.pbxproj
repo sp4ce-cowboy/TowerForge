@@ -45,8 +45,12 @@
 		520062562BA8E026000DBA30 /* PlayerSpawnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520062552BA8E026000DBA30 /* PlayerSpawnable.swift */; };
 		520062582BA8ED73000DBA30 /* HomeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520062572BA8ED73000DBA30 /* HomeComponent.swift */; };
 		523923E72BADC8530044BA61 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 523923E62BADC8530044BA61 /* Launch Screen.storyboard */; };
+<<<<<<< HEAD
 		5240D08F2BAE6D0A004F1486 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D08E2BAE6D0A004F1486 /* Point.swift */; };
 		5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5250B42E2BAE0DB000F16CF6 /* LabelComponent.swift */; };
+=======
+		523923E92BADFFC50044BA61 /* PointNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523923E82BADFFC50044BA61 /* PointNode.swift */; };
+>>>>>>> 67f656d (Make point node)
 		52578B822BA61AAF00B4D76C /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52578B812BA61AAF00B4D76C /* PositionComponent.swift */; };
 		52578B872BA6209700B4D76C /* DamageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52578B862BA6209700B4D76C /* DamageComponent.swift */; };
 		52578B8C2BA627B200B4D76C /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52578B8B2BA627B200B4D76C /* Team.swift */; };
@@ -143,8 +147,12 @@
 		520062552BA8E026000DBA30 /* PlayerSpawnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSpawnable.swift; sourceTree = "<group>"; };
 		520062572BA8ED73000DBA30 /* HomeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeComponent.swift; sourceTree = "<group>"; };
 		523923E62BADC8530044BA61 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		5240D08E2BAE6D0A004F1486 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		5250B42E2BAE0DB000F16CF6 /* LabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelComponent.swift; sourceTree = "<group>"; };
+=======
+		523923E82BADFFC50044BA61 /* PointNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointNode.swift; sourceTree = "<group>"; };
+>>>>>>> 67f656d (Make point node)
 		52578B812BA61AAF00B4D76C /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		52578B862BA6209700B4D76C /* DamageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageComponent.swift; sourceTree = "<group>"; };
 		52578B8B2BA627B200B4D76C /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -343,6 +351,7 @@
 			children = (
 				5295A2122BAAEA16005018A8 /* UnitNode.swift */,
 				5295A2142BAAF335005018A8 /* UnitSelectionNode.swift */,
+				523923E82BADFFC50044BA61 /* PointNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -705,6 +714,7 @@
 				3C769A722BA58DE700F454F9 /* MovementSystem.swift in Sources */,
 				52DF5FEB2BA3400C00135367 /* TFAnimatableNode.swift in Sources */,
 				5295A2042BA9FED4005018A8 /* MenuScene.swift in Sources */,
+				523923E92BADFFC50044BA61 /* PointNode.swift in Sources */,
 				52DF5FEF2BA34EA000135367 /* TFEntity.swift in Sources */,
 				52DF5FED2BA34D0300135367 /* TFComponent.swift in Sources */,
 				527E3A242BA613F000FE1628 /* PlayerComponent.swift in Sources */,
