@@ -13,5 +13,7 @@ class Enums {
         case Ai
         case Home
         case Player
+        case Sprite
+        case Shooting
     }
 }

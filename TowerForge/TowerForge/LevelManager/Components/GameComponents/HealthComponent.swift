@@ -8,6 +8,7 @@
 import Foundation
 
 class HealthComponent: TFComponent {
+    override var componentType: Enums.Components { .Health }
     var currentHealth: CGFloat
     var maxHealth: CGFloat
     private var entityManager: EntityManager

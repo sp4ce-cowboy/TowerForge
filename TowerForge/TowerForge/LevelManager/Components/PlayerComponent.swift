@@ -32,6 +32,7 @@ public enum Player: Int {
 }
 
 class PlayerComponent: TFComponent {
+    override var componentType: Enums.Components { .Player }
     var player: Player
     init(player: Player) {
         self.player = player

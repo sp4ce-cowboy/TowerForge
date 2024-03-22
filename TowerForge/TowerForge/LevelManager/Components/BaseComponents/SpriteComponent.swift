@@ -8,6 +8,7 @@
 import Foundation
 
 class SpriteComponent: TFComponent {
+    override var componentType: Enums.Components { .Sprite }
     var node: TFAnimatableNode
 
     init(textureNames: [String], height: CGFloat, width: CGFloat, position: CGPoint, animatableKey: String) {

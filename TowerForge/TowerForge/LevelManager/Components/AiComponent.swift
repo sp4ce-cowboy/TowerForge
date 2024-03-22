@@ -8,6 +8,7 @@
 import Foundation
 
 class AiComponent: TFComponent {
+    override var componentType: Enums.Components { .Ai }
     private var entityManager: EntityManager
     private var chosenUnit: UnitType
     init(entityManager: EntityManager) {

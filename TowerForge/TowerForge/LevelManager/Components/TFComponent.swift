@@ -9,7 +9,7 @@ import Foundation
 
 class TFComponent: Identifiable, Hashable {
 
-    var componentType: Enums.Components = .Default
+    var componentType: Enums.Components { .Default }
     weak var entity: TFEntity?
 
     init() {
@@ -21,7 +21,6 @@ class TFComponent: Identifiable, Hashable {
     // Notify when the component is added to an entity.
     // This reference provides components other access to components 
     // from the same entity, to allow collaboration in the ECS framework
-
     func didAddToEntity(_ entity: TFEntity) {
         self.entity = entity
     }

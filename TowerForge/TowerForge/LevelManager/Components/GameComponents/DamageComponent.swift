@@ -10,6 +10,7 @@ import CoreGraphics
 import SpriteKit
 
 class DamageComponent: TFComponent {
+    override var componentType: Enums.Components { .Damage }
     private let attackRate: TimeInterval
     private var lastAttackTime = TimeInterval(0)
     private let entityManager: EntityManager

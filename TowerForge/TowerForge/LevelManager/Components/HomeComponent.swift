@@ -9,6 +9,7 @@ import Foundation
 import SpriteKit
 
 class HomeComponent: TFComponent {
+    override var componentType: Enums.Components { .Home }
     var lifeLeft: Int
     var points = 0
     private var lastPointIncrease = TimeInterval(0)

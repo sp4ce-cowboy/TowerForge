@@ -9,6 +9,7 @@ import Foundation
 import CoreGraphics
 
 class PositionComponent: TFComponent {
+    override var componentType: Enums.Components { .Position }
     var position: CGPoint
 
     init(position: CGPoint) {

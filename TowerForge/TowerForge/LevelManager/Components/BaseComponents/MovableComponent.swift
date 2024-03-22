@@ -9,6 +9,7 @@ import Foundation
 import CoreGraphics
 
 class MovableComponent: TFComponent {
+    override var componentType: Enums.Components { .Position }
     var velocity: CGVector
     var position: CGPoint
 

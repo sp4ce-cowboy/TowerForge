@@ -17,6 +17,7 @@ class UnitGenerator {
                 spawnSoldier(at: position, player: player, entityManager: entityManager, scene: scene)
             }
         }
+
     static func spawnMelee(at position: CGPoint, player: Player, entityManager: EntityManager, scene: SKScene) {
         // TODO: Change the default value and abstract as constant
         let unit = MeleeUnit(position: position,
@@ -32,6 +33,7 @@ class UnitGenerator {
             node.playAnimation()
         }
     }
+
     static func spawnSoldier(at position: CGPoint, player: Player, entityManager: EntityManager, scene: SKScene) {
         // TODO: Change the default value and abstract as constant
         let unit = SoldierUnit(position: position,

@@ -9,6 +9,7 @@ import Foundation
 import SpriteKit
 
 class ShootingComponent: TFComponent {
+    override var componentType: Enums.Components { .Shooting }
     var fireRate: TimeInterval // Delay between shots
     var range: CGFloat
     private var lastShotTime = TimeInterval(0)
