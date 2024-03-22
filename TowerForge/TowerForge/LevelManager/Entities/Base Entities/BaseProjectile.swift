@@ -8,7 +8,8 @@
 import Foundation
 
 class BaseProjectile: TFEntity {
-    init(textureNames: [String], size: CGSize, key: String, position: CGPoint, player: Player, velocity: CGVector = .zero) {
+    init(textureNames: [String], size: CGSize, key: String, position: CGPoint,
+         player: Player, velocity: CGVector = .zero) {
         super.init()
 
         createSpriteComponent(textureNames: textureNames, size: size, key: key, position: position)

@@ -78,6 +78,7 @@ class GameWorld {
     private func handleContact(between idA: UUID, and idB: UUID) {
         guard let entityA = entityManager.entity(with: idA), let entityB = entityManager.entity(with: idB) else {
             entitiesInContact.remove(TFContact(entityIdA: idA, entityIdB: idB))
+            handleSeparation(between: idA, and: idB)
             return
         }
 
@@ -89,10 +90,15 @@ class GameWorld {
     }
 
     private func handleSeparation(between idA: UUID, and idB: UUID) {
-        guard let entityA = entityManager.entity(with: idA), let entityB = entityManager.entity(with: idB) else {
-            return
+        if let entityA = entityManager.entity(with: idA),
+           let movableComponent = entityA.component(ofType: MovableComponent.self) {
+            movableComponent.isColliding = false
         }
-        // TODO: Handle any separation logic here.
+
+        if let entityB = entityManager.entity(with: idB),
+           let movableComponent = entityB.component(ofType: MovableComponent.self) {
+            movableComponent.isColliding = false
+        }
     }
 
     private func setUpSystems() {

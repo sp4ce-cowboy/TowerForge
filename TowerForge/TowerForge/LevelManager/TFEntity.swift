@@ -58,4 +58,8 @@ class TFEntity: Collidable {
     func collide(with healthComponent: HealthComponent) -> TFEvent? {
         nil
     }
+
+    func collide(with movableComponent: MovableComponent) -> TFEvent? {
+        nil
+    }
 }

@@ -42,6 +42,17 @@ class BaseTower: TFEntity {
         return damageComponent.damage(healthComponent)
     }
 
+    override func collide(with movableComponent: MovableComponent) -> (any TFEvent)? {
+        guard let playerA = self.component(ofType: PlayerComponent.self)?.player,
+              let playerB = movableComponent.entity?.component(ofType: PlayerComponent.self)?.player,
+              playerA != playerB else {
+            return nil
+        }
+
+        movableComponent.isColliding = true
+        return nil
+    }
+
     private func createHealthComponent(maxHealth: CGFloat) {
         let healthComponent = HealthComponent(maxHealth: maxHealth)
         self.addComponent(healthComponent)
