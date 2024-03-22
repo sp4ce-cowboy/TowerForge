@@ -6,20 +6,17 @@
 //
 
 import Foundation
-import CoreGraphics
 import SpriteKit
 
 class DamageComponent: TFComponent {
     private let attackRate: TimeInterval
     private var lastAttackTime = TimeInterval(0)
-    private let entityManager: EntityManager
     private let temporary: Bool
     let attackPower: CGFloat
 
-    init(attackRate: TimeInterval, attackPower: CGFloat, temporary: Bool, entityManager: EntityManager) {
+    init(attackRate: TimeInterval, attackPower: CGFloat, temporary: Bool) {
         self.attackRate = attackRate
         self.attackPower = attackPower
-        self.entityManager = entityManager
         self.temporary = temporary
         super.init()
     }
@@ -28,8 +25,8 @@ class DamageComponent: TFComponent {
         CACurrentMediaTime() - lastAttackTime >= attackRate
     }
 
-    func damage(_ healthComponent: HealthComponent) -> DamageEvent? {
-        guard canDamage, let entityId = healthComponent.entity?.id else {
+    func damage(_ healthComponent: HealthComponent) -> TFEvent? {
+        guard canDamage, let enemyId = healthComponent.entity?.id, let id = entity?.id else {
             return nil
         }
 
@@ -40,6 +37,11 @@ class DamageComponent: TFComponent {
         }
 
         lastAttackTime = CACurrentMediaTime()
-        return DamageEvent(on: entityId, at: lastAttackTime, with: attackPower)
+        let event = DamageEvent(on: enemyId, at: lastAttackTime, with: attackPower)
+
+        if temporary {
+            return event.concurrentlyWith(RemoveEvent(on: id, at: lastAttackTime))
+        }
+        return event
     }
 }

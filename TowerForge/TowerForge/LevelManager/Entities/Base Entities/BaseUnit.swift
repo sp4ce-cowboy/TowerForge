@@ -7,43 +7,17 @@
 
 import Foundation
 
-enum UnitType {
-    case melee
-    case soldier
-    static let possibleUnits = [melee, soldier]
-
-    var cost: Int {
-        switch self {
-        case .melee:
-            return MeleeUnit.cost
-        case .soldier:
-            return SoldierUnit.cost
-        }
-    }
-
-    // TODO: A better way to do this
-    var title: String {
-        switch self {
-        case .melee:
-            return "melee"
-        case .soldier:
-            return "soldier"
-        }
-    }
-}
-
 class BaseUnit: TFEntity {
     init(textureNames: [String],
          size: CGSize,
          key: String,
          position: CGPoint,
          maxHealth: CGFloat,
-         entityManager: EntityManager,
          velocity: CGVector,
          player: Player) {
         super.init()
         createPlayerComponent(player: player)
-        createHealthComponent(maxHealth: maxHealth, entityManager: entityManager)
+        createHealthComponent(maxHealth: maxHealth)
         createSpriteComponent(textureNames: textureNames, size: size, key: key, position: position)
         createMovableComponent(position: position, velocity: velocity)
         createPositionComponent(position: position)
@@ -62,17 +36,18 @@ class BaseUnit: TFEntity {
     }
 
     override func collide(with damageComponent: DamageComponent) -> TFEvent? {
-        guard self.hasComponent(ofType: HealthComponent.self) else {
+        guard let healthComponent = self.component(ofType: HealthComponent.self) else {
             return nil
         }
         // No call to super here as super is done on collide with Collidable above.
-        return DamageEvent(on: self.id, at: Date().timeIntervalSince1970, with: damageComponent.attackPower)
+        return damageComponent.damage(healthComponent)
     }
 
-    private func createHealthComponent(maxHealth: CGFloat, entityManager: EntityManager) {
-        let healthComponent = HealthComponent(maxHealth: maxHealth, entityManager: entityManager)
+    private func createHealthComponent(maxHealth: CGFloat) {
+        let healthComponent = HealthComponent(maxHealth: maxHealth)
         self.addComponent(healthComponent)
     }
+
     private func createPositionComponent(position: CGPoint) {
         let positionComponent = PositionComponent(position: position)
         self.addComponent(positionComponent)
@@ -91,6 +66,7 @@ class BaseUnit: TFEntity {
         let movableComponent = MovableComponent(position: position, velocity: velocity)
         self.addComponent(movableComponent)
     }
+
     private func createPlayerComponent(player: Player) {
         let playerComponent = PlayerComponent(player: player)
         self.addComponent(playerComponent)

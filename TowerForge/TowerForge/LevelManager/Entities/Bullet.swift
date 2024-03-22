@@ -1,28 +1,31 @@
 //
-//  Arrow.swift
+//  Bullet.swift
 //  TowerForge
 //
 //  Created by Zheng Ze on 16/3/24.
 //
 
 import Foundation
+import SpriteKit
 
-class Arrow: BaseProjectile {
-    static let textureNames: [String] = []
+class Bullet: BaseProjectile, Spawnable {
+    static let textureNames: [String] = ["bullet"]
     static let size = CGSize(width: 10, height: 10)
-    static let key = "arrow"
+    static let key = "bullet"
     static let damage = 5.0
+    static let attackRate = 1.0
+    static let velocity = CGVector(dx: 100, dy: 0)
 
-    init(position: CGPoint, velocity: CGVector, attackRate: TimeInterval, entityManager: EntityManager) {
-        super.init(textureNames: Arrow.textureNames,
-                   size: Arrow.size,
-                   key: Arrow.key,
+    required init(position: CGPoint, player: Player) {
+        super.init(textureNames: Bullet.textureNames,
+                   size: Bullet.size,
+                   key: Bullet.key,
                    position: position,
-                   velocity: velocity)
-        self.addComponent(DamageComponent(attackRate: attackRate,
-                                          attackPower: Arrow.damage,
-                                          temporary: true,
-                                          entityManager: entityManager))
+                   player: player,
+                   velocity: Bullet.velocity)
+        self.addComponent(DamageComponent(attackRate: Bullet.attackRate,
+                                          attackPower: Bullet.damage,
+                                          temporary: true))
     }
 
     override func collide(with other: any Collidable) -> TFEvent? {

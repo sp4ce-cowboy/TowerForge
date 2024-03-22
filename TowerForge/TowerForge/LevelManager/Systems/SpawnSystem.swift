@@ -1,7 +1,7 @@
 import Foundation
 
 class SpawnSystem: TFSystem {
-    var isActive = false
+    var isActive = true
     weak var entityManager: EntityManager?
     weak var eventManager: EventManager?
 
@@ -15,5 +15,4 @@ class SpawnSystem: TFSystem {
     func handleSpawn(with entity: TFEntity) {
         entityManager?.add(entity)
     }
-
 }

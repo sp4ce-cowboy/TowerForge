@@ -23,13 +23,12 @@ struct DamageEvent: TFEvent {
         guard let healthSystem = target.system(ofType: HealthSystem.self) else {
             return nil
         }
-        let healthIsZero = healthSystem.modifyHealth(for: entityId, with: damage)
+        let healthIsZero = healthSystem.modifyHealth(for: entityId, with: -damage)
+        var eventOutput = EventOutput()
         if healthIsZero {
-            var newEventOutput = EventOutput()
-            newEventOutput.add(RemoveEvent(on: entityId, at: timestamp))
-            return newEventOutput
+            eventOutput.add(RemoveEvent(on: entityId, at: timestamp))
         }
 
-        return EventOutput()
+        return eventOutput
     }
 }

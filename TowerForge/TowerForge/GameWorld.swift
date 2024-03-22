@@ -29,6 +29,7 @@ class GameWorld {
         }
         renderer = Renderer(target: self, scene: scene)
 
+        self.setUpSystems()
         self.setUpSelectionNode()
         self.setupTeam()
     }
@@ -40,7 +41,6 @@ class GameWorld {
 
         systemManager.update(deltaTime)
         eventManager.executeEvents(in: self)
-        entityManager.update(deltaTime)
         renderer?.render()
     }
 
@@ -89,6 +89,15 @@ class GameWorld {
             return
         }
         // TODO: Handle any separation logic here.
+    }
+
+    private func setUpSystems() {
+        systemManager.add(system: HealthSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: MovementSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: RemoveSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: SpawnSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: ShootingSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: AiSystem(entityManager: entityManager, eventManager: eventManager))
     }
 
     private func setUpSelectionNode() {

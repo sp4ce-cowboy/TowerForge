@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MeleeUnit: BaseUnit, Spawnable {
+class MeleeUnit: BaseUnit, PlayerSpawnable {
     static let title: String = "melee"
     static let textureNames = ["melee-1", "melee-2"]
     static let size = CGSize(width: 100, height: 100)
@@ -18,20 +18,17 @@ class MeleeUnit: BaseUnit, Spawnable {
     static let attackRate = 1.0
     static let velocity = CGVector(dx: 10.0, dy: 0.0)
 
-    required init(position: CGPoint, entityManager: EntityManager, player: Player) {
+    required init(position: CGPoint, player: Player) {
         super.init(textureNames: MeleeUnit.textureNames,
                    size: MeleeUnit.size,
                    key: MeleeUnit.key,
-
                    position: position,
                    maxHealth: MeleeUnit.maxHealth,
-                   entityManager: entityManager,
                    velocity: MeleeUnit.velocity,
                    player: player)
         self.addComponent(DamageComponent(attackRate: MeleeUnit.attackRate,
                                           attackPower: MeleeUnit.damage,
-                                          temporary: false,
-                                          entityManager: entityManager))
+                                          temporary: false))
     }
 
     override func collide(with other: any Collidable) -> (any TFEvent)? {

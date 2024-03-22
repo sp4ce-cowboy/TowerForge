@@ -12,61 +12,37 @@ class ShootingComponent: TFComponent {
     var fireRate: TimeInterval // Delay between shots
     var range: CGFloat
     private var lastShotTime = TimeInterval(0)
-    private let entityManager: EntityManager
     let attackPower: CGFloat
 
-    init(fireRate: TimeInterval, range: CGFloat, entityManager: EntityManager, attackPower: CGFloat) {
+    init(fireRate: TimeInterval, range: CGFloat, attackPower: CGFloat) {
         self.fireRate = fireRate
         self.range = range
-        self.entityManager = entityManager
         self.attackPower = attackPower
         super.init()
     }
 
-    override func update(deltaTime: TimeInterval) {
-        super.update(deltaTime: deltaTime)
+    var canShoot: Bool {
+        CACurrentMediaTime() - lastShotTime >= fireRate
+    }
 
-        // Required components for the current Melee
-        guard let entity = entity,
-              let spriteComponent = entity.component(ofType: SpriteComponent.self),
-              let positionComponent = entity.component(ofType: PositionComponent.self) else {
-            return
+    func shoot(_ healthComponent: HealthComponent) -> SpawnEvent? {
+        guard canShoot, let entityA = self.entity, let entityB = healthComponent.entity else {
+            return nil
         }
 
-        // Loop opposite team's entities
-        for entity in entityManager.entities {
-            guard let playerComponent = entity.component(ofType: PlayerComponent.self) else {
-                return
-            }
-            if playerComponent.player == .ownPlayer {
-                return
-            }
-            // Get opposite team's components
-            guard let oppositeSpriteComponent = entity.component(ofType: SpriteComponent.self),
-                  let oppositeHealthComponent = entity.component(ofType: HealthComponent.self),
-                  let oppositePositionComponent = entity.component(ofType: PositionComponent.self) else {
-                return
-            }
-
-            // Get the horizontal distance
-            let distanceBetween = (positionComponent.position.x - oppositePositionComponent.position.x)
-
-            // Check if within range
-            if distanceBetween < range {
-                // TODO : Change the hard coded velocity value
-                let arrow = Arrow(position: positionComponent.position,
-                                  velocity: playerComponent.player.getDirectionVelocity(),
-                                  attackRate: 1.0,
-                                  entityManager: entityManager)
-                guard let arrowSpriteComponent = arrow.component(ofType: SpriteComponent.self) else {
-                    return
-                }
-
-                // Check if can attack
-                if CACurrentMediaTime() - lastShotTime > fireRate {
-                    lastShotTime = CACurrentMediaTime()
-                }
-            }
+        guard let playerA = entityA.component(ofType: PlayerComponent.self)?.player,
+              let playerB = entityB.component(ofType: PlayerComponent.self)?.player,
+              playerA != playerB else {
+            return nil
         }
+
+        guard let positionA = entityA.component(ofType: PositionComponent.self)?.position,
+              let positionB = entityB.component(ofType: PositionComponent.self)?.position,
+              abs(positionA.x - positionB.x) <= range, abs(positionA.y - positionB.y) <= 50 else {
+            return nil
+        }
+
+        lastShotTime = CACurrentMediaTime()
+        return SpawnEvent(ofType: Bullet.self, timestamp: lastShotTime, position: positionA, player: playerA)
     }
 }

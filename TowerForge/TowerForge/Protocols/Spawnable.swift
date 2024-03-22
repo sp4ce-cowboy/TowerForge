@@ -2,13 +2,11 @@
 //  Spawnable.swift
 //  TowerForge
 //
-//  Created by Vanessa Mae on 19/03/24.
+//  Created by Zheng Ze on 23/3/24.
 //
 
 import Foundation
 
 protocol Spawnable {
-    init(position: CGPoint, entityManager: EntityManager, player: Player)
-    static var cost: Int { get set }
-    static var title: String { get }
+    init(position: CGPoint, player: Player)
 }

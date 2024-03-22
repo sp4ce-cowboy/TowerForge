@@ -13,12 +13,13 @@ class BaseTower: TFEntity {
          key: String,
          position: CGPoint,
          maxHealth: CGFloat,
-         entityManager: EntityManager) {
+         player: Player) {
         super.init()
 
-        createHealthComponent(maxHealth: maxHealth, entityManager: entityManager)
+        createHealthComponent(maxHealth: maxHealth)
         createSpriteComponent(textureNames: textureNames, size: size, key: key, position: position)
         createPositionComponent(position: position)
+        createPlayerComponent(player: player)
     }
 
     override func collide(with other: any Collidable) -> TFEvent? {
@@ -34,15 +35,15 @@ class BaseTower: TFEntity {
     }
 
     override func collide(with damageComponent: DamageComponent) -> TFEvent? {
-        guard self.hasComponent(ofType: HealthComponent.self) else {
+        guard let healthComponent = self.component(ofType: HealthComponent.self) else {
             return nil
         }
         // No call to super here as super is done on collide with Collidable above.
-        return DamageEvent(on: self.id, at: Date().timeIntervalSince1970, with: damageComponent.attackPower)
+        return damageComponent.damage(healthComponent)
     }
 
-    private func createHealthComponent(maxHealth: CGFloat, entityManager: EntityManager) {
-        let healthComponent = HealthComponent(maxHealth: maxHealth, entityManager: entityManager)
+    private func createHealthComponent(maxHealth: CGFloat) {
+        let healthComponent = HealthComponent(maxHealth: maxHealth)
         self.addComponent(healthComponent)
     }
     private func createPositionComponent(position: CGPoint) {
@@ -57,5 +58,10 @@ class BaseTower: TFEntity {
                                               position: position,
                                               animatableKey: key)
         self.addComponent(spriteComponent)
+    }
+
+    private func createPlayerComponent(player: Player) {
+        let playerComponent = PlayerComponent(player: player)
+        self.addComponent(playerComponent)
     }
 }

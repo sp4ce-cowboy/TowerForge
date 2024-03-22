@@ -10,10 +10,10 @@ import UIKit
 
 class AiComponent: TFComponent {
     private var entityManager: EntityManager
-    private var chosenUnit: (BaseUnit & Spawnable).Type?
+    private var chosenUnit: (TFEntity & PlayerSpawnable).Type?
     init(entityManager: EntityManager) {
         self.entityManager = entityManager
-        self.chosenUnit = SpawnableEntities.possibleUnits.randomElement()
+        self.chosenUnit = SpawnableEntities.playerSpawnableEntities.randomElement()
         super.init()
     }
 
@@ -22,20 +22,17 @@ class AiComponent: TFComponent {
               let chosenUnit = chosenUnit else {
             return
         }
-
-        // Generate random coordinates within the defined range
         let randomY = CGFloat.random(in: 0...UIScreen.main.bounds.height)
 
         if homeComponent.points >= chosenUnit.cost {
             let unit = UnitGenerator.spawn(ofType: chosenUnit,
                                            at: CGPoint(x: UIScreen.main.bounds.width,
                                                        y: randomY),
-                                           player: .oppositePlayer,
-                                           entityManager: entityManager)
+                                           player: .oppositePlayer)
             homeComponent.decreasePoints(chosenUnit.cost)
 
             // Re-randomize the unit
-            self.chosenUnit = SpawnableEntities.possibleUnits.randomElement()
+            self.chosenUnit = SpawnableEntities.playerSpawnableEntities.randomElement()
             entityManager.add(unit)
         }
     }
