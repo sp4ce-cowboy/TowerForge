@@ -11,6 +11,7 @@ import CoreGraphics
 class MovableComponent: TFComponent {
     var velocity: CGVector
     var position: CGPoint
+    var isColliding = false
 
     init(position: CGPoint, velocity: CGVector = .zero) {
         self.velocity = velocity
@@ -28,7 +29,8 @@ class MovableComponent: TFComponent {
      }
 
     override func update(deltaTime: TimeInterval) {
-        guard let entity = entity,
+        guard !isColliding,
+              let entity = entity,
               let positionComponent = entity.component(ofType: PositionComponent.self),
               let playerComponent = entity.component(ofType: PlayerComponent.self) else {
             return
