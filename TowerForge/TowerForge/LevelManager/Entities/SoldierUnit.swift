@@ -8,6 +8,7 @@
 import Foundation
 
 class SoldierUnit: BaseUnit, Spawnable {
+
     static let title: String = "soldier"
     static let textureNames = ["Shooter-1", "Shooter-2"]
     static let size = CGSize(width: 100, height: 100)
@@ -18,7 +19,7 @@ class SoldierUnit: BaseUnit, Spawnable {
     static let attackRate = 10.0
     static let velocity = CGVector(dx: 10.0, dy: 0.0)
 
-    required init(position: CGPoint, entityManager: EntityManager, team: Team) {
+    required init(position: CGPoint, entityManager: EntityManager, player: Player) {
         super.init(textureNames: SoldierUnit.textureNames,
                    size: SoldierUnit.size,
                    key: SoldierUnit.key,
@@ -26,7 +27,7 @@ class SoldierUnit: BaseUnit, Spawnable {
                    maxHealth: SoldierUnit.maxHealth,
                    entityManager: entityManager,
                    velocity: SoldierUnit.velocity,
-                   team: team)
+                   player: player)
 
         self.addComponent(ShootingComponent(fireRate: SoldierUnit.attackRate,
                                             range: 1.0,

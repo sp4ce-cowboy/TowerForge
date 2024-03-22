@@ -35,7 +35,7 @@ class GameViewController: UIViewController {
     }
 
     private func setUpGameWorld(scene: GameScene) {
-        self.gameWorld = GameWorld(scene: scene)
+        self.gameWorld = GameWorld(scene: scene, screenSize: self.view.frame)
     }
 }
 
@@ -85,7 +85,7 @@ extension GameViewController: SceneManagerDelegate {
     }
     func showScene(scene: SKScene) {
         if let view = self.view as? SKView {
-            scene.scaleMode = .aspectFill
+            scene.scaleMode = .resizeFill
             view.presentScene(scene)
             view.ignoresSiblingOrder = true // to render nodes more efficiently
             view.showsFPS = true

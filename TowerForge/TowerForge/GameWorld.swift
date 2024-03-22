@@ -17,16 +17,20 @@ class GameWorld {
     private var renderer: Renderer?
     private var entitiesInContact: Set<TFContact> = []
 
-    init(scene: GameScene?) {
+    init(scene: GameScene?, screenSize: CGRect) {
         self.scene = scene
         entityManager = EntityManager()
         systemManager = SystemManager()
         eventManager = EventManager()
         selectionNode = UnitSelectionNode()
-        grid = Grid(entityManager: entityManager)
+        grid = Grid(entityManager: entityManager, screenSize: screenSize)
+        if let scene = self.scene {
+            grid.generateTileMap(scene: scene)
+        }
         renderer = Renderer(target: self, scene: scene)
 
         self.setUpSelectionNode()
+        self.setupTeam()
     }
 
     func update(deltaTime: TimeInterval) {
@@ -42,6 +46,12 @@ class GameWorld {
 
     func spawnUnit(at location: CGPoint) {
         selectionNode.unitNodeDidSpawn(location)
+    }
+    func setupTeam() {
+        let ownTeam = Team(player: .ownPlayer, entityManager: entityManager)
+        let oppositeTeam = Team(player: .oppositePlayer, entityManager: entityManager)
+        entityManager.add(ownTeam)
+        entityManager.add(oppositeTeam)
     }
 
     // TODO: Move contact handling to a system

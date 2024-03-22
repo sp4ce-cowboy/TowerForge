@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class AiComponent: TFComponent {
     private var entityManager: EntityManager
@@ -17,11 +18,25 @@ class AiComponent: TFComponent {
     }
 
     override func update(deltaTime: TimeInterval) {
-        guard let homeComponent = entity?.component(ofType: HomeComponent.self), let chosenUnit = chosenUnit else {
+        guard let homeComponent = entity?.component(ofType: HomeComponent.self),
+              let chosenUnit = chosenUnit else {
             return
         }
-        let unit = UnitGenerator.spawn(ofType: chosenUnit, at: CGPoint(x: 0, y: 10), player: .oppositePlayer,
-                                       entityManager: entityManager)
-        entityManager.add(unit)
+
+        // Generate random coordinates within the defined range
+        let randomY = CGFloat.random(in: 0...UIScreen.main.bounds.height)
+
+        if homeComponent.points >= chosenUnit.cost {
+            let unit = UnitGenerator.spawn(ofType: chosenUnit,
+                                           at: CGPoint(x: UIScreen.main.bounds.width,
+                                                       y: randomY),
+                                           player: .oppositePlayer,
+                                           entityManager: entityManager)
+            homeComponent.decreasePoints(chosenUnit.cost)
+
+            // Re-randomize the unit
+            self.chosenUnit = SpawnableEntities.possibleUnits.randomElement()
+            entityManager.add(unit)
+        }
     }
 }

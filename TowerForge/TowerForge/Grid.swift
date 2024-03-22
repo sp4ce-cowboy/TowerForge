@@ -12,15 +12,41 @@ class Grid: UnitSelectionNodeDelegate {
 
     private var entityManager: EntityManager
     private var noOfRows: Int
+    private var width: CGFloat
+    private var height: CGFloat
 
-    init(entityManager: EntityManager) {
+    init(entityManager: EntityManager, screenSize: CGRect) {
         self.entityManager = entityManager
         self.noOfRows = DEFAULT_NO_OF_ROWS
+        self.width = screenSize.width
+        self.height = screenSize.height
     }
 
+    func generateTileMap(scene: SKScene) {
+        let screenWidth = self.width
+        let screenHeight = self.height
+        let tileSize = CGSize(width: screenHeight / CGFloat(noOfRows), height: screenHeight / CGFloat(noOfRows))
+
+        // Calculate the number of columns needed to cover the screen width
+        let numberOfColumns = Int(ceil(screenWidth / tileSize.width))
+
+        for row in 0..<noOfRows {
+            for col in 0..<numberOfColumns {
+                let node = TFSpriteNode(imageName: "road-tile", height: tileSize.height, width: tileSize.width)
+                node.anchorPoint = CGPoint(x: 0, y: 0)
+                node.position = CGPoint(x: CGFloat(CGFloat(col) * tileSize.width),
+                                        y: CGFloat(CGFloat(row) * tileSize.height))
+                node.zPosition = -100
+                scene.addChild(node)
+            }
+        }
+    }
     func unitSelectionNodeDidSpawn<T: BaseUnit & Spawnable>(ofType type: T.Type, position: CGPoint) {
         let snapPosition = CGPoint(x: position.x, y: snapYPosition(yPosition: position.y))
-        let unit = UnitGenerator.spawn(ofType: type, at: snapPosition, player: Player.ownPlayer, entityManager: entityManager)
+        let unit = UnitGenerator.spawn(ofType: type,
+                                       at: snapPosition,
+                                       player: Player.ownPlayer,
+                                       entityManager: entityManager)
         entityManager.add(unit)
     }
 
@@ -34,10 +60,10 @@ class Grid: UnitSelectionNodeDelegate {
     }
 
     private func normalizeYPosition(yPosition: Double) -> Double {
-        yPosition + UIScreen.main.bounds.height / 2
+        yPosition
     }
 
     private func denormalizeYPosition(yPosition: Double) -> Double {
-        yPosition - UIScreen.main.bounds.height / 2
+        yPosition
     }
 }
