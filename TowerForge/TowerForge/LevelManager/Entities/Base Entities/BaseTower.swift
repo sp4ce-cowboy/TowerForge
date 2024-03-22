@@ -34,11 +34,11 @@ class BaseTower: TFEntity {
     }
 
     override func collide(with damageComponent: DamageComponent) -> TFEvent? {
-        guard self.hasComponent(ofType: HealthComponent.self) else {
+        guard let healthComponent = self.component(ofType: HealthComponent.self) else {
             return nil
         }
         // No call to super here as super is done on collide with Collidable above.
-        return DamageEvent(on: self.id, at: Date().timeIntervalSince1970, with: damageComponent.attackPower)
+        return damageComponent.damage(healthComponent)
     }
 
     private func createHealthComponent(maxHealth: CGFloat, entityManager: EntityManager) {
