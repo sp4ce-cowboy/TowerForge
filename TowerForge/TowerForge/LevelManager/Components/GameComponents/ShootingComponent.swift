@@ -43,6 +43,6 @@ class ShootingComponent: TFComponent {
         }
 
         lastShotTime = CACurrentMediaTime()
-        return SpawnEvent(ofType: Arrow.self, timestamp: lastShotTime, position: positionA, team: Team(player: playerA))
+        return SpawnEvent(ofType: Arrow.self, timestamp: lastShotTime, position: positionA, player: playerA)
     }
 }

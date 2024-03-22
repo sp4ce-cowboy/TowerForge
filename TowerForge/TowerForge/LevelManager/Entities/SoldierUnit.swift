@@ -20,14 +20,14 @@ class SoldierUnit: BaseUnit, PlayerSpawnable {
     static let range = 400.0
     static let attackPower = 10.0
 
-    required init(position: CGPoint, team: Team) {
+    required init(position: CGPoint, player: Player) {
         super.init(textureNames: SoldierUnit.textureNames,
                    size: SoldierUnit.size,
                    key: SoldierUnit.key,
                    position: position,
                    maxHealth: SoldierUnit.maxHealth,
                    velocity: SoldierUnit.velocity,
-                   team: team)
+                   player: player)
 
         self.addComponent(ShootingComponent(fireRate: SoldierUnit.attackRate,
                                             range: SoldierUnit.range,

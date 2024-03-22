@@ -8,5 +8,5 @@
 import Foundation
 
 protocol Spawnable {
-    init(position: CGPoint, team: Team)
+    init(position: CGPoint, player: Player)
 }

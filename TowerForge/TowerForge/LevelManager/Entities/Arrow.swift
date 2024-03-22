@@ -16,12 +16,12 @@ class Arrow: BaseProjectile, Spawnable {
     static let attackRate = 1.0
     static let velocity = CGVector(dx: 100, dy: 0)
 
-    required init(position: CGPoint, team: Team) {
+    required init(position: CGPoint, player: Player) {
         super.init(textureNames: Arrow.textureNames,
                    size: Arrow.size,
                    key: Arrow.key,
                    position: position,
-                   team: team,
+                   player: player,
                    velocity: Arrow.velocity)
         self.addComponent(DamageComponent(attackRate: Arrow.attackRate,
                                           attackPower: Arrow.damage,

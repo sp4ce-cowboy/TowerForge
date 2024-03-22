@@ -5,8 +5,8 @@ struct SpawnEvent: TFEvent {
     let entityId: UUID
     let entity: TFEntity
 
-    init<T: TFEntity & Spawnable>(ofType type: T.Type, timestamp: TimeInterval, position: CGPoint, team: Team) {
-        self.entity = type.init(position: position, team: team)
+    init<T: TFEntity & Spawnable>(ofType type: T.Type, timestamp: TimeInterval, position: CGPoint, player: Player) {
+        self.entity = type.init(position: position, player: player)
         self.timestamp = timestamp
         self.entityId = entity.id
     }

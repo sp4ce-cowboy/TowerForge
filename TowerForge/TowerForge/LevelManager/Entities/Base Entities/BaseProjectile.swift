@@ -8,13 +8,13 @@
 import Foundation
 
 class BaseProjectile: TFEntity {
-    init(textureNames: [String], size: CGSize, key: String, position: CGPoint, team: Team, velocity: CGVector = .zero) {
+    init(textureNames: [String], size: CGSize, key: String, position: CGPoint, player: Player, velocity: CGVector = .zero) {
         super.init()
 
         createSpriteComponent(textureNames: textureNames, size: size, key: key, position: position)
         createMovableComponent(position: position, velocity: velocity)
         createPositionComponent(position: position)
-        createPlayerComponent(team: team)
+        createPlayerComponent(player: player)
     }
 
     private func createSpriteComponent(textureNames: [String], size: CGSize, key: String, position: CGPoint) {
@@ -36,8 +36,8 @@ class BaseProjectile: TFEntity {
         self.addComponent(movableComponent)
     }
 
-    private func createPlayerComponent(team: Team) {
-        let playerComponent = PlayerComponent(player: team.player)
+    private func createPlayerComponent(player: Player) {
+        let playerComponent = PlayerComponent(player: player)
         self.addComponent(playerComponent)
     }
 }

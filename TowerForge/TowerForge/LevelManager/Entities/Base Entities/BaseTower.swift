@@ -13,13 +13,13 @@ class BaseTower: TFEntity {
          key: String,
          position: CGPoint,
          maxHealth: CGFloat,
-         team: Team) {
+         player: Player) {
         super.init()
 
         createHealthComponent(maxHealth: maxHealth)
         createSpriteComponent(textureNames: textureNames, size: size, key: key, position: position)
         createPositionComponent(position: position)
-        createPlayerComponent(team: team)
+        createPlayerComponent(player: player)
     }
 
     override func collide(with other: any Collidable) -> TFEvent? {
@@ -60,8 +60,8 @@ class BaseTower: TFEntity {
         self.addComponent(spriteComponent)
     }
 
-    private func createPlayerComponent(team: Team) {
-        let playerComponent = PlayerComponent(player: team.player)
+    private func createPlayerComponent(player: Player) {
+        let playerComponent = PlayerComponent(player: player)
         self.addComponent(playerComponent)
     }
 }

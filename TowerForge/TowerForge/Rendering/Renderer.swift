@@ -48,7 +48,8 @@ class Renderer {
 
     private func addAndCache(entity: TFEntity) {
         guard let spriteComponent = entity.component(ofType: SpriteComponent.self),
-              let positionComponent = entity.component(ofType: PositionComponent.self) else {
+              let positionComponent = entity.component(ofType: PositionComponent.self),
+              let playerComponent = entity.component(ofType: PlayerComponent.self) else {
             return
         }
 
@@ -56,7 +57,12 @@ class Renderer {
                                     height: spriteComponent.height,
                                     width: spriteComponent.width,
                                     animatableKey: spriteComponent.animatableKey)
+        // Flips the image if it is the opposite team
+        if playerComponent.player == .oppositePlayer {
+            node.xScale *= -1
+        }
         node.position = positionComponent.position
+        node.playAnimation()
         node.name = entity.id.uuidString
         renderedNodes[entity.id] = node
         scene?.addChild(node)
