@@ -5,9 +5,8 @@ class MovementSystem: TFSystem {
     weak var entityManager: EntityManager?
     weak var eventManager: EventManager?
 
-    init(entityManager: EntityManager, eventManager: EventManager) {
+    init(entityManager: EntityManager) {
         self.entityManager = entityManager
-        self.eventManager = eventManager
     }
 
     func update(within time: CGFloat) {

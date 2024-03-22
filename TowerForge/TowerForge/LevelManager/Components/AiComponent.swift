@@ -9,31 +9,28 @@ import Foundation
 import UIKit
 
 class AiComponent: TFComponent {
-    private var entityManager: EntityManager
     private var chosenUnit: (TFEntity & PlayerSpawnable).Type?
-    init(entityManager: EntityManager) {
-        self.entityManager = entityManager
+
+    override init() {
         self.chosenUnit = SpawnableEntities.playerSpawnableEntities.randomElement()
         super.init()
     }
 
-    override func update(deltaTime: TimeInterval) {
+    func spawn() -> TFEvent? {
         guard let homeComponent = entity?.component(ofType: HomeComponent.self),
               let chosenUnit = chosenUnit else {
-            return
+            return nil
         }
         let randomY = CGFloat.random(in: 0...UIScreen.main.bounds.height)
 
-        if homeComponent.points >= chosenUnit.cost {
-            let unit = UnitGenerator.spawn(ofType: chosenUnit,
-                                           at: CGPoint(x: UIScreen.main.bounds.width,
-                                                       y: randomY),
-                                           player: .oppositePlayer)
-            homeComponent.decreasePoints(chosenUnit.cost)
-
-            // Re-randomize the unit
-            self.chosenUnit = SpawnableEntities.playerSpawnableEntities.randomElement()
-            entityManager.add(unit)
+        guard homeComponent.points >= chosenUnit.cost else {
+            return nil
         }
+        homeComponent.decreasePoints(chosenUnit.cost)
+
+        // Re-randomize the unit
+        self.chosenUnit = SpawnableEntities.playerSpawnableEntities.randomElement()
+        return SpawnEvent(ofType: chosenUnit, timestamp: CACurrentMediaTime(),
+                          position: CGPoint(x: UIScreen.main.bounds.width, y: randomY), player: .oppositePlayer)
     }
 }
