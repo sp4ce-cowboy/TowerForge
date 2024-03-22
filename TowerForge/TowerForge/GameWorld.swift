@@ -48,8 +48,8 @@ class GameWorld {
         selectionNode.unitNodeDidSpawn(location)
     }
     func setupTeam() {
-        let ownTeam = Team(player: .ownPlayer, entityManager: entityManager)
-        let oppositeTeam = Team(player: .oppositePlayer, entityManager: entityManager)
+        let ownTeam = Team(player: .ownPlayer)
+        let oppositeTeam = Team(player: .oppositePlayer)
         entityManager.add(ownTeam)
         entityManager.add(oppositeTeam)
     }
@@ -103,10 +103,11 @@ class GameWorld {
 
     private func setUpSystems() {
         systemManager.add(system: HealthSystem(entityManager: entityManager, eventManager: eventManager))
-        systemManager.add(system: MovementSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: MovementSystem(entityManager: entityManager))
         systemManager.add(system: RemoveSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: SpawnSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: ShootingSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: HomeSystem(entityManager: entityManager))
         systemManager.add(system: AiSystem(entityManager: entityManager, eventManager: eventManager))
     }
 

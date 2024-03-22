@@ -22,14 +22,12 @@ class AiSystem: TFSystem {
             return
         }
 
-        let homeComponents = entityManager.components(ofType: HomeComponent.self)
-        for homeComponent in homeComponents {
-            homeComponent.update(deltaTime: time)
-        }
-
         let aiComponents = entityManager.components(ofType: AiComponent.self)
         for aiComponent in aiComponents {
-            aiComponent.update(deltaTime: time)
+            guard let event = aiComponent.spawn() else {
+                continue
+            }
+            eventManager.add(event)
         }
     }
 }
