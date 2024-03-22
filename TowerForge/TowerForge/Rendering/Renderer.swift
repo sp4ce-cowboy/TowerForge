@@ -57,6 +57,7 @@ class Renderer {
                                     width: spriteComponent.width,
                                     animatableKey: spriteComponent.animatableKey)
         node.position = positionComponent.position
+        node.playAnimation()
         node.name = entity.id.uuidString
         renderedNodes[entity.id] = node
         scene?.addChild(node)

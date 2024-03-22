@@ -24,6 +24,9 @@ class GameWorld {
         eventManager = EventManager()
         selectionNode = UnitSelectionNode()
         grid = Grid(entityManager: entityManager)
+        if let scene = self.scene {
+            grid.generateTileMap(scene: scene)
+        }
         renderer = Renderer(target: self, scene: scene)
 
         self.setUpSelectionNode()
