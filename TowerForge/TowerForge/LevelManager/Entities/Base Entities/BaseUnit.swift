@@ -42,11 +42,11 @@ class BaseUnit: TFEntity {
          velocity: CGVector,
          player: Player) {
         super.init()
+        createPlayerComponent(player: player)
         createHealthComponent(maxHealth: maxHealth, entityManager: entityManager)
         createSpriteComponent(textureNames: textureNames, size: size, key: key, position: position)
         createMovableComponent(position: position, velocity: velocity)
         createPositionComponent(position: position)
-        createPlayerComponent(player: player)
     }
 
     override func collide(with other: any Collidable) -> TFEvent? {

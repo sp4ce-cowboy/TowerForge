@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class AiComponent: TFComponent {
     private var entityManager: EntityManager
@@ -21,11 +22,20 @@ class AiComponent: TFComponent {
               let chosenUnit = chosenUnit else {
             return
         }
+
+        // Generate random coordinates within the defined range
+        let randomY = CGFloat.random(in: 0...UIScreen.main.bounds.height)
+
         if homeComponent.points >= chosenUnit.cost {
             let unit = UnitGenerator.spawn(ofType: chosenUnit,
-                                           at: CGPoint(x: 0, y: 10),
+                                           at: CGPoint(x: UIScreen.main.bounds.width,
+                                                       y: randomY),
                                            player: .oppositePlayer,
                                            entityManager: entityManager)
+            homeComponent.decreasePoints(chosenUnit.cost)
+
+            // Re-randomize the unit
+            self.chosenUnit = SpawnableEntities.possibleUnits.randomElement()
             entityManager.add(unit)
         }
     }

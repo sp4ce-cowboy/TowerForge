@@ -13,7 +13,7 @@ class HomeComponent: TFComponent {
     var points = 0
     private var lastPointIncrease = TimeInterval(0)
     private var pointInterval: TimeInterval
-    private var pointsPerInterval: Int = 10
+    private var pointsPerInterval: Int = 1
     init(initialLifeCount: Int, pointInterval: TimeInterval) {
         self.lifeLeft = initialLifeCount
         self.pointInterval = pointInterval
@@ -26,6 +26,12 @@ class HomeComponent: TFComponent {
     func increaseLife() -> Int {
         self.lifeLeft += 1
         return self.lifeLeft
+    }
+    func decreasePoints(_ amount: Int) {
+        self.points -= amount
+    }
+    func increasePoints(_ amount: Int) {
+        self.points += amount
     }
     override func update(deltaTime: TimeInterval) {
         super.update(deltaTime: deltaTime)

@@ -22,6 +22,7 @@ class MeleeUnit: BaseUnit, Spawnable {
         super.init(textureNames: MeleeUnit.textureNames,
                    size: MeleeUnit.size,
                    key: MeleeUnit.key,
+
                    position: position,
                    maxHealth: MeleeUnit.maxHealth,
                    entityManager: entityManager,
