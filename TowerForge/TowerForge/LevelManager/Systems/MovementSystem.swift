@@ -10,6 +10,17 @@ class MovementSystem: TFSystem {
         self.eventManager = eventManager
     }
 
+    func update(within time: CGFloat) {
+        guard let entities = entityManager?.entities else {
+            return
+        }
+
+        for entity in entities {
+            let movableComponent = entity.component(ofType: MovableComponent.self)
+            movableComponent?.update(deltaTime: time)
+        }
+    }
+
     /// Handles movement for the entity associated with the specified UUID according
     /// to the provided displacement vector.
     ///

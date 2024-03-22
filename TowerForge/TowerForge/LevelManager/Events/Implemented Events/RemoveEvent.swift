@@ -9,8 +9,11 @@ struct RemoveEvent: TFEvent {
         self.entityId = entityId
     }
 
-    func execute(in target: any EventTarget) -> EventOutput {
-        let removeSystem = target.system(ofType: RemoveSystem.self)
+    func execute(in target: any EventTarget) -> EventOutput? {
+        guard let removeSystem = target.system(ofType: RemoveSystem.self) else {
+            return nil
+        }
+
         removeSystem.handleRemove(for: entityId)
         return EventOutput()
     }

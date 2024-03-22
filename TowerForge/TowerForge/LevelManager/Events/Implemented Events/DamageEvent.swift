@@ -19,8 +19,10 @@ struct DamageEvent: TFEvent {
         self.damage = damage
     }
 
-    func execute(in target: any EventTarget) -> EventOutput {
-        let healthSystem = target.system(ofType: HealthSystem.self)
+    func execute(in target: any EventTarget) -> EventOutput? {
+        guard let healthSystem = target.system(ofType: HealthSystem.self) else {
+            return nil
+        }
         let healthIsZero = healthSystem.modifyHealth(for: entityId, with: damage)
         if healthIsZero {
             var newEventOutput = EventOutput()

@@ -14,8 +14,10 @@ struct SpawnEvent: TFEvent {
         self.velocity = velocity
     }
 
-    func execute(in target: any EventTarget) -> EventOutput {
-        let spawnSystem = target.system(ofType: SpawnSystem.self)
+    func execute(in target: any EventTarget) -> EventOutput? {
+        guard let spawnSystem = target.system(ofType: SpawnSystem.self) else {
+            return nil
+        }
         var entity = TFEntity(withId: entityId)
         entity.addComponent(MovableComponent(position: position, velocity: velocity))
         spawnSystem.handleSpawn(with: entity)
