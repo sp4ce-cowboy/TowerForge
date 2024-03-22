@@ -12,16 +12,20 @@ class Grid: UnitSelectionNodeDelegate {
 
     private var entityManager: EntityManager
     private var noOfRows: Int
+    private var width: CGFloat
+    private var height: CGFloat
 
-    init(entityManager: EntityManager) {
+    init(entityManager: EntityManager, screenSize: CGRect) {
         self.entityManager = entityManager
         self.noOfRows = DEFAULT_NO_OF_ROWS
+        self.width = screenSize.width
+        self.height = screenSize.height
     }
 
     func generateTileMap(scene: SKScene) {
-        let screenWidth = UIScreen.main.bounds.width
-        let screenHeight = UIScreen.main.bounds.height
-        let tileSize = CGSize(width: screenWidth / CGFloat(noOfRows), height: screenWidth / CGFloat(noOfRows))
+        let screenWidth = self.width
+        let screenHeight = self.height
+        let tileSize = CGSize(width: screenHeight / CGFloat(noOfRows), height: screenHeight / CGFloat(noOfRows))
 
         guard let tileSet = SKTileSet(named: "GridTile") else {
             fatalError("Cannot find tile set")
@@ -29,12 +33,6 @@ class Grid: UnitSelectionNodeDelegate {
 
         // Calculate the number of columns needed to cover the screen width
         let numberOfColumns = Int(ceil(screenWidth / tileSize.width))
-
-        let tileMap = SKTileMapNode(tileSet: tileSet,
-                                    columns: numberOfColumns,
-                                    rows: noOfRows,
-                                    tileSize: tileSize)
-
         for row in 0..<noOfRows {
             for col in 0..<numberOfColumns {
                 let node = TFSpriteNode(imageName: "Road_Grid", height: tileSize.height, width: tileSize.width)

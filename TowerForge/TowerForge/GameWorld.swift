@@ -17,13 +17,13 @@ class GameWorld {
     private var renderer: Renderer?
     private var entitiesInContact: Set<TFContact> = []
 
-    init(scene: GameScene?) {
+    init(scene: GameScene?, screenSize: CGRect) {
         self.scene = scene
         entityManager = EntityManager()
         systemManager = SystemManager()
         eventManager = EventManager()
         selectionNode = UnitSelectionNode()
-        grid = Grid(entityManager: entityManager)
+        grid = Grid(entityManager: entityManager, screenSize: screenSize)
         if let scene = self.scene {
             grid.generateTileMap(scene: scene)
         }
