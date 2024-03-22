@@ -14,6 +14,7 @@ class GameWorld {
     private var eventManager: EventManager
     private var selectionNode: UnitSelectionNode
     private var renderer: Renderer?
+    private var entitiesInContact: Set<TFContact> = []
 
     init(scene: GameScene?) {
         self.scene = scene
@@ -27,6 +28,10 @@ class GameWorld {
     }
 
     func update(deltaTime: TimeInterval) {
+        for contact in entitiesInContact {
+            handleContact(between: contact.entityIdA, and: contact.entityIdB)
+        }
+
         systemManager.update(deltaTime)
         eventManager.executeEvents(in: self)
         entityManager.update(deltaTime)
@@ -37,16 +42,37 @@ class GameWorld {
         selectionNode.unitNodeDidSpawn(location)
     }
 
-    func handleContact(between idA: UUID, and idB: UUID) {
-        guard let entityA = entityManager.entity(with: idA), let entityB = entityManager.entity(with: idB),
-              let event = entityA.collide(with: entityB) else {
+    // TODO: Move contact handling to a system
+    func contactDidBegin(between idA: UUID, and idB: UUID) {
+        guard idA != idB, entityManager.entity(with: idA) != nil, entityManager.entity(with: idB) != nil else {
+            return
+        }
+
+        entitiesInContact.insert(TFContact(entityIdA: idA, entityIdB: idB))
+    }
+
+    func contactDidEnd(between idA: UUID, and idB: UUID) {
+        guard entitiesInContact.remove(TFContact(entityIdA: idA, entityIdB: idB)) != nil else {
+            return
+        }
+
+        handleSeparation(between: idA, and: idB)
+    }
+
+    private func handleContact(between idA: UUID, and idB: UUID) {
+        guard let entityA = entityManager.entity(with: idA), let entityB = entityManager.entity(with: idB) else {
+            entitiesInContact.remove(TFContact(entityIdA: idA, entityIdB: idB))
+            return
+        }
+
+        guard let event = entityA.collide(with: entityB) else {
             return
         }
 
         eventManager.add(event)
     }
 
-    func handleSeparation(between idA: UUID, and idB: UUID) {
+    private func handleSeparation(between idA: UUID, and idB: UUID) {
         guard let entityA = entityManager.entity(with: idA), let entityB = entityManager.entity(with: idB) else {
             return
         }

@@ -24,6 +24,18 @@ class DamageComponent: TFComponent {
         super.init()
     }
 
+    var canDamage: Bool {
+        CACurrentMediaTime() - lastAttackTime >= attackRate
+    }
+
+    func damage(_ healthComponent: HealthComponent) -> DamageEvent? {
+        guard canDamage, let entityId = healthComponent.entity?.id else {
+            return nil
+        }
+        lastAttackTime = CACurrentMediaTime()
+        return DamageEvent(on: entityId, at: lastAttackTime, with: attackPower)
+    }
+
     override func update(deltaTime: TimeInterval) {
         super.update(deltaTime: deltaTime)
 
@@ -32,7 +44,7 @@ class DamageComponent: TFComponent {
               let spriteComponent = entity.component(ofType: SpriteComponent.self) else {
             return
         }
-        
+
         // TODO: Shift damage logic to damage event and handled by health system.
         // Loop opposite team's entities
 //        for entity in entityManager.entities {

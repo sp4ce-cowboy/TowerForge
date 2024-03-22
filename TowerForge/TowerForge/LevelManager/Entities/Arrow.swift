@@ -37,10 +37,9 @@ class Arrow: BaseProjectile {
     }
 
     override func collide(with healthComponent: HealthComponent) -> TFEvent? {
-        guard let entityId = healthComponent.entity?.id,
-              let damageComponent = self.component(ofType: DamageComponent.self) else {
+        guard let damageComponent = self.component(ofType: DamageComponent.self) else {
             return nil
         }
-        return DamageEvent(on: entityId, at: Date().timeIntervalSince1970, with: damageComponent.attackPower)
+        return damageComponent.damage(healthComponent)
     }
 }
