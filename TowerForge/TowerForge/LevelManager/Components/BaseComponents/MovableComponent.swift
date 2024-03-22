@@ -18,6 +18,11 @@ class MovableComponent: TFComponent {
         super.init()
     }
 
+    func updatePosition(with displacement: CGVector) {
+        position.y += displacement.dy
+        position.x += displacement.dx
+    }
+
     override func update(deltaTime: TimeInterval) {
         guard let entity = entity,
               let positionComponent = entity.component(ofType: PositionComponent.self),

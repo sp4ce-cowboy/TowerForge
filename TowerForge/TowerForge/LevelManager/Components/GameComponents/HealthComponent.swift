@@ -11,6 +11,9 @@ class HealthComponent: TFComponent {
     var currentHealth: CGFloat
     var maxHealth: CGFloat
     private let entityManager: EntityManager
+    var isZero: Bool {
+        currentHealth.isZero
+    }
 
     init(maxHealth: CGFloat, entityManager: EntityManager) {
         self.currentHealth = maxHealth
