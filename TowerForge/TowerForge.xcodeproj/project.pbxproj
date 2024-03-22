@@ -305,6 +305,7 @@
 		5295A2002BA9FB97005018A8 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				52DF5FAB2BA32B2300135367 /* Actions.sks */,
 				52DF5FA92BA32B2300135367 /* GameScene.sks */,
 				52DF5FAD2BA32B2300135367 /* GameScene.swift */,
 				5295A2032BA9FED4005018A8 /* MenuScene.swift */,
@@ -355,6 +356,8 @@
 		52DF5FA62BA32B2300135367 /* TowerForge */ = {
 			isa = PBXGroup;
 			children = (
+				52DF5FB42BA32B2600135367 /* Assets.xcassets */,
+				BA443D432BAD98CD009F0FFB /* AppMain */,
 				3CE9514D2BAC8925008B2785 /* Rendering */,
 				5295A2082BAAE14B005018A8 /* Controllers */,
 				5295A2052BAA0208005018A8 /* Nodes */,
@@ -364,12 +367,7 @@
 				3CCF9CAE2BAB1A96004D170E /* SceneUpdateDelegate.swift */,
 				5295A2012BA9FBD9005018A8 /* SceneManagerDelegate.swift */,
 				52DF5FDB2BA32CEF00135367 /* LevelManager */,
-				52DF5FA72BA32B2300135367 /* AppDelegate.swift */,
-				52DF5FAB2BA32B2300135367 /* Actions.sks */,
 				3CCF9CB02BAB1BCE004D170E /* GameWorld.swift */,
-				52DF5FB12BA32B2300135367 /* Main.storyboard */,
-				52DF5FB42BA32B2600135367 /* Assets.xcassets */,
-				52DF5FB62BA32B2600135367 /* LaunchScreen.storyboard */,
 				9B8696542BAD759F0002377C /* Grid.swift */,
 			);
 			path = TowerForge;
@@ -457,6 +455,16 @@
 				BA443D412BAD9885009F0FFB /* DamageEventTests.swift */,
 			);
 			path = EventTests;
+			sourceTree = "<group>";
+		};
+		BA443D432BAD98CD009F0FFB /* AppMain */ = {
+			isa = PBXGroup;
+			children = (
+				52DF5FB12BA32B2300135367 /* Main.storyboard */,
+				52DF5FB62BA32B2600135367 /* LaunchScreen.storyboard */,
+				52DF5FA72BA32B2300135367 /* AppDelegate.swift */,
+			);
+			path = AppMain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
