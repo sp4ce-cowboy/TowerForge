@@ -7,27 +7,48 @@
 
 import Foundation
 
-class MeleeUnit: BaseUnit {
+class MeleeUnit: BaseUnit, Spawnable {
+    static let title: String = "melee"
     static let textureNames = ["melee-1", "melee-2"]
     static let size = CGSize(width: 100, height: 100)
     static let key = "melee"
     static let maxHealth = 100.0
     static let damage = 10.0
-    static let cost = 10
+    static var cost = 10
+    static let attackRate = 10.0
+    static let velocity = CGVector(dx: 10.0, dy: 0.0)
 
-    init(position: CGPoint, entityManager: EntityManager, attackRate: TimeInterval, velocity: CGVector, team: Team) {
+    required init(position: CGPoint, entityManager: EntityManager, team: Team) {
         super.init(textureNames: MeleeUnit.textureNames,
                    size: MeleeUnit.size,
                    key: MeleeUnit.key,
                    position: position,
                    maxHealth: MeleeUnit.maxHealth,
                    entityManager: entityManager,
-                   cost: MeleeUnit.cost,
-                   velocity: velocity,
+                   velocity: MeleeUnit.velocity,
                    team: team)
-        self.addComponent(DamageComponent(attackRate: attackRate,
+        self.addComponent(DamageComponent(attackRate: MeleeUnit.attackRate,
                                           attackPower: MeleeUnit.damage,
                                           temporary: false,
                                           entityManager: entityManager))
+    }
+
+    override func collide(with other: any Collidable) -> (any TFEvent)? {
+        let superEvent = super.collide(with: other)
+        guard let damageComponent = self.component(ofType: DamageComponent.self) else {
+            return superEvent
+        }
+        if let superEvent = superEvent {
+            return superEvent.concurrentlyWith(other.collide(with: damageComponent))
+        }
+        return other.collide(with: damageComponent)
+    }
+
+    override func collide(with healthComponent: HealthComponent) -> (any TFEvent)? {
+        guard let entityId = healthComponent.entity?.id,
+              let damageComponent = self.component(ofType: DamageComponent.self) else {
+            return nil
+        }
+        return DamageEvent(on: entityId, at: Date().timeIntervalSince1970, with: damageComponent.attackPower)
     }
 }

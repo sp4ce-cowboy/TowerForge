@@ -32,38 +32,39 @@ class DamageComponent: TFComponent {
               let spriteComponent = entity.component(ofType: SpriteComponent.self) else {
             return
         }
-
+        
+        // TODO: Shift damage logic to damage event and handled by health system.
         // Loop opposite team's entities
-        for entity in entityManager.entities {
-            guard let playerComponent = entity.component(ofType: PlayerComponent.self) else {
-                return
-            }
-            if playerComponent.player == .ownPlayer {
-                return
-            }
-            // Get opposite team's components
-            guard let oppositeSpriteComponent = entity.component(ofType: SpriteComponent.self),
-                  let oppositeHealthComponent = entity.component(ofType: HealthComponent.self) else {
-                return
-            }
-
-            // Check collision with opposite team sprite component
-            if oppositeSpriteComponent.node
-                .calculateAccumulatedFrame().intersects(
-                    spriteComponent.node.calculateAccumulatedFrame()) {
-
-                // Check if can attack
-                if CACurrentMediaTime() - lastAttackTime > attackRate {
-                    lastAttackTime = CACurrentMediaTime()
-                    oppositeHealthComponent.decreaseHealth(amount: attackPower)
-                }
-
-            }
-
-            // If only used once, then remove from entity
-            if temporary {
-                entityManager.removeEntity(with: entity.id)
-            }
-        }
+//        for entity in entityManager.entities {
+//            guard let playerComponent = entity.component(ofType: PlayerComponent.self) else {
+//                return
+//            }
+//            if playerComponent.player == .ownPlayer {
+//                return
+//            }
+//            // Get opposite team's components
+//            guard let oppositeSpriteComponent = entity.component(ofType: SpriteComponent.self),
+//                  let oppositeHealthComponent = entity.component(ofType: HealthComponent.self) else {
+//                return
+//            }
+//
+//            // Check collision with opposite team sprite component
+//            if oppositeSpriteComponent.node
+//                .calculateAccumulatedFrame().intersects(
+//                    spriteComponent.node.calculateAccumulatedFrame()) {
+//
+//                // Check if can attack
+//                if CACurrentMediaTime() - lastAttackTime > attackRate {
+//                    lastAttackTime = CACurrentMediaTime()
+//                    oppositeHealthComponent.decreaseHealth(amount: attackPower)
+//                }
+//
+//            }
+//
+//            // If only used once, then remove from entity
+//            if temporary {
+//                entityManager.removeEntity(with: entity.id)
+//            }
+//        }
     }
 }

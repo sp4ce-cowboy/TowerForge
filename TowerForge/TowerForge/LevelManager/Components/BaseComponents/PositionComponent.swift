@@ -17,9 +17,6 @@ class PositionComponent: TFComponent {
     }
 
     func changeTo(to position: CGPoint) {
-        guard let entity = entity, let spriteComponent = entity.component(ofType: SpriteComponent.self) else {
-            return
-        }
         self.position = position
     }
 }

@@ -13,7 +13,7 @@ protocol UnitNodeDelegate: AnyObject {
 }
 
 class UnitNode: TFSpriteNode {
-    var unitType: UnitType?
+    let type: (BaseUnit & Spawnable).Type
     weak var delegate: UnitNodeDelegate?
     var purchasable = true
     var teamController: TeamController?
@@ -21,11 +21,11 @@ class UnitNode: TFSpriteNode {
     var unitCostLabel: SKLabelNode!
     var backgroundNode: SKSpriteNode!
 
-    convenience init(unitType: UnitType) {
-        self.init(imageName: unitType.title, height: 200.0, width: 140.0)
-        self.setupUnitCostLabel(cost: unitType.cost)
-        self.unitType = unitType
+    init<T: BaseUnit & Spawnable>(ofType type: T.Type) {
+        self.type = type
+        super.init(imageName: type.title, height: 200.0, width: 140.0)
 
+        setupUnitCostLabel(cost: type.cost)
         self.zPosition = 10.0
         isUserInteractionEnabled = true
 
@@ -33,6 +33,12 @@ class UnitNode: TFSpriteNode {
         backgroundNode.zPosition = -1
         addChild(backgroundNode)
     }
+
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     private func setupUnitCostLabel(cost amount: Int) {
         unitCostLabel = SKLabelNode()
         unitCostLabel.name = "unitLabel"
@@ -45,11 +51,9 @@ class UnitNode: TFSpriteNode {
         self.addChild(unitCostLabel)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        if !purchasable {
+        guard touches.first != nil, purchasable else {
             return
         }
         delegate?.unitNodeDidSelect(self)
-
     }
 }
