@@ -38,11 +38,11 @@ class ShootingComponent: TFComponent {
 
         guard let positionA = entityA.component(ofType: PositionComponent.self)?.position,
               let positionB = entityB.component(ofType: PositionComponent.self)?.position,
-              abs(positionA.x - positionB.x) <= range else {
+              abs(positionA.x - positionB.x) <= range, abs(positionA.y - positionB.y) <= 50 else {
             return nil
         }
 
         lastShotTime = CACurrentMediaTime()
-        return SpawnEvent(ofType: Arrow.self, timestamp: lastShotTime, position: positionA, player: playerA)
+        return SpawnEvent(ofType: Bullet.self, timestamp: lastShotTime, position: positionA, player: playerA)
     }
 }
