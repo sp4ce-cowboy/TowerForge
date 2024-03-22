@@ -27,18 +27,15 @@ class Grid: UnitSelectionNodeDelegate {
         let screenHeight = self.height
         let tileSize = CGSize(width: screenHeight / CGFloat(noOfRows), height: screenHeight / CGFloat(noOfRows))
 
-        guard let tileSet = SKTileSet(named: "GridTile") else {
-            fatalError("Cannot find tile set")
-        }
-
         // Calculate the number of columns needed to cover the screen width
         let numberOfColumns = Int(ceil(screenWidth / tileSize.width))
+
         for row in 0..<noOfRows {
             for col in 0..<numberOfColumns {
-                let node = TFSpriteNode(imageName: "Road_Grid", height: tileSize.height, width: tileSize.width)
+                let node = TFSpriteNode(imageName: "road-tile", height: tileSize.height, width: tileSize.width)
                 node.anchorPoint = CGPoint(x: 0, y: 0)
-                node.position = CGPoint(x: CGFloat(CGFloat(row) * tileSize.width),
-                                        y: CGFloat(CGFloat(col) * tileSize.width))
+                node.position = CGPoint(x: CGFloat(CGFloat(col) * tileSize.width),
+                                        y: CGFloat(CGFloat(row) * tileSize.height))
                 node.zPosition = -100
                 scene.addChild(node)
             }
