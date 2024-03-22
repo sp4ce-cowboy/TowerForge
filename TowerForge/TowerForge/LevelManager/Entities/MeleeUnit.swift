@@ -32,4 +32,23 @@ class MeleeUnit: BaseUnit, Spawnable {
                                           temporary: false,
                                           entityManager: entityManager))
     }
+
+    override func collide(with other: any Collidable) -> (any TFEvent)? {
+        let superEvent = super.collide(with: other)
+        guard let damageComponent = self.component(ofType: DamageComponent.self) else {
+            return superEvent
+        }
+        if let superEvent = superEvent {
+            return superEvent.concurrentlyWith(other.collide(with: damageComponent))
+        }
+        return other.collide(with: damageComponent)
+    }
+
+    override func collide(with healthComponent: HealthComponent) -> (any TFEvent)? {
+        guard let entityId = healthComponent.entity?.id,
+              let damageComponent = self.component(ofType: DamageComponent.self) else {
+            return nil
+        }
+        return DamageEvent(on: entityId, at: Date().timeIntervalSince1970, with: damageComponent.attackPower)
+    }
 }

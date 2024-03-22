@@ -26,8 +26,12 @@ class Arrow: BaseProjectile {
     }
 
     override func collide(with other: any Collidable) -> TFEvent? {
+        let superEvent = super.collide(with: other)
         guard let damageComponent = self.component(ofType: DamageComponent.self) else {
-            return nil
+            return superEvent
+        }
+        if let superEvent = superEvent {
+            return superEvent.concurrentlyWith(other.collide(with: damageComponent))
         }
         return other.collide(with: damageComponent)
     }
