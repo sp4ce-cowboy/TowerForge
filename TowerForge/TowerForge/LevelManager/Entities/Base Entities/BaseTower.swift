@@ -16,8 +16,8 @@ class BaseTower: TFEntity {
          player: Player) {
         super.init()
 
-        createHealthComponent(maxHealth: maxHealth)
         createSpriteComponent(textureNames: textureNames, size: size, key: key, position: position)
+        createHealthComponent(maxHealth: maxHealth)
         createPositionComponent(position: position)
         createPlayerComponent(player: player)
     }
