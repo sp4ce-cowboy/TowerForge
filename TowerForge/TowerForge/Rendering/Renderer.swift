@@ -18,13 +18,6 @@ class Renderer {
         self.target = target
         self.scene = scene
     }
-//    func addNodeToScene(entity: TFEntity) {
-//        guard let spriteComponent = entity.component(ofType: SpriteComponent.self) else {
-//            return
-//        }
-//        renderedNodes[entity.id] = spriteComponent.node
-//        self.scene?.addChild(spriteComponent.node)
-//    }
     func render() {
         var nodesToBeRemoved = renderedNodes
 
