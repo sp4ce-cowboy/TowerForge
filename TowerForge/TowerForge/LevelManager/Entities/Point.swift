@@ -15,8 +15,7 @@ class Point: TFEntity {
                                           height: 100,
                                           width: 100,
                                           position: Point.position, animatableKey: "point"))
-        self.addComponent(PositionComponent(position: Point.position))
+        self.addComponent(HomeComponent(initialLifeCount: Team.lifeCount, pointInterval: Team.pointsInterval))
         self.addComponent(LabelComponent(text: String(initialPoint)))
-        self.addComponent(PlayerComponent(player: .ownPlayer))
     }
 }

@@ -62,6 +62,7 @@ class UnitSelectionNode: TFSpriteNode, UnitNodeDelegate {
         guard let selectedType = self.selectedNode?.type else {
             return
         }
+        self.availablePoints -= selectedType.cost
         delegate?.unitSelectionNodeDidSpawn(ofType: selectedType, position: position)
     }
 }

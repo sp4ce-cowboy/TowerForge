@@ -10,7 +10,6 @@ import SpriteKit
 
 class LabelComponent: TFComponent {
     var text: String
-    var label: SKLabelNode?
     init(text: String) {
         self.text = text
         super.init()
@@ -26,14 +25,13 @@ class LabelComponent: TFComponent {
         label.fontColor = .white
         label.horizontalAlignmentMode = .center
         label.verticalAlignmentMode = .center
-        label.position = CGPoint(x: 0, y: spriteComponent.node.height)
+        label.position = CGPoint(x: spriteComponent.node.width, y: spriteComponent.node.height / 2)
         label.name = "point"
-        self.label = label
         spriteComponent.node.addChild(label)
     }
     func changeText(_ text: String) {
-        guard let labelNode = label else {
-            print("NO such thing")
+        guard let spriteComponent = entity?.component(ofType: SpriteComponent.self),
+              let labelNode = spriteComponent.node.childNode(withName: "point") as? SKLabelNode else {
             return
         }
         labelNode.text = text
