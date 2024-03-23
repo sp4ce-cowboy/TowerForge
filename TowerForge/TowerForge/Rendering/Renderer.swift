@@ -18,13 +18,13 @@ class Renderer {
         self.target = target
         self.scene = scene
     }
-    func addNodeToScene(entity: TFEntity) {
-        guard let spriteComponent = entity.component(ofType: SpriteComponent.self) else {
-            return
-        }
-        renderedNodes[entity.id] = spriteComponent.node
-        self.scene?.addChild(spriteComponent.node)
-    }
+//    func addNodeToScene(entity: TFEntity) {
+//        guard let spriteComponent = entity.component(ofType: SpriteComponent.self) else {
+//            return
+//        }
+//        renderedNodes[entity.id] = spriteComponent.node
+//        self.scene?.addChild(spriteComponent.node)
+//    }
     func render() {
         var nodesToBeRemoved = renderedNodes
 
@@ -55,6 +55,17 @@ class Renderer {
               let positionComponent = entity.component(ofType: PositionComponent.self),
               let playerComponent = entity.component(ofType: PlayerComponent.self) else {
             return
+        }
+        if let labelComponent = entity.component(ofType: LabelComponent.self) {
+            let label = SKLabelNode(text: labelComponent.text)
+            label.fontName = "HelveticaNeue-Bold"
+            label.fontSize = 60.0
+            label.fontColor = .white
+            label.horizontalAlignmentMode = .center
+            label.verticalAlignmentMode = .center
+            label.position = CGPoint(x: spriteComponent.node.width, y: 0)
+            label.name = "point"
+            spriteComponent.node.addChild(label)
         }
 
         let node = spriteComponent.node

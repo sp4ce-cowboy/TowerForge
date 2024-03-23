@@ -18,5 +18,6 @@ class Point: TFEntity {
         self.addComponent(HomeComponent(initialLifeCount: Team.lifeCount, pointInterval: Team.pointsInterval))
         self.addComponent(LabelComponent(text: String(initialPoint)))
         self.addComponent(PositionComponent(position: Point.position))
+        self.addComponent(PlayerComponent(player: .ownPlayer))
     }
 }
