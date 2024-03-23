@@ -54,7 +54,6 @@ class GameWorld {
         entityManager.add(point)
         // renderer?.addNodeToScene(entity: point)
     }
-    // TODO: Move contact handling to a system
     func contactDidBegin(between idA: UUID, and idB: UUID) {
         systemManager.system(ofType: ContactSystem.self)?.insert(contact: TFContact(entityIdA: idA, entityIdB: idB))
     }
