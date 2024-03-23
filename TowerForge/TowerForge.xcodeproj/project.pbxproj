@@ -45,17 +45,10 @@
 		520062562BA8E026000DBA30 /* PlayerSpawnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520062552BA8E026000DBA30 /* PlayerSpawnable.swift */; };
 		520062582BA8ED73000DBA30 /* HomeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520062572BA8ED73000DBA30 /* HomeComponent.swift */; };
 		523923E72BADC8530044BA61 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 523923E62BADC8530044BA61 /* Launch Screen.storyboard */; };
-<<<<<<< HEAD
-<<<<<<< HEAD
 		5240D08F2BAE6D0A004F1486 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D08E2BAE6D0A004F1486 /* Point.swift */; };
 		5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5250B42E2BAE0DB000F16CF6 /* LabelComponent.swift */; };
-=======
-		523923E92BADFFC50044BA61 /* PointNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523923E82BADFFC50044BA61 /* PointNode.swift */; };
->>>>>>> 67f656d (Make point node)
-=======
 		5240D08F2BAE6D0A004F1486 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D08E2BAE6D0A004F1486 /* Point.swift */; };
 		5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5250B42E2BAE0DB000F16CF6 /* LabelComponent.swift */; };
->>>>>>> 173a239 (After merge)
 		52578B822BA61AAF00B4D76C /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52578B812BA61AAF00B4D76C /* PositionComponent.swift */; };
 		52578B872BA6209700B4D76C /* DamageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52578B862BA6209700B4D76C /* DamageComponent.swift */; };
 		52578B8C2BA627B200B4D76C /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52578B8B2BA627B200B4D76C /* Team.swift */; };
@@ -152,17 +145,8 @@
 		520062552BA8E026000DBA30 /* PlayerSpawnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSpawnable.swift; sourceTree = "<group>"; };
 		520062572BA8ED73000DBA30 /* HomeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeComponent.swift; sourceTree = "<group>"; };
 		523923E62BADC8530044BA61 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-<<<<<<< HEAD
-<<<<<<< HEAD
 		5240D08E2BAE6D0A004F1486 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		5250B42E2BAE0DB000F16CF6 /* LabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelComponent.swift; sourceTree = "<group>"; };
-=======
-		523923E82BADFFC50044BA61 /* PointNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointNode.swift; sourceTree = "<group>"; };
->>>>>>> 67f656d (Make point node)
-=======
-		5240D08E2BAE6D0A004F1486 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
-		5250B42E2BAE0DB000F16CF6 /* LabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelComponent.swift; sourceTree = "<group>"; };
->>>>>>> 173a239 (After merge)
 		52578B812BA61AAF00B4D76C /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		52578B862BA6209700B4D76C /* DamageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageComponent.swift; sourceTree = "<group>"; };
 		52578B8B2BA627B200B4D76C /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
