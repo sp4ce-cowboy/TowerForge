@@ -25,7 +25,7 @@ class LabelComponent: TFComponent {
         label.fontColor = .white
         label.horizontalAlignmentMode = .center
         label.verticalAlignmentMode = .center
-        label.position = CGPoint(x: spriteComponent.node.width, y: spriteComponent.node.height / 2)
+        label.position = CGPoint(x: spriteComponent.node.width, y: 0)
         label.name = "point"
         spriteComponent.node.addChild(label)
     }

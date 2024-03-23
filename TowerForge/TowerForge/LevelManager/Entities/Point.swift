@@ -8,7 +8,7 @@
 import Foundation
 
 class Point: TFEntity {
-    static let position = CGPoint(x: 50, y: 50)
+    static let position = CGPoint(x: 100, y: 100)
     init(initialPoint: Int) {
         super.init()
         self.addComponent(SpriteComponent(textureNames: ["Coin"],
@@ -17,5 +17,6 @@ class Point: TFEntity {
                                           position: Point.position, animatableKey: "point"))
         self.addComponent(HomeComponent(initialLifeCount: Team.lifeCount, pointInterval: Team.pointsInterval))
         self.addComponent(LabelComponent(text: String(initialPoint)))
+        self.addComponent(PositionComponent(position: Point.position))
     }
 }
