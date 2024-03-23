@@ -12,8 +12,7 @@ class Renderer {
     private unowned var target: Renderable
     private unowned var scene: SKScene?
 
-    private var renderedNodes: [UUID: TFAnimatableNode] = [:]
-    
+    private var renderedNodes: [UUID: TFSpriteNode] = [:]
 
     init(target: Renderable, scene: GameScene?) {
         self.target = target

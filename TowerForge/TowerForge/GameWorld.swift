@@ -13,7 +13,6 @@ class GameWorld {
     private var systemManager: SystemManager
     private var eventManager: EventManager
     private var selectionNode: UnitSelectionNode
-    private var pointNode: PointNode?
     private var grid: Grid
     private var renderer: Renderer?
 
@@ -38,11 +37,6 @@ class GameWorld {
     func update(deltaTime: TimeInterval) {
         systemManager.update(deltaTime)
         eventManager.executeEvents(in: self)
-        entityManager.update(deltaTime)
-
-        if let pointNode = pointNode {
-            pointNode.updatePoint(9)
-        }
         renderer?.render()
     }
     func spawnUnit(at location: CGPoint) {
@@ -54,12 +48,12 @@ class GameWorld {
         let oppositeTeam = Team(player: .oppositePlayer)
         entityManager.add(ownTeam)
         entityManager.add(oppositeTeam)
-
-        pointNode = PointNode(amount: 0)
-        if let pointNode = pointNode {
-            scene?.addChild(pointNode)
-        }
     }
+    func setupPlayerInfo() {
+        let point = Point(initialPoint: 0)
+        entityManager.add(point)
+    }
+    // TODO: Move contact handling to a system
     func contactDidBegin(between idA: UUID, and idB: UUID) {
         systemManager.system(ofType: ContactSystem.self)?.insert(contact: TFContact(entityIdA: idA, entityIdB: idB))
     }
