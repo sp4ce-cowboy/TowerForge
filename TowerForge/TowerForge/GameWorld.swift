@@ -15,7 +15,6 @@ class GameWorld {
     private var selectionNode: UnitSelectionNode
     private var grid: Grid
     private var renderer: Renderer?
-    private var entitiesInContact: Set<TFContact> = []
 
     init(scene: GameScene?, screenSize: CGRect) {
         self.scene = scene
@@ -36,10 +35,6 @@ class GameWorld {
     }
 
     func update(deltaTime: TimeInterval) {
-        for contact in entitiesInContact {
-            handleContact(between: contact.entityIdA, and: contact.entityIdB)
-        }
-
         systemManager.update(deltaTime)
         eventManager.executeEvents(in: self)
         renderer?.render()
@@ -53,52 +48,12 @@ class GameWorld {
         entityManager.add(ownTeam)
         entityManager.add(oppositeTeam)
     }
-    func setupPlayerInfo() {
-        let point = Point(initialPoint: 0)
-        entityManager.add(point)
-        // renderer?.addNodeToScene(entity: point)
-    }
-    // TODO: Move contact handling to a system
     func contactDidBegin(between idA: UUID, and idB: UUID) {
-        guard idA != idB, entityManager.entity(with: idA) != nil, entityManager.entity(with: idB) != nil else {
-            return
-        }
-
-        entitiesInContact.insert(TFContact(entityIdA: idA, entityIdB: idB))
+        systemManager.system(ofType: ContactSystem.self)?.insert(contact: TFContact(entityIdA: idA, entityIdB: idB))
     }
 
     func contactDidEnd(between idA: UUID, and idB: UUID) {
-        guard entitiesInContact.remove(TFContact(entityIdA: idA, entityIdB: idB)) != nil else {
-            return
-        }
-
-        handleSeparation(between: idA, and: idB)
-    }
-
-    private func handleContact(between idA: UUID, and idB: UUID) {
-        guard let entityA = entityManager.entity(with: idA), let entityB = entityManager.entity(with: idB) else {
-            entitiesInContact.remove(TFContact(entityIdA: idA, entityIdB: idB))
-            handleSeparation(between: idA, and: idB)
-            return
-        }
-
-        guard let event = entityA.collide(with: entityB) else {
-            return
-        }
-
-        eventManager.add(event)
-    }
-
-    private func handleSeparation(between idA: UUID, and idB: UUID) {
-        if let entityA = entityManager.entity(with: idA),
-           let movableComponent = entityA.component(ofType: MovableComponent.self) {
-            movableComponent.isColliding = false
-        }
-
-        if let entityB = entityManager.entity(with: idB),
-           let movableComponent = entityB.component(ofType: MovableComponent.self) {
-            movableComponent.isColliding = false
-        }
+        systemManager.system(ofType: ContactSystem.self)?.remove(contact: TFContact(entityIdA: idA, entityIdB: idB))
     }
 
     private func setUpSystems() {
@@ -109,6 +64,7 @@ class GameWorld {
         systemManager.add(system: ShootingSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: HomeSystem(entityManager: entityManager))
         systemManager.add(system: AiSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: ContactSystem(entityManager: entityManager, eventManager: eventManager))
     }
 
     private func setUpSelectionNode() {
