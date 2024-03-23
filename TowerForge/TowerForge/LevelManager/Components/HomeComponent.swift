@@ -9,8 +9,25 @@ import Foundation
 import SpriteKit
 
 class HomeComponent: TFComponent {
-    var lifeLeft: Int
-    var points = 0
+    var lifeLeft: Int {
+        didSet {
+            // Update the life left in the LabelComponent when it changes
+            guard let labelComponent = entity?.component(ofType: LabelComponent.self) else {
+                return
+            }
+            labelComponent.changeText(String(lifeLeft))
+        }
+    }
+    var points = 0 {
+        didSet {
+            // Update the points in the LabelComponent when it changes
+            guard let labelComponent = entity?.component(ofType: LabelComponent.self) else {
+                return
+            }
+            print(points)
+            labelComponent.changeText(String(points))
+        }
+    }
     private var lastPointIncrease = TimeInterval(0)
     private var pointInterval: TimeInterval
     private var pointsPerInterval: Int = 1

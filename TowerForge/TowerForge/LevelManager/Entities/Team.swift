@@ -19,6 +19,8 @@ class Team: TFEntity {
 
         if player == .oppositePlayer {
             self.addComponent(AiComponent(entityManager: entityManager))
+        } else {
+            self.addComponent(LabelComponent(text: String(0)))
         }
     }
     private func createHomeComponent() {

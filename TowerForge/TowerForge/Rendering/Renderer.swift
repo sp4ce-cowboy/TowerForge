@@ -12,8 +12,7 @@ class Renderer {
     private unowned var target: Renderable
     private unowned var scene: SKScene?
 
-    private var renderedNodes: [UUID: TFAnimatableNode] = [:]
-    
+    private var renderedNodes: [UUID: TFSpriteNode] = [:]
 
     init(target: Renderable, scene: GameScene?) {
         self.target = target
@@ -37,7 +36,6 @@ class Renderer {
             removeAndUncache(with: entityId)
         }
     }
-
     private func update(entity: TFEntity) {
         guard let positionComponent = entity.component(ofType: PositionComponent.self),
               let node = renderedNodes[entity.id] else {
@@ -46,7 +44,6 @@ class Renderer {
 
         node.position = positionComponent.position
     }
-
     private func addAndCache(entity: TFEntity) {
         guard let spriteComponent = entity.component(ofType: SpriteComponent.self),
               let positionComponent = entity.component(ofType: PositionComponent.self),
@@ -54,10 +51,7 @@ class Renderer {
             return
         }
 
-        let node = TFAnimatableNode(textures: spriteComponent.textures,
-                                    height: spriteComponent.height,
-                                    width: spriteComponent.width,
-                                    animatableKey: spriteComponent.animatableKey)
+        let node = spriteComponent.node
         // Flips the image if it is the opposite team
         if playerComponent.player == .oppositePlayer {
             node.xScale *= -1

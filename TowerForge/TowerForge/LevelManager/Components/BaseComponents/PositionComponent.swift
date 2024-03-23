@@ -10,10 +10,16 @@ import CoreGraphics
 
 class PositionComponent: TFComponent {
     var position: CGPoint
+    var anchorPoint: CGPoint
 
-    init(position: CGPoint) {
+    init(position: CGPoint, anchorPoint: CGPoint) {
         self.position = position
+        self.anchorPoint = anchorPoint
         super.init()
+    }
+
+    convenience init(position: CGPoint) {
+        self.init(position: position, anchorPoint: CGPoint(x: 0, y: 0))
     }
 
     func changeTo(to position: CGPoint) {
