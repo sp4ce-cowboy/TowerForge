@@ -5,12 +5,13 @@
 //  Created by Zheng Ze on 23/3/24.
 //
 
-import Foundation
+import SpriteKit
 
 class AiSystem: TFSystem {
     var isActive = true
     weak var entityManager: EntityManager?
     weak var eventManager: EventManager?
+    var aiPlayers: [Player] = []
 
     init(entityManager: EntityManager, eventManager: EventManager) {
         self.entityManager = entityManager
@@ -22,12 +23,36 @@ class AiSystem: TFSystem {
             return
         }
 
-        let aiComponents = entityManager.components(ofType: AiComponent.self)
-        for aiComponent in aiComponents {
-            guard let event = aiComponent.spawn() else {
+        var aiComponents: [Player: AiComponent] = [:]
+        for aiComponent in entityManager.components(ofType: AiComponent.self) {
+            guard let player = aiComponent.entity?.component(ofType: PlayerComponent.self)?.player else {
                 continue
             }
-            eventManager.add(event)
+            aiComponents[player] = aiComponent
+            aiComponent.update(deltaTime: time)
         }
+
+        var event: TFEvent?
+
+        for aiPlayer in aiPlayers {
+            guard let aiComponent = aiComponents[aiPlayer], aiComponent.spawn(),
+                  let unitType = aiComponent.chosenUnit else {
+                continue
+            }
+
+            let newEvent = RequestSpawnEvent(ofType: unitType, timestamp: CACurrentMediaTime(),
+                                             position: aiComponent.spawnLocation, player: aiPlayer)
+
+            guard var event = event else {
+                event = newEvent
+                continue
+            }
+            event = event.concurrentlyWith(newEvent)
+        }
+
+        guard let event = event else {
+            return
+        }
+        eventManager.add(event)
     }
 }

@@ -16,6 +16,6 @@ struct MoveEvent: TFEvent {
             return nil
         }
         movementSystem.handleMovement(for: entityId, with: displacement)
-        return EventOutput()
+        return nil
     }
 }
