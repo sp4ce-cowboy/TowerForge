@@ -15,7 +15,6 @@ class GameWorld {
     private var selectionNode: UnitSelectionNode
     private var grid: Grid
     private var renderer: Renderer?
-    private var entitiesInContact: Set<TFContact> = []
 
     init(scene: GameScene?, screenSize: CGRect) {
         self.scene = scene
@@ -23,7 +22,7 @@ class GameWorld {
         systemManager = SystemManager()
         eventManager = EventManager()
         selectionNode = UnitSelectionNode()
-        grid = Grid(entityManager: entityManager, screenSize: screenSize)
+        grid = Grid(eventManager: eventManager, screenSize: screenSize)
         if let scene = self.scene {
             grid.generateTileMap(scene: scene)
         }
@@ -35,10 +34,6 @@ class GameWorld {
     }
 
     func update(deltaTime: TimeInterval) {
-        for contact in entitiesInContact {
-            handleContact(between: contact.entityIdA, and: contact.entityIdB)
-        }
-
         systemManager.update(deltaTime)
         eventManager.executeEvents(in: self)
         renderer?.render()
@@ -47,57 +42,34 @@ class GameWorld {
     func spawnUnit(at location: CGPoint) {
         selectionNode.unitNodeDidSpawn(location)
     }
+
     func setupTeam() {
-        let ownTeam = Team(player: .ownPlayer, entityManager: entityManager)
-        let oppositeTeam = Team(player: .oppositePlayer, entityManager: entityManager)
+        let ownTeam = Team(player: .ownPlayer)
+        let oppositeTeam = Team(player: .oppositePlayer)
         entityManager.add(ownTeam)
         entityManager.add(oppositeTeam)
     }
 
-    // TODO: Move contact handling to a system
     func contactDidBegin(between idA: UUID, and idB: UUID) {
-        guard idA != idB, entityManager.entity(with: idA) != nil, entityManager.entity(with: idB) != nil else {
-            return
-        }
-
-        entitiesInContact.insert(TFContact(entityIdA: idA, entityIdB: idB))
+        systemManager.system(ofType: ContactSystem.self)?.insert(contact: TFContact(entityIdA: idA, entityIdB: idB))
     }
 
     func contactDidEnd(between idA: UUID, and idB: UUID) {
-        guard entitiesInContact.remove(TFContact(entityIdA: idA, entityIdB: idB)) != nil else {
-            return
-        }
-
-        handleSeparation(between: idA, and: idB)
-    }
-
-    private func handleContact(between idA: UUID, and idB: UUID) {
-        guard let entityA = entityManager.entity(with: idA), let entityB = entityManager.entity(with: idB) else {
-            entitiesInContact.remove(TFContact(entityIdA: idA, entityIdB: idB))
-            return
-        }
-
-        guard let event = entityA.collide(with: entityB) else {
-            return
-        }
-
-        eventManager.add(event)
-    }
-
-    private func handleSeparation(between idA: UUID, and idB: UUID) {
-        guard let entityA = entityManager.entity(with: idA), let entityB = entityManager.entity(with: idB) else {
-            return
-        }
-        // TODO: Handle any separation logic here.
+        systemManager.system(ofType: ContactSystem.self)?.remove(contact: TFContact(entityIdA: idA, entityIdB: idB))
     }
 
     private func setUpSystems() {
         systemManager.add(system: HealthSystem(entityManager: entityManager, eventManager: eventManager))
-        systemManager.add(system: MovementSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: MovementSystem(entityManager: entityManager))
         systemManager.add(system: RemoveSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: SpawnSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: ShootingSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: HomeSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: AiSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: ContactSystem(entityManager: entityManager, eventManager: eventManager))
+
+        // Temporary until we have different gamemodes
+        systemManager.system(ofType: AiSystem.self)?.aiPlayers.append(.oppositePlayer)
     }
 
     private func setUpSelectionNode() {

@@ -15,6 +15,6 @@ struct RemoveEvent: TFEvent {
         }
 
         removeSystem.handleRemove(for: entityId)
-        return EventOutput()
+        return nil
     }
 }

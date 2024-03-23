@@ -9,31 +9,38 @@ import Foundation
 import UIKit
 
 class AiComponent: TFComponent {
-    private var entityManager: EntityManager
-    private var chosenUnit: (TFEntity & PlayerSpawnable).Type?
-    init(entityManager: EntityManager) {
-        self.entityManager = entityManager
-        self.chosenUnit = SpawnableEntities.playerSpawnableEntities.randomElement()
+    private var spawnableEntities: [(TFEntity & PlayerSpawnable).Type]
+    private(set) var delayUnitNextSpawn: TimeInterval
+
+    var chosenUnit: (TFEntity & PlayerSpawnable).Type? {
+        spawnableEntities.randomElement()
+    }
+
+    var spawnLocation: CGPoint {
+        let randomY = CGFloat.random(in: 0...UIScreen.main.bounds.height)
+        return CGPoint(x: UIScreen.main.bounds.width, y: randomY)
+    }
+
+    init(spawnableEntities: [(TFEntity & PlayerSpawnable).Type] = SpawnableEntities.playerSpawnableEntities) {
+        self.spawnableEntities = spawnableEntities
+        self.delayUnitNextSpawn = AiComponent.getNextInterval()
         super.init()
     }
 
     override func update(deltaTime: TimeInterval) {
-        guard let homeComponent = entity?.component(ofType: HomeComponent.self),
-              let chosenUnit = chosenUnit else {
-            return
-        }
-        let randomY = CGFloat.random(in: 0...UIScreen.main.bounds.height)
+        delayUnitNextSpawn -= deltaTime
+    }
 
-        if homeComponent.points >= chosenUnit.cost {
-            let unit = UnitGenerator.spawn(ofType: chosenUnit,
-                                           at: CGPoint(x: UIScreen.main.bounds.width,
-                                                       y: randomY),
-                                           player: .oppositePlayer)
-            homeComponent.decreasePoints(chosenUnit.cost)
-
-            // Re-randomize the unit
-            self.chosenUnit = SpawnableEntities.playerSpawnableEntities.randomElement()
-            entityManager.add(unit)
+    func spawn() -> Bool {
+        guard delayUnitNextSpawn <= 0 else {
+            return false
         }
+
+        delayUnitNextSpawn = AiComponent.getNextInterval()
+        return true
+    }
+
+    private static func getNextInterval() -> TimeInterval {
+        Double.random(in: 1...10)
     }
 }

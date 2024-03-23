@@ -11,14 +11,14 @@ class Team: TFEntity {
     static let lifeCount = 5
     static let pointsInterval = TimeInterval(0.5)
     var player: Player
-    init(player: Player, entityManager: EntityManager) {
+    init(player: Player) {
         self.player = player
         super.init()
         createPlayerComponent(player: player)
         createHomeComponent()
 
         if player == .oppositePlayer {
-            self.addComponent(AiComponent(entityManager: entityManager))
+            self.addComponent(AiComponent())
         }
     }
     private func createHomeComponent() {
