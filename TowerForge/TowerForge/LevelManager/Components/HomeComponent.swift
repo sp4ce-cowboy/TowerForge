@@ -12,7 +12,7 @@ class HomeComponent: TFComponent {
     var lifeLeft: Int {
         didSet {
             // Update the life left in the LabelComponent when it changes
-            guard let labelComponent = entity?.component(ofType: LabelComponent.self) else {
+            guard let labelComponent = entity?.component(ofType: LabelComponent.self), labelComponent.name == "life" else {
                 return
             }
             labelComponent.changeText(String(lifeLeft))
@@ -21,10 +21,9 @@ class HomeComponent: TFComponent {
     var points = 0 {
         didSet {
             // Update the points in the LabelComponent when it changes
-            guard let labelComponent = entity?.component(ofType: LabelComponent.self) else {
+            guard let labelComponent = entity?.component(ofType: LabelComponent.self), labelComponent.name == "point" else {
                 return
             }
-            print(points)
             labelComponent.changeText(String(points))
         }
     }
