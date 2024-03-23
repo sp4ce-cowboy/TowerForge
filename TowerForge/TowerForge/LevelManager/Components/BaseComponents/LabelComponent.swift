@@ -10,8 +10,10 @@ import SpriteKit
 
 class LabelComponent: TFComponent {
     var text: String
-    init(text: String) {
+    var name: String
+    init(text: String, name: String) {
         self.text = text
+        self.name = name
         super.init()
     }
     func changeText(_ text: String) {
