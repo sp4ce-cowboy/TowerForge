@@ -10,13 +10,13 @@ import SpriteKit
 class Grid: UnitSelectionNodeDelegate {
     let DEFAULT_NO_OF_ROWS = 8
 
-    private var entityManager: EntityManager
+    private var eventManager: EventManager
     private var noOfRows: Int
     private var width: CGFloat
     private var height: CGFloat
 
-    init(entityManager: EntityManager, screenSize: CGRect) {
-        self.entityManager = entityManager
+    init(eventManager: EventManager, screenSize: CGRect) {
+        self.eventManager = eventManager
         self.noOfRows = DEFAULT_NO_OF_ROWS
         self.width = screenSize.width
         self.height = screenSize.height
@@ -24,8 +24,8 @@ class Grid: UnitSelectionNodeDelegate {
 
     func unitSelectionNodeDidSpawn<T: TFEntity & PlayerSpawnable>(ofType type: T.Type, position: CGPoint) {
         let snapPosition = CGPoint(x: position.x, y: snapYPosition(yPosition: position.y))
-        let unit = UnitGenerator.spawn(ofType: type, at: snapPosition, player: Player.ownPlayer)
-        entityManager.add(unit)
+        eventManager.add(RequestSpawnEvent(ofType: type, timestamp: CACurrentMediaTime(),
+                                           position: snapPosition, player: .ownPlayer))
     }
 
     func generateTileMap(scene: SKScene) {

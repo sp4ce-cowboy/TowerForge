@@ -16,6 +16,6 @@ struct SpawnEvent: TFEvent {
             return nil
         }
         spawnSystem.handleSpawn(with: entity)
-        return EventOutput()
+        return nil
     }
 }

@@ -22,7 +22,7 @@ class GameWorld {
         systemManager = SystemManager()
         eventManager = EventManager()
         selectionNode = UnitSelectionNode()
-        grid = Grid(entityManager: entityManager, screenSize: screenSize)
+        grid = Grid(eventManager: eventManager, screenSize: screenSize)
         if let scene = self.scene {
             grid.generateTileMap(scene: scene)
         }
@@ -42,6 +42,7 @@ class GameWorld {
     func spawnUnit(at location: CGPoint) {
         selectionNode.unitNodeDidSpawn(location)
     }
+
     func setupTeam() {
         let ownTeam = Team(player: .ownPlayer)
         let oppositeTeam = Team(player: .oppositePlayer)
@@ -62,9 +63,12 @@ class GameWorld {
         systemManager.add(system: RemoveSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: SpawnSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: ShootingSystem(entityManager: entityManager, eventManager: eventManager))
-        systemManager.add(system: HomeSystem(entityManager: entityManager))
+        systemManager.add(system: HomeSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: AiSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: ContactSystem(entityManager: entityManager, eventManager: eventManager))
+
+        // Temporary until we have different gamemodes
+        systemManager.system(ofType: AiSystem.self)?.aiPlayers.append(.oppositePlayer)
     }
 
     private func setUpSelectionNode() {

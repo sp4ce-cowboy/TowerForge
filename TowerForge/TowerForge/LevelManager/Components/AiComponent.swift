@@ -9,28 +9,38 @@ import Foundation
 import UIKit
 
 class AiComponent: TFComponent {
-    private var chosenUnit: (TFEntity & PlayerSpawnable).Type?
+    private var spawnableEntities: [(TFEntity & PlayerSpawnable).Type]
+    private(set) var delayUnitNextSpawn: TimeInterval
 
-    override init() {
-        self.chosenUnit = SpawnableEntities.playerSpawnableEntities.randomElement()
+    var chosenUnit: (TFEntity & PlayerSpawnable).Type? {
+        spawnableEntities.randomElement()
+    }
+
+    var spawnLocation: CGPoint {
+        let randomY = CGFloat.random(in: 0...UIScreen.main.bounds.height)
+        return CGPoint(x: UIScreen.main.bounds.width, y: randomY)
+    }
+
+    init(spawnableEntities: [(TFEntity & PlayerSpawnable).Type] = SpawnableEntities.playerSpawnableEntities) {
+        self.spawnableEntities = spawnableEntities
+        self.delayUnitNextSpawn = AiComponent.getNextInterval()
         super.init()
     }
 
-    func spawn() -> TFEvent? {
-        guard let homeComponent = entity?.component(ofType: HomeComponent.self),
-              let chosenUnit = chosenUnit else {
-            return nil
-        }
-        let randomY = CGFloat.random(in: 0...UIScreen.main.bounds.height)
+    override func update(deltaTime: TimeInterval) {
+        delayUnitNextSpawn -= deltaTime
+    }
 
-        guard homeComponent.points >= chosenUnit.cost else {
-            return nil
+    func spawn() -> Bool {
+        guard delayUnitNextSpawn <= 0 else {
+            return false
         }
-        homeComponent.decreasePoints(chosenUnit.cost)
 
-        // Re-randomize the unit
-        self.chosenUnit = SpawnableEntities.playerSpawnableEntities.randomElement()
-        return SpawnEvent(ofType: chosenUnit, timestamp: CACurrentMediaTime(),
-                          position: CGPoint(x: UIScreen.main.bounds.width, y: randomY), player: .oppositePlayer)
+        delayUnitNextSpawn = AiComponent.getNextInterval()
+        return true
+    }
+
+    private static func getNextInterval() -> TimeInterval {
+        Double.random(in: 1...10)
     }
 }
