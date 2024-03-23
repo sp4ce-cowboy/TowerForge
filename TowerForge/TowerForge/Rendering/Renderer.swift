@@ -12,13 +12,12 @@ class Renderer {
     private unowned var target: Renderable
     private unowned var scene: SKScene?
 
-    private var renderedNodes: [UUID: TFAnimatableNode] = [:]
+    private var renderedNodes: [UUID: TFSpriteNode] = [:]
 
     init(target: Renderable, scene: GameScene?) {
         self.target = target
         self.scene = scene
     }
-
     func render() {
         var nodesToBeRemoved = renderedNodes
 
@@ -36,7 +35,6 @@ class Renderer {
             removeAndUncache(with: entityId)
         }
     }
-
     private func update(entity: TFEntity) {
         guard let positionComponent = entity.component(ofType: PositionComponent.self),
               let node = renderedNodes[entity.id] else {
@@ -45,18 +43,25 @@ class Renderer {
 
         node.position = positionComponent.position
     }
-
     private func addAndCache(entity: TFEntity) {
         guard let spriteComponent = entity.component(ofType: SpriteComponent.self),
               let positionComponent = entity.component(ofType: PositionComponent.self),
               let playerComponent = entity.component(ofType: PlayerComponent.self) else {
             return
         }
+        if let labelComponent = entity.component(ofType: LabelComponent.self) {
+            let label = SKLabelNode(text: labelComponent.text)
+            label.fontName = "HelveticaNeue-Bold"
+            label.fontSize = 60.0
+            label.fontColor = .white
+            label.horizontalAlignmentMode = .center
+            label.verticalAlignmentMode = .center
+            label.position = CGPoint(x: spriteComponent.node.width, y: 0)
+            label.name = "point"
+            spriteComponent.node.addChild(label)
+        }
 
-        let node = TFAnimatableNode(textures: spriteComponent.textures,
-                                    height: spriteComponent.height,
-                                    width: spriteComponent.width,
-                                    animatableKey: spriteComponent.animatableKey)
+        let node = spriteComponent.node
         // Flips the image if it is the opposite team
         if playerComponent.player == .oppositePlayer {
             node.xScale *= -1

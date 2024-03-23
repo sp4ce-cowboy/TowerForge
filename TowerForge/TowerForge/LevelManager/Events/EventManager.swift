@@ -21,7 +21,6 @@ class EventManager {
     func executeEvents(in target: EventTarget) {
         while !eventQueue.isEmpty {
             let currentEvent = eventQueue.removeFirst()
-            print(currentEvent)
             if let output = currentEvent.execute(in: target) {
                 output.events.forEach { eventQueue.append($0) }
             }

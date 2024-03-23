@@ -17,8 +17,8 @@ class BaseUnit: TFEntity {
          player: Player) {
         super.init()
         createPlayerComponent(player: player)
-        createHealthComponent(maxHealth: maxHealth)
         createSpriteComponent(textureNames: textureNames, size: size, key: key, position: position)
+        createHealthComponent(maxHealth: maxHealth)
         createMovableComponent(position: position, velocity: velocity)
         createPositionComponent(position: position)
     }
