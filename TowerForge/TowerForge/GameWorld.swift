@@ -52,7 +52,7 @@ class GameWorld {
     func setupPlayerInfo() {
         let point = Point(initialPoint: 0)
         entityManager.add(point)
-        renderer?.addNodeToScene(entity: point)
+        // renderer?.addNodeToScene(entity: point)
     }
     // TODO: Move contact handling to a system
     func contactDidBegin(between idA: UUID, and idB: UUID) {
