@@ -8,5 +8,10 @@
 import Foundation
 
 struct SpawnableEntities {
-    static let playerSpawnableEntities: [(TFEntity & PlayerSpawnable).Type] = [MeleeUnit.self, SoldierUnit.self]
+    static let playerSpawnableEntities: [(TFEntity & PlayerSpawnable).Type] =
+    [
+        MeleeUnit.self,
+        SoldierUnit.self,
+        ArrowTower.self
+    ]
 }
