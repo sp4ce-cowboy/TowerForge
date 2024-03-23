@@ -8,7 +8,7 @@
 import SpriteKit
 
 class Grid: UnitSelectionNodeDelegate {
-    let DEFAULT_NO_OF_ROWS = 8
+    let DEFAULT_NO_OF_ROWS = 5
 
     private var eventManager: EventManager
     private var noOfRows: Int
@@ -30,7 +30,7 @@ class Grid: UnitSelectionNodeDelegate {
 
     func generateTileMap(scene: SKScene) {
         let screenWidth = self.width
-        let screenHeight = self.height
+        let screenHeight = self.height - 200
         let tileSize = CGSize(width: screenHeight / CGFloat(noOfRows), height: screenHeight / CGFloat(noOfRows))
 
         // Calculate the number of columns needed to cover the screen width
@@ -41,7 +41,7 @@ class Grid: UnitSelectionNodeDelegate {
                 let node = TFSpriteNode(imageName: "road-tile", height: tileSize.height, width: tileSize.width)
                 node.anchorPoint = CGPoint(x: 0, y: 0)
                 node.position = CGPoint(x: CGFloat(CGFloat(col) * tileSize.width),
-                                        y: CGFloat(CGFloat(row) * tileSize.height))
+                                        y: CGFloat(CGFloat(row) * tileSize.height) + 200)
                 node.zPosition = -100
                 scene.addChild(node)
             }
@@ -50,10 +50,10 @@ class Grid: UnitSelectionNodeDelegate {
 
     private func snapYPosition(yPosition: Double) -> Double {
         let normalizedYPosition = normalizeYPosition(yPosition: yPosition)
-        let screenHeight = Double(UIScreen.main.bounds.height)
+        let screenHeight = Double(UIScreen.main.bounds.height) - 200
         let rowHeight = screenHeight / Double(noOfRows)
         let rowIndex = Int(normalizedYPosition / rowHeight)
-        let centerY = Double(rowIndex) * rowHeight + rowHeight / 2
+        let centerY = (Double(rowIndex) * rowHeight + rowHeight / 2) + 200
         return denormalizeYPosition(yPosition: centerY)
     }
 

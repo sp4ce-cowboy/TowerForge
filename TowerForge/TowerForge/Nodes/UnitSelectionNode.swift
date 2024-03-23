@@ -27,11 +27,15 @@ class UnitSelectionNode: TFSpriteNode, UnitNodeDelegate {
 
         isUserInteractionEnabled = true
         let possibleUnits: [(TFEntity & PlayerSpawnable).Type] = SpawnableEntities.playerSpawnableEntities
+        var startingPoint = CGPoint(x: 400, y: 0)
         for type in possibleUnits {
             let unitNode = UnitNode(ofType: type)
+            unitNode.position = startingPoint
             unitNodes.append(unitNode)
             unitNode.delegate = self
             addChild(unitNode)
+
+            startingPoint.x += 140
         }
     }
 
