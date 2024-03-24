@@ -22,6 +22,7 @@ class GameWorld {
         systemManager = SystemManager()
         eventManager = EventManager()
         selectionNode = UnitSelectionNode()
+
         grid = Grid(eventManager: eventManager, screenSize: screenSize)
         if let scene = self.scene {
             grid.generateTileMap(scene: scene)
@@ -82,16 +83,16 @@ class GameWorld {
         selectionNode.delegate = grid
         scene?.addChild(selectionNode)
         // Position unit selection node on the left side of the screen
-        selectionNode.position = CGPoint(x: selectionNode.frame.width / 2, y: scene?.frame.midY ?? 300)
+        selectionNode.position = CGPoint(x: 500, y: selectionNode.height / 2)
 
         // Calculate vertical spacing between unit nodes
-        let verticalSpacing = selectionNode.frame.height
-        var verticalY = 10.0
+        var horizontalX = 10.0
         // Position unit nodes vertically aligned
         for unitNode in selectionNode.unitNodes {
-            unitNode.position = CGPoint(x: selectionNode.frame.width / 2,
-                                        y: verticalY)
-            verticalY += verticalSpacing
+            let horizontalSpacing = unitNode.frame.width
+            unitNode.position = CGPoint(x: horizontalX,
+                                        y: 0)
+            horizontalX += horizontalSpacing
         }
     }
 }
