@@ -44,7 +44,6 @@ class GameWorld {
         renderer?.render()
     }
     func spawnUnit(at location: CGPoint) {
-        renderer?.removeMessage()
         selectionNode.unitNodeDidSpawn(location)
     }
 

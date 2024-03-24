@@ -44,15 +44,14 @@ class Renderer {
         label.fontSize = 50.0
         label.fontName = "Nosifer-Regular"
         label.position = CGPoint(x: scene.frame.midX, y: scene.frame.midY)
-        label.run(SKAction.fadeIn(withDuration: 0.5))
         scene.addChild(label)
-    }
-    func removeMessage() {
-        guard let label = scene?.childNode(withName: "//message") else {
-            return
-        }
-        label.run(SKAction.sequence([SKAction.fadeOut(withDuration: 0.5), SKAction.removeFromParent()]))
 
+        let fadeInAction = SKAction.fadeIn(withDuration: 0.5)
+        let waitAction = SKAction.wait(forDuration: 1.0)
+        let fadeOutAction = SKAction.fadeOut(withDuration: 0.5)
+        let removeAction = SKAction.removeFromParent()
+        let sequence = SKAction.sequence([fadeInAction, waitAction, fadeOutAction, removeAction])
+        label.run(sequence)
     }
     private func update(entity: TFEntity) {
         guard let positionComponent = entity.component(ofType: PositionComponent.self),
