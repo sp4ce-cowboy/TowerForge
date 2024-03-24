@@ -24,10 +24,12 @@ class EntityManager {
 
     func add(_ entity: TFEntity) {
         entitiesMap[entity.id] = entity
+        /// assert(checkRepresentation())
     }
 
     func removeEntity(with id: UUID) {
         entitiesMap.removeValue(forKey: id)
+        /// assert(checkRepresentation())
     }
 
     func component<T: TFComponent>(ofType type: T.Type, of entityId: UUID) -> T? {
@@ -39,6 +41,7 @@ class EntityManager {
     }
 
     func components<T: TFComponent>(ofType type: T.Type) -> [T] {
+        /// assert(checkRepresentation())
         entities.compactMap { $0.component(ofType: type) }
     }
     

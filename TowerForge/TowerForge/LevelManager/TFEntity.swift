@@ -31,6 +31,7 @@ class TFEntity: Collidable {
     }
 
     func addComponent<T: TFComponent>(_ component: T) {
+        /// assert(checkRepresentation())
         guard !hasComponent(ofType: type(of: component)) else {
             return
         }
@@ -39,6 +40,7 @@ class TFEntity: Collidable {
     }
 
     func removeComponent<T: TFComponent>(ofType type: T.Type) {
+        /// assert(checkRepresentation())
         guard let componentToBeRemoved = component(ofType: type.self) else {
             return
         }
@@ -48,18 +50,22 @@ class TFEntity: Collidable {
 
     // To be overriden by sub classes as needed
     func collide(with other: any Collidable) -> TFEvent? {
+        /// assert(checkRepresentation())
         nil
     }
 
     func collide(with damageComponent: DamageComponent) -> TFEvent? {
+        /// assert(checkRepresentation())
         nil
     }
 
     func collide(with healthComponent: HealthComponent) -> TFEvent? {
+        /// assert(checkRepresentation())
         nil
     }
 
     func collide(with movableComponent: MovableComponent) -> TFEvent? {
+        /// assert(checkRepresentation())
         nil
     }
     
