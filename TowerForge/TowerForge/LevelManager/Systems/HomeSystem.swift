@@ -12,10 +12,12 @@ class HomeSystem: TFSystem {
     var isActive = true
     weak var entityManager: EntityManager?
     weak var eventManager: EventManager?
+    var gridDelegate: GridDelegate
 
-    init(entityManager: EntityManager, eventManager: EventManager) {
+    init(entityManager: EntityManager, eventManager: EventManager, gridDelegate: GridDelegate) {
         self.entityManager = entityManager
         self.eventManager = eventManager
+        self.gridDelegate = gridDelegate
     }
 
     func update(within time: CGFloat) {
@@ -49,7 +51,8 @@ class HomeSystem: TFSystem {
         }
 
         playerHomeComponent.decreasePoints(type.cost)
-        let spawnEvent = SpawnEvent(ofType: type, timestamp: CACurrentMediaTime(), position: position, player: player)
+        let snapPosition = CGPoint(x: position.x, y: gridDelegate.snapYPosition(yPosition: position.y))
+        let spawnEvent = SpawnEvent(ofType: type, timestamp: CACurrentMediaTime(), position: snapPosition, player: player)
         eventManager?.add(spawnEvent)
     }
 }
