@@ -40,19 +40,21 @@ class HomeSystem: TFSystem {
         let playerHomeComponentArr = entityManager.components(ofType: HomeComponent.self).filter(({
             $0.entity?.component(ofType: PlayerComponent.self)?.player == player
         }))
-        guard !playerHomeComponentArr.isEmpty else {
+        guard !playerHomeComponentArr.isEmpty, position.y >= gridDelegate.UNIT_SELECTION_NODE_HEIGHT else {
             return
         }
-        let playerHomeComponent = playerHomeComponentArr[0]
 
         // Check if they have enough points to spawn
-        guard playerHomeComponent.points >= type.cost else {
-            return
+        for playerHomeComponent in playerHomeComponentArr {
+            guard playerHomeComponent.points >= type.cost else {
+                return
+            }
+            playerHomeComponent.decreasePoints(type.cost)
         }
 
-        playerHomeComponent.decreasePoints(type.cost)
         let snapPosition = CGPoint(x: position.x, y: gridDelegate.snapYPosition(yPosition: position.y))
-        let spawnEvent = SpawnEvent(ofType: type, timestamp: CACurrentMediaTime(), position: snapPosition, player: player)
+        let spawnEvent = SpawnEvent(ofType: type, timestamp: CACurrentMediaTime(),
+                                    position: snapPosition, player: player)
         eventManager?.add(spawnEvent)
     }
 }

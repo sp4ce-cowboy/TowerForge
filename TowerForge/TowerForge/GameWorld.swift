@@ -5,7 +5,7 @@
 //  Created by Zheng Ze on 20/3/24.
 //
 
-import Foundation
+import SpriteKit
 
 class GameWorld {
     private unowned var scene: GameScene?
@@ -13,7 +13,6 @@ class GameWorld {
     private var systemManager: SystemManager
     private var eventManager: EventManager
     private var selectionNode: UnitSelectionNode
-    private var selectionNodeDelegate: SelectionNodeDelegate
     private var grid: Grid
     private var renderer: Renderer?
 
@@ -28,7 +27,6 @@ class GameWorld {
         if let scene = self.scene {
             grid.generateTileMap(scene: scene)
         }
-        self.selectionNodeDelegate = SelectionNodeDelegate(eventManager: eventManager, gridDelegate: grid)
         renderer = Renderer(target: self, scene: scene)
 
         self.setUpSystems()
@@ -40,6 +38,7 @@ class GameWorld {
     func update(deltaTime: TimeInterval) {
         systemManager.update(deltaTime)
         eventManager.executeEvents(in: self)
+        selectionNode.update()
         renderer?.render()
     }
     func spawnUnit(at location: CGPoint) {
@@ -73,20 +72,21 @@ class GameWorld {
         systemManager.add(system: RemoveSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: SpawnSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: ShootingSystem(entityManager: entityManager, eventManager: eventManager))
-        systemManager.add(system: HomeSystem(entityManager: entityManager, eventManager: eventManager, gridDelegate: grid))
         systemManager.add(system: AiSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: ContactSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: HomeSystem(entityManager: entityManager, eventManager: eventManager,
+                                             gridDelegate: grid))
 
         // Temporary until we have different gamemodes
         systemManager.system(ofType: AiSystem.self)?.aiPlayers.append(.oppositePlayer)
     }
 
     private func setUpSelectionNode() {
-        selectionNode.delegate = selectionNodeDelegate
-        scene?.addChild(selectionNode)
-        // Position unit selection node on the left side of the screen
-        selectionNode.position = CGPoint(x: 500, y: selectionNode.height / 2)
-
+        selectionNode.delegate = self
+//        scene?.addChild(selectionNode)
+//        // Position unit selection node on the left side of the screen
+//        selectionNode.position = CGPoint(x: 500, y: selectionNode.height / 2)
+//
         // Calculate vertical spacing between unit nodes
         var horizontalX = 10.0
         // Position unit nodes vertically aligned
@@ -96,6 +96,7 @@ class GameWorld {
                                         y: 0)
             horizontalX += horizontalSpacing
         }
+        entityManager.add(selectionNode)
     }
 }
 
@@ -108,5 +109,12 @@ extension GameWorld: EventTarget {
 extension GameWorld: Renderable {
     func entitiesToRender() -> [TFEntity] {
         entityManager.entities
+    }
+}
+
+extension GameWorld: UnitSelectionNodeDelegate {
+    func unitSelectionNodeDidSpawn<T: TFEntity & PlayerSpawnable>(ofType type: T.Type, position: CGPoint) {
+        eventManager.add(RequestSpawnEvent(ofType: type, timestamp: CACurrentMediaTime(),
+                                           position: position, player: .ownPlayer))
     }
 }
