@@ -89,6 +89,10 @@
 		BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */; };
 		BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */; };
 		BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D412BAD9885009F0FFB /* DamageEventTests.swift */; };
+		BA443D452BB05A3C009F0FFB /* SpawnEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D442BB05A3C009F0FFB /* SpawnEventTests.swift */; };
+		BA443D472BB05C6E009F0FFB /* MoveEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D462BB05C6E009F0FFB /* MoveEventTests.swift */; };
+		BA443D492BB05EF0009F0FFB /* RemoveEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D482BB05EF0009F0FFB /* RemoveEventTests.swift */; };
+		BA443D4B2BB05F73009F0FFB /* RequestSpawnEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D4A2BB05F73009F0FFB /* RequestSpawnEventTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +199,10 @@
 		BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
 		BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		BA443D412BAD9885009F0FFB /* DamageEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEventTests.swift; sourceTree = "<group>"; };
+		BA443D442BB05A3C009F0FFB /* SpawnEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnEventTests.swift; sourceTree = "<group>"; };
+		BA443D462BB05C6E009F0FFB /* MoveEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEventTests.swift; sourceTree = "<group>"; };
+		BA443D482BB05EF0009F0FFB /* RemoveEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEventTests.swift; sourceTree = "<group>"; };
+		BA443D4A2BB05F73009F0FFB /* RequestSpawnEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSpawnEventTests.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -510,6 +518,10 @@
 			isa = PBXGroup;
 			children = (
 				BA443D412BAD9885009F0FFB /* DamageEventTests.swift */,
+				BA443D442BB05A3C009F0FFB /* SpawnEventTests.swift */,
+				BA443D462BB05C6E009F0FFB /* MoveEventTests.swift */,
+				BA443D482BB05EF0009F0FFB /* RemoveEventTests.swift */,
+				BA443D4A2BB05F73009F0FFB /* RequestSpawnEventTests.swift */,
 			);
 			path = EventTests;
 			sourceTree = "<group>";
@@ -759,7 +771,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				52DF5FC22BA32B2600135367 /* TowerForgeTests.swift in Sources */,
+				BA443D472BB05C6E009F0FFB /* MoveEventTests.swift in Sources */,
 				52DF5FE42BA3391200135367 /* TFTexturesTests.swift in Sources */,
+				BA443D4B2BB05F73009F0FFB /* RequestSpawnEventTests.swift in Sources */,
+				BA443D452BB05A3C009F0FFB /* SpawnEventTests.swift in Sources */,
+				BA443D492BB05EF0009F0FFB /* RemoveEventTests.swift in Sources */,
 				BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
