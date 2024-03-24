@@ -44,16 +44,16 @@ class EntityManager {
         /// assert(checkRepresentation())
         entities.compactMap { $0.component(ofType: type) }
     }
-    
+
     /// Ensures that the UUID keys of entries in the dictionary match the UUID id of
     /// the associated values
     private func checkRepresentation() -> Bool {
         for (key, value) in entitiesMap {
-            if key != components[key]?.id {
+            if key != entitiesMap[key]?.id {
                 return false
             }
         }
-        
+
         return true
     }
 }

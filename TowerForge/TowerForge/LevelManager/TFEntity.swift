@@ -68,7 +68,7 @@ class TFEntity: Collidable {
         /// assert(checkRepresentation())
         nil
     }
-    
+
     /// Ensures that the UUID keys of entries in the dictionary match the UUID id of
     /// the associated values
     private func checkRepresentation() -> Bool {
@@ -77,7 +77,7 @@ class TFEntity: Collidable {
                 return false
             }
         }
-        
+
         return true
     }
 }
