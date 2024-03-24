@@ -29,7 +29,7 @@ class UnitNode: TFSpriteNode {
         self.zPosition = 10.0
         isUserInteractionEnabled = true
 
-        backgroundNode = SKSpriteNode(color: UIColor.blue, size: self.size)
+        backgroundNode = SKSpriteNode(color: UIColor.clear, size: self.size)
         backgroundNode.zPosition = -1
         addChild(backgroundNode)
     }
