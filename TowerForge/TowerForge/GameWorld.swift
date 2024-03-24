@@ -28,7 +28,7 @@ class GameWorld {
             grid.generateTileMap(scene: scene)
         }
         renderer = Renderer(target: self, scene: scene)
-
+        renderer?.renderMessage("Game Starts")
         self.setUpSystems()
         self.setUpSelectionNode()
         self.setupTeam()

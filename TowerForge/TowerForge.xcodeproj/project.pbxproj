@@ -47,6 +47,7 @@
 		523923E72BADC8530044BA61 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 523923E62BADC8530044BA61 /* Launch Screen.storyboard */; };
 		5240D08F2BAE6D0A004F1486 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D08E2BAE6D0A004F1486 /* Point.swift */; };
 		5240D0912BAF3453004F1486 /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0902BAF3453004F1486 /* Life.swift */; };
+		5240D0962BB04E57004F1486 /* Nosifer-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5240D0952BB04E57004F1486 /* Nosifer-Regular.ttf */; };
 		5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5250B42E2BAE0DB000F16CF6 /* LabelComponent.swift */; };
 		52578B822BA61AAF00B4D76C /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52578B812BA61AAF00B4D76C /* PositionComponent.swift */; };
 		52578B872BA6209700B4D76C /* DamageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52578B862BA6209700B4D76C /* DamageComponent.swift */; };
@@ -87,6 +88,10 @@
 		BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */; };
 		BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */; };
 		BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D412BAD9885009F0FFB /* DamageEventTests.swift */; };
+		BA443D452BB05A3C009F0FFB /* SpawnEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D442BB05A3C009F0FFB /* SpawnEventTests.swift */; };
+		BA443D472BB05C6E009F0FFB /* MoveEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D462BB05C6E009F0FFB /* MoveEventTests.swift */; };
+		BA443D492BB05EF0009F0FFB /* RemoveEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D482BB05EF0009F0FFB /* RemoveEventTests.swift */; };
+		BA443D4B2BB05F73009F0FFB /* RequestSpawnEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D4A2BB05F73009F0FFB /* RequestSpawnEventTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +152,8 @@
 		523923E62BADC8530044BA61 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		5240D08E2BAE6D0A004F1486 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		5240D0902BAF3453004F1486 /* Life.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Life.swift; sourceTree = "<group>"; };
+		5240D0952BB04E57004F1486 /* Nosifer-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nosifer-Regular.ttf"; sourceTree = "<group>"; };
+		5240D0972BB0522A004F1486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5250B42E2BAE0DB000F16CF6 /* LabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelComponent.swift; sourceTree = "<group>"; };
 		52578B812BA61AAF00B4D76C /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		52578B862BA6209700B4D76C /* DamageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageComponent.swift; sourceTree = "<group>"; };
@@ -190,6 +197,10 @@
 		BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
 		BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		BA443D412BAD9885009F0FFB /* DamageEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEventTests.swift; sourceTree = "<group>"; };
+		BA443D442BB05A3C009F0FFB /* SpawnEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnEventTests.swift; sourceTree = "<group>"; };
+		BA443D462BB05C6E009F0FFB /* MoveEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEventTests.swift; sourceTree = "<group>"; };
+		BA443D482BB05EF0009F0FFB /* RemoveEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEventTests.swift; sourceTree = "<group>"; };
+		BA443D4A2BB05F73009F0FFB /* RequestSpawnEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSpawnEventTests.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -321,6 +332,14 @@
 			path = Generators;
 			sourceTree = "<group>";
 		};
+		5240D0942BB04E2B004F1486 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5240D0952BB04E57004F1486 /* Nosifer-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		52578B882BA620A900B4D76C /* BaseComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +406,8 @@
 		52DF5FA62BA32B2300135367 /* TowerForge */ = {
 			isa = PBXGroup;
 			children = (
+				5240D0972BB0522A004F1486 /* Info.plist */,
+				5240D0942BB04E2B004F1486 /* Fonts */,
 				52DF5FB42BA32B2600135367 /* Assets.xcassets */,
 				BA443D432BAD98CD009F0FFB /* AppMain */,
 				3CE9514D2BAC8925008B2785 /* Rendering */,
@@ -494,6 +515,10 @@
 			isa = PBXGroup;
 			children = (
 				BA443D412BAD9885009F0FFB /* DamageEventTests.swift */,
+				BA443D442BB05A3C009F0FFB /* SpawnEventTests.swift */,
+				BA443D462BB05C6E009F0FFB /* MoveEventTests.swift */,
+				BA443D482BB05EF0009F0FFB /* RemoveEventTests.swift */,
+				BA443D4A2BB05F73009F0FFB /* RequestSpawnEventTests.swift */,
 			);
 			path = EventTests;
 			sourceTree = "<group>";
@@ -619,6 +644,7 @@
 				52DF5FB82BA32B2600135367 /* LaunchScreen.storyboard in Resources */,
 				52DF5FAC2BA32B2300135367 /* Actions.sks in Resources */,
 				523923E72BADC8530044BA61 /* Launch Screen.storyboard in Resources */,
+				5240D0962BB04E57004F1486 /* Nosifer-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,7 +767,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				52DF5FC22BA32B2600135367 /* TowerForgeTests.swift in Sources */,
+				BA443D472BB05C6E009F0FFB /* MoveEventTests.swift in Sources */,
 				52DF5FE42BA3391200135367 /* TFTexturesTests.swift in Sources */,
+				BA443D4B2BB05F73009F0FFB /* RequestSpawnEventTests.swift in Sources */,
+				BA443D452BB05A3C009F0FFB /* SpawnEventTests.swift in Sources */,
+				BA443D492BB05EF0009F0FFB /* RemoveEventTests.swift in Sources */,
 				BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -919,12 +949,12 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TowerForge/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -954,12 +984,12 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TowerForge/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (

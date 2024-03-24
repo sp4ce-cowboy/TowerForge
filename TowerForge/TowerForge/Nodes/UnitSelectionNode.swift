@@ -24,7 +24,7 @@ class UnitSelectionNode: TFEntity, UnitNodeDelegate {
 
     override init() {
         super.init()
-        
+
         // Temporary until render pipeline is up
         // Initialised with dummy texture so that it doesn't crash
         let spriteComponent = SpriteComponent(textureNames: ["life"], height: 0, width: 0,
