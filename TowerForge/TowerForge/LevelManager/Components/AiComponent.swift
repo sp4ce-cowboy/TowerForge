@@ -17,7 +17,7 @@ class AiComponent: TFComponent {
     }
 
     var spawnLocation: CGPoint {
-        let randomY = CGFloat.random(in: 0...UIScreen.main.bounds.height)
+        let randomY = CGFloat.random(in: 200...UIScreen.main.bounds.height)
         return CGPoint(x: UIScreen.main.bounds.width, y: randomY)
     }
 

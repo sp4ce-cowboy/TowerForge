@@ -13,6 +13,7 @@ class GameWorld {
     private var systemManager: SystemManager
     private var eventManager: EventManager
     private var selectionNode: UnitSelectionNode
+    private var selectionNodeDelegate: SelectionNodeDelegate
     private var grid: Grid
     private var renderer: Renderer?
 
@@ -23,10 +24,11 @@ class GameWorld {
         eventManager = EventManager()
         selectionNode = UnitSelectionNode()
 
-        grid = Grid(eventManager: eventManager, screenSize: screenSize)
+        grid = Grid(screenSize: screenSize)
         if let scene = self.scene {
             grid.generateTileMap(scene: scene)
         }
+        self.selectionNodeDelegate = SelectionNodeDelegate(eventManager: eventManager, gridDelegate: grid)
         renderer = Renderer(target: self, scene: scene)
 
         self.setUpSystems()
@@ -71,7 +73,7 @@ class GameWorld {
         systemManager.add(system: RemoveSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: SpawnSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: ShootingSystem(entityManager: entityManager, eventManager: eventManager))
-        systemManager.add(system: HomeSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: HomeSystem(entityManager: entityManager, eventManager: eventManager, gridDelegate: grid))
         systemManager.add(system: AiSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: ContactSystem(entityManager: entityManager, eventManager: eventManager))
 
@@ -80,7 +82,7 @@ class GameWorld {
     }
 
     private func setUpSelectionNode() {
-        selectionNode.delegate = grid
+        selectionNode.delegate = selectionNodeDelegate
         scene?.addChild(selectionNode)
         // Position unit selection node on the left side of the screen
         selectionNode.position = CGPoint(x: 500, y: selectionNode.height / 2)
