@@ -94,6 +94,7 @@
 		BA443D492BB05EF0009F0FFB /* RemoveEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D482BB05EF0009F0FFB /* RemoveEventTests.swift */; };
 		BA443D4B2BB05F73009F0FFB /* RequestSpawnEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D4A2BB05F73009F0FFB /* RequestSpawnEventTests.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
+		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,6 +207,7 @@
 		BA443D4A2BB05F73009F0FFB /* RequestSpawnEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSpawnEventTests.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -515,6 +517,7 @@
 		BAFFB92F2BB0A01700D8301F /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				BAFFB9472BB0ABB400D8301F /* Utilities */,
 				BAFFB9432BB0A8B800D8301F /* Constants */,
 				52DF5FE72BA33F8800135367 /* Protocols */,
 				BAFFB9402BB0A68600D8301F /* Enums */,
@@ -673,6 +676,14 @@
 				52DF5FE02BA3349600135367 /* TFTextures.swift */,
 			);
 			path = TFCore;
+			sourceTree = "<group>";
+		};
+		BAFFB9472BB0ABB400D8301F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				BAFFB9482BB0ABC400D8301F /* Logger.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -863,6 +874,7 @@
 				52DF5FB02BA32B2300135367 /* GameViewController.swift in Sources */,
 				3CE951512BAC8955008B2785 /* Renderable.swift in Sources */,
 				529F91882BA6D7A7009551D9 /* SoldierUnit.swift in Sources */,
+				BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */,
 				520062522BA8DA09000DBA30 /* UnitGenerator.swift in Sources */,
 				3C9955C02BA57E5500D33FA5 /* EventTarget.swift in Sources */,
 				3CCF9CB12BAB1BCE004D170E /* GameWorld.swift in Sources */,
