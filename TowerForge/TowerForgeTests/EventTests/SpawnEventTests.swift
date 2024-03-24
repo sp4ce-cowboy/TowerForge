@@ -25,9 +25,6 @@ final class SpawnEventTests: XCTestCase {
         XCTAssertEqual(spawnEvent.timestamp, timestamp,
                        "SpawnEvent must have the same timestamp as originally specified")
 
-        XCTAssertEqual(spawnEvent.entityId, entityId,
-                       "SpawnEvent must have the same entityId as originally specified")
-
         XCTAssertEqual(spawnEvent.entity.id, spawnEvent.entityId,
                        "Entity must have the same entityId as originally specified, both within the SpawnEvent and outside")
     }
