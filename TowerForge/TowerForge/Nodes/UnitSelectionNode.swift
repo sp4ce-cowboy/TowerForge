@@ -12,9 +12,9 @@ protocol UnitSelectionNodeDelegate: AnyObject {
     func unitSelectionNodeDidSpawn<T: TFEntity & PlayerSpawnable>(ofType type: T.Type, position: CGPoint)
 }
 
-class UnitSelectionNode: TFSpriteNode, UnitNodeDelegate {
+class UnitSelectionNode: TFEntity, UnitNodeDelegate {
     weak var delegate: UnitSelectionNodeDelegate?
-    var availablePoints: Int = 100 {
+    var availablePoints: Int = 0 {
         didSet {
             updateUnitAlphas()
         }
@@ -22,21 +22,35 @@ class UnitSelectionNode: TFSpriteNode, UnitNodeDelegate {
     var unitNodes: [UnitNode] = []
     var selectedNode: UnitNode?
 
-    init() {
-        super.init(textures: nil, height: 200.0, width: 100.0)
+    override init() {
+        super.init()
 
-        isUserInteractionEnabled = true
+        // Temporary until render pipeline is up
+        // Initialised with dummy texture so that it doesn't crash
+        let spriteComponent = SpriteComponent(textureNames: ["life"], height: 0, width: 0,
+                                              position: CGPoint(x: 0, y: 0), animatableKey: "selectionNode")
+        let node = spriteComponent.node
+        node.isUserInteractionEnabled = true
         let possibleUnits: [(TFEntity & PlayerSpawnable).Type] = SpawnableEntities.playerSpawnableEntities
         var startingPoint = CGPoint(x: 400, y: 0)
+
         for type in possibleUnits {
             let unitNode = UnitNode(ofType: type)
             unitNode.position = startingPoint
             unitNodes.append(unitNode)
             unitNode.delegate = self
-            addChild(unitNode)
+            node.addChild(unitNode)
 
             startingPoint.x += 140
         }
+
+        // Position unit selection node on the left side of the screen
+        node.position = CGPoint(x: 500, y: 100)
+
+        self.addComponent(spriteComponent)
+        self.addComponent(HomeComponent(initialLifeCount: Team.lifeCount, pointInterval: Team.pointsInterval))
+        self.addComponent(PositionComponent(position: node.position))
+        self.addComponent(PlayerComponent(player: .ownPlayer))
     }
 
     @available(*, unavailable)
@@ -56,6 +70,13 @@ class UnitSelectionNode: TFSpriteNode, UnitNodeDelegate {
         }
     }
 
+    func update() {
+        guard let homeComponent = self.component(ofType: HomeComponent.self) else {
+            return
+        }
+        self.availablePoints = homeComponent.points
+    }
+
     func unitNodeDidSelect(_ unitNode: UnitNode) {
         if unitNode.purchasable {
             selectedNode = unitNode
@@ -66,7 +87,6 @@ class UnitSelectionNode: TFSpriteNode, UnitNodeDelegate {
         guard let selectedType = self.selectedNode?.type else {
             return
         }
-        self.availablePoints -= selectedType.cost
         delegate?.unitSelectionNodeDidSpawn(ofType: selectedType, position: position)
     }
 }
