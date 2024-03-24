@@ -41,4 +41,16 @@ class EntityManager {
     func components<T: TFComponent>(ofType type: T.Type) -> [T] {
         entities.compactMap { $0.component(ofType: type) }
     }
+    
+    /// Ensures that the UUID keys of entries in the dictionary match the UUID id of
+    /// the associated values
+    private func checkRepresentation() -> Bool {
+        for (key, value) in entitiesMap {
+            if key != components[key]?.id {
+                return false
+            }
+        }
+        
+        return true
+    }
 }
