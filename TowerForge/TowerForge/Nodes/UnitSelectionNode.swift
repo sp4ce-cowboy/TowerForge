@@ -28,12 +28,13 @@ class UnitSelectionNode: TFEntity, UnitNodeDelegate {
         // Temporary until render pipeline is up
         // Initialised with dummy texture so that it doesn't crash
         let spriteComponent = SpriteComponent(textureNames: ["life"], height: 0, width: 0,
-                                               position: CGPoint(x: 0, y: 0), animatableKey: "selectionNode")
+                                              position: CGPoint(x: 0, y: 0), animatableKey: "selectionNode")
         let node = spriteComponent.node
         node.isUserInteractionEnabled = true
 
         let possibleUnits: [(TFEntity & PlayerSpawnable).Type] = SpawnableEntities.playerSpawnableEntities
         var startingPoint = CGPoint(x: 400, y: 0)
+
         for type in possibleUnits {
             let unitNode = UnitNode(ofType: type)
             unitNode.position = startingPoint
