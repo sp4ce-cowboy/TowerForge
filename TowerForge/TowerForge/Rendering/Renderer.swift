@@ -35,6 +35,25 @@ class Renderer {
             removeAndUncache(with: entityId)
         }
     }
+    func renderMessage(_ message: String) {
+        guard let scene = self.scene else {
+            return
+        }
+        let label = SKLabelNode(text: message)
+        label.name = "message"
+        label.fontSize = 50.0
+        label.fontName = "Nosifer-Regular"
+        label.position = CGPoint(x: scene.frame.midX, y: scene.frame.midY)
+        label.run(SKAction.fadeIn(withDuration: 0.5))
+        scene.addChild(label)
+    }
+    func removeMessage() {
+        guard let label = scene?.childNode(withName: "//message") else {
+            return
+        }
+        label.run(SKAction.sequence([SKAction.fadeOut(withDuration: 0.5), SKAction.removeFromParent()]))
+
+    }
     private func update(entity: TFEntity) {
         guard let positionComponent = entity.component(ofType: PositionComponent.self),
               let node = renderedNodes[entity.id] else {

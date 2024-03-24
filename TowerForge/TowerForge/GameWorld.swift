@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SpriteKit
 
 class GameWorld {
     private unowned var scene: GameScene?
@@ -30,7 +31,7 @@ class GameWorld {
         }
         self.selectionNodeDelegate = SelectionNodeDelegate(eventManager: eventManager, gridDelegate: grid)
         renderer = Renderer(target: self, scene: scene)
-
+        renderer?.renderMessage("Game Starts")
         self.setUpSystems()
         self.setUpSelectionNode()
         self.setupTeam()
@@ -43,6 +44,7 @@ class GameWorld {
         renderer?.render()
     }
     func spawnUnit(at location: CGPoint) {
+        renderer?.removeMessage()
         selectionNode.unitNodeDidSpawn(location)
     }
 
