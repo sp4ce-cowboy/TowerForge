@@ -7,6 +7,7 @@
 
 import SpriteKit
 
+/// TODO: Add documentation for this
 protocol UnitNodeDelegate: AnyObject {
     func unitNodeDidSelect(_ unitNode: UnitNode)
     func unitNodeDidSpawn(_ position: CGPoint)

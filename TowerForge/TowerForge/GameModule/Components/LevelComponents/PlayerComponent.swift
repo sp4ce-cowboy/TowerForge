@@ -8,6 +8,14 @@
 import Foundation
 import SpriteKit
 
+class PlayerComponent: TFComponent {
+    var player: Player
+    init(player: Player) {
+        self.player = player
+        super.init()
+    }
+}
+
 public enum Player: Int {
     case ownPlayer = 1
     case oppositePlayer = 2
@@ -28,13 +36,5 @@ public enum Player: Int {
         case .oppositePlayer:
             return CGVector(dx: -1.0, dy: 0.0)
         }
-    }
-}
-
-class PlayerComponent: TFComponent {
-    var player: Player
-    init(player: Player) {
-        self.player = player
-        super.init()
     }
 }

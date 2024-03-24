@@ -8,6 +8,8 @@
 import Foundation
 import SpriteKit
 
+/// A protocol whose conformants must encapsulate an SKAction and the means
+/// to control their own animations.
 protocol Animatable {
     var animatableAction: SKAction? { get set }
     var animatableKey: String { get set }

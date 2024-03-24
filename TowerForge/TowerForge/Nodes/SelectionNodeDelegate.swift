@@ -21,6 +21,7 @@ class SelectionNodeDelegate: UnitSelectionNodeDelegate {
             return
         }
         let snapPosition = CGPoint(x: position.x, y: gridDelegate.snapYPosition(yPosition: position.y))
-        eventManager.add(RequestSpawnEvent(ofType: type, timestamp: CACurrentMediaTime(), position: snapPosition, player: .ownPlayer))
+        eventManager.add(RequestSpawnEvent(ofType: type, timestamp: CACurrentMediaTime(),
+                                           position: snapPosition, player: .ownPlayer))
     }
 }
