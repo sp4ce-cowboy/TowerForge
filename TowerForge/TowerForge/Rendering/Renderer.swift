@@ -35,6 +35,24 @@ class Renderer {
             removeAndUncache(with: entityId)
         }
     }
+    func renderMessage(_ message: String) {
+        guard let scene = self.scene else {
+            return
+        }
+        let label = SKLabelNode(text: message)
+        label.name = "message"
+        label.fontSize = 50.0
+        label.fontName = "Nosifer-Regular"
+        label.position = CGPoint(x: scene.frame.midX, y: scene.frame.midY)
+        scene.addChild(label)
+
+        let fadeInAction = SKAction.fadeIn(withDuration: 0.5)
+        let waitAction = SKAction.wait(forDuration: 1.0)
+        let fadeOutAction = SKAction.fadeOut(withDuration: 0.5)
+        let removeAction = SKAction.removeFromParent()
+        let sequence = SKAction.sequence([fadeInAction, waitAction, fadeOutAction, removeAction])
+        label.run(sequence)
+    }
     private func update(entity: TFEntity) {
         guard let positionComponent = entity.component(ofType: PositionComponent.self),
               let node = renderedNodes[entity.id] else {
