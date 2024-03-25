@@ -7,9 +7,9 @@
 
 import SpriteKit
 
-class GameWorld {
-    private unowned var scene: GameScene?
-    private var gameEngine: AbstractGameEngine
+class GameWorld: ObservableObject {
+    private weak var scene: GameScene?
+    private var gameEngine: GameEngine
     private var selectionNode: UnitSelectionNode
     private var grid: Grid
     private var renderer: Renderer?
@@ -31,6 +31,7 @@ class GameWorld {
     }
 
     func update(deltaTime: TimeInterval) {
+        DispatchQueue.main.async { self.objectWillChange.send() }
         gameEngine.updateGame(deltaTime: deltaTime)
         selectionNode.update()
         renderer?.render()
@@ -68,7 +69,8 @@ class GameWorld {
 
 extension GameWorld: Renderable {
     func entitiesToRender() -> [TFEntity] {
-        gameEngine.entities
+
+        gameEngine.entityManager.entities
     }
 }
 
