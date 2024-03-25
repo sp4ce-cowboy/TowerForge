@@ -72,12 +72,9 @@ class TFEntity: Collidable {
     /// Ensures that the UUID keys of entries in the dictionary match the UUID id of
     /// the associated values
     private func checkRepresentation() -> Bool {
-        for (key, value) in components {
-            if key != components[key]?.id {
+        for (key, _) in components where key != components[key]?.id {
                 return false
-            }
         }
-
         return true
     }
 }
