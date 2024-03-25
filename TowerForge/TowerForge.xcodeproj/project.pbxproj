@@ -94,6 +94,8 @@
 		BA443D4B2BB05F73009F0FFB /* RequestSpawnEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D4A2BB05F73009F0FFB /* RequestSpawnEventTests.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
+		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
+		BAFFB9502BB12F9D00D8301F /* GameEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94F2BB12F9D00D8301F /* GameEngineTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,6 +208,8 @@
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		BAFFB94A2BB11F9800D8301F /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
+		BAFFB94F2BB12F9D00D8301F /* GameEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngineTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -407,6 +411,7 @@
 		52DF5FC02BA32B2600135367 /* TowerForgeTests */ = {
 			isa = PBXGroup;
 			children = (
+				BAFFB94C2BB12F7D00D8301F /* GameModuleTests */,
 				BA443D402BAD9872009F0FFB /* EventTests */,
 				52DF5FE22BA3386400135367 /* CoreUITests */,
 				52DF5FC12BA32B2600135367 /* TowerForgeTests.swift */,
@@ -544,6 +549,7 @@
 		BAFFB9332BB0A24400D8301F /* GameModule */ = {
 			isa = PBXGroup;
 			children = (
+				BAFFB94A2BB11F9800D8301F /* GameEngine.swift */,
 				3CCF9CB02BAB1BCE004D170E /* GameWorld.swift */,
 				3C99559F2BA47D3E00D33FA5 /* Entities */,
 				52DF5FF02BA3519D00135367 /* Components */,
@@ -681,6 +687,14 @@
 				BAFFB9482BB0ABC400D8301F /* Logger.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		BAFFB94C2BB12F7D00D8301F /* GameModuleTests */ = {
+			isa = PBXGroup;
+			children = (
+				BAFFB94F2BB12F9D00D8301F /* GameEngineTests.swift */,
+			);
+			path = GameModuleTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -883,6 +897,7 @@
 				3C9955BE2BA57E4B00D33FA5 /* EventManager.swift in Sources */,
 				3CE951562BACA0CF008B2785 /* Collidable.swift in Sources */,
 				52DF5FE62BA33AF300135367 /* TFSpriteNode.swift in Sources */,
+				BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */,
 				3C9955B42BA4B12000D33FA5 /* ArrowTower.swift in Sources */,
 				3CE951612BADE881008B2785 /* Spawnable.swift in Sources */,
 				52DF5FE92BA33F9700135367 /* Animatable.swift in Sources */,
@@ -921,6 +936,7 @@
 				52DF5FC22BA32B2600135367 /* TowerForgeTests.swift in Sources */,
 				BA443D472BB05C6E009F0FFB /* MoveEventTests.swift in Sources */,
 				52DF5FE42BA3391200135367 /* TFTexturesTests.swift in Sources */,
+				BAFFB9502BB12F9D00D8301F /* GameEngineTests.swift in Sources */,
 				BA443D4B2BB05F73009F0FFB /* RequestSpawnEventTests.swift in Sources */,
 				BA443D452BB05A3C009F0FFB /* SpawnEventTests.swift in Sources */,
 				BA443D492BB05EF0009F0FFB /* RemoveEventTests.swift in Sources */,

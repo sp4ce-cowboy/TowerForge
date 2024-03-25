@@ -4,14 +4,6 @@ import XCTest
 
 final class RequestSpawnEventTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
     func test_initializeRequestSpawnEvent() {
         let timestamp = 1.0
         let entityType = MeleeUnit.self
@@ -30,7 +22,7 @@ final class RequestSpawnEventTests: XCTestCase {
 
         // MeleeUnit does not conform to equatable so XCAssertEqual cannot be used here
         XCTAssertTrue(requestSpawnEvent.entityType == entityType,
-                       "RequestSpawnEvent must have the same entity type as specified.")
+                      "RequestSpawnEvent must have the same entity type as specified.")
 
         // XCTAssertThrowsError(requestSpawnEvent.entityId, "Retrieving ID must throw fatal error")
 

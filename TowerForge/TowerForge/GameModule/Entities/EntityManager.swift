@@ -48,12 +48,9 @@ class EntityManager {
     /// Ensures that the UUID keys of entries in the dictionary match the UUID id of
     /// the associated values
     private func checkRepresentation() -> Bool {
-        for (key, value) in entitiesMap {
-            if key != entitiesMap[key]?.id {
+        for (key, _) in entitiesMap where key != entitiesMap[key]?.id {
                 return false
-            }
         }
-
         return true
     }
 }
