@@ -8,8 +8,8 @@
 import SpriteKit
 
 class GameWorld {
-    private weak var scene: GameScene?
-    private var gameEngine: GameEngine
+    private unowned var scene: GameScene?
+    private var gameEngine: AbstractGameEngine
     private var selectionNode: UnitSelectionNode
     private var grid: Grid
     private var renderer: Renderer?
@@ -68,8 +68,8 @@ class GameWorld {
 
 extension GameWorld: Renderable {
     func entitiesToRender() -> [TFEntity] {
-        
-        gameEngine.entityManager.entities
+
+        gameEngine.entities
     }
 }
 

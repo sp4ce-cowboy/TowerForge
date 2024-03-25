@@ -15,7 +15,7 @@ import Foundation
 /// Where necessary, an appropriate GameEngine stub can be used to replace GameEngine
 /// wherever it is required.
 protocol AbstractGameEngine: EventTarget {
-    var entityManager: EntityManager { get set }
+    var entities: [TFEntity] { get }
 
     func updateGame(deltaTime: TimeInterval)
     func setUpSystems(with grid: Grid)
@@ -37,9 +37,12 @@ protocol AbstractGameEngine: EventTarget {
 /// A concrete implementation of the AbstractGameEngine protocol
 class GameEngine: AbstractGameEngine {
 
+    /// TODO: privatize these attributes after unit testing for private attibutes is sorted out
     var entityManager: EntityManager
     var systemManager: SystemManager
     var eventManager: EventManager
+
+    var entities: [TFEntity] { entityManager.entities }
 
     init(entityManager: EntityManager = EntityManager(),
          systemManager: SystemManager = SystemManager(),
@@ -47,13 +50,13 @@ class GameEngine: AbstractGameEngine {
         self.entityManager = entityManager
         self.systemManager = systemManager
         self.eventManager = eventManager
+        self.setupTeam()
+        self.setupPlayerInfo()
     }
 
     func updateGame(deltaTime: TimeInterval) {
         systemManager.update(deltaTime)
         eventManager.executeEvents(in: self)
-        self.setupTeam()
-        self.setupPlayerInfo()
     }
 
     func system<T: TFSystem>(ofType type: T.Type) -> T? {
