@@ -75,6 +75,6 @@ extension GameWorld: Renderable {
 extension GameWorld: UnitSelectionNodeDelegate {
     func unitSelectionNodeDidSpawn<T: TFEntity & PlayerSpawnable>(ofType type: T.Type, position: CGPoint) {
         gameEngine.addEvent(RequestSpawnEvent(ofType: type, timestamp: CACurrentMediaTime(),
-                                           position: position, player: .ownPlayer))
+                                              position: position, player: .ownPlayer))
     }
 }
