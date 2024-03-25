@@ -31,6 +31,7 @@ class UnitSelectionNode: TFEntity, UnitNodeDelegate {
                                               position: CGPoint(x: 0, y: 0), animatableKey: "selectionNode")
         let node = spriteComponent.node
         node.isUserInteractionEnabled = true
+
         let possibleUnits: [(TFEntity & PlayerSpawnable).Type] = SpawnableEntities.playerSpawnableEntities
         var startingPoint = CGPoint(x: 400, y: 0)
 

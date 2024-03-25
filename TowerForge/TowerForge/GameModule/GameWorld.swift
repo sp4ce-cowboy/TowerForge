@@ -27,6 +27,7 @@ class GameWorld {
         if let scene = self.scene {
             grid.generateTileMap(scene: scene)
         }
+
         renderer = Renderer(target: self, scene: scene)
         renderer?.renderMessage("Game Starts")
         self.setUpSystems()
