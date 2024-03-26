@@ -97,6 +97,8 @@
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
 		BAFFB9502BB12F9D00D8301F /* GameEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94F2BB12F9D00D8301F /* GameEngineTests.swift */; };
+		BAFFB9532BB342F100D8301F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9522BB342F100D8301F /* Storage.swift */; };
+		BAFFB9552BB342FE00D8301F /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9542BB342FE00D8301F /* Storable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +214,8 @@
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		BAFFB94A2BB11F9800D8301F /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		BAFFB94F2BB12F9D00D8301F /* GameEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngineTests.swift; sourceTree = "<group>"; };
+		BAFFB9522BB342F100D8301F /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		BAFFB9542BB342FE00D8301F /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -407,6 +411,7 @@
 				5295A2082BAAE14B005018A8 /* ViewControllers */,
 				52DF5FDB2BA32CEF00135367 /* LevelModule */,
 				BAFFB9332BB0A24400D8301F /* GameModule */,
+				BAFFB9512BB342E200D8301F /* Storage */,
 			);
 			path = TowerForge;
 			sourceTree = "<group>";
@@ -700,6 +705,15 @@
 			path = GameModuleTests;
 			sourceTree = "<group>";
 		};
+		BAFFB9512BB342E200D8301F /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				BAFFB9522BB342F100D8301F /* Storage.swift */,
+				BAFFB9542BB342FE00D8301F /* Storable.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -863,7 +877,9 @@
 				3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */,
 				5295A20F2BAAE7CF005018A8 /* TeamController.swift in Sources */,
 				3C9955A52BA47DC600D33FA5 /* BaseProjectile.swift in Sources */,
+				BAFFB9552BB342FE00D8301F /* Storable.swift in Sources */,
 				52578B8C2BA627B200B4D76C /* Team.swift in Sources */,
+				BAFFB9532BB342F100D8301F /* Storage.swift in Sources */,
 				3CCF9CB72BAB2877004D170E /* MainMenuViewController.swift in Sources */,
 				52DF5FFF2BA3656500135367 /* ShootingComponent.swift in Sources */,
 				BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */,
