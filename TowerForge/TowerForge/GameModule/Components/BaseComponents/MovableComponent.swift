@@ -10,27 +10,22 @@ import CoreGraphics
 
 class MovableComponent: TFComponent {
     var velocity: CGVector
-    var position: CGPoint
-    var isColliding = false
+    var shouldMove = true
 
-    init(position: CGPoint, velocity: CGVector = .zero) {
+    init(velocity: CGVector = .zero) {
         self.velocity = velocity
-        self.position = position
         super.init()
     }
 
-    func updatePosition(to position: CGPoint) {
-         self.position = position
-     }
-
-     func updatePosition(with vector: CGVector) {
-         self.position.x += vector.dx
-         self.position.y += vector.dy
-     }
+    func updatePosition(with vector: CGVector) {
+        guard let positionComponent = entity?.component(ofType: PositionComponent.self) else {
+            return
+        }
+        positionComponent.move(by: vector)
+    }
 
     override func update(deltaTime: TimeInterval) {
-        guard !isColliding,
-              let entity = entity,
+        guard shouldMove, let entity = entity,
               let positionComponent = entity.component(ofType: PositionComponent.self),
               let playerComponent = entity.component(ofType: PlayerComponent.self) else {
             return

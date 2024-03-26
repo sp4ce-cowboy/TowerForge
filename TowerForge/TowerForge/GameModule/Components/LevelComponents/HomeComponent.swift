@@ -5,8 +5,7 @@
 //  Created by Vanessa Mae on 19/03/24.
 //
 
-import Foundation
-import SpriteKit
+import QuartzCore
 
 class HomeComponent: TFComponent {
     var lifeLeft: Int {

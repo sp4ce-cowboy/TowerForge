@@ -20,9 +20,6 @@ protocol AbstractGameEngine: EventTarget {
     func updateGame(deltaTime: TimeInterval)
     func setUpSystems(with grid: Grid)
 
-    func contactDidBegin(between idA: UUID, and idB: UUID)
-    func contactDidEnd(between idA: UUID, and idB: UUID)
-
     func addEntity(_ entity: TFEntity)
     func addEvent(_ event: TFEvent)
 
@@ -80,7 +77,7 @@ class GameEngine: AbstractGameEngine {
 
     func setUpSystems(with grid: Grid) {
         systemManager.add(system: HealthSystem(entityManager: entityManager, eventManager: eventManager))
-        systemManager.add(system: MovementSystem(entityManager: entityManager))
+        systemManager.add(system: MovementSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: RemoveSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: SpawnSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: ShootingSystem(entityManager: entityManager, eventManager: eventManager))
@@ -91,14 +88,6 @@ class GameEngine: AbstractGameEngine {
 
         // Temporary until we have different gamemodes
         systemManager.system(ofType: AiSystem.self)?.aiPlayers.append(.oppositePlayer)
-    }
-
-    func contactDidBegin(between idA: UUID, and idB: UUID) {
-        systemManager.system(ofType: ContactSystem.self)?.insert(contact: TFContact(entityIdA: idA, entityIdB: idB))
-    }
-
-    func contactDidEnd(between idA: UUID, and idB: UUID) {
-        systemManager.system(ofType: ContactSystem.self)?.remove(contact: TFContact(entityIdA: idA, entityIdB: idB))
     }
 
     func addEntity(_ entity: TFEntity) {

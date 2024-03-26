@@ -1,9 +1,9 @@
-import Foundation
+import QuartzCore
 
 class HealthSystem: TFSystem {
     var isActive = true
-    weak var entityManager: EntityManager?
-    weak var eventManager: EventManager?
+    unowned var entityManager: EntityManager
+    unowned var eventManager: EventManager
 
     init(entityManager: EntityManager, eventManager: EventManager) {
         self.entityManager = entityManager
@@ -15,16 +15,19 @@ class HealthSystem: TFSystem {
     /// - Parameters:
     ///   - entityId: UUID of the entity whose health component is to be modified
     ///   - hp: Value of the required adjustment of health. Can be positive or negative.
-    func modifyHealth(for entityId: UUID, with hp: CGFloat) -> Bool {
+    func modifyHealth(for entityId: UUID, with hp: CGFloat) {
         /*guard isActive else { TODO: Implement boolean check
             return
         }*/
-        guard let currentEntity = entityManager?.entity(with: entityId),
+        guard let currentEntity = entityManager.entity(with: entityId),
               let healthComponent = currentEntity.component(ofType: HealthComponent.self) else {
-            return false
+            return
         }
 
         healthComponent.adjustHealth(amount: hp)
-        return healthComponent.isZero
+
+        if healthComponent.currentHealth <= 0 {
+            eventManager.add(RemoveEvent(on: currentEntity.id, at: CACurrentMediaTime()))
+        }
     }
 }

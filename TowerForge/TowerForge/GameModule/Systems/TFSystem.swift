@@ -7,8 +7,8 @@ import Foundation
 /// - contain or reference an EventManager
 protocol TFSystem {
     var isActive: Bool { get set }
-    var entityManager: EntityManager? { get set }
-    var eventManager: EventManager? { get set }
+    var entityManager: EntityManager { get set }
+    var eventManager: EventManager { get set }
 
     func update(within time: CGFloat)
 }

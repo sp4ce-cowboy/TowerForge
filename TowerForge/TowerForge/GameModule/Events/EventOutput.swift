@@ -21,7 +21,7 @@ struct EventOutput {
 }
 
 extension EventOutput {
-    mutating func combine(with otherEventOuput: EventOutput) {
-        self.events.append(contentsOf: otherEventOuput.events)
+    mutating func combine(with otherEventOuput: EventOutput?) {
+        self.events.append(contentsOf: otherEventOuput?.events ?? [])
     }
 }

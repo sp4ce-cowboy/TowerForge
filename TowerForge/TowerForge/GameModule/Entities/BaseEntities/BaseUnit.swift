@@ -16,11 +16,15 @@ class BaseUnit: TFEntity {
          velocity: CGVector,
          player: Player) {
         super.init()
-        createPlayerComponent(player: player)
-        createSpriteComponent(textureNames: textureNames, size: size, key: key, position: position)
-        createHealthComponent(maxHealth: maxHealth)
-        createMovableComponent(position: position, velocity: velocity)
-        createPositionComponent(position: position)
+        // Core Components
+        self.addComponent(SpriteComponent(textureNames: textureNames, size: size, animatableKey: key))
+        self.addComponent(PositionComponent(position: position))
+        self.addComponent(MovableComponent(velocity: velocity))
+
+        // Game Components
+        self.addComponent(HealthComponent(maxHealth: maxHealth))
+        self.addComponent(PlayerComponent(player: player))
+        self.addComponent(ContactComponent(hitboxSize: size))
     }
 
     override func collide(with other: any Collidable) -> TFEvent? {
@@ -34,6 +38,13 @@ class BaseUnit: TFEntity {
             .concurrentlyWith(other.collide(with: movableComponent)) ?? other.collide(with: movableComponent)
 
         return superEvent?.concurrentlyWith(event) ?? event
+    }
+
+    override func onSeparate() {
+        guard let movableComponent = self.component(ofType: MovableComponent.self) else {
+            return
+        }
+        movableComponent.shouldMove = true
     }
 
     override func collide(with damageComponent: DamageComponent) -> TFEvent? {
@@ -51,40 +62,10 @@ class BaseUnit: TFEntity {
             return nil
         }
 
-        movableComponent.isColliding = true
-        if let component = self.component(ofType: MovableComponent.self) {
-            component.isColliding = true
+        movableComponent.shouldMove = false
+        if let ownMovableComponent = self.component(ofType: MovableComponent.self) {
+            ownMovableComponent.shouldMove = false
         }
-
         return nil
-    }
-
-    private func createHealthComponent(maxHealth: CGFloat) {
-        let healthComponent = HealthComponent(maxHealth: maxHealth)
-        self.addComponent(healthComponent)
-    }
-
-    private func createPositionComponent(position: CGPoint) {
-        let positionComponent = PositionComponent(position: position)
-        self.addComponent(positionComponent)
-    }
-
-    private func createSpriteComponent(textureNames: [String], size: CGSize, key: String, position: CGPoint) {
-        let spriteComponent = SpriteComponent(textureNames: textureNames,
-                                              height: size.height,
-                                              width: size.width,
-                                              position: position,
-                                              animatableKey: key)
-        self.addComponent(spriteComponent)
-    }
-
-    private func createMovableComponent(position: CGPoint, velocity: CGVector) {
-        let movableComponent = MovableComponent(position: position, velocity: velocity)
-        self.addComponent(movableComponent)
-    }
-
-    private func createPlayerComponent(player: Player) {
-        let playerComponent = PlayerComponent(player: player)
-        self.addComponent(playerComponent)
     }
 }

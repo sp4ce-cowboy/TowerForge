@@ -2,21 +2,17 @@ import Foundation
 
 class MovementSystem: TFSystem {
     var isActive = true
-    weak var entityManager: EntityManager?
-    weak var eventManager: EventManager?
+    unowned var entityManager: EntityManager
+    unowned var eventManager: EventManager
 
-    init(entityManager: EntityManager) {
+    init(entityManager: EntityManager, eventManager: EventManager) {
         self.entityManager = entityManager
+        self.eventManager = eventManager
     }
 
     func update(within time: CGFloat) {
-        guard let entities = entityManager?.entities else {
-            return
-        }
-
-        for entity in entities {
-            let movableComponent = entity.component(ofType: MovableComponent.self)
-            movableComponent?.update(deltaTime: time)
+        for movableComponent in entityManager.components(ofType: MovableComponent.self) {
+            movableComponent.update(deltaTime: time)
         }
     }
 
@@ -30,7 +26,7 @@ class MovementSystem: TFSystem {
         /*guard isActive else { TODO: Implement boolean check
             return
         }*/
-        guard let currentEntity = entityManager?.entity(with: entityId),
+        guard let currentEntity = entityManager.entity(with: entityId),
               let movementComponent = currentEntity.component(ofType: MovableComponent.self) else {
             return
         }

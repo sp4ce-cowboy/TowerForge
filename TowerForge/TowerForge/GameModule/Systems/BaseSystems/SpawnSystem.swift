@@ -2,8 +2,8 @@ import Foundation
 
 class SpawnSystem: TFSystem {
     var isActive = true
-    weak var entityManager: EntityManager?
-    weak var eventManager: EventManager?
+    unowned var entityManager: EntityManager
+    unowned var eventManager: EventManager
 
     init(entityManager: EntityManager, eventManager: EventManager) {
         self.entityManager = entityManager
@@ -13,6 +13,6 @@ class SpawnSystem: TFSystem {
     /// Spawns the provided entity
     /// - Parameter entity: The TFEntity to be spawned
     func handleSpawn(with entity: TFEntity) {
-        entityManager?.add(entity)
+        entityManager.add(entity)
     }
 }

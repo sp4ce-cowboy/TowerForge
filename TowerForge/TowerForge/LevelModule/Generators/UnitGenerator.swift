@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SpriteKit
 
 class UnitGenerator {
     static func spawn<T: TFEntity & PlayerSpawnable>(ofType type: T.Type, at position: CGPoint, player: Player) -> T {

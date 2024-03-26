@@ -15,11 +15,14 @@ class BaseTower: TFEntity {
          maxHealth: CGFloat,
          player: Player) {
         super.init()
+        // Core Components
+        self.addComponent(SpriteComponent(textureNames: textureNames, size: size, animatableKey: key))
+        self.addComponent(PositionComponent(position: position))
 
-        createSpriteComponent(textureNames: textureNames, size: size, key: key, position: position)
-        createHealthComponent(maxHealth: maxHealth)
-        createPositionComponent(position: position)
-        createPlayerComponent(player: player)
+        // Game Components
+        self.addComponent(HealthComponent(maxHealth: maxHealth))
+        self.addComponent(PlayerComponent(player: player))
+        self.addComponent(ContactComponent(hitboxSize: size))
     }
 
     override func collide(with other: any Collidable) -> TFEvent? {
@@ -49,30 +52,7 @@ class BaseTower: TFEntity {
             return nil
         }
 
-        movableComponent.isColliding = true
+        movableComponent.shouldMove = true
         return nil
-    }
-
-    private func createHealthComponent(maxHealth: CGFloat) {
-        let healthComponent = HealthComponent(maxHealth: maxHealth)
-        self.addComponent(healthComponent)
-    }
-    private func createPositionComponent(position: CGPoint) {
-        let positionComponent = PositionComponent(position: position)
-        self.addComponent(positionComponent)
-    }
-
-    private func createSpriteComponent(textureNames: [String], size: CGSize, key: String, position: CGPoint) {
-        let spriteComponent = SpriteComponent(textureNames: textureNames,
-                                              height: size.height,
-                                              width: size.width,
-                                              position: position,
-                                              animatableKey: key)
-        self.addComponent(spriteComponent)
-    }
-
-    private func createPlayerComponent(player: Player) {
-        let playerComponent = PlayerComponent(player: player)
-        self.addComponent(playerComponent)
     }
 }

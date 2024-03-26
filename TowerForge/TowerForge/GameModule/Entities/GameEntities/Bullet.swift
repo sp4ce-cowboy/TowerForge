@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SpriteKit
 
 class Bullet: BaseProjectile, Spawnable {
     static let textureNames: [String] = ["bullet"]

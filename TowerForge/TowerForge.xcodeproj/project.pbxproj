@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C0B608D2BB2B84000FFECB4 /* ContactComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0B608C2BB2B84000FFECB4 /* ContactComponent.swift */; };
 		3C769A722BA58DE700F454F9 /* MovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C769A712BA58DE700F454F9 /* MovementSystem.swift */; };
 		3C769A742BA591BD00F454F9 /* SpawnSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C769A732BA591BD00F454F9 /* SpawnSystem.swift */; };
 		3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955A02BA47DA500D33FA5 /* BaseTower.swift */; };
@@ -116,6 +117,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C0B608C2BB2B84000FFECB4 /* ContactComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactComponent.swift; sourceTree = "<group>"; };
 		3C769A712BA58DE700F454F9 /* MovementSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
 		3C769A732BA591BD00F454F9 /* SpawnSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnSystem.swift; sourceTree = "<group>"; };
 		3C9955A02BA47DA500D33FA5 /* BaseTower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTower.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				52578B862BA6209700B4D76C /* DamageComponent.swift */,
+				3C0B608C2BB2B84000FFECB4 /* ContactComponent.swift */,
 				52DF5FFE2BA3656500135367 /* ShootingComponent.swift */,
 				52DF5FFA2BA3601400135367 /* HealthComponent.swift */,
 			);
@@ -919,6 +922,7 @@
 				527E3A242BA613F000FE1628 /* PlayerComponent.swift in Sources */,
 				3C9955C52BA585DD00D33FA5 /* HealthSystem.swift in Sources */,
 				520062562BA8E026000DBA30 /* PlayerSpawnable.swift in Sources */,
+				3C0B608D2BB2B84000FFECB4 /* ContactComponent.swift in Sources */,
 				3CE951652BAE0A04008B2785 /* HomeSystem.swift in Sources */,
 				52DF5FFB2BA3601400135367 /* HealthComponent.swift in Sources */,
 				3C9955BC2BA563A800D33FA5 /* TFEvent.swift in Sources */,

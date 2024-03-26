@@ -5,7 +5,6 @@
 //  Created by Vanessa Mae on 15/03/24.
 //
 
-import Foundation
 import SpriteKit
 
 class HealthComponent: TFComponent {

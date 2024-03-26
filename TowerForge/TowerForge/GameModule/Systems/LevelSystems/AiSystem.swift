@@ -5,12 +5,12 @@
 //  Created by Zheng Ze on 23/3/24.
 //
 
-import SpriteKit
+import QuartzCore
 
 class AiSystem: TFSystem {
     var isActive = true
-    weak var entityManager: EntityManager?
-    weak var eventManager: EventManager?
+    unowned var entityManager: EntityManager
+    unowned var eventManager: EventManager
     var aiPlayers: [Player] = []
 
     init(entityManager: EntityManager, eventManager: EventManager) {
@@ -19,10 +19,6 @@ class AiSystem: TFSystem {
     }
 
     func update(within time: CGFloat) {
-        guard let entityManager = entityManager, let eventManager = eventManager else {
-            return
-        }
-
         var aiComponents: [Player: AiComponent] = [:]
         for aiComponent in entityManager.components(ofType: AiComponent.self) {
             guard let player = aiComponent.entity?.component(ofType: PlayerComponent.self)?.player else {
