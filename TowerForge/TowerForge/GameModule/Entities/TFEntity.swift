@@ -54,6 +54,8 @@ class TFEntity: Collidable {
         nil
     }
 
+    func onSeparate() {}
+
     func collide(with damageComponent: DamageComponent) -> TFEvent? {
         /// assert(checkRepresentation())
         nil

@@ -37,20 +37,8 @@ class GameWorld {
         selectionNode.unitNodeDidSpawn(location)
     }
 
-    func contactDidBegin(between idA: UUID, and idB: UUID) {
-        gameEngine.contactDidEnd(between: idA, and: idB)
-    }
-
-    func contactDidEnd(between idA: UUID, and idB: UUID) {
-        gameEngine.contactDidEnd(between: idA, and: idB)
-    }
-
     private func setUpSelectionNode() {
         selectionNode.delegate = self
-//        scene?.addChild(selectionNode)
-//        // Position unit selection node on the left side of the screen
-//        selectionNode.position = CGPoint(x: 500, y: selectionNode.height / 2)
-//
         // Calculate vertical spacing between unit nodes
         var horizontalX = 10.0
         // Position unit nodes vertically aligned
@@ -65,8 +53,7 @@ class GameWorld {
 }
 
 extension GameWorld: Renderable {
-    func entitiesToRender() -> [TFEntity] {
-
+    var entitiesToRender: [TFEntity] {
         gameEngine.entities
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 import CoreGraphics
 
 class PositionComponent: TFComponent {
-    var position: CGPoint
+    private(set) var position: CGPoint
     var anchorPoint: CGPoint
 
     init(position: CGPoint, anchorPoint: CGPoint) {
@@ -24,5 +24,10 @@ class PositionComponent: TFComponent {
 
     func changeTo(to position: CGPoint) {
         self.position = position
+    }
+
+    func move(by displacement: CGVector) {
+        position.x += displacement.dx
+        position.y += displacement.dy
     }
 }

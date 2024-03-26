@@ -8,5 +8,5 @@
 import Foundation
 
 protocol Renderable: AnyObject {
-    func entitiesToRender() -> [TFEntity]
+    var entitiesToRender: [TFEntity] { get }
 }

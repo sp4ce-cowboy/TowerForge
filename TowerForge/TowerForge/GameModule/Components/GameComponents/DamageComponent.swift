@@ -25,7 +25,7 @@ class DamageComponent: TFComponent {
     }
 
     func damage(_ healthComponent: HealthComponent) -> TFEvent? {
-        guard canDamage, let enemyId = healthComponent.entity?.id, let id = entity?.id else {
+        guard canDamage, let enemyId = healthComponent.entity?.id, let entityId = entity?.id else {
             return nil
         }
 
@@ -39,7 +39,7 @@ class DamageComponent: TFComponent {
         let event = DamageEvent(on: enemyId, at: lastAttackTime, with: attackPower)
 
         if temporary {
-            return event.concurrentlyWith(RemoveEvent(on: id, at: lastAttackTime))
+            return event.concurrentlyWith(RemoveEvent(on: entityId, at: lastAttackTime))
         }
         return event
     }

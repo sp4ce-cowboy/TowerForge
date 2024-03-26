@@ -18,10 +18,11 @@ class BaseTower: TFEntity {
         // Core Components
         self.addComponent(SpriteComponent(textureNames: textureNames, size: size, animatableKey: key))
         self.addComponent(PositionComponent(position: position))
-        
+
         // Game Components
         self.addComponent(HealthComponent(maxHealth: maxHealth))
         self.addComponent(PlayerComponent(player: player))
+        self.addComponent(ContactComponent(hitboxSize: size))
     }
 
     override func collide(with other: any Collidable) -> TFEvent? {
@@ -51,7 +52,7 @@ class BaseTower: TFEntity {
             return nil
         }
 
-        movableComponent.isColliding = true
+        movableComponent.shouldMove = true
         return nil
     }
 }

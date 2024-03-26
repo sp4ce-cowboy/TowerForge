@@ -27,8 +27,7 @@ class UnitSelectionNode: TFEntity, UnitNodeDelegate {
 
         // Temporary until render pipeline is up
         // Initialised with dummy texture so that it doesn't crash
-        let spriteComponent = SpriteComponent(textureNames: ["life"], height: 0, width: 0,
-                                              position: CGPoint(x: 0, y: 0), animatableKey: "selectionNode")
+        let spriteComponent = SpriteComponent(textureNames: ["life"], size: CGSize.zero, animatableKey: "selectionNode")
         let node = spriteComponent.node
         node.isUserInteractionEnabled = true
 

@@ -21,7 +21,6 @@ class TFSpriteNode: SKSpriteNode {
         self.width = width
         self.height = height
         super.init(texture: textures?.mainTexture, color: .clear, size: CGSize(width: width, height: height))
-        setUpPhysicsBody()
     }
 
     init(imageName: String, height: CGFloat, width: CGFloat) {
@@ -33,13 +32,5 @@ class TFSpriteNode: SKSpriteNode {
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    // Only for collision detection
-    private func setUpPhysicsBody() {
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: width, height: height))
-        self.physicsBody?.affectedByGravity = false
-        self.physicsBody?.collisionBitMask = .min
-        self.physicsBody?.contactTestBitMask = .max
     }
 }

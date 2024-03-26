@@ -22,15 +22,10 @@ struct ConcurrentEvent: TFEvent {
     }
 
     func execute(in target: any EventTarget) -> EventOutput? {
-        guard var eventOutput = event1.execute(in: target) else {
-            return nil
-        }
+        var eventOutput1 = event1.execute(in: target)
+        let eventOutput2 = event2.execute(in: target)
 
-        guard let eventOutput2 = event2.execute(in: target) else {
-            return eventOutput
-        }
-
-        eventOutput.combine(with: eventOutput2)
-        return eventOutput
+        eventOutput1?.combine(with: eventOutput2)
+        return eventOutput1 != nil ? eventOutput1 : eventOutput2
     }
 }

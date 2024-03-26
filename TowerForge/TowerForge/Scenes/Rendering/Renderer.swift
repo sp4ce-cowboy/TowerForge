@@ -21,7 +21,7 @@ class Renderer {
     func render() {
         var nodesToBeRemoved = renderedNodes
 
-        for entity in target.entitiesToRender() {
+        for entity in target.entitiesToRender {
             guard nodesToBeRemoved[entity.id] != nil else {
                 addAndCache(entity: entity)
                 continue

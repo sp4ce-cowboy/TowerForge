@@ -14,9 +14,10 @@ class BaseProjectile: TFEntity {
         // Core Components
         self.addComponent(SpriteComponent(textureNames: textureNames, size: size, animatableKey: key))
         self.addComponent(PositionComponent(position: position))
-        self.addComponent(MovableComponent(position: position, velocity: velocity))
+        self.addComponent(MovableComponent(velocity: velocity))
 
         // Game Components
         self.addComponent(PlayerComponent(player: player))
+        self.addComponent(ContactComponent(hitboxSize: size))
     }
 }

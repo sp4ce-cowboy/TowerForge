@@ -19,11 +19,12 @@ class BaseUnit: TFEntity {
         // Core Components
         self.addComponent(SpriteComponent(textureNames: textureNames, size: size, animatableKey: key))
         self.addComponent(PositionComponent(position: position))
-        self.addComponent(MovableComponent(position: position, velocity: velocity))
-        
+        self.addComponent(MovableComponent(velocity: velocity))
+
         // Game Components
         self.addComponent(HealthComponent(maxHealth: maxHealth))
         self.addComponent(PlayerComponent(player: player))
+        self.addComponent(ContactComponent(hitboxSize: size))
     }
 
     override func collide(with other: any Collidable) -> TFEvent? {
@@ -37,6 +38,13 @@ class BaseUnit: TFEntity {
             .concurrentlyWith(other.collide(with: movableComponent)) ?? other.collide(with: movableComponent)
 
         return superEvent?.concurrentlyWith(event) ?? event
+    }
+
+    override func onSeparate() {
+        guard let movableComponent = self.component(ofType: MovableComponent.self) else {
+            return
+        }
+        movableComponent.shouldMove = true
     }
 
     override func collide(with damageComponent: DamageComponent) -> TFEvent? {
@@ -54,11 +62,10 @@ class BaseUnit: TFEntity {
             return nil
         }
 
-        movableComponent.isColliding = true
-        if let component = self.component(ofType: MovableComponent.self) {
-            component.isColliding = true
+        movableComponent.shouldMove = false
+        if let ownMovableComponent = self.component(ofType: MovableComponent.self) {
+            ownMovableComponent.shouldMove = false
         }
-
         return nil
     }
 }

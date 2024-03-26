@@ -9,59 +9,80 @@ import Foundation
 
 class ContactSystem: TFSystem {
     var isActive = true
-    weak var entityManager: EntityManager?
-    weak var eventManager: EventManager?
-
-    private var contacts: Set<TFContact> = []
+    unowned var entityManager: EntityManager
+    unowned var eventManager: EventManager
+    private var contacts: Set<TFContact>
 
     init(entityManager: EntityManager, eventManager: EventManager) {
         self.entityManager = entityManager
         self.eventManager = eventManager
+        self.contacts = []
     }
 
     func update(within time: CGFloat) {
+        let contactComponents = entityManager.components(ofType: ContactComponent.self)
+        var contactsToBeSeparated = contacts
+        contacts = evaluate(contactComponents: contactComponents)
+
         for contact in contacts {
-            handleContact(between: contact.entityIdA, and: contact.entityIdB)
+            contactsToBeSeparated.remove(contact)
+        }
+
+        for contact in contactsToBeSeparated {
+            if let entityA = entityManager.entity(with: contact.entityIdA) {
+                handleSeparation(for: entityA)
+            }
+
+            if let entityB = entityManager.entity(with: contact.entityIdB) {
+                handleSeparation(for: entityB)
+            }
+        }
+
+        for contact in contacts {
+            guard let entityA = entityManager.entity(with: contact.entityIdA),
+                  let entityB = entityManager.entity(with: contact.entityIdB) else {
+                continue
+            }
+            handleContact(between: entityA, and: entityB)
         }
     }
 
-    func insert(contact: TFContact) {
-        guard contact.entityIdA != contact.entityIdB, entityManager?.entity(with: contact.entityIdA) != nil,
-              entityManager?.entity(with: contact.entityIdB) != nil else {
-            return
+    private func evaluate(contactComponents: [ContactComponent]) -> Set<TFContact> {
+        var contacts: Set<TFContact> = []
+        for i in 0..<contactComponents.count {
+            let contactComponentA = contactComponents[i]
+            guard let entityA = contactComponentA.entity,
+                  let positionComponentA = entityA.component(ofType: PositionComponent.self) else {
+                continue
+            }
+
+            for j in i + 1..<contactComponents.count {
+                let contactComponentB = contactComponents[j]
+                guard let entityB = contactComponentB.entity,
+                      let positionComponentB = entityB.component(ofType: PositionComponent.self) else {
+                    continue
+                }
+
+                let hitboxA = contactComponentA.hitbox(position: positionComponentA.position)
+                let hitboxB = contactComponentB.hitbox(position: positionComponentB.position)
+
+                if hitboxA.intersects(hitboxB) {
+                    let contact = TFContact(entityIdA: entityA.id, entityIdB: entityB.id)
+                    contacts.insert(contact)
+                }
+            }
         }
-        contacts.insert(contact)
+        return contacts
     }
 
-    func remove(contact: TFContact) {
-        if contacts.remove(contact) != nil {
-            handleSeparation(between: contact.entityIdA, and: contact.entityIdB)
-        }
-    }
-
-    private func handleContact(between idA: UUID, and idB: UUID) {
-        guard let entityA = entityManager?.entity(with: idA), let entityB = entityManager?.entity(with: idB) else {
-            contacts.remove(TFContact(entityIdA: idA, entityIdB: idB))
-            handleSeparation(between: idA, and: idB)
-            return
-        }
-
+    private func handleContact(between entityA: TFEntity, and entityB: TFEntity) {
         guard let event = entityA.collide(with: entityB) else {
             return
         }
-
-        eventManager?.add(event)
+        eventManager.add(event)
     }
 
-    private func handleSeparation(between idA: UUID, and idB: UUID) {
-        if let entityA = entityManager?.entity(with: idA),
-           let movableComponent = entityA.component(ofType: MovableComponent.self) {
-            movableComponent.isColliding = false
-        }
-
-        if let entityB = entityManager?.entity(with: idB),
-           let movableComponent = entityB.component(ofType: MovableComponent.self) {
-            movableComponent.isColliding = false
-        }
+    private func handleSeparation(for entity: TFEntity) {
+        entity.onSeparate()
     }
 }

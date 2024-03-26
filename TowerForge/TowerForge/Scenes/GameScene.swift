@@ -13,11 +13,6 @@ class GameScene: SKScene {
     unowned var updateDelegate: SceneUpdateDelegate?
     unowned var sceneManagerDelegate: SceneManagerDelegate?
 
-    override func sceneDidLoad() {
-        super.sceneDidLoad()
-        physicsWorld.contactDelegate = self
-    }
-
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else {
             return
@@ -34,24 +29,5 @@ class GameScene: SKScene {
         let changeInTime = currentTime - lastUpdatedTimeInterval
         lastUpdatedTimeInterval = currentTime
         updateDelegate?.update(deltaTime: changeInTime)
-    }
-}
-
-extension GameScene: SKPhysicsContactDelegate {
-    public func didBegin(_ contact: SKPhysicsContact) {
-        guard let nodeA = contact.bodyA.node as? TFSpriteNode,
-              let nodeB = contact.bodyB.node as? TFSpriteNode else {
-            return
-        }
-        updateDelegate?.contactBegin(between: nodeA, and: nodeB)
-    }
-
-    public func didEnd(_ contact: SKPhysicsContact) {
-        guard let nodeA = contact.bodyA.node as? TFSpriteNode,
-              let nodeB = contact.bodyB.node as? TFSpriteNode else {
-            return
-        }
-
-        updateDelegate?.contactEnd(between: nodeA, and: nodeB)
     }
 }
