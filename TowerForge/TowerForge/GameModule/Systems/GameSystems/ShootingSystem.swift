@@ -9,8 +9,8 @@ import Foundation
 
 class ShootingSystem: TFSystem {
     var isActive = true
-    weak var entityManager: EntityManager?
-    weak var eventManager: EventManager?
+    unowned var entityManager: EntityManager
+    unowned var eventManager: EventManager
 
     init(entityManager: EntityManager, eventManager: EventManager) {
         self.entityManager = entityManager
@@ -18,9 +18,6 @@ class ShootingSystem: TFSystem {
     }
 
     func update(within time: CGFloat) {
-        guard let entityManager = entityManager, let eventManager = eventManager else {
-            return
-        }
         let shootingComponents = entityManager.components(ofType: ShootingComponent.self).filter({ $0.canShoot })
         let targetableHealthComponents = entityManager.components(ofType: HealthComponent.self).filter({
             $0.entity?.hasComponent(ofType: PositionComponent.self) ?? false

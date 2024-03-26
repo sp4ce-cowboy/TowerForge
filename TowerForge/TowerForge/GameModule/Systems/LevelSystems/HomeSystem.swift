@@ -10,8 +10,8 @@ import SpriteKit
 
 class HomeSystem: TFSystem {
     var isActive = true
-    weak var entityManager: EntityManager?
-    weak var eventManager: EventManager?
+    unowned var entityManager: EntityManager
+    unowned var eventManager: EventManager
     var gridDelegate: GridDelegate
 
     init(entityManager: EntityManager, eventManager: EventManager, gridDelegate: GridDelegate) {
@@ -21,10 +21,6 @@ class HomeSystem: TFSystem {
     }
 
     func update(within time: CGFloat) {
-        guard let entityManager = entityManager else {
-            return
-        }
-
         let homeComponents = entityManager.components(ofType: HomeComponent.self)
         for homeComponent in homeComponents {
             homeComponent.update(deltaTime: time)
@@ -32,10 +28,6 @@ class HomeSystem: TFSystem {
     }
 
     func attemptSpawn<T: TFEntity & PlayerSpawnable>(at position: CGPoint, ofType type: T.Type, for player: Player) {
-        guard let entityManager = entityManager else {
-            return
-        }
-
         // Get HomeComponent for the player
         let playerHomeComponentArr = entityManager.components(ofType: HomeComponent.self).filter(({
             $0.entity?.component(ofType: PlayerComponent.self)?.player == player
@@ -55,6 +47,6 @@ class HomeSystem: TFSystem {
         let snapPosition = CGPoint(x: position.x, y: gridDelegate.snapYPosition(yPosition: position.y))
         let spawnEvent = SpawnEvent(ofType: type, timestamp: CACurrentMediaTime(),
                                     position: snapPosition, player: player)
-        eventManager?.add(spawnEvent)
+        eventManager.add(spawnEvent)
     }
 }
