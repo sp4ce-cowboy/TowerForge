@@ -6,3 +6,27 @@
 //
 
 import Foundation
+
+class DeathMatchMode: GameMode {
+    var modeName: String = "Death Match Mode"
+    var modeDescription: String = "Kill as many units within the time limit"
+    
+    
+    func startGame() {
+        <#code#>
+    }
+    
+    func pauseGame() {
+        <#code#>
+    }
+    
+    func winGame() {
+        <#code#>
+    }
+    
+    func endGame() {
+        <#code#>
+    }
+    
+    
+}
