@@ -21,11 +21,6 @@ jobs:
           default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
           echo $default | cat >default
           echo Using default scheme: $default
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4.0.1
-        with:
-            token: ${{ secrets.CODECOV_TOKEN }}
-            slug: cs3217-2324/group-project-tower-forge
       - name: Build
         env:
           scheme: ${{ 'default' }}
