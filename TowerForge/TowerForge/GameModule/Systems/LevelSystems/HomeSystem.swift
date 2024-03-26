@@ -5,8 +5,7 @@
 //  Created by Zheng Ze on 23/3/24.
 //
 
-import Foundation
-import SpriteKit
+import QuartzCore
 
 class HomeSystem: TFSystem {
     var isActive = true

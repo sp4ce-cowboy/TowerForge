@@ -1,4 +1,4 @@
-import SpriteKit
+import QuartzCore
 
 class HealthSystem: TFSystem {
     var isActive = true

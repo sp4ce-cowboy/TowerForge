@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import SpriteKit
-import GameplayKit
 
 class GameViewController: UIViewController {
     private var gameWorld: GameWorld?

@@ -5,8 +5,7 @@
 //  Created by Vanessa Mae on 17/03/24.
 //
 
-import Foundation
-import SpriteKit
+import QuartzCore
 
 class DamageComponent: TFComponent {
     private let attackRate: TimeInterval

@@ -5,7 +5,7 @@
 //  Created by Zheng Ze on 23/3/24.
 //
 
-import SpriteKit
+import QuartzCore
 
 class AiSystem: TFSystem {
     var isActive = true

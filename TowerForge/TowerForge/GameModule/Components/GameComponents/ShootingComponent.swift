@@ -5,8 +5,7 @@
 //  Created by Vanessa Mae on 15/03/24.
 //
 
-import Foundation
-import SpriteKit
+import QuartzCore
 
 class ShootingComponent: TFComponent {
     var fireRate: TimeInterval // Delay between shots

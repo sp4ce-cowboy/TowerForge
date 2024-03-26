@@ -5,8 +5,6 @@
 //  Created by Zheng Ze on 20/3/24.
 //
 
-import SpriteKit
-
 class GameWorld {
     private unowned var scene: GameScene?
     private var gameEngine: AbstractGameEngine
