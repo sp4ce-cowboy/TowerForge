@@ -7,6 +7,14 @@
 
 import Foundation
 
-class Storage {
-    var storedFiles: [Storable]
+final class Storage: Codable {
+    var storedFiles: [Storable] = []
+    
+    func encode(to encoder: any Encoder) throws {
+        return
+    }
+    
+    init(from decoder: any Decoder) throws {
+        return
+    }
 }

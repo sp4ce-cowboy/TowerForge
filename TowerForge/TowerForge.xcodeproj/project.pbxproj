@@ -97,8 +97,10 @@
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
 		BAFFB9502BB12F9D00D8301F /* GameEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94F2BB12F9D00D8301F /* GameEngineTests.swift */; };
-		BAFFB9532BB342F100D8301F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9522BB342F100D8301F /* Storage.swift */; };
+		BAFFB9532BB342F100D8301F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9522BB342F100D8301F /* StorageManager.swift */; };
 		BAFFB9552BB342FE00D8301F /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9542BB342FE00D8301F /* Storable.swift */; };
+		BAFFB9572BB3449D00D8301F /* SampleAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9562BB3449D00D8301F /* SampleAchievement.swift */; };
+		BAFFB9592BB345CF00D8301F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9582BB345CF00D8301F /* Storage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,8 +216,10 @@
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		BAFFB94A2BB11F9800D8301F /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		BAFFB94F2BB12F9D00D8301F /* GameEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngineTests.swift; sourceTree = "<group>"; };
-		BAFFB9522BB342F100D8301F /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		BAFFB9522BB342F100D8301F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		BAFFB9542BB342FE00D8301F /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
+		BAFFB9562BB3449D00D8301F /* SampleAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAchievement.swift; sourceTree = "<group>"; };
+		BAFFB9582BB345CF00D8301F /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -708,8 +712,10 @@
 		BAFFB9512BB342E200D8301F /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				BAFFB9522BB342F100D8301F /* Storage.swift */,
+				BAFFB9522BB342F100D8301F /* StorageManager.swift */,
 				BAFFB9542BB342FE00D8301F /* Storable.swift */,
+				BAFFB9582BB345CF00D8301F /* Storage.swift */,
+				BAFFB9562BB3449D00D8301F /* SampleAchievement.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -872,6 +878,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CCF9CAF2BAB1A96004D170E /* SceneUpdateDelegate.swift in Sources */,
+				BAFFB9592BB345CF00D8301F /* Storage.swift in Sources */,
 				3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */,
 				5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */,
 				3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */,
@@ -879,7 +886,7 @@
 				3C9955A52BA47DC600D33FA5 /* BaseProjectile.swift in Sources */,
 				BAFFB9552BB342FE00D8301F /* Storable.swift in Sources */,
 				52578B8C2BA627B200B4D76C /* Team.swift in Sources */,
-				BAFFB9532BB342F100D8301F /* Storage.swift in Sources */,
+				BAFFB9532BB342F100D8301F /* StorageManager.swift in Sources */,
 				3CCF9CB72BAB2877004D170E /* MainMenuViewController.swift in Sources */,
 				52DF5FFF2BA3656500135367 /* ShootingComponent.swift in Sources */,
 				BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */,
@@ -936,6 +943,7 @@
 				52DF5FEF2BA34EA000135367 /* TFEntity.swift in Sources */,
 				52DF5FED2BA34D0300135367 /* TFComponent.swift in Sources */,
 				527E3A242BA613F000FE1628 /* PlayerComponent.swift in Sources */,
+				BAFFB9572BB3449D00D8301F /* SampleAchievement.swift in Sources */,
 				3C9955C52BA585DD00D33FA5 /* HealthSystem.swift in Sources */,
 				520062562BA8E026000DBA30 /* PlayerSpawnable.swift in Sources */,
 				3C0B608D2BB2B84000FFECB4 /* ContactComponent.swift in Sources */,

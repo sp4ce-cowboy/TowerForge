@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol Storable: Identifiable {
-    
+protocol Storable: Codable {
+
 }
