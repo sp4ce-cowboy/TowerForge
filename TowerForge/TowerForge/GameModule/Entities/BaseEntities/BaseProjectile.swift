@@ -11,34 +11,12 @@ class BaseProjectile: TFEntity {
     init(textureNames: [String], size: CGSize, key: String, position: CGPoint,
          player: Player, velocity: CGVector = .zero) {
         super.init()
+        // Core Components
+        self.addComponent(SpriteComponent(textureNames: textureNames, size: size, animatableKey: key))
+        self.addComponent(PositionComponent(position: position))
+        self.addComponent(MovableComponent(position: position, velocity: velocity))
 
-        createSpriteComponent(textureNames: textureNames, size: size, key: key, position: position)
-        createMovableComponent(position: position, velocity: velocity)
-        createPositionComponent(position: position)
-        createPlayerComponent(player: player)
-    }
-
-    private func createSpriteComponent(textureNames: [String], size: CGSize, key: String, position: CGPoint) {
-        let spriteComponent = SpriteComponent(textureNames: textureNames,
-                                              height: size.height,
-                                              width: size.width,
-                                              position: position,
-                                              animatableKey: key)
-        self.addComponent(spriteComponent)
-    }
-
-    private func createPositionComponent(position: CGPoint) {
-        let positionComponent = PositionComponent(position: position)
-        self.addComponent(positionComponent)
-    }
-
-    private func createMovableComponent(position: CGPoint, velocity: CGVector) {
-        let movableComponent = MovableComponent(position: position, velocity: velocity)
-        self.addComponent(movableComponent)
-    }
-
-    private func createPlayerComponent(player: Player) {
-        let playerComponent = PlayerComponent(player: player)
-        self.addComponent(playerComponent)
+        // Game Components
+        self.addComponent(PlayerComponent(player: player))
     }
 }

@@ -16,11 +16,14 @@ class BaseUnit: TFEntity {
          velocity: CGVector,
          player: Player) {
         super.init()
-        createPlayerComponent(player: player)
-        createSpriteComponent(textureNames: textureNames, size: size, key: key, position: position)
-        createHealthComponent(maxHealth: maxHealth)
-        createMovableComponent(position: position, velocity: velocity)
-        createPositionComponent(position: position)
+        // Core Components
+        self.addComponent(SpriteComponent(textureNames: textureNames, size: size, animatableKey: key))
+        self.addComponent(PositionComponent(position: position))
+        self.addComponent(MovableComponent(position: position, velocity: velocity))
+        
+        // Game Components
+        self.addComponent(HealthComponent(maxHealth: maxHealth))
+        self.addComponent(PlayerComponent(player: player))
     }
 
     override func collide(with other: any Collidable) -> TFEvent? {
@@ -57,34 +60,5 @@ class BaseUnit: TFEntity {
         }
 
         return nil
-    }
-
-    private func createHealthComponent(maxHealth: CGFloat) {
-        let healthComponent = HealthComponent(maxHealth: maxHealth)
-        self.addComponent(healthComponent)
-    }
-
-    private func createPositionComponent(position: CGPoint) {
-        let positionComponent = PositionComponent(position: position)
-        self.addComponent(positionComponent)
-    }
-
-    private func createSpriteComponent(textureNames: [String], size: CGSize, key: String, position: CGPoint) {
-        let spriteComponent = SpriteComponent(textureNames: textureNames,
-                                              height: size.height,
-                                              width: size.width,
-                                              position: position,
-                                              animatableKey: key)
-        self.addComponent(spriteComponent)
-    }
-
-    private func createMovableComponent(position: CGPoint, velocity: CGVector) {
-        let movableComponent = MovableComponent(position: position, velocity: velocity)
-        self.addComponent(movableComponent)
-    }
-
-    private func createPlayerComponent(player: Player) {
-        let playerComponent = PlayerComponent(player: player)
-        self.addComponent(playerComponent)
     }
 }
