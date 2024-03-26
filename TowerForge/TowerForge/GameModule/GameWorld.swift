@@ -5,6 +5,8 @@
 //  Created by Zheng Ze on 20/3/24.
 //
 
+import QuartzCore
+
 class GameWorld {
     private unowned var scene: GameScene?
     private var gameEngine: AbstractGameEngine

@@ -5,7 +5,7 @@
 //  Created by Vanessa Mae on 14/03/24.
 //
 
-import UIKit
+import SpriteKit
 
 class GameViewController: UIViewController {
     private var gameWorld: GameWorld?
