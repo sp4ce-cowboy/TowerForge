@@ -78,6 +78,7 @@ class GameEngine: AbstractGameEngine {
     func setUpSystems(with grid: Grid) {
         systemManager.add(system: HealthSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: MovementSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: PositionSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: RemoveSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: SpawnSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: ShootingSystem(entityManager: entityManager, eventManager: eventManager))

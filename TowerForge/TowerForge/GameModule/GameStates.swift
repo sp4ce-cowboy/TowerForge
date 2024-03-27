@@ -9,6 +9,7 @@ import Foundation
 
 enum GameState {
     case PLAYING
+    case IDLE
     case PAUSED
     case WIN
     case LOSE

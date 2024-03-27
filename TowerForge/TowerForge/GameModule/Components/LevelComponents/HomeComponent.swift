@@ -36,12 +36,12 @@ class HomeComponent: TFComponent {
         self.pointInterval = pointInterval
         super.init()
     }
-    func decreaseLife() -> Int {
-        self.lifeLeft -= 1
+    func decreaseLife(by amount: Int) -> Int {
+        self.lifeLeft -= amount
         return self.lifeLeft
     }
-    func increaseLife() -> Int {
-        self.lifeLeft += 1
+    func increaseLife(by amount: Int) -> Int {
+        self.lifeLeft += amount
         return self.lifeLeft
     }
     func decreasePoints(_ amount: Int) {
