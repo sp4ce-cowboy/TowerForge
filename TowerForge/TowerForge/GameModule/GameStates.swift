@@ -13,5 +13,5 @@ enum GameState {
     case PAUSED
     case WIN
     case LOSE
-    case QUIT
+    case FINISH
 }

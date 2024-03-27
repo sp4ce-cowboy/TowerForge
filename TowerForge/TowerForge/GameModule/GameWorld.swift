@@ -10,6 +10,7 @@ import QuartzCore
 class GameWorld {
     private unowned var scene: GameScene?
     private var gameEngine: AbstractGameEngine
+    private var gameMode: GameMode
     private var selectionNode: UnitSelectionNode
     private var grid: Grid
     private var renderer: Renderer?

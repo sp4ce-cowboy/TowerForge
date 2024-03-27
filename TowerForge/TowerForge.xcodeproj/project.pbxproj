@@ -62,6 +62,8 @@
 		52578B822BA61AAF00B4D76C /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52578B812BA61AAF00B4D76C /* PositionComponent.swift */; };
 		52578B872BA6209700B4D76C /* DamageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52578B862BA6209700B4D76C /* DamageComponent.swift */; };
 		52578B8C2BA627B200B4D76C /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52578B8B2BA627B200B4D76C /* Team.swift */; };
+		527A07722BB3D71F00CD9D08 /* GameOverEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A07712BB3D71F00CD9D08 /* GameOverEvent.swift */; };
+		527A07742BB3D8E800CD9D08 /* GameModeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A07732BB3D8E800CD9D08 /* GameModeFactory.swift */; };
 		527E3A242BA613F000FE1628 /* PlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527E3A232BA613EF00FE1628 /* PlayerComponent.swift */; };
 		5295A2022BA9FBD9005018A8 /* SceneManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2012BA9FBD9005018A8 /* SceneManagerDelegate.swift */; };
 		5295A2042BA9FED4005018A8 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2032BA9FED4005018A8 /* MenuScene.swift */; };
@@ -182,6 +184,8 @@
 		52578B812BA61AAF00B4D76C /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		52578B862BA6209700B4D76C /* DamageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageComponent.swift; sourceTree = "<group>"; };
 		52578B8B2BA627B200B4D76C /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		527A07712BB3D71F00CD9D08 /* GameOverEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverEvent.swift; sourceTree = "<group>"; };
+		527A07732BB3D8E800CD9D08 /* GameModeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeFactory.swift; sourceTree = "<group>"; };
 		527E3A232BA613EF00FE1628 /* PlayerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerComponent.swift; sourceTree = "<group>"; };
 		5295A2012BA9FBD9005018A8 /* SceneManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManagerDelegate.swift; sourceTree = "<group>"; };
 		5295A2032BA9FED4005018A8 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
@@ -357,6 +361,7 @@
 				5240D09F2BB330B4004F1486 /* GameMode.swift */,
 				5240D0A12BB33183004F1486 /* DeathMatchMode.swift */,
 				5240D0AA2BB3340F004F1486 /* CaptureTheFlagMode.swift */,
+				527A07732BB3D8E800CD9D08 /* GameModeFactory.swift */,
 			);
 			path = GameModes;
 			sourceTree = "<group>";
@@ -374,6 +379,7 @@
 		5240D0B02BB3B5EE004F1486 /* GameStateEvents */ = {
 			isa = PBXGroup;
 			children = (
+				527A07712BB3D71F00CD9D08 /* GameOverEvent.swift */,
 			);
 			path = GameStateEvents;
 			sourceTree = "<group>";
@@ -965,6 +971,7 @@
 				52DF5FE12BA3349600135367 /* TFTextures.swift in Sources */,
 				520062582BA8ED73000DBA30 /* HomeComponent.swift in Sources */,
 				52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */,
+				527A07722BB3D71F00CD9D08 /* GameOverEvent.swift in Sources */,
 				5240D08F2BAE6D0A004F1486 /* Point.swift in Sources */,
 				3C769A742BA591BD00F454F9 /* SpawnSystem.swift in Sources */,
 				3C9955B12BA4ACA100D33FA5 /* Bullet.swift in Sources */,
@@ -986,6 +993,7 @@
 				52DF5FFB2BA3601400135367 /* HealthComponent.swift in Sources */,
 				3C9955BC2BA563A800D33FA5 /* TFEvent.swift in Sources */,
 				BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */,
+				527A07742BB3D8E800CD9D08 /* GameModeFactory.swift in Sources */,
 				5240D0AF2BB3B415004F1486 /* LifeEvent.swift in Sources */,
 				5295A2072BAA02FD005018A8 /* TFButton.swift in Sources */,
 				3CE951672BAEAB0E008B2785 /* ContactSystem.swift in Sources */,
