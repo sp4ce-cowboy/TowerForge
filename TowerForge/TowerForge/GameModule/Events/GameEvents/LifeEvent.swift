@@ -24,7 +24,7 @@ struct LifeEvent: TFEvent {
         guard let homeSystem = target.system(ofType: HomeSystem.self) else {
             return nil
         }
-        homeSystem.reduceLife(for: player, reduction: lifeDecrease)
+        homeSystem.reduceLife(for: player.getOppositePlayer(), reduction: lifeDecrease)
         print("Life event triggered?")
         return nil
     }
