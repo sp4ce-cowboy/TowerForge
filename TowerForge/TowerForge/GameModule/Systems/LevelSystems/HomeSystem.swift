@@ -33,10 +33,6 @@ class HomeSystem: TFSystem {
         for playerHomeComponent in playerHomeComponentArr {
             let reductionInLife = playerHomeComponent.decreaseLife(by: life)
         }
-        print("Home system triggered")
-//        if homeComponent.lifeLeft <= 0 {
-//            eventManager.add(RemoveEvent(on: currentEntity.id, at: CACurrentMediaTime()))
-//        }
     }
 
     func attemptSpawn<T: TFEntity & PlayerSpawnable>(at position: CGPoint, ofType type: T.Type, for player: Player) {
