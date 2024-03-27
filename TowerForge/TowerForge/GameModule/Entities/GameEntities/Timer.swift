@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class Timer: TFEntity {
-    static let position = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.maxY - 300)
+    static let position = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.maxY - 200)
     static let size = CGSize(width: 100, height: 100)
 
     var remainingTime: TimeInterval {

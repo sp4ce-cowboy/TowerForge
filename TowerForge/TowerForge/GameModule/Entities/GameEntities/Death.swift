@@ -12,7 +12,7 @@ class Death: TFEntity {
     static let size = CGSize(width: 100, height: 100)
     override init() {
         super.init()
-        self.addComponent(SpriteComponent(textureNames: ["Life"], size: Death.size, animatableKey: "death"))
+        self.addComponent(SpriteComponent(textureNames: ["Skull"], size: Death.size, animatableKey: "death"))
         self.addComponent(LabelComponent(text: String(0), name: "killCount"))
         self.addComponent(HomeComponent(initialLifeCount: Team.lifeCount, pointInterval: Team.pointsInterval))
         self.addComponent(PositionComponent(position: Death.position))
