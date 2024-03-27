@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nosifer-Regular.ttf">
+            <string>Nosifer-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--GameViewController-->
         <scene sceneID="tXr-a1-R10">
@@ -106,9 +111,16 @@
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Sword" translatesAutoresizingMaskIntoConstraints="NO" id="SmE-Cv-6GE">
-                                        <rect key="frame" x="-35" y="76" width="440" height="177"/>
+                                        <rect key="frame" x="-65" y="81" width="440" height="177"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Death Match" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kY1-KY-hx7">
+                                        <rect key="frame" x="275" y="72" width="325" height="185"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Nosifer-Regular" family="Nosifer" pointSize="49"/>
+                                        <color key="textColor" red="0.70004130884544136" green="0.13068826048562834" blue="0.13431438140136356" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xvz-LH-sKU">
@@ -127,8 +139,15 @@
                                             <segue destination="BV1-FR-VrT" kind="show" id="O0h-4f-1Uf"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Capture The Flag" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oph-wP-gXp">
+                                        <rect key="frame" x="280" y="42" width="321" height="244"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Nosifer-Regular" family="Nosifer" pointSize="49"/>
+                                        <color key="textColor" red="0.70004130880000004" green="0.13068826049999999" blue="0.13431438139999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Flag" translatesAutoresizingMaskIntoConstraints="NO" id="PlF-Gy-tpz">
-                                        <rect key="frame" x="-35" y="76" width="440" height="177"/>
+                                        <rect key="frame" x="-69" y="62" width="440" height="177"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
