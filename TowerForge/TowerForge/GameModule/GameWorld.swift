@@ -40,7 +40,7 @@ class GameWorld {
         gameMode.updateGame()
         if checkGameEnded() {
             renderer?.renderMessage("You win")
-            delegate?.showMenuScene()
+            delegate?.showGameOverScene(isWin: gameMode.gameState == .WIN ? true : false)
         }
         selectionNode.update()
         renderer?.render()
