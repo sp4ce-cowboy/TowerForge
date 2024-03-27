@@ -103,6 +103,7 @@
 		52DF5FF92BA35D2B00135367 /* MovableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FF82BA35D2B00135367 /* MovableComponent.swift */; };
 		52DF5FFB2BA3601400135367 /* HealthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FFA2BA3601400135367 /* HealthComponent.swift */; };
 		52DF5FFF2BA3656500135367 /* ShootingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FFE2BA3656500135367 /* ShootingComponent.swift */; };
+		52F268702BB4B319009599AD /* GameModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F2686F2BB4B319009599AD /* GameModeViewController.swift */; };
 		9B8696552BAD759F0002377C /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8696542BAD759F0002377C /* Grid.swift */; };
 		9BD669682BAFDE5E00DC8C4C /* GridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD669672BAFDE5E00DC8C4C /* GridDelegate.swift */; };
 		BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */; };
@@ -236,6 +237,7 @@
 		52DF5FF82BA35D2B00135367 /* MovableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovableComponent.swift; sourceTree = "<group>"; };
 		52DF5FFA2BA3601400135367 /* HealthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthComponent.swift; sourceTree = "<group>"; };
 		52DF5FFE2BA3656500135367 /* ShootingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootingComponent.swift; sourceTree = "<group>"; };
+		52F2686F2BB4B319009599AD /* GameModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeViewController.swift; sourceTree = "<group>"; };
 		9B8696542BAD759F0002377C /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		9BD669672BAFDE5E00DC8C4C /* GridDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridDelegate.swift; sourceTree = "<group>"; };
 		BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 			children = (
 				52DF5FAF2BA32B2300135367 /* GameViewController.swift */,
 				3CCF9CB62BAB2877004D170E /* MainMenuViewController.swift */,
+				52F2686F2BB4B319009599AD /* GameModeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -984,6 +987,7 @@
 				52DF5FDE2BA32D7E00135367 /* EntityManager.swift in Sources */,
 				527A077C2BB3F4CC00CD9D08 /* KillEvent.swift in Sources */,
 				3C9955C82BA5865C00D33FA5 /* ConcurrentEvent.swift in Sources */,
+				52F268702BB4B319009599AD /* GameModeViewController.swift in Sources */,
 				527A07762BB3E4CF00CD9D08 /* GameState.swift in Sources */,
 				3C9955AD2BA483B100D33FA5 /* TFSystem.swift in Sources */,
 				3C9955BE2BA57E4B00D33FA5 /* EventManager.swift in Sources */,

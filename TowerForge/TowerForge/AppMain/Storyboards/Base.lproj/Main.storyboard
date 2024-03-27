@@ -45,41 +45,15 @@
                                     <constraint firstAttribute="width" secondItem="1WN-bo-aqT" secondAttribute="height" multiplier="796:607" priority="999" id="99o-eH-AfP"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Itc-dO-lSy">
-                                <rect key="frame" x="401" y="645" width="565" height="35"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Play Game">
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" identifier="segueToGame" id="hzG-cy-bt1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiK-70-HAa">
-                                <rect key="frame" x="401" y="688" width="564" height="59"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lig-gp-uco">
+                                <rect key="frame" x="384" y="586" width="513" height="212"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Play Death Match">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" systemColor="scrollViewTexturedBackgroundColor"/>
-                                    </backgroundConfiguration>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                    <backgroundConfiguration key="background" image="start-button"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="DeathMatch:" destination="NJ9-hN-4Nf" eventType="touchDown" id="SaG-84-Ptx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIs-1Z-Nxm">
-                                <rect key="frame" x="401" y="755" width="564" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Play Capture The Flag">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" systemColor="scrollViewTexturedBackgroundColor"/>
-                                    </backgroundConfiguration>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="CapturePressed:" destination="NJ9-hN-4Nf" eventType="touchDown" id="bit-2f-iRR"/>
+                                    <segue destination="bL0-ag-pcs" kind="presentation" modalPresentationStyle="overFullScreen" id="7gQ-Xy-f9N"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -93,9 +67,7 @@
                             <constraint firstItem="BeN-nt-myH" firstAttribute="trailing" secondItem="0sR-0W-mF4" secondAttribute="trailing" id="Pxd-hp-g4t"/>
                             <constraint firstItem="1WN-bo-aqT" firstAttribute="trailing" secondItem="0sR-0W-mF4" secondAttribute="trailing" id="ScR-YF-vI1"/>
                             <constraint firstItem="BeN-nt-myH" firstAttribute="centerX" secondItem="QTh-pm-dcu" secondAttribute="centerX" id="Vi6-5q-lTl"/>
-                            <constraint firstItem="Itc-dO-lSy" firstAttribute="centerX" secondItem="QTh-pm-dcu" secondAttribute="centerX" id="WHv-Ev-8P8"/>
                             <constraint firstItem="1WN-bo-aqT" firstAttribute="top" secondItem="0sR-0W-mF4" secondAttribute="top" id="Zsn-ue-FgC"/>
-                            <constraint firstItem="Itc-dO-lSy" firstAttribute="centerY" secondItem="QTh-pm-dcu" secondAttribute="centerY" constant="150" id="cHw-CH-V3j"/>
                             <constraint firstItem="BeN-nt-myH" firstAttribute="height" secondItem="QTh-pm-dcu" secondAttribute="height" multiplier="0.7" id="hIN-q9-Fqs"/>
                             <constraint firstItem="BeN-nt-myH" firstAttribute="bottom" secondItem="QTh-pm-dcu" secondAttribute="bottom" id="pD6-gV-4bf"/>
                         </constraints>
@@ -105,13 +77,33 @@
             </objects>
             <point key="canvasLocation" x="-684.33382137628109" y="-2.34375"/>
         </scene>
+        <!--Game Mode View Controller-->
+        <scene sceneID="TxY-2C-loY">
+            <objects>
+                <viewController id="bL0-ag-pcs" customClass="GameModeViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iEG-EI-hhj">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZYc-VC-Yak">
+                                <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kht-Y2-5Yi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eHk-cd-vLs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HLK-1h-t1c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-425.18301610541727" y="887.69531249999989"/>
+        </scene>
     </scenes>
     <resources>
         <image name="background" width="1000" height="500"/>
         <image name="logo" width="1000" height="500"/>
-        <systemColor name="scrollViewTexturedBackgroundColor">
-            <color red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="start-button" width="1000" height="500"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
