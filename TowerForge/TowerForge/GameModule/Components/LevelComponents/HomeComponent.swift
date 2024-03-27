@@ -62,7 +62,6 @@ class HomeComponent: TFComponent {
         self.points += amount
     }
     func changeDeathCount(_ amount: Int) {
-        print("AMount added")
         self.killCount += amount
     }
     override func update(deltaTime: TimeInterval) {

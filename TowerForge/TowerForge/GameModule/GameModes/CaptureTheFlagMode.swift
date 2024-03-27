@@ -26,12 +26,10 @@ class CaptureTheFlagMode: GameMode {
         eventManager.registerHandler(forEvent: LifeEvent.self) { event in
             if let lifeEvent = event as? LifeEvent {
                 // Check if the event reduces life
-                if lifeEvent.player == .oppositePlayer && lifeEvent.lifeDecrease > 0 {
+                if lifeEvent.player == .ownPlayer && lifeEvent.lifeDecrease > 0 {
                     self.currentOpponentLife -= lifeEvent.lifeDecrease
-                    print("Life reduced by \(lifeEvent.lifeDecrease). Current life: \(self.currentOwnLife)")
-                } else if lifeEvent.player == .ownPlayer && lifeEvent.lifeDecrease > 0 {
+                } else if lifeEvent.player == .oppositePlayer && lifeEvent.lifeDecrease > 0 {
                     self.currentOwnLife -= lifeEvent.lifeDecrease
-                    print("Life reduced by \(lifeEvent.lifeDecrease). Current life: \(self.currentOwnLife)")
                 }
             }
         }
