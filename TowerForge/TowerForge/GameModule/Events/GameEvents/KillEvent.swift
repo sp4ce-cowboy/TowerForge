@@ -28,7 +28,7 @@ struct KillEvent: TFEvent {
         guard let homeSystem = target.system(ofType: HomeSystem.self) else {
             return nil
         }
-        homeSystem.changeDeathCount(for: player, change: 1)
+        homeSystem.changeDeathCount(for: player.getOppositePlayer(), change: 1)
         return nil
     }
 }

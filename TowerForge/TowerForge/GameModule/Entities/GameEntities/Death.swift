@@ -13,8 +13,8 @@ class Death: TFEntity {
     override init() {
         super.init()
         self.addComponent(SpriteComponent(textureNames: ["Life"], size: Death.size, animatableKey: "death"))
+        self.addComponent(LabelComponent(text: String(0), name: "killCount"))
         self.addComponent(HomeComponent(initialLifeCount: Team.lifeCount, pointInterval: Team.pointsInterval))
-        self.addComponent(LabelComponent(text: String(0), name: "death"))
         self.addComponent(PositionComponent(position: Death.position))
         self.addComponent(PlayerComponent(player: .ownPlayer))
     }

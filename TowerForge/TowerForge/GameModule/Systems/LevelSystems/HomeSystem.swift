@@ -35,9 +35,11 @@ class HomeSystem: TFSystem {
         }
     }
     func changeDeathCount(for player: Player, change: Int) {
+        print(player)
         let playerHomeComponentArr = entityManager.components(ofType: HomeComponent.self).filter(({
             $0.entity?.component(ofType: PlayerComponent.self)?.player == player
         }))
+        print(playerHomeComponentArr)
         for playerHomeComponent in playerHomeComponentArr {
             playerHomeComponent.changeDeathCount(change)
         }
