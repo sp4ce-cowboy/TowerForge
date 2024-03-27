@@ -28,6 +28,16 @@ class HomeComponent: TFComponent {
             labelComponent.changeText(String(points))
         }
     }
+    var deathCount = 0 {
+        didSet {
+            // Update the points in the LabelComponent when it changes
+            guard let labelComponent = entity?.component(ofType: LabelComponent.self),
+                  labelComponent.name == "deathCount" else {
+                return
+            }
+            labelComponent.changeText(String(points))
+        }
+    }
     private var lastPointIncrease = TimeInterval(0)
     private var pointInterval: TimeInterval
     private var pointsPerInterval: Int = 1
@@ -49,6 +59,9 @@ class HomeComponent: TFComponent {
     }
     func increasePoints(_ amount: Int) {
         self.points += amount
+    }
+    func changeDeathCount(_ amount: Int) {
+        self.deathCount += amount
     }
     override func update(deltaTime: TimeInterval) {
         super.update(deltaTime: deltaTime)

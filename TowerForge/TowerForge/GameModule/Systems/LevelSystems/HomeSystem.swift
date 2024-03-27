@@ -31,10 +31,17 @@ class HomeSystem: TFSystem {
             $0.entity?.component(ofType: PlayerComponent.self)?.player == player
         }))
         for playerHomeComponent in playerHomeComponentArr {
-            let reductionInLife = playerHomeComponent.decreaseLife(by: life)
+            _ = playerHomeComponent.decreaseLife(by: life)
         }
     }
-
+    func changeDeathCount(for player: Player, change: Int) {
+        let playerHomeComponentArr = entityManager.components(ofType: HomeComponent.self).filter(({
+            $0.entity?.component(ofType: PlayerComponent.self)?.player == player
+        }))
+        for playerHomeComponent in playerHomeComponentArr {
+            playerHomeComponent.changeDeathCount(change)
+        }
+    }
     func attemptSpawn<T: TFEntity & PlayerSpawnable>(at position: CGPoint, ofType type: T.Type, for player: Player) {
         // Get HomeComponent for the player
         let playerHomeComponentArr = entityManager.components(ofType: HomeComponent.self).filter(({

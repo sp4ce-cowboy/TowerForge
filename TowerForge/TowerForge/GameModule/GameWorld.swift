@@ -15,10 +15,12 @@ class GameWorld {
     private var grid: Grid
     private var renderer: Renderer?
 
+    unowned var delegate: SceneManagerDelegate?
+
     init(scene: GameScene?, screenSize: CGRect) {
         self.scene = scene
         gameEngine = GameEngine()
-        gameMode = GameModeFactory.createGameMode(mode: .captureTheFlag, eventManager: gameEngine.eventManager)
+        gameMode = GameModeFactory.createGameMode(mode: .deathMatch, eventManager: gameEngine.eventManager)
         selectionNode = UnitSelectionNode()
 
         grid = Grid(screenSize: screenSize)
@@ -38,6 +40,7 @@ class GameWorld {
         gameMode.updateGame()
         if checkGameEnded() {
             renderer?.renderMessage("You win")
+            delegate?.showMenuScene()
         }
         selectionNode.update()
         renderer?.render()

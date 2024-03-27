@@ -83,12 +83,14 @@ class GameEngine: AbstractGameEngine {
         systemManager.add(system: SpawnSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: ShootingSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: AiSystem(entityManager: entityManager, eventManager: eventManager))
+        systemManager.add(system: TimerSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: ContactSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: HomeSystem(entityManager: entityManager, eventManager: eventManager,
                                              gridDelegate: grid))
 
         // Temporary until we have different gamemodes
         systemManager.system(ofType: AiSystem.self)?.aiPlayers.append(.oppositePlayer)
+
     }
 
     func addEntity(_ entity: TFEntity) {

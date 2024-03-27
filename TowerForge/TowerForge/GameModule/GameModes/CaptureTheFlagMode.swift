@@ -2,7 +2,7 @@
 //  CaptureTheFlagMode.swift
 //  TowerForge
 //
-//  Created by MacBook Pro on 27/03/24.
+//  Created by Vanessa Mae on 27/03/24.
 //
 
 import Foundation
@@ -13,7 +13,7 @@ class CaptureTheFlagMode: GameMode {
 
     var modeName: String = "Capture The Flag"
     var modeDescription: String = "Destroy the enemy base!"
-    var gameProps: [GameProp] = [PointProp(initialPoint: 0)]
+    var gameProps: [any GameProp] = [PointProp(initialPoint: 0)]
     var gameState = GameState.IDLE
     var currentOwnLife: Int
     var currentOpponentLife: Int
@@ -45,6 +45,7 @@ class CaptureTheFlagMode: GameMode {
     }
     func startGame() {
         gameState = GameState.PLAYING
+
     }
 
     func resumeGame() {
