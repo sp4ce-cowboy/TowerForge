@@ -15,26 +15,31 @@ class CaptureTheFlagMode: GameMode {
     var modeDescription: String = "Destroy the enemy base!"
     var gameProps: [GameProp] = [PointProp(initialPoint: 0)]
     var gameState = GameState.IDLE
-    var currentLife: Int
+    var currentOwnLife: Int
+    var currentOpponentLife: Int
 
     init(initialLife: Int, eventManager: EventManager) {
         self.gameProps.append(LifeProp(initialLife: initialLife))
-        self.currentLife = initialLife
+        self.currentOwnLife = initialLife
+        self.currentOpponentLife = initialLife
         self.eventManager = eventManager
         eventManager.registerHandler(forEvent: LifeEvent.self) { event in
             if let lifeEvent = event as? LifeEvent {
                 // Check if the event reduces life
-                if lifeEvent.lifeDecrease > 0 {
-                    self.currentLife -= lifeEvent.lifeDecrease
-                    print("Life reduced by \(lifeEvent.lifeDecrease). Current life: \(self.currentLife)")
+                if lifeEvent.player == .oppositePlayer && lifeEvent.lifeDecrease > 0 {
+                    self.currentOpponentLife -= lifeEvent.lifeDecrease
+                    print("Life reduced by \(lifeEvent.lifeDecrease). Current life: \(self.currentOwnLife)")
+                } else if lifeEvent.player == .ownPlayer && lifeEvent.lifeDecrease > 0 {
+                    self.currentOwnLife -= lifeEvent.lifeDecrease
+                    print("Life reduced by \(lifeEvent.lifeDecrease). Current life: \(self.currentOwnLife)")
                 }
             }
         }
     }
     func updateGame() {
-        if self.currentLife < 0 {
+        if self.currentOwnLife <= 0 {
             gameState = .LOSE
-        } else {
+        } else if self.currentOpponentLife <= 0 {
             gameState = .WIN
         }
     }
@@ -53,5 +58,5 @@ class CaptureTheFlagMode: GameMode {
     func winGame() {
         gameState = GameState.WIN
     }
-    
+
 }
