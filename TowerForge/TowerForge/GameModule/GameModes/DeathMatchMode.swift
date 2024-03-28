@@ -26,9 +26,9 @@ class DeathMatchMode: GameMode {
             print("Is there kill eent")
             if let killEvent = event as? KillEvent {
                 // Check if the event reduces life
-                if killEvent.player == .oppositePlayer {
+                if killEvent.player == .ownPlayer {
                     self.currentOpponentKillCounter += 1
-                } else if killEvent.player == .ownPlayer {
+                } else if killEvent.player == .oppositePlayer {
                     self.currentOwnKillCounter += 1
                 }
             }

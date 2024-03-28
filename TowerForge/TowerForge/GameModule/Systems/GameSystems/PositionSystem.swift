@@ -22,7 +22,6 @@ class PositionSystem: TFSystem {
     func update(within time: CGFloat) {
         let positionComponents = entityManager.components(ofType: PositionComponent.self)
         for positionComponent in positionComponents where positionComponent.outOfBound() {
-            print(positionComponent.outOfBound())
             guard let entity = positionComponent.entity else {
                 continue
             }
@@ -34,7 +33,6 @@ class PositionSystem: TFSystem {
         guard let playerComponent = entity.component(ofType: PlayerComponent.self) else {
             return
         }
-        print("HAndle out of game triggered")
         // TODO: Might need some change
         eventManager.add(LifeEvent(on: entity.id, at: CACurrentMediaTime(), reduceBy: 1, player: playerComponent.player))
         eventManager.add(RemoveEvent(on: entity.id, at: CACurrentMediaTime()))
