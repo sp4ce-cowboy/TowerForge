@@ -23,7 +23,6 @@ class DeathMatchMode: GameMode {
         self.eventManager = eventManager
         self.gameProps.append(timer)
         eventManager.registerHandler(forEvent: KillEvent.self) { event in
-            print("Is there kill eent")
             if let killEvent = event as? KillEvent {
                 // Check if the event reduces life
                 if killEvent.player == .ownPlayer {

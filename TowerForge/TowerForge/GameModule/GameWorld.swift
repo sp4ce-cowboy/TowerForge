@@ -17,10 +17,10 @@ class GameWorld {
 
     unowned var delegate: SceneManagerDelegate?
 
-    init(scene: GameScene?, screenSize: CGRect) {
+    init(scene: GameScene?, screenSize: CGRect, mode: Mode) {
         self.scene = scene
         gameEngine = GameEngine()
-        gameMode = GameModeFactory.createGameMode(mode: .deathMatch, eventManager: gameEngine.eventManager)
+        gameMode = GameModeFactory.createGameMode(mode: mode, eventManager: gameEngine.eventManager)
         selectionNode = UnitSelectionNode()
 
         grid = Grid(screenSize: screenSize)

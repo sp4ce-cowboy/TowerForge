@@ -7,11 +7,12 @@
 
 import Foundation
 
+enum Mode {
+    case deathMatch
+    case captureTheFlag
+}
+
 class GameModeFactory {
-    enum Mode {
-        case deathMatch
-        case captureTheFlag
-    }
 
     static func createGameMode(mode: Mode, eventManager: EventManager) -> GameMode {
         switch mode {

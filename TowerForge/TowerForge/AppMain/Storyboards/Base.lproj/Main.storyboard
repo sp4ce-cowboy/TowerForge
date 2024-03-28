@@ -45,13 +45,41 @@
                                     <constraint firstAttribute="width" secondItem="1WN-bo-aqT" secondAttribute="height" multiplier="796:607" priority="999" id="99o-eH-AfP"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Itc-dO-lSy">
-                                <rect key="frame" x="630.5" y="645" width="105" height="34.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Itc-dO-lSy">
+                                <rect key="frame" x="401" y="645" width="565" height="35"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Play Game">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="BV1-FR-VrT" kind="show" identifier="segueToGame" id="hzG-cy-bt1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiK-70-HAa">
+                                <rect key="frame" x="401" y="688" width="564" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Play Death Match">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="scrollViewTexturedBackgroundColor"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="DeathMatch:" destination="NJ9-hN-4Nf" eventType="touchDown" id="SaG-84-Ptx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIs-1Z-Nxm">
+                                <rect key="frame" x="401" y="755" width="564" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Play Capture The Flag">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="scrollViewTexturedBackgroundColor"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="CapturePressed:" destination="NJ9-hN-4Nf" eventType="touchDown" id="bit-2f-iRR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -81,6 +109,9 @@
     <resources>
         <image name="background" width="1000" height="500"/>
         <image name="logo" width="1000" height="500"/>
+        <systemColor name="scrollViewTexturedBackgroundColor">
+            <color red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

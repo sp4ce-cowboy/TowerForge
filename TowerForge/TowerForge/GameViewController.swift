@@ -9,6 +9,7 @@ import SpriteKit
 
 class GameViewController: UIViewController {
     private var gameWorld: GameWorld?
+    var gameMode: Mode?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,7 @@ class GameViewController: UIViewController {
     }
 
     private func setUpGameWorld(scene: GameScene) {
-        self.gameWorld = GameWorld(scene: scene, screenSize: self.view.frame)
+        self.gameWorld = GameWorld(scene: scene, screenSize: self.view.frame, mode: self.gameMode ?? .captureTheFlag)
         self.gameWorld?.delegate = self
     }
 }
