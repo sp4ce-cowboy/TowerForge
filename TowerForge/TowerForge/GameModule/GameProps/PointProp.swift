@@ -9,7 +9,7 @@ import Foundation
 
 class PointProp: GameProp {
     var renderableEntity: TFEntity
-    
+
     init(initialPoint: Int) {
         self.renderableEntity = Point(initialPoint: initialPoint)
     }

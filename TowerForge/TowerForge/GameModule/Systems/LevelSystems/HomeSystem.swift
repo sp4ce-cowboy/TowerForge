@@ -26,6 +26,19 @@ class HomeSystem: TFSystem {
         }
     }
 
+    func reduceLife(for player: Player, reduction life: Int) {
+        let playerHomeComponentArr = entityManager.components(ofType: HomeComponent.self).filter(({
+            $0.entity?.component(ofType: PlayerComponent.self)?.player == player
+        }))
+        for playerHomeComponent in playerHomeComponentArr {
+            let reductionInLife = playerHomeComponent.decreaseLife(by: life)
+        }
+        print("Home system triggered")
+//        if homeComponent.lifeLeft <= 0 {
+//            eventManager.add(RemoveEvent(on: currentEntity.id, at: CACurrentMediaTime()))
+//        }
+    }
+
     func attemptSpawn<T: TFEntity & PlayerSpawnable>(at position: CGPoint, ofType type: T.Type, for player: Player) {
         // Get HomeComponent for the player
         let playerHomeComponentArr = entityManager.components(ofType: HomeComponent.self).filter(({

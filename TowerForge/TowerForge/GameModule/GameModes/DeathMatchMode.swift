@@ -10,23 +10,27 @@ import Foundation
 class DeathMatchMode: GameMode {
     var modeName: String = "Death Match Mode"
     var modeDescription: String = "Kill as many units within the time limit"
-    
-    
+    var gameProps: [GameProp] = [LifeProp(initialLife: 5), PointProp(initialPoint: 0) ]
+    var gameState = GameState.IDLE
+
     func startGame() {
-        <#code#>
+
     }
-    
+
+    func resumeGame() {
+
+    }
+
     func pauseGame() {
-        <#code#>
+
     }
-    
+
     func winGame() {
-        <#code#>
+
     }
-    
+
     func endGame() {
-        <#code#>
+
     }
-    
-    
+
 }

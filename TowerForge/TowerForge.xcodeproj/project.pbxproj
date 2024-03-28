@@ -56,6 +56,8 @@
 		5240D0A72BB33356004F1486 /* LifeProp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0A62BB33356004F1486 /* LifeProp.swift */; };
 		5240D0A92BB333B5004F1486 /* PointProp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0A82BB333B5004F1486 /* PointProp.swift */; };
 		5240D0AB2BB3340F004F1486 /* CaptureTheFlagMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0AA2BB3340F004F1486 /* CaptureTheFlagMode.swift */; };
+		5240D0AD2BB33D4C004F1486 /* PositionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0AC2BB33D4C004F1486 /* PositionSystem.swift */; };
+		5240D0AF2BB3B415004F1486 /* LifeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0AE2BB3B415004F1486 /* LifeEvent.swift */; };
 		5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5250B42E2BAE0DB000F16CF6 /* LabelComponent.swift */; };
 		52578B822BA61AAF00B4D76C /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52578B812BA61AAF00B4D76C /* PositionComponent.swift */; };
 		52578B872BA6209700B4D76C /* DamageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52578B862BA6209700B4D76C /* DamageComponent.swift */; };
@@ -174,6 +176,8 @@
 		5240D0A62BB33356004F1486 /* LifeProp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeProp.swift; sourceTree = "<group>"; };
 		5240D0A82BB333B5004F1486 /* PointProp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointProp.swift; sourceTree = "<group>"; };
 		5240D0AA2BB3340F004F1486 /* CaptureTheFlagMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureTheFlagMode.swift; sourceTree = "<group>"; };
+		5240D0AC2BB33D4C004F1486 /* PositionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSystem.swift; sourceTree = "<group>"; };
+		5240D0AE2BB3B415004F1486 /* LifeEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeEvent.swift; sourceTree = "<group>"; };
 		5250B42E2BAE0DB000F16CF6 /* LabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelComponent.swift; sourceTree = "<group>"; };
 		52578B812BA61AAF00B4D76C /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		52578B862BA6209700B4D76C /* DamageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageComponent.swift; sourceTree = "<group>"; };
@@ -273,6 +277,7 @@
 				3C9955C12BA5838900D33FA5 /* EventOutput.swift */,
 				3C9955BF2BA57E5500D33FA5 /* EventTarget.swift */,
 				3C9955C72BA5865C00D33FA5 /* ConcurrentEvent.swift */,
+				5240D0B02BB3B5EE004F1486 /* GameStateEvents */,
 				BAFFB93C2BB0A5B200D8301F /* GameEvents */,
 				BAFFB93B2BB0A5AD00D8301F /* PlayerEvents */,
 			);
@@ -364,6 +369,13 @@
 				5240D0A82BB333B5004F1486 /* PointProp.swift */,
 			);
 			path = GameProps;
+			sourceTree = "<group>";
+		};
+		5240D0B02BB3B5EE004F1486 /* GameStateEvents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GameStateEvents;
 			sourceTree = "<group>";
 		};
 		52578B882BA620A900B4D76C /* BaseComponents */ = {
@@ -646,6 +658,7 @@
 				3C9955C42BA585DD00D33FA5 /* HealthSystem.swift */,
 				3CE9515E2BADE2C5008B2785 /* ShootingSystem.swift */,
 				BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */,
+				5240D0AC2BB33D4C004F1486 /* PositionSystem.swift */,
 			);
 			path = GameSystems;
 			sourceTree = "<group>";
@@ -675,6 +688,7 @@
 				3C9955CB2BA5889800D33FA5 /* MoveEvent.swift */,
 				3C9955C92BA5888F00D33FA5 /* SpawnEvent.swift */,
 				BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */,
+				5240D0AE2BB3B415004F1486 /* LifeEvent.swift */,
 			);
 			path = GameEvents;
 			sourceTree = "<group>";
@@ -946,6 +960,7 @@
 				3CE951612BADE881008B2785 /* Spawnable.swift in Sources */,
 				52DF5FE92BA33F9700135367 /* Animatable.swift in Sources */,
 				3C9955AF2BA48FD200D33FA5 /* MeleeUnit.swift in Sources */,
+				5240D0AD2BB33D4C004F1486 /* PositionSystem.swift in Sources */,
 				5295A2022BA9FBD9005018A8 /* SceneManagerDelegate.swift in Sources */,
 				52DF5FE12BA3349600135367 /* TFTextures.swift in Sources */,
 				520062582BA8ED73000DBA30 /* HomeComponent.swift in Sources */,
@@ -971,6 +986,7 @@
 				52DF5FFB2BA3601400135367 /* HealthComponent.swift in Sources */,
 				3C9955BC2BA563A800D33FA5 /* TFEvent.swift in Sources */,
 				BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */,
+				5240D0AF2BB3B415004F1486 /* LifeEvent.swift in Sources */,
 				5295A2072BAA02FD005018A8 /* TFButton.swift in Sources */,
 				3CE951672BAEAB0E008B2785 /* ContactSystem.swift in Sources */,
 				3CE951692BAEB719008B2785 /* RequestSpawnEvent.swift in Sources */,

@@ -9,7 +9,7 @@ import Foundation
 
 class LifeProp: GameProp {
     var renderableEntity: TFEntity
-    
+
     init(initialLife: Int) {
         self.renderableEntity = Life(initialLife: initialLife)
     }
