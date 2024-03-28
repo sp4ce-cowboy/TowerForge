@@ -34,6 +34,7 @@ class GameViewController: UIViewController {
 
     private func setUpGameWorld(scene: GameScene) {
         self.gameWorld = GameWorld(scene: scene, screenSize: self.view.frame)
+        self.gameWorld?.delegate = self
     }
 }
 

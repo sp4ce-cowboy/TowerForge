@@ -2,13 +2,13 @@
 //  PointProp.swift
 //  TowerForge
 //
-//  Created by MacBook Pro on 27/03/24.
+//  Created by Vanessa Mae on 27/03/24.
 //
 
 import Foundation
 
 class PointProp: GameProp {
-    var renderableEntity: TFEntity
+    var renderableEntity: Point
 
     init(initialPoint: Int) {
         self.renderableEntity = Point(initialPoint: initialPoint)

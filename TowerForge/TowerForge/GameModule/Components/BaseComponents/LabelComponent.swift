@@ -17,7 +17,7 @@ class LabelComponent: TFComponent {
     }
     func changeText(_ text: String) {
         guard let spriteComponent = entity?.component(ofType: SpriteComponent.self),
-              let labelNode = spriteComponent.node.childNode(withName: "point") as? SKLabelNode else {
+              let labelNode = spriteComponent.node.childNode(withName: self.name) as? SKLabelNode else {
             return
         }
         labelNode.text = text

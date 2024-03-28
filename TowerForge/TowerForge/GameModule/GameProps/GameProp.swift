@@ -8,5 +8,6 @@
 import Foundation
 
 protocol GameProp {
-    var renderableEntity: TFEntity { get }
+    associatedtype EntityType: TFEntity // Define an associated type constraint
+    var renderableEntity: EntityType { get } // Use the associated type
 }

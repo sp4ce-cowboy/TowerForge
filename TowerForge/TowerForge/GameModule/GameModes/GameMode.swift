@@ -10,7 +10,7 @@ import Foundation
 protocol GameMode {
     var modeName: String { get }
     var modeDescription: String { get }
-    var gameProps: [GameProp] { get }
+    var gameProps: [any GameProp] { get }
     var gameState: GameState { get set }
     var eventManager: EventManager { get set }
     func updateGame()
