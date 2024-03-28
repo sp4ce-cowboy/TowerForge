@@ -10,13 +10,17 @@ import QuartzCore
 class GameWorld {
     private unowned var scene: GameScene?
     private var gameEngine: AbstractGameEngine
+    private var gameMode: GameMode
     private var selectionNode: UnitSelectionNode
     private var grid: Grid
     private var renderer: Renderer?
 
-    init(scene: GameScene?, screenSize: CGRect) {
+    unowned var delegate: SceneManagerDelegate?
+
+    init(scene: GameScene?, screenSize: CGRect, mode: Mode) {
         self.scene = scene
         gameEngine = GameEngine()
+        gameMode = GameModeFactory.createGameMode(mode: mode, eventManager: gameEngine.eventManager)
         selectionNode = UnitSelectionNode()
 
         grid = Grid(screenSize: screenSize)
@@ -27,13 +31,22 @@ class GameWorld {
         renderer = Renderer(target: self, scene: scene)
         renderer?.renderMessage("Game Starts")
         gameEngine.setUpSystems(with: grid)
+        gameEngine.setUpPlayerInfo(mode: gameMode)
         self.setUpSelectionNode()
     }
 
     func update(deltaTime: TimeInterval) {
         gameEngine.updateGame(deltaTime: deltaTime)
+        gameMode.updateGame()
+        if checkGameEnded() {
+            renderer?.renderMessage("You win")
+            delegate?.showGameOverScene(isWin: gameMode.gameState == .WIN ? true : false)
+        }
         selectionNode.update()
         renderer?.render()
+    }
+    func checkGameEnded() -> Bool {
+        gameMode.gameState == .WIN || gameMode.gameState == .LOSE
     }
     func spawnUnit(at location: CGPoint) {
         selectionNode.unitNodeDidSpawn(location)

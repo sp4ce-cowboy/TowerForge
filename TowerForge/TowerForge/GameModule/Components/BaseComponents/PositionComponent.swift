@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreGraphics
+import UIKit
 
 class PositionComponent: TFComponent {
     private(set) var position: CGPoint

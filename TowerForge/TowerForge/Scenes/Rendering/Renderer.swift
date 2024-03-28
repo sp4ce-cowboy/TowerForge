@@ -75,7 +75,7 @@ class Renderer {
             label.horizontalAlignmentMode = .center
             label.verticalAlignmentMode = .center
             label.position = CGPoint(x: spriteComponent.node.width, y: 0)
-            label.name = "point"
+            label.name = labelComponent.name
             spriteComponent.node.addChild(label)
         }
 
