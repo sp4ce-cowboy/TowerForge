@@ -16,9 +16,11 @@ import Foundation
 /// wherever it is required.
 protocol AbstractGameEngine: EventTarget {
     var entities: [TFEntity] { get }
+    var eventManager: EventManager { get }
 
     func updateGame(deltaTime: TimeInterval)
     func setUpSystems(with grid: Grid)
+    func setUpPlayerInfo(mode: GameMode)
 
     func addEntity(_ entity: TFEntity)
     func addEvent(_ event: TFEvent)
@@ -48,7 +50,6 @@ class GameEngine: AbstractGameEngine {
         self.systemManager = systemManager
         self.eventManager = eventManager
         self.setupTeam()
-        self.setupPlayerInfo()
     }
 
     func updateGame(deltaTime: TimeInterval) {
@@ -67,12 +68,11 @@ class GameEngine: AbstractGameEngine {
         entityManager.add(oppositeTeam)
     }
 
-    private func setupPlayerInfo() {
-        let point = Point(initialPoint: 0)
-        entityManager.add(point)
-
-        let life = Life(initialLife: Team.lifeCount)
-        entityManager.add(life)
+    func setUpPlayerInfo(mode: GameMode) {
+        for prop in mode.gameProps {
+            let hudEntity = prop.renderableEntity
+            entityManager.add(hudEntity)
+        }
     }
 
     func setUpSystems(with grid: Grid) {

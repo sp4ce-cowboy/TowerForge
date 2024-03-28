@@ -18,6 +18,7 @@ class GameWorld {
     init(scene: GameScene?, screenSize: CGRect) {
         self.scene = scene
         gameEngine = GameEngine()
+        gameMode = GameModeFactory.createGameMode(mode: .captureTheFlag, eventManager: gameEngine.eventManager)
         selectionNode = UnitSelectionNode()
 
         grid = Grid(screenSize: screenSize)
@@ -28,13 +29,21 @@ class GameWorld {
         renderer = Renderer(target: self, scene: scene)
         renderer?.renderMessage("Game Starts")
         gameEngine.setUpSystems(with: grid)
+        gameEngine.setUpPlayerInfo(mode: gameMode)
         self.setUpSelectionNode()
     }
 
     func update(deltaTime: TimeInterval) {
         gameEngine.updateGame(deltaTime: deltaTime)
+        gameMode.updateGame()
+        if checkGameEnded() {
+            renderer?.renderMessage("You win")
+        }
         selectionNode.update()
         renderer?.render()
+    }
+    func checkGameEnded() -> Bool {
+        gameMode.gameState == .WIN || gameMode.gameState == .LOSE
     }
     func spawnUnit(at location: CGPoint) {
         selectionNode.unitNodeDidSpawn(location)

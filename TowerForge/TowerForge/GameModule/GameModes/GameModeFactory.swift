@@ -12,7 +12,7 @@ class GameModeFactory {
         case deathMatch
         case captureTheFlag
     }
-    
+
     static func createGameMode(mode: Mode, eventManager: EventManager) -> GameMode {
         switch mode {
         case .captureTheFlag:
