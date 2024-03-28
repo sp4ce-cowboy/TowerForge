@@ -27,19 +27,6 @@ class PositionComponent: TFComponent {
         self.position = position
     }
 
-    func outOfBound() -> Bool {
-        guard let playerComponent = entity?.component(ofType: PlayerComponent.self) else {
-            return false
-        }
-        if playerComponent.player == .ownPlayer && self.position.x > UIScreen.main.bounds.maxX {
-            // TODO : Change UIScreen
-            return true
-        } else if playerComponent.player == .oppositePlayer && self.position.x < UIScreen.main.bounds.minX {
-            return true
-        }
-        return false
-    }
-
     func move(by displacement: CGVector) {
         position.x += displacement.dx
         position.y += displacement.dy
