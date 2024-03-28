@@ -8,6 +8,7 @@
 import Foundation
 
 class CaptureTheFlagMode: GameMode {
+    var eventManager: EventManager
     static let INITIAL_POINT = 5
 
     var modeName: String = "Capture The Flag"
@@ -16,11 +17,27 @@ class CaptureTheFlagMode: GameMode {
     var gameState = GameState.IDLE
     var currentLife: Int
 
-    init(initialLife: Int) {
+    init(initialLife: Int, eventManager: EventManager) {
         self.gameProps.append(LifeProp(initialLife: initialLife))
         self.currentLife = initialLife
+        self.eventManager = eventManager
+        eventManager.registerHandler(forEvent: LifeEvent.self) { event in
+            if let lifeEvent = event as? LifeEvent {
+                // Check if the event reduces life
+                if lifeEvent.lifeDecrease > 0 {
+                    self.currentLife -= lifeEvent.lifeDecrease
+                    print("Life reduced by \(lifeEvent.lifeDecrease). Current life: \(self.currentLife)")
+                }
+            }
+        }
     }
-
+    func updateGame() {
+        if self.currentLife < 0 {
+            gameState = .LOSE
+        } else {
+            gameState = .WIN
+        }
+    }
     func startGame() {
         gameState = GameState.PLAYING
     }
@@ -36,9 +53,5 @@ class CaptureTheFlagMode: GameMode {
     func winGame() {
         gameState = GameState.WIN
     }
-
-    func endGame() {
-        gameState = GameState.QUIT
-    }
-
+    
 }
