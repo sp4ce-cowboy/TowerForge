@@ -52,6 +52,10 @@
 		5240D09B2BB32ECE004F1486 /* GameStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D09A2BB32ECE004F1486 /* GameStates.swift */; };
 		5240D0A02BB330B5004F1486 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D09F2BB330B4004F1486 /* GameMode.swift */; };
 		5240D0A22BB33183004F1486 /* DeathMatchMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0A12BB33183004F1486 /* DeathMatchMode.swift */; };
+		5240D0A52BB332FB004F1486 /* GameProp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0A42BB332FB004F1486 /* GameProp.swift */; };
+		5240D0A72BB33356004F1486 /* LifeProp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0A62BB33356004F1486 /* LifeProp.swift */; };
+		5240D0A92BB333B5004F1486 /* PointProp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0A82BB333B5004F1486 /* PointProp.swift */; };
+		5240D0AB2BB3340F004F1486 /* CaptureTheFlagMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0AA2BB3340F004F1486 /* CaptureTheFlagMode.swift */; };
 		5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5250B42E2BAE0DB000F16CF6 /* LabelComponent.swift */; };
 		52578B822BA61AAF00B4D76C /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52578B812BA61AAF00B4D76C /* PositionComponent.swift */; };
 		52578B872BA6209700B4D76C /* DamageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52578B862BA6209700B4D76C /* DamageComponent.swift */; };
@@ -166,6 +170,10 @@
 		5240D09A2BB32ECE004F1486 /* GameStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStates.swift; sourceTree = "<group>"; };
 		5240D09F2BB330B4004F1486 /* GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
 		5240D0A12BB33183004F1486 /* DeathMatchMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathMatchMode.swift; sourceTree = "<group>"; };
+		5240D0A42BB332FB004F1486 /* GameProp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProp.swift; sourceTree = "<group>"; };
+		5240D0A62BB33356004F1486 /* LifeProp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeProp.swift; sourceTree = "<group>"; };
+		5240D0A82BB333B5004F1486 /* PointProp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointProp.swift; sourceTree = "<group>"; };
+		5240D0AA2BB3340F004F1486 /* CaptureTheFlagMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureTheFlagMode.swift; sourceTree = "<group>"; };
 		5250B42E2BAE0DB000F16CF6 /* LabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelComponent.swift; sourceTree = "<group>"; };
 		52578B812BA61AAF00B4D76C /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		52578B862BA6209700B4D76C /* DamageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageComponent.swift; sourceTree = "<group>"; };
@@ -343,8 +351,19 @@
 			children = (
 				5240D09F2BB330B4004F1486 /* GameMode.swift */,
 				5240D0A12BB33183004F1486 /* DeathMatchMode.swift */,
+				5240D0AA2BB3340F004F1486 /* CaptureTheFlagMode.swift */,
 			);
 			path = GameModes;
+			sourceTree = "<group>";
+		};
+		5240D0A32BB3321B004F1486 /* GameProps */ = {
+			isa = PBXGroup;
+			children = (
+				5240D0A42BB332FB004F1486 /* GameProp.swift */,
+				5240D0A62BB33356004F1486 /* LifeProp.swift */,
+				5240D0A82BB333B5004F1486 /* PointProp.swift */,
+			);
+			path = GameProps;
 			sourceTree = "<group>";
 		};
 		52578B882BA620A900B4D76C /* BaseComponents */ = {
@@ -567,6 +586,7 @@
 		BAFFB9332BB0A24400D8301F /* GameModule */ = {
 			isa = PBXGroup;
 			children = (
+				5240D0A32BB3321B004F1486 /* GameProps */,
 				5240D0982BB32B9B004F1486 /* GameModes */,
 				BAFFB94A2BB11F9800D8301F /* GameEngine.swift */,
 				3CCF9CB02BAB1BCE004D170E /* GameWorld.swift */,
@@ -882,9 +902,11 @@
 				3C9955A52BA47DC600D33FA5 /* BaseProjectile.swift in Sources */,
 				52578B8C2BA627B200B4D76C /* Team.swift in Sources */,
 				3CCF9CB72BAB2877004D170E /* MainMenuViewController.swift in Sources */,
+				5240D0A72BB33356004F1486 /* LifeProp.swift in Sources */,
 				52DF5FFF2BA3656500135367 /* ShootingComponent.swift in Sources */,
 				BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */,
 				3C9955CC2BA5889800D33FA5 /* MoveEvent.swift in Sources */,
+				5240D0A52BB332FB004F1486 /* GameProp.swift in Sources */,
 				BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */,
 				5200624E2BA8D597000DBA30 /* AiComponent.swift in Sources */,
 				3C9955C22BA5838900D33FA5 /* EventOutput.swift in Sources */,
@@ -895,6 +917,7 @@
 				3C9955BA2BA5637200D33FA5 /* DamageEvent.swift in Sources */,
 				3CE951632BAE037C008B2785 /* AiSystem.swift in Sources */,
 				3CE9515F2BADE2C5008B2785 /* ShootingSystem.swift in Sources */,
+				5240D0AB2BB3340F004F1486 /* CaptureTheFlagMode.swift in Sources */,
 				3C9955CA2BA5888F00D33FA5 /* SpawnEvent.swift in Sources */,
 				3CE951582BAD724D008B2785 /* TFContact.swift in Sources */,
 				5295A2132BAAEA16005018A8 /* UnitNode.swift in Sources */,
@@ -916,6 +939,7 @@
 				3C9955AD2BA483B100D33FA5 /* TFSystem.swift in Sources */,
 				3C9955BE2BA57E4B00D33FA5 /* EventManager.swift in Sources */,
 				3CE951562BACA0CF008B2785 /* Collidable.swift in Sources */,
+				5240D0A92BB333B5004F1486 /* PointProp.swift in Sources */,
 				52DF5FE62BA33AF300135367 /* TFSpriteNode.swift in Sources */,
 				BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */,
 				3C9955B42BA4B12000D33FA5 /* ArrowTower.swift in Sources */,
