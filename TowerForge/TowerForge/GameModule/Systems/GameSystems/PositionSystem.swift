@@ -21,14 +21,15 @@ class PositionSystem: TFSystem {
 
     func update(within time: CGFloat) {
         let positionComponents = entityManager.components(ofType: PositionComponent.self)
-        for positionComponent in positionComponents where positionComponent.outOfBound() {
-            guard let entity = positionComponent.entity, let playerComponent = entity?.component(ofType: PlayerComponent.self) else {
+        for positionComponent in positionComponents {
+            guard let entity = positionComponent.entity,
+                  let playerComponent = entity.component(ofType: PlayerComponent.self) else {
                 continue
             }
-            if playerComponent.player == .ownPlayer && self.position.x > UIScreen.main.bounds.maxX {
+            if playerComponent.player == .ownPlayer && positionComponent.position.x > UIScreen.main.bounds.maxX {
                 // TODO : Change UIScreen
                 handleOutOfGame(entity: entity)
-            } else if playerComponent.player == .oppositePlayer && self.position.x < UIScreen.main.bounds.minX {
+            } else if playerComponent.player == .oppositePlayer && positionComponent.position.x < UIScreen.main.bounds.minX {
                 handleOutOfGame(entity: entity)
             }
         }
