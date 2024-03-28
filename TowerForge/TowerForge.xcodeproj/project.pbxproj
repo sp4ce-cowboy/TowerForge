@@ -71,6 +71,7 @@
 		527A07802BB3F81C00CD9D08 /* TimerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A077F2BB3F81C00CD9D08 /* TimerComponent.swift */; };
 		527A07822BB3F8D300CD9D08 /* TimerProp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A07812BB3F8D300CD9D08 /* TimerProp.swift */; };
 		527A07842BB3FD9A00CD9D08 /* TimerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A07832BB3FD9A00CD9D08 /* TimerSystem.swift */; };
+		527A07862BB411FB00CD9D08 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A07852BB411FB00CD9D08 /* GameOverScene.swift */; };
 		527E3A242BA613F000FE1628 /* PlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527E3A232BA613EF00FE1628 /* PlayerComponent.swift */; };
 		5295A2022BA9FBD9005018A8 /* SceneManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2012BA9FBD9005018A8 /* SceneManagerDelegate.swift */; };
 		5295A2042BA9FED4005018A8 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2032BA9FED4005018A8 /* MenuScene.swift */; };
@@ -200,6 +201,7 @@
 		527A077F2BB3F81C00CD9D08 /* TimerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerComponent.swift; sourceTree = "<group>"; };
 		527A07812BB3F8D300CD9D08 /* TimerProp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerProp.swift; sourceTree = "<group>"; };
 		527A07832BB3FD9A00CD9D08 /* TimerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSystem.swift; sourceTree = "<group>"; };
+		527A07852BB411FB00CD9D08 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		527E3A232BA613EF00FE1628 /* PlayerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerComponent.swift; sourceTree = "<group>"; };
 		5295A2012BA9FBD9005018A8 /* SceneManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManagerDelegate.swift; sourceTree = "<group>"; };
 		5295A2032BA9FED4005018A8 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 			children = (
 				52DF5FAD2BA32B2300135367 /* GameScene.swift */,
 				5295A2032BA9FED4005018A8 /* MenuScene.swift */,
+				527A07852BB411FB00CD9D08 /* GameOverScene.swift */,
 				BAFFB9422BB0A79B00D8301F /* SpriteKitScenes */,
 				BAFFB9322BB0A10C00D8301F /* SceneDelegates */,
 				3CE9514D2BAC8925008B2785 /* Rendering */,
@@ -1001,6 +1004,7 @@
 				527A07722BB3D71F00CD9D08 /* GameOverEvent.swift in Sources */,
 				5240D08F2BAE6D0A004F1486 /* Point.swift in Sources */,
 				3C769A742BA591BD00F454F9 /* SpawnSystem.swift in Sources */,
+				527A07862BB411FB00CD9D08 /* GameOverScene.swift in Sources */,
 				3C9955B12BA4ACA100D33FA5 /* Bullet.swift in Sources */,
 				3CE9514F2BAC8936008B2785 /* Renderer.swift in Sources */,
 				527A07802BB3F81C00CD9D08 /* TimerComponent.swift in Sources */,

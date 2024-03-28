@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 class Timer: TFEntity {
-    static let position = CGPoint(x: 300, y: 400)
+    static let position = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.maxY - 300)
     static let size = CGSize(width: 100, height: 100)
 
     var remainingTime: TimeInterval {
@@ -20,7 +21,7 @@ class Timer: TFEntity {
     init(timeLength: TimeInterval) {
         super.init()
         let timerComponent = TimerComponent(timeLength: timeLength)
-        self.addComponent(SpriteComponent(textureNames: ["Life"], size: Timer.size, animatableKey: "timer"))
+        self.addComponent(SpriteComponent(textureNames: ["timer"], size: Timer.size, animatableKey: "timer"))
         self.addComponent(HomeComponent(initialLifeCount: Team.lifeCount, pointInterval: Team.pointsInterval))
         self.addComponent(LabelComponent(text: String(0), name: "timer"))
         self.addComponent(timerComponent)
