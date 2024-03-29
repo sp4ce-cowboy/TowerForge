@@ -11,31 +11,26 @@ import SpriteKit
 class TFAnimatableNode: TFSpriteNode, Animatable {
     var animatableAction: SKAction?
     var animatableKey: String
+    var textures: TFTextures
 
-    init(textures: TFTextures, height: CGFloat, width: CGFloat, animatableKey: String) {
+    init(textures: TFTextures, size: CGSize, animatableKey: String) {
         self.animatableKey = animatableKey
-        super.init(textures: textures, height: height, width: width)
-    }
-
-    @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(textures: textures, size: size)
     }
 
     func playAnimation() {
-        guard animatableAction == nil, let textures = textures?.textures else {
+        guard animatableAction == nil else {
             return
         }
 
-        let animateAction = SKAction.animate(with: textures, timePerFrame: 0.1)
+        let animateAction = SKAction.animate(with: textures.textures, timePerFrame: 0.1)
         let repeatableAction = SKAction.repeatForever(animateAction)
-        run(repeatableAction, withKey: animatableKey)
+        node.run(repeatableAction, withKey: animatableKey)
         animatableAction = repeatableAction
     }
 
     func stopAnimation() {
-        removeAction(forKey: animatableKey)
+        node.removeAction(forKey: animatableKey)
         animatableAction = nil
     }
-
 }

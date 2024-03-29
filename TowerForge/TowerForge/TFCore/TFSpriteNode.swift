@@ -7,30 +7,32 @@
 
 import Foundation
 import SpriteKit
-import CoreGraphics
 
-class TFSpriteNode: SKSpriteNode {
-    var textures: TFTextures?
-    var width: CGFloat
-    var height: CGFloat
+class TFSpriteNode: TFNode {
+    var anchorPoint: CGPoint {
+        get { spriteNode.anchorPoint }
+        set(anchorPoint) { spriteNode.anchorPoint = anchorPoint }
+    }
 
-    init(textures: TFTextures?, height: CGFloat, width: CGFloat) {
-        if let textures = textures {
-            self.textures = textures
+    override var size: CGSize {
+        get { spriteNode.size }
+        set(size) { spriteNode.size = size }
+    }
+
+    init(textures: TFTextures?, size: CGSize) {
+        super.init()
+        node = SKSpriteNode(texture: textures?.mainTexture, color: .clear, size: size)
+    }
+
+    init(imageName: String, size: CGSize) {
+        super.init()
+        node = SKSpriteNode(texture: SKTexture(imageNamed: imageName), color: .clear, size: size)
+    }
+
+    private var spriteNode: SKSpriteNode {
+        guard let spriteNode = node as? SKSpriteNode else {
+            fatalError("SKNode in TFNode was not a SKSpriteNode")
         }
-        self.width = width
-        self.height = height
-        super.init(texture: textures?.mainTexture, color: .clear, size: CGSize(width: width, height: height))
-    }
-
-    init(imageName: String, height: CGFloat, width: CGFloat) {
-        self.width = width
-        self.height = height
-        super.init(texture: SKTexture(imageNamed: imageName), color: .clear, size: CGSize(width: width, height: height))
-    }
-
-    @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        return spriteNode
     }
 }

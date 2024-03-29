@@ -26,6 +26,13 @@
 		3C9955C82BA5865C00D33FA5 /* ConcurrentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955C72BA5865C00D33FA5 /* ConcurrentEvent.swift */; };
 		3C9955CA2BA5888F00D33FA5 /* SpawnEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955C92BA5888F00D33FA5 /* SpawnEvent.swift */; };
 		3C9955CC2BA5889800D33FA5 /* MoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955CB2BA5889800D33FA5 /* MoveEvent.swift */; };
+		3CAC4A672BB6975200A5D22E /* RenderStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC4A662BB6975200A5D22E /* RenderStage.swift */; };
+		3CAC4A692BB697A400A5D22E /* SpriteRenderStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC4A682BB697A400A5D22E /* SpriteRenderStage.swift */; };
+		3CAC4A6B2BB6992F00A5D22E /* TFNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC4A6A2BB6992F00A5D22E /* TFNode.swift */; };
+		3CAC4A6D2BB6A13B00A5D22E /* PositionRenderStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC4A6C2BB6A13B00A5D22E /* PositionRenderStage.swift */; };
+		3CAC4A6F2BB6A4F200A5D22E /* LabelRenderStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC4A6E2BB6A4F200A5D22E /* LabelRenderStage.swift */; };
+		3CAC4A712BB6AB3100A5D22E /* TFLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC4A702BB6AB3100A5D22E /* TFLabelNode.swift */; };
+		3CAC4A732BB6B61C00A5D22E /* PlayerRenderStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC4A722BB6B61C00A5D22E /* PlayerRenderStage.swift */; };
 		3CCF9CAF2BAB1A96004D170E /* SceneUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF9CAE2BAB1A96004D170E /* SceneUpdateDelegate.swift */; };
 		3CCF9CB12BAB1BCE004D170E /* GameWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF9CB02BAB1BCE004D170E /* GameWorld.swift */; };
 		3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF9CB22BAB1F42004D170E /* SystemManager.swift */; };
@@ -155,6 +162,13 @@
 		3C9955C72BA5865C00D33FA5 /* ConcurrentEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcurrentEvent.swift; sourceTree = "<group>"; };
 		3C9955C92BA5888F00D33FA5 /* SpawnEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnEvent.swift; sourceTree = "<group>"; };
 		3C9955CB2BA5889800D33FA5 /* MoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEvent.swift; sourceTree = "<group>"; };
+		3CAC4A662BB6975200A5D22E /* RenderStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderStage.swift; sourceTree = "<group>"; };
+		3CAC4A682BB697A400A5D22E /* SpriteRenderStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteRenderStage.swift; sourceTree = "<group>"; };
+		3CAC4A6A2BB6992F00A5D22E /* TFNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFNode.swift; sourceTree = "<group>"; };
+		3CAC4A6C2BB6A13B00A5D22E /* PositionRenderStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionRenderStage.swift; sourceTree = "<group>"; };
+		3CAC4A6E2BB6A4F200A5D22E /* LabelRenderStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelRenderStage.swift; sourceTree = "<group>"; };
+		3CAC4A702BB6AB3100A5D22E /* TFLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFLabelNode.swift; sourceTree = "<group>"; };
+		3CAC4A722BB6B61C00A5D22E /* PlayerRenderStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRenderStage.swift; sourceTree = "<group>"; };
 		3CCF9CAE2BAB1A96004D170E /* SceneUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneUpdateDelegate.swift; sourceTree = "<group>"; };
 		3CCF9CB02BAB1BCE004D170E /* GameWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWorld.swift; sourceTree = "<group>"; };
 		3CCF9CB22BAB1F42004D170E /* SystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemManager.swift; sourceTree = "<group>"; };
@@ -315,6 +329,17 @@
 			path = Systems;
 			sourceTree = "<group>";
 		};
+		3CAC4A632BB696D700A5D22E /* RenderStages */ = {
+			isa = PBXGroup;
+			children = (
+				3CAC4A682BB697A400A5D22E /* SpriteRenderStage.swift */,
+				3CAC4A722BB6B61C00A5D22E /* PlayerRenderStage.swift */,
+				3CAC4A6C2BB6A13B00A5D22E /* PositionRenderStage.swift */,
+				3CAC4A6E2BB6A4F200A5D22E /* LabelRenderStage.swift */,
+			);
+			path = RenderStages;
+			sourceTree = "<group>";
+		};
 		3CE9514C2BAC8668008B2785 /* BaseEntities */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,7 +353,9 @@
 		3CE9514D2BAC8925008B2785 /* Rendering */ = {
 			isa = PBXGroup;
 			children = (
+				3CAC4A632BB696D700A5D22E /* RenderStages */,
 				3CE9514E2BAC8936008B2785 /* Renderer.swift */,
+				3CAC4A662BB6975200A5D22E /* RenderStage.swift */,
 				3CE951502BAC8955008B2785 /* Renderable.swift */,
 			);
 			path = Rendering;
@@ -750,7 +777,9 @@
 			isa = PBXGroup;
 			children = (
 				52DF5FE52BA33AF300135367 /* TFSpriteNode.swift */,
+				3CAC4A6A2BB6992F00A5D22E /* TFNode.swift */,
 				52DF5FEA2BA3400C00135367 /* TFAnimatableNode.swift */,
+				3CAC4A702BB6AB3100A5D22E /* TFLabelNode.swift */,
 				5295A2062BAA02FD005018A8 /* TFButton.swift */,
 				52DF5FE02BA3349600135367 /* TFTextures.swift */,
 			);
@@ -931,6 +960,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CCF9CAF2BAB1A96004D170E /* SceneUpdateDelegate.swift in Sources */,
+				3CAC4A692BB697A400A5D22E /* SpriteRenderStage.swift in Sources */,
 				3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */,
 				5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */,
 				3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */,
@@ -965,8 +995,10 @@
 				52578B872BA6209700B4D76C /* DamageComponent.swift in Sources */,
 				52DF5FB02BA32B2300135367 /* GameViewController.swift in Sources */,
 				3CE951512BAC8955008B2785 /* Renderable.swift in Sources */,
+				3CAC4A712BB6AB3100A5D22E /* TFLabelNode.swift in Sources */,
 				529F91882BA6D7A7009551D9 /* SoldierUnit.swift in Sources */,
 				BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */,
+				3CAC4A732BB6B61C00A5D22E /* PlayerRenderStage.swift in Sources */,
 				520062522BA8DA09000DBA30 /* UnitGenerator.swift in Sources */,
 				3C9955C02BA57E5500D33FA5 /* EventTarget.swift in Sources */,
 				3CCF9CB12BAB1BCE004D170E /* GameWorld.swift in Sources */,
@@ -979,6 +1011,7 @@
 				52F268702BB4B319009599AD /* GameModeViewController.swift in Sources */,
 				527A07762BB3E4CF00CD9D08 /* GameState.swift in Sources */,
 				3C9955AD2BA483B100D33FA5 /* TFSystem.swift in Sources */,
+				3CAC4A672BB6975200A5D22E /* RenderStage.swift in Sources */,
 				3C9955BE2BA57E4B00D33FA5 /* EventManager.swift in Sources */,
 				527A07842BB3FD9A00CD9D08 /* TimerSystem.swift in Sources */,
 				3CE951562BACA0CF008B2785 /* Collidable.swift in Sources */,
@@ -1011,6 +1044,7 @@
 				5240D0A02BB330B5004F1486 /* GameMode.swift in Sources */,
 				520062562BA8E026000DBA30 /* PlayerSpawnable.swift in Sources */,
 				5240D0A22BB33183004F1486 /* DeathMatchMode.swift in Sources */,
+				3CAC4A6F2BB6A4F200A5D22E /* LabelRenderStage.swift in Sources */,
 				3C0B608D2BB2B84000FFECB4 /* ContactComponent.swift in Sources */,
 				3CE951652BAE0A04008B2785 /* HomeSystem.swift in Sources */,
 				52DF5FFB2BA3601400135367 /* HealthComponent.swift in Sources */,
@@ -1020,6 +1054,8 @@
 				527A07742BB3D8E800CD9D08 /* GameModeFactory.swift in Sources */,
 				5240D0AF2BB3B415004F1486 /* LifeEvent.swift in Sources */,
 				5295A2072BAA02FD005018A8 /* TFButton.swift in Sources */,
+				3CAC4A6B2BB6992F00A5D22E /* TFNode.swift in Sources */,
+				3CAC4A6D2BB6A13B00A5D22E /* PositionRenderStage.swift in Sources */,
 				3CE951672BAEAB0E008B2785 /* ContactSystem.swift in Sources */,
 				3CE951692BAEB719008B2785 /* RequestSpawnEvent.swift in Sources */,
 			);
