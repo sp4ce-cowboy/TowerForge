@@ -12,7 +12,7 @@ protocol UnitSelectionNodeDelegate: AnyObject {
     func unitSelectionNodeDidSpawn<T: TFEntity & PlayerSpawnable>(ofType type: T.Type, position: CGPoint)
 }
 
-class UnitSelectionNode: TFEntity, UnitNodeDelegate {
+class UnitSelectionNode: TFEntity {
     weak var delegate: UnitSelectionNodeDelegate?
     var availablePoints: Int = 0 {
         didSet {
@@ -25,49 +25,17 @@ class UnitSelectionNode: TFEntity, UnitNodeDelegate {
     override init() {
         super.init()
 
-        // Temporary until render pipeline is up
-        // Initialised with dummy texture so that it doesn't crash
-        let spriteComponent = SpriteComponent(textureNames: ["life"], size: CGSize.zero, animatableKey: "selectionNode")
-        let node = spriteComponent.node
-        node.isUserInteractionEnabled = true
-
+        var position = CGPoint(x: 500, y: 100)
         let possibleUnits: [(TFEntity & PlayerSpawnable).Type] = SpawnableEntities.playerSpawnableEntities
-        var startingPoint = CGPoint(x: 400, y: 0)
-
         for type in possibleUnits {
-            let unitNode = UnitNode(ofType: type)
-            unitNode.position = startingPoint
-            unitNodes.append(unitNode)
+            let unitNode = UnitNode(ofType: type, position: position)
             unitNode.delegate = self
-            node.addChild(unitNode)
-
-            startingPoint.x += 140
+            position.x += 140
+            unitNodes.append(unitNode)
         }
 
-        // Position unit selection node on the left side of the screen
-        node.position = CGPoint(x: 500, y: 100)
-
-        self.addComponent(spriteComponent)
         self.addComponent(HomeComponent(initialLifeCount: Team.lifeCount, pointInterval: Team.pointsInterval))
-        self.addComponent(PositionComponent(position: node.position))
         self.addComponent(PlayerComponent(player: .ownPlayer))
-    }
-
-    @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private func updateUnitAlphas() {
-        for unitNode in unitNodes {
-            if unitNode.type.cost <= availablePoints {
-                unitNode.alpha = 1.0
-                unitNode.purchasable = true
-            } else {
-                unitNode.alpha = 0.5
-                unitNode.purchasable = false
-            }
-        }
     }
 
     func update() {
@@ -77,6 +45,25 @@ class UnitSelectionNode: TFEntity, UnitNodeDelegate {
         self.availablePoints = homeComponent.points
     }
 
+    private func updateUnitAlphas() {
+        for unitNode in unitNodes {
+            if unitNode.type.cost <= availablePoints {
+                unitNode.update(alpha: 1.0)
+                unitNode.purchasable = true
+            } else {
+                unitNode.update(alpha: 0.5)
+                unitNode.purchasable = false
+            }
+        }
+    }
+
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension UnitSelectionNode: UnitNodeDelegate {
     func unitNodeDidSelect(_ unitNode: UnitNode) {
         if unitNode.purchasable {
             selectedNode = unitNode

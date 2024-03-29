@@ -15,9 +15,9 @@ class MenuScene: SKScene {
     }
 
     func setupMenu() {
-        let background = TFSpriteNode(imageName: "background", height: frame.height, width: frame.width)
+        let background = TFSpriteNode(imageName: "background", size: frame.size)
         background.position = CGPoint(x: 0, y: 0)
         background.anchorPoint = .zero
-        addChild(background)
+        addChild(background.node)
     }
 }

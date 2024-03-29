@@ -9,16 +9,13 @@ import Foundation
 
 class SpriteComponent: TFComponent {
     var textures: TFTextures
-    var height: CGFloat
-    var width: CGFloat
+    var size: CGSize
     var animatableKey: String
-    var node: TFAnimatableNode
+    var alpha = 1.0
 
     init(textureNames: [String], size: CGSize, animatableKey: String) {
-        textures = TFTextures(textureNames: textureNames, textureAtlasName: "Sprites")
-        self.height = size.height
-        self.width = size.width
-        self.node = TFAnimatableNode(textures: textures, height: height, width: width, animatableKey: animatableKey)
+        self.textures = TFTextures(textureNames: textureNames, textureAtlasName: "Sprites")
+        self.size = size
         self.animatableKey = animatableKey
         super.init()
     }

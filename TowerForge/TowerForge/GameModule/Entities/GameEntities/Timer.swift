@@ -18,6 +18,7 @@ class Timer: TFEntity {
         }
         return timerComponent.time
     }
+
     init(timeLength: TimeInterval) {
         super.init()
         let timerComponent = TimerComponent(timeLength: timeLength)
