@@ -9,12 +9,18 @@ import Foundation
 
 class LabelRenderStage: RenderStage {
     static let name = "label"
-    func transform(node: TFNode, for entity: TFEntity) {
+    func createAndAdd(node: TFNode, for entity: TFEntity) {
         guard let labelComponent = entity.component(ofType: LabelComponent.self) else {
             return
         }
         let labelNode = createLabelNode(with: labelComponent)
         node.add(child: labelNode)
+
+        if let spriteComponent = entity.component(ofType: SpriteComponent.self) {
+            labelNode.position = CGPoint(x: spriteComponent.size.width, y: 0)
+            labelNode.position.x += labelComponent.displacement.dx
+            labelNode.position.y += labelComponent.displacement.dy
+        }
     }
 
     func update(node: TFNode, for entity: TFEntity) {
@@ -30,8 +36,9 @@ class LabelRenderStage: RenderStage {
         labelNode.fontColor = labelComponent.fontColor
         labelNode.fontName = labelComponent.fontName
         labelNode.fontSize = labelComponent.fontSize
-        labelNode.horizontalAlignementMode = labelComponent.horizontalAlignment
-        labelNode.verticalAlignementMode = labelComponent.verticalAlignment
+        labelNode.horizontalAlignmentMode = labelComponent.horizontalAlignment
+        labelNode.verticalAlignmentMode = labelComponent.verticalAlignment
+        labelNode.name = LabelRenderStage.name
 
         return labelNode
     }

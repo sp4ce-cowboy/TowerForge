@@ -9,7 +9,7 @@ import Foundation
 
 class SpriteRenderStage: RenderStage {
     static let name = "sprite"
-    func transform(node: TFNode, for entity: TFEntity) {
+    func createAndAdd(node: TFNode, for entity: TFEntity) {
         guard let spriteComponent = entity.component(ofType: SpriteComponent.self) else {
             return
         }
@@ -17,14 +17,6 @@ class SpriteRenderStage: RenderStage {
         let spriteNode = createAnimatableNode(with: spriteComponent)
         node.add(child: spriteNode)
         spriteNode.playAnimation()
-    }
-
-    func update(node: TFNode, for entity: TFEntity) {
-        guard  let spriteNode = node.child(withName: SpriteRenderStage.name),
-               let spriteComponent = entity.component(ofType: SpriteComponent.self) else {
-            return
-        }
-
     }
 
     private func createAnimatableNode(with spriteComponent: SpriteComponent) -> TFAnimatableNode {

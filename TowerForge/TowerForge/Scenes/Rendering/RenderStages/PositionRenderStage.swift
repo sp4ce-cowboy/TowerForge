@@ -8,15 +8,18 @@
 import Foundation
 
 class PositionRenderStage: RenderStage {
+    func transform(node: TFNode, for entity: TFEntity) {
+        guard let positionComponent = entity.component(ofType: PositionComponent.self) else {
+            return
+        }
+        node.position = positionComponent.position
+    }
+
     func update(node: TFNode, for entity: TFEntity) {
         guard let positionComponent = entity.component(ofType: PositionComponent.self) else {
             return
         }
 
         node.position = positionComponent.position
-
-        if let spriteNode = node.child(withName: SpriteRenderStage.name) as? TFSpriteNode {
-            spriteNode.anchorPoint = positionComponent.anchorPoint
-        }
     }
 }

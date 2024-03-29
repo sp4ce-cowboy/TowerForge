@@ -89,12 +89,12 @@ class TFLabelNode: TFNode {
         set(fontSize) { labelNode.fontSize = fontSize }
     }
 
-    var horizontalAlignementMode: AlignmentMode {
+    var horizontalAlignmentMode: AlignmentMode {
         get { AlignmentMode(horizontalAlignment: labelNode.horizontalAlignmentMode) }
         set(alignmentMode) { labelNode.horizontalAlignmentMode = alignmentMode.horizontalAlignmentMode }
     }
 
-    var verticalAlignementMode: AlignmentMode {
+    var verticalAlignmentMode: AlignmentMode {
         get { AlignmentMode(verticalAlignment: labelNode.verticalAlignmentMode) }
         set(alignmentMode) { labelNode.verticalAlignmentMode = alignmentMode.verticalALignmentMode }
     }

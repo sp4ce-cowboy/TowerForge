@@ -15,6 +15,7 @@ class TFAnimatableNode: TFSpriteNode, Animatable {
 
     init(textures: TFTextures, size: CGSize, animatableKey: String) {
         self.animatableKey = animatableKey
+        self.textures = textures
         super.init(textures: textures, size: size)
     }
 

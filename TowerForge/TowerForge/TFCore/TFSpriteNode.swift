@@ -19,6 +19,11 @@ class TFSpriteNode: TFNode {
         set(size) { spriteNode.size = size }
     }
 
+    init(color: UIColor, size: CGSize) {
+        super.init()
+        node = SKSpriteNode(color: color, size: size)
+    }
+
     init(textures: TFTextures?, size: CGSize) {
         super.init()
         node = SKSpriteNode(texture: textures?.mainTexture, color: .clear, size: size)

@@ -45,6 +45,11 @@ class TFNode {
        node.frame.size
     }
 
+    var isUserInteractionEnabled: Bool {
+        get { node.isUserInteractionEnabled }
+        set(isEnabled) { node.isUserInteractionEnabled = isEnabled }
+    }
+
     init() {
         node = SKNode()
     }
