@@ -19,6 +19,15 @@ class SpriteRenderStage: RenderStage {
         spriteNode.playAnimation()
     }
 
+    func update(node: TFNode, for entity: TFEntity) {
+        guard let spriteComponent = entity.component(ofType: SpriteComponent.self),
+              let spriteNode = node.child(withName: SpriteRenderStage.name) else {
+            return
+        }
+
+        spriteNode.alpha = spriteComponent.alpha
+    }
+
     private func createAnimatableNode(with spriteComponent: SpriteComponent) -> TFAnimatableNode {
         let textures = spriteComponent.textures
         let size = spriteComponent.size

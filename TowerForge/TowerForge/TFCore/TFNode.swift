@@ -45,6 +45,11 @@ class TFNode {
        node.frame.size
     }
 
+    var alpha: CGFloat {
+        get { node.alpha }
+        set(alpha) { node.alpha = alpha }
+    }
+
     var isUserInteractionEnabled: Bool {
         get { node.isUserInteractionEnabled }
         set(isEnabled) { node.isUserInteractionEnabled = isEnabled }
