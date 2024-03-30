@@ -10,7 +10,7 @@ import SpriteKit
 
 class Renderer {
     private unowned var target: Renderable
-    private unowned var scene: SKScene?
+    private unowned var scene: TFScene?
 
     private var renderedNodes: [UUID: TFNode] = [:]
     private var renderStages: [RenderStage] = []
@@ -44,12 +44,13 @@ class Renderer {
         guard let scene = self.scene else {
             return
         }
+        let labelNode = TFLabelNode(text: message)
         let label = SKLabelNode(text: message)
+        labelNode.node = label
         label.name = "message"
         label.fontSize = 50.0
         label.fontName = "Nosifer-Regular"
-        label.position = CGPoint(x: scene.frame.midX, y: scene.frame.midY)
-        scene.addChild(label)
+        label.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
 
         let fadeInAction = SKAction.fadeIn(withDuration: 0.5)
         let waitAction = SKAction.wait(forDuration: 1.0)
@@ -57,6 +58,7 @@ class Renderer {
         let removeAction = SKAction.removeFromParent()
         let sequence = SKAction.sequence([fadeInAction, waitAction, fadeOutAction, removeAction])
         label.run(sequence)
+        scene.add(node: labelNode, staticOnScreen: true)
     }
 
     private func setupRenderStages() {
@@ -91,7 +93,7 @@ class Renderer {
         }
 
         renderedNodes[entity.id] = node
-        scene?.addChild(node.node)
+        scene?.add(node: node, staticOnScreen: false)
     }
 
     private func removeAndUncache(with id: UUID) {

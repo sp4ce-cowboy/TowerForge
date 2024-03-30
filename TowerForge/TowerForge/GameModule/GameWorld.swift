@@ -19,6 +19,7 @@ class GameWorld {
 
     init(scene: GameScene?, screenSize: CGRect, mode: Mode) {
         self.scene = scene
+        scene?.isVerticallyPannable = false
         gameEngine = GameEngine()
         gameMode = GameModeFactory.createGameMode(mode: mode, eventManager: gameEngine.eventManager)
         selectionNode = UnitSelectionNode()

@@ -82,4 +82,8 @@ class TFNode {
     func removeFromParent() {
         node.removeFromParent()
     }
+
+    func move(by displacement: CGVector) {
+        position = CGPoint(x: position.x + displacement.dx, y: position.y + displacement.dy)
+    }
 }
