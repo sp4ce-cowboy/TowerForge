@@ -8,6 +8,7 @@
 import SpriteKit
 
 class TFNode {
+    var staticOnScreen = false
     var node: SKNode
     private var children: [String: TFNode] = [:]
 
@@ -81,5 +82,9 @@ class TFNode {
 
     func removeFromParent() {
         node.removeFromParent()
+    }
+
+    func move(by displacement: CGVector) {
+        position = CGPoint(x: position.x + displacement.dx, y: position.y + displacement.dy)
     }
 }

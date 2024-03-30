@@ -13,6 +13,8 @@ protocol UnitNodeDelegate: AnyObject {
 }
 
 class UnitNode: TFEntity {
+    private static let size = CGSize(width: 140, height: 200)
+
     let type: (TFEntity & PlayerSpawnable).Type
     weak var delegate: UnitNodeDelegate?
     var purchasable = true
@@ -20,11 +22,13 @@ class UnitNode: TFEntity {
     init<T: TFEntity & PlayerSpawnable>(ofType type: T.Type, position: CGPoint) {
         self.type = type
         super.init()
-        let size = CGSize(width: 140, height: 200)
-        addComponent(SpriteComponent(textureNames: [type.title], size: size, animatableKey: "node"))
+        let spriteComponent = SpriteComponent(textureNames: [type.title], size: UnitNode.size, animatableKey: "node")
+        addComponent(spriteComponent)
         addComponent(PositionComponent(position: position))
-        setUpButtonComponent(size: size)
-        setupLabelComponent(cost: type.cost, displacement: CGVector(dx: -size.width, dy: 0))
+        setUpButtonComponent(size: UnitNode.size)
+        setupLabelComponent(cost: type.cost, displacement: CGVector(dx: -UnitNode.size.width, dy: 0))
+
+        spriteComponent.staticOnScreen = true
     }
 
     func update(alpha: CGFloat) {

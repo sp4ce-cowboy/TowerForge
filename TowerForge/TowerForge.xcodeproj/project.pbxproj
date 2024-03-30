@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3C0B608D2BB2B84000FFECB4 /* ContactComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0B608C2BB2B84000FFECB4 /* ContactComponent.swift */; };
+		3C3CBDF72BB81D970001B8A9 /* TFCameraNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3CBDF62BB81D970001B8A9 /* TFCameraNode.swift */; };
+		3C3CBDF92BB821500001B8A9 /* TFScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3CBDF82BB821500001B8A9 /* TFScene.swift */; };
+		3C3CBDFF2BB8708A0001B8A9 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3CBDFE2BB8708A0001B8A9 /* CGPoint+Extensions.swift */; };
+		3C3CBE012BB870950001B8A9 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3CBE002BB870950001B8A9 /* CGVector+Extensions.swift */; };
 		3C769A722BA58DE700F454F9 /* MovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C769A712BA58DE700F454F9 /* MovementSystem.swift */; };
 		3C769A742BA591BD00F454F9 /* SpawnSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C769A732BA591BD00F454F9 /* SpawnSystem.swift */; };
 		3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9955A02BA47DA500D33FA5 /* BaseTower.swift */; };
@@ -146,6 +150,10 @@
 
 /* Begin PBXFileReference section */
 		3C0B608C2BB2B84000FFECB4 /* ContactComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactComponent.swift; sourceTree = "<group>"; };
+		3C3CBDF62BB81D970001B8A9 /* TFCameraNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFCameraNode.swift; sourceTree = "<group>"; };
+		3C3CBDF82BB821500001B8A9 /* TFScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFScene.swift; sourceTree = "<group>"; };
+		3C3CBDFE2BB8708A0001B8A9 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
+		3C3CBE002BB870950001B8A9 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		3C769A712BA58DE700F454F9 /* MovementSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
 		3C769A732BA591BD00F454F9 /* SpawnSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnSystem.swift; sourceTree = "<group>"; };
 		3C9955A02BA47DA500D33FA5 /* BaseTower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTower.swift; sourceTree = "<group>"; };
@@ -295,6 +303,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C3CBDFD2BB870770001B8A9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3C3CBDFE2BB8708A0001B8A9 /* CGPoint+Extensions.swift */,
+				3C3CBE002BB870950001B8A9 /* CGVector+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		3C99559F2BA47D3E00D33FA5 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -489,6 +506,7 @@
 			isa = PBXGroup;
 			children = (
 				5240D0972BB0522A004F1486 /* Info.plist */,
+				3C3CBDFD2BB870770001B8A9 /* Extensions */,
 				BA443D432BAD98CD009F0FFB /* AppMain */,
 				BAFFB92F2BB0A01700D8301F /* Commons */,
 				5295A2052BAA0208005018A8 /* Nodes */,
@@ -778,8 +796,10 @@
 				3CAC4A6A2BB6992F00A5D22E /* TFNode.swift */,
 				52DF5FEA2BA3400C00135367 /* TFAnimatableNode.swift */,
 				3CAC4A702BB6AB3100A5D22E /* TFLabelNode.swift */,
+				3C3CBDF62BB81D970001B8A9 /* TFCameraNode.swift */,
 				5295A2062BAA02FD005018A8 /* TFButtonNode.swift */,
 				52DF5FE02BA3349600135367 /* TFTextures.swift */,
+				3C3CBDF82BB821500001B8A9 /* TFScene.swift */,
 			);
 			path = TFCore;
 			sourceTree = "<group>";
@@ -990,6 +1010,7 @@
 				5295A2132BAAEA16005018A8 /* UnitNode.swift in Sources */,
 				52DF5FF32BA351E100135367 /* SpriteComponent.swift in Sources */,
 				3CE9514B2BAC83FA008B2785 /* SpawnableEntities.swift in Sources */,
+				3C3CBDF92BB821500001B8A9 /* TFScene.swift in Sources */,
 				9B8696552BAD759F0002377C /* Grid.swift in Sources */,
 				527A077E2BB3F75700CD9D08 /* Timer.swift in Sources */,
 				52578B872BA6209700B4D76C /* DamageComponent.swift in Sources */,
@@ -1006,6 +1027,7 @@
 				527A07822BB3F8D300CD9D08 /* TimerProp.swift in Sources */,
 				52DF5FDE2BA32D7E00135367 /* EntityManager.swift in Sources */,
 				527A077C2BB3F4CC00CD9D08 /* KillEvent.swift in Sources */,
+				3C3CBE012BB870950001B8A9 /* CGVector+Extensions.swift in Sources */,
 				3C9955C82BA5865C00D33FA5 /* ConcurrentEvent.swift in Sources */,
 				52F268702BB4B319009599AD /* GameModeViewController.swift in Sources */,
 				527A07762BB3E4CF00CD9D08 /* GameState.swift in Sources */,
@@ -1013,6 +1035,7 @@
 				3CAC4A672BB6975200A5D22E /* RenderStage.swift in Sources */,
 				3C9955BE2BA57E4B00D33FA5 /* EventManager.swift in Sources */,
 				527A07842BB3FD9A00CD9D08 /* TimerSystem.swift in Sources */,
+				3C3CBDF72BB81D970001B8A9 /* TFCameraNode.swift in Sources */,
 				3CE951562BACA0CF008B2785 /* Collidable.swift in Sources */,
 				5240D0A92BB333B5004F1486 /* PointProp.swift in Sources */,
 				52DF5FE62BA33AF300135367 /* TFSpriteNode.swift in Sources */,
@@ -1037,6 +1060,7 @@
 				9BD669682BAFDE5E00DC8C4C /* GridDelegate.swift in Sources */,
 				52DF5FEB2BA3400C00135367 /* TFAnimatableNode.swift in Sources */,
 				5295A2042BA9FED4005018A8 /* MenuScene.swift in Sources */,
+				3C3CBDFF2BB8708A0001B8A9 /* CGPoint+Extensions.swift in Sources */,
 				52DF5FEF2BA34EA000135367 /* TFEntity.swift in Sources */,
 				52DF5FED2BA34D0300135367 /* TFComponent.swift in Sources */,
 				527E3A242BA613F000FE1628 /* PlayerComponent.swift in Sources */,
