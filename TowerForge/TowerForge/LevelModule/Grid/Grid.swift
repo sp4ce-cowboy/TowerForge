@@ -8,44 +8,48 @@
 import SpriteKit
 
 class Grid: GridDelegate {
-    let DEFAULT_NO_OF_ROWS = 5
+    static let DEFAULT_NUM_ROWS = 5
     let UNIT_SELECTION_NODE_HEIGHT = CGFloat(200)
+    let playableBounds: CGRect
 
-    private var noOfRows: Int
-    private var width: CGFloat
-    private var height: CGFloat
+    private let numRows: Int
+    private var numCols: Int { Int(ceil(screenWidth / tileSize.width)) }
+    private var screenWidth: CGFloat { playableBounds.width }
+    private var screenHeight: CGFloat { playableBounds.height - UNIT_SELECTION_NODE_HEIGHT }
+    private var tileSize: CGSize { CGSize(width: screenHeight / CGFloat(numRows),
+                                          height: screenHeight / CGFloat(numRows)) }
 
-    init(screenSize: CGRect) {
-        self.noOfRows = DEFAULT_NO_OF_ROWS
-        self.width = screenSize.width
-        self.height = screenSize.height
+    init(screenSize: CGRect, numRows: Int = Grid.DEFAULT_NUM_ROWS) {
+        self.playableBounds = screenSize
+        self.numRows = numRows
+        print(numCols)
     }
 
     func generateTileMap(scene: SKScene) {
-        let screenWidth = self.width
-        let screenHeight = self.height - UNIT_SELECTION_NODE_HEIGHT
-        let tileSize = CGSize(width: screenHeight / CGFloat(noOfRows), height: screenHeight / CGFloat(noOfRows))
-
-        // Calculate the number of columns needed to cover the screen width
-        let numberOfColumns = Int(ceil(screenWidth / tileSize.width))
-
-        for row in 0..<noOfRows {
-            for col in 0..<numberOfColumns {
+        let tileSize = self.tileSize
+        for row in 0..<numRows {
+            for col in 0..<numCols {
                 let node = TFSpriteNode(imageName: "road-tile", size: tileSize)
+                let position = CGPoint(x: CGFloat(col) * tileSize.width,
+                                       y: CGFloat(row) * tileSize.height + UNIT_SELECTION_NODE_HEIGHT)
                 node.anchorPoint = CGPoint(x: 0, y: 0)
-                node.position = CGPoint(x: CGFloat(CGFloat(col) * tileSize.width),
-                                        y: CGFloat(CGFloat(row) * tileSize.height) + UNIT_SELECTION_NODE_HEIGHT)
+                node.position = normaliseToPlayableBounds(position: position)
                 node.zPosition = -100
                 scene.addChild(node.node)
             }
         }
     }
 
-    func snapYPosition(yPosition: Double) -> Double {
-        let screenHeight = Double(UIScreen.main.bounds.height) - UNIT_SELECTION_NODE_HEIGHT
-        let rowHeight = screenHeight / Double(noOfRows)
-        let rowIndex = Int((yPosition - UNIT_SELECTION_NODE_HEIGHT) / rowHeight)
-        let centerY = (Double(rowIndex) * rowHeight + rowHeight / 2) + UNIT_SELECTION_NODE_HEIGHT
-        return centerY
+    func snap(position: CGPoint) -> CGPoint {
+        let rowIndex = Int((position.y - UNIT_SELECTION_NODE_HEIGHT) / tileSize.height)
+        let colIndex = Int(position.x / tileSize.width)
+
+        let centerY = (Double(rowIndex) + 0.5) * tileSize.height + UNIT_SELECTION_NODE_HEIGHT
+        let centerX = (Double(colIndex) + 0.5) * tileSize.width
+        return CGPoint(x: centerX, y: centerY)
+    }
+
+    private func normaliseToPlayableBounds(position: CGPoint) -> CGPoint {
+        CGPoint(x: position.x + playableBounds.minX, y: position.y + playableBounds.minY)
     }
 }

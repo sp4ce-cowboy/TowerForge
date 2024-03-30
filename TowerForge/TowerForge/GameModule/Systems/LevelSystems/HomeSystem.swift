@@ -5,7 +5,7 @@
 //  Created by Zheng Ze on 23/3/24.
 //
 
-import QuartzCore
+import UIKit
 
 class HomeSystem: TFSystem {
     var isActive = true
@@ -34,6 +34,7 @@ class HomeSystem: TFSystem {
             _ = playerHomeComponent.decreaseLife(by: life)
         }
     }
+
     func changeDeathCount(for player: Player, change: Int) {
         let playerHomeComponentArr = entityManager.components(ofType: HomeComponent.self).filter(({
             $0.entity?.component(ofType: PlayerComponent.self)?.player == player
@@ -42,6 +43,7 @@ class HomeSystem: TFSystem {
             playerHomeComponent.changeDeathCount(change)
         }
     }
+
     func attemptSpawn<T: TFEntity & PlayerSpawnable>(at position: CGPoint, ofType type: T.Type, for player: Player) {
         // Get HomeComponent for the player
         let playerHomeComponentArr = entityManager.components(ofType: HomeComponent.self).filter(({
@@ -52,16 +54,47 @@ class HomeSystem: TFSystem {
         }
 
         // Check if they have enough points to spawn
-        for playerHomeComponent in playerHomeComponentArr {
-            guard playerHomeComponent.points >= type.cost else {
-                return
-            }
-            playerHomeComponent.decreasePoints(type.cost)
+        guard !playerHomeComponentArr.contains(where: { $0.points < type.cost }) else {
+            return
         }
 
-        let snapPosition = CGPoint(x: position.x, y: gridDelegate.snapYPosition(yPosition: position.y))
+        // Reduce points
+        playerHomeComponentArr.forEach({ $0.decreasePoints(type.cost) })
+
+        let snapPosition = getSnapPosition(at: position, for: player, with: type)
         let spawnEvent = SpawnEvent(ofType: type, timestamp: CACurrentMediaTime(),
                                     position: snapPosition, player: player)
         eventManager.add(spawnEvent)
+    }
+
+    private func getSnapPosition<T: TFEntity & PlayerSpawnable>(at requestedPosition: CGPoint,
+                                                                for player: Player, with type: T.Type) -> CGPoint {
+        // Normalise to own player position
+        let normalisedPosition = normalise(position: requestedPosition, for: player)
+
+        // Snap x position according to unit type
+        let snappedPosition = snap(position: normalisedPosition, for: type)
+
+        // Undo normalise if needed
+        let denormalisedPosition = normalise(position: snappedPosition, for: player)
+
+        return gridDelegate.snap(position: denormalisedPosition)
+    }
+
+    private func normalise(position: CGPoint, for player: Player) -> CGPoint {
+        guard player == .oppositePlayer else {
+            return position
+        }
+
+        return CGPoint(x: gridDelegate.playableBounds.maxX - position.x, y: position.y)
+    }
+
+    private func snap<T: TFEntity & PlayerSpawnable>(position: CGPoint, for type: T.Type) -> CGPoint {
+        if type is BaseUnit.Type {
+            return CGPoint(x: 0, y: position.y)
+        } else if type is BaseTower.Type && position.x > gridDelegate.playableBounds.midX {
+            return CGPoint(x: gridDelegate.playableBounds.midX, y: position.y)
+        }
+        return position
     }
 }
