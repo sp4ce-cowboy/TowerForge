@@ -8,7 +8,7 @@ import UIKit
 
 class GameModeViewController: UIViewController {
     @IBOutlet private var deathMatchButton: UIButton!
-    @IBOutlet private var captureTheFlagButton: UIButton!
+    @IBOutlet var captureTheFlagButton: UIButton!
     var selectedGameMode = Mode.captureTheFlag
 
     @IBAction private func deathMatchButtonPressed(_ sender: UIButton) {
@@ -22,7 +22,7 @@ class GameModeViewController: UIViewController {
     }
 
     private func navigateToGameViewController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil) // Assuming your storyboard name is "Main"
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let gameViewController = storyboard
                 .instantiateViewController(withIdentifier: "GameViewController") as? GameViewController else {
             return

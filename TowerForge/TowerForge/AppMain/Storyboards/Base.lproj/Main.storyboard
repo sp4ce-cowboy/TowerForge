@@ -171,7 +171,7 @@
                                             </attributedString>
                                         </state>
                                         <connections>
-                                            <action selector="deathMatchButtonPressed:" destination="bL0-ag-pcs" eventType="touchUpInside" id="kMc-3c-7jL"/>
+                                            <action selector="captureTheFlagButtonPressed:" destination="bL0-ag-pcs" eventType="touchUpInside" id="G4P-CB-6Hz"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flag" translatesAutoresizingMaskIntoConstraints="NO" id="PlF-Gy-tpz">
@@ -212,6 +212,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="eHk-cd-vLs"/>
                     <connections>
+                        <outlet property="captureTheFlagButton" destination="erv-RB-ZcW" id="o5k-6Q-PEr"/>
                         <outlet property="deathMatchButton" destination="TfO-fG-lEt" id="0Lp-kV-daK"/>
                     </connections>
                 </viewController>
