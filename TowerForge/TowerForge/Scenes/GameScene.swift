@@ -19,17 +19,25 @@ class GameScene: SKScene {
         setupCamera()
     }
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
         guard let touch = touches.first else {
             return
         }
+
         let location = touch.location(in: self)
-        updateDelegate?.touch(at: location)
+        let previousLocation = touch.previousLocation(in: self)
+        let translation = CGVector(point: location - previousLocation)
+
+        if translation.length() < 5 {
+            updateDelegate?.touch(at: location)
+        }
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
         guard let touch = touches.first else {
-          return
+            return
         }
 
         let location = touch.location(in: self)
