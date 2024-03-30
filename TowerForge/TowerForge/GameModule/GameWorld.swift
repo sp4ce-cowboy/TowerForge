@@ -8,7 +8,7 @@
 import QuartzCore
 
 class GameWorld {
-    private static let worldSize = CGSize(width: 5_120, height: 1_024)
+    static let worldSize = CGSize(width: 2_472, height: 1_024)
 
     private unowned var scene: GameScene?
     private var gameEngine: AbstractGameEngine
@@ -16,7 +16,7 @@ class GameWorld {
     private var selectionNode: UnitSelectionNode
     private var grid: Grid
     private var renderer: Renderer?
-    private var worldBounds: CGRect
+    private let worldBounds: CGRect
 
     unowned var delegate: SceneManagerDelegate?
 
