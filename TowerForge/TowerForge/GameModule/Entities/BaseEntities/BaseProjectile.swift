@@ -7,7 +7,11 @@
 
 import Foundation
 
-class BaseProjectile: TFEntity {
+class BaseProjectile: TFEntity, Spawnable {
+    required init(position: CGPoint, player: Player) {
+        // TODO: to fill
+    }
+
     init(textureNames: [String], size: CGSize, key: String, position: CGPoint,
          player: Player, velocity: CGVector = .zero) {
         super.init()

@@ -45,7 +45,7 @@ class GameWorld {
     }
 
     func checkGameEnded() -> Bool {
-        gameMode.gameState == .WIN || gameMode.gameState == .LOSE
+        gameMode.gameState == .WIN || gameMode.gameState == .LOSE || gameMode.gameState == .DRAW
     }
 
     func spawnUnit(at location: CGPoint) {

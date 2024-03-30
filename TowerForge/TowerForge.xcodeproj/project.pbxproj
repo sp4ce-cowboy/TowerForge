@@ -59,6 +59,8 @@
 		520062562BA8E026000DBA30 /* PlayerSpawnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520062552BA8E026000DBA30 /* PlayerSpawnable.swift */; };
 		520062582BA8ED73000DBA30 /* HomeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520062572BA8ED73000DBA30 /* HomeComponent.swift */; };
 		523923E72BADC8530044BA61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 523923E62BADC8530044BA61 /* LaunchScreen.storyboard */; };
+		523AA3BD2BB88ED10041E60D /* WizardBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523AA3BC2BB88ED10041E60D /* WizardBall.swift */; };
+		523AA3BF2BB88FBF0041E60D /* WizardUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523AA3BE2BB88FBF0041E60D /* WizardUnit.swift */; };
 		5240D08F2BAE6D0A004F1486 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D08E2BAE6D0A004F1486 /* Point.swift */; };
 		5240D0912BAF3453004F1486 /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0902BAF3453004F1486 /* Life.swift */; };
 		5240D0962BB04E57004F1486 /* Nosifer-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5240D0952BB04E57004F1486 /* Nosifer-Regular.ttf */; };
@@ -201,6 +203,8 @@
 		520062552BA8E026000DBA30 /* PlayerSpawnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSpawnable.swift; sourceTree = "<group>"; };
 		520062572BA8ED73000DBA30 /* HomeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeComponent.swift; sourceTree = "<group>"; };
 		523923E62BADC8530044BA61 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		523AA3BC2BB88ED10041E60D /* WizardBall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardBall.swift; sourceTree = "<group>"; };
+		523AA3BE2BB88FBF0041E60D /* WizardUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardUnit.swift; sourceTree = "<group>"; };
 		5240D08E2BAE6D0A004F1486 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		5240D0902BAF3453004F1486 /* Life.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Life.swift; sourceTree = "<group>"; };
 		5240D0952BB04E57004F1486 /* Nosifer-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nosifer-Regular.ttf"; sourceTree = "<group>"; };
@@ -689,6 +693,7 @@
 				3C9955AE2BA48FD200D33FA5 /* MeleeUnit.swift */,
 				529F91872BA6D7A7009551D9 /* SoldierUnit.swift */,
 				3C9955B32BA4B12000D33FA5 /* ArrowTower.swift */,
+				523AA3BE2BB88FBF0041E60D /* WizardUnit.swift */,
 			);
 			path = SpawnableEntities;
 			sourceTree = "<group>";
@@ -702,6 +707,7 @@
 				5240D0902BAF3453004F1486 /* Life.swift */,
 				527A07772BB3F31100CD9D08 /* Death.swift */,
 				527A077D2BB3F75700CD9D08 /* Timer.swift */,
+				523AA3BC2BB88ED10041E60D /* WizardBall.swift */,
 			);
 			path = GameEntities;
 			sourceTree = "<group>";
@@ -1000,6 +1006,7 @@
 				52DF5FAE2BA32B2300135367 /* GameScene.swift in Sources */,
 				52578B822BA61AAF00B4D76C /* PositionComponent.swift in Sources */,
 				3C9955A32BA47DBB00D33FA5 /* BaseUnit.swift in Sources */,
+				523AA3BD2BB88ED10041E60D /* WizardBall.swift in Sources */,
 				527A07782BB3F31100CD9D08 /* Death.swift in Sources */,
 				3C9955BA2BA5637200D33FA5 /* DamageEvent.swift in Sources */,
 				3CE951632BAE037C008B2785 /* AiSystem.swift in Sources */,
@@ -1020,6 +1027,7 @@
 				529F91882BA6D7A7009551D9 /* SoldierUnit.swift in Sources */,
 				BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */,
 				3CAC4A732BB6B61C00A5D22E /* PlayerRenderStage.swift in Sources */,
+				523AA3BF2BB88FBF0041E60D /* WizardUnit.swift in Sources */,
 				3C9955C02BA57E5500D33FA5 /* EventTarget.swift in Sources */,
 				3CCF9CB12BAB1BCE004D170E /* GameWorld.swift in Sources */,
 				5295A2152BAAF335005018A8 /* UnitSelectionNode.swift in Sources */,

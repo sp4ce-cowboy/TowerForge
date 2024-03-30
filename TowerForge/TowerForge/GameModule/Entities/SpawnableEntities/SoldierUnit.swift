@@ -31,6 +31,6 @@ class SoldierUnit: BaseUnit, PlayerSpawnable {
 
         self.addComponent(ShootingComponent(fireRate: SoldierUnit.attackRate,
                                             range: SoldierUnit.range,
-                                            attackPower: SoldierUnit.attackPower))
+                                            attackPower: SoldierUnit.attackPower, shootingType: Bullet.self))
     }
 }
