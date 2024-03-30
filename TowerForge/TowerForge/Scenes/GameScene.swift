@@ -9,9 +9,6 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-    var isVerticallyPannable = true
-    var isHorizontallyPannable = true
-
     private var lastUpdatedTimeInterval = TimeInterval(0)
     unowned var updateDelegate: SceneUpdateDelegate?
     unowned var sceneManagerDelegate: SceneManagerDelegate?
@@ -37,14 +34,9 @@ class GameScene: SKScene {
 
         let location = touch.location(in: self)
         let previousLocation = touch.previousLocation(in: self)
-        let translation = location - previousLocation
+        let translation = CGVector(point: location - previousLocation)
 
-        if isHorizontallyPannable {
-            cameraNode?.move(by: CGVector(dx: translation.x, dy: 0))
-        }
-        if isVerticallyPannable {
-            cameraNode?.move(by: CGVector(dx: 0, dy: translation.y))
-        }
+        cameraNode?.move(by: translation * -1)
     }
 
     override func update(_ currentTime: TimeInterval) {
@@ -80,6 +72,10 @@ extension GameScene: TFScene {
 
     func contains(node: TFNode) -> Bool {
         contains(node.node) || cameraNode?.contains(node) ?? false
+    }
+
+    func setBounds(_ bounds: CGRect) {
+        cameraNode?.setBounds(bounds)
     }
 
     func panCamera(by displacement: CGVector) {

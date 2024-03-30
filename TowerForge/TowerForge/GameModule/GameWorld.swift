@@ -8,32 +8,28 @@
 import QuartzCore
 
 class GameWorld {
+    private static let worldSize = CGSize(width: 5_120, height: 1_024)
+
     private unowned var scene: GameScene?
     private var gameEngine: AbstractGameEngine
     private var gameMode: GameMode
     private var selectionNode: UnitSelectionNode
     private var grid: Grid
     private var renderer: Renderer?
+    private var worldBounds: CGRect
 
     unowned var delegate: SceneManagerDelegate?
 
     init(scene: GameScene?, screenSize: CGRect, mode: Mode) {
         self.scene = scene
-        scene?.isVerticallyPannable = false
+        worldBounds = CGRect(origin: screenSize.origin, size: GameWorld.worldSize)
         gameEngine = GameEngine()
         gameMode = GameModeFactory.createGameMode(mode: mode, eventManager: gameEngine.eventManager)
         selectionNode = UnitSelectionNode()
-
-        grid = Grid(screenSize: screenSize)
-        if let scene = self.scene {
-            grid.generateTileMap(scene: scene)
-        }
-
+        grid = Grid(screenSize: worldBounds)
         renderer = Renderer(target: self, scene: scene)
-        renderer?.renderMessage("Game Starts")
-        gameEngine.setUpSystems(with: grid)
-        gameEngine.setUpPlayerInfo(mode: gameMode)
-        self.setUpSelectionNode()
+
+        setUp()
     }
 
     func update(deltaTime: TimeInterval) {
@@ -53,6 +49,26 @@ class GameWorld {
 
     func spawnUnit(at location: CGPoint) {
         selectionNode.unitNodeDidSpawn(location)
+    }
+
+    private func setUp() {
+        setUpGameEngine()
+        setUpSelectionNode()
+
+        scene?.setBounds(worldBounds)
+        if let scene = self.scene {
+            grid.generateTileMap(scene: scene)
+        }
+        renderer?.renderMessage("Game Starts")
+        self.setUpSelectionNode()
+    }
+
+    private func setUpScene() {
+    }
+
+    private func setUpGameEngine() {
+        gameEngine.setUpSystems(with: grid)
+        gameEngine.setUpPlayerInfo(mode: gameMode)
     }
 
     private func setUpSelectionNode() {

@@ -24,7 +24,7 @@ class Grid: GridDelegate {
         self.numRows = numRows
     }
 
-    func generateTileMap(scene: SKScene) {
+    func generateTileMap(scene: TFScene) {
         let tileSize = self.tileSize
         for row in 0..<numRows {
             for col in 0..<numCols {
@@ -34,7 +34,7 @@ class Grid: GridDelegate {
                 node.anchorPoint = CGPoint(x: 0, y: 0)
                 node.position = normaliseToPlayableBounds(position: position)
                 node.zPosition = -100
-                scene.addChild(node.node)
+                scene.add(node: node, staticOnScreen: false)
             }
         }
     }
