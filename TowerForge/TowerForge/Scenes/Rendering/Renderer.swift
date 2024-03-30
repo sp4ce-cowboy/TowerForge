@@ -62,9 +62,9 @@ class Renderer {
     }
 
     private func setupRenderStages() {
+        renderStages.append(PositionRenderStage())
         renderStages.append(SpriteRenderStage())
         renderStages.append(LabelRenderStage())
-        renderStages.append(PositionRenderStage())
         renderStages.append(HealthRenderStage())
         renderStages.append(PlayerRenderStage())
         renderStages.append(ButtonRenderStage())
@@ -93,7 +93,7 @@ class Renderer {
         }
 
         renderedNodes[entity.id] = node
-        scene?.add(node: node, staticOnScreen: false)
+        scene?.add(node: node, staticOnScreen: node.staticOnScreen)
     }
 
     private func removeAndUncache(with id: UUID) {

@@ -12,6 +12,7 @@ class SpriteComponent: TFComponent {
     var size: CGSize
     var animatableKey: String
     var alpha = 1.0
+    var staticOnScreen = false
 
     init(textureNames: [String], size: CGSize, animatableKey: String) {
         self.textures = TFTextures(textureNames: textureNames, textureAtlasName: "Sprites")

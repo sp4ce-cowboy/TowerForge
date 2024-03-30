@@ -8,6 +8,7 @@
 import QuartzCore
 
 class GameWorld {
+    // Need to ensure that width is a multiple of 1024 - unit selection node height
     static let worldSize = CGSize(width: 2_472, height: 1_024)
 
     private unowned var scene: GameScene?

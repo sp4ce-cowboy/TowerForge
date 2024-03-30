@@ -8,6 +8,7 @@
 import SpriteKit
 
 class TFNode {
+    var staticOnScreen = false
     var node: SKNode
     private var children: [String: TFNode] = [:]
 
