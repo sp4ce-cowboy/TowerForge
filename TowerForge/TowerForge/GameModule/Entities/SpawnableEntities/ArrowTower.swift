@@ -15,6 +15,7 @@ class ArrowTower: BaseTower, PlayerSpawnable {
     static let maxHealth = 200.0
     static let damage = 10.0
     static var cost = 10
+    static let range = 400.0
     static let fireRate = 1.0
 
     required init(position: CGPoint, player: Player) {
@@ -25,7 +26,7 @@ class ArrowTower: BaseTower, PlayerSpawnable {
                    maxHealth: ArrowTower.maxHealth,
                    player: player)
         self.addComponent(ShootingComponent(fireRate: ArrowTower.fireRate,
-                                            range: 1.0,
+                                            range: ArrowTower.range,
                                             attackPower: ArrowTower.damage))
     }
 }

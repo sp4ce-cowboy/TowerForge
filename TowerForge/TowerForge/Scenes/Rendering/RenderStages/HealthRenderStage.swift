@@ -19,8 +19,7 @@ class HealthRenderStage: RenderStage {
 
         let healthNode = TFSpriteNode(color: HealthRenderStage.color, size: HealthRenderStage.size)
         healthNode.name = HealthRenderStage.name
-        healthNode.position = CGPoint(x: -spriteComponent.size.width / 2,
-                                      y: spriteComponent.size.height / 2 + HealthRenderStage.size.height + 10)
+        healthNode.position = CGPoint(x: -spriteComponent.size.width / 2, y: spriteComponent.size.height / 2 + 5)
         healthNode.anchorPoint = CGPoint(x: 0, y: 0)
         node.add(child: healthNode)
     }
