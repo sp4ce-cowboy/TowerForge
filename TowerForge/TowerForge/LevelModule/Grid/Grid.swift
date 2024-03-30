@@ -31,12 +31,12 @@ class Grid: GridDelegate {
 
         for row in 0..<noOfRows {
             for col in 0..<numberOfColumns {
-                let node = TFSpriteNode(imageName: "road-tile", height: tileSize.height, width: tileSize.width)
+                let node = TFSpriteNode(imageName: "road-tile", size: tileSize)
                 node.anchorPoint = CGPoint(x: 0, y: 0)
                 node.position = CGPoint(x: CGFloat(CGFloat(col) * tileSize.width),
                                         y: CGFloat(CGFloat(row) * tileSize.height) + UNIT_SELECTION_NODE_HEIGHT)
                 node.zPosition = -100
-                scene.addChild(node)
+                scene.addChild(node.node)
             }
         }
     }

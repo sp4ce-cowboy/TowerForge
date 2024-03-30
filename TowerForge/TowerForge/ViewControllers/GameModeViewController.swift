@@ -7,23 +7,24 @@
 import UIKit
 
 class GameModeViewController: UIViewController {
-    @IBOutlet var deathMatchButton: UIButton!
-    @IBOutlet var captureTheFlagButton: UIButton!
+    @IBOutlet private var deathMatchButton: UIButton!
+    @IBOutlet private var captureTheFlagButton: UIButton!
     var selectedGameMode = Mode.captureTheFlag
 
-    @IBAction func deathMatchButtonPressed(_ sender: UIButton) {
+    @IBAction private func deathMatchButtonPressed(_ sender: UIButton) {
         selectedGameMode = .deathMatch
         navigateToGameViewController()
     }
 
-    @IBAction func captureTheFlagButtonPressed(_ sender: UIButton) {
+    @IBAction private func captureTheFlagButtonPressed(_ sender: UIButton) {
         selectedGameMode = .captureTheFlag
         navigateToGameViewController()
     }
 
     private func navigateToGameViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil) // Assuming your storyboard name is "Main"
-        guard let gameViewController = storyboard.instantiateViewController(withIdentifier: "GameViewController") as? GameViewController else {
+        guard let gameViewController = storyboard
+                .instantiateViewController(withIdentifier: "GameViewController") as? GameViewController else {
             return
         }
         gameViewController.gameMode = selectedGameMode

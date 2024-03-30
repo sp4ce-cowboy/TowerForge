@@ -12,12 +12,16 @@ class Renderer {
     private unowned var target: Renderable
     private unowned var scene: SKScene?
 
-    private var renderedNodes: [UUID: TFSpriteNode] = [:]
+    private var renderedNodes: [UUID: TFNode] = [:]
+    private var renderStages: [RenderStage] = []
 
     init(target: Renderable, scene: GameScene?) {
         self.target = target
         self.scene = scene
+
+        setupRenderStages()
     }
+
     func render() {
         var nodesToBeRemoved = renderedNodes
 
@@ -35,6 +39,7 @@ class Renderer {
             removeAndUncache(with: entityId)
         }
     }
+
     func renderMessage(_ message: String) {
         guard let scene = self.scene else {
             return
@@ -53,42 +58,40 @@ class Renderer {
         let sequence = SKAction.sequence([fadeInAction, waitAction, fadeOutAction, removeAction])
         label.run(sequence)
     }
-    private func update(entity: TFEntity) {
-        guard let positionComponent = entity.component(ofType: PositionComponent.self),
-              let node = renderedNodes[entity.id] else {
-            return
-        }
 
-        node.position = positionComponent.position
+    private func setupRenderStages() {
+        renderStages.append(SpriteRenderStage())
+        renderStages.append(LabelRenderStage())
+        renderStages.append(PositionRenderStage())
+        renderStages.append(HealthRenderStage())
+        renderStages.append(PlayerRenderStage())
+        renderStages.append(ButtonRenderStage())
     }
-    private func addAndCache(entity: TFEntity) {
-        guard let spriteComponent = entity.component(ofType: SpriteComponent.self),
-              let positionComponent = entity.component(ofType: PositionComponent.self),
-              let playerComponent = entity.component(ofType: PlayerComponent.self) else {
+
+    private func update(entity: TFEntity) {
+        guard let node = renderedNodes[entity.id] else {
             return
         }
-        if let labelComponent = entity.component(ofType: LabelComponent.self) {
-            let label = SKLabelNode(text: labelComponent.text)
-            label.fontName = "HelveticaNeue-Bold"
-            label.fontSize = 60.0
-            label.fontColor = .white
-            label.horizontalAlignmentMode = .center
-            label.verticalAlignmentMode = .center
-            label.position = CGPoint(x: spriteComponent.node.width, y: 0)
-            label.name = labelComponent.name
-            spriteComponent.node.addChild(label)
+
+        for renderStage in renderStages {
+            renderStage.update(node: node, for: entity)
+        }
+    }
+
+    private func addAndCache(entity: TFEntity) {
+        let node = TFNode()
+        node.name = entity.id.uuidString
+
+        for renderStage in renderStages {
+            renderStage.createAndAdd(node: node, for: entity)
         }
 
-        let node = spriteComponent.node
-        // Flips the image if it is the opposite team
-        if playerComponent.player == .oppositePlayer {
-            node.xScale *= -1
+        for renderStage in renderStages {
+            renderStage.transform(node: node, for: entity)
         }
-        node.position = positionComponent.position
-        node.playAnimation()
-        node.name = entity.id.uuidString
+
         renderedNodes[entity.id] = node
-        scene?.addChild(node)
+        scene?.addChild(node.node)
     }
 
     private func removeAndUncache(with id: UUID) {

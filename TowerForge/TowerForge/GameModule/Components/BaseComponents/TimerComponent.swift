@@ -18,6 +18,6 @@ class TimerComponent: TFComponent {
         guard let labelComponent = entity?.component(ofType: LabelComponent.self) else {
             return
         }
-        labelComponent.changeText(String(self.time.rounded()))
+        labelComponent.changeText(String(Int(self.time)))
     }
 }

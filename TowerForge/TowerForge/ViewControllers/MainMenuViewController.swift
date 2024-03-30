@@ -11,20 +11,21 @@ import UIKit
 class MainMenuViewController: UIViewController {
     var selectedGameMode: Mode = .deathMatch
 
-        @IBAction func DeathMatch(_ sender: Any) {
-            selectedGameMode = .deathMatch
-            performSegue(withIdentifier: "segueToGame", sender: self)
-        }
+    @IBAction private func DeathMatch(_ sender: Any) {
+        selectedGameMode = .deathMatch
+        performSegue(withIdentifier: "segueToGame", sender: self)
+    }
 
-        @IBAction func CapturePressed(_ sender: Any) {
-            selectedGameMode = .captureTheFlag
-            performSegue(withIdentifier: "segueToGame", sender: self)
-        }
+    @IBAction private func CapturePressed(_ sender: Any) {
+        selectedGameMode = .captureTheFlag
+        performSegue(withIdentifier: "segueToGame", sender: self)
+    }
 
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "segueToGame" {
-                if let destinationVC = segue.destination as? GameViewController {
-                    destinationVC.gameMode = selectedGameMode
-                }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToGame" {
+            if let destinationVC = segue.destination as? GameViewController {
+                destinationVC.gameMode = selectedGameMode
             }
-        }}
+        }
+    }
+}
