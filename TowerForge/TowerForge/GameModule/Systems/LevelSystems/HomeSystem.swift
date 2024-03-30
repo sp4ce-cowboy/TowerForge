@@ -92,8 +92,9 @@ class HomeSystem: TFSystem {
     private func snap<T: TFEntity & PlayerSpawnable>(position: CGPoint, for type: T.Type) -> CGPoint {
         if type is BaseUnit.Type {
             return CGPoint(x: 0, y: position.y)
-        } else if type is BaseTower.Type && position.x > gridDelegate.playableBounds.midX {
-            return CGPoint(x: gridDelegate.playableBounds.midX, y: position.y)
+        } else if type is BaseTower.Type {
+            let maxX = gridDelegate.playableBounds.midX - gridDelegate.tileSize.width / 2
+            return position.x > maxX ? CGPoint(x: maxX, y: position.y) : position
         }
         return position
     }

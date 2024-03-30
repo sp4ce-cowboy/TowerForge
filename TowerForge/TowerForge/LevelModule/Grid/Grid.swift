@@ -16,8 +16,8 @@ class Grid: GridDelegate {
     private var numCols: Int { Int(ceil(screenWidth / tileSize.width)) }
     private var screenWidth: CGFloat { playableBounds.width }
     private var screenHeight: CGFloat { playableBounds.height - UNIT_SELECTION_NODE_HEIGHT }
-    private var tileSize: CGSize { CGSize(width: screenHeight / CGFloat(numRows),
-                                          height: screenHeight / CGFloat(numRows)) }
+    var tileSize: CGSize { CGSize(width: screenHeight / CGFloat(numRows),
+                                  height: screenHeight / CGFloat(numRows)) }
 
     init(screenSize: CGRect, numRows: Int = Grid.DEFAULT_NUM_ROWS) {
         self.playableBounds = screenSize
