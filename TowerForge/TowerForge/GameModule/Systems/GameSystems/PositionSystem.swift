@@ -26,7 +26,7 @@ class PositionSystem: TFSystem {
                   let playerComponent = entity.component(ofType: PlayerComponent.self) else {
                 continue
             }
-            if playerComponent.player == .ownPlayer && positionComponent.position.x > UIScreen.main.bounds.maxX {
+            if playerComponent.player == .ownPlayer && positionComponent.position.x > GameWorld.worldSize.width {
                 // TODO: Change UIScreen
                 handleOutOfGame(entity: entity)
             } else if playerComponent.player == .oppositePlayer
