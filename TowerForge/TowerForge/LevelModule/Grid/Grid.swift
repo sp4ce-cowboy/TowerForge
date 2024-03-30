@@ -22,7 +22,6 @@ class Grid: GridDelegate {
     init(screenSize: CGRect, numRows: Int = Grid.DEFAULT_NUM_ROWS) {
         self.playableBounds = screenSize
         self.numRows = numRows
-        print(numCols)
     }
 
     func generateTileMap(scene: SKScene) {
