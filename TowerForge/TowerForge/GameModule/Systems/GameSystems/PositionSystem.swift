@@ -29,7 +29,8 @@ class PositionSystem: TFSystem {
             if playerComponent.player == .ownPlayer && positionComponent.position.x > UIScreen.main.bounds.maxX {
                 // TODO: Change UIScreen
                 handleOutOfGame(entity: entity)
-            } else if playerComponent.player == .oppositePlayer && positionComponent.position.x < UIScreen.main.bounds.minX {
+            } else if playerComponent.player == .oppositePlayer
+                        && positionComponent.position.x < UIScreen.main.bounds.minX {
                 handleOutOfGame(entity: entity)
             }
         }
@@ -40,7 +41,8 @@ class PositionSystem: TFSystem {
             return
         }
         // TODO: Might need some change
-        eventManager.add(LifeEvent(on: entity.id, at: CACurrentMediaTime(), reduceBy: 1, player: playerComponent.player))
+        eventManager.add(LifeEvent(on: entity.id, at: CACurrentMediaTime(),
+                                   reduceBy: 1, player: playerComponent.player))
         eventManager.add(RemoveEvent(on: entity.id, at: CACurrentMediaTime()))
     }
 }

@@ -18,14 +18,19 @@ class Timer: TFEntity {
         }
         return timerComponent.time
     }
+
     init(timeLength: TimeInterval) {
         super.init()
         let timerComponent = TimerComponent(timeLength: timeLength)
-        self.addComponent(SpriteComponent(textureNames: ["timer"], size: Timer.size, animatableKey: "timer"))
+        let spriteComponent = SpriteComponent(textureNames: ["timer"], size: Timer.size, animatableKey: "timer")
+
+        self.addComponent(spriteComponent)
         self.addComponent(HomeComponent(initialLifeCount: Team.lifeCount, pointInterval: Team.pointsInterval))
         self.addComponent(LabelComponent(text: String(0), name: "timer"))
         self.addComponent(timerComponent)
         self.addComponent(PositionComponent(position: Timer.position))
         self.addComponent(PlayerComponent(player: .ownPlayer))
+
+        spriteComponent.staticOnScreen = true
     }
 }

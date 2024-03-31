@@ -10,14 +10,18 @@ import SpriteKit
 
 class Renderer {
     private unowned var target: Renderable
-    private unowned var scene: SKScene?
+    private unowned var scene: TFScene?
 
-    private var renderedNodes: [UUID: TFSpriteNode] = [:]
+    private var renderedNodes: [UUID: TFNode] = [:]
+    private var renderStages: [RenderStage] = []
 
     init(target: Renderable, scene: GameScene?) {
         self.target = target
         self.scene = scene
+
+        setupRenderStages()
     }
+
     func render() {
         var nodesToBeRemoved = renderedNodes
 
@@ -35,16 +39,18 @@ class Renderer {
             removeAndUncache(with: entityId)
         }
     }
+
     func renderMessage(_ message: String) {
         guard let scene = self.scene else {
             return
         }
+        let labelNode = TFLabelNode(text: message)
         let label = SKLabelNode(text: message)
+        labelNode.node = label
         label.name = "message"
         label.fontSize = 50.0
         label.fontName = "Nosifer-Regular"
-        label.position = CGPoint(x: scene.frame.midX, y: scene.frame.midY)
-        scene.addChild(label)
+        label.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
 
         let fadeInAction = SKAction.fadeIn(withDuration: 0.5)
         let waitAction = SKAction.wait(forDuration: 1.0)
@@ -52,43 +58,42 @@ class Renderer {
         let removeAction = SKAction.removeFromParent()
         let sequence = SKAction.sequence([fadeInAction, waitAction, fadeOutAction, removeAction])
         label.run(sequence)
+        scene.add(node: labelNode, staticOnScreen: true)
     }
+
+    private func setupRenderStages() {
+        renderStages.append(PositionRenderStage())
+        renderStages.append(SpriteRenderStage())
+        renderStages.append(LabelRenderStage())
+        renderStages.append(HealthRenderStage())
+        renderStages.append(PlayerRenderStage())
+        renderStages.append(ButtonRenderStage())
+    }
+
     private func update(entity: TFEntity) {
-        guard let positionComponent = entity.component(ofType: PositionComponent.self),
-              let node = renderedNodes[entity.id] else {
+        guard let node = renderedNodes[entity.id] else {
             return
         }
 
-        node.position = positionComponent.position
+        for renderStage in renderStages {
+            renderStage.update(node: node, for: entity)
+        }
     }
+
     private func addAndCache(entity: TFEntity) {
-        guard let spriteComponent = entity.component(ofType: SpriteComponent.self),
-              let positionComponent = entity.component(ofType: PositionComponent.self),
-              let playerComponent = entity.component(ofType: PlayerComponent.self) else {
-            return
-        }
-        if let labelComponent = entity.component(ofType: LabelComponent.self) {
-            let label = SKLabelNode(text: labelComponent.text)
-            label.fontName = "HelveticaNeue-Bold"
-            label.fontSize = 60.0
-            label.fontColor = .white
-            label.horizontalAlignmentMode = .center
-            label.verticalAlignmentMode = .center
-            label.position = CGPoint(x: spriteComponent.node.width, y: 0)
-            label.name = labelComponent.name
-            spriteComponent.node.addChild(label)
+        let node = TFNode()
+        node.name = entity.id.uuidString
+
+        for renderStage in renderStages {
+            renderStage.createAndAdd(node: node, for: entity)
         }
 
-        let node = spriteComponent.node
-        // Flips the image if it is the opposite team
-        if playerComponent.player == .oppositePlayer {
-            node.xScale *= -1
+        for renderStage in renderStages {
+            renderStage.transform(node: node, for: entity)
         }
-        node.position = positionComponent.position
-        node.playAnimation()
-        node.name = entity.id.uuidString
+
         renderedNodes[entity.id] = node
-        scene?.addChild(node)
+        scene?.add(node: node, staticOnScreen: node.staticOnScreen)
     }
 
     private func removeAndUncache(with id: UUID) {

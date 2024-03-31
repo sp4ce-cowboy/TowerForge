@@ -12,10 +12,14 @@ class Life: TFEntity {
     static let size = CGSize(width: 100, height: 100)
     init(initialLife: Int) {
         super.init()
-        self.addComponent(SpriteComponent(textureNames: ["Life"], size: Life.size, animatableKey: "life"))
+        let spriteComponent = SpriteComponent(textureNames: ["Life"], size: Life.size, animatableKey: "life")
+
+        self.addComponent(spriteComponent)
         self.addComponent(HomeComponent(initialLifeCount: Team.lifeCount, pointInterval: Team.pointsInterval))
         self.addComponent(LabelComponent(text: String(initialLife), name: "life"))
         self.addComponent(PositionComponent(position: Life.position))
         self.addComponent(PlayerComponent(player: .ownPlayer))
+
+        spriteComponent.staticOnScreen = true
     }
 }
