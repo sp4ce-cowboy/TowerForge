@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Bullet: BaseProjectile, Spawnable {
+class Bullet: BaseProjectile {
     static let textureNames: [String] = ["bullet"]
     static let size = CGSize(width: 10, height: 10)
     static let key = "bullet"

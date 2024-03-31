@@ -18,7 +18,8 @@ class AiComponent: TFComponent {
 
     var spawnLocation: CGPoint {
         let randomY = CGFloat.random(in: 200...UIScreen.main.bounds.height)
-        return CGPoint(x: UIScreen.main.bounds.width, y: randomY)
+        let randomX = CGFloat.random(in: (GameWorld.worldSize.width / 2)..<GameWorld.worldSize.width)
+        return CGPoint(x: randomX, y: randomY)
     }
 
     init(spawnableEntities: [(TFEntity & PlayerSpawnable).Type] = SpawnableEntities.playerSpawnableEntities) {

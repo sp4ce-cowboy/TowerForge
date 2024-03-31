@@ -8,49 +8,76 @@
 import QuartzCore
 
 class GameWorld {
+    // Need to ensure that width is a multiple of 1024 - unit selection node height
+    static let worldSize = CGSize(width: 2_472, height: 1_024)
+
     private unowned var scene: GameScene?
     private var gameEngine: AbstractGameEngine
+    private var gameMode: GameMode
     private var selectionNode: UnitSelectionNode
     private var grid: Grid
     private var renderer: Renderer?
+    private let worldBounds: CGRect
 
-    init(scene: GameScene?, screenSize: CGRect) {
+    unowned var delegate: SceneManagerDelegate?
+
+    init(scene: GameScene?, screenSize: CGRect, mode: Mode) {
         self.scene = scene
+        worldBounds = CGRect(origin: screenSize.origin, size: GameWorld.worldSize)
         gameEngine = GameEngine()
+        gameMode = GameModeFactory.createGameMode(mode: mode, eventManager: gameEngine.eventManager)
         selectionNode = UnitSelectionNode()
-
-        grid = Grid(screenSize: screenSize)
-        if let scene = self.scene {
-            grid.generateTileMap(scene: scene)
-        }
-
+        grid = Grid(screenSize: worldBounds)
         renderer = Renderer(target: self, scene: scene)
-        renderer?.renderMessage("Game Starts")
-        gameEngine.setUpSystems(with: grid)
-        self.setUpSelectionNode()
+
+        setUp()
     }
 
     func update(deltaTime: TimeInterval) {
         gameEngine.updateGame(deltaTime: deltaTime)
+        gameMode.updateGame()
+        if checkGameEnded() {
+            renderer?.renderMessage("You win")
+            delegate?.showGameOverScene(isWin: gameMode.gameState == .WIN ? true : false)
+        }
         selectionNode.update()
         renderer?.render()
     }
+
+    func checkGameEnded() -> Bool {
+        gameMode.gameState == .WIN || gameMode.gameState == .LOSE || gameMode.gameState == .DRAW
+    }
+
     func spawnUnit(at location: CGPoint) {
         selectionNode.unitNodeDidSpawn(location)
     }
 
+    private func setUp() {
+        setUpGameEngine()
+        setUpSelectionNode()
+
+        scene?.setBounds(worldBounds)
+        if let scene = self.scene {
+            grid.generateTileMap(scene: scene)
+        }
+        renderer?.renderMessage("Game Starts")
+        self.setUpSelectionNode()
+    }
+
+    private func setUpScene() {
+    }
+
+    private func setUpGameEngine() {
+        gameEngine.setUpSystems(with: grid)
+        gameEngine.setUpPlayerInfo(mode: gameMode)
+    }
+
     private func setUpSelectionNode() {
         selectionNode.delegate = self
-        // Calculate vertical spacing between unit nodes
-        var horizontalX = 10.0
-        // Position unit nodes vertically aligned
-        for unitNode in selectionNode.unitNodes {
-            let horizontalSpacing = unitNode.frame.width
-            unitNode.position = CGPoint(x: horizontalX,
-                                        y: 0)
-            horizontalX += horizontalSpacing
-        }
         gameEngine.addEntity(selectionNode)
+        for node in selectionNode.unitNodes {
+            gameEngine.addEntity(node)
+        }
     }
 }
 
