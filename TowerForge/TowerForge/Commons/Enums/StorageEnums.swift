@@ -31,9 +31,13 @@ class StorageEnums {
     }
 
     /// Used in Storage class
-    enum StorageCodingKeys: String, CodingKey {
+    enum StorageCodingKeys: String, CodingKey, Codable {
         case storageName
-        case storedFiles
+        case storedObjects
+    }
+
+    enum DatabaseCodingKeys: String, CodingKey, Codable {
+        case storedData
     }
 
 }
