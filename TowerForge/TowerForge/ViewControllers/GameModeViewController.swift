@@ -8,7 +8,7 @@ import UIKit
 
 class GameModeViewController: UIViewController {
     @IBOutlet private var deathMatchButton: UIButton!
-    @IBOutlet var captureTheFlagButton: UIButton!
+    @IBOutlet private var captureTheFlagButton: UIButton!
     var selectedGameMode = Mode.captureTheFlag
 
     @IBAction private func deathMatchButtonPressed(_ sender: UIButton) {
