@@ -9,6 +9,7 @@ import SpriteKit
 
 class GameViewController: UIViewController {
     private var gameWorld: GameWorld?
+    var gameMode: Mode?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,8 @@ class GameViewController: UIViewController {
     }
 
     private func setUpGameWorld(scene: GameScene) {
-        self.gameWorld = GameWorld(scene: scene, screenSize: self.view.frame)
+        self.gameWorld = GameWorld(scene: scene, screenSize: self.view.frame, mode: self.gameMode ?? .captureTheFlag)
+        self.gameWorld?.delegate = self
     }
 }
 
@@ -55,6 +57,11 @@ extension GameViewController: SceneManagerDelegate {
     }
     func showLevelScene() {
         // TODO : to implement after Keith is done
+    }
+    func showGameOverScene(isWin: Bool) {
+        let gameOverScene = GameOverScene(win: isWin)
+        gameOverScene.sceneManagerDelegate = self
+        showScene(scene: gameOverScene)
     }
     func showGameLevelScene(level: Int) {
         if let gameScene = GameScene(fileNamed: "GameScene") {

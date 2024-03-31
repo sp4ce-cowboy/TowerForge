@@ -20,14 +20,15 @@ class HealthSystem: TFSystem {
             return
         }*/
         guard let currentEntity = entityManager.entity(with: entityId),
-              let healthComponent = currentEntity.component(ofType: HealthComponent.self) else {
+              let healthComponent = currentEntity.component(ofType: HealthComponent.self),
+              let playerComponent = currentEntity.component(ofType: PlayerComponent.self) else {
             return
         }
 
         healthComponent.adjustHealth(amount: hp)
 
         if healthComponent.currentHealth <= 0 {
-            eventManager.add(RemoveEvent(on: currentEntity.id, at: CACurrentMediaTime()))
+            eventManager.add(KillEvent(on: currentEntity.id, at: CACurrentMediaTime(), player: playerComponent.player))
         }
     }
 }

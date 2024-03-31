@@ -12,7 +12,7 @@
         <!--GameViewController-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController title="GameViewController" wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" id="BV1-FR-VrT" customClass="GameViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameViewController" title="GameViewController" wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" id="BV1-FR-VrT" customClass="GameViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +28,7 @@
         <!--MainMenuViewController-->
         <scene sceneID="vFw-SO-Nq3">
             <objects>
-                <viewController title="MainMenuViewController" id="NJ9-hN-4Nf" customClass="MainMenuViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainMenuViewController" title="MainMenuViewController" id="NJ9-hN-4Nf" customClass="MainMenuViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFill" id="QTh-pm-dcu">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,13 +45,17 @@
                                     <constraint firstAttribute="width" secondItem="1WN-bo-aqT" secondAttribute="height" multiplier="796:607" priority="999" id="99o-eH-AfP"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Itc-dO-lSy">
-                                <rect key="frame" x="630.5" y="645" width="105" height="34.5"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Play Game">
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lig-gp-uco">
+                                <rect key="frame" x="478" y="581" width="410" height="169.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Lig-gp-uco" secondAttribute="height" multiplier="513:212" id="ZOX-gj-Fe6"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <backgroundConfiguration key="background" image="start-button"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" identifier="segueToGame" id="hzG-cy-bt1"/>
+                                    <segue destination="bL0-ag-pcs" kind="presentation" identifier="segueToGameMode" modalPresentationStyle="overFullScreen" id="7gQ-Xy-f9N"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -59,15 +63,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="1WN-bo-aqT" firstAttribute="centerX" secondItem="QTh-pm-dcu" secondAttribute="centerX" id="6YJ-bB-J8R"/>
+                            <constraint firstItem="Lig-gp-uco" firstAttribute="width" secondItem="QTh-pm-dcu" secondAttribute="width" multiplier="0.3" id="7Ap-PV-r4j"/>
                             <constraint firstItem="BeN-nt-myH" firstAttribute="leading" secondItem="0sR-0W-mF4" secondAttribute="leading" id="AFz-rm-7E0"/>
+                            <constraint firstItem="Lig-gp-uco" firstAttribute="centerX" secondItem="QTh-pm-dcu" secondAttribute="centerX" id="EkP-Oz-H1A"/>
                             <constraint firstItem="1WN-bo-aqT" firstAttribute="height" secondItem="QTh-pm-dcu" secondAttribute="height" multiplier="0.5" id="ObS-4A-fmO"/>
                             <constraint firstItem="1WN-bo-aqT" firstAttribute="leading" secondItem="0sR-0W-mF4" secondAttribute="leading" id="P0p-K5-hnv"/>
                             <constraint firstItem="BeN-nt-myH" firstAttribute="trailing" secondItem="0sR-0W-mF4" secondAttribute="trailing" id="Pxd-hp-g4t"/>
                             <constraint firstItem="1WN-bo-aqT" firstAttribute="trailing" secondItem="0sR-0W-mF4" secondAttribute="trailing" id="ScR-YF-vI1"/>
+                            <constraint firstItem="Lig-gp-uco" firstAttribute="centerY" secondItem="QTh-pm-dcu" secondAttribute="centerY" multiplier="1.3" id="UPs-Tl-YVZ"/>
                             <constraint firstItem="BeN-nt-myH" firstAttribute="centerX" secondItem="QTh-pm-dcu" secondAttribute="centerX" id="Vi6-5q-lTl"/>
-                            <constraint firstItem="Itc-dO-lSy" firstAttribute="centerX" secondItem="QTh-pm-dcu" secondAttribute="centerX" id="WHv-Ev-8P8"/>
                             <constraint firstItem="1WN-bo-aqT" firstAttribute="top" secondItem="0sR-0W-mF4" secondAttribute="top" id="Zsn-ue-FgC"/>
-                            <constraint firstItem="Itc-dO-lSy" firstAttribute="centerY" secondItem="QTh-pm-dcu" secondAttribute="centerY" constant="150" id="cHw-CH-V3j"/>
                             <constraint firstItem="BeN-nt-myH" firstAttribute="height" secondItem="QTh-pm-dcu" secondAttribute="height" multiplier="0.7" id="hIN-q9-Fqs"/>
                             <constraint firstItem="BeN-nt-myH" firstAttribute="bottom" secondItem="QTh-pm-dcu" secondAttribute="bottom" id="pD6-gV-4bf"/>
                         </constraints>
@@ -77,10 +82,153 @@
             </objects>
             <point key="canvasLocation" x="-684.33382137628109" y="-2.34375"/>
         </scene>
+        <!--Game Mode View Controller-->
+        <scene sceneID="TxY-2C-loY">
+            <objects>
+                <viewController storyboardIdentifier="GameModeViewController" id="bL0-ag-pcs" customClass="GameModeViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iEG-EI-hhj">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="ZYc-VC-Yak">
+                                <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VV0-Pz-4eu" userLabel="Death Match View">
+                                <rect key="frame" x="608" y="123" width="614.5" height="317"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TfO-fG-lEt">
+                                        <rect key="frame" x="0.0" y="0.0" width="614.5" height="317"/>
+                                        <inset key="titleEdgeInsets" minX="120" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="square-button">
+                                            <attributedString key="attributedTitle">
+                                                <fragment>
+                                                    <string key="content">Death
+</string>
+                                                    <attributes>
+                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" size="49" name="AmericanTypewriter"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="Match">
+                                                    <attributes>
+                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" size="49" name="AmericanTypewriter"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="deathMatchButtonPressed:" destination="bL0-ag-pcs" eventType="touchUpInside" id="v6g-1c-kzq"/>
+                                            <segue destination="BV1-FR-VrT" kind="show" id="txd-Iu-hy9"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sword" translatesAutoresizingMaskIntoConstraints="NO" id="SmE-Cv-6GE">
+                                        <rect key="frame" x="-98.5" y="47.5" width="473" height="190.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="SmE-Cv-6GE" secondAttribute="height" multiplier="440:177" id="brV-17-zsd"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="TfO-fG-lEt" secondAttribute="trailing" id="2Lc-p3-5Ho"/>
+                                    <constraint firstItem="SmE-Cv-6GE" firstAttribute="centerY" secondItem="VV0-Pz-4eu" secondAttribute="centerY" multiplier="0.9" id="7vQ-4D-qNR"/>
+                                    <constraint firstAttribute="width" secondItem="VV0-Pz-4eu" secondAttribute="height" multiplier="219:113" id="KoN-FL-g5E"/>
+                                    <constraint firstItem="TfO-fG-lEt" firstAttribute="leading" secondItem="VV0-Pz-4eu" secondAttribute="leading" id="OHH-Ct-2aB"/>
+                                    <constraint firstItem="TfO-fG-lEt" firstAttribute="top" secondItem="VV0-Pz-4eu" secondAttribute="top" id="RwV-JN-MHY"/>
+                                    <constraint firstItem="SmE-Cv-6GE" firstAttribute="height" secondItem="TfO-fG-lEt" secondAttribute="height" multiplier="0.6" id="nHH-oC-nXf"/>
+                                    <constraint firstItem="SmE-Cv-6GE" firstAttribute="centerX" secondItem="VV0-Pz-4eu" secondAttribute="centerX" multiplier="0.45" id="q4w-Nb-LgL"/>
+                                    <constraint firstAttribute="bottom" secondItem="TfO-fG-lEt" secondAttribute="bottom" id="t4O-Sq-ZkE"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xvz-LH-sKU" userLabel="Capture The Flag View">
+                                <rect key="frame" x="608" y="481.5" width="614.5" height="317"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="erv-RB-ZcW" userLabel="Capture The Flag Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="614.5" height="317"/>
+                                        <inset key="titleEdgeInsets" minX="210" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="square-button">
+                                            <attributedString key="attributedTitle">
+                                                <fragment>
+                                                    <string key="content">Capture
+</string>
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.76470588235294112" green="0.0" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" metaFont="system" size="49"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="The Flag">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.76470588235294112" green="0.0" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" metaFont="system" size="49"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <connections>
+                                            <action selector="captureTheFlagButtonPressed:" destination="bL0-ag-pcs" eventType="touchUpInside" id="G4P-CB-6Hz"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flag" translatesAutoresizingMaskIntoConstraints="NO" id="PlF-Gy-tpz">
+                                        <rect key="frame" x="43" y="47.5" width="190.5" height="190.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="PlF-Gy-tpz" secondAttribute="height" multiplier="1:1" id="RIm-pi-Rte"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="erv-RB-ZcW" firstAttribute="centerX" secondItem="Xvz-LH-sKU" secondAttribute="centerX" id="805-xM-Xxj"/>
+                                    <constraint firstItem="PlF-Gy-tpz" firstAttribute="centerY" secondItem="erv-RB-ZcW" secondAttribute="centerY" multiplier="0.9" id="Sgi-1d-WuZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="erv-RB-ZcW" secondAttribute="bottom" id="VHG-qt-Mfa"/>
+                                    <constraint firstItem="erv-RB-ZcW" firstAttribute="centerY" secondItem="Xvz-LH-sKU" secondAttribute="centerY" id="bQ2-yR-HjW"/>
+                                    <constraint firstAttribute="trailing" secondItem="erv-RB-ZcW" secondAttribute="trailing" id="eXR-FT-e92"/>
+                                    <constraint firstItem="erv-RB-ZcW" firstAttribute="top" secondItem="Xvz-LH-sKU" secondAttribute="top" id="kCM-EF-hEu"/>
+                                    <constraint firstAttribute="width" secondItem="Xvz-LH-sKU" secondAttribute="height" multiplier="219:113" id="lzm-HJ-edU"/>
+                                    <constraint firstItem="erv-RB-ZcW" firstAttribute="leading" secondItem="Xvz-LH-sKU" secondAttribute="leading" id="nWx-CF-vFn"/>
+                                    <constraint firstItem="PlF-Gy-tpz" firstAttribute="centerX" secondItem="erv-RB-ZcW" secondAttribute="centerX" multiplier="0.45" id="vG0-Br-SjP"/>
+                                    <constraint firstItem="PlF-Gy-tpz" firstAttribute="height" secondItem="erv-RB-ZcW" secondAttribute="height" multiplier="0.6" id="zzk-TX-B1T"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kht-Y2-5Yi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Xvz-LH-sKU" firstAttribute="centerY" secondItem="iEG-EI-hhj" secondAttribute="centerY" multiplier="1.25" id="8xj-if-C7e"/>
+                            <constraint firstItem="ZYc-VC-Yak" firstAttribute="trailing" secondItem="iEG-EI-hhj" secondAttribute="trailing" id="9C1-qt-TZR"/>
+                            <constraint firstItem="ZYc-VC-Yak" firstAttribute="top" secondItem="iEG-EI-hhj" secondAttribute="top" id="CDh-fa-4ya"/>
+                            <constraint firstItem="ZYc-VC-Yak" firstAttribute="bottom" secondItem="iEG-EI-hhj" secondAttribute="bottom" id="GUs-Fy-7pw"/>
+                            <constraint firstItem="VV0-Pz-4eu" firstAttribute="width" secondItem="iEG-EI-hhj" secondAttribute="width" multiplier="0.45" id="NtL-mI-USM"/>
+                            <constraint firstItem="VV0-Pz-4eu" firstAttribute="centerY" secondItem="iEG-EI-hhj" secondAttribute="centerY" multiplier="0.55" id="QTY-17-v8s"/>
+                            <constraint firstItem="ZYc-VC-Yak" firstAttribute="leading" secondItem="iEG-EI-hhj" secondAttribute="leading" id="aZD-2f-NlY"/>
+                            <constraint firstItem="Xvz-LH-sKU" firstAttribute="centerX" secondItem="iEG-EI-hhj" secondAttribute="centerX" multiplier="1.34" id="fPo-ft-Ivy"/>
+                            <constraint firstItem="VV0-Pz-4eu" firstAttribute="centerX" secondItem="iEG-EI-hhj" secondAttribute="centerX" multiplier="1.34" id="vFx-Eb-Nkn"/>
+                            <constraint firstItem="Xvz-LH-sKU" firstAttribute="width" secondItem="iEG-EI-hhj" secondAttribute="width" multiplier="0.45" id="zas-5R-jHB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="eHk-cd-vLs"/>
+                    <connections>
+                        <outlet property="captureTheFlagButton" destination="erv-RB-ZcW" id="o5k-6Q-PEr"/>
+                        <outlet property="deathMatchButton" destination="TfO-fG-lEt" id="0Lp-kV-daK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HLK-1h-t1c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-425.18301610541727" y="887.69531249999989"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Flag" width="500" height="500"/>
+        <image name="Sword" width="500" height="500"/>
         <image name="background" width="1000" height="500"/>
+        <image name="background1" width="1600" height="1000"/>
         <image name="logo" width="1000" height="500"/>
+        <image name="square-button" width="1600" height="1000"/>
+        <image name="start-button" width="1000" height="500"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

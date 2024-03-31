@@ -12,6 +12,7 @@ struct SpawnableEntities {
     [
         MeleeUnit.self,
         SoldierUnit.self,
+        WizardUnit.self,
         ArrowTower.self
     ]
 }

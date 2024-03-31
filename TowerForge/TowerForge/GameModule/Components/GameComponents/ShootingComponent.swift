@@ -12,11 +12,13 @@ class ShootingComponent: TFComponent {
     var range: CGFloat
     private(set) var lastShotTime = TimeInterval(0)
     let attackPower: CGFloat
+    let shootingType: BaseProjectile.Type
 
-    init(fireRate: TimeInterval, range: CGFloat, attackPower: CGFloat) {
+    init(fireRate: TimeInterval, range: CGFloat, attackPower: CGFloat, shootingType: BaseProjectile.Type) {
         self.fireRate = fireRate
         self.range = range
         self.attackPower = attackPower
+        self.shootingType = shootingType
         super.init()
     }
 
