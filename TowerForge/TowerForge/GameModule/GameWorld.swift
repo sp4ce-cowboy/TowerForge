@@ -15,6 +15,7 @@ class GameWorld {
     private var gameEngine: AbstractGameEngine
     private var gameMode: GameMode
     private var selectionNode: UnitSelectionNode
+    private var powerUpSelectionNode: PowerUpSelectionNode
     private var grid: Grid
     private var renderer: Renderer?
     private let worldBounds: CGRect
@@ -27,10 +28,13 @@ class GameWorld {
         gameEngine = GameEngine()
         gameMode = GameModeFactory.createGameMode(mode: mode, eventManager: gameEngine.eventManager)
         selectionNode = UnitSelectionNode()
+        powerUpSelectionNode = PowerUpSelectionNode(eventManager: gameEngine.eventManager)
+
         grid = Grid(screenSize: worldBounds)
         renderer = Renderer(target: self, scene: scene)
 
         setUp()
+        gameEngine.addEntity(powerUpSelectionNode)
     }
 
     func update(deltaTime: TimeInterval) {
