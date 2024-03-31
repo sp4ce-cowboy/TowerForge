@@ -10,13 +10,13 @@ import Foundation
 struct DisabledEvent: TFEvent {
     let timestamp: TimeInterval
     let entityId: UUID
-    
+
     init(on entityId: UUID, at timestamp: TimeInterval) {
         self.entityId = entityId
         self.timestamp = timestamp
     }
-    
+
     func execute(in target: any EventTarget) -> EventOutput? {
-        return nil
+        nil
     }
 }
