@@ -7,10 +7,11 @@
 
 import Foundation
 
+/// The Storage class 
 final class Storage: Codable {
-    var storedFiles: [Storable] = []
+    var storedFiles: [any Storable] = []
 
-    init(_ files: [Storable] = []) {
+    init(_ files: [any Storable] = []) {
         storedFiles = files
     }
 

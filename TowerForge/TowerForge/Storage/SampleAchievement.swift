@@ -8,30 +8,21 @@
 import Foundation
 
 class SampleAchievement: Storable {
-    var id = UUID()
 
-    var name: String? = ""
+    typealias DataType = Int
+    var storableId = UUID()
+    var storableName: TFStorableType
+    var storableValue: Int = 0
 
-    var value: Double? = 1.0
-
-    var killCount: Int = 0
-
-    init(killCount: Int) {
-        self.killCount = killCount
+    var killCount: Int {
+        get { storableValue }
+        set { storableValue = newValue }
     }
 
-    required init(from decoder: any Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.killCount = try container.decode(Int.self, forKey: .killCount)
-    }
-
-    func encode(to encoder: any Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.killCount, forKey: .killCount)
-    }
-
-    enum CodingKeys: CodingKey {
-        case killCount
+    required init(id: UUID, name: TFStorableType, value: Int) {
+        self.storableId = id
+        self.storableName = name
+        self.storableValue = value
     }
 
     private func updateKillCount(_ count: Int) {

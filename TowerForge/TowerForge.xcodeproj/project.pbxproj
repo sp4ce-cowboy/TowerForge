@@ -135,6 +135,8 @@
 		BAFFB9552BB342FE00D8301F /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9542BB342FE00D8301F /* Storable.swift */; };
 		BAFFB9572BB3449D00D8301F /* SampleAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9562BB3449D00D8301F /* SampleAchievement.swift */; };
 		BAFFB9592BB345CF00D8301F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9582BB345CF00D8301F /* Storage.swift */; };
+		BAFFB95D2BB978E500D8301F /* StorageEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB95C2BB978E500D8301F /* StorageEnums.swift */; };
+		BAFFB9602BB9828B00D8301F /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB95F2BB9828B00D8301F /* Achievement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -288,6 +290,8 @@
 		BAFFB9542BB342FE00D8301F /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
 		BAFFB9562BB3449D00D8301F /* SampleAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAchievement.swift; sourceTree = "<group>"; };
 		BAFFB9582BB345CF00D8301F /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		BAFFB95C2BB978E500D8301F /* StorageEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageEnums.swift; sourceTree = "<group>"; };
+		BAFFB95F2BB9828B00D8301F /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -528,6 +532,7 @@
 				52DF5FDB2BA32CEF00135367 /* LevelModule */,
 				BAFFB9332BB0A24400D8301F /* GameModule */,
 				BAFFB9512BB342E200D8301F /* Storage */,
+				BAFFB95E2BB9826800D8301F /* Achievements */,
 			);
 			path = TowerForge;
 			sourceTree = "<group>";
@@ -783,6 +788,7 @@
 		BAFFB9402BB0A68600D8301F /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				BAFFB95C2BB978E500D8301F /* StorageEnums.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -844,6 +850,14 @@
 				BAFFB9562BB3449D00D8301F /* SampleAchievement.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		BAFFB95E2BB9826800D8301F /* Achievements */ = {
+			isa = PBXGroup;
+			children = (
+				BAFFB95F2BB9828B00D8301F /* Achievement.swift */,
+			);
+			path = Achievements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1009,6 +1023,7 @@
 				3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */,
 				5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */,
 				3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */,
+				BAFFB9602BB9828B00D8301F /* Achievement.swift in Sources */,
 				5295A20F2BAAE7CF005018A8 /* TeamController.swift in Sources */,
 				3C9955A52BA47DC600D33FA5 /* BaseProjectile.swift in Sources */,
 				BAFFB9552BB342FE00D8301F /* Storable.swift in Sources */,
@@ -1093,6 +1108,7 @@
 				5295A2042BA9FED4005018A8 /* MenuScene.swift in Sources */,
 				3C3CBDFF2BB8708A0001B8A9 /* CGPoint+Extensions.swift in Sources */,
 				52DF5FEF2BA34EA000135367 /* TFEntity.swift in Sources */,
+				BAFFB95D2BB978E500D8301F /* StorageEnums.swift in Sources */,
 				52DF5FED2BA34D0300135367 /* TFComponent.swift in Sources */,
 				527E3A242BA613F000FE1628 /* PlayerComponent.swift in Sources */,
 				BAFFB9572BB3449D00D8301F /* SampleAchievement.swift in Sources */,

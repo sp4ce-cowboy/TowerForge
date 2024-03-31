@@ -7,7 +7,10 @@
 
 import Foundation
 
+/// The StorageManager contains a dictionary of storages. This allows for multipl
+/// storage types to be included in StorageManager. 
 class StorageManager {
+    static let shared = StorageManager() // Singleton instance
     static let folderName = Constants.STORAGE_CONTAINER_NAME
     var storedFiles = Storage()
 
