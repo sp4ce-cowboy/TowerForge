@@ -28,10 +28,8 @@ import Foundation
 /// storable items of different types.
 typealias StorageType = StorageEnums.StorageType
 class StorageManager {
-    static let shared = StorageManager() // Singleton instance
     static let folderName = Constants.STORAGE_CONTAINER_NAME
-    var storedData: [StorageType: Storage] = [:]
-
-
+    static var shared = StorageManager() // Singleton instance
+    var storedData: [StorageType: any Storage] = [:]
 
 }

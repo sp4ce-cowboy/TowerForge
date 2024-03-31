@@ -17,14 +17,13 @@ import Foundation
 /// the things needed to be stored in the context of TowerForge will all be
 /// pre-determined before runtime.
 typealias TFStorableType = StorageEnums.StorableNameType
-protocol Storable<DataType>: Codable {
-    associatedtype DataType: Codable
+protocol Storable: Codable {
 
     var storableId: UUID { get set }
     var storableName: TFStorableType { get set }
-    var storableValue: DataType { get set }
+    var storableValue: Double { get set }
 
-    init(id: UUID, name: TFStorableType, value: DataType)
+    init(id: UUID, name: TFStorableType, value: Double)
 }
 
 /// This extension adds a default implementation for Storables that do not
@@ -50,7 +49,7 @@ extension Storable {
         let container = try decoder.container(keyedBy: StorageEnums.StorableDefaultCodingKeys.self)
         let id = try container.decode(UUID.self, forKey: .storableId)
         let name = try container.decode(TFStorableType.self, forKey: .storableName)
-        let value = try container.decode(DataType.self, forKey: .storableValue)
+        let value = try container.decode(Double.self, forKey: .storableValue)
 
         self.init(id: id, name: name, value: value)
     }

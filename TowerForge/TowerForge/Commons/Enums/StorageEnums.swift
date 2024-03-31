@@ -12,17 +12,28 @@ class StorageEnums {
     /// An enum for the names of every Storable that can be stored.
     /// Adds an implicit "CheckRep", malicious actors cannot load
     /// random storables perhaps using obj-c's dynamic runtime.
-    enum StorableNameType: String, CodingKey, CaseIterable, Codable {
-        case dummy // Temp dummy case to replace later
+    enum StorableNameType: String, CodingKey, Codable {
+        case dummyStorable // Temp dummy case to replace later
+        case killAchievement
+        case totalGamesAchievement
     }
 
+    /// Used in the default implementation of Storage
     enum StorableDefaultCodingKeys: String, CodingKey {
         case storableId
         case storableName
         case storableValue
     }
-    
-    enum StorageType: String, CodingKey {
+
+    /// Used in StorageManager class
+    enum StorageType: String, CodingKey, Codable {
         case achievementStorage
     }
+
+    /// Used in Storage class
+    enum StorageCodingKeys: String, CodingKey {
+        case storageName
+        case storedFiles
+    }
+
 }

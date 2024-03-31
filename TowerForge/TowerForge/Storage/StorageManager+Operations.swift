@@ -30,6 +30,7 @@ extension StorageManager {
         return folderURL
     }
 
+    /// Lists all saved files as file name String.
     static func listSavedFiles(folderName: String = folderName) -> [String] {
         do {
             let folderURL = try createFolderIfNeeded(folderName: folderName)
@@ -48,6 +49,7 @@ extension StorageManager {
         }
     }
 
+    /// Deletes all stored files
     static func deleteAllFiles(_ fileList: [String], _ folder: String = Constants.STORAGE_CONTAINER_NAME) {
         for fileName in fileList {
             do {
@@ -62,6 +64,17 @@ extension StorageManager {
         Logger.log("All files deleted.")
     }
 
+    static func generateStoredObjectsCollection(_ storedObjects: [any Storable]) -> [UUID: any Storable] {
+        var storedObjectsMap: [UUID: any Storable] = [:]
+
+        for storable in storedObjects {
+            storedObjectsMap[storable.storableId] = storable
+        }
+
+        return storedObjectsMap
+    }
+
+    /* TODO: FIX THIS
     static func saveStorage(_ storage: Storage,
                           withName name: String = UUID().uuidString,
                           folderName: String = folderName) {
@@ -77,12 +90,14 @@ extension StorageManager {
             let fileURL = folderURL.appendingPathComponent(fileName)
 
             try data.write(to: fileURL)
-            Logger.log("Saved Level at: \(fileURL.path)")
+            Logger.log("Saved Storage at: \(fileURL.path)")
         } catch {
-            Logger.log("Error saving level: \(error)")
+            Logger.log("Error saving Storage: \(error)")
         }
     }
+     */
 
+    /*
     static func loadStorage(from fileName: String, folderName: String = folderName) -> Storage? {
         do {
             let folderURL = try StorageManager.createFolderIfNeeded(folderName: folderName)
@@ -91,8 +106,9 @@ extension StorageManager {
             let decoder = JSONDecoder()
             return try decoder.decode(Storage.self, from: data)
         } catch {
-            Logger.log("Error loading level: \(error)")
+            Logger.log("Error loading Storage: \(error)")
             return nil
         }
     }
+     */
 }
