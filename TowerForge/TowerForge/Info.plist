@@ -2,11 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Item 0</key>
+	<string>Nosifer-Regular.ttf</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Nosifer-Regular.ttf</string>
 	</array>
-	<key>Item 0</key>
-	<string>Nosifer-Regular.ttf</string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 </dict>
 </plist>
