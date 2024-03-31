@@ -8,5 +8,7 @@
 import Foundation
 
 protocol Storable: Codable {
-
+    var id: UUID { get set }
+    var name: String? { get set }
+    var value: Double? { get set }
 }
