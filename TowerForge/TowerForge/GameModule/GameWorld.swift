@@ -30,11 +30,6 @@ class GameWorld {
         selectionNode = UnitSelectionNode()
         powerUpSelectionNode = PowerUpSelectionNode(eventManager: gameEngine.eventManager)
 
-        grid = Grid(screenSize: screenSize)
-        if let scene = self.scene {
-            grid.generateTileMap(scene: scene)
-        }
-
         grid = Grid(screenSize: worldBounds)
         renderer = Renderer(target: self, scene: scene)
 
