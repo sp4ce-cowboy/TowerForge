@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// The Storage class 
+/// The Storage class encapsulates a specific type of Storable 
 final class Storage: Codable {
     var storedFiles: [any Storable] = []
 

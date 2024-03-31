@@ -13,12 +13,16 @@ class StorageEnums {
     /// Adds an implicit "CheckRep", malicious actors cannot load
     /// random storables perhaps using obj-c's dynamic runtime.
     enum StorableNameType: String, CodingKey, CaseIterable, Codable {
-        case dummy
+        case dummy // Temp dummy case to replace later
     }
 
     enum StorableDefaultCodingKeys: String, CodingKey {
         case storableId
         case storableName
         case storableValue
+    }
+    
+    enum StorageType: String, CodingKey {
+        case achievementStorage
     }
 }
