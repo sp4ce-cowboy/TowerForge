@@ -22,12 +22,13 @@ class GameModeViewController: UIViewController {
     }
 
     private func navigateToGameViewController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil) // Assuming your storyboard name is "Main"
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let gameViewController = storyboard
                 .instantiateViewController(withIdentifier: "GameViewController") as? GameViewController else {
             return
         }
         gameViewController.gameMode = selectedGameMode
+        print(selectedGameMode)
         present(gameViewController, animated: true, completion: nil)
     }
 }

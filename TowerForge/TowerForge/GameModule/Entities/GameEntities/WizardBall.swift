@@ -1,29 +1,29 @@
 //
-//  Bullet.swift
+//  WizardBall.swift
 //  TowerForge
 //
-//  Created by Zheng Ze on 16/3/24.
+//  Created by Vanessa Mae on 31/03/24.
 //
 
 import Foundation
 
-class Bullet: BaseProjectile {
-    static let textureNames: [String] = ["bullet"]
+class WizardBall: BaseProjectile {
+    static let textureNames: [String] = ["Wizard-ball-0"]
     static let size = CGSize(width: 10, height: 10)
-    static let key = "bullet"
+    static let key = "wizard-ball"
     static let damage = 5.0
     static let attackRate = 1.0
     static let velocity = CGVector(dx: 100, dy: 0)
 
     required init(position: CGPoint, player: Player) {
-        super.init(textureNames: Bullet.textureNames,
-                   size: Bullet.size,
-                   key: Bullet.key,
+        super.init(textureNames: WizardBall.textureNames,
+                   size: WizardBall.size,
+                   key: WizardBall.key,
                    position: position,
                    player: player,
-                   velocity: Bullet.velocity)
-        self.addComponent(DamageComponent(attackRate: Bullet.attackRate,
-                                          attackPower: Bullet.damage,
+                   velocity: WizardBall.velocity)
+        self.addComponent(DamageComponent(attackRate: WizardBall.attackRate,
+                                          attackPower: WizardBall.damage,
                                           temporary: true))
     }
 

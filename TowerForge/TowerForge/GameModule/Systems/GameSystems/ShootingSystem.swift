@@ -60,7 +60,7 @@ class ShootingSystem: TFSystem {
         }
 
         shootingComponent.shoot()
-        return SpawnEvent(ofType: Bullet.self, timestamp: shootingComponent.lastShotTime,
+        return SpawnEvent(ofType: shootingComponent.shootingType, timestamp: shootingComponent.lastShotTime,
                           position: shootingPosition, player: shootingPlayer)
     }
 }
