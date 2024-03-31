@@ -9,10 +9,12 @@ import Foundation
 
 class EventManager {
     typealias EventHandler = (TFEvent) -> Void
+    var eventTransformations: [EventTransformation]
     var eventQueue: [TFEvent]
     var eventHandler: [TFEventTypeWrapper: [EventHandler]]
 
     init() {
+        eventTransformations = []
         eventQueue = []
         eventHandler = [:]
     }
@@ -35,9 +37,22 @@ class EventManager {
         }
     }
 
+    func addTransformation(eventTransformation: EventTransformation) {
+        self.eventTransformations.append(eventTransformation)
+    }
+
     func executeEvents(in target: EventTarget) {
         while !eventQueue.isEmpty {
-            let currentEvent = eventQueue.removeFirst()
+            var currentEvent = eventQueue.removeFirst()
+
+            for eventTransformation in eventTransformations {
+                if let concurrentEvent = currentEvent as? ConcurrentEvent {
+                    currentEvent = concurrentEvent.transform(eventTransformation: eventTransformation)
+                } else {
+                    currentEvent = eventTransformation.transformEvent(event: currentEvent)
+                }
+            }
+
             if let output = currentEvent.execute(in: target) {
                 output.events.forEach { eventQueue.append($0) }
             }

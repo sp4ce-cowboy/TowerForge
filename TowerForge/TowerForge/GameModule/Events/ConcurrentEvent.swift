@@ -11,8 +11,8 @@ struct ConcurrentEvent: TFEvent {
     var timestamp: TimeInterval
     var entityId: UUID
 
-    private let event1: TFEvent
-    private let event2: TFEvent
+    var event1: TFEvent
+    var event2: TFEvent
 
     init(_ event1: TFEvent, _ event2: TFEvent) {
         self.timestamp = event1.timestamp
@@ -27,5 +27,11 @@ struct ConcurrentEvent: TFEvent {
 
         eventOutput1?.combine(with: eventOutput2)
         return eventOutput1 != nil ? eventOutput1 : eventOutput2
+    }
+
+    func transform(eventTransformation: EventTransformation) -> TFEvent {
+        let transform1 = eventTransformation.transformEvent(event: event1)
+        let transform2 = eventTransformation.transformEvent(event: event2)
+        return ConcurrentEvent(transform1, transform2)
     }
 }

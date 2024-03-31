@@ -12,6 +12,7 @@ class GameWorld {
     private var gameEngine: AbstractGameEngine
     private var gameMode: GameMode
     private var selectionNode: UnitSelectionNode
+    private var powerUpSelectionNode: PowerUpSelectionNode
     private var grid: Grid
     private var renderer: Renderer?
 
@@ -22,6 +23,7 @@ class GameWorld {
         gameEngine = GameEngine()
         gameMode = GameModeFactory.createGameMode(mode: mode, eventManager: gameEngine.eventManager)
         selectionNode = UnitSelectionNode()
+        powerUpSelectionNode = PowerUpSelectionNode(eventManager: gameEngine.eventManager)
 
         grid = Grid(screenSize: screenSize)
         if let scene = self.scene {
@@ -33,6 +35,7 @@ class GameWorld {
         gameEngine.setUpSystems(with: grid)
         gameEngine.setUpPlayerInfo(mode: gameMode)
         self.setUpSelectionNode()
+        gameEngine.addEntity(powerUpSelectionNode)
     }
 
     func update(deltaTime: TimeInterval) {

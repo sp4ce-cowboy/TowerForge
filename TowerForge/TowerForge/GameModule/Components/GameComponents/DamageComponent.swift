@@ -36,7 +36,7 @@ class DamageComponent: TFComponent {
         }
 
         lastAttackTime = CACurrentMediaTime()
-        let event = DamageEvent(on: enemyId, at: lastAttackTime, with: attackPower)
+        let event = DamageEvent(on: enemyId, at: lastAttackTime, with: attackPower, player: teamA)
 
         if temporary {
             return event.concurrentlyWith(RemoveEvent(on: entityId, at: lastAttackTime))

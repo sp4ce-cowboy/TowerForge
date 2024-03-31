@@ -8,7 +8,8 @@ final class DamageEventTests: XCTestCase {
         let entityId = UUID()
         let timestamp = 1.0
         let damage = 10.0
-        let damageEvent = DamageEvent(on: entityId, at: timestamp, with: damage)
+        let player = Player.ownPlayer
+        let damageEvent = DamageEvent(on: entityId, at: timestamp, with: damage, player: player)
 
         XCTAssertEqual(damageEvent.timestamp, timestamp,
                        "DamageEvent must have the same timestamp as originally specified")
@@ -18,6 +19,9 @@ final class DamageEventTests: XCTestCase {
 
         XCTAssertEqual(damageEvent.entityId, entityId,
                        "DamageEvent must have the same entityId as originally specified")
+
+        XCTAssertEqual(damageEvent.entityId, entityId,
+                       "DamageEvent must have the same player as originally specified")
     }
 
 }

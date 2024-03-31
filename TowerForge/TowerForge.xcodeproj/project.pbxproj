@@ -103,6 +103,12 @@
 		52DF5FFB2BA3601400135367 /* HealthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FFA2BA3601400135367 /* HealthComponent.swift */; };
 		52DF5FFF2BA3656500135367 /* ShootingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FFE2BA3656500135367 /* ShootingComponent.swift */; };
 		52F268702BB4B319009599AD /* GameModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F2686F2BB4B319009599AD /* GameModeViewController.swift */; };
+		9B04060D2BB875740026E903 /* EventTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B04060C2BB875740026E903 /* EventTransformation.swift */; };
+		9B0406102BB879990026E903 /* InvulnerabilityPowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B04060F2BB879990026E903 /* InvulnerabilityPowerUp.swift */; };
+		9B0406122BB889940026E903 /* PowerUpNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0406112BB889940026E903 /* PowerUpNode.swift */; };
+		9B0406142BB89BE00026E903 /* PowerUpSelectionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0406132BB89BE00026E903 /* PowerUpSelectionNode.swift */; };
+		9B0406162BB89E140026E903 /* InvulnerabilityPowerUpDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0406152BB89E140026E903 /* InvulnerabilityPowerUpDelegate.swift */; };
+		9B0406182BB8A1E10026E903 /* PowerUpDelegateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0406172BB8A1E10026E903 /* PowerUpDelegateFactory.swift */; };
 		9B8696552BAD759F0002377C /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8696542BAD759F0002377C /* Grid.swift */; };
 		9BD669682BAFDE5E00DC8C4C /* GridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD669672BAFDE5E00DC8C4C /* GridDelegate.swift */; };
 		BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */; };
@@ -236,6 +242,12 @@
 		52DF5FFA2BA3601400135367 /* HealthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthComponent.swift; sourceTree = "<group>"; };
 		52DF5FFE2BA3656500135367 /* ShootingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootingComponent.swift; sourceTree = "<group>"; };
 		52F2686F2BB4B319009599AD /* GameModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeViewController.swift; sourceTree = "<group>"; };
+		9B04060C2BB875740026E903 /* EventTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTransformation.swift; sourceTree = "<group>"; };
+		9B04060F2BB879990026E903 /* InvulnerabilityPowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvulnerabilityPowerUp.swift; sourceTree = "<group>"; };
+		9B0406112BB889940026E903 /* PowerUpNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpNode.swift; sourceTree = "<group>"; };
+		9B0406132BB89BE00026E903 /* PowerUpSelectionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpSelectionNode.swift; sourceTree = "<group>"; };
+		9B0406152BB89E140026E903 /* InvulnerabilityPowerUpDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvulnerabilityPowerUpDelegate.swift; sourceTree = "<group>"; };
+		9B0406172BB8A1E10026E903 /* PowerUpDelegateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpDelegateFactory.swift; sourceTree = "<group>"; };
 		9B8696542BAD759F0002377C /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		9BD669672BAFDE5E00DC8C4C /* GridDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridDelegate.swift; sourceTree = "<group>"; };
 		BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
@@ -297,6 +309,7 @@
 				3C9955C12BA5838900D33FA5 /* EventOutput.swift */,
 				3C9955BF2BA57E5500D33FA5 /* EventTarget.swift */,
 				3C9955C72BA5865C00D33FA5 /* ConcurrentEvent.swift */,
+				9B04060C2BB875740026E903 /* EventTransformation.swift */,
 				BAFFB93C2BB0A5B200D8301F /* GameEvents */,
 				BAFFB93B2BB0A5AD00D8301F /* PlayerEvents */,
 			);
@@ -423,6 +436,8 @@
 			children = (
 				5295A2122BAAEA16005018A8 /* UnitNode.swift */,
 				5295A2142BAAF335005018A8 /* UnitSelectionNode.swift */,
+				9B0406112BB889940026E903 /* PowerUpNode.swift */,
+				9B0406132BB89BE00026E903 /* PowerUpSelectionNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -535,6 +550,16 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		9B04060E2BB879720026E903 /* PowerUps */ = {
+			isa = PBXGroup;
+			children = (
+				9B0406172BB8A1E10026E903 /* PowerUpDelegateFactory.swift */,
+				9B04060F2BB879990026E903 /* InvulnerabilityPowerUp.swift */,
+				9B0406152BB89E140026E903 /* InvulnerabilityPowerUpDelegate.swift */,
+			);
+			path = PowerUps;
+			sourceTree = "<group>";
+		};
 		9BD669662BAFDCCA00DC8C4C /* Grid */ = {
 			isa = PBXGroup;
 			children = (
@@ -616,6 +641,7 @@
 		BAFFB9332BB0A24400D8301F /* GameModule */ = {
 			isa = PBXGroup;
 			children = (
+				9B04060E2BB879720026E903 /* PowerUps */,
 				5240D0A32BB3321B004F1486 /* GameProps */,
 				5240D0982BB32B9B004F1486 /* GameModes */,
 				BAFFB94A2BB11F9800D8301F /* GameEngine.swift */,
@@ -930,11 +956,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B0406122BB889940026E903 /* PowerUpNode.swift in Sources */,
 				3CCF9CAF2BAB1A96004D170E /* SceneUpdateDelegate.swift in Sources */,
 				3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */,
 				5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */,
 				3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */,
 				5295A20F2BAAE7CF005018A8 /* TeamController.swift in Sources */,
+				9B04060D2BB875740026E903 /* EventTransformation.swift in Sources */,
 				3C9955A52BA47DC600D33FA5 /* BaseProjectile.swift in Sources */,
 				52578B8C2BA627B200B4D76C /* Team.swift in Sources */,
 				3CCF9CB72BAB2877004D170E /* MainMenuViewController.swift in Sources */,
@@ -963,6 +991,7 @@
 				9B8696552BAD759F0002377C /* Grid.swift in Sources */,
 				527A077E2BB3F75700CD9D08 /* Timer.swift in Sources */,
 				52578B872BA6209700B4D76C /* DamageComponent.swift in Sources */,
+				9B0406182BB8A1E10026E903 /* PowerUpDelegateFactory.swift in Sources */,
 				52DF5FB02BA32B2300135367 /* GameViewController.swift in Sources */,
 				3CE951512BAC8955008B2785 /* Renderable.swift in Sources */,
 				529F91882BA6D7A7009551D9 /* SoldierUnit.swift in Sources */,
@@ -970,6 +999,7 @@
 				520062522BA8DA09000DBA30 /* UnitGenerator.swift in Sources */,
 				3C9955C02BA57E5500D33FA5 /* EventTarget.swift in Sources */,
 				3CCF9CB12BAB1BCE004D170E /* GameWorld.swift in Sources */,
+				9B0406162BB89E140026E903 /* InvulnerabilityPowerUpDelegate.swift in Sources */,
 				5295A2152BAAF335005018A8 /* UnitSelectionNode.swift in Sources */,
 				52DF5FF92BA35D2B00135367 /* MovableComponent.swift in Sources */,
 				527A07822BB3F8D300CD9D08 /* TimerProp.swift in Sources */,
@@ -1001,6 +1031,7 @@
 				3CE9514F2BAC8936008B2785 /* Renderer.swift in Sources */,
 				527A07802BB3F81C00CD9D08 /* TimerComponent.swift in Sources */,
 				3C769A722BA58DE700F454F9 /* MovementSystem.swift in Sources */,
+				9B0406102BB879990026E903 /* InvulnerabilityPowerUp.swift in Sources */,
 				9BD669682BAFDE5E00DC8C4C /* GridDelegate.swift in Sources */,
 				52DF5FEB2BA3400C00135367 /* TFAnimatableNode.swift in Sources */,
 				5295A2042BA9FED4005018A8 /* MenuScene.swift in Sources */,
@@ -1010,6 +1041,7 @@
 				3C9955C52BA585DD00D33FA5 /* HealthSystem.swift in Sources */,
 				5240D0A02BB330B5004F1486 /* GameMode.swift in Sources */,
 				520062562BA8E026000DBA30 /* PlayerSpawnable.swift in Sources */,
+				9B0406142BB89BE00026E903 /* PowerUpSelectionNode.swift in Sources */,
 				5240D0A22BB33183004F1486 /* DeathMatchMode.swift in Sources */,
 				3C0B608D2BB2B84000FFECB4 /* ContactComponent.swift in Sources */,
 				3CE951652BAE0A04008B2785 /* HomeSystem.swift in Sources */,
