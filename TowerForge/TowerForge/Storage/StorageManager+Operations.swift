@@ -8,12 +8,10 @@
 import Foundation
 
 /// This class contains utility methods for the StorageManager to handle
-/// loading and storing of default values.
+/// loading and storing of values
 extension StorageManager {
     func initializeDefaultAchievements() {
-        // Check if the achievements are already loaded
         if storedData.storedData[.achievementStorage] == nil {
-            // Initialize the storage for achievements if not present
             let achievementStorage = AchievementStorage()
 
             // Iterate through all achievements and add them to the achievementStorage
@@ -21,6 +19,7 @@ extension StorageManager {
                 guard let defaultAchievement = ObjectSet.defaultAchievementCreation[achievementType]?() else {
                     continue
                 }
+
                 achievementStorage.addStorable(defaultAchievement)
             }
             // Store the AchievementStorage in the Database
