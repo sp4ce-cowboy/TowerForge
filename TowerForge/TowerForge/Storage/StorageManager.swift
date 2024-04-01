@@ -27,11 +27,17 @@ import Foundation
 ///
 /// A singular, universal StorageManager that allows for simultaneously storing and isolating
 /// storable items of different types.
-class StorageManager: Codable {
+class StorageManager {
     static let folderName = Constants.STORAGE_CONTAINER_NAME
+    static let fileName = Constants.TF_DATABASE_NAME
     static let shared = StorageManager() // Singleton instance
     var storedData = Database()
 
+    init(storedData: Database = Database()) {
+        self.storedData = storedData
+    }
+
+    /// Helper function to construct a FileURL
     static func fileURL(for directory: FileManager.SearchPathDirectory, withName name: String) throws -> URL {
         let fileManager = FileManager.default
 
@@ -39,6 +45,7 @@ class StorageManager: Codable {
                                    appropriateFor: nil, create: true).appendingPathComponent(name)
     }
 
+    /// Helper function to create a folder for a given
     static func createFolderIfNeeded(folderName: String) throws -> URL {
         let fileManager = FileManager.default
         let documentsURL: URL = try fileManager.url(for: .documentDirectory, in: .userDomainMask,
@@ -53,53 +60,27 @@ class StorageManager: Codable {
         return folderURL
     }
 
-    /// Lists all saved files as file name String.
-    static func listSavedFiles(folderName: String = folderName) -> [String] {
+    /// Deletes the stored Database
+    func deleteDatabase() {
         do {
-            let folderURL = try createFolderIfNeeded(folderName: folderName)
-            let contents = try FileManager.default.contentsOfDirectory(at: folderURL,
-                                                                       includingPropertiesForKeys: nil)
-
-            let files = contents
-                .filter { $0.pathExtension == "json" }
-                .map { $0.lastPathComponent }
-
-            return files
-
+            let folderURL = try Self.createFolderIfNeeded(folderName: Self.folderName)
+            let fileURL = folderURL.appendingPathComponent(Self.fileName)
+            try FileManager.default.removeItem(at: fileURL)
         } catch {
-            Logger.log("Error listing files: \(error)")
-            return []
+            Logger.log("Error deleting file: \(Self.fileName), \(error)")
         }
+        Logger.log("Database successfully deleted.")
     }
 
-    /// Deletes all stored files
-    static func deleteAllFiles(_ fileList: [String], _ folder: String = Constants.STORAGE_CONTAINER_NAME) {
-        for fileName in fileList {
-            do {
-                let folderURL = try createFolderIfNeeded(folderName: folder)
-                let fileURL = folderURL.appendingPathComponent(fileName)
-                try FileManager.default.removeItem(at: fileURL)
-            } catch {
-                Logger.log("Error deleting file: \(fileName), \(error)")
-            }
-        }
-
-        Logger.log("All files deleted.")
-    }
-
-    static func saveDatabase(_ database: Database,
-                             withName name: String = UUID().uuidString,
-                             folderName: String = folderName) {
-        guard !name.isEmpty else {
-            return
-        }
-        let fileName = name + ".json"
+    /// Saves the current Database to file
+    func saveDatabase() {
+        let fileNameCombined = Self.fileName + ".json"
 
         let encoder = JSONEncoder()
         do {
-            let data = try encoder.encode(database)
-            let folderURL = try StorageManager.createFolderIfNeeded(folderName: folderName)
-            let fileURL = folderURL.appendingPathComponent(fileName)
+            let data = try encoder.encode(storedData)
+            let folderURL = try Self.createFolderIfNeeded(folderName: Self.folderName)
+            let fileURL = folderURL.appendingPathComponent(fileNameCombined)
 
             try data.write(to: fileURL)
             Logger.log("Saved Storage at: \(fileURL.path)")
@@ -108,10 +89,11 @@ class StorageManager: Codable {
         }
     }
 
-    static func loadDatabase(from fileName: String, folderName: String = folderName) -> Database? {
+    /// Loads a database (with the class constant folderName and fileName) from file
+    func loadDatabase() -> Database? {
         do {
-            let folderURL = try StorageManager.createFolderIfNeeded(folderName: folderName)
-            let fileURL = folderURL.appendingPathComponent(fileName)
+            let folderURL = try Self.createFolderIfNeeded(folderName: Self.folderName)
+            let fileURL = folderURL.appendingPathComponent(Self.fileName)
             let data = try Data(contentsOf: fileURL)
             let decoder = JSONDecoder()
             return try decoder.decode(Database.self, from: data)
