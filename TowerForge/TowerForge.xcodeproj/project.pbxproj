@@ -142,6 +142,7 @@
 		BAFFB96A2BB9A64000D8301F /* ObjectSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9692BB9A64000D8301F /* ObjectSet.swift */; };
 		BAFFB96C2BB9AB2400D8301F /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB96B2BB9AB2400D8301F /* Database.swift */; };
 		BAFFB9712BBA830F00D8301F /* StorageManager+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9702BBA830F00D8301F /* StorageManager+Operations.swift */; };
+		BAFFB9732BBAC14500D8301F /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9722BBAC14500D8301F /* AchievementManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -302,6 +303,7 @@
 		BAFFB9692BB9A64000D8301F /* ObjectSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSet.swift; sourceTree = "<group>"; };
 		BAFFB96B2BB9AB2400D8301F /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		BAFFB9702BBA830F00D8301F /* StorageManager+Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageManager+Operations.swift"; sourceTree = "<group>"; };
+		BAFFB9722BBAC14500D8301F /* AchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -870,6 +872,7 @@
 				BAFFB96F2BBA7F0100D8301F /* Implemented */,
 				BAFFB95F2BB9828B00D8301F /* Achievement.swift */,
 				BAFFB9652BB98ADC00D8301F /* AchievementStorage.swift */,
+				BAFFB9722BBAC14500D8301F /* AchievementManager.swift */,
 			);
 			path = Achievements;
 			sourceTree = "<group>";
@@ -1053,6 +1056,7 @@
 				52578B8C2BA627B200B4D76C /* Team.swift in Sources */,
 				BAFFB9532BB342F100D8301F /* StorageManager.swift in Sources */,
 				BAFFB9682BB9981700D8301F /* TotalGamesAchievement.swift in Sources */,
+				BAFFB9732BBAC14500D8301F /* AchievementManager.swift in Sources */,
 				3CAC4A752BB6BDD500A5D22E /* HealthRenderStage.swift in Sources */,
 				3CCF9CB72BAB2877004D170E /* MainMenuViewController.swift in Sources */,
 				5240D0A72BB33356004F1486 /* LifeProp.swift in Sources */,
