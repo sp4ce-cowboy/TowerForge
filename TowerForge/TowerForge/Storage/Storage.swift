@@ -7,25 +7,29 @@
 
 import Foundation
 
-/// The Storage class encapsulates a collection of Storables
+/// The Storage class encapsulates a collection of unique Storables
 class Storage: Codable {
 
     var storageName: TFStorageType
-    var storedObjects: [UUID: Storable]
+    var storedObjects: [TFStorableType: Storable]
 
-    init(storageName: TFStorageType, objects: [UUID: Storable] = [:]) {
+    init(storageName: TFStorageType, objects: [TFStorableType: Storable] = [:]) {
         self.storageName = storageName
         self.storedObjects = objects
     }
 
     /// Adds storable if it doesn't exists and updates it if it does
     func addStorable(_ storable: Storable) {
-        storedObjects[storable.storableId] = storable
+        storedObjects[storable.storableName] = storable
     }
 
     /// Removes a storable value if it exists
     func removeStorable(_ storable: Storable) {
-        storedObjects.removeValue(forKey: storable.storableId)
+        storedObjects.removeValue(forKey: storable.storableName)
+    }
+
+    func getStorable(_ storableType: TFStorableType) -> Storable? {
+        storedObjects[storableType]
     }
 
     func encode(to encoder: Encoder) throws {
@@ -67,11 +71,11 @@ class Storage: Codable {
         return storableObject
     }
 
-    private static func generateStoredObjectsCollection(_ storedObjects: [any Storable]) -> [UUID: any Storable] {
-        var storedObjectsMap: [UUID: any Storable] = [:]
+    private static func generateStoredObjectsCollection(_ storedObjects: [any Storable]) -> [TFStorableType: any Storable] {
+        var storedObjectsMap: [TFStorableType: any Storable] = [:]
 
         for storable in storedObjects {
-            storedObjectsMap[storable.storableId] = storable
+            storedObjectsMap[storable.storableName] = storable
         }
 
         return storedObjectsMap

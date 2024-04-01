@@ -37,7 +37,7 @@ final class Database: Codable {
 
         for key in storagesContainer.allKeys {
             let storage = try storagesContainer.decode(Storage.self, forKey: key)
-            let storageObject = ObjectSet.fullStorageCreation[key]?(storage.storageName, storage.storedObjects)
+            let storageObject = ObjectSet.fullStorageCreation[key]?()
             tempStoredData[key] = storageObject
         }
 

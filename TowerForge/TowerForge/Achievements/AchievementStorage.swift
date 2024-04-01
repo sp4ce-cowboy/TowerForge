@@ -11,7 +11,7 @@ import Foundation
 final class AchievementStorage: Storage {
 
     override init(storageName: StorageEnums.StorageType = .achievementStorage,
-                  objects: [UUID: any Storable] = [:]) {
+                  objects: [TFStorableType: any Storable] = [:]) {
         super.init(storageName: storageName, objects: objects)
     }
 
@@ -21,11 +21,11 @@ final class AchievementStorage: Storage {
 
     /// Adds storable if it doesn't exists and updates it if it does
     func addStorable(_ storable: Achievement) {
-        storedObjects[storable.storableId] = storable
+        storedObjects[storable.storableName] = storable
     }
 
     /// Removes a storable value if it exists
     func removeStorable(_ storable: Achievement) {
-        storedObjects.removeValue(forKey: storable.storableId)
+        storedObjects.removeValue(forKey: storable.storableName)
     }
 }

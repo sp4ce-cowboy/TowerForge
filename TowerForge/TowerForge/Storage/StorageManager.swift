@@ -42,15 +42,16 @@ class StorageManager {
     /// Creates an empty local file to store the database if one doesn't already exist.
     /// Called by the AppDelegate when the application is run.
     static func initializeData() {
-        // Load from the StorageManager or initialize a new Database if the file doesn't exist
         if let loadedDatabase = StorageManager.shared.loadFromFile() {
             StorageManager.shared.storedData = loadedDatabase
             Logger.log("Loaded existing database.", Self.self)
         } else {
-            StorageManager.shared.storedData = Database() // Empty database
+            StorageManager.shared.storedData = Database() // Create empty database
             StorageManager.shared.saveToFile() // Save the new empty database
             Logger.log("Created and saved a new empty database.", Self.self)
         }
+
+        StorageManager.shared.initializeDefaultAchievements()
     }
 
     /// Saves the current Database to file

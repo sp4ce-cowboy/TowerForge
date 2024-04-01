@@ -24,6 +24,7 @@ extension StorageManager {
             }
             // Store the AchievementStorage in the Database
             storedData.storedData[.achievementStorage] = achievementStorage
+            Logger.log("Default achievements initialized", self)
         }
     }
 }
