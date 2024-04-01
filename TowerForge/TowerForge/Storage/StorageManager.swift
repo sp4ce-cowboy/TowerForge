@@ -17,7 +17,8 @@ import Foundation
 /// This allows for a nuanced, sequential and hierarchial approach to data persistence,
 /// within a monolithic Storage Architecture, and thus, without having to fragment
 /// Storage across TowerForge. This also allows for Storage Manager to transform into an adaptor
-/// if the need arises to replace FileManager with some other form of persistence.
+/// if the need arises to replace FileManager with some other form of persistence, like CloudKit or
+/// Firebase or something else.
 ///
 /// Hypothetical Example: local copy of the TowerForge application may contain information
 /// such as a list of Achievements and a list of user preferences. This would translate
