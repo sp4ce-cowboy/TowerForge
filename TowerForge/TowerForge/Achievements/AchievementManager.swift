@@ -34,7 +34,7 @@ class AchievementManager {
         }
     }
 
-    func incrementTotalKillCount() {
+    static func incrementTotalKillCount() {
         guard let achievementStorage = StorageManager
             .getStorage(for: .achievementStorage) as? AchievementStorage else {
             return
