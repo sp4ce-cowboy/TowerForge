@@ -13,6 +13,7 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        StorageManager.shared.incrementTotalGamesStarted()
         showGameLevelScene(level: 1) // TODO : Change hardcoded level value
     }
 
