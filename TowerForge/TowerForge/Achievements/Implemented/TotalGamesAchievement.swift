@@ -18,7 +18,9 @@ class TotalGamesAchievement: Achievement {
         set { storableValue = Double(newValue) }
     }
 
-    required init(id: UUID, name: TFStorableType, value: Double) {
+    required init(id: UUID = UUID(),
+                  name: TFStorableType = .totalGamesAchievement,
+                  value: Double = 0) {
         self.storableId = id
         self.storableName = name
         self.storableValue = value

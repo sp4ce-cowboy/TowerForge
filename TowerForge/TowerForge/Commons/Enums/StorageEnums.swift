@@ -8,13 +8,21 @@
 import Foundation
 
 typealias TFStorageType = StorageEnums.StorageType
+typealias TFAchievementType = StorageEnums.StorableAchievementNameType
 class StorageEnums {
 
     /// An enum for the names of every Storable that can be stored.
     /// Adds an implicit "CheckRep", malicious actors cannot load
     /// random storables perhaps using obj-c's dynamic runtime.
-    enum StorableNameType: String, CodingKey, Codable {
+    enum StorableNameType: String, CodingKey, Codable, CaseIterable {
         case dummyStorable // Temp dummy case to replace later
+        case killAchievement
+        case totalGamesAchievement
+    }
+
+    /// For achievements only.
+    /// Rep-invariant: All cases must also be contained within StorableNameType
+    enum StorableAchievementNameType: String, CodingKey, Codable, CaseIterable {
         case killAchievement
         case totalGamesAchievement
     }
