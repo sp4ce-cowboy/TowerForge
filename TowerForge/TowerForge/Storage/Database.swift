@@ -10,14 +10,14 @@ import Foundation
 /// An Abstract data type to store a collection of Storages.
 final class Database: Codable {
 
-    var storedData: [TFStorageType: any Storage] = [:]
+    var storedData: [TFStorageType: Storage] = [:]
 
-    init(storedData: [TFStorageType: any Storage] = [:]) {
+    init(storedData: [TFStorageType: Storage] = [:]) {
         self.storedData = storedData
     }
 
-    static func generateStorageCollection(_ storageObjects: [any Storage]) -> [TFStorageType: any Storage] {
-        var storagesMap: [TFStorageType: any Storage] = [:]
+    static func generateStorageCollection(_ storageObjects: [Storage]) -> [TFStorageType: Storage] {
+        var storagesMap: [TFStorageType: Storage] = [:]
 
         for storage in storageObjects {
             storagesMap[storage.storageName] = storage
@@ -32,25 +32,17 @@ final class Database: Codable {
         try storedData.values.forEach { try objectsContainer.encode($0) }
     }
 
-    convenience init(from decoder: any Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: StorageEnums.DatabaseCodingKeys.self)
-        var storageArrayForType = try container.nestedUnkeyedContainer(forKey: .storedData)
-        var storages: [Storage] = []
+        let storagesContainer = try container.nestedContainer(keyedBy: TFStorageType.self, forKey: .storedData)
+        var tempStoredData: [TFStorageType: Storage] = [:]
 
-        while !storageArrayForType.isAtEnd {
-            let currentStorage = try storageArrayForType
-                .nestedContainer(keyedBy: StorageEnums.StorageCodingKeys.self)
+        for key in storagesContainer.allKeys {
+            let storage = try storagesContainer.decode(Storage.self, forKey: key)
+            let storageObject = ObjectSet.fullStorageCreation[key]?(storage.storageName, storage.storedObjects)
+            tempStoredData[key] = storageObject
         }
+
+        self.storedData = tempStoredData
     }
-
-    private static func decodeStorage(_ storageDict: KeyedDecodingContainer<StorageEnums.StorageCodingKeys>)
-    throws -> (any Storage)? {
-
-        let storageName = try storageDict.decode(TFStorageType.self, forKey: .storageName)
-        let storedObjects = try storageDict.decode([UUID: Storable].self, forKey: .storedObjects)
-
-        let storableObject = ObjectSet.fullStorageCreation[storableName]?(storageName, storedObjects)
-        return storableObject
-    }
-    
 }

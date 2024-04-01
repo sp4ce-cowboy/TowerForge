@@ -27,7 +27,6 @@ import Foundation
 ///
 /// A singular, universal StorageManager that allows for simultaneously storing and isolating
 /// storable items of different types.
-typealias TFStorageType = StorageEnums.StorageType
 class StorageManager: Codable {
     static let folderName = Constants.STORAGE_CONTAINER_NAME
     static let shared = StorageManager() // Singleton instance

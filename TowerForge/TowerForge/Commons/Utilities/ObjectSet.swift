@@ -16,7 +16,7 @@ class ObjectSet {
         .totalGamesAchievement: { id, type, value in TotalGamesAchievement(id: id, name: type, value: value) }
     ]
 
-    static var fullStorageCreation: [TFStorageType: (TFStorageType, [UUID: Storable]) -> any Storage] = [
+    static var fullStorageCreation: [TFStorageType: (TFStorageType, [UUID: any Storable]) -> Storage] = [
         .achievementStorage: { type, objects in AchievementStorage(storageName: type, objects: objects) }
     ]
 }

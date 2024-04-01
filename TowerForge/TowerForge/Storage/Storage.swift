@@ -7,39 +7,18 @@
 
 import Foundation
 
-/// The Storage class encapsulates a specific type of Storable item.
-/// It also enforces type consistency to ensure that only one type of
-/// storable item type is contained within itself at all times.
+/// The Storage class encapsulates a collection of Storables
+class Storage: Codable {
 
-protocol Storage: Codable {
+    var storageName: TFStorageType
+    var storedObjects: [UUID: Storable]
 
-    var storageName: TFStorageType { get set }
-    var storedObjects: [UUID: Storable] { get set }
-
-    init(storageName: TFStorageType, objects: [UUID: Storable])
-}
-
-/// Default implementation of 
-extension Storage {
-
-    static func generateStoredObjectsCollection(_ storedObjects: [any Storable]) -> [UUID: any Storable] {
-        var storedObjectsMap: [UUID: any Storable] = [:]
-
-        for storable in storedObjects {
-            storedObjectsMap[storable.storableId] = storable
-        }
-
-        return storedObjectsMap
+    init(storageName: TFStorageType, objects: [UUID: Storable] = [:]) {
+        self.storageName = storageName
+        self.storedObjects = objects
     }
 
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: StorageEnums.StorageCodingKeys.self)
-        try container.encode(storageName, forKey: .storageName)
-        var objectsContainer = container.nestedUnkeyedContainer(forKey: .storedObjects)
-        try storedObjects.values.forEach { try objectsContainer.encode($0) }
-    }
-
-    init(from decoder: any Decoder) throws {
+    required init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: StorageEnums.StorageCodingKeys.self)
         let name = try container.decode(StorageEnums.StorageType.self, forKey: .storageName)
         var elementsArrayForType = try container.nestedUnkeyedContainer(forKey: .storedObjects)
@@ -56,7 +35,25 @@ extension Storage {
 
         let storedObjectsMap = Self.generateStoredObjectsCollection(elements)
 
-        self.init(storageName: name, files: storedObjectsMap)
+        self.storageName = name
+        self.storedObjects = storedObjectsMap
+    }
+
+    static func generateStoredObjectsCollection(_ storedObjects: [any Storable]) -> [UUID: any Storable] {
+        var storedObjectsMap: [UUID: any Storable] = [:]
+
+        for storable in storedObjects {
+            storedObjectsMap[storable.storableId] = storable
+        }
+
+        return storedObjectsMap
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: StorageEnums.StorageCodingKeys.self)
+        try container.encode(storageName, forKey: .storageName)
+        var objectsContainer = container.nestedUnkeyedContainer(forKey: .storedObjects)
+        try storedObjects.values.forEach { try objectsContainer.encode($0) }
     }
 
     private static func decodeElement(_ filesDict: KeyedDecodingContainer<StorageEnums.StorableDefaultCodingKeys>)

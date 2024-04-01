@@ -7,6 +7,7 @@
 
 import Foundation
 
+typealias TFStorageType = StorageEnums.StorageType
 class StorageEnums {
 
     /// An enum for the names of every Storable that can be stored.
