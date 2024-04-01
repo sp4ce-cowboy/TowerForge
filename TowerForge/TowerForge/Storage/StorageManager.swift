@@ -88,8 +88,8 @@ class StorageManager: Codable {
     }
 
     static func saveDatabase(_ database: Database,
-                          withName name: String = UUID().uuidString,
-                          folderName: String = folderName) {
+                             withName name: String = UUID().uuidString,
+                             folderName: String = folderName) {
         guard !name.isEmpty else {
             return
         }

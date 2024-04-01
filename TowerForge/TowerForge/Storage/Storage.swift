@@ -18,6 +18,23 @@ class Storage: Codable {
         self.storedObjects = objects
     }
 
+    /// Adds storable if it doesn't exists and updates it if it does
+    func addStorable(_ storable: Storable) {
+        storedObjects[storable.storableId] = storable
+    }
+
+    /// Removes a storable value if it exists
+    func removeStorable(_ storable: Storable) {
+        storedObjects.removeValue(forKey: storable.storableId)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: StorageEnums.StorageCodingKeys.self)
+        try container.encode(storageName, forKey: .storageName)
+        var objectsContainer = container.nestedUnkeyedContainer(forKey: .storedObjects)
+        try storedObjects.values.forEach { try objectsContainer.encode($0) }
+    }
+
     required init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: StorageEnums.StorageCodingKeys.self)
         let name = try container.decode(StorageEnums.StorageType.self, forKey: .storageName)
@@ -39,23 +56,6 @@ class Storage: Codable {
         self.storedObjects = storedObjectsMap
     }
 
-    static func generateStoredObjectsCollection(_ storedObjects: [any Storable]) -> [UUID: any Storable] {
-        var storedObjectsMap: [UUID: any Storable] = [:]
-
-        for storable in storedObjects {
-            storedObjectsMap[storable.storableId] = storable
-        }
-
-        return storedObjectsMap
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: StorageEnums.StorageCodingKeys.self)
-        try container.encode(storageName, forKey: .storageName)
-        var objectsContainer = container.nestedUnkeyedContainer(forKey: .storedObjects)
-        try storedObjects.values.forEach { try objectsContainer.encode($0) }
-    }
-
     private static func decodeElement(_ filesDict: KeyedDecodingContainer<StorageEnums.StorableDefaultCodingKeys>)
     throws -> (any Storable)? {
 
@@ -66,4 +66,15 @@ class Storage: Codable {
         let storableObject = ObjectSet.fullStorableCreation[storableName]?(id, storableName, storableValue)
         return storableObject
     }
+
+    private static func generateStoredObjectsCollection(_ storedObjects: [any Storable]) -> [UUID: any Storable] {
+        var storedObjectsMap: [UUID: any Storable] = [:]
+
+        for storable in storedObjects {
+            storedObjectsMap[storable.storableId] = storable
+        }
+
+        return storedObjectsMap
+    }
+
 }

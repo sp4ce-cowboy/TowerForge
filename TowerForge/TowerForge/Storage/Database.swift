@@ -18,11 +18,9 @@ final class Database: Codable {
 
     static func generateStorageCollection(_ storageObjects: [Storage]) -> [TFStorageType: Storage] {
         var storagesMap: [TFStorageType: Storage] = [:]
-
         for storage in storageObjects {
             storagesMap[storage.storageName] = storage
         }
-
         return storagesMap
     }
 
