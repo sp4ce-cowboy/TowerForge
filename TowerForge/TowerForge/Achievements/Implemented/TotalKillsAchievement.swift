@@ -11,9 +11,9 @@ import Foundation
 /// The Achievement encapsulates both the name of the Achievement and the value
 /// corresponding to that achievement. This can be further isolated into a Trackable
 /// type that purely only tracks game statistic if needed later on.
-class KillAchievement: Achievement {
+class TotalKillsAchievement: Achievement {
     var storableId = UUID()
-    var storableName: TFStorableType = .killAchievement
+    var storableName: TFStorableType = .totalKillsAchievement
     var storableValue: Double = 0
 
     var killCount: Int {
@@ -22,7 +22,7 @@ class KillAchievement: Achievement {
     }
 
     required init(id: UUID = UUID(),
-                  name: TFStorableType = .killAchievement,
+                  name: TFStorableType = .totalKillsAchievement,
                   value: Double = 0) {
         self.storableId = id
         self.storableName = name

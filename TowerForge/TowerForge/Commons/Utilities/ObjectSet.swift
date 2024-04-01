@@ -29,7 +29,7 @@ class ObjectSet {
 
     /// A dictionary of available Achievement types and closures that create full instances of them
     static var fullStorableCreation: [TFStorableType: (UUID, TFStorableType, Double) -> any Storable] = [
-        .killAchievement: { id, type, value in KillAchievement(id: id, name: type, value: value) },
+        .totalKillsAchievement: { id, type, value in TotalKillsAchievement(id: id, name: type, value: value) },
         .totalGamesAchievement: { id, type, value in TotalGamesAchievement(id: id, name: type, value: value) }
     ]
 
@@ -38,7 +38,7 @@ class ObjectSet {
     ]
 
     static var defaultAchievementCreation: [TFAchievementType: () -> any Achievement] = [
-        .killAchievement: { KillAchievement() },
+        .totalKillsAchievement: { TotalKillsAchievement() },
         .totalGamesAchievement: { TotalGamesAchievement() }
     ]
 }
