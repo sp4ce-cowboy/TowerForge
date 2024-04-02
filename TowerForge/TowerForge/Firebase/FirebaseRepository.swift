@@ -12,7 +12,8 @@ import Combine
 final class FirebaseRepository: FirebaseRepositoryProtocol {
 
     // Change the design to make it more general
-    func getData<T>(from collection: FirebaseReference, completion: @escaping (Result<T?, Error>) -> Void) where T: Decodable {
+    func getData<T>(from collection: FirebaseReference,
+                    completion: @escaping (Result<T?, Error>) -> Void) where T: Decodable {
             let databaseReference = FirebaseDatabaseReference(collection)
 
             // Assuming that `collection` represents a specific path in the database

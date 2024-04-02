@@ -21,8 +21,8 @@ class GameRoomViewController: UIViewController {
         let firebaseRepository = FirebaseRepository()
 
         // Create a sample player for testing
-        guard let playerOne = GamePlayer(userName: "Player One", roomId: "21"),
-              let playerTwo = GamePlayer(userName: "Player Twe", roomId: "21") else {
+        guard let playerOne = GamePlayer(userName: "Player One", roomId: "2"),
+              let playerTwo = GamePlayer(userName: "Player Twe", roomId: "2") else {
             return
         }
 
