@@ -63,7 +63,6 @@
 		523AA3BF2BB88FBF0041E60D /* WizardUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523AA3BE2BB88FBF0041E60D /* WizardUnit.swift */; };
 		5240D08F2BAE6D0A004F1486 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D08E2BAE6D0A004F1486 /* Point.swift */; };
 		5240D0912BAF3453004F1486 /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0902BAF3453004F1486 /* Life.swift */; };
-		5240D0962BB04E57004F1486 /* Nosifer-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5240D0952BB04E57004F1486 /* Nosifer-Regular.ttf */; };
 		5240D0A02BB330B5004F1486 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D09F2BB330B4004F1486 /* GameMode.swift */; };
 		5240D0A22BB33183004F1486 /* DeathMatchMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0A12BB33183004F1486 /* DeathMatchMode.swift */; };
 		5240D0A52BB332FB004F1486 /* GameProp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0A42BB332FB004F1486 /* GameProp.swift */; };
@@ -1046,7 +1045,6 @@
 				52DF5FB82BA32B2600135367 /* Launch Screen.storyboard in Resources */,
 				52DF5FAC2BA32B2300135367 /* Actions.sks in Resources */,
 				523923E72BADC8530044BA61 /* LaunchScreen.storyboard in Resources */,
-				5240D0962BB04E57004F1486 /* Nosifer-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
