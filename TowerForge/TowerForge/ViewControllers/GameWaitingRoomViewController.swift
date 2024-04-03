@@ -52,6 +52,8 @@ class GameWaitingRoomViewController: UIViewController {
         let playerView = UILabel()
         playerView.text = player.userName // Display player's username
         playerView.textAlignment = .center
+        playerView.textAlignment = .center
+        playerView.font = UIFont(name: "Nosifer-Regular", size: 30.0)
         return playerView
     }
  }
