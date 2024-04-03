@@ -72,8 +72,6 @@ class GameRoom {
         try firebaseRepository.postData(data: roomData, from: .Rooms)
     }
     func joinRoom(player: GamePlayer, completion: @escaping (Bool) -> Void) {
-
-        // Check if the room is full
         if isRoomFull {
             completion(false) // Room is full, cannot join
         } else {
@@ -83,9 +81,7 @@ class GameRoom {
                 playerTwo = player
             }
             let playerDict: [String: Any] = [
-                "userPlayerId": player.userPlayerId,
                 "userName": player.userName
-                // Add any other player information you want to store
             ]
             let playerRef = roomRef.child("players")
             playerRef.setValue(playerDict)

@@ -45,13 +45,10 @@ class GameRoomViewController: UIViewController {
         let firebaseRepository = FirebaseRepository()
 
         // Create a sample player for testing
-        guard let playerOne = GamePlayer(userName: "Player One", roomId: "2"),
-              let playerTwo = GamePlayer(userName: "Player Twe", roomId: "2") else {
-            return
-        }
+        let playerOne = GamePlayer(userName: "PlayerOne")
 
         // Create a game room
-        gameRoom = GameRoom(roomName: "Room 1", roomCreator: playerOne, repository: firebaseRepository) { success in
+        gameRoom = GameRoom(roomName: "Room1", roomCreator: playerOne, repository: firebaseRepository) { success in
             if success {
                 print("Room created successfully")
             } else {
@@ -59,21 +56,21 @@ class GameRoomViewController: UIViewController {
             }
         }
 
-        gameRoom?.joinRoom(player: playerTwo) { success in
-            if success {
-                print("Player Two joined the room")
-            } else {
-                print("Player Two failed to join the room")
-            }
-        }
-
-        // Simulate leaving the room
-        gameRoom?.leaveRoom(player: playerOne) { success in
-            if success {
-                print("Player One left the room")
-            } else {
-                print("Player One failed to leave the room")
-            }
-        }
+//        gameRoom?.joinRoom(player: playerTwo) { success in
+//            if success {
+//                print("Player Two joined the room")
+//            } else {
+//                print("Player Two failed to join the room")
+//            }
+//        }
+//
+//        // Simulate leaving the room
+//        gameRoom?.leaveRoom(player: playerOne) { success in
+//            if success {
+//                print("Player One left the room")
+//            } else {
+//                print("Player One failed to leave the room")
+//            }
+//        }
     }
 }

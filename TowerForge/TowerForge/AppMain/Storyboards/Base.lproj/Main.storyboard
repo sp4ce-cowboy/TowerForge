@@ -338,18 +338,32 @@
         <!--Game Waiting Room View Controller-->
         <scene sceneID="40b-Ga-mMh">
             <objects>
-                <viewController storyboardIdentifier="GameWaitingRoomViewController" id="FnT-Eh-Bya" customClass="GameWaitingRoomViewController" sceneMemberID="viewController">
+                <viewController id="FnT-Eh-Bya" customClass="GameWaitingRoomViewController" customModule="TowerForge" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CDD-vN-KX1" customClass="SKView" customModule="TowerForge">
                         <rect key="frame" x="0.0" y="0.0" width="704" height="984"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FSQ-sC-jDO">
+                                <rect key="frame" x="20" y="87" width="75" height="34.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mP5-4d-HdN">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="34.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="rUg-Tb-9QP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="VFg-fG-tFi"/>
+                    <connections>
+                        <outlet property="ListStackView" destination="FSQ-sC-jDO" id="21H-Es-ph1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srP-KJ-HWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-801" y="2421"/>
+            <point key="canvasLocation" x="-801.1713030746705" y="2420.5078125"/>
         </scene>
     </scenes>
     <resources>
