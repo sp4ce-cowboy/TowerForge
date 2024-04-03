@@ -19,6 +19,8 @@ class GameOverScene: SKScene {
 
     override func didMove(to view: SKView) {
         setupScene()
+        AudioManager.shared.stopBackground()
+        self.win ? AudioManager.shared.playWinSoundEffect() : AudioManager.shared.playLoseSoundEffect()
     }
 
     func setupScene() {

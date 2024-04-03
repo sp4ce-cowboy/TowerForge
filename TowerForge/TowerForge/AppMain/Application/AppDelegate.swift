@@ -15,8 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        /// Load the local storage and data
         StorageManager.initializeData()
+
+        /// Connect to Firebase
         FirebaseApp.configure()
+
+        /// Prepare audio player to begin playing music
+        AudioManager.shared.setupAllAudioPlayers()
         return true
     }
 
