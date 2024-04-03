@@ -792,6 +792,7 @@
 		BAFFB9302BB0A02500D8301F /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				BAFFB9742BBD833400D8301F /* AudioManager.swift */,
 				BAFFB9762BBD83B200D8301F /* beep.mp3 */,
 				BAFFB9782BBD83B200D8301F /* field-of-memories-soundtrack.mp3 */,
 				BAFFB9772BBD83B200D8301F /* hit-sound.mp3 */,
@@ -969,7 +970,6 @@
 			children = (
 				BAFFB9482BB0ABC400D8301F /* Logger.swift */,
 				BAFFB9692BB9A64000D8301F /* ObjectSet.swift */,
-				BAFFB9742BBD833400D8301F /* AudioManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
