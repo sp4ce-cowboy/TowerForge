@@ -7,6 +7,9 @@ class Constants {
     /// Universally declaring logging
     static let LOGGING_IS_ACTIVE = true
 
+    /// Firebase URL
+    static let DATABASE_URL = "https://towerforge-d5ba7-default-rtdb.asia-southeast1.firebasedatabase.app"
+
     /// The name of the folder in which information is stored locally
     static let STORAGE_CONTAINER_NAME = "TowerForge"
 

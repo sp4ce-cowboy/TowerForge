@@ -16,7 +16,7 @@ enum FirebaseReference: String {
 
 func FirebaseDatabaseReference(_ reference: FirebaseReference) -> DatabaseReference {
 
-    Database.database(url: "https://towerforge-d5ba7-default-rtdb.asia-southeast1.firebasedatabase.app")
+    Database.database(url: Constants.DATABASE_URL)
         .reference()
         .child(reference.rawValue)
 }
