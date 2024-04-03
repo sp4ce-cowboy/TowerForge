@@ -19,18 +19,18 @@ class UnitSelectionNode: TFEntity {
             updateUnitAlphas()
         }
     }
-    var unitNodes: [UnitNode] = []
-    var selectedNode: UnitNode?
+    private(set) var unitNodes: [UnitNode] = []
+    private var selectedNode: UnitNode?
 
     override init() {
         super.init()
 
-        var position = CGPoint(x: 500, y: 100)
+        var position = CGPoint(x: 500, y: UnitNode.size.height / 2)
         let possibleUnits: [(TFEntity & PlayerSpawnable).Type] = SpawnableEntities.playerSpawnableEntities
         for type in possibleUnits {
             let unitNode = UnitNode(ofType: type, position: position)
             unitNode.delegate = self
-            position.x += 140
+            position.x += UnitNode.size.width
             unitNodes.append(unitNode)
         }
 

@@ -23,7 +23,7 @@ class GamePlayer: Codable {
             } else {
                 // If storing succeeds, set the generated userPlayerId
                 self.userPlayerId = playerRef.key ?? ""
-                if self.userPlayerId != "" {
+                if !(self.userPlayerId?.isEmpty ?? true) {
                     isUserSetupSuccessful = true
                 }
             }

@@ -34,7 +34,6 @@ class GameWorld {
         renderer = Renderer(target: self, scene: scene)
 
         setUp()
-        gameEngine.addEntity(powerUpSelectionNode)
     }
 
     func update(deltaTime: TimeInterval) {
@@ -57,18 +56,19 @@ class GameWorld {
     }
 
     private func setUp() {
+        setUpScene()
         setUpGameEngine()
         setUpSelectionNode()
+        setUpPowerUpNode()
+    }
 
+    private func setUpScene() {
         scene?.setBounds(worldBounds)
         if let scene = self.scene {
             grid.generateTileMap(scene: scene)
         }
         renderer?.renderMessage("Game Starts")
-        self.setUpSelectionNode()
-    }
 
-    private func setUpScene() {
     }
 
     private func setUpGameEngine() {
@@ -80,6 +80,13 @@ class GameWorld {
         selectionNode.delegate = self
         gameEngine.addEntity(selectionNode)
         for node in selectionNode.unitNodes {
+            gameEngine.addEntity(node)
+        }
+    }
+
+    private func setUpPowerUpNode() {
+        gameEngine.addEntity(powerUpSelectionNode)
+        for node in powerUpSelectionNode.powerupNodes {
             gameEngine.addEntity(node)
         }
     }
