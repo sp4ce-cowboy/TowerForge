@@ -29,7 +29,7 @@ class GameRoomViewController: UIViewController {
         print("Navigating to waiting room")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let gameWaitingRoomVC =
-                storyboard.instantiateViewController(withIdentifier: "GameWaitingRoomViewController") 
+                storyboard.instantiateViewController(withIdentifier: "GameWaitingRoomViewController")
                 as? GameWaitingRoomViewController
         else {
             return
