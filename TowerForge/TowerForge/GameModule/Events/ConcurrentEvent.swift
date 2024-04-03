@@ -21,12 +21,11 @@ struct ConcurrentEvent: TFEvent {
         self.event2 = event2
     }
 
-    func execute(in target: any EventTarget) -> EventOutput? {
+    func execute(in target: any EventTarget) -> EventOutput {
         var eventOutput1 = event1.execute(in: target)
         let eventOutput2 = event2.execute(in: target)
-
-        eventOutput1?.combine(with: eventOutput2)
-        return eventOutput1 != nil ? eventOutput1 : eventOutput2
+        eventOutput1.combine(with: eventOutput2)
+        return eventOutput1
     }
 
     func transform(eventTransformation: EventTransformation) -> TFEvent {

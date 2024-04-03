@@ -21,11 +21,10 @@ struct DamageEvent: TFEvent {
         self.player = player
     }
 
-    func execute(in target: any EventTarget) -> EventOutput? {
-        guard let healthSystem = target.system(ofType: HealthSystem.self) else {
-            return nil
+    func execute(in target: any EventTarget) -> EventOutput {
+        if let healthSystem = target.system(ofType: HealthSystem.self) {
+            healthSystem.modifyHealth(for: entityId, with: -damage)
         }
-        healthSystem.modifyHealth(for: entityId, with: -damage)
-        return nil
+        return EventOutput()
     }
 }

@@ -28,7 +28,7 @@ class AiSystem: TFSystem {
             aiComponent.update(deltaTime: time)
         }
 
-        var event: TFEvent?
+        var event: TFEvent = DisabledEvent()
 
         for aiPlayer in aiPlayers {
             guard let aiComponent = aiComponents[aiPlayer], aiComponent.spawn(),
@@ -38,16 +38,7 @@ class AiSystem: TFSystem {
 
             let newEvent = RequestSpawnEvent(ofType: unitType, timestamp: CACurrentMediaTime(),
                                              position: aiComponent.spawnLocation, player: aiPlayer)
-
-            guard var event = event else {
-                event = newEvent
-                continue
-            }
             event = event.concurrentlyWith(newEvent)
-        }
-
-        guard let event = event else {
-            return
         }
         eventManager.add(event)
     }

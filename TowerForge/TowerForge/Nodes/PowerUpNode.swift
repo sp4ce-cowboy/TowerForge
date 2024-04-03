@@ -26,28 +26,26 @@ protocol PowerUpNodeDelegate: AnyObject {
     func powerUpNodeDidSelect()
 }
 
-class PowerUpNode: TFSpriteNode {
+class PowerUpNode: TFEntity {
+    static let size = CGSize(width: 140, height: 200)
     let type: PowerUp
     var delegate: PowerUpNodeDelegate
-    var backgroundNode: SKSpriteNode!
 
-    init(type: PowerUp, delegate: PowerUpNodeDelegate) {
+    init(type: PowerUp, delegate: PowerUpNodeDelegate, at position: CGPoint) {
         self.type = type
         self.delegate = delegate
-        super.init(imageName: type.imageName, size: CGSize(width: 200.0, height: 140.0))
-//
-//        self.zPosition = 10.0
-//        isUserInteractionEnabled = true
-//
-//        backgroundNode = SKSpriteNode(color: UIColor.clear, size: self.size)
-//        backgroundNode.zPosition = -1
-//        addChild(backgroundNode)
-//    }
-//
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        guard touches.first != nil else {
-//            return
-//        }
-//        delegate.powerUpNodeDidSelect()
+        super.init()
+
+        let spriteComponent = SpriteComponent(textureNames: [type.imageName], size: PowerUpNode.size,
+                                              animatableKey: "node")
+        addComponent(spriteComponent)
+        addComponent(PositionComponent(position: position))
+        setUpButtonComponent(size: PowerUpNode.size)
+        spriteComponent.staticOnScreen = true
+    }
+
+    private func setUpButtonComponent(size: CGSize) {
+        let buttonDelegate = TFButtonDelegate(onTouchBegan: { self.delegate.powerUpNodeDidSelect() }, onTouchEnded: {})
+        addComponent(ButtonComponent(size: size, buttonDelegate: buttonDelegate))
     }
 }

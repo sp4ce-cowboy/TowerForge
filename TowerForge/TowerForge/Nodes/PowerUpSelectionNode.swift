@@ -10,28 +10,20 @@ import UIKit
 
 class PowerUpSelectionNode: TFEntity {
     private var eventManager: EventManager?
+    private(set) var powerupNodes: [PowerUpNode] = []
 
     init(eventManager: EventManager) {
-//        super.init()
-//        let spriteComponent = SpriteComponent(textureNames: ["life"], size: CGSize.zero, animatableKey: "selectionNode")
-//        let node = spriteComponent.node
-//        node.isUserInteractionEnabled = true
-//
-//        let possiblePowerUps: [PowerUp] = PowerUp.allPowerUps
-//        var startingPoint = CGPoint(x: 600, y: 0)
-//
-//        for type in possiblePowerUps {
-//            let delegate = PowerUpDelegateFactory.createPowerUpDelegate(type: type, eventManager: eventManager)
-//            let powerUpNode = PowerUpNode(type: type, delegate: delegate)
-//            powerUpNode.position = startingPoint
-//            node.addChild(powerUpNode)
-//
-//            startingPoint.x += 140
-//        }
-//
-//        node.position = CGPoint(x: 500, y: 100)
-//        self.addComponent(spriteComponent)
-//        self.addComponent(PositionComponent(position: node.position))
-//        self.addComponent(PlayerComponent(player: .ownPlayer))
+        super.init()
+        let possiblePowerUps: [PowerUp] = PowerUp.allPowerUps
+        var startingPoint = CGPoint(x: UIScreen.main.bounds.maxX - PowerUpNode.size.width / 2,
+                                    y: PowerUpNode.size.height / 2)
+
+        for type in possiblePowerUps {
+            let delegate = PowerUpDelegateFactory.createPowerUpDelegate(type: type, eventManager: eventManager)
+            let powerUpNode = PowerUpNode(type: type, delegate: delegate, at: startingPoint)
+            powerupNodes.append(powerUpNode)
+            startingPoint.x -= PowerUpNode.size.width
+        }
+        self.addComponent(PlayerComponent(player: .ownPlayer))
     }
 }

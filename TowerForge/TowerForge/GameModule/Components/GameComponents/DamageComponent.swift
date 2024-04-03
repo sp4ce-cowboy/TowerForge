@@ -24,15 +24,15 @@ class DamageComponent: TFComponent {
         CACurrentMediaTime() - lastAttackTime >= attackRate
     }
 
-    func damage(_ healthComponent: HealthComponent) -> TFEvent? {
+    func damage(_ healthComponent: HealthComponent) -> TFEvent {
         guard canDamage, let enemyId = healthComponent.entity?.id, let entityId = entity?.id else {
-            return nil
+            return DisabledEvent()
         }
 
         guard let teamA = self.entity?.component(ofType: PlayerComponent.self)?.player,
               let teamB = healthComponent.entity?.component(ofType: PlayerComponent.self)?.player,
               teamA != teamB else {
-            return nil
+            return DisabledEvent()
         }
 
         lastAttackTime = CACurrentMediaTime()
