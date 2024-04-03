@@ -164,6 +164,13 @@
 		BAFFB96C2BB9AB2400D8301F /* LocalDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB96B2BB9AB2400D8301F /* LocalDatabase.swift */; };
 		BAFFB9712BBA830F00D8301F /* StorageManager+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9702BBA830F00D8301F /* StorageManager+Operations.swift */; };
 		BAFFB9732BBAC14500D8301F /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9722BBAC14500D8301F /* AchievementManager.swift */; };
+		BAFFB9752BBD833400D8301F /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9742BBD833400D8301F /* AudioManager.swift */; };
+		BAFFB97C2BBD83B200D8301F /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB9762BBD83B200D8301F /* beep.mp3 */; };
+		BAFFB97D2BBD83B200D8301F /* hit-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB9772BBD83B200D8301F /* hit-sound.mp3 */; };
+		BAFFB97E2BBD83B200D8301F /* field-of-memories-soundtrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB9782BBD83B200D8301F /* field-of-memories-soundtrack.mp3 */; };
+		BAFFB97F2BBD83B200D8301F /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB9792BBD83B200D8301F /* lose.mp3 */; };
+		BAFFB9802BBD83B200D8301F /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB97A2BBD83B200D8301F /* success.mp3 */; };
+		BAFFB9812BBD83B200D8301F /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB97B2BBD83B200D8301F /* jump.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -342,6 +349,13 @@
 		BAFFB96B2BB9AB2400D8301F /* LocalDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDatabase.swift; sourceTree = "<group>"; };
 		BAFFB9702BBA830F00D8301F /* StorageManager+Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageManager+Operations.swift"; sourceTree = "<group>"; };
 		BAFFB9722BBAC14500D8301F /* AchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementManager.swift; sourceTree = "<group>"; };
+		BAFFB9742BBD833400D8301F /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		BAFFB9762BBD83B200D8301F /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
+		BAFFB9772BBD83B200D8301F /* hit-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "hit-sound.mp3"; sourceTree = "<group>"; };
+		BAFFB9782BBD83B200D8301F /* field-of-memories-soundtrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "field-of-memories-soundtrack.mp3"; sourceTree = "<group>"; };
+		BAFFB9792BBD83B200D8301F /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
+		BAFFB97A2BBD83B200D8301F /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = success.mp3; sourceTree = "<group>"; };
+		BAFFB97B2BBD83B200D8301F /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -778,6 +792,12 @@
 		BAFFB9302BB0A02500D8301F /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				BAFFB9762BBD83B200D8301F /* beep.mp3 */,
+				BAFFB9782BBD83B200D8301F /* field-of-memories-soundtrack.mp3 */,
+				BAFFB9772BBD83B200D8301F /* hit-sound.mp3 */,
+				BAFFB97B2BBD83B200D8301F /* jump.mp3 */,
+				BAFFB9792BBD83B200D8301F /* lose.mp3 */,
+				BAFFB97A2BBD83B200D8301F /* success.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -949,6 +969,7 @@
 			children = (
 				BAFFB9482BB0ABC400D8301F /* Logger.swift */,
 				BAFFB9692BB9A64000D8301F /* ObjectSet.swift */,
+				BAFFB9742BBD833400D8301F /* AudioManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1111,11 +1132,17 @@
 			files = (
 				523C29282BBCFD93004C6EAC /* Nosifer-Regular.ttf in Resources */,
 				52DF5FB32BA32B2300135367 /* Main.storyboard in Resources */,
+				BAFFB97D2BBD83B200D8301F /* hit-sound.mp3 in Resources */,
+				BAFFB97C2BBD83B200D8301F /* beep.mp3 in Resources */,
+				BAFFB9812BBD83B200D8301F /* jump.mp3 in Resources */,
 				5298D7932BBC2AC9005177A1 /* GoogleService-Info.plist in Resources */,
+				BAFFB97F2BBD83B200D8301F /* lose.mp3 in Resources */,
 				52DF5FAA2BA32B2300135367 /* GameScene.sks in Resources */,
 				52DF5FB52BA32B2600135367 /* Assets.xcassets in Resources */,
 				52DF5FB82BA32B2600135367 /* Launch Screen.storyboard in Resources */,
+				BAFFB9802BBD83B200D8301F /* success.mp3 in Resources */,
 				52DF5FAC2BA32B2300135367 /* Actions.sks in Resources */,
+				BAFFB97E2BBD83B200D8301F /* field-of-memories-soundtrack.mp3 in Resources */,
 				523923E72BADC8530044BA61 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1284,6 +1311,7 @@
 				3CAC4A6F2BB6A4F200A5D22E /* LabelRenderStage.swift in Sources */,
 				3C0B608D2BB2B84000FFECB4 /* ContactComponent.swift in Sources */,
 				3CE951652BAE0A04008B2785 /* HomeSystem.swift in Sources */,
+				BAFFB9752BBD833400D8301F /* AudioManager.swift in Sources */,
 				52DF5FFB2BA3601400135367 /* HealthComponent.swift in Sources */,
 				3C9955BC2BA563A800D33FA5 /* TFEvent.swift in Sources */,
 				527A077A2BB3F35300CD9D08 /* DeathProp.swift in Sources */,

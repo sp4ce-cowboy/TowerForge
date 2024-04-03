@@ -27,6 +27,7 @@ class ShootingComponent: TFComponent {
     }
 
     func shoot() {
+        AudioManager.shared.playBeepEffect()
         lastShotTime = CACurrentMediaTime()
     }
 }
