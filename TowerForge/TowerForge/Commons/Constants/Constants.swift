@@ -21,7 +21,7 @@ class Constants {
 
     /// Universal background audio soundtrack to play during game modes
     static let GAME_BACKGROUND_AUDIO: String = "field-of-memories-soundtrack.mp3"
-    
+
     /// Universal background audio soundtrack to play during non-game modes
     static let MAIN_BACKGROUND_AUDIO: String = "Entering-the-stronghold.mp3"
 

@@ -13,7 +13,7 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
     internal static let shared = AudioManager() // Singleton instance
     private var backgroundAudioPlayer: AVAudioPlayer?
     private var mainAudioPlayer: AVAudioPlayer?
-    
+
     private var soundEffectPlayers: [String: AVAudioPlayer] = [:] // Cache sound effect players
     private var isBackgroundPlaying = false
     private var isMainPlaying = false
@@ -27,7 +27,7 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
         backgroundAudioPlayer?.prepareToPlay()
         Logger.log("AudioManager is initialized", self)
     }
-    
+
     func setupAllAudioPlayers() {
         setupGameAudioPlayer()
         setupMainAudioPlayer()
@@ -41,7 +41,7 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
             Logger.log("Sound effect \(soundName) not found", self)
             return
         }
-        
+
         do {
             try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
@@ -54,7 +54,7 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
             Logger.log("Failed to play sound effect \(soundName): \(error)", self)
         }
     }
-    
+
     func setupMainAudioPlayer() {
         let soundName = Constants.MAIN_BACKGROUND_AUDIO
 
@@ -63,7 +63,7 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
             Logger.log("Sound effect \(soundName) not found", self)
             return
         }
-        
+
         do {
             try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
@@ -76,7 +76,7 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
             Logger.log("Failed to play sound effect \(soundName): \(error)", self)
         }
     }
-    
+
     /// Plays background music
     func playMainMusic() {
         if !isMainPlaying {
@@ -141,7 +141,7 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
             self.playBackground()
         }
     }
-    
+
     /// Toggle play/pause main music
     func toggleMain() {
         if isMainPlaying {
