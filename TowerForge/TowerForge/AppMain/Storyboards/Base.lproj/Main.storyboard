@@ -292,6 +292,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="joinRoomButtonPressed:" destination="tK4-EO-PjX" eventType="touchUpInside" id="HVH-ry-IS3"/>
+                                    <segue destination="FnT-Eh-Bya" kind="show" identifier="segueToWaitingRoom" id="5Mz-7I-nNc"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Player Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyq-Bq-dSA">
@@ -357,6 +358,7 @@
                         <viewLayoutGuide key="safeArea" id="rUg-Tb-9QP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="RIh-Gm-msf"/>
                     <connections>
                         <outlet property="ListStackView" destination="FSQ-sC-jDO" id="21H-Es-ph1"/>
                     </connections>
@@ -366,6 +368,9 @@
             <point key="canvasLocation" x="-801.1713030746705" y="2420.5078125"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="5Mz-7I-nNc"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Flag" width="500" height="500"/>
         <image name="Sword" width="500" height="500"/>
