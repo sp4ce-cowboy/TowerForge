@@ -152,6 +152,18 @@
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
 		BAFFB9502BB12F9D00D8301F /* GameEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94F2BB12F9D00D8301F /* GameEngineTests.swift */; };
+		BAFFB9532BB342F100D8301F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9522BB342F100D8301F /* StorageManager.swift */; };
+		BAFFB9552BB342FE00D8301F /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9542BB342FE00D8301F /* Storable.swift */; };
+		BAFFB9572BB3449D00D8301F /* TotalKillsAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9562BB3449D00D8301F /* TotalKillsAchievement.swift */; };
+		BAFFB9592BB345CF00D8301F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9582BB345CF00D8301F /* Storage.swift */; };
+		BAFFB95D2BB978E500D8301F /* StorageEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB95C2BB978E500D8301F /* StorageEnums.swift */; };
+		BAFFB9602BB9828B00D8301F /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB95F2BB9828B00D8301F /* Achievement.swift */; };
+		BAFFB9662BB98ADC00D8301F /* AchievementStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9652BB98ADC00D8301F /* AchievementStorage.swift */; };
+		BAFFB9682BB9981700D8301F /* TotalGamesAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9672BB9981700D8301F /* TotalGamesAchievement.swift */; };
+		BAFFB96A2BB9A64000D8301F /* ObjectSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9692BB9A64000D8301F /* ObjectSet.swift */; };
+		BAFFB96C2BB9AB2400D8301F /* LocalDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB96B2BB9AB2400D8301F /* LocalDatabase.swift */; };
+		BAFFB9712BBA830F00D8301F /* StorageManager+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9702BBA830F00D8301F /* StorageManager+Operations.swift */; };
+		BAFFB9732BBAC14500D8301F /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9722BBAC14500D8301F /* AchievementManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -318,6 +330,18 @@
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		BAFFB94A2BB11F9800D8301F /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		BAFFB94F2BB12F9D00D8301F /* GameEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngineTests.swift; sourceTree = "<group>"; };
+		BAFFB9522BB342F100D8301F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		BAFFB9542BB342FE00D8301F /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
+		BAFFB9562BB3449D00D8301F /* TotalKillsAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalKillsAchievement.swift; sourceTree = "<group>"; };
+		BAFFB9582BB345CF00D8301F /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		BAFFB95C2BB978E500D8301F /* StorageEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageEnums.swift; sourceTree = "<group>"; };
+		BAFFB95F2BB9828B00D8301F /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
+		BAFFB9652BB98ADC00D8301F /* AchievementStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementStorage.swift; sourceTree = "<group>"; };
+		BAFFB9672BB9981700D8301F /* TotalGamesAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalGamesAchievement.swift; sourceTree = "<group>"; };
+		BAFFB9692BB9A64000D8301F /* ObjectSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSet.swift; sourceTree = "<group>"; };
+		BAFFB96B2BB9AB2400D8301F /* LocalDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDatabase.swift; sourceTree = "<group>"; };
+		BAFFB9702BBA830F00D8301F /* StorageManager+Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageManager+Operations.swift"; sourceTree = "<group>"; };
+		BAFFB9722BBAC14500D8301F /* AchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -614,6 +638,8 @@
 				5295A2082BAAE14B005018A8 /* ViewControllers */,
 				52DF5FDB2BA32CEF00135367 /* LevelModule */,
 				BAFFB9332BB0A24400D8301F /* GameModule */,
+				BAFFB9512BB342E200D8301F /* Storage */,
+				BAFFB95E2BB9826800D8301F /* Achievements */,
 			);
 			path = TowerForge;
 			sourceTree = "<group>";
@@ -881,6 +907,7 @@
 		BAFFB9402BB0A68600D8301F /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				BAFFB95C2BB978E500D8301F /* StorageEnums.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -921,6 +948,7 @@
 			isa = PBXGroup;
 			children = (
 				BAFFB9482BB0ABC400D8301F /* Logger.swift */,
+				BAFFB9692BB9A64000D8301F /* ObjectSet.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -931,6 +959,38 @@
 				BAFFB94F2BB12F9D00D8301F /* GameEngineTests.swift */,
 			);
 			path = GameModuleTests;
+			sourceTree = "<group>";
+		};
+		BAFFB9512BB342E200D8301F /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				BAFFB9542BB342FE00D8301F /* Storable.swift */,
+				BAFFB9582BB345CF00D8301F /* Storage.swift */,
+				BAFFB96B2BB9AB2400D8301F /* LocalDatabase.swift */,
+				BAFFB9522BB342F100D8301F /* StorageManager.swift */,
+				BAFFB9702BBA830F00D8301F /* StorageManager+Operations.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		BAFFB95E2BB9826800D8301F /* Achievements */ = {
+			isa = PBXGroup;
+			children = (
+				BAFFB96F2BBA7F0100D8301F /* Implemented */,
+				BAFFB95F2BB9828B00D8301F /* Achievement.swift */,
+				BAFFB9652BB98ADC00D8301F /* AchievementStorage.swift */,
+				BAFFB9722BBAC14500D8301F /* AchievementManager.swift */,
+			);
+			path = Achievements;
+			sourceTree = "<group>";
+		};
+		BAFFB96F2BBA7F0100D8301F /* Implemented */ = {
+			isa = PBXGroup;
+			children = (
+				BAFFB9562BB3449D00D8301F /* TotalKillsAchievement.swift */,
+				BAFFB9672BB9981700D8301F /* TotalGamesAchievement.swift */,
+			);
+			path = Implemented;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1104,14 +1164,20 @@
 			files = (
 				9B0406122BB889940026E903 /* PowerUpNode.swift in Sources */,
 				3CCF9CAF2BAB1A96004D170E /* SceneUpdateDelegate.swift in Sources */,
+				BAFFB9592BB345CF00D8301F /* Storage.swift in Sources */,
 				3CAC4A692BB697A400A5D22E /* SpriteRenderStage.swift in Sources */,
 				3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */,
 				5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */,
 				3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */,
+				BAFFB9602BB9828B00D8301F /* Achievement.swift in Sources */,
 				5295A20F2BAAE7CF005018A8 /* TeamController.swift in Sources */,
 				9B04060D2BB875740026E903 /* EventTransformation.swift in Sources */,
 				3C9955A52BA47DC600D33FA5 /* BaseProjectile.swift in Sources */,
+				BAFFB9552BB342FE00D8301F /* Storable.swift in Sources */,
 				52578B8C2BA627B200B4D76C /* Team.swift in Sources */,
+				BAFFB9532BB342F100D8301F /* StorageManager.swift in Sources */,
+				BAFFB9682BB9981700D8301F /* TotalGamesAchievement.swift in Sources */,
+				BAFFB9732BBAC14500D8301F /* AchievementManager.swift in Sources */,
 				3CAC4A752BB6BDD500A5D22E /* HealthRenderStage.swift in Sources */,
 				3CCF9CB72BAB2877004D170E /* MainMenuViewController.swift in Sources */,
 				5240D0A72BB33356004F1486 /* LifeProp.swift in Sources */,
@@ -1123,6 +1189,7 @@
 				BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */,
 				5200624E2BA8D597000DBA30 /* AiComponent.swift in Sources */,
 				3C9955C22BA5838900D33FA5 /* EventOutput.swift in Sources */,
+				BAFFB96C2BB9AB2400D8301F /* LocalDatabase.swift in Sources */,
 				5240D0912BAF3453004F1486 /* Life.swift in Sources */,
 				52A794192BBC630F0083C976 /* RoomData.swift in Sources */,
 				52DF5FAE2BA32B2300135367 /* GameScene.swift in Sources */,
@@ -1150,6 +1217,7 @@
 				52A794152BBC4EF50083C976 /* GameRoomDelegate.swift in Sources */,
 				52DF5FB02BA32B2300135367 /* GameViewController.swift in Sources */,
 				3CE951512BAC8955008B2785 /* Renderable.swift in Sources */,
+				BAFFB9712BBA830F00D8301F /* StorageManager+Operations.swift in Sources */,
 				3CAC4A712BB6AB3100A5D22E /* TFLabelNode.swift in Sources */,
 				529F91882BA6D7A7009551D9 /* SoldierUnit.swift in Sources */,
 				BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */,
@@ -1195,6 +1263,7 @@
 				3CA829C62BB719A500D8E72A /* ButtonRenderStage.swift in Sources */,
 				3CE9514F2BAC8936008B2785 /* Renderer.swift in Sources */,
 				527A07802BB3F81C00CD9D08 /* TimerComponent.swift in Sources */,
+				BAFFB9662BB98ADC00D8301F /* AchievementStorage.swift in Sources */,
 				3C769A722BA58DE700F454F9 /* MovementSystem.swift in Sources */,
 				52A794062BBC32A10083C976 /* FirebaseRepositoryProtocol.swift in Sources */,
 				9B0406102BB879990026E903 /* InvulnerabilityPowerUp.swift in Sources */,
@@ -1203,8 +1272,10 @@
 				5295A2042BA9FED4005018A8 /* MenuScene.swift in Sources */,
 				3C3CBDFF2BB8708A0001B8A9 /* CGPoint+Extensions.swift in Sources */,
 				52DF5FEF2BA34EA000135367 /* TFEntity.swift in Sources */,
+				BAFFB95D2BB978E500D8301F /* StorageEnums.swift in Sources */,
 				52DF5FED2BA34D0300135367 /* TFComponent.swift in Sources */,
 				527E3A242BA613F000FE1628 /* PlayerComponent.swift in Sources */,
+				BAFFB9572BB3449D00D8301F /* TotalKillsAchievement.swift in Sources */,
 				3C9955C52BA585DD00D33FA5 /* HealthSystem.swift in Sources */,
 				5240D0A02BB330B5004F1486 /* GameMode.swift in Sources */,
 				520062562BA8E026000DBA30 /* PlayerSpawnable.swift in Sources */,
@@ -1221,6 +1292,7 @@
 				527A07742BB3D8E800CD9D08 /* GameModeFactory.swift in Sources */,
 				5240D0AF2BB3B415004F1486 /* LifeEvent.swift in Sources */,
 				5295A2072BAA02FD005018A8 /* TFButtonNode.swift in Sources */,
+				BAFFB96A2BB9A64000D8301F /* ObjectSet.swift in Sources */,
 				3CAC4A6B2BB6992F00A5D22E /* TFNode.swift in Sources */,
 				3CAC4A6D2BB6A13B00A5D22E /* PositionRenderStage.swift in Sources */,
 				3CE951672BAEAB0E008B2785 /* ContactSystem.swift in Sources */,
@@ -1425,6 +1497,8 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TowerForge/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1460,6 +1534,8 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TowerForge/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

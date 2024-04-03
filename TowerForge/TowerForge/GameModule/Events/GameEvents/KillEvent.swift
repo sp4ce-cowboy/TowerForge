@@ -24,6 +24,9 @@ struct KillEvent: TFEvent {
         }
 
         removeSystem.handleRemove(for: entityId)
+        if player != .ownPlayer {
+            AchievementManager.incrementTotalKillCount()
+        }
 
         guard let homeSystem = target.system(ofType: HomeSystem.self) else {
             return nil
