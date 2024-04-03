@@ -12,7 +12,6 @@ class GameWaitingRoomViewController: UIViewController {
     var gameRoom: GameRoom?
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(gameRoom?.playerOne)
         updatePlayerList()
     }
     @IBOutlet var ListStackView: UIStackView!

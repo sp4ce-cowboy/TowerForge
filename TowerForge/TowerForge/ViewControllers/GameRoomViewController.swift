@@ -32,19 +32,20 @@ class GameRoomViewController: UIViewController {
 
         // Create a sample player for testing
         let playerOne = GamePlayer(userName: playerName)
-
-        // Create a game room
         gameRoom = GameRoom(roomName: roomName,
                             repository: firebaseRepository) { success in
             if success {
-                print("Room created successfully")
-            } else {
-                print("Failed to create room")
+                self.joinRoom(player: playerOne)
             }
         }
-        gameRoom?.joinRoom(player: playerOne, completion: { success in
+
+    }
+    func joinRoom(player: GamePlayer) {
+        // Create a game room
+        gameRoom?.joinRoom(player: player, completion: { success in
             if success {
                print("Successfully joined the room")
+
             }
         })
         performSegue(withIdentifier: "segueToWaitingRoom", sender: self)
@@ -55,13 +56,14 @@ class GameRoomViewController: UIViewController {
             // Show an alert or some indication to the user that inputs are empty
             return
         }
-        let room = GameRoom.findRoomWithName(roomName, repo: firebaseRepository)
         let player = GamePlayer(userName: playerName)
-        room?.joinRoom(player: player, completion: { success in
-            if success {
-                print("Successfully joined the room")
+        GameRoom.findRoomWithName(roomName) { room in
+            if let room = room {
+                self.joinRoom(player: player)
+            } else {
+
             }
-        })
+        }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToWaitingRoom" {

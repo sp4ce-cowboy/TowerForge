@@ -37,30 +37,36 @@ class GameRoom {
         self.roomName = roomName
         self.roomState = roomState
         self.firebaseRepository = repository
+
         // Check if the room name is available
-        isRoomNameAvailable(roomName: roomName) { [weak self] isAvailable in
-            guard let self = self else { return }
+        isRoomNameAvailable(roomName: roomName) { isAvailable in
 
             // If the room name is available, try to join the room
             guard isAvailable else {
                 completion(false)
                 return
             }
+
+            self.postRoomDataToFirebase {  _, _ in
+                self.makeRoomListener()
+                completion(true)
+            }
         }
+
     }
     init(roomName: String, roomState: RoomState? = nil) {
         self.roomName = roomName
         self.roomState = roomState
     }
-    private func postRoomDataToFirebase() throws {
-        guard let firebaseRepository = firebaseRepository else {
-            return
+    private func postRoomDataToFirebase(completion: ((_ err: Any?, _ result: String?) -> Void)?) {
+        let roomRef = FirebaseDatabaseReference(.Rooms).child(roomName)
+        roomRef.updateChildValues(["roomName": roomName as NSString? ]) { err, snap in
+                if err != nil {
+                    completion?(err, nil)
+                } else {
+                    completion?(nil, snap.key)
+                }
         }
-        let roomData = RoomData(roomName: roomName,
-                                roomState: roomState)
-
-        // Post room data to Firebase collection
-        try firebaseRepository.postData(data: roomData, from: .Rooms)
     }
     func joinRoom(player: GamePlayer, completion: @escaping (Bool) -> Void) {
         if isRoomFull {
@@ -71,11 +77,9 @@ class GameRoom {
             } else {
                 playerTwo = player
             }
-            let playerDict: [String: Any] = [
-                "userName": player.userName
-            ]
-            let playerRef = roomRef.child("players")
-            playerRef.setValue(playerDict)
+            let playerRef = roomRef.child(roomName).child("players").childByAutoId()
+            playerRef.setValue(player.userName)
+            player.userPlayerId = playerRef.key
             completion(true) // Successfully joined the room
         }
     }
@@ -109,43 +113,40 @@ class GameRoom {
             }
         }
     }
-    static func findRoomWithName(_ roomName: String, repo: FirebaseRepository) -> GameRoom? {
+    static func findRoomWithName(_ roomName: String, completion: @escaping (GameRoom?) -> Void) {
         let roomRef = FirebaseDatabaseReference(.Rooms).child(roomName)
-        var room: GameRoom?
-        roomRef.observeSingleEvent(of: .value) { snapshot in
+        roomRef.getData { _, snapshot in
+            if let snap = snapshot {
+                if snap.exists() {
+                    let room = GameRoom(roomName: roomName, roomState: .waitingForPlayers)
+                    completion(room)
+                } else {
+                    completion(nil)
+                }
 
-            if let data = snapshot.value {
-                return
+            } else {
+                completion(nil)
             }
 
-            // Create a GameRoom object
-            room = GameRoom(roomName: roomName,
-                            roomState: .waitingForPlayers)
-
         }
-        return room
     }
     private func makeRoomListener() {
         roomRef.removeAllObservers()
-        roomRef.observe(.value) { [weak self] snapshot in
-            guard let dict = snapshot.value as? [String: Any?] else {
-                return
-            }
+        roomRef.child(roomName).observe(.value) { [weak self] _ in
             self?.gameRoomDelegate?.onRoomChange()
         }
     }
     private func isRoomNameAvailable(roomName: String, completion: @escaping (Bool) -> Void?) {
-        let ref = FirebaseDatabaseReference(.Rooms)
-        ref.observeSingleEvent(of: .value) { snapshot  in
-            if snapshot.exists() {
-                if snapshot.hasChild(roomName) {
+        FirebaseDatabaseReference(.Rooms).child(roomName).getData { _, snapshot in
+            if let snap = snapshot {
+                if snap.exists() {
                     completion(false)
-                } else {
-                    completion(true)
                 }
+                completion(true)
             } else {
                 completion(true)
             }
         }
+
     }
 }

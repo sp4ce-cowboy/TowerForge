@@ -38,7 +38,6 @@ class GameModeViewController: UIViewController {
             return
         }
         gameViewController.gameMode = selectedGameMode
-        print(selectedGameMode)
         present(gameViewController, animated: true, completion: nil)
     }
 }
