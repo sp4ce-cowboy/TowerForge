@@ -41,4 +41,5 @@ class ObjectSet {
         .totalKillsAchievement: { TotalKillsAchievement() },
         .totalGamesAchievement: { TotalGamesAchievement() }
     ]
+
 }
