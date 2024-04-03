@@ -28,11 +28,10 @@ struct RequestSpawnEvent: TFEvent {
         self.player = player
     }
 
-    func execute(in target: any EventTarget) -> EventOutput? {
-        guard let homeSystem = target.system(ofType: HomeSystem.self) else {
-            return nil
+    func execute(in target: any EventTarget) -> EventOutput {
+        if let homeSystem = target.system(ofType: HomeSystem.self) {
+            homeSystem.attemptSpawn(at: position, ofType: entityType, for: player)
         }
-        homeSystem.attemptSpawn(at: position, ofType: entityType, for: player)
-        return nil
+        return EventOutput()
     }
 }

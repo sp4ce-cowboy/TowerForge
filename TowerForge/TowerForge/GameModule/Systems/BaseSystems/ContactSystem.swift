@@ -76,9 +76,7 @@ class ContactSystem: TFSystem {
     }
 
     private func handleContact(between entityA: TFEntity, and entityB: TFEntity) {
-        guard let event = entityA.collide(with: entityB) else {
-            return
-        }
+        let event = entityA.collide(with: entityB)
         eventManager.add(event)
     }
 

@@ -31,20 +31,17 @@ class MeleeUnit: BaseUnit, PlayerSpawnable {
                                           temporary: false))
     }
 
-    override func collide(with other: any Collidable) -> (any TFEvent)? {
+    override func collide(with other: any Collidable) -> TFEvent {
         let superEvent = super.collide(with: other)
         guard let damageComponent = self.component(ofType: DamageComponent.self) else {
             return superEvent
         }
-        if let superEvent = superEvent {
-            return superEvent.concurrentlyWith(other.collide(with: damageComponent))
-        }
-        return other.collide(with: damageComponent)
+        return superEvent.concurrentlyWith(other.collide(with: damageComponent))
     }
 
-    override func collide(with healthComponent: HealthComponent) -> (any TFEvent)? {
+    override func collide(with healthComponent: HealthComponent) -> TFEvent {
         guard let damageComponent = self.component(ofType: DamageComponent.self) else {
-            return nil
+            return DisabledEvent()
         }
         return damageComponent.damage(healthComponent)
     }

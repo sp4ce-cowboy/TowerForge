@@ -41,7 +41,7 @@ class PositionSystem: TFSystem {
             return
         }
         // TODO: Might need some change
-        if let baseUnit = entity as? BaseUnit {
+        if entity is BaseUnit {
             eventManager.add(LifeEvent(on: entity.id, at: CACurrentMediaTime(),
                                        reduceBy: 1, player: playerComponent.player))
         }

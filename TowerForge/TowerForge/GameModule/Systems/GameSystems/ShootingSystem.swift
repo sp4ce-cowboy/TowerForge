@@ -25,30 +25,29 @@ class ShootingSystem: TFSystem {
 
         for shootingComponent in shootingComponents {
             for healthComponent in targetableHealthComponents {
-                guard let event = attemptShoot(with: shootingComponent, at: healthComponent) else {
-                    continue
-                }
+                let event = attemptShoot(with: shootingComponent, at: healthComponent)
+                if event is DisabledEvent { continue }
                 eventManager.add(event)
                 break
             }
         }
     }
 
-    func attemptShoot(with shootingComponent: ShootingComponent, at healthComponent: HealthComponent) -> TFEvent? {
+    func attemptShoot(with shootingComponent: ShootingComponent, at healthComponent: HealthComponent) -> TFEvent {
         guard shootingComponent.canShoot, let shootingEntity = shootingComponent.entity,
               let targetEntity = healthComponent.entity else {
-            return nil
+            return DisabledEvent()
         }
 
         guard let shootingPlayer = shootingEntity.component(ofType: PlayerComponent.self)?.player,
               let targetPlayer = targetEntity.component(ofType: PlayerComponent.self)?.player,
               shootingPlayer != targetPlayer else {
-            return nil
+            return DisabledEvent()
         }
 
         guard let shootingPosition = shootingEntity.component(ofType: PositionComponent.self)?.position,
               let targetPosition = targetEntity.component(ofType: PositionComponent.self)?.position else {
-            return nil
+            return DisabledEvent()
         }
 
         let direction = shootingPlayer == .ownPlayer ? -1.0 : 1.0
@@ -56,7 +55,7 @@ class ShootingSystem: TFSystem {
 
         guard distance > 0, distance <= shootingComponent.range,
               abs(shootingPosition.y - targetPosition.y) <= 50 else {
-            return nil
+            return DisabledEvent()
         }
 
         shootingComponent.shoot()

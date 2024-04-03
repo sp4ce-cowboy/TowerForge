@@ -29,7 +29,7 @@ class GameScene: SKScene {
         let previousLocation = touch.previousLocation(in: self)
         let translation = CGVector(point: location - previousLocation)
 
-        if translation.length() < 5 {
+        if translation.length() < 2 {
             updateDelegate?.touch(at: location)
         }
     }

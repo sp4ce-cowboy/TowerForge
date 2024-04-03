@@ -20,11 +20,10 @@ struct LifeEvent: TFEvent {
         self.player = player
     }
 
-    func execute(in target: any EventTarget) -> EventOutput? {
-        guard let homeSystem = target.system(ofType: HomeSystem.self) else {
-            return nil
+    func execute(in target: any EventTarget) -> EventOutput {
+        if let homeSystem = target.system(ofType: HomeSystem.self) {
+            homeSystem.reduceLife(for: player.getOppositePlayer(), reduction: lifeDecrease)
         }
-        homeSystem.reduceLife(for: player.getOppositePlayer(), reduction: lifeDecrease)
-        return nil
+        return EventOutput()
     }
 }
