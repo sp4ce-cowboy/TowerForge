@@ -61,9 +61,13 @@
 		523923E72BADC8530044BA61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 523923E62BADC8530044BA61 /* LaunchScreen.storyboard */; };
 		523AA3BD2BB88ED10041E60D /* WizardBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523AA3BC2BB88ED10041E60D /* WizardBall.swift */; };
 		523AA3BF2BB88FBF0041E60D /* WizardUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523AA3BE2BB88FBF0041E60D /* WizardUnit.swift */; };
+		523C29212BBCF1A8004C6EAC /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 523C29202BBCF1A8004C6EAC /* FirebaseDatabase */; };
+		523C29232BBCF1A8004C6EAC /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 523C29222BBCF1A8004C6EAC /* FirebaseDatabaseSwift */; };
+		523C29252BBCFA13004C6EAC /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 523C29242BBCFA13004C6EAC /* FirebaseDatabase */; };
+		523C29272BBCFA13004C6EAC /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 523C29262BBCFA13004C6EAC /* FirebaseDatabaseSwift */; };
+		523C29282BBCFD93004C6EAC /* Nosifer-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5240D0952BB04E57004F1486 /* Nosifer-Regular.ttf */; };
 		5240D08F2BAE6D0A004F1486 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D08E2BAE6D0A004F1486 /* Point.swift */; };
 		5240D0912BAF3453004F1486 /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0902BAF3453004F1486 /* Life.swift */; };
-		5240D0962BB04E57004F1486 /* Nosifer-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5240D0952BB04E57004F1486 /* Nosifer-Regular.ttf */; };
 		5240D0A02BB330B5004F1486 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D09F2BB330B4004F1486 /* GameMode.swift */; };
 		5240D0A22BB33183004F1486 /* DeathMatchMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0A12BB33183004F1486 /* DeathMatchMode.swift */; };
 		5240D0A52BB332FB004F1486 /* GameProp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0A42BB332FB004F1486 /* GameProp.swift */; };
@@ -93,7 +97,17 @@
 		5295A20F2BAAE7CF005018A8 /* TeamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A20E2BAAE7CF005018A8 /* TeamController.swift */; };
 		5295A2132BAAEA16005018A8 /* UnitNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2122BAAEA16005018A8 /* UnitNode.swift */; };
 		5295A2152BAAF335005018A8 /* UnitSelectionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2142BAAF335005018A8 /* UnitSelectionNode.swift */; };
+		5298D7932BBC2AC9005177A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5298D7922BBC2AC9005177A1 /* GoogleService-Info.plist */; };
 		529F91882BA6D7A7009551D9 /* SoldierUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F91872BA6D7A7009551D9 /* SoldierUnit.swift */; };
+		52A794022BBC2EB30083C976 /* FirebaseReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794012BBC2EB30083C976 /* FirebaseReference.swift */; };
+		52A794042BBC2FBF0083C976 /* FirebaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794032BBC2FBF0083C976 /* FirebaseRepository.swift */; };
+		52A794062BBC32A10083C976 /* FirebaseRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794052BBC32A00083C976 /* FirebaseRepositoryProtocol.swift */; };
+		52A794092BBC35F20083C976 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794082BBC35F20083C976 /* Constant.swift */; };
+		52A794112BBC48FE0083C976 /* GameRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794102BBC48FE0083C976 /* GameRoom.swift */; };
+		52A794152BBC4EF50083C976 /* GameRoomDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794142BBC4EF50083C976 /* GameRoomDelegate.swift */; };
+		52A794172BBC4F690083C976 /* GamePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794162BBC4F690083C976 /* GamePlayer.swift */; };
+		52A794192BBC630F0083C976 /* RoomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794182BBC630F0083C976 /* RoomData.swift */; };
+		52A7941B2BBC726E0083C976 /* GameRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7941A2BBC726E0083C976 /* GameRoomViewController.swift */; };
 		52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FA72BA32B2300135367 /* AppDelegate.swift */; };
 		52DF5FAA2BA32B2300135367 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52DF5FA92BA32B2300135367 /* GameScene.sks */; };
 		52DF5FAC2BA32B2300135367 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52DF5FAB2BA32B2300135367 /* Actions.sks */; };
@@ -118,7 +132,14 @@
 		52DF5FFB2BA3601400135367 /* HealthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FFA2BA3601400135367 /* HealthComponent.swift */; };
 		52DF5FFF2BA3656500135367 /* ShootingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FFE2BA3656500135367 /* ShootingComponent.swift */; };
 		52F268702BB4B319009599AD /* GameModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F2686F2BB4B319009599AD /* GameModeViewController.swift */; };
+		9B04060D2BB875740026E903 /* EventTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B04060C2BB875740026E903 /* EventTransformation.swift */; };
+		9B0406102BB879990026E903 /* InvulnerabilityPowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B04060F2BB879990026E903 /* InvulnerabilityPowerUp.swift */; };
+		9B0406122BB889940026E903 /* PowerUpNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0406112BB889940026E903 /* PowerUpNode.swift */; };
+		9B0406142BB89BE00026E903 /* PowerUpSelectionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0406132BB89BE00026E903 /* PowerUpSelectionNode.swift */; };
+		9B0406162BB89E140026E903 /* InvulnerabilityPowerUpDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0406152BB89E140026E903 /* InvulnerabilityPowerUpDelegate.swift */; };
+		9B0406182BB8A1E10026E903 /* PowerUpDelegateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0406172BB8A1E10026E903 /* PowerUpDelegateFactory.swift */; };
 		9B8696552BAD759F0002377C /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8696542BAD759F0002377C /* Grid.swift */; };
+		9BC60BC82BB9BE6D001A6737 /* DisabledEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC60BC72BB9BE6D001A6737 /* DisabledEvent.swift */; };
 		9BD669682BAFDE5E00DC8C4C /* GridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD669672BAFDE5E00DC8C4C /* GridDelegate.swift */; };
 		BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */; };
 		BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */; };
@@ -250,7 +271,17 @@
 		5295A20E2BAAE7CF005018A8 /* TeamController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamController.swift; sourceTree = "<group>"; };
 		5295A2122BAAEA16005018A8 /* UnitNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitNode.swift; sourceTree = "<group>"; };
 		5295A2142BAAF335005018A8 /* UnitSelectionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitSelectionNode.swift; sourceTree = "<group>"; };
+		5298D7922BBC2AC9005177A1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		529F91872BA6D7A7009551D9 /* SoldierUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldierUnit.swift; sourceTree = "<group>"; };
+		52A794012BBC2EB30083C976 /* FirebaseReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseReference.swift; sourceTree = "<group>"; };
+		52A794032BBC2FBF0083C976 /* FirebaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRepository.swift; sourceTree = "<group>"; };
+		52A794052BBC32A00083C976 /* FirebaseRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRepositoryProtocol.swift; sourceTree = "<group>"; };
+		52A794082BBC35F20083C976 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		52A794102BBC48FE0083C976 /* GameRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRoom.swift; sourceTree = "<group>"; };
+		52A794142BBC4EF50083C976 /* GameRoomDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRoomDelegate.swift; sourceTree = "<group>"; };
+		52A794162BBC4F690083C976 /* GamePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayer.swift; sourceTree = "<group>"; };
+		52A794182BBC630F0083C976 /* RoomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomData.swift; sourceTree = "<group>"; };
+		52A7941A2BBC726E0083C976 /* GameRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRoomViewController.swift; sourceTree = "<group>"; };
 		52DF5FA42BA32B2300135367 /* TowerForge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TowerForge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DF5FA72BA32B2300135367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52DF5FA92BA32B2300135367 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -278,7 +309,14 @@
 		52DF5FFA2BA3601400135367 /* HealthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthComponent.swift; sourceTree = "<group>"; };
 		52DF5FFE2BA3656500135367 /* ShootingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShootingComponent.swift; sourceTree = "<group>"; };
 		52F2686F2BB4B319009599AD /* GameModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeViewController.swift; sourceTree = "<group>"; };
+		9B04060C2BB875740026E903 /* EventTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTransformation.swift; sourceTree = "<group>"; };
+		9B04060F2BB879990026E903 /* InvulnerabilityPowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvulnerabilityPowerUp.swift; sourceTree = "<group>"; };
+		9B0406112BB889940026E903 /* PowerUpNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpNode.swift; sourceTree = "<group>"; };
+		9B0406132BB89BE00026E903 /* PowerUpSelectionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpSelectionNode.swift; sourceTree = "<group>"; };
+		9B0406152BB89E140026E903 /* InvulnerabilityPowerUpDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvulnerabilityPowerUpDelegate.swift; sourceTree = "<group>"; };
+		9B0406172BB8A1E10026E903 /* PowerUpDelegateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpDelegateFactory.swift; sourceTree = "<group>"; };
 		9B8696542BAD759F0002377C /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		9BC60BC72BB9BE6D001A6737 /* DisabledEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledEvent.swift; sourceTree = "<group>"; };
 		9BD669672BAFDE5E00DC8C4C /* GridDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridDelegate.swift; sourceTree = "<group>"; };
 		BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
 		BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
@@ -311,6 +349,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				523C29232BBCF1A8004C6EAC /* FirebaseDatabaseSwift in Frameworks */,
+				523C29212BBCF1A8004C6EAC /* FirebaseDatabase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +358,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				523C29272BBCFA13004C6EAC /* FirebaseDatabaseSwift in Frameworks */,
+				523C29252BBCFA13004C6EAC /* FirebaseDatabase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +402,7 @@
 				3C9955C12BA5838900D33FA5 /* EventOutput.swift */,
 				3C9955BF2BA57E5500D33FA5 /* EventTarget.swift */,
 				3C9955C72BA5865C00D33FA5 /* ConcurrentEvent.swift */,
+				9B04060C2BB875740026E903 /* EventTransformation.swift */,
 				BAFFB93C2BB0A5B200D8301F /* GameEvents */,
 				BAFFB93B2BB0A5AD00D8301F /* PlayerEvents */,
 			);
@@ -494,6 +537,8 @@
 			children = (
 				5295A2122BAAEA16005018A8 /* UnitNode.swift */,
 				5295A2142BAAF335005018A8 /* UnitSelectionNode.swift */,
+				9B0406112BB889940026E903 /* PowerUpNode.swift */,
+				9B0406132BB89BE00026E903 /* PowerUpSelectionNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -504,19 +549,66 @@
 				52DF5FAF2BA32B2300135367 /* GameViewController.swift */,
 				3CCF9CB62BAB2877004D170E /* MainMenuViewController.swift */,
 				52F2686F2BB4B319009599AD /* GameModeViewController.swift */,
+				52A7941A2BBC726E0083C976 /* GameRoomViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		52A794002BBC2E940083C976 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				52A794012BBC2EB30083C976 /* FirebaseReference.swift */,
+				52A794032BBC2FBF0083C976 /* FirebaseRepository.swift */,
+				52A794052BBC32A00083C976 /* FirebaseRepositoryProtocol.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		52A794072BBC35E30083C976 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				52A794082BBC35F20083C976 /* Constant.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		52A7940E2BBC476B0083C976 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				52A7940F2BBC47770083C976 /* RoomNetwork */,
+				52A794162BBC4F690083C976 /* GamePlayer.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		52A7940F2BBC47770083C976 /* RoomNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				52A794102BBC48FE0083C976 /* GameRoom.swift */,
+				52A794142BBC4EF50083C976 /* GameRoomDelegate.swift */,
+				52A794182BBC630F0083C976 /* RoomData.swift */,
+			);
+			path = RoomNetwork;
+			sourceTree = "<group>";
+		};
+		52AAF7442BBCEFB9006C0095 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		52DF5F9B2BA32B2200135367 = {
 			isa = PBXGroup;
 			children = (
 				BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */,
+				5298D7922BBC2AC9005177A1 /* GoogleService-Info.plist */,
 				52DF5FB42BA32B2600135367 /* Assets.xcassets */,
 				52DF5FA62BA32B2300135367 /* TowerForge */,
 				52DF5FC02BA32B2600135367 /* TowerForgeTests */,
 				52DF5FCA2BA32B2600135367 /* TowerForgeUITests */,
 				52DF5FA52BA32B2300135367 /* Products */,
+				52AAF7442BBCEFB9006C0095 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -533,6 +625,9 @@
 		52DF5FA62BA32B2300135367 /* TowerForge */ = {
 			isa = PBXGroup;
 			children = (
+				52A7940E2BBC476B0083C976 /* Networking */,
+				52A794072BBC35E30083C976 /* Constants */,
+				52A794002BBC2E940083C976 /* Firebase */,
 				5240D0972BB0522A004F1486 /* Info.plist */,
 				3C3CBDFD2BB870770001B8A9 /* Extensions */,
 				BA443D432BAD98CD009F0FFB /* AppMain */,
@@ -606,6 +701,16 @@
 				52578B882BA620A900B4D76C /* BaseComponents */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		9B04060E2BB879720026E903 /* PowerUps */ = {
+			isa = PBXGroup;
+			children = (
+				9B0406172BB8A1E10026E903 /* PowerUpDelegateFactory.swift */,
+				9B04060F2BB879990026E903 /* InvulnerabilityPowerUp.swift */,
+				9B0406152BB89E140026E903 /* InvulnerabilityPowerUpDelegate.swift */,
+			);
+			path = PowerUps;
 			sourceTree = "<group>";
 		};
 		9BD669662BAFDCCA00DC8C4C /* Grid */ = {
@@ -689,6 +794,7 @@
 		BAFFB9332BB0A24400D8301F /* GameModule */ = {
 			isa = PBXGroup;
 			children = (
+				9B04060E2BB879720026E903 /* PowerUps */,
 				5240D0A32BB3321B004F1486 /* GameProps */,
 				5240D0982BB32B9B004F1486 /* GameModes */,
 				BAFFB94A2BB11F9800D8301F /* GameEngine.swift */,
@@ -786,6 +892,7 @@
 				BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */,
 				5240D0AE2BB3B415004F1486 /* LifeEvent.swift */,
 				527A077B2BB3F4CC00CD9D08 /* KillEvent.swift */,
+				9BC60BC72BB9BE6D001A6737 /* DisabledEvent.swift */,
 			);
 			path = GameEvents;
 			sourceTree = "<group>";
@@ -903,6 +1010,10 @@
 			dependencies = (
 			);
 			name = TowerForge;
+			packageProductDependencies = (
+				523C29202BBCF1A8004C6EAC /* FirebaseDatabase */,
+				523C29222BBCF1A8004C6EAC /* FirebaseDatabaseSwift */,
+			);
 			productName = TowerForge;
 			productReference = 52DF5FA42BA32B2300135367 /* TowerForge.app */;
 			productType = "com.apple.product-type.application";
@@ -921,6 +1032,10 @@
 				52DF5FBF2BA32B2600135367 /* PBXTargetDependency */,
 			);
 			name = TowerForgeTests;
+			packageProductDependencies = (
+				523C29242BBCFA13004C6EAC /* FirebaseDatabase */,
+				523C29262BBCFA13004C6EAC /* FirebaseDatabaseSwift */,
+			);
 			productName = TowerForgeTests;
 			productReference = 52DF5FBD2BA32B2600135367 /* TowerForgeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -975,6 +1090,9 @@
 				Base,
 			);
 			mainGroup = 52DF5F9B2BA32B2200135367;
+			packageReferences = (
+				523C291F2BBCF1A8004C6EAC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 52DF5FA52BA32B2300135367 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -991,13 +1109,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				523C29282BBCFD93004C6EAC /* Nosifer-Regular.ttf in Resources */,
 				52DF5FB32BA32B2300135367 /* Main.storyboard in Resources */,
+				5298D7932BBC2AC9005177A1 /* GoogleService-Info.plist in Resources */,
 				52DF5FAA2BA32B2300135367 /* GameScene.sks in Resources */,
 				52DF5FB52BA32B2600135367 /* Assets.xcassets in Resources */,
 				52DF5FB82BA32B2600135367 /* Launch Screen.storyboard in Resources */,
 				52DF5FAC2BA32B2300135367 /* Actions.sks in Resources */,
 				523923E72BADC8530044BA61 /* LaunchScreen.storyboard in Resources */,
-				5240D0962BB04E57004F1486 /* Nosifer-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1043,6 +1162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B0406122BB889940026E903 /* PowerUpNode.swift in Sources */,
 				3CCF9CAF2BAB1A96004D170E /* SceneUpdateDelegate.swift in Sources */,
 				BAFFB9592BB345CF00D8301F /* Storage.swift in Sources */,
 				3CAC4A692BB697A400A5D22E /* SpriteRenderStage.swift in Sources */,
@@ -1051,6 +1171,7 @@
 				3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */,
 				BAFFB9602BB9828B00D8301F /* Achievement.swift in Sources */,
 				5295A20F2BAAE7CF005018A8 /* TeamController.swift in Sources */,
+				9B04060D2BB875740026E903 /* EventTransformation.swift in Sources */,
 				3C9955A52BA47DC600D33FA5 /* BaseProjectile.swift in Sources */,
 				BAFFB9552BB342FE00D8301F /* Storable.swift in Sources */,
 				52578B8C2BA627B200B4D76C /* Team.swift in Sources */,
@@ -1070,12 +1191,16 @@
 				3C9955C22BA5838900D33FA5 /* EventOutput.swift in Sources */,
 				BAFFB96C2BB9AB2400D8301F /* Database.swift in Sources */,
 				5240D0912BAF3453004F1486 /* Life.swift in Sources */,
+				52A794192BBC630F0083C976 /* RoomData.swift in Sources */,
 				52DF5FAE2BA32B2300135367 /* GameScene.swift in Sources */,
 				52578B822BA61AAF00B4D76C /* PositionComponent.swift in Sources */,
+				9BC60BC82BB9BE6D001A6737 /* DisabledEvent.swift in Sources */,
+				52A794022BBC2EB30083C976 /* FirebaseReference.swift in Sources */,
 				3C9955A32BA47DBB00D33FA5 /* BaseUnit.swift in Sources */,
 				523AA3BD2BB88ED10041E60D /* WizardBall.swift in Sources */,
 				527A07782BB3F31100CD9D08 /* Death.swift in Sources */,
 				3C9955BA2BA5637200D33FA5 /* DamageEvent.swift in Sources */,
+				52A794172BBC4F690083C976 /* GamePlayer.swift in Sources */,
 				3CE951632BAE037C008B2785 /* AiSystem.swift in Sources */,
 				3CE9515F2BADE2C5008B2785 /* ShootingSystem.swift in Sources */,
 				5240D0AB2BB3340F004F1486 /* CaptureTheFlagMode.swift in Sources */,
@@ -1088,6 +1213,8 @@
 				9B8696552BAD759F0002377C /* Grid.swift in Sources */,
 				527A077E2BB3F75700CD9D08 /* Timer.swift in Sources */,
 				52578B872BA6209700B4D76C /* DamageComponent.swift in Sources */,
+				9B0406182BB8A1E10026E903 /* PowerUpDelegateFactory.swift in Sources */,
+				52A794152BBC4EF50083C976 /* GameRoomDelegate.swift in Sources */,
 				52DF5FB02BA32B2300135367 /* GameViewController.swift in Sources */,
 				3CE951512BAC8955008B2785 /* Renderable.swift in Sources */,
 				BAFFB9712BBA830F00D8301F /* StorageManager+Operations.swift in Sources */,
@@ -1098,12 +1225,15 @@
 				523AA3BF2BB88FBF0041E60D /* WizardUnit.swift in Sources */,
 				3C9955C02BA57E5500D33FA5 /* EventTarget.swift in Sources */,
 				3CCF9CB12BAB1BCE004D170E /* GameWorld.swift in Sources */,
+				9B0406162BB89E140026E903 /* InvulnerabilityPowerUpDelegate.swift in Sources */,
 				5295A2152BAAF335005018A8 /* UnitSelectionNode.swift in Sources */,
 				52DF5FF92BA35D2B00135367 /* MovableComponent.swift in Sources */,
 				527A07822BB3F8D300CD9D08 /* TimerProp.swift in Sources */,
 				52DF5FDE2BA32D7E00135367 /* EntityManager.swift in Sources */,
+				52A794112BBC48FE0083C976 /* GameRoom.swift in Sources */,
 				527A077C2BB3F4CC00CD9D08 /* KillEvent.swift in Sources */,
 				3C3CBE012BB870950001B8A9 /* CGVector+Extensions.swift in Sources */,
+				52A794092BBC35F20083C976 /* Constant.swift in Sources */,
 				3C9955C82BA5865C00D33FA5 /* ConcurrentEvent.swift in Sources */,
 				52F268702BB4B319009599AD /* GameModeViewController.swift in Sources */,
 				527A07762BB3E4CF00CD9D08 /* GameState.swift in Sources */,
@@ -1127,6 +1257,7 @@
 				52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */,
 				5240D08F2BAE6D0A004F1486 /* Point.swift in Sources */,
 				3C769A742BA591BD00F454F9 /* SpawnSystem.swift in Sources */,
+				52A7941B2BBC726E0083C976 /* GameRoomViewController.swift in Sources */,
 				527A07862BB411FB00CD9D08 /* GameOverScene.swift in Sources */,
 				3C9955B12BA4ACA100D33FA5 /* Bullet.swift in Sources */,
 				3CA829C62BB719A500D8E72A /* ButtonRenderStage.swift in Sources */,
@@ -1134,6 +1265,8 @@
 				527A07802BB3F81C00CD9D08 /* TimerComponent.swift in Sources */,
 				BAFFB9662BB98ADC00D8301F /* AchievementStorage.swift in Sources */,
 				3C769A722BA58DE700F454F9 /* MovementSystem.swift in Sources */,
+				52A794062BBC32A10083C976 /* FirebaseRepositoryProtocol.swift in Sources */,
+				9B0406102BB879990026E903 /* InvulnerabilityPowerUp.swift in Sources */,
 				9BD669682BAFDE5E00DC8C4C /* GridDelegate.swift in Sources */,
 				52DF5FEB2BA3400C00135367 /* TFAnimatableNode.swift in Sources */,
 				5295A2042BA9FED4005018A8 /* MenuScene.swift in Sources */,
@@ -1146,6 +1279,7 @@
 				3C9955C52BA585DD00D33FA5 /* HealthSystem.swift in Sources */,
 				5240D0A02BB330B5004F1486 /* GameMode.swift in Sources */,
 				520062562BA8E026000DBA30 /* PlayerSpawnable.swift in Sources */,
+				9B0406142BB89BE00026E903 /* PowerUpSelectionNode.swift in Sources */,
 				5240D0A22BB33183004F1486 /* DeathMatchMode.swift in Sources */,
 				3CAC4A6F2BB6A4F200A5D22E /* LabelRenderStage.swift in Sources */,
 				3C0B608D2BB2B84000FFECB4 /* ContactComponent.swift in Sources */,
@@ -1154,6 +1288,7 @@
 				3C9955BC2BA563A800D33FA5 /* TFEvent.swift in Sources */,
 				527A077A2BB3F35300CD9D08 /* DeathProp.swift in Sources */,
 				BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */,
+				52A794042BBC2FBF0083C976 /* FirebaseRepository.swift in Sources */,
 				527A07742BB3D8E800CD9D08 /* GameModeFactory.swift in Sources */,
 				5240D0AF2BB3B415004F1486 /* LifeEvent.swift in Sources */,
 				5295A2072BAA02FD005018A8 /* TFButtonNode.swift in Sources */,
@@ -1281,6 +1416,10 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1337,6 +1476,10 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
@@ -1551,6 +1694,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		523C291F2BBCF1A8004C6EAC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.23.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		523C29202BBCF1A8004C6EAC /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 523C291F2BBCF1A8004C6EAC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		523C29222BBCF1A8004C6EAC /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 523C291F2BBCF1A8004C6EAC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		523C29242BBCFA13004C6EAC /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 523C291F2BBCF1A8004C6EAC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		523C29262BBCFA13004C6EAC /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 523C291F2BBCF1A8004C6EAC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 52DF5F9C2BA32B2200135367 /* Project object */;
 }

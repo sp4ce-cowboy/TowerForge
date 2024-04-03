@@ -12,11 +12,13 @@ struct DamageEvent: TFEvent {
     let timestamp: TimeInterval
     let entityId: UUID
     let damage: CGFloat
+    let player: Player
 
-    init(on entityId: UUID, at timestamp: TimeInterval, with damage: CGFloat) {
+    init(on entityId: UUID, at timestamp: TimeInterval, with damage: CGFloat, player: Player) {
         self.timestamp = timestamp
         self.entityId = entityId
         self.damage = damage
+        self.player = player
     }
 
     func execute(in target: any EventTarget) -> EventOutput? {

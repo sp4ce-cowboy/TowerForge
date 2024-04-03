@@ -28,4 +28,10 @@ struct ConcurrentEvent: TFEvent {
         eventOutput1?.combine(with: eventOutput2)
         return eventOutput1 != nil ? eventOutput1 : eventOutput2
     }
+
+    func transform(eventTransformation: EventTransformation) -> TFEvent {
+        let transform1 = eventTransformation.transformEvent(event: event1)
+        let transform2 = eventTransformation.transformEvent(event: event2)
+        return ConcurrentEvent(transform1, transform2)
+    }
 }
