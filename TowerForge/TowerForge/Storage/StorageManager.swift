@@ -34,9 +34,9 @@ class StorageManager {
     static let fileName = Constants.TF_DATABASE_NAME
 
     internal static let shared = StorageManager() // Singleton instance (might need to consider)
-    internal var storedDatabase: Database
+    internal var storedDatabase: LocalDatabase
 
-    init(storedData: Database = Database()) {
+    init(storedData: LocalDatabase = LocalDatabase()) {
         self.storedDatabase = storedData
     }
 
@@ -47,7 +47,7 @@ class StorageManager {
             StorageManager.shared.storedDatabase = loadedDatabase
             Logger.log("Loaded existing database.", Self.self)
         } else {
-            StorageManager.shared.storedDatabase = Database() // Create empty database
+            StorageManager.shared.storedDatabase = LocalDatabase() // Create empty database
             StorageManager.shared.saveToFile() // Save the new empty database
             Logger.log("Created and saved a new empty database.", Self.self)
         }
@@ -72,13 +72,13 @@ class StorageManager {
     }
 
     /// Loads a database (with the class constant folderName and fileName) from file
-    func loadFromFile() -> Database? {
+    func loadFromFile() -> LocalDatabase? {
         do {
             let folderURL = try Self.createFolderIfNeeded(folderName: Self.folderName)
             let fileURL = folderURL.appendingPathComponent(Self.fileName)
             let data = try Data(contentsOf: fileURL)
             let decoder = JSONDecoder()
-            return try decoder.decode(Database.self, from: data)
+            return try decoder.decode(LocalDatabase.self, from: data)
         } catch {
             Logger.log("Error loading Storage: \(error)")
             return nil

@@ -8,7 +8,7 @@
 import Foundation
 
 /// An Abstract data type to store a collection of Storages.
-final class Database: Codable {
+final class LocalDatabase: Codable {
 
     var storedData: [TFStorageType: Storage] = [:]
 
