@@ -6,16 +6,16 @@
 //
 
 import Foundation
+import FirebaseDatabaseInternal
 
 class GameRoom {
     private(set) var roomName: String
-    private(set) var roomId: RoomId?
     private(set) var roomState: RoomState?
 
     private(set) var playerOne: GamePlayer?
     private(set) var playerTwo: GamePlayer?
 
-    private(set) var firebaseRepository: FirebaseRepository
+    private(set) var firebaseRepository: FirebaseRepository?
 
     let roomRef = FirebaseDatabaseReference(.Rooms)
 
@@ -32,7 +32,6 @@ class GameRoom {
     // the player creating the room will auto join the room
     init?(roomName: String,
           roomState: RoomState? = nil,
-          roomCreator: GamePlayer,
           repository: FirebaseRepository,
           completion: @escaping (Bool) -> Void) {
         self.roomName = roomName
@@ -47,24 +46,16 @@ class GameRoom {
                 completion(false)
                 return
             }
-
-            self.joinRoom(player: roomCreator) { successful in
-                // Check if joining the room was successful
-                guard successful else {
-                    completion(false) // Failed to join the room
-                    return
-                }
-                do {
-                    try self.postRoomDataToFirebase()
-                } catch {
-                    completion(false)
-                }
-                completion(true)
-            }
         }
-
+    }
+    init(roomName: String, roomState: RoomState? = nil) {
+        self.roomName = roomName
+        self.roomState = roomState
     }
     private func postRoomDataToFirebase() throws {
+        guard let firebaseRepository = firebaseRepository else {
+            return
+        }
         let roomData = RoomData(roomName: roomName,
                                 roomState: roomState)
 
@@ -89,13 +80,8 @@ class GameRoom {
         }
     }
     func leaveRoom(player: GamePlayer, completion: @escaping (Bool) -> Void) {
-        guard let roomId = roomId else {
-            // Room ID is not set, unable to leave
-            completion(false)
-            return
-        }
 
-        let roomPlayersRef = roomRef.child(roomId)
+        let roomPlayersRef = roomRef.child(roomName)
 
         roomPlayersRef.observeSingleEvent(of: .value) { snapshot  in
 
@@ -123,7 +109,22 @@ class GameRoom {
             }
         }
     }
+    static func findRoomWithName(_ roomName: String, repo: FirebaseRepository) -> GameRoom? {
+        let roomRef = FirebaseDatabaseReference(.Rooms).child(roomName)
+        var room: GameRoom?
+        roomRef.observeSingleEvent(of: .value) { snapshot in
 
+            if let data = snapshot.value {
+                return
+            }
+
+            // Create a GameRoom object
+            room = GameRoom(roomName: roomName,
+                            roomState: .waitingForPlayers)
+
+        }
+        return room
+    }
     private func makeRoomListener() {
         roomRef.removeAllObservers()
         roomRef.observe(.value) { [weak self] snapshot in

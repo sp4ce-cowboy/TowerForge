@@ -294,15 +294,15 @@
                                     <action selector="joinRoomButtonPressed:" destination="tK4-EO-PjX" eventType="touchUpInside" id="HVH-ry-IS3"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Room Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyq-Bq-dSA">
-                                <rect key="frame" x="221" y="137" width="281" height="62"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Player Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyq-Bq-dSA">
+                                <rect key="frame" x="221" y="137" width="300" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="53"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Player Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8LX-w2-hEj">
-                                <rect key="frame" x="211" y="358" width="300" height="62"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Room Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8LX-w2-hEj">
+                                <rect key="frame" x="211" y="358" width="281" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="53"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -327,8 +327,8 @@
                     <connections>
                         <outlet property="CreateRoom" destination="WWG-ST-Q1A" id="oJD-Jp-RKv"/>
                         <outlet property="JoinRoom" destination="T8A-hM-ZpD" id="eGg-XF-upY"/>
-                        <outlet property="PlayerNameInput" destination="8LX-w2-hEj" id="Ms6-3b-Vxh"/>
-                        <outlet property="RoomNameInput" destination="Cyq-Bq-dSA" id="Zhs-QQ-uw7"/>
+                        <outlet property="PlayerNameInput" destination="oBX-FO-YOC" id="8ha-eZ-su6"/>
+                        <outlet property="RoomNameInput" destination="4X2-5M-PZ3" id="bEE-53-WPu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5j6-jT-xdh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
