@@ -26,18 +26,17 @@ class GameRoomViewController: UIViewController {
             // Show an alert or some indication to the user that inputs are empty
             return
         }
-        print("Navigating to waiting room")
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let gameWaitingRoomVC =
-                storyboard.instantiateViewController(withIdentifier: "GameWaitingRoomViewController")
-                as? GameWaitingRoomViewController
-        else {
-            return
-        }
-        gameWaitingRoomVC.gameRoom = gameRoom
-        present(gameWaitingRoomVC, animated: true, completion: nil)
+
+        performSegue(withIdentifier: "segueToWaitingRoom", sender: self)
     }
     @IBAction func joinRoomButtonPressed(_ sender: Any) {
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToWaitingRoom" {
+            if let destinationVC = segue.destination as? GameWaitingRoomViewController {
+                destinationVC.gameRoom = gameRoom
+            }
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -271,6 +271,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="createRoomButtonPressed:" destination="tK4-EO-PjX" eventType="touchUpInside" id="Dmp-hD-vCj"/>
+                                    <segue destination="FnT-Eh-Bya" kind="show" identifier="segueToWaitingRoom" id="2av-V7-WsG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8A-hM-ZpD">
@@ -339,11 +340,12 @@
             <objects>
                 <viewController storyboardIdentifier="GameWaitingRoomViewController" id="FnT-Eh-Bya" customClass="GameWaitingRoomViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CDD-vN-KX1" customClass="SKView" customModule="TowerForge">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="984"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="rUg-Tb-9QP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="VFg-fG-tFi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srP-KJ-HWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
