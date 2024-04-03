@@ -11,6 +11,11 @@ import UIKit
 class MainMenuViewController: UIViewController {
     var selectedGameMode: Mode = .deathMatch
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        AudioManager.shared.playMainMusic()
+    }
+
     @IBAction private func DeathMatch(_ sender: Any) {
         selectedGameMode = .deathMatch
         performSegue(withIdentifier: "segueToGame", sender: self)

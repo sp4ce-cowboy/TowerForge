@@ -79,6 +79,7 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
 
     /// Plays background music
     func playMainMusic() {
+        stopBackground()
         if !isMainPlaying {
             mainAudioPlayer?.play()
             isMainPlaying = true
@@ -102,6 +103,7 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
 
     /// Plays background music
     func playBackground() {
+        stopMainMusic()
         if !isBackgroundPlaying {
             backgroundAudioPlayer?.play()
             isBackgroundPlaying = true
