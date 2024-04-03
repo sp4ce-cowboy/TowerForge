@@ -625,10 +625,10 @@
 		52DF5FA62BA32B2300135367 /* TowerForge */ = {
 			isa = PBXGroup;
 			children = (
+				5240D0972BB0522A004F1486 /* Info.plist */,
 				52A7940E2BBC476B0083C976 /* Networking */,
 				52A794072BBC35E30083C976 /* Constants */,
 				52A794002BBC2E940083C976 /* Firebase */,
-				5240D0972BB0522A004F1486 /* Info.plist */,
 				3C3CBDFD2BB870770001B8A9 /* Extensions */,
 				BA443D432BAD98CD009F0FFB /* AppMain */,
 				BAFFB92F2BB0A01700D8301F /* Commons */,
