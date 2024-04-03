@@ -153,8 +153,11 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
         }
     }
 
+    // --- Sound effects --- //
+
     /// Play a sound effect
-    func playSoundEffect(named soundName: String) {
+    func playSoundEffect(for soundNameEnumCase: SoundEffect) {
+        var soundName = soundNameEnumCase.rawValue
         guard SOUND_EFFECTS_ENABLED else {
             return
         }
@@ -179,24 +182,34 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
         }
     }
 
-    // --- Sound effect players --- //
+    var soundEffectMap: [SoundEffect: () -> Void] {
+        [
+            .beep: { self.playSoundEffect(for: .beep) },
+            .hit: { self.playSoundEffect(for: .hit) },
+            .special: { self.playSoundEffect(for: .special) },
+            .lose: { self.playSoundEffect(for: .lose) },
+            .win: { self.playSoundEffect(for: .win) }
+        ]
+    }
+
     func playWinSoundEffect() {
-        playSoundEffect(named: "success.mp3")
+        soundEffectMap[.win]?()
     }
 
     func playLoseSoundEffect() {
-        playSoundEffect(named: "lose.mp3")
+        soundEffectMap[.lose]?()
     }
 
     func playHitEffect() {
-        playSoundEffect(named: "hit-sound.mp3")
+        soundEffectMap[.hit]?()
     }
 
     func playSpecialEffect() {
-        playSoundEffect(named: "jump.mp3")
+        soundEffectMap[.special]?()
     }
 
     func playBeepEffect() {
-        playSoundEffect(named: "beep.mp3")
+        soundEffectMap[.beep]?()
     }
+
 }
