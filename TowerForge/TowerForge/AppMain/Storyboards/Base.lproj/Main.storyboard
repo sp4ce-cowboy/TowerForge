@@ -246,7 +246,7 @@
             <objects>
                 <viewController storyboardIdentifier="GameRoomViewController" id="tK4-EO-PjX" customClass="GameRoomViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RNs-j2-TR0" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="984"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="Yaf-VJ-g1f">
@@ -325,6 +325,7 @@
                         <viewLayoutGuide key="safeArea" id="gxe-KB-sjO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ICf-UN-T73"/>
                     <connections>
                         <outlet property="CreateRoom" destination="WWG-ST-Q1A" id="oJD-Jp-RKv"/>
                         <outlet property="JoinRoom" destination="T8A-hM-ZpD" id="eGg-XF-upY"/>
@@ -344,16 +345,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="704" height="984"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FSQ-sC-jDO">
-                                <rect key="frame" x="20" y="87" width="75" height="34.5"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mP5-4d-HdN">
-                                        <rect key="frame" x="0.0" y="0.0" width="75" height="34.5"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                    </button>
-                                </subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FSQ-sC-jDO">
+                                <rect key="frame" x="20" y="87" width="664" height="678"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="546-UR-FKj">
+                                <rect key="frame" x="70" y="814" width="565" height="127"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <backgroundConfiguration key="background" image="square-button"/>
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Leave Room">
+                                            <attributes>
+                                                <font key="NSFont" size="55" name="Baskerville-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onLeaveButtonPressed:" destination="FnT-Eh-Bya" eventType="touchUpInside" id="xhU-Xf-OGM"/>
+                                    <segue destination="tK4-EO-PjX" kind="showDetail" identifier="segueToGameRoom" id="gCm-LW-wHo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rUg-Tb-9QP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -365,10 +381,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srP-KJ-HWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-801.1713030746705" y="2420.5078125"/>
+            <point key="canvasLocation" x="-942" y="2536"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="gCm-LW-wHo"/>
         <segue reference="5Mz-7I-nNc"/>
     </inferredMetricsTieBreakers>
     <resources>

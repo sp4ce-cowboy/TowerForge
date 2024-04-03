@@ -20,6 +20,7 @@ class GameRoomViewController: UIViewController {
     @IBOutlet private var PlayerNameInput: UITextField!
 
     var gameRoom: GameRoom?
+    var currentPlayer: GamePlayer?
     let firebaseRepository = FirebaseRepository()
 
     @IBAction private func createRoomButtonPressed(_ sender: Any) {
@@ -45,10 +46,24 @@ class GameRoomViewController: UIViewController {
         gameRoom?.joinRoom(player: player, completion: { success in
             if success {
                print("Successfully joined the room")
-
+                self.currentPlayer = player
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "segueToWaitingRoom", sender: self)
+                }
             }
         })
-        performSegue(withIdentifier: "segueToWaitingRoom", sender: self)
+
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToWaitingRoom" {
+            if let destinationVC = segue.destination as? GameWaitingRoomViewController {
+                guard let currentPlayer = self.currentPlayer else {
+                    return
+                }
+                destinationVC.currentPlayer = currentPlayer
+                destinationVC.gameRoom = gameRoom
+            }
+        }
     }
     @IBAction func joinRoomButtonPressed(_ sender: Any) {
         guard let roomName = RoomNameInput.text, !roomName.isEmpty,
@@ -62,13 +77,6 @@ class GameRoomViewController: UIViewController {
                 self.joinRoom(player: player)
             } else {
 
-            }
-        }
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueToWaitingRoom" {
-            if let destinationVC = segue.destination as? GameWaitingRoomViewController {
-                destinationVC.gameRoom = gameRoom
             }
         }
     }
