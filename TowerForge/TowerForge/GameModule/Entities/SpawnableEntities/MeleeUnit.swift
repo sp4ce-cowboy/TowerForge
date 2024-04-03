@@ -16,7 +16,7 @@ class MeleeUnit: BaseUnit, PlayerSpawnable {
     static let damage = 10.0
     static var cost = 10
     static let attackRate = 1.0
-    static let velocity = CGVector(dx: 10.0, dy: 0.0)
+    static let velocity = CGVector(dx: 30.0, dy: 0.0)
 
     required init(position: CGPoint, player: Player) {
         super.init(textureNames: MeleeUnit.textureNames,

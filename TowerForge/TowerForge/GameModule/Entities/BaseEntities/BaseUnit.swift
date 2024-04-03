@@ -55,29 +55,13 @@ class BaseUnit: TFEntity {
         return damageComponent.damage(healthComponent)
     }
 
-    override func collide(with healthComponent: HealthComponent) -> TFEvent {
-        guard let movableComponent = component(ofType: MovableComponent.self),
-              let player = healthComponent.entity?.component(ofType: PlayerComponent.self)?.player,
-              let ownPlayer = component(ofType: PlayerComponent.self)?.player,
-              ownPlayer != player else {
-            return DisabledEvent()
-        }
-
-        movableComponent.shouldMove = false
-        return DisabledEvent()
-    }
-
     override func collide(with movableComponent: MovableComponent) -> TFEvent {
-        guard let playerA = self.component(ofType: PlayerComponent.self)?.player,
+        if let playerA = self.component(ofType: PlayerComponent.self)?.player,
               let playerB = movableComponent.entity?.component(ofType: PlayerComponent.self)?.player,
-              playerA != playerB else {
-            return DisabledEvent()
+              playerA != playerB {
+            movableComponent.shouldMove = false
         }
 
-        movableComponent.shouldMove = false
-        if let ownMovableComponent = self.component(ofType: MovableComponent.self) {
-            ownMovableComponent.shouldMove = false
-        }
         return DisabledEvent()
     }
 }

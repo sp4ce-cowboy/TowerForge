@@ -13,7 +13,7 @@ class WizardBall: BaseProjectile {
     static let key = "wizard-ball"
     static let damage = 5.0
     static let attackRate = 1.0
-    static let velocity = CGVector(dx: 100, dy: 0)
+    static let velocity = CGVector(dx: 200, dy: 0)
 
     required init(position: CGPoint, player: Player) {
         super.init(textureNames: WizardBall.textureNames,

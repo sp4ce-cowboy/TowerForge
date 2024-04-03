@@ -13,5 +13,4 @@ protocol Collidable {
     func collide(with damageComponent: DamageComponent) -> TFEvent
     func collide(with healthComponent: HealthComponent) -> TFEvent
     func collide(with movableComponent: MovableComponent) -> TFEvent
-    func collide(with playerComponent: PlayerComponent) -> TFEvent
 }

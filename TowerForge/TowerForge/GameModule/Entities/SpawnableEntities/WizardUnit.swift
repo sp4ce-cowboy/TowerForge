@@ -16,7 +16,7 @@ class WizardUnit: BaseUnit, PlayerSpawnable {
     static let damage = 10.0
     static var cost = 5
     static let attackRate = 1.0
-    static let velocity = CGVector(dx: 30.0, dy: 0.0)
+    static let velocity = CGVector(dx: 50.0, dy: 0.0)
     static let range = 400.0
     static let attackPower = 10.0
 

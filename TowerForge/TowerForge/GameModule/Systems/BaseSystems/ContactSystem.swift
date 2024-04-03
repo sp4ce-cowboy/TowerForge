@@ -76,8 +76,9 @@ class ContactSystem: TFSystem {
     }
 
     private func handleContact(between entityA: TFEntity, and entityB: TFEntity) {
-        let event = entityA.collide(with: entityB)
-        eventManager.add(event)
+        let event1 = entityA.collide(with: entityB)
+        let event2 = entityB.collide(with: entityA)
+        eventManager.add(event1.concurrentlyWith(event2))
     }
 
     private func handleSeparation(for entity: TFEntity) {
