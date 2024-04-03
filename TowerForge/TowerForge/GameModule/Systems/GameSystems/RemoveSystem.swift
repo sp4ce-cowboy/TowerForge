@@ -13,9 +13,6 @@ class RemoveSystem: TFSystem {
     /// Removes the provided entity
     /// - Parameter entityId: The UUID of the associated TFEntity to be removed
     func handleRemove(for entityId: UUID) {
-        if entityManager.entity(with: entityId)?.component(ofType: PlayerComponent.self)?.player != .ownPlayer {
-            AchievementManager.incrementTotalKillCount() // Increment if entity does not belong to own player
-        }
         entityManager.removeEntity(with: entityId)
     }
 }

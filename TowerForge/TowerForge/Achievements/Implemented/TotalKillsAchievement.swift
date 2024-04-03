@@ -1,5 +1,5 @@
 //
-//  SampleAchievement.swift
+//  TotalKillsAchievement.swift
 //  TowerForge
 //
 //  Created by Rubesh on 27/3/24.
