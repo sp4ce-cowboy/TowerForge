@@ -20,10 +20,10 @@ class Constants {
     static var SOUND_EFFECTS_ENABLED = true
 
     /// Universal background audio soundtrack to play during game modes
-    static let GAME_BACKGROUND_AUDIO: String = "field-of-memories-soundtrack.mp3"
+    static let GAME_BACKGROUND_AUDIO: String = BackgroundMusic.gameMode.rawValue
 
     /// Universal background audio soundtrack to play during non-game modes
-    static let MAIN_BACKGROUND_AUDIO: String = "Entering-the-stronghold.mp3"
+    static let MAIN_BACKGROUND_AUDIO: String = BackgroundMusic.main.rawValue
 
     /// Universal volume control for in-game volume elements
     static var SOUND_EFFECTS_VOLUME: Float = 0.8

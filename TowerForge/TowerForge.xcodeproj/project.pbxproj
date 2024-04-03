@@ -172,6 +172,7 @@
 		BAFFB9802BBD83B200D8301F /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB97A2BBD83B200D8301F /* success.mp3 */; };
 		BAFFB9812BBD83B200D8301F /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB97B2BBD83B200D8301F /* jump.mp3 */; };
 		BAFFB9832BBD8CA800D8301F /* Entering-the-stronghold.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB9822BBD8CA800D8301F /* Entering-the-stronghold.mp3 */; };
+		BAFFB9852BBDBA7D00D8301F /* MediaEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9842BBDBA7D00D8301F /* MediaEnums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -358,6 +359,7 @@
 		BAFFB97A2BBD83B200D8301F /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = success.mp3; sourceTree = "<group>"; };
 		BAFFB97B2BBD83B200D8301F /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
 		BAFFB9822BBD8CA800D8301F /* Entering-the-stronghold.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Entering-the-stronghold.mp3"; sourceTree = "<group>"; };
+		BAFFB9842BBDBA7D00D8301F /* MediaEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaEnums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -932,6 +934,7 @@
 			isa = PBXGroup;
 			children = (
 				BAFFB95C2BB978E500D8301F /* StorageEnums.swift */,
+				BAFFB9842BBDBA7D00D8301F /* MediaEnums.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1271,6 +1274,7 @@
 				3C9955AD2BA483B100D33FA5 /* TFSystem.swift in Sources */,
 				3CAC4A672BB6975200A5D22E /* RenderStage.swift in Sources */,
 				3C9955BE2BA57E4B00D33FA5 /* EventManager.swift in Sources */,
+				BAFFB9852BBDBA7D00D8301F /* MediaEnums.swift in Sources */,
 				527A07842BB3FD9A00CD9D08 /* TimerSystem.swift in Sources */,
 				3C3CBDF72BB81D970001B8A9 /* TFCameraNode.swift in Sources */,
 				3CE951562BACA0CF008B2785 /* Collidable.swift in Sources */,
