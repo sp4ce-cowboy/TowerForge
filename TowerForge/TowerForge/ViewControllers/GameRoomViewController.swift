@@ -10,10 +10,35 @@ import UIKit
 
 // Dummy still
 class GameRoomViewController: UIViewController {
-    @IBOutlet var MultiplayerButton: UIView!
+    @IBOutlet private var MultiplayerButton: UIView!
+
+    @IBOutlet private var CreateRoom: UIButton!
+    @IBOutlet private var JoinRoom: UIButton!
+
+    @IBOutlet private var RoomNameInput: UILabel!
+    @IBOutlet private var PlayerNameInput: UILabel!
 
     var gameRoom: GameRoom?
 
+    @IBAction private func createRoomButtonPressed(_ sender: Any) {
+        guard let roomName = RoomNameInput.text, !roomName.isEmpty,
+            let playerName = PlayerNameInput.text, !playerName.isEmpty else {
+            // Show an alert or some indication to the user that inputs are empty
+            return
+        }
+        print("Navigating to waiting room")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let gameWaitingRoomVC =
+                storyboard.instantiateViewController(withIdentifier: "GameWaitingRoomViewController") 
+                as? GameWaitingRoomViewController
+        else {
+            return
+        }
+        gameWaitingRoomVC.gameRoom = gameRoom
+        present(gameWaitingRoomVC, animated: true, completion: nil)
+    }
+    @IBAction func joinRoomButtonPressed(_ sender: Any) {
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

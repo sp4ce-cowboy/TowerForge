@@ -66,6 +66,7 @@
 		523C29252BBCFA13004C6EAC /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 523C29242BBCFA13004C6EAC /* FirebaseDatabase */; };
 		523C29272BBCFA13004C6EAC /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 523C29262BBCFA13004C6EAC /* FirebaseDatabaseSwift */; };
 		523C29282BBCFD93004C6EAC /* Nosifer-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5240D0952BB04E57004F1486 /* Nosifer-Regular.ttf */; };
+		523C29302BBD0916004C6EAC /* GameWaitingRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C292F2BBD0916004C6EAC /* GameWaitingRoomViewController.swift */; };
 		5240D08F2BAE6D0A004F1486 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D08E2BAE6D0A004F1486 /* Point.swift */; };
 		5240D0912BAF3453004F1486 /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0902BAF3453004F1486 /* Life.swift */; };
 		5240D0A02BB330B5004F1486 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D09F2BB330B4004F1486 /* GameMode.swift */; };
@@ -238,6 +239,7 @@
 		523923E62BADC8530044BA61 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		523AA3BC2BB88ED10041E60D /* WizardBall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardBall.swift; sourceTree = "<group>"; };
 		523AA3BE2BB88FBF0041E60D /* WizardUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardUnit.swift; sourceTree = "<group>"; };
+		523C292F2BBD0916004C6EAC /* GameWaitingRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWaitingRoomViewController.swift; sourceTree = "<group>"; };
 		5240D08E2BAE6D0A004F1486 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		5240D0902BAF3453004F1486 /* Life.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Life.swift; sourceTree = "<group>"; };
 		5240D0952BB04E57004F1486 /* Nosifer-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nosifer-Regular.ttf"; sourceTree = "<group>"; };
@@ -550,6 +552,7 @@
 				3CCF9CB62BAB2877004D170E /* MainMenuViewController.swift */,
 				52F2686F2BB4B319009599AD /* GameModeViewController.swift */,
 				52A7941A2BBC726E0083C976 /* GameRoomViewController.swift */,
+				523C292F2BBD0916004C6EAC /* GameWaitingRoomViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1166,6 +1169,7 @@
 				3CCF9CAF2BAB1A96004D170E /* SceneUpdateDelegate.swift in Sources */,
 				BAFFB9592BB345CF00D8301F /* Storage.swift in Sources */,
 				3CAC4A692BB697A400A5D22E /* SpriteRenderStage.swift in Sources */,
+				523C29302BBD0916004C6EAC /* GameWaitingRoomViewController.swift in Sources */,
 				3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */,
 				5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */,
 				3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */,
