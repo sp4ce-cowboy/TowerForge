@@ -10,45 +10,73 @@ import UIKit
 
 // Dummy still
 class GameRoomViewController: UIViewController {
-    @IBOutlet var MultiplayerButton: UIView!
+    @IBOutlet private var MultiplayerButton: UIView!
+
+    @IBOutlet private var CreateRoom: UIButton!
+    @IBOutlet private var JoinRoom: UIButton!
+
+    @IBOutlet private var RoomNameInput: UITextField!
+
+    @IBOutlet private var PlayerNameInput: UITextField!
 
     var gameRoom: GameRoom?
+    var currentPlayer: GamePlayer?
+    let firebaseRepository = FirebaseRepository()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Initialize Firebase repository
-        let firebaseRepository = FirebaseRepository()
-
-        // Create a sample player for testing
-        guard let playerOne = GamePlayer(userName: "Player One", roomId: "2"),
-              let playerTwo = GamePlayer(userName: "Player Twe", roomId: "2") else {
+    @IBAction private func createRoomButtonPressed(_ sender: Any) {
+        guard let roomName = RoomNameInput.text, !roomName.isEmpty,
+            let playerName = PlayerNameInput.text, !playerName.isEmpty else {
+            // Show an alert or some indication to the user that inputs are empty
             return
         }
+        print("From user : \(roomName) and playername : \(playerName)")
 
+        // Create a sample player for testing
+        let playerOne = GamePlayer(userName: playerName)
+        gameRoom = GameRoom(roomName: roomName,
+                            repository: firebaseRepository) { success in
+            if success {
+                self.joinRoom(player: playerOne)
+            }
+        }
+
+    }
+    func joinRoom(player: GamePlayer) {
         // Create a game room
-        gameRoom = GameRoom(roomName: "Room 1", roomCreator: playerOne, repository: firebaseRepository) { success in
+        gameRoom?.joinRoom(player: player, completion: { success in
             if success {
-                print("Room created successfully")
-            } else {
-                print("Failed to create room")
+               print("Successfully joined the room")
+                self.currentPlayer = player
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "segueToWaitingRoom", sender: self)
+                }
+            }
+        })
+
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToWaitingRoom" {
+            if let destinationVC = segue.destination as? GameWaitingRoomViewController {
+                guard let currentPlayer = self.currentPlayer else {
+                    return
+                }
+                destinationVC.currentPlayer = currentPlayer
+                destinationVC.gameRoom = gameRoom
             }
         }
-
-        gameRoom?.joinRoom(player: playerTwo) { success in
-            if success {
-                print("Player Two joined the room")
-            } else {
-                print("Player Two failed to join the room")
-            }
+    }
+    @IBAction func joinRoomButtonPressed(_ sender: Any) {
+        guard let roomName = RoomNameInput.text, !roomName.isEmpty,
+            let playerName = PlayerNameInput.text, !playerName.isEmpty else {
+            // Show an alert or some indication to the user that inputs are empty
+            return
         }
-
-        // Simulate leaving the room
-        gameRoom?.leaveRoom(player: playerOne) { success in
-            if success {
-                print("Player One left the room")
+        let player = GamePlayer(userName: playerName)
+        GameRoom.findRoomWithName(roomName) { room in
+            if let room = room {
+                self.joinRoom(player: player)
             } else {
-                print("Player One failed to leave the room")
+
             }
         }
     }
