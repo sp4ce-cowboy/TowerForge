@@ -171,6 +171,7 @@
 		BAFFB97F2BBD83B200D8301F /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB9792BBD83B200D8301F /* lose.mp3 */; };
 		BAFFB9802BBD83B200D8301F /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB97A2BBD83B200D8301F /* success.mp3 */; };
 		BAFFB9812BBD83B200D8301F /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB97B2BBD83B200D8301F /* jump.mp3 */; };
+		BAFFB9832BBD8CA800D8301F /* Entering-the-stronghold.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB9822BBD8CA800D8301F /* Entering-the-stronghold.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -356,6 +357,7 @@
 		BAFFB9792BBD83B200D8301F /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
 		BAFFB97A2BBD83B200D8301F /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = success.mp3; sourceTree = "<group>"; };
 		BAFFB97B2BBD83B200D8301F /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
+		BAFFB9822BBD8CA800D8301F /* Entering-the-stronghold.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Entering-the-stronghold.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -793,6 +795,7 @@
 			isa = PBXGroup;
 			children = (
 				BAFFB9742BBD833400D8301F /* AudioManager.swift */,
+				BAFFB9822BBD8CA800D8301F /* Entering-the-stronghold.mp3 */,
 				BAFFB9762BBD83B200D8301F /* beep.mp3 */,
 				BAFFB9782BBD83B200D8301F /* field-of-memories-soundtrack.mp3 */,
 				BAFFB9772BBD83B200D8301F /* hit-sound.mp3 */,
@@ -1137,6 +1140,7 @@
 				BAFFB9812BBD83B200D8301F /* jump.mp3 in Resources */,
 				5298D7932BBC2AC9005177A1 /* GoogleService-Info.plist in Resources */,
 				BAFFB97F2BBD83B200D8301F /* lose.mp3 in Resources */,
+				BAFFB9832BBD8CA800D8301F /* Entering-the-stronghold.mp3 in Resources */,
 				52DF5FAA2BA32B2300135367 /* GameScene.sks in Resources */,
 				52DF5FB52BA32B2600135367 /* Assets.xcassets in Resources */,
 				52DF5FB82BA32B2600135367 /* Launch Screen.storyboard in Resources */,

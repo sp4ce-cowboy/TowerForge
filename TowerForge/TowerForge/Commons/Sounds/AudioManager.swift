@@ -5,33 +5,43 @@ import AVFoundation
 /// interfere with singleton instance. Singleton anti-pattern used here
 /// in line with Apple's AVAudioSession sharedInstance.
 ///
-/// Credits
-/// - Background Music: Field of Memories by [WaterFlame](https://www.waterflame.com/contact-info) (free for non-commercial use)
+/// Credits (All music used is free for non-commercial use)
+/// - Level Background Music: Entering The Stronghold by [Denny Schneidemesser](https://www.autodidactic.ai/music/)
+/// - Game Background Music: Field of Memories by [WaterFlame](https://www.waterflame.com/contact-info)
 /// - Sound Effect credits: [Pixabay](https://pixabay.com/service/license-summary/)
 internal class AudioManager: NSObject, AVAudioPlayerDelegate {
     internal static let shared = AudioManager() // Singleton instance
     private var backgroundAudioPlayer: AVAudioPlayer?
+    private var mainAudioPlayer: AVAudioPlayer?
+    
     private var soundEffectPlayers: [String: AVAudioPlayer] = [:] // Cache sound effect players
-    private var isPlaying = false
+    private var isBackgroundPlaying = false
+    private var isMainPlaying = false
 
     private let SOUND_EFFECTS_ENABLED = Constants.SOUND_EFFECTS_ENABLED
     private let VOLUME = Constants.SOUND_EFFECTS_VOLUME
 
     override init() {
         super.init()
-        setupAudioPlayer()
+        setupAllAudioPlayers()
         backgroundAudioPlayer?.prepareToPlay()
         Logger.log("AudioManager is initialized", self)
     }
+    
+    func setupAllAudioPlayers() {
+        setupGameAudioPlayer()
+        setupMainAudioPlayer()
+    }
 
-    func setupAudioPlayer() {
-        let soundName = Constants.BACKGROUND_AUDIO
+    func setupGameAudioPlayer() {
+        let soundName = Constants.GAME_BACKGROUND_AUDIO
 
         guard let soundURL = Bundle.main.url(forResource: soundName,
                                              withExtension: nil) else {
             Logger.log("Sound effect \(soundName) not found", self)
             return
         }
+        
         do {
             try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
@@ -44,20 +54,65 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
             Logger.log("Failed to play sound effect \(soundName): \(error)", self)
         }
     }
+    
+    func setupMainAudioPlayer() {
+        let soundName = Constants.MAIN_BACKGROUND_AUDIO
+
+        guard let soundURL = Bundle.main.url(forResource: soundName,
+                                             withExtension: nil) else {
+            Logger.log("Sound effect \(soundName) not found", self)
+            return
+        }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            mainAudioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            mainAudioPlayer?.delegate = self
+            mainAudioPlayer?.numberOfLoops = -1 // Loop indefinitely
+            mainAudioPlayer?.volume = VOLUME
+            mainAudioPlayer?.prepareToPlay()
+        } catch {
+            Logger.log("Failed to play sound effect \(soundName): \(error)", self)
+        }
+    }
+    
+    /// Plays background music
+    func playMainMusic() {
+        if !isMainPlaying {
+            mainAudioPlayer?.play()
+            isMainPlaying = true
+        }
+    }
+
+    /// Pauses background music
+    func pauseMainMusic() {
+        if isMainPlaying {
+            mainAudioPlayer?.pause()
+            isMainPlaying = false
+        }
+    }
+
+    /// Stops background music and resets the time
+    func stopMainMusic() {
+        mainAudioPlayer?.stop()
+        mainAudioPlayer?.currentTime = 0
+        isMainPlaying = false
+    }
 
     /// Plays background music
     func playBackground() {
-        if !isPlaying {
+        if !isBackgroundPlaying {
             backgroundAudioPlayer?.play()
-            isPlaying = true
+            isBackgroundPlaying = true
         }
     }
 
     /// Pauses background music
     func pauseBackground() {
-        if isPlaying {
+        if isBackgroundPlaying {
             backgroundAudioPlayer?.pause()
-            isPlaying = false
+            isBackgroundPlaying = false
         }
     }
 
@@ -65,7 +120,7 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
     func stopBackground() {
         backgroundAudioPlayer?.stop()
         backgroundAudioPlayer?.currentTime = 0
-        isPlaying = false
+        isBackgroundPlaying = false
     }
 
     /// Mutes background music
@@ -78,16 +133,25 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
         backgroundAudioPlayer?.volume = VOLUME
     }
 
-    // Toggle play/pause background music
-    func toggle() {
-        if isPlaying {
+    /// Toggle play/pause background music
+    func toggleBackground() {
+        if isBackgroundPlaying {
             self.pauseBackground()
         } else {
             self.playBackground()
         }
     }
+    
+    /// Toggle play/pause main music
+    func toggleMain() {
+        if isMainPlaying {
+            self.pauseMainMusic()
+        } else {
+            self.playMainMusic()
+        }
+    }
 
-    // Play a sound effect
+    /// Play a sound effect
     func playSoundEffect(named soundName: String) {
         guard SOUND_EFFECTS_ENABLED else {
             return
@@ -113,6 +177,7 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
         }
     }
 
+    // --- Sound effect players --- //
     func playWinSoundEffect() {
         playSoundEffect(named: "success.mp3")
     }
