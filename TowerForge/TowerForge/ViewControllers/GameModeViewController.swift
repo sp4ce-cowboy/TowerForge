@@ -9,6 +9,9 @@ import UIKit
 class GameModeViewController: UIViewController {
     @IBOutlet private var deathMatchButton: UIButton!
     @IBOutlet private var captureTheFlagButton: UIButton!
+    @IBOutlet private var MultiplayerButton: UIButton!
+    @IBAction func multiButtonPressed(_ sender: Any) {
+    }
     var selectedGameMode = Mode.captureTheFlag
 
     @IBAction private func deathMatchButtonPressed(_ sender: UIButton) {
@@ -20,7 +23,14 @@ class GameModeViewController: UIViewController {
         selectedGameMode = .captureTheFlag
         navigateToGameViewController()
     }
-
+    private func navigateToGameRoomViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let gameRoomViewController = storyboard
+                .instantiateViewController(withIdentifier: "GameRoomViewController") as? GameViewController else {
+            return
+        }
+        present(gameRoomViewController, animated: true, completion: nil)
+    }
     private func navigateToGameViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let gameViewController = storyboard
