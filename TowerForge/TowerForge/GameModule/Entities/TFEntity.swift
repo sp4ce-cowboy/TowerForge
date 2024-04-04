@@ -11,8 +11,8 @@ class TFEntity: Collidable {
     let id: UUID
     private(set) var components: [UUID: TFComponent]
 
-    init() {
-        id = UUID()
+    init(id: UUID = UUID()) {
+        self.id = id
         components = Dictionary()
     }
 

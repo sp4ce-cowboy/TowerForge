@@ -29,4 +29,18 @@ class ArrowTower: BaseTower, PlayerSpawnable {
                                             range: ArrowTower.range,
                                             attackPower: ArrowTower.damage, shootingType: Bullet.self))
     }
+
+    required init(position: CGPoint, player: Player, id: UUID) {
+        super.init(textureNames: ArrowTower.textureNames,
+                   size: ArrowTower.size,
+                   key: ArrowTower.key,
+                   position: position,
+                   maxHealth: ArrowTower.maxHealth,
+                   player: player,
+                   id: id)
+        self.addComponent(ShootingComponent(fireRate: ArrowTower.fireRate,
+                                            range: ArrowTower.range,
+                                            attackPower: ArrowTower.damage, shootingType: Bullet.self))
+    }
+
 }

@@ -13,7 +13,8 @@ class BaseTower: TFEntity {
          key: String,
          position: CGPoint,
          maxHealth: CGFloat,
-         player: Player) {
+         player: Player,
+         id: UUID = UUID()) {
         super.init()
         // Core Components
         self.addComponent(SpriteComponent(textureNames: textureNames, size: size, animatableKey: key))

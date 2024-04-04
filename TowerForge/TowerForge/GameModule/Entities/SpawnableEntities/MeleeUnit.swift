@@ -31,6 +31,20 @@ class MeleeUnit: BaseUnit, PlayerSpawnable {
                                           temporary: false))
     }
 
+    required init(position: CGPoint, player: Player, id: UUID) {
+        super.init(textureNames: MeleeUnit.textureNames,
+                   size: MeleeUnit.size,
+                   key: MeleeUnit.key,
+                   position: position,
+                   maxHealth: MeleeUnit.maxHealth,
+                   velocity: MeleeUnit.velocity,
+                   player: player,
+                   id: id)
+        self.addComponent(DamageComponent(attackRate: MeleeUnit.attackRate,
+                                          attackPower: MeleeUnit.damage,
+                                          temporary: false))
+    }
+
     override func collide(with other: any Collidable) -> TFEvent {
         let superEvent = super.collide(with: other)
         guard let damageComponent = self.component(ofType: DamageComponent.self) else {

@@ -33,4 +33,18 @@ class WizardUnit: BaseUnit, PlayerSpawnable {
                                             range: WizardUnit.range,
                                             attackPower: WizardUnit.attackPower, shootingType: WizardBall.self))
     }
+
+    required init(position: CGPoint, player: Player, id: UUID) {
+        super.init(textureNames: WizardUnit.textureNames,
+                   size: WizardUnit.size,
+                   key: WizardUnit.key,
+                   position: position,
+                   maxHealth: WizardUnit.maxHealth,
+                   velocity: WizardUnit.velocity,
+                   player: player,
+                   id: id)
+
+        self.addComponent(ShootingComponent(fireRate: WizardUnit.attackRate,
+                                            range: WizardUnit.range,
+                                            attackPower: WizardUnit.attackPower, shootingType: WizardBall.self))    }
 }

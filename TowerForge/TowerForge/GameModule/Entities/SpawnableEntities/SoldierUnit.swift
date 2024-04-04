@@ -33,4 +33,19 @@ class SoldierUnit: BaseUnit, PlayerSpawnable {
                                             range: SoldierUnit.range,
                                             attackPower: SoldierUnit.attackPower, shootingType: Bullet.self))
     }
+
+    required init(position: CGPoint, player: Player, id: UUID) {
+        super.init(textureNames: SoldierUnit.textureNames,
+                   size: SoldierUnit.size,
+                   key: SoldierUnit.key,
+                   position: position,
+                   maxHealth: SoldierUnit.maxHealth,
+                   velocity: SoldierUnit.velocity,
+                   player: player,
+                   id: id)
+
+        self.addComponent(ShootingComponent(fireRate: SoldierUnit.attackRate,
+                                            range: SoldierUnit.range,
+                                            attackPower: SoldierUnit.attackPower, shootingType: Bullet.self))
+    }
 }

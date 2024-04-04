@@ -14,8 +14,9 @@ class BaseUnit: TFEntity {
          position: CGPoint,
          maxHealth: CGFloat,
          velocity: CGVector,
-         player: Player) {
-        super.init()
+         player: Player,
+         id: UUID = UUID()) {
+        super.init(id: id)
         // Core Components
         self.addComponent(SpriteComponent(textureNames: textureNames, size: size, animatableKey: key))
         self.addComponent(PositionComponent(position: position))
