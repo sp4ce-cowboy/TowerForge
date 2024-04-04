@@ -13,9 +13,11 @@ class GameWaitingRoomViewController: UIViewController {
     var currentPlayer: GamePlayer?
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(gameRoom)
+        gameRoom?.gameRoomDelegate = self
         updatePlayerList()
     }
-    @IBAction func onLeaveButtonPressed(_ sender: Any) {
+    @IBAction private func onLeaveButtonPressed(_ sender: Any) {
         guard let player = currentPlayer else {
             return
         }
@@ -33,7 +35,7 @@ class GameWaitingRoomViewController: UIViewController {
 
     @IBOutlet var ListStackView: UIStackView!
     private func updatePlayerList() {
-
+        print("Updating stack \(gameRoom?.playerOne) and \(gameRoom?.playerTwo)")
         ListStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
 
         // Add player views to the stack view
