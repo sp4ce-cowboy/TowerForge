@@ -22,7 +22,7 @@ class UnitSelectionNode: TFEntity {
     private(set) var unitNodes: [UnitNode] = []
     private var selectedNode: UnitNode?
 
-    override init() {
+    init() {
         super.init()
 
         var position = CGPoint(x: 500, y: UnitNode.size.height / 2)

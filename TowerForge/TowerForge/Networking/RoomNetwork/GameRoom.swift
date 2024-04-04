@@ -26,6 +26,7 @@ class GameRoom {
     var isRoomEmpty: Bool {
         playerOne == nil && playerTwo == nil
     }
+    var eventManager = EventManager()
 
     // the player creating the room will auto join the room
     init?(roomName: String,
@@ -67,6 +68,10 @@ class GameRoom {
         }
     }
     func joinRoom(player: GamePlayer, completion: @escaping (Bool) -> Void) {
+        let publisher = FirebaseRemoteEventPublisher(roomId: roomName)
+        let receiver = FirebaseRemoteEventSubscriber(eventManager: eventManager, roomId: roomName)
+        publisher.publish(remoteEvent: RemoteSpawnEvent(ofType: MeleeUnit.self, location: .zero, player: player))
+
         self.isRoomFull(roomName) { isFull in
             if isFull {
                 completion(false)
