@@ -10,7 +10,7 @@ import Foundation
 class Death: TFEntity {
     static let position = CGPoint(x: 300, y: 100)
     static let size = CGSize(width: 100, height: 100)
-    override init() {
+    init() {
         super.init()
         let spriteComponent = SpriteComponent(textureNames: ["Skull"], size: Death.size, animatableKey: "death")
 

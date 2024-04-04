@@ -13,7 +13,7 @@ class WizardBall: BaseProjectile {
     static let key = "wizard-ball"
     static let damage = 5.0
     static let attackRate = 1.0
-    static let velocity = CGVector(dx: 100, dy: 0)
+    static let velocity = CGVector(dx: 200, dy: 0)
 
     required init(position: CGPoint, player: Player) {
         super.init(textureNames: WizardBall.textureNames,
@@ -27,20 +27,17 @@ class WizardBall: BaseProjectile {
                                           temporary: true))
     }
 
-    override func collide(with other: any Collidable) -> TFEvent? {
+    override func collide(with other: any Collidable) -> TFEvent {
         let superEvent = super.collide(with: other)
         guard let damageComponent = self.component(ofType: DamageComponent.self) else {
             return superEvent
         }
-        if let superEvent = superEvent {
-            return superEvent.concurrentlyWith(other.collide(with: damageComponent))
-        }
-        return other.collide(with: damageComponent)
+        return superEvent.concurrentlyWith(other.collide(with: damageComponent))
     }
 
-    override func collide(with healthComponent: HealthComponent) -> TFEvent? {
+    override func collide(with healthComponent: HealthComponent) -> TFEvent {
         guard let damageComponent = self.component(ofType: DamageComponent.self) else {
-            return nil
+            return DisabledEvent()
         }
         return damageComponent.damage(healthComponent)
     }

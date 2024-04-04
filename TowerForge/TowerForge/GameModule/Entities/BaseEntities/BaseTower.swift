@@ -13,7 +13,8 @@ class BaseTower: TFEntity {
          key: String,
          position: CGPoint,
          maxHealth: CGFloat,
-         player: Player) {
+         player: Player,
+         id: UUID = UUID()) {
         super.init()
         // Core Components
         self.addComponent(SpriteComponent(textureNames: textureNames, size: size, animatableKey: key))
@@ -25,34 +26,29 @@ class BaseTower: TFEntity {
         self.addComponent(ContactComponent(hitboxSize: size))
     }
 
-    override func collide(with other: any Collidable) -> TFEvent? {
+    override func collide(with other: any Collidable) -> TFEvent {
         let superEvent = super.collide(with: other)
         guard let healthComponent = self.component(ofType: HealthComponent.self) else {
             return superEvent
         }
 
-        if let superEvent = superEvent {
-            return superEvent.concurrentlyWith(other.collide(with: healthComponent))
-        }
-        return other.collide(with: healthComponent)
+        return superEvent.concurrentlyWith(other.collide(with: healthComponent))
     }
 
-    override func collide(with damageComponent: DamageComponent) -> TFEvent? {
+    override func collide(with damageComponent: DamageComponent) -> TFEvent {
         guard let healthComponent = self.component(ofType: HealthComponent.self) else {
-            return nil
+            return DisabledEvent()
         }
         // No call to super here as super is done on collide with Collidable above.
         return damageComponent.damage(healthComponent)
     }
 
-    override func collide(with movableComponent: MovableComponent) -> (any TFEvent)? {
-        guard let playerA = self.component(ofType: PlayerComponent.self)?.player,
+    override func collide(with movableComponent: MovableComponent) -> (any TFEvent) {
+        if let playerA = self.component(ofType: PlayerComponent.self)?.player,
               let playerB = movableComponent.entity?.component(ofType: PlayerComponent.self)?.player,
-              playerA != playerB else {
-            return nil
+              playerA != playerB {
+            movableComponent.shouldMove = false
         }
-
-        movableComponent.shouldMove = true
-        return nil
+        return DisabledEvent()
     }
 }

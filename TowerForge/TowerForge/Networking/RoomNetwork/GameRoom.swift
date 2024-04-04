@@ -26,6 +26,7 @@ class GameRoom {
     var isRoomEmpty: Bool {
         playerOne == nil && playerTwo == nil
     }
+    var eventManager = EventManager()
 
     // the player creating the room will auto join the room
     init?(roomName: String,

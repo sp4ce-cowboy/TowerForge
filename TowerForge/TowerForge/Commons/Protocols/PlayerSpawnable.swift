@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol PlayerSpawnable: Spawnable {
+protocol PlayerSpawnable: RemoteSpawnable {
     static var cost: Int { get set }
     static var title: String { get }
 }

@@ -53,9 +53,9 @@ class EventManager {
                 }
             }
 
-            if let output = currentEvent.execute(in: target) {
-                output.events.forEach { eventQueue.append($0) }
-            }
+            let output = currentEvent.execute(in: target)
+            output.events.forEach { eventQueue.append($0) }
+
             // Get the type of the current event
             let eventTypeWrapper = TFEventTypeWrapper(type: type(of: currentEvent))
 

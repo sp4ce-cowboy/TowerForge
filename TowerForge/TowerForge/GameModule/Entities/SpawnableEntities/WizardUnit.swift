@@ -16,7 +16,7 @@ class WizardUnit: BaseUnit, PlayerSpawnable {
     static let damage = 10.0
     static var cost = 5
     static let attackRate = 1.0
-    static let velocity = CGVector(dx: 30.0, dy: 0.0)
+    static let velocity = CGVector(dx: 50.0, dy: 0.0)
     static let range = 400.0
     static let attackPower = 10.0
 
@@ -33,4 +33,18 @@ class WizardUnit: BaseUnit, PlayerSpawnable {
                                             range: WizardUnit.range,
                                             attackPower: WizardUnit.attackPower, shootingType: WizardBall.self))
     }
+
+    required init(position: CGPoint, player: Player, id: UUID) {
+        super.init(textureNames: WizardUnit.textureNames,
+                   size: WizardUnit.size,
+                   key: WizardUnit.key,
+                   position: position,
+                   maxHealth: WizardUnit.maxHealth,
+                   velocity: WizardUnit.velocity,
+                   player: player,
+                   id: id)
+
+        self.addComponent(ShootingComponent(fireRate: WizardUnit.attackRate,
+                                            range: WizardUnit.range,
+                                            attackPower: WizardUnit.attackPower, shootingType: WizardBall.self))    }
 }

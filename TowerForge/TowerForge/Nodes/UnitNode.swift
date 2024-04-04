@@ -13,7 +13,7 @@ protocol UnitNodeDelegate: AnyObject {
 }
 
 class UnitNode: TFEntity {
-    private static let size = CGSize(width: 140, height: 200)
+    static let size = CGSize(width: 140, height: 200)
 
     let type: (TFEntity & PlayerSpawnable).Type
     weak var delegate: UnitNodeDelegate?
@@ -53,10 +53,5 @@ class UnitNode: TFEntity {
         labelComponent.verticalAlignment = .trailing
         labelComponent.horizontalAlignment = .center
         addComponent(labelComponent)
-    }
-
-    @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
