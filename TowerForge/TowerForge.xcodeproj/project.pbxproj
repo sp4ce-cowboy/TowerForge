@@ -393,15 +393,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3C3CBDFD2BB870770001B8A9 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				3C3CBDFE2BB8708A0001B8A9 /* CGPoint+Extensions.swift */,
-				3C3CBE002BB870950001B8A9 /* CGVector+Extensions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		3C99559F2BA47D3E00D33FA5 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -651,7 +642,6 @@
 				52A7940E2BBC476B0083C976 /* Networking */,
 				52A794072BBC35E30083C976 /* Constants */,
 				52A794002BBC2E940083C976 /* Firebase */,
-				3C3CBDFD2BB870770001B8A9 /* Extensions */,
 				BAFFB92F2BB0A01700D8301F /* Commons */,
 				5295A2052BAA0208005018A8 /* Nodes */,
 				BAFFB9462BB0AABF00D8301F /* TFCore */,
@@ -929,6 +919,8 @@
 		BAFFB93E2BB0A67000D8301F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3C3CBDFE2BB8708A0001B8A9 /* CGPoint+Extensions.swift */,
+				3C3CBE002BB870950001B8A9 /* CGVector+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
