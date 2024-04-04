@@ -100,6 +100,10 @@ class GameRoom {
                     } else if self.playerTwo?.userPlayerId == player.userPlayerId {
                         self.playerTwo = nil
                     }
+                    if playerData.count == 1 {
+                        // Delete the room from the database
+                        self.roomRef.child(self.roomName).removeValue()
+                    }
                     completion(true) // Successfully left the room
                 } else {
                     // The player is not in the room, cannot leave
