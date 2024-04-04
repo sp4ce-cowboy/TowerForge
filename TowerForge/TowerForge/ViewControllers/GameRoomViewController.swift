@@ -29,12 +29,9 @@ class GameRoomViewController: UIViewController {
             // Show an alert or some indication to the user that inputs are empty
             return
         }
-        print("From user : \(roomName) and playername : \(playerName)")
 
-        // Create a sample player for testing
         let playerOne = GamePlayer(userName: playerName)
-        gameRoom = GameRoom(roomName: roomName,
-                            repository: firebaseRepository) { success in
+        gameRoom = GameRoom(roomName: roomName) { success in
             if success {
                 self.joinRoom(player: playerOne)
             }
@@ -45,11 +42,13 @@ class GameRoomViewController: UIViewController {
         // Create a game room
         gameRoom?.joinRoom(player: player, completion: { success in
             if success {
-               print("Successfully joined the room")
+                print("Successfully joined the room")
                 self.currentPlayer = player
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "segueToWaitingRoom", sender: self)
                 }
+            } else {
+                print("Failed to join room")
             }
         })
 
@@ -60,6 +59,7 @@ class GameRoomViewController: UIViewController {
                 guard let currentPlayer = self.currentPlayer else {
                     return
                 }
+                print("Before segueing \(gameRoom)")
                 destinationVC.currentPlayer = currentPlayer
                 destinationVC.gameRoom = gameRoom
             }
@@ -74,9 +74,10 @@ class GameRoomViewController: UIViewController {
         let player = GamePlayer(userName: playerName)
         GameRoom.findRoomWithName(roomName) { room in
             if let room = room {
+                self.gameRoom = room
                 self.joinRoom(player: player)
             } else {
-
+                print("Room not found")
             }
         }
     }

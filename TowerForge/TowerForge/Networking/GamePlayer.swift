@@ -11,7 +11,15 @@ class GamePlayer: Codable {
     var userPlayerId: UserPlayerId?
     let userName: String
 
-    init(userName: String) {
+    init(userPlayerId: UserPlayerId? = nil, userName: String) {
         self.userName = userName
+        self.userPlayerId = userPlayerId
     }
+}
+
+extension GamePlayer: Equatable {
+    static func == (lhs: GamePlayer, rhs: GamePlayer) -> Bool {
+        lhs.userPlayerId == rhs.userPlayerId
+    }
+
 }
