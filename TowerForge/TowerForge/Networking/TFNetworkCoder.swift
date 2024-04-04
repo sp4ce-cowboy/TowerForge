@@ -31,6 +31,5 @@ class TFNetworkCoder {
         } catch {
             fatalError("Unable to decode TFRemoteEvent from JSON")
         }
-        return nil
     }
 }

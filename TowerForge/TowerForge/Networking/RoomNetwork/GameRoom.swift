@@ -68,10 +68,6 @@ class GameRoom {
         }
     }
     func joinRoom(player: GamePlayer, completion: @escaping (Bool) -> Void) {
-        let publisher = FirebaseRemoteEventPublisher(roomId: roomName)
-        let receiver = FirebaseRemoteEventSubscriber(eventManager: eventManager, roomId: roomName)
-        publisher.publish(remoteEvent: RemoteSpawnEvent(ofType: MeleeUnit.self, location: .zero, player: player))
-
         self.isRoomFull(roomName) { isFull in
             if isFull {
                 completion(false)
