@@ -44,6 +44,8 @@ class GameRoom {
             }
 
             self.postRoomDataToFirebase {  _, _ in
+                print("Making room ...")
+                self.makeRoomListener()
                 completion(true)
             }
         }
@@ -143,6 +145,7 @@ class GameRoom {
         }
     }
     private func makeRoomListener() {
+        print("Start listening")
         roomRef.removeAllObservers()
         roomRef.child(roomName).observe(.value) { [weak self] snap in
             guard let snapshotValue = snap.value as? [String: Any] else {

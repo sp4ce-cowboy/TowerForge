@@ -35,7 +35,6 @@ class GameWaitingRoomViewController: UIViewController {
 
     @IBOutlet var ListStackView: UIStackView!
     private func updatePlayerList() {
-        print("Updating stack \(gameRoom?.playerOne) and \(gameRoom?.playerTwo)")
         ListStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
 
         // Add player views to the stack view
