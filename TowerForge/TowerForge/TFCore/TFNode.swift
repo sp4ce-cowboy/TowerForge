@@ -61,6 +61,7 @@ class TFNode {
     }
 
     func add(child: TFNode) {
+        // TODO: This enforces child to have name
         guard let name = child.name, children[name] == nil else {
             return
         }

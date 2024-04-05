@@ -18,7 +18,7 @@ class StatePopupNode: TFSpriteNode {
     var delegate: StatePopupDelegate?
 
     init() {
-        super.init(color: .clear, size: CGSize(width: 300, height: 300))
+        super.init(color: .red, size: CGSize(width: 300, height: 300))
         setupNode()
     }
 
@@ -26,28 +26,35 @@ class StatePopupNode: TFSpriteNode {
         let background = TFSpriteNode(imageName: "square-button", size: self.size)
 
         // TODO: Refactor into a constant
-        background.position = CGPoint(x: self.size.width / 2,
-                                      y: self.size.height / 2)
+        background.position = CGPoint(x: 0, y: 0)
+        background.name = "statePopupNode"
+
         let resumeButton = TFButtonNode(action: TFButtonDelegate(onTouchBegan: { [weak self] in
             self?.delegate?.onResume()
         },
                             onTouchEnded: {}),
-                            size: CGSize(width: 100,
+                            size: CGSize(width: 50,
                                          height: 50),
                             imageNamed: "circle-button")
+        resumeButton.name = "resumeButton"
 
         let menuButton = TFButtonNode(action: TFButtonDelegate(onTouchBegan: { [weak self] in
             self?.delegate?.onMenu()
-        }, onTouchEnded: {}), size: CGSize(width: 100, height: 50), imageNamed: "circle-button")
+        }, onTouchEnded: {}), size: CGSize(width: 50, height: 50), imageNamed: "circle-button")
+        menuButton.name = "menuButton"
 
         // TODO: Refactor the position into a constants
         resumeButton.position = CGPoint(x: background.position.x + 150, y: background.position.y)
         menuButton.position = CGPoint(x: background.position.x - 150, y: background.position.y)
 
-        print("Adding to scene")
-        add(child: background)
-        add(child: menuButton)
-        add(child: resumeButton)
+        background.zPosition = self.zPosition + 10
+        resumeButton.zPosition = self.zPosition + 20
+        menuButton.zPosition = self.zPosition + 20
+
+        self.add(child: background)
+        self.add(child: menuButton)
+        self.add(child: resumeButton)
+
     }
 
 }

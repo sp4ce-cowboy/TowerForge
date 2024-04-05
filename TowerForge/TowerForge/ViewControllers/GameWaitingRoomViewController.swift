@@ -13,7 +13,6 @@ class GameWaitingRoomViewController: UIViewController {
     var currentPlayer: GamePlayer?
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(gameRoom)
         gameRoom?.gameRoomDelegate = self
         updatePlayerList()
     }
