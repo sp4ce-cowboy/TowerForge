@@ -46,20 +46,22 @@ class GameRoom {
 
             self.postRoomDataToFirebase {  _, _ in
                 print("Making room ...")
-                self.makeRoomListener()
+                self.makeRoomChangeListener()
+                self.makeRoomDeletionListener()
                 completion(true)
             }
         }
-        self.makeRoomListener()
+        self.makeRoomChangeListener()
+        self.makeRoomDeletionListener()
     }
     init(roomName: String, roomState: RoomState? = nil) {
         self.roomName = roomName
         self.roomState = roomState
-        self.makeRoomListener()
+        self.makeRoomChangeListener()
     }
     private func postRoomDataToFirebase(completion: ((_ err: Any?, _ result: String?) -> Void)?) {
         let roomRef = FirebaseDatabaseReference(.Rooms).child(roomName)
-        roomRef.updateChildValues(["roomName": roomName as NSString? ]) { err, snap in
+        roomRef.updateChildValues(["roomName": roomName as? NSString ]) { err, snap in
                 if err != nil {
                     completion?(err, nil)
                 } else {
@@ -149,7 +151,7 @@ class GameRoom {
             }
         }
     }
-    private func makeRoomListener() {
+    private func makeRoomChangeListener() {
         print("Start listening")
         roomRef.removeAllObservers()
         roomRef.child(roomName).observe(.value) { [weak self] snap in
@@ -169,6 +171,30 @@ class GameRoom {
                 }
             }
             self?.gameRoomDelegate?.onRoomChange()
+        }
+    }
+    private func makeRoomDeletionListener() {
+        print("Start Deletion listening")
+        roomRef.child(roomName).child("players").observe(.childRemoved) { [weak self] snap in
+            guard let snapshotValue = snap.value as? [String: Any] else {
+                return
+            }
+            if let playersData = snapshotValue["players"] as? [String: Any] {
+                for (playerKey, playerData) in playersData {
+                    if let playerOne = self?.playerOne, playerOne.userPlayerId == playerKey {
+                        self?.playerOne = nil
+                        self?.gameRoomDelegate?.onRoomChange()
+                        return
+                    }
+
+                    // Check if the player is playerTwo
+                    if let playerTwo = self?.playerTwo, playerTwo.userPlayerId == playerKey {
+                        self?.playerTwo = nil
+                        self?.gameRoomDelegate?.onRoomChange()
+                        return
+                    }
+                }
+            }
         }
     }
     private func isRoomNameAvailable(roomName: String, completion: @escaping (Bool) -> Void?) {
