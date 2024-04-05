@@ -37,23 +37,13 @@ class GameRoom {
 
         // Check if the room name is available
         isRoomNameAvailable(roomName: roomName) { isAvailable in
-
             // If the room name is available, try to join the room
-            guard isAvailable else {
-                print("Room is taken")
-                completion(false)
-                return
-            }
-
-            self.postRoomDataToFirebase {  _, _ in
-                print("Making room ...")
-                self.makeRoomChangeListener()
-                self.makeRoomDeletionListener()
+            if isAvailable {
                 completion(true)
+            } else {
+                completion(false)
             }
         }
-        self.makeRoomChangeListener()
-        self.makeRoomDeletionListener()
     }
     init(roomName: String, roomState: RoomState? = nil) {
         self.roomName = roomName
@@ -144,6 +134,7 @@ class GameRoom {
         roomRef.getData { _, snapshot in
             if let snap = snapshot {
                 if snap.exists() {
+                    print("Finding the room and making it")
                     let room = GameRoom(roomName: roomName, roomState: .waitingForPlayers)
                     completion(room)
                 } else {
@@ -156,8 +147,6 @@ class GameRoom {
         }
     }
     private func makeRoomChangeListener() {
-        print("Start listening")
-        // roomRef.removeAllObservers()
         roomRef.child(roomName).observe(.value) { [weak self] snap in
             guard let snapshotValue = snap.value as? [String: Any] else {
                 return
@@ -178,7 +167,6 @@ class GameRoom {
         }
     }
     private func makeRoomDeletionListener() {
-        print("Start Deletion listening")
         roomRef.child(roomName).child("players").observe(.childRemoved) { [weak self] snapshot in
                 let playerKey = snapshot.key
                 // Check if the player is playerOne
@@ -203,10 +191,20 @@ class GameRoom {
             if let snap = snapshot {
                 if snap.exists() {
                     completion(false)
+                } else {
+                    self.postRoomDataToFirebase { _, _ in
+                        self.makeRoomChangeListener()
+                        self.makeRoomDeletionListener()
+                        completion(true)
+                    }
                 }
-                completion(true)
+
             } else {
-                completion(true)
+                self.postRoomDataToFirebase { _, _ in
+                    self.makeRoomChangeListener()
+                    self.makeRoomDeletionListener()
+                    completion(true)
+                }
             }
         }
 
