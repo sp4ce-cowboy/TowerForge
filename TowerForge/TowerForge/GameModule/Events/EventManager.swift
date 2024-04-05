@@ -41,6 +41,10 @@ class EventManager {
         self.eventTransformations.append(eventTransformation)
     }
 
+    func removeTransformation(eventTransformation: EventTransformation) {
+        self.eventTransformations.removeAll(where: { $0.id == eventTransformation.id })
+    }
+
     func executeEvents(in target: EventTarget) {
         while !eventQueue.isEmpty {
             var currentEvent = eventQueue.removeFirst()

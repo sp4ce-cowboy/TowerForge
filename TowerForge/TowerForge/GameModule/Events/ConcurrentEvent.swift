@@ -29,8 +29,21 @@ struct ConcurrentEvent: TFEvent {
     }
 
     func transform(eventTransformation: EventTransformation) -> TFEvent {
-        let transform1 = eventTransformation.transformEvent(event: event1)
-        let transform2 = eventTransformation.transformEvent(event: event2)
+        var transform1: TFEvent
+        var transform2: TFEvent
+
+        if let concurrentEvent1 = event1 as? ConcurrentEvent {
+            transform1 = concurrentEvent1.transform(eventTransformation: eventTransformation)
+        } else {
+            transform1 = eventTransformation.transformEvent(event: event1)
+        }
+
+        if let concurrentEvent2 = event2 as? ConcurrentEvent {
+            transform2 = concurrentEvent2.transform(eventTransformation: eventTransformation)
+        } else {
+            transform2 = eventTransformation.transformEvent(event: event2)
+        }
+
         return ConcurrentEvent(transform1, transform2)
     }
 }
