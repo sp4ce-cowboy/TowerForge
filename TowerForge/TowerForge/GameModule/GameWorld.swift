@@ -6,6 +6,7 @@
 //
 
 import QuartzCore
+import UIKit
 
 class GameWorld {
     // Need to ensure that width is a multiple of 1024 - unit selection node height
@@ -90,6 +91,16 @@ class GameWorld {
             gameEngine.addEntity(node)
         }
     }
+
+    func presentStatePopup() {
+        let popup = StatePopupNode()
+        popup.delegate = self
+        // TODO: Refactor this
+        popup.zPosition = 10_000
+        popup.position = CGPoint(x: UIScreen.main.bounds.width / 2,
+                                 y: UIScreen.main.bounds.height / 2)
+        scene?.add(node: popup, staticOnScreen: false)
+    }
 }
 
 extension GameWorld: Renderable {
@@ -103,4 +114,16 @@ extension GameWorld: UnitSelectionNodeDelegate {
         gameEngine.addEvent(RequestSpawnEvent(ofType: type, timestamp: CACurrentMediaTime(),
                                               position: position, player: .ownPlayer))
     }
+}
+
+// TODO: Fill the function
+extension GameWorld: StatePopupDelegate {
+    func onMenu() {
+        //
+    }
+
+    func onResume() {
+        //
+    }
+
 }

@@ -14,9 +14,16 @@ struct TFButtonDelegate {
 
 private class TFButton: SKSpriteNode {
     private var action: TFButtonDelegate?
+
     init(buttonAction: TFButtonDelegate?, size: CGSize) {
         self.action = buttonAction
         super.init(texture: nil, color: .clear, size: size)
+    }
+
+    init(buttonAction: TFButtonDelegate?, size: CGSize, imageNamed: String) {
+        let texture = SKTexture(imageNamed: imageNamed)
+        self.action = buttonAction
+        super.init(texture: texture, color: .clear, size: size)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -37,5 +44,11 @@ class TFButtonNode: TFNode {
     init(action: TFButtonDelegate?, size: CGSize) {
         super.init()
         node = TFButton(buttonAction: action, size: size)
+    }
+    init(action: TFButtonDelegate?, size: CGSize, imageNamed: String) {
+        super.init()
+        node = TFButton(buttonAction: action,
+                        size: size,
+                        imageNamed: imageNamed)
     }
 }
