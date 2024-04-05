@@ -18,7 +18,7 @@ class StatePopupNode: TFSpriteNode {
     var delegate: StatePopupDelegate?
 
     init() {
-        super.init(color: .red, size: CGSize(width: 300, height: 300))
+        super.init(color: .clear, size: CGSize(width: 300, height: 300))
         setupNode()
     }
 
