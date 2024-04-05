@@ -101,6 +101,7 @@
 		527A07842BB3FD9A00CD9D08 /* TimerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A07832BB3FD9A00CD9D08 /* TimerSystem.swift */; };
 		527A07862BB411FB00CD9D08 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A07852BB411FB00CD9D08 /* GameOverScene.swift */; };
 		527E3A242BA613F000FE1628 /* PlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527E3A232BA613EF00FE1628 /* PlayerComponent.swift */; };
+		529190E32BBFB59B001D8821 /* StatePopupNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529190E22BBFB59B001D8821 /* StatePopupNode.swift */; };
 		5295A2022BA9FBD9005018A8 /* SceneManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2012BA9FBD9005018A8 /* SceneManagerDelegate.swift */; };
 		5295A2042BA9FED4005018A8 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2032BA9FED4005018A8 /* MenuScene.swift */; };
 		5295A2072BAA02FD005018A8 /* TFButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2062BAA02FD005018A8 /* TFButtonNode.swift */; };
@@ -294,6 +295,7 @@
 		527A07832BB3FD9A00CD9D08 /* TimerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSystem.swift; sourceTree = "<group>"; };
 		527A07852BB411FB00CD9D08 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		527E3A232BA613EF00FE1628 /* PlayerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerComponent.swift; sourceTree = "<group>"; };
+		529190E22BBFB59B001D8821 /* StatePopupNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatePopupNode.swift; sourceTree = "<group>"; };
 		5295A2012BA9FBD9005018A8 /* SceneManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManagerDelegate.swift; sourceTree = "<group>"; };
 		5295A2032BA9FED4005018A8 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		5295A2062BAA02FD005018A8 /* TFButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFButtonNode.swift; sourceTree = "<group>"; };
@@ -590,6 +592,7 @@
 				5295A2142BAAF335005018A8 /* UnitSelectionNode.swift */,
 				9B0406112BB889940026E903 /* PowerUpNode.swift */,
 				9B0406132BB89BE00026E903 /* PowerUpSelectionNode.swift */,
+				529190E22BBFB59B001D8821 /* StatePopupNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -1380,6 +1383,7 @@
 				3CAC4A6B2BB6992F00A5D22E /* TFNode.swift in Sources */,
 				3CAC4A6D2BB6A13B00A5D22E /* PositionRenderStage.swift in Sources */,
 				3CE951672BAEAB0E008B2785 /* ContactSystem.swift in Sources */,
+				529190E32BBFB59B001D8821 /* StatePopupNode.swift in Sources */,
 				3CE951692BAEB719008B2785 /* RequestSpawnEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
