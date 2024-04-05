@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol EventTransformation {
+protocol EventTransformation: Identifiable {
     var id: UUID { get}
     func transformEvent(event: TFEvent) -> TFEvent
 }

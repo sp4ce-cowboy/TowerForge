@@ -9,7 +9,7 @@ import Foundation
 
 class EventManager {
     typealias EventHandler = (TFEvent) -> Void
-    var eventTransformations: [EventTransformation]
+    var eventTransformations: [any EventTransformation]
     var eventQueue: [TFEvent]
     var eventHandler: [TFEventTypeWrapper: [EventHandler]]
 
@@ -37,11 +37,11 @@ class EventManager {
         }
     }
 
-    func addTransformation(eventTransformation: EventTransformation) {
+    func addTransformation(eventTransformation: any EventTransformation) {
         self.eventTransformations.append(eventTransformation)
     }
 
-    func removeTransformation(eventTransformation: EventTransformation) {
+    func removeTransformation(eventTransformation: any EventTransformation) {
         self.eventTransformations.removeAll(where: { $0.id == eventTransformation.id })
     }
 
