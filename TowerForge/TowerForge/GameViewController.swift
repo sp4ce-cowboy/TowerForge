@@ -11,6 +11,10 @@ class GameViewController: UIViewController {
     private var gameWorld: GameWorld?
     var gameMode: Mode?
 
+    @IBAction private func onStatePressed(_ sender: Any) {
+        print("I AM PRESSED")
+        gameWorld?.presentStatePopup()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         AchievementManager.incrementTotalGamesStarted()

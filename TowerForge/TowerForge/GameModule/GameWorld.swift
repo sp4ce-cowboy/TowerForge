@@ -115,3 +115,15 @@ extension GameWorld: UnitSelectionNodeDelegate {
                                               position: position, player: .ownPlayer))
     }
 }
+
+// TODO: Fill the function
+extension GameWorld: StatePopupDelegate {
+    func onMenu() {
+        //
+    }
+
+    func onResume() {
+        //
+    }
+
+}

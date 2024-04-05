@@ -22,6 +22,19 @@
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRf-Sx-cuP">
+                                <rect key="frame" x="20" y="20" width="114" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <backgroundConfiguration key="background" image="resume-button"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onStatePressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="jae-ri-mPS"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -29,7 +42,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="-2"/>
+            <point key="canvasLocation" x="139.67789165446558" y="-2.34375"/>
         </scene>
         <!--MainMenuViewController-->
         <scene sceneID="vFw-SO-Nq3">
@@ -387,6 +400,7 @@ Match</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="gCm-LW-wHo"/>
         <segue reference="5Mz-7I-nNc"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -395,6 +409,7 @@ Match</string>
         <image name="background" width="1000" height="500"/>
         <image name="background1" width="1600" height="1000"/>
         <image name="logo" width="1000" height="500"/>
+        <image name="resume-button" width="1600" height="1000"/>
         <image name="square-button" width="1600" height="1000"/>
         <image name="start-button" width="1000" height="500"/>
         <namedColor name="AccentColor">
