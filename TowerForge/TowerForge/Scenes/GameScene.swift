@@ -77,10 +77,6 @@ class GameScene: SKScene {
 extension GameScene: TFScene {
     func add(node: TFNode, staticOnScreen: Bool = false) {
         if staticOnScreen {
-            print(node)
-            print(node.size)
-            print(node.zPosition)
-            print(node.position)
             cameraNode?.add(child: node)
         } else {
             addChild(node.node)
