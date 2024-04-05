@@ -11,6 +11,7 @@ import GameplayKit
 class GameScene: SKScene {
     unowned var updateDelegate: SceneUpdateDelegate?
     unowned var sceneManagerDelegate: SceneManagerDelegate?
+    unowned var statePopupDelegate: StatePopupDelegate?
     private var lastUpdatedTimeInterval = TimeInterval(0)
     private var cameraNode: TFCameraNode?
     private var isPan = false
@@ -21,11 +22,17 @@ class GameScene: SKScene {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if statePopupDelegate?.isPaused ?? false {
+            return
+        }
         super.touchesBegan(touches, with: event)
         isPan = false
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if statePopupDelegate?.isPaused ?? false {
+            return
+        }
         super.touchesEnded(touches, with: event)
         guard let touch = touches.first else {
             return
@@ -39,6 +46,9 @@ class GameScene: SKScene {
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if statePopupDelegate?.isPaused ?? false {
+            return
+        }
         super.touchesMoved(touches, with: event)
         guard let touch = touches.first else {
             return
@@ -55,6 +65,9 @@ class GameScene: SKScene {
     }
 
     override func update(_ currentTime: TimeInterval) {
+        if statePopupDelegate?.isPaused ?? false {
+            return
+        }
         if lastUpdatedTimeInterval == TimeInterval(0) {
             lastUpdatedTimeInterval = currentTime
         }

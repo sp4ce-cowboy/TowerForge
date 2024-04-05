@@ -10,8 +10,10 @@ import SpriteKit
 class GameViewController: UIViewController {
     private var gameWorld: GameWorld?
     var gameMode: Mode?
+    var isPaused = false
 
     @IBAction private func onStatePressed(_ sender: Any) {
+        isPaused = true
         gameWorld?.presentStatePopup()
     }
     override func viewDidLoad() {
@@ -42,6 +44,7 @@ class GameViewController: UIViewController {
     private func setUpGameWorld(scene: GameScene) {
         self.gameWorld = GameWorld(scene: scene, screenSize: self.view.frame, mode: self.gameMode ?? .captureTheFlag)
         self.gameWorld?.delegate = self
+        self.gameWorld?.statePopupDelegate = self
     }
 }
 
@@ -74,6 +77,7 @@ extension GameViewController: SceneManagerDelegate {
             // Present the scene
             gameScene.sceneManagerDelegate = self
             gameScene.updateDelegate = self
+            gameScene.statePopupDelegate = self
             showScene(scene: gameScene)
             setUpGameWorld(scene: gameScene)
         }
@@ -87,5 +91,14 @@ extension GameViewController: SceneManagerDelegate {
             view.showsNodeCount = true
             view.showsPhysics = true
         }
+    }
+}
+
+extension GameViewController: StatePopupDelegate {
+    func onMenu() {
+    }
+
+    func onResume() {
+        isPaused = false
     }
 }
