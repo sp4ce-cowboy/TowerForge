@@ -399,7 +399,6 @@ Match</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gCm-LW-wHo"/>
         <segue reference="5Mz-7I-nNc"/>
     </inferredMetricsTieBreakers>
     <resources>

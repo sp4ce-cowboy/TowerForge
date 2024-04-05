@@ -14,6 +14,7 @@ class GameWaitingRoomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         gameRoom?.gameRoomDelegate = self
+        print("Is there game \(gameRoom)")
         updatePlayerList()
     }
     @IBAction private func onLeaveButtonPressed(_ sender: Any) {
@@ -33,6 +34,7 @@ class GameWaitingRoomViewController: UIViewController {
     }
 
     @IBOutlet var ListStackView: UIStackView!
+
     private func updatePlayerList() {
         ListStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
 
