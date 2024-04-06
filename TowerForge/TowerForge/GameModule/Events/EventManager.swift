@@ -15,7 +15,7 @@ class EventManager {
     private(set) var remoteEventManager: RemoteEventManager?
     private(set) var currentPlayer: GamePlayer?
 
-    init(roomId: RoomId? = nil, currentPlayer: GamePlayer?) {
+    init(roomId: RoomId? = nil, currentPlayer: GamePlayer? = nil) {
         eventTransformations = []
         eventQueue = []
         eventHandler = [:]
