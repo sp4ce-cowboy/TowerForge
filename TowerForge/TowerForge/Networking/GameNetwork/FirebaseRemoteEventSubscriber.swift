@@ -10,9 +10,9 @@ import FirebaseDatabase
 
 class FirebaseRemoteEventSubscriber: TFRemoteEventSubscriber {
     private let gameReference: DatabaseReference
-    unowned let eventManager: EventManager
+    weak var eventManager: EventManager?
 
-    init(eventManager: EventManager, roomId: RoomId) {
+    init(roomId: RoomId, eventManager: EventManager? = nil) {
         self.eventManager = eventManager
         self.gameReference = FirebaseDatabaseReference(.Game).child(roomId)
 
@@ -24,11 +24,13 @@ class FirebaseRemoteEventSubscriber: TFRemoteEventSubscriber {
     }
 
     private func setUpObserver() {
-        gameReference.observe(.childAdded) { snapshot, _  in
-            guard let string = snapshot.value as? String, let event = TFNetworkCoder.fromJsonString(string) else {
+        gameReference.observe(.childAdded) { snapshot in
+            guard let string = snapshot.value as? String, let eventManager = self.eventManager,
+                  let event = TFNetworkCoder.fromJsonString(string),
+                  let player = eventManager.currentPlayer?.userPlayerId else {
                 return
             }
-            event.unpack(into: self.eventManager)
+            event.unpack(into: eventManager, for: player)
         }
     }
 }

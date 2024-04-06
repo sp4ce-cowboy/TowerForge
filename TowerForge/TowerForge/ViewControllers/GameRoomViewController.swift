@@ -38,23 +38,21 @@ class GameRoomViewController: UIViewController {
                 self.joinRoom(player: playerOne)
             }
         }
-
     }
+
     func joinRoom(player: GamePlayer) {
         // Create a game room
         gameRoom?.joinRoom(player: player, completion: { success in
             if success {
                 print("Successfully joined the room")
                 self.currentPlayer = player
-                self.performSegue(withIdentifier: "segueToWaitingRoom",
-                                  sender: self)
-
+                self.performSegue(withIdentifier: "segueToWaitingRoom", sender: self)
             } else {
                 print("Failed to join room")
             }
         })
-
     }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToWaitingRoom" {
             if let destinationVC = segue.destination as? GameWaitingRoomViewController {
@@ -67,7 +65,8 @@ class GameRoomViewController: UIViewController {
             }
         }
     }
-    @IBAction func joinRoomButtonPressed(_ sender: Any) {
+
+    @IBAction private func joinRoomButtonPressed(_ sender: Any) {
         guard let roomName = RoomNameInput.text, !roomName.isEmpty,
             let playerName = PlayerNameInput.text, !playerName.isEmpty else {
             // Show an alert or some indication to the user that inputs are empty

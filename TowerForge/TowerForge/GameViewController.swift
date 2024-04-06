@@ -10,10 +10,13 @@ import SpriteKit
 class GameViewController: UIViewController {
     private var gameWorld: GameWorld?
     var gameMode: Mode?
+    var gameRoom: GameRoom?
+    var currentPlayer: GamePlayer?
 
     @IBAction private func onStatePressed(_ sender: Any) {
         gameWorld?.presentStatePopup()
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         AchievementManager.incrementTotalGamesStarted()
@@ -40,7 +43,9 @@ class GameViewController: UIViewController {
     }
 
     private func setUpGameWorld(scene: GameScene) {
-        self.gameWorld = GameWorld(scene: scene, screenSize: self.view.frame, mode: self.gameMode ?? .captureTheFlag)
+        self.gameWorld = GameWorld(scene: scene, screenSize: self.view.frame,
+                                   mode: self.gameMode ?? .captureTheFlag,
+                                   gameRoom: gameRoom, currentPlayer: currentPlayer)
         self.gameWorld?.delegate = self
     }
 }
@@ -70,13 +75,14 @@ extension GameViewController: SceneManagerDelegate {
         showScene(scene: gameOverScene)
     }
     func showGameLevelScene(level: Int) {
-        if let gameScene = GameScene(fileNamed: "GameScene") {
-            // Present the scene
-            gameScene.sceneManagerDelegate = self
-            gameScene.updateDelegate = self
-            showScene(scene: gameScene)
-            setUpGameWorld(scene: gameScene)
+        guard let gameScene = GameScene(fileNamed: "GameScene") else {
+            return
         }
+        // Present the scene
+        gameScene.sceneManagerDelegate = self
+        gameScene.updateDelegate = self
+        showScene(scene: gameScene)
+        setUpGameWorld(scene: gameScene)
     }
     func showScene(scene: SKScene) {
         if let view = self.view as? SKView {

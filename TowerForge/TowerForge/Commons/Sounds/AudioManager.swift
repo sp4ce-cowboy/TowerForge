@@ -157,7 +157,7 @@ internal class AudioManager: NSObject, AVAudioPlayerDelegate {
 
     /// Play a sound effect
     func playSoundEffect(for soundNameEnumCase: SoundEffect) {
-        var soundName = soundNameEnumCase.rawValue
+        let soundName = soundNameEnumCase.rawValue
         guard SOUND_EFFECTS_ENABLED else {
             return
         }

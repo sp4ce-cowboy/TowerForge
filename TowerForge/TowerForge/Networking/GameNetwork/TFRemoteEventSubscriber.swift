@@ -8,5 +8,5 @@
 import Foundation
 
 protocol TFRemoteEventSubscriber {
-    var eventManager: EventManager { get }
+    var eventManager: EventManager? { get }
 }
