@@ -22,7 +22,7 @@ class GameRoom {
         playerOne != nil && playerTwo != nil
     }
 
-    var gameRoomDelegate: GameRoomDelegate?
+    weak var gameRoomDelegate: GameRoomDelegate?
 
     var isRoomEmpty: Bool {
         playerOne == nil && playerTwo == nil
@@ -51,6 +51,7 @@ class GameRoom {
         self.roomState = roomState
         self.makeRoomChangeListener()
     }
+
     deinit {
         removeAllListeners()
     }
@@ -58,11 +59,11 @@ class GameRoom {
     private func postRoomDataToFirebase(completion: ((_ err: Any?, _ result: String?) -> Void)?) {
         let roomRef = FirebaseDatabaseReference(.Rooms).child(roomName)
         roomRef.updateChildValues(["roomName": roomName ]) { err, snap in
-                if err != nil {
-                    completion?(err, nil)
-                } else {
-                    completion?(nil, snap.key)
-                }
+            if err != nil {
+                completion?(err, nil)
+            } else {
+                completion?(nil, snap.key)
+            }
         }
     }
 
@@ -229,6 +230,5 @@ class GameRoom {
 
     private func removeAllListeners() {
         roomRef.child(roomName).removeAllObservers()
-
     }
 }

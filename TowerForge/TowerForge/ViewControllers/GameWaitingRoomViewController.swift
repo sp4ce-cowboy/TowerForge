@@ -12,6 +12,12 @@ class GameWaitingRoomViewController: UIViewController {
     var currentPlayer: GamePlayer?
     @IBOutlet private var ListStackView: UIStackView!
 
+    deinit {
+        gameRoom = nil
+        currentPlayer = nil
+        print("deinit")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         gameRoom?.gameRoomDelegate = self
@@ -31,7 +37,7 @@ class GameWaitingRoomViewController: UIViewController {
     }
 
     @IBAction private func onStartButtonPressed(_ sender: Any) {
-        guard let playerOne = gameRoom?.playerOne, let currentPlayer = currentPlayer else {
+        guard let playerOne = gameRoom?.playerOne, let currentPlayer = currentPlayer, playerOne == currentPlayer else {
             return
         }
         self.performSegue(withIdentifier: "segueToGame", sender: self)
@@ -45,9 +51,8 @@ class GameWaitingRoomViewController: UIViewController {
             if !success {
                 return
             } else {
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "segueToGameRoom", sender: self)
-                }
+                // Pop from navigation stack so that vc and gameroom can be deinit
+                self.navigationController?.popViewController(animated: true)
             }
         })
         // performSegue(withIdentifier: "segueToGameRoom", sender: self)

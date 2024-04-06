@@ -47,9 +47,7 @@ class GameRoomViewController: UIViewController {
             if success {
                 print("Successfully joined the room")
                 self.currentPlayer = player
-                self.performSegue(withIdentifier: "segueToWaitingRoom",
-                                  sender: self)
-
+                self.performSegue(withIdentifier: "segueToWaitingRoom", sender: self)
             } else {
                 print("Failed to join room")
             }
