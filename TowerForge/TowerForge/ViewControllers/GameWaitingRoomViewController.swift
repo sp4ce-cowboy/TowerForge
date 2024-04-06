@@ -15,6 +15,7 @@ class GameWaitingRoomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         gameRoom?.gameRoomDelegate = self
+        print("Is there game \(gameRoom)")
         updatePlayerList()
     }
 

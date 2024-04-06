@@ -37,26 +37,22 @@ class GameRoom {
 
         // Check if the room name is available
         isRoomNameAvailable(roomName: roomName) { isAvailable in
-
             // If the room name is available, try to join the room
-            guard isAvailable else {
-                return completion(false)
-            }
-
-            self.postRoomDataToFirebase {  _, roomId in
-                print("Making room ...")
-                self.makeRoomListener()
-                self.roomId = roomId
+            if isAvailable {
                 completion(true)
+            } else {
+                completion(false)
             }
         }
-        self.makeRoomListener()
     }
 
     init(roomName: String, roomState: RoomState? = nil) {
         self.roomName = roomName
         self.roomState = roomState
-        self.makeRoomListener()
+        self.makeRoomChangeListener()
+    }
+    deinit {
+        removeAllListeners()
     }
 
     private func postRoomDataToFirebase(completion: ((_ err: Any?, _ result: String?) -> Void)?) {
@@ -152,6 +148,7 @@ class GameRoom {
         roomRef.getData { _, snapshot in
             if let snap = snapshot {
                 if snap.exists() {
+                    print("Finding the room and making it")
                     let room = GameRoom(roomName: roomName, roomState: .waitingForPlayers)
                     completion(room)
                 } else {
@@ -164,9 +161,7 @@ class GameRoom {
         }
     }
 
-    private func makeRoomListener() {
-        print("Start listening")
-        roomRef.removeAllObservers()
+    private func makeRoomChangeListener() {
         roomRef.child(roomName).observe(.value) { [weak self] snap in
             guard let snapshotValue = snap.value as? [String: Any] else {
                 return
@@ -187,17 +182,53 @@ class GameRoom {
         }
     }
 
+    private func makeRoomDeletionListener() {
+        roomRef.child(roomName).child("players").observe(.childRemoved) { [weak self] snapshot in
+                let playerKey = snapshot.key
+                // Check if the player is playerOne
+                if let playerOne = self?.playerOne, playerOne.userPlayerId == playerKey {
+                    self?.playerOne = nil
+
+                    self?.gameRoomDelegate?.onRoomChange()
+                    return
+                }
+
+                // Check if the player is playerTwo
+                if let playerTwo = self?.playerTwo, playerTwo.userPlayerId == playerKey {
+                    self?.playerTwo = nil
+                    self?.gameRoomDelegate?.onRoomChange()
+                    return
+                }
+
+        }
+    }
+
     private func isRoomNameAvailable(roomName: String, completion: @escaping (Bool) -> Void?) {
         FirebaseDatabaseReference(.Rooms).child(roomName).getData { _, snapshot in
             if let snap = snapshot {
                 if snap.exists() {
                     completion(false)
+                } else {
+                    self.postRoomDataToFirebase { _, _ in
+                        self.makeRoomChangeListener()
+                        self.makeRoomDeletionListener()
+                        completion(true)
+                    }
                 }
-                completion(true)
+
             } else {
-                completion(true)
+                self.postRoomDataToFirebase { _, _ in
+                    self.makeRoomChangeListener()
+                    self.makeRoomDeletionListener()
+                    completion(true)
+                }
             }
         }
+
+    }
+
+    private func removeAllListeners() {
+        roomRef.child(roomName).removeAllObservers()
 
     }
 }

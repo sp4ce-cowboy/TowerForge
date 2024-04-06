@@ -97,8 +97,8 @@ class GameWorld {
         popup.delegate = self
         // TODO: Refactor this
         popup.zPosition = 10_000
-        popup.position = CGPoint(x: UIScreen.main.bounds.width / 2,
-                                 y: UIScreen.main.bounds.height / 2)
+        popup.position = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
+        // popup.position = CGPoint(x: 0, y: 0)
         scene?.add(node: popup, staticOnScreen: false)
     }
 }
