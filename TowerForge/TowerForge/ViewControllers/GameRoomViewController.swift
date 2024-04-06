@@ -38,6 +38,7 @@ class GameRoomViewController: UIViewController {
         }
 
     }
+
     func joinRoom(player: GamePlayer) {
         // Create a game room
         gameRoom?.joinRoom(player: player, completion: { success in
@@ -53,6 +54,7 @@ class GameRoomViewController: UIViewController {
         })
 
     }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToWaitingRoom" {
             if let destinationVC = segue.destination as? GameWaitingRoomViewController {
@@ -65,7 +67,8 @@ class GameRoomViewController: UIViewController {
             }
         }
     }
-    @IBAction func joinRoomButtonPressed(_ sender: Any) {
+
+    @IBAction private func joinRoomButtonPressed(_ sender: Any) {
         guard let roomName = RoomNameInput.text, !roomName.isEmpty,
             let playerName = PlayerNameInput.text, !playerName.isEmpty else {
             // Show an alert or some indication to the user that inputs are empty

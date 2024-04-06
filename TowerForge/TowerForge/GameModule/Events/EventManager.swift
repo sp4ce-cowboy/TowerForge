@@ -12,15 +12,31 @@ class EventManager {
     var eventTransformations: [any EventTransformation]
     var eventQueue: [TFEvent]
     var eventHandler: [TFEventTypeWrapper: [EventHandler]]
+    private(set) var remoteEventManager: RemoteEventManager?
+    private(set) var currentPlayer: GamePlayer?
 
-    init() {
+    init(roomId: RoomId? = nil, currentPlayer: GamePlayer?) {
         eventTransformations = []
         eventQueue = []
         eventHandler = [:]
+
+        if let roomId = roomId, let currentPlayer = currentPlayer {
+            let publisher = FirebaseRemoteEventPublisher(roomId: roomId)
+            let subscriber = FirebaseRemoteEventSubscriber(roomId: roomId, eventManager: self)
+            self.remoteEventManager = RemoteEventManager(publisher: publisher, subscriber: subscriber)
+            self.currentPlayer = currentPlayer
+        }
     }
 
     func add(_ event: TFEvent) {
         eventQueue.append(event)
+    }
+
+    func add(_ event: TFRemoteEvent) {
+        guard let remoteEventManager = remoteEventManager else {
+            return event.unpack(into: self, for: event.source) // Unpack for self
+        }
+        remoteEventManager.publisher.publish(remoteEvent: event)
     }
 
     func registerHandler<T: TFEvent>(forEvent eventType: T.Type, handler: @escaping EventHandler) {

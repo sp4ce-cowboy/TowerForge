@@ -8,14 +8,34 @@
 import UIKit
 
 class GameWaitingRoomViewController: UIViewController {
-
     var gameRoom: GameRoom?
     var currentPlayer: GamePlayer?
+    @IBOutlet private var ListStackView: UIStackView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         gameRoom?.gameRoomDelegate = self
         updatePlayerList()
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
+        guard let destVC = segue.destination as? GameViewController else {
+            return
+        }
+
+        destVC.gameRoom = gameRoom
+        destVC.currentPlayer = currentPlayer
+    }
+
+    @IBAction private func onStartButtonPressed(_ sender: Any) {
+        guard let playerOne = gameRoom?.playerOne, let currentPlayer = currentPlayer else {
+            return
+        }
+        self.performSegue(withIdentifier: "segueToGame", sender: self)
+    }
+
     @IBAction private func onLeaveButtonPressed(_ sender: Any) {
         guard let player = currentPlayer else {
             return
@@ -32,7 +52,6 @@ class GameWaitingRoomViewController: UIViewController {
         // performSegue(withIdentifier: "segueToGameRoom", sender: self)
     }
 
-    @IBOutlet var ListStackView: UIStackView!
     private func updatePlayerList() {
         ListStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
 

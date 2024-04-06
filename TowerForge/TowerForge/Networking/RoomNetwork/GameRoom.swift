@@ -11,11 +11,12 @@ import FirebaseDatabaseInternal
 class GameRoom {
     private(set) var roomName: String
     private(set) var roomState: RoomState?
+    private(set) var roomId: RoomId?
 
     private(set) var playerOne: GamePlayer?
     private(set) var playerTwo: GamePlayer?
 
-    let roomRef = FirebaseDatabaseReference(.Rooms)
+    private let roomRef = FirebaseDatabaseReference(.Rooms)
 
     var isRoomFull: Bool {
         playerOne != nil && playerTwo != nil
@@ -26,7 +27,6 @@ class GameRoom {
     var isRoomEmpty: Bool {
         playerOne == nil && playerTwo == nil
     }
-    var eventManager = EventManager()
 
     // the player creating the room will auto join the room
     init?(roomName: String,
@@ -40,26 +40,28 @@ class GameRoom {
 
             // If the room name is available, try to join the room
             guard isAvailable else {
-                completion(false)
-                return
+                return completion(false)
             }
 
-            self.postRoomDataToFirebase {  _, _ in
+            self.postRoomDataToFirebase {  _, roomId in
                 print("Making room ...")
                 self.makeRoomListener()
+                self.roomId = roomId
                 completion(true)
             }
         }
         self.makeRoomListener()
     }
+
     init(roomName: String, roomState: RoomState? = nil) {
         self.roomName = roomName
         self.roomState = roomState
         self.makeRoomListener()
     }
+
     private func postRoomDataToFirebase(completion: ((_ err: Any?, _ result: String?) -> Void)?) {
         let roomRef = FirebaseDatabaseReference(.Rooms).child(roomName)
-        roomRef.updateChildValues(["roomName": roomName as NSString? ]) { err, snap in
+        roomRef.updateChildValues(["roomName": roomName ]) { err, snap in
                 if err != nil {
                     completion?(err, nil)
                 } else {
@@ -67,6 +69,7 @@ class GameRoom {
                 }
         }
     }
+
     func joinRoom(player: GamePlayer, completion: @escaping (Bool) -> Void) {
         self.isRoomFull(roomName) { isFull in
             if isFull {
@@ -82,7 +85,6 @@ class GameRoom {
         playerRef.setValue(player.userName)
         player.userPlayerId = playerRef.key
         completion(true) // Successfully joined the room
-
     }
 
     func leaveRoom(player: GamePlayer, completion: @escaping (Bool) -> Void) {
@@ -116,6 +118,17 @@ class GameRoom {
             }
         }
     }
+
+    func getPlayerNum(gamePlayer: GamePlayer) -> Player? {
+        if gamePlayer == playerOne {
+            return .ownPlayer
+        }
+        if gamePlayer == playerTwo {
+            return .oppositePlayer
+        }
+        return nil
+    }
+
     private func isRoomFull(_ roomName: String, completion: @escaping (Bool) -> Void) {
         let roomRef = FirebaseDatabaseReference(.Rooms).child(roomName).child("players")
         roomRef.getData { error, snapshot in
@@ -133,6 +146,7 @@ class GameRoom {
             }
         }
     }
+
     static func findRoomWithName(_ roomName: String, completion: @escaping (GameRoom?) -> Void) {
         let roomRef = FirebaseDatabaseReference(.Rooms).child(roomName)
         roomRef.getData { _, snapshot in
@@ -149,6 +163,7 @@ class GameRoom {
             }
         }
     }
+
     private func makeRoomListener() {
         print("Start listening")
         roomRef.removeAllObservers()
@@ -171,6 +186,7 @@ class GameRoom {
             self?.gameRoomDelegate?.onRoomChange()
         }
     }
+
     private func isRoomNameAvailable(roomName: String, completion: @escaping (Bool) -> Void?) {
         FirebaseDatabaseReference(.Rooms).child(roomName).getData { _, snapshot in
             if let snap = snapshot {

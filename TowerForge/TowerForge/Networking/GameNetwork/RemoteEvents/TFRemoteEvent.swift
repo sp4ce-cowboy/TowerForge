@@ -12,7 +12,6 @@ protocol TFRemoteEvent: Codable {
     var type: String { get }
     var timeStamp: TimeInterval { get }
     var source: UserPlayerId { get }
-    var shouldSourceExecute: Bool { get set }
 
-    func unpack(into eventManager: EventManager)
+    func unpack(into eventManager: EventManager, for gamePlayer: UserPlayerId)
 }

@@ -23,14 +23,14 @@ class GameWorld {
 
     unowned var delegate: SceneManagerDelegate?
 
-    init(scene: GameScene?, screenSize: CGRect, mode: Mode) {
+    init(scene: GameScene?, screenSize: CGRect, mode: Mode,
+         gameRoom: GameRoom? = nil, currentPlayer: GamePlayer? = nil) {
         self.scene = scene
         worldBounds = CGRect(origin: screenSize.origin, size: GameWorld.worldSize)
-        gameEngine = GameEngine()
+        gameEngine = GameEngine(roomId: gameRoom?.roomId, currentPlayer: currentPlayer)
         gameMode = GameModeFactory.createGameMode(mode: mode, eventManager: gameEngine.eventManager)
         selectionNode = UnitSelectionNode()
         powerUpSelectionNode = PowerUpSelectionNode(eventManager: gameEngine.eventManager)
-
         grid = Grid(screenSize: worldBounds)
         renderer = Renderer(target: self, scene: scene)
 

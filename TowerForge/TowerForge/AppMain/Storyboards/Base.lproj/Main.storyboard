@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NJ9-hN-4Nf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NJ9-hN-4Nf">
     <device id="ipad12_9" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -207,7 +207,7 @@ Match</string>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ao-cU-Ulr">
-                                <rect key="frame" x="758" y="904" width="315" height="35"/>
+                                <rect key="frame" x="201" y="450" width="315" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
@@ -241,7 +241,7 @@ Match</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HLK-1h-t1c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-425.18301610541727" y="887.69531249999989"/>
+            <point key="canvasLocation" x="-684" y="698"/>
         </scene>
         <!--GameRoomViewController-->
         <scene sceneID="5mD-Je-aaF">
@@ -251,7 +251,7 @@ Match</string>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LxS-dM-szG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-223" y="1296"/>
+            <point key="canvasLocation" x="-684" y="1100"/>
         </scene>
         <!--Game Room View Controller-->
         <scene sceneID="jLt-cI-G0H">
@@ -349,7 +349,7 @@ Match</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5j6-jT-xdh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-749.34114202049773" y="1650.5859375"/>
+            <point key="canvasLocation" x="-684" y="1504"/>
         </scene>
         <!--Game Waiting Room View Controller-->
         <scene sceneID="40b-Ga-mMh">
@@ -360,12 +360,12 @@ Match</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FSQ-sC-jDO">
-                                <rect key="frame" x="351" y="85" width="664" height="678"/>
+                                <rect key="frame" x="114" y="84" width="664" height="678"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="546-UR-FKj">
-                                <rect key="frame" x="401" y="812" width="565" height="127"/>
+                                <rect key="frame" x="851" y="634" width="476" height="127"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
@@ -385,6 +385,26 @@ Match</string>
                                     <segue destination="tK4-EO-PjX" kind="showDetail" identifier="segueToGameRoom" id="gCm-LW-wHo"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95L-Ms-1Jv">
+                                <rect key="frame" x="851" y="449" width="476" height="127"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <backgroundConfiguration key="background" image="square-button"/>
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Start">
+                                            <attributes>
+                                                <font key="NSFont" size="55" name="Baskerville-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onStartButtonPressed:" destination="FnT-Eh-Bya" eventType="touchUpInside" id="8Bs-me-fVt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rUg-Tb-9QP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -392,16 +412,18 @@ Match</string>
                     <navigationItem key="navigationItem" id="RIh-Gm-msf"/>
                     <connections>
                         <outlet property="ListStackView" destination="FSQ-sC-jDO" id="21H-Es-ph1"/>
+                        <segue destination="BV1-FR-VrT" kind="show" identifier="segueToGame" id="XQ8-qZ-uaV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srP-KJ-HWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-942" y="2536"/>
+            <point key="canvasLocation" x="111" y="1504"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="gCm-LW-wHo"/>
         <segue reference="5Mz-7I-nNc"/>
+        <segue reference="txd-Iu-hy9"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Flag" width="500" height="500"/>

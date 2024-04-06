@@ -60,10 +60,17 @@ class HomeSystem: TFSystem {
 
         // Reduce points
         playerHomeComponentArr.forEach({ $0.decreasePoints(type.cost) })
-
         let snapPosition = getSnapPosition(at: position, for: player, with: type)
-        let spawnEvent = SpawnEvent(ofType: type, timestamp: CACurrentMediaTime(),
-                                    position: snapPosition, player: player)
+
+        // If player is not playing in multiplayer, spawn as normal
+        guard let currentPlayer = eventManager.currentPlayer else {
+            let spawnEvent = SpawnEvent(ofType: type, timestamp: CACurrentMediaTime(),
+                                        position: snapPosition, player: player)
+            return eventManager.add(spawnEvent)
+        }
+
+        // Report spawn to which will propogate to all players evenly
+        let spawnEvent = RemoteSpawnEvent(ofType: type, location: snapPosition, player: currentPlayer)
         eventManager.add(spawnEvent)
     }
 

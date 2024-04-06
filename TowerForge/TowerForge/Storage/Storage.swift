@@ -71,8 +71,8 @@ class Storage: Codable {
         return storableObject
     }
 
-    private static func generateStoredObjectsCollection(_ storedObjects: [any Storable]) -> [TFStorableType: any Storable] {
-        var storedObjectsMap: [TFStorableType: any Storable] = [:]
+    private static func generateStoredObjectsCollection(_ storedObjects: [Storable]) -> [TFStorableType: Storable] {
+        var storedObjectsMap: [TFStorableType: Storable] = [:]
 
         for storable in storedObjects {
             storedObjectsMap[storable.storableName] = storable
