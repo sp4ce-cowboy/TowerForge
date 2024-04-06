@@ -22,6 +22,7 @@ class GameWorld {
     private let worldBounds: CGRect
 
     unowned var delegate: SceneManagerDelegate?
+    unowned var statePopupDelegate: StatePopupDelegate?
 
     init(scene: GameScene?, screenSize: CGRect, mode: Mode,
          gameRoom: GameRoom? = nil, currentPlayer: GamePlayer? = nil) {
@@ -94,7 +95,7 @@ class GameWorld {
 
     func presentStatePopup() {
         let popup = StatePopupNode()
-        popup.delegate = self
+        popup.delegate = statePopupDelegate
         // TODO: Refactor this
         popup.zPosition = 10_000
         popup.name = "popup"
@@ -114,16 +115,4 @@ extension GameWorld: UnitSelectionNodeDelegate {
         gameEngine.addEvent(RequestSpawnEvent(ofType: type, timestamp: CACurrentMediaTime(),
                                               position: position, player: .ownPlayer))
     }
-}
-
-// TODO: Fill the function
-extension GameWorld: StatePopupDelegate {
-    func onMenu() {
-        //
-    }
-
-    func onResume() {
-        //
-    }
-
 }

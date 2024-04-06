@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 protocol StatePopupDelegate: AnyObject {
+    var isPaused: Bool { get }
     func onMenu()
     func onResume()
 }
