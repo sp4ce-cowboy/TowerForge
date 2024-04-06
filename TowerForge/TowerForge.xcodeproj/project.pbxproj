@@ -64,6 +64,7 @@
 		3CE951652BAE0A04008B2785 /* HomeSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE951642BAE0A04008B2785 /* HomeSystem.swift */; };
 		3CE951672BAEAB0E008B2785 /* ContactSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE951662BAEAB0E008B2785 /* ContactSystem.swift */; };
 		3CE951692BAEB719008B2785 /* RequestSpawnEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE951682BAEB719008B2785 /* RequestSpawnEvent.swift */; };
+		3CFA72E72BC0398E0081337F /* RemoteEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFA72E62BC0398E0081337F /* RemoteEventManager.swift */; };
 		5200624E2BA8D597000DBA30 /* AiComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200624D2BA8D597000DBA30 /* AiComponent.swift */; };
 		520062562BA8E026000DBA30 /* PlayerSpawnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520062552BA8E026000DBA30 /* PlayerSpawnable.swift */; };
 		520062582BA8ED73000DBA30 /* HomeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520062572BA8ED73000DBA30 /* HomeComponent.swift */; };
@@ -101,6 +102,7 @@
 		527A07842BB3FD9A00CD9D08 /* TimerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A07832BB3FD9A00CD9D08 /* TimerSystem.swift */; };
 		527A07862BB411FB00CD9D08 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A07852BB411FB00CD9D08 /* GameOverScene.swift */; };
 		527E3A242BA613F000FE1628 /* PlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527E3A232BA613EF00FE1628 /* PlayerComponent.swift */; };
+		529190E32BBFB59B001D8821 /* StatePopupNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529190E22BBFB59B001D8821 /* StatePopupNode.swift */; };
 		5295A2022BA9FBD9005018A8 /* SceneManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2012BA9FBD9005018A8 /* SceneManagerDelegate.swift */; };
 		5295A2042BA9FED4005018A8 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2032BA9FED4005018A8 /* MenuScene.swift */; };
 		5295A2072BAA02FD005018A8 /* TFButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2062BAA02FD005018A8 /* TFButtonNode.swift */; };
@@ -260,6 +262,7 @@
 		3CE951642BAE0A04008B2785 /* HomeSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSystem.swift; sourceTree = "<group>"; };
 		3CE951662BAEAB0E008B2785 /* ContactSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactSystem.swift; sourceTree = "<group>"; };
 		3CE951682BAEB719008B2785 /* RequestSpawnEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSpawnEvent.swift; sourceTree = "<group>"; };
+		3CFA72E62BC0398E0081337F /* RemoteEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteEventManager.swift; sourceTree = "<group>"; };
 		5200624D2BA8D597000DBA30 /* AiComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiComponent.swift; sourceTree = "<group>"; };
 		520062552BA8E026000DBA30 /* PlayerSpawnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSpawnable.swift; sourceTree = "<group>"; };
 		520062572BA8ED73000DBA30 /* HomeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeComponent.swift; sourceTree = "<group>"; };
@@ -294,6 +297,7 @@
 		527A07832BB3FD9A00CD9D08 /* TimerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSystem.swift; sourceTree = "<group>"; };
 		527A07852BB411FB00CD9D08 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		527E3A232BA613EF00FE1628 /* PlayerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerComponent.swift; sourceTree = "<group>"; };
+		529190E22BBFB59B001D8821 /* StatePopupNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatePopupNode.swift; sourceTree = "<group>"; };
 		5295A2012BA9FBD9005018A8 /* SceneManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManagerDelegate.swift; sourceTree = "<group>"; };
 		5295A2032BA9FED4005018A8 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		5295A2062BAA02FD005018A8 /* TFButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFButtonNode.swift; sourceTree = "<group>"; };
@@ -471,6 +475,7 @@
 				3CD37AA22BBEC0F900222D8A /* FirebaseRemoteEventPublisher.swift */,
 				3CD37AA02BBEC00C00222D8A /* TFRemoteEventSubscriber.swift */,
 				3CD37AA42BBEC10700222D8A /* FirebaseRemoteEventSubscriber.swift */,
+				3CFA72E62BC0398E0081337F /* RemoteEventManager.swift */,
 			);
 			path = GameNetwork;
 			sourceTree = "<group>";
@@ -513,6 +518,14 @@
 				3CE951552BACA0CF008B2785 /* Collidable.swift */,
 			);
 			path = Collision;
+			sourceTree = "<group>";
+		};
+		3CFA72E52BC039740081337F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3CBECF882BBE9797005EF39B /* TFNetworkCoder.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		5200624C2BA8D574000DBA30 /* GameComponents */ = {
@@ -590,6 +603,7 @@
 				5295A2142BAAF335005018A8 /* UnitSelectionNode.swift */,
 				9B0406112BB889940026E903 /* PowerUpNode.swift */,
 				9B0406132BB89BE00026E903 /* PowerUpSelectionNode.swift */,
+				529190E22BBFB59B001D8821 /* StatePopupNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -627,10 +641,10 @@
 		52A7940E2BBC476B0083C976 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				3CFA72E52BC039740081337F /* Utils */,
 				3CBECF822BBDC36A005EF39B /* GameNetwork */,
 				52A7940F2BBC47770083C976 /* RoomNetwork */,
 				52A794162BBC4F690083C976 /* GamePlayer.swift */,
-				3CBECF882BBE9797005EF39B /* TFNetworkCoder.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1380,7 +1394,9 @@
 				3CAC4A6B2BB6992F00A5D22E /* TFNode.swift in Sources */,
 				3CAC4A6D2BB6A13B00A5D22E /* PositionRenderStage.swift in Sources */,
 				3CE951672BAEAB0E008B2785 /* ContactSystem.swift in Sources */,
+				529190E32BBFB59B001D8821 /* StatePopupNode.swift in Sources */,
 				3CE951692BAEB719008B2785 /* RequestSpawnEvent.swift in Sources */,
+				3CFA72E72BC0398E0081337F /* RemoteEventManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1577,7 +1593,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BPB6799M73;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TowerForge/Info.plist;
@@ -1614,7 +1630,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BPB6799M73;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TowerForge/Info.plist;

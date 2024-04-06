@@ -5,13 +5,12 @@
 //  Created by Zheng Ze on 4/4/24.
 //
 
-import Foundation
+import UIKit
 
 class RemoteSpawnEvent: TFRemoteEvent {
     let type: String
     let timeStamp: TimeInterval
     let source: UserPlayerId
-    var shouldSourceExecute: Bool
 
     let spawnType: String
     let spawnLocation: CGPoint
@@ -21,19 +20,22 @@ class RemoteSpawnEvent: TFRemoteEvent {
         self.type = String(describing: RemoteSpawnEvent.self)
         self.timeStamp = Date().timeIntervalSince1970
         self.source = player.userPlayerId ?? ""
-        self.shouldSourceExecute = true
 
         self.spawnType = String(describing: type)
         self.spawnLocation = location
         self.id = UUID()
     }
 
-    func unpack(into eventManager: EventManager) {
-        guard shouldSourceExecute,
-              let type = Bundle.main.classNamed("TowerForge.\(spawnType)") as? (TFEntity & RemoteSpawnable).Type else {
+    func unpack(into eventManager: EventManager, for gamePlayer: UserPlayerId) {
+        guard let type = Bundle.main.classNamed("TowerForge.\(spawnType)") as? (TFEntity & RemoteSpawnable).Type else {
             return
         }
-        eventManager.add(SpawnEvent(ofType: type, timestamp: timeStamp,
-                                    position: spawnLocation, player: .oppositePlayer, id: id))
+        let player: Player = gamePlayer == source ? .ownPlayer : .oppositePlayer
+        var position = spawnLocation
+        if player == .oppositePlayer {
+            position = CGPoint(x: GameWorld.worldSize.width - spawnLocation.x, y: spawnLocation.y)
+        }
+        let event = SpawnEvent(ofType: type, timestamp: timeStamp, position: position, player: player, id: id)
+        eventManager.add(event)
     }
 }

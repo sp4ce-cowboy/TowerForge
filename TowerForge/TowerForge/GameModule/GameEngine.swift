@@ -24,6 +24,7 @@ protocol AbstractGameEngine: EventTarget {
 
     func addEntity(_ entity: TFEntity)
     func addEvent(_ event: TFEvent)
+    func addRemoteEvent(_ remoteEvent: TFRemoteEvent)
 
     func system<T: TFSystem>(ofType type: T.Type) -> T?
 }
@@ -45,7 +46,16 @@ class GameEngine: AbstractGameEngine {
 
     init(entityManager: EntityManager = EntityManager(),
          systemManager: SystemManager = SystemManager(),
-         eventManager: EventManager = EventManager()) {
+         roomId: RoomId? = nil, currentPlayer: GamePlayer? = nil) {
+        self.entityManager = entityManager
+        self.systemManager = systemManager
+        self.eventManager = EventManager(roomId: roomId, currentPlayer: currentPlayer)
+        self.setupTeam()
+    }
+
+    init(eventManager: EventManager,
+         entityManager: EntityManager = EntityManager(),
+         systemManager: SystemManager = SystemManager()) {
         self.entityManager = entityManager
         self.systemManager = systemManager
         self.eventManager = eventManager
@@ -82,15 +92,17 @@ class GameEngine: AbstractGameEngine {
         systemManager.add(system: RemoveSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: SpawnSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: ShootingSystem(entityManager: entityManager, eventManager: eventManager))
-        systemManager.add(system: AiSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: TimerSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: ContactSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: HomeSystem(entityManager: entityManager, eventManager: eventManager,
                                              gridDelegate: grid))
 
         // Temporary until we have different gamemodes
+        guard eventManager.remoteEventManager == nil else {
+            return
+        }
+        systemManager.add(system: AiSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.system(ofType: AiSystem.self)?.aiPlayers.append(.oppositePlayer)
-
     }
 
     func addEntity(_ entity: TFEntity) {
@@ -99,5 +111,9 @@ class GameEngine: AbstractGameEngine {
 
     func addEvent(_ event: TFEvent) {
         eventManager.add(event)
+    }
+
+    func addRemoteEvent(_ remoteEvent: TFRemoteEvent) {
+        eventManager.add(remoteEvent)
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import QuartzCore
+import UIKit
 
 class GameWorld {
     // Need to ensure that width is a multiple of 1024 - unit selection node height
@@ -21,15 +22,16 @@ class GameWorld {
     private let worldBounds: CGRect
 
     unowned var delegate: SceneManagerDelegate?
+    unowned var statePopupDelegate: StatePopupDelegate?
 
-    init(scene: GameScene?, screenSize: CGRect, mode: Mode) {
+    init(scene: GameScene?, screenSize: CGRect, mode: Mode,
+         gameRoom: GameRoom? = nil, currentPlayer: GamePlayer? = nil) {
         self.scene = scene
         worldBounds = CGRect(origin: screenSize.origin, size: GameWorld.worldSize)
-        gameEngine = GameEngine()
+        gameEngine = GameEngine(roomId: gameRoom?.roomId, currentPlayer: currentPlayer)
         gameMode = GameModeFactory.createGameMode(mode: mode, eventManager: gameEngine.eventManager)
         selectionNode = UnitSelectionNode()
         powerUpSelectionNode = PowerUpSelectionNode(eventManager: gameEngine.eventManager)
-
         grid = Grid(screenSize: worldBounds)
         renderer = Renderer(target: self, scene: scene)
 
@@ -89,6 +91,16 @@ class GameWorld {
         for node in powerUpSelectionNode.powerupNodes {
             gameEngine.addEntity(node)
         }
+    }
+
+    func presentStatePopup() {
+        let popup = StatePopupNode()
+        popup.delegate = statePopupDelegate
+        // TODO: Refactor this
+        popup.zPosition = 10_000
+        popup.name = "popup"
+        popup.position = CGPoint(x: 0, y: 0)
+        scene?.add(node: popup, staticOnScreen: true)
     }
 }
 
