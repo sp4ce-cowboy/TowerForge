@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol StatePopupDelegate {
+protocol StatePopupDelegate: AnyObject {
     func onMenu()
     func onResume()
 }

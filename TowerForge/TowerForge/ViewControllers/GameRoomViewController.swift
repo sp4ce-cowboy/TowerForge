@@ -38,7 +38,6 @@ class GameRoomViewController: UIViewController {
                 self.joinRoom(player: playerOne)
             }
         }
-
     }
 
     func joinRoom(player: GamePlayer) {
@@ -52,7 +51,6 @@ class GameRoomViewController: UIViewController {
                 print("Failed to join room")
             }
         })
-
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

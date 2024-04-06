@@ -31,15 +31,11 @@ class GameWaitingRoomViewController: UIViewController {
         guard let destVC = segue.destination as? GameViewController else {
             return
         }
-
         destVC.gameRoom = gameRoom
         destVC.currentPlayer = currentPlayer
     }
 
     @IBAction private func onStartButtonPressed(_ sender: Any) {
-        guard let playerOne = gameRoom?.playerOne, let currentPlayer = currentPlayer, playerOne == currentPlayer else {
-            return
-        }
         self.performSegue(withIdentifier: "segueToGame", sender: self)
     }
 
