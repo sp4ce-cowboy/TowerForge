@@ -88,12 +88,13 @@ class GameRoom {
     func leaveRoom(player: GamePlayer, completion: @escaping (Bool) -> Void) {
         let roomPlayersRef = roomRef.child(roomName).child("players")
 
-        roomPlayersRef.observeSingleEvent(of: .value) { snapshot  in
+        roomPlayersRef.observeSingleEvent(of: .value) { snapshot, _  in
             if let playerData = snapshot.value as? [String: Any] {
                 // Check if the leaving player is in the room
                 guard let playerKey = playerData.first(where: { $0.key == player.userPlayerId })?.key else {
                     // The player is not in the room, cannot leave
-                    coompletion(false)
+                    completion(false)
+                    return
                 }
 
                 // Remove the player from the room in the database
