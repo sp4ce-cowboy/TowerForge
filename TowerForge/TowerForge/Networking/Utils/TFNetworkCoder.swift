@@ -10,6 +10,7 @@ import Foundation
 class TFNetworkCoder {
     private static let encoder = JSONEncoder()
     private static let decoder = JSONDecoder()
+
     static func toJsonString(event: TFRemoteEvent) -> String {
         do {
             if let jsonString = String(data: try encoder.encode(event), encoding: .utf8) {

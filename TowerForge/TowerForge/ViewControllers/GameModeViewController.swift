@@ -23,23 +23,20 @@ class GameModeViewController: UIViewController {
     }
 
     @IBAction private func multiButtonPressed(_ sender: Any) {
+        navigateToGameRoomViewController()
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destVC = segue.destination as? GameViewController {
+            destVC.gameMode = selectedGameMode
+        }
     }
 
     private func navigateToGameRoomViewController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let gameRoomViewController = storyboard
-                .instantiateViewController(withIdentifier: "GameRoomViewController") as? GameViewController else {
-            return
-        }
-        present(gameRoomViewController, animated: true, completion: nil)
+        performSegue(withIdentifier: "segueToGameRoom", sender: self)
     }
+
     private func navigateToGameViewController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let gameViewController = storyboard
-                .instantiateViewController(withIdentifier: "GameViewController") as? GameViewController else {
-            return
-        }
-        gameViewController.gameMode = selectedGameMode
-        present(gameViewController, animated: true, completion: nil)
+        performSegue(withIdentifier: "segueToGame", sender: self)
     }
 }

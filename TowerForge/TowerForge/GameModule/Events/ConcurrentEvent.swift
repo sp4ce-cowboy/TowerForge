@@ -28,7 +28,7 @@ struct ConcurrentEvent: TFEvent {
         return eventOutput1
     }
 
-    func transform(eventTransformation: EventTransformation) -> TFEvent {
+    func transform(eventTransformation: any EventTransformation) -> TFEvent {
         var transform1: TFEvent
         var transform2: TFEvent
 

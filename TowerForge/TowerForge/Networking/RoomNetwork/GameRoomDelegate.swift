@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol GameRoomDelegate {
+protocol GameRoomDelegate: AnyObject {
     func onRoomChange()
 }

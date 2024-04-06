@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NJ9-hN-4Nf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LaC-gc-01p">
     <device id="ipad12_9" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -59,7 +59,7 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="1WN-bo-aqT">
-                                <rect key="frame" x="0.0" y="20" width="1366" height="512"/>
+                                <rect key="frame" x="0.0" y="70" width="1366" height="512"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="1WN-bo-aqT" secondAttribute="height" multiplier="796:607" priority="999" id="99o-eH-AfP"/>
                                 </constraints>
@@ -74,7 +74,7 @@
                                     <backgroundConfiguration key="background" image="start-button"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="bL0-ag-pcs" kind="presentation" identifier="segueToGameMode" modalPresentationStyle="overFullScreen" id="7gQ-Xy-f9N"/>
+                                    <segue destination="bL0-ag-pcs" kind="show" id="tXV-bd-lPZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -96,6 +96,7 @@
                             <constraint firstItem="BeN-nt-myH" firstAttribute="bottom" secondItem="QTh-pm-dcu" secondAttribute="bottom" id="pD6-gV-4bf"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="FXb-QQ-Ph3"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EMN-tQ-Alx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,7 +138,6 @@ Match</string>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="deathMatchButtonPressed:" destination="bL0-ag-pcs" eventType="touchUpInside" id="v6g-1c-kzq"/>
-                                            <segue destination="BV1-FR-VrT" kind="show" id="txd-Iu-hy9"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sword" translatesAutoresizingMaskIntoConstraints="NO" id="SmE-Cv-6GE">
@@ -207,13 +207,12 @@ Match</string>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ao-cU-Ulr">
-                                <rect key="frame" x="758" y="904" width="315" height="35"/>
+                                <rect key="frame" x="201" y="450" width="315" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                 <connections>
                                     <action selector="multiButtonPressed:" destination="bL0-ag-pcs" eventType="touchUpInside" id="u6W-dc-lim"/>
-                                    <segue destination="eEs-Xn-jkt" kind="show" id="RlL-xM-NMC"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -237,21 +236,13 @@ Match</string>
                         <outlet property="MultiplayerButton" destination="9Ao-cU-Ulr" id="eZ6-bU-K2Y"/>
                         <outlet property="captureTheFlagButton" destination="erv-RB-ZcW" id="o5k-6Q-PEr"/>
                         <outlet property="deathMatchButton" destination="TfO-fG-lEt" id="0Lp-kV-daK"/>
+                        <segue destination="BV1-FR-VrT" kind="show" identifier="segueToGame" id="WuO-mG-bY5"/>
+                        <segue destination="tK4-EO-PjX" kind="show" identifier="segueToGameRoom" id="dHe-HM-byQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HLK-1h-t1c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-425.18301610541727" y="887.69531249999989"/>
-        </scene>
-        <!--GameRoomViewController-->
-        <scene sceneID="5mD-Je-aaF">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="GameRoomViewController" id="eEs-Xn-jkt" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="8eO-sF-k9U"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LxS-dM-szG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-223" y="1296"/>
+            <point key="canvasLocation" x="-684" y="698"/>
         </scene>
         <!--Game Room View Controller-->
         <scene sceneID="jLt-cI-G0H">
@@ -276,7 +267,6 @@ Match</string>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="createRoomButtonPressed:" destination="tK4-EO-PjX" eventType="touchUpInside" id="Dmp-hD-vCj"/>
-                                    <segue destination="FnT-Eh-Bya" kind="show" identifier="segueToWaitingRoom" id="2av-V7-WsG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8A-hM-ZpD">
@@ -289,7 +279,6 @@ Match</string>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="joinRoomButtonPressed:" destination="tK4-EO-PjX" eventType="touchUpInside" id="HVH-ry-IS3"/>
-                                    <segue destination="FnT-Eh-Bya" kind="show" identifier="segueToWaitingRoom" id="5Mz-7I-nNc"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Player Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyq-Bq-dSA">
@@ -345,11 +334,12 @@ Match</string>
                         <outlet property="JoinRoom" destination="T8A-hM-ZpD" id="eGg-XF-upY"/>
                         <outlet property="PlayerNameInput" destination="oBX-FO-YOC" id="8ha-eZ-su6"/>
                         <outlet property="RoomNameInput" destination="4X2-5M-PZ3" id="bEE-53-WPu"/>
+                        <segue destination="FnT-Eh-Bya" kind="show" identifier="segueToWaitingRoom" id="ebd-3z-qO4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5j6-jT-xdh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-749.34114202049773" y="1650.5859375"/>
+            <point key="canvasLocation" x="-684" y="1411"/>
         </scene>
         <!--Game Waiting Room View Controller-->
         <scene sceneID="40b-Ga-mMh">
@@ -360,18 +350,30 @@ Match</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FSQ-sC-jDO">
-                                <rect key="frame" x="351" y="85" width="664" height="678"/>
+                                <rect key="frame" x="114" y="84" width="664" height="678"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="546-UR-FKj">
-                                <rect key="frame" x="401" y="812" width="565" height="127"/>
+                                <rect key="frame" x="851" y="634" width="476" height="127"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <backgroundConfiguration key="background" image="square-button"/>
+                                    <attributedString key="attributedTitle"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onLeaveButtonPressed:" destination="FnT-Eh-Bya" eventType="touchUpInside" id="xhU-Xf-OGM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95L-Ms-1Jv">
+                                <rect key="frame" x="851" y="449" width="476" height="127"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
                                     <backgroundConfiguration key="background" image="square-button"/>
                                     <attributedString key="attributedTitle">
-                                        <fragment content="Leave Room">
+                                        <fragment content="Start">
                                             <attributes>
                                                 <font key="NSFont" size="55" name="Baskerville-Bold"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -381,10 +383,16 @@ Match</string>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="onLeaveButtonPressed:" destination="FnT-Eh-Bya" eventType="touchUpInside" id="xhU-Xf-OGM"/>
-                                    <segue destination="tK4-EO-PjX" kind="showDetail" identifier="segueToGameRoom" id="gCm-LW-wHo"/>
+                                    <action selector="onStartButtonPressed:" destination="FnT-Eh-Bya" eventType="touchUpInside" id="8Bs-me-fVt"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Leave" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSX-Hr-bNY">
+                                <rect key="frame" x="1005" y="662" width="168" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Nosifer-Regular" family="Nosifer" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rUg-Tb-9QP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -392,16 +400,36 @@ Match</string>
                     <navigationItem key="navigationItem" id="RIh-Gm-msf"/>
                     <connections>
                         <outlet property="ListStackView" destination="FSQ-sC-jDO" id="21H-Es-ph1"/>
+                        <segue destination="BV1-FR-VrT" kind="show" identifier="segueToGame" id="22u-0c-ugI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srP-KJ-HWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-942" y="2536"/>
+            <point key="canvasLocation" x="155" y="1411"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="HcP-rW-PPQ">
+            <objects>
+                <navigationController toolbarHidden="NO" id="LaC-gc-01p" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ucn-2G-VE8">
+                        <rect key="frame" x="0.0" y="20" width="1366" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bTn-YV-hEy">
+                        <rect key="frame" x="0.0" y="974" width="1366" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="NJ9-hN-4Nf" kind="relationship" relationship="rootViewController" id="ohM-4Q-Y92"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="REG-TT-IKK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-684" y="-814"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gCm-LW-wHo"/>
-        <segue reference="5Mz-7I-nNc"/>
+        <segue reference="22u-0c-ugI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Flag" width="500" height="500"/>

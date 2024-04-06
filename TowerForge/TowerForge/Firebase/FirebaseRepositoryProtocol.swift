@@ -12,7 +12,7 @@ import Combine
 typealias EncodableIndentifiableType = Encodable
 
 protocol FirebaseRepositoryProtocol {
-    func getData<T>(from collection: FirebaseReference, completion: @escaping (Result<T?, Error>) -> Void) where T: Decodable
+    func getData<T: Decodable>(from collection: FirebaseReference, completion: @escaping (Result<T?, Error>) -> Void)
     // To save, we need to have an id
     func postData<T: EncodableIndentifiableType>(data: T, from collection: FirebaseReference) throws
 

@@ -8,14 +8,37 @@
 import UIKit
 
 class GameWaitingRoomViewController: UIViewController {
-
     var gameRoom: GameRoom?
     var currentPlayer: GamePlayer?
+    @IBOutlet private var ListStackView: UIStackView!
+
+    deinit {
+        gameRoom = nil
+        currentPlayer = nil
+        print("deinit")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         gameRoom?.gameRoomDelegate = self
+        print("Is there game \(gameRoom)")
         updatePlayerList()
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+
+        guard let destVC = segue.destination as? GameViewController else {
+            return
+        }
+        destVC.gameRoom = gameRoom
+        destVC.currentPlayer = currentPlayer
+    }
+
+    @IBAction private func onStartButtonPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "segueToGame", sender: self)
+    }
+
     @IBAction private func onLeaveButtonPressed(_ sender: Any) {
         guard let player = currentPlayer else {
             return
@@ -24,15 +47,13 @@ class GameWaitingRoomViewController: UIViewController {
             if !success {
                 return
             } else {
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "segueToGameRoom", sender: self)
-                }
+                // Pop from navigation stack so that vc and gameroom can be deinit
+                self.navigationController?.popViewController(animated: true)
             }
         })
         // performSegue(withIdentifier: "segueToGameRoom", sender: self)
     }
 
-    @IBOutlet var ListStackView: UIStackView!
     private func updatePlayerList() {
         ListStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
 

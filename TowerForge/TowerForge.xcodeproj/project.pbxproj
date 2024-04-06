@@ -64,6 +64,7 @@
 		3CE951652BAE0A04008B2785 /* HomeSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE951642BAE0A04008B2785 /* HomeSystem.swift */; };
 		3CE951672BAEAB0E008B2785 /* ContactSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE951662BAEAB0E008B2785 /* ContactSystem.swift */; };
 		3CE951692BAEB719008B2785 /* RequestSpawnEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE951682BAEB719008B2785 /* RequestSpawnEvent.swift */; };
+		3CFA72E72BC0398E0081337F /* RemoteEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFA72E62BC0398E0081337F /* RemoteEventManager.swift */; };
 		5200624E2BA8D597000DBA30 /* AiComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200624D2BA8D597000DBA30 /* AiComponent.swift */; };
 		520062562BA8E026000DBA30 /* PlayerSpawnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520062552BA8E026000DBA30 /* PlayerSpawnable.swift */; };
 		520062582BA8ED73000DBA30 /* HomeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520062572BA8ED73000DBA30 /* HomeComponent.swift */; };
@@ -261,6 +262,7 @@
 		3CE951642BAE0A04008B2785 /* HomeSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSystem.swift; sourceTree = "<group>"; };
 		3CE951662BAEAB0E008B2785 /* ContactSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactSystem.swift; sourceTree = "<group>"; };
 		3CE951682BAEB719008B2785 /* RequestSpawnEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSpawnEvent.swift; sourceTree = "<group>"; };
+		3CFA72E62BC0398E0081337F /* RemoteEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteEventManager.swift; sourceTree = "<group>"; };
 		5200624D2BA8D597000DBA30 /* AiComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiComponent.swift; sourceTree = "<group>"; };
 		520062552BA8E026000DBA30 /* PlayerSpawnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSpawnable.swift; sourceTree = "<group>"; };
 		520062572BA8ED73000DBA30 /* HomeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeComponent.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				3CD37AA22BBEC0F900222D8A /* FirebaseRemoteEventPublisher.swift */,
 				3CD37AA02BBEC00C00222D8A /* TFRemoteEventSubscriber.swift */,
 				3CD37AA42BBEC10700222D8A /* FirebaseRemoteEventSubscriber.swift */,
+				3CFA72E62BC0398E0081337F /* RemoteEventManager.swift */,
 			);
 			path = GameNetwork;
 			sourceTree = "<group>";
@@ -515,6 +518,14 @@
 				3CE951552BACA0CF008B2785 /* Collidable.swift */,
 			);
 			path = Collision;
+			sourceTree = "<group>";
+		};
+		3CFA72E52BC039740081337F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3CBECF882BBE9797005EF39B /* TFNetworkCoder.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		5200624C2BA8D574000DBA30 /* GameComponents */ = {
@@ -630,10 +641,10 @@
 		52A7940E2BBC476B0083C976 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				3CFA72E52BC039740081337F /* Utils */,
 				3CBECF822BBDC36A005EF39B /* GameNetwork */,
 				52A7940F2BBC47770083C976 /* RoomNetwork */,
 				52A794162BBC4F690083C976 /* GamePlayer.swift */,
-				3CBECF882BBE9797005EF39B /* TFNetworkCoder.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1385,6 +1396,7 @@
 				3CE951672BAEAB0E008B2785 /* ContactSystem.swift in Sources */,
 				529190E32BBFB59B001D8821 /* StatePopupNode.swift in Sources */,
 				3CE951692BAEB719008B2785 /* RequestSpawnEvent.swift in Sources */,
+				3CFA72E72BC0398E0081337F /* RemoteEventManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1581,7 +1593,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BPB6799M73;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TowerForge/Info.plist;
@@ -1618,7 +1630,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BPB6799M73;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TowerForge/Info.plist;

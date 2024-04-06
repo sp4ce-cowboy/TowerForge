@@ -19,7 +19,7 @@ class StatePopupNode: TFSpriteNode {
     var delegate: StatePopupDelegate?
 
     init() {
-        super.init(color: .clear, size: CGSize(width: 300, height: 300))
+        super.init(color: .clear, size: CGSize(width: 700, height: 300))
         setupNode()
     }
 
@@ -34,14 +34,14 @@ class StatePopupNode: TFSpriteNode {
             self?.delegate?.onResume()
         },
                             onTouchEnded: {}),
-                            size: CGSize(width: 50,
-                                         height: 50),
-                            imageNamed: "circle-button")
+                            size: CGSize(width: 200,
+                                         height: 200),
+                            imageNamed: "play-button")
         resumeButton.name = "resumeButton"
 
         let menuButton = TFButtonNode(action: TFButtonDelegate(onTouchBegan: { [weak self] in
             self?.delegate?.onMenu()
-        }, onTouchEnded: {}), size: CGSize(width: 50, height: 50), imageNamed: "circle-button")
+        }, onTouchEnded: {}), size: CGSize(width: 200, height: 200), imageNamed: "menu-button")
         menuButton.name = "menuButton"
 
         // TODO: Refactor the position into a constants
