@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import QuartzCore
 
 class PositionSystem: TFSystem {
     var isActive = true
@@ -27,7 +26,6 @@ class PositionSystem: TFSystem {
                 continue
             }
             if playerComponent.player == .ownPlayer && positionComponent.position.x > GameWorld.worldSize.width {
-                // TODO: Change UIScreen
                 handleOutOfGame(entity: entity)
             } else if playerComponent.player == .oppositePlayer
                         && positionComponent.position.x < UIScreen.main.bounds.minX {
