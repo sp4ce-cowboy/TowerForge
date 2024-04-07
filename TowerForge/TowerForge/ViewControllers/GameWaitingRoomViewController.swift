@@ -12,6 +12,7 @@ class GameWaitingRoomViewController: UIViewController {
     var currentPlayer: GamePlayer?
     @IBOutlet private var ListStackView: UIStackView!
 
+    @IBOutlet private var startButton: UIButton!
     deinit {
         gameRoom = nil
         currentPlayer = nil
@@ -21,7 +22,6 @@ class GameWaitingRoomViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         gameRoom?.gameRoomDelegate = self
-        print("Is there game \(gameRoom)")
         updatePlayerList()
     }
 
@@ -36,7 +36,11 @@ class GameWaitingRoomViewController: UIViewController {
     }
 
     @IBAction private func onStartButtonPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "segueToGame", sender: self)
+        gameRoom?.updatePlayerReady { state in
+            if state == .gameOnGoing {
+                self.performSegue(withIdentifier: "segueToGame", sender: self)
+            }
+        }
     }
 
     @IBAction private func onLeaveButtonPressed(_ sender: Any) {
@@ -67,6 +71,9 @@ class GameWaitingRoomViewController: UIViewController {
             let playerTwoView = createPlayerView(for: playerTwo)
             ListStackView.addArrangedSubview(playerTwoView)
         }
+        if gameRoom?.roomState == .gameOnGoing {
+            self.performSegue(withIdentifier: "segueToGame", sender: self)
+        }
     }
 
     private func createPlayerView(for player: GamePlayer) -> UIView {
@@ -83,5 +90,12 @@ class GameWaitingRoomViewController: UIViewController {
     func onRoomChange() {
         // Update the player list UI when the room changes
         updatePlayerList()
+
+        // Enable startButton if roomState changes to waitingForBothConfirmation
+        if gameRoom?.roomState == .waitingForBothConfirmation || gameRoom?.roomState == .waitingForFinalConfirmation {
+            startButton.isEnabled = true
+        } else {
+            startButton.isEnabled = false
+        }
     }
 }
