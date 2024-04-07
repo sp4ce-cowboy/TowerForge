@@ -66,8 +66,10 @@ class GameScene: SKScene {
 
     override func update(_ currentTime: TimeInterval) {
         if statePopupDelegate?.isPaused ?? false {
+            lastUpdatedTimeInterval = currentTime
             return
         }
+
         if lastUpdatedTimeInterval == TimeInterval(0) {
             lastUpdatedTimeInterval = currentTime
         }
