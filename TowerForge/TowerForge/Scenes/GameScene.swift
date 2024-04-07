@@ -98,6 +98,10 @@ extension GameScene: TFScene {
 
     func remove(node: TFNode) {
         node.node.removeFromParent()
+
+        if let name = node.name {
+            cameraNode?.removeChild(withName: name)
+        }
     }
 
     func contains(node: TFNode) -> Bool {

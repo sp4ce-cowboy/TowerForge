@@ -84,7 +84,7 @@ extension GameViewController: SceneManagerDelegate {
         // Present the scene
         gameScene.sceneManagerDelegate = self
         gameScene.updateDelegate = self
-            gameScene.statePopupDelegate = self
+        gameScene.statePopupDelegate = self
         showScene(scene: gameScene)
         setUpGameWorld(scene: gameScene)
     }
@@ -106,5 +106,6 @@ extension GameViewController: StatePopupDelegate {
 
     func onResume() {
         isPaused = false
+        gameWorld?.removeStatePopup()
     }
 }

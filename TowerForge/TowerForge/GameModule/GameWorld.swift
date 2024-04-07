@@ -20,9 +20,10 @@ class GameWorld {
     private var grid: Grid
     private var renderer: Renderer?
     private let worldBounds: CGRect
+    private var popup: StatePopupNode
 
     unowned var delegate: SceneManagerDelegate?
-    unowned var statePopupDelegate: StatePopupDelegate?
+    unowned var statePopupDelegate: StatePopupDelegate? { didSet { popup.delegate = statePopupDelegate }  }
 
     init(scene: GameScene?, screenSize: CGRect, mode: Mode,
          gameRoom: GameRoom? = nil, currentPlayer: GamePlayer? = nil) {
@@ -33,6 +34,7 @@ class GameWorld {
         selectionNode = UnitSelectionNode()
         powerUpSelectionNode = PowerUpSelectionNode(eventManager: gameEngine.eventManager)
         grid = Grid(screenSize: worldBounds)
+        popup = StatePopupNode()
         renderer = Renderer(target: self, scene: scene)
 
         setUp()
@@ -62,6 +64,7 @@ class GameWorld {
         setUpGameEngine()
         setUpSelectionNode()
         setUpPowerUpNode()
+        setUpStatePopupNode()
     }
 
     private func setUpScene() {
@@ -93,14 +96,18 @@ class GameWorld {
         }
     }
 
-    func presentStatePopup() {
-        let popup = StatePopupNode()
-        popup.delegate = statePopupDelegate
-        // TODO: Refactor this
+    private func setUpStatePopupNode() {
         popup.zPosition = 10_000
         popup.name = "popup"
         popup.position = CGPoint(x: 0, y: 0)
+    }
+
+    func presentStatePopup() {
         scene?.add(node: popup, staticOnScreen: true)
+    }
+
+    func removeStatePopup() {
+        scene?.remove(node: popup)
     }
 }
 
