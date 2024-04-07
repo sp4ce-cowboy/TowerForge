@@ -31,17 +31,7 @@ class TestRemoteEvent: TFRemoteEvent {
     }
 }
 
-class TestEventTransformationA: EventTransformation {
-    var id = UUID()
-    private(set) var didTransformEvent = false
-
-    func transformEvent(event: any TowerForge.TFEvent) -> any TowerForge.TFEvent {
-        didTransformEvent = true
-        return event
-    }
-}
-
-class TestEventTransformationB: EventTransformation {
+class TestEventTransformation: EventTransformation {
     var id = UUID()
     private(set) var didTransformEvent = false
 

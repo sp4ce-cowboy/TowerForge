@@ -41,7 +41,7 @@ final class EventManagerTests: XCTestCase {
         let eventManager = EventManager()
         XCTAssertEqual(eventManager.eventTransformations.count, 0)
 
-        let eventTransformation = TestEventTransformationA()
+        let eventTransformation = TestEventTransformation()
         eventManager.addTransformation(eventTransformation: eventTransformation)
 
         XCTAssertEqual(eventManager.eventTransformations.count, 1)
@@ -52,7 +52,7 @@ final class EventManagerTests: XCTestCase {
         let eventManager = EventManager()
         XCTAssertEqual(eventManager.eventTransformations.count, 0)
 
-        let eventTransformation = TestEventTransformationA()
+        let eventTransformation = TestEventTransformation()
         eventManager.addTransformation(eventTransformation: eventTransformation)
 
         XCTAssertEqual(eventManager.eventTransformations.count, 1)
@@ -104,5 +104,20 @@ final class EventManagerTests: XCTestCase {
         XCTAssertTrue(eventA.didExecute)
         XCTAssertTrue(eventB.didExecute)
         XCTAssertTrue(eventC.didExecute)
+    }
+
+    func test_executeEventWithTransformation_eventTransformed() {
+        let event = TestEvent()
+        let transformation = TestEventTransformation()
+        let eventManager = EventManager()
+
+        eventManager.addTransformation(eventTransformation: transformation)
+        eventManager.add(event)
+
+        XCTAssertFalse(transformation.didTransformEvent)
+
+        eventManager.executeEvents(in: TestEventTarget())
+
+        XCTAssertTrue(transformation.didTransformEvent)
     }
 }
