@@ -122,6 +122,7 @@
 		5299D1342BC31067003EF746 /* AuthenticationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299D1332BC31067003EF746 /* AuthenticationProtocol.swift */; };
 		5299D1362BC3122A003EF746 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5299D1352BC3122A003EF746 /* FirebaseAuth */; };
 		5299D1382BC3122A003EF746 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 5299D1372BC3122A003EF746 /* FirebaseAuthCombine-Community */; };
+		5299D13C2BC3670E003EF746 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299D13B2BC3670E003EF746 /* LoginViewController.swift */; };
 		529F91882BA6D7A7009551D9 /* SoldierUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F91872BA6D7A7009551D9 /* SoldierUnit.swift */; };
 		52A794022BBC2EB30083C976 /* FirebaseReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794012BBC2EB30083C976 /* FirebaseReference.swift */; };
 		52A794042BBC2FBF0083C976 /* FirebaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794032BBC2FBF0083C976 /* FirebaseRepository.swift */; };
@@ -327,6 +328,7 @@
 		5299D12F2BC31002003EF746 /* AuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProvider.swift; sourceTree = "<group>"; };
 		5299D1312BC31050003EF746 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		5299D1332BC31067003EF746 /* AuthenticationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProtocol.swift; sourceTree = "<group>"; };
+		5299D13B2BC3670E003EF746 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		529F91872BA6D7A7009551D9 /* SoldierUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldierUnit.swift; sourceTree = "<group>"; };
 		52A794012BBC2EB30083C976 /* FirebaseReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseReference.swift; sourceTree = "<group>"; };
 		52A794032BBC2FBF0083C976 /* FirebaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRepository.swift; sourceTree = "<group>"; };
@@ -640,6 +642,7 @@
 				52F2686F2BB4B319009599AD /* GameModeViewController.swift */,
 				52A7941A2BBC726E0083C976 /* GameRoomViewController.swift */,
 				523C292F2BBD0916004C6EAC /* GameWaitingRoomViewController.swift */,
+				5299D13B2BC3670E003EF746 /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1373,6 +1376,7 @@
 				527A077C2BB3F4CC00CD9D08 /* KillEvent.swift in Sources */,
 				5299D1322BC31050003EF746 /* AuthenticationManager.swift in Sources */,
 				3C3CBE012BB870950001B8A9 /* CGVector+Extensions.swift in Sources */,
+				5299D13C2BC3670E003EF746 /* LoginViewController.swift in Sources */,
 				52A794092BBC35F20083C976 /* Constant.swift in Sources */,
 				3C9955C82BA5865C00D33FA5 /* ConcurrentEvent.swift in Sources */,
 				52F268702BB4B319009599AD /* GameModeViewController.swift in Sources */,
