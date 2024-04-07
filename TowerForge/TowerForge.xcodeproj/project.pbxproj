@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C07CB1F2BC27FDB00207C38 /* SystemManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C07CB1E2BC27FDB00207C38 /* SystemManagerTests.swift */; };
+		3C07CB212BC287DD00207C38 /* GameModuleTestsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C07CB202BC287DD00207C38 /* GameModuleTestsUtils.swift */; };
+		3C07CB232BC28A2500207C38 /* EntityManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C07CB222BC28A2500207C38 /* EntityManagerTest.swift */; };
+		3C07CB252BC2903000207C38 /* TFEntityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C07CB242BC2903000207C38 /* TFEntityTests.swift */; };
+		3C07CB272BC2990E00207C38 /* TFComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C07CB262BC2990E00207C38 /* TFComponentTests.swift */; };
+		3C07CB2E2BC2A49200207C38 /* EventManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C07CB2C2BC2A49200207C38 /* EventManagerTests.swift */; };
+		3C07CB2F2BC2A49200207C38 /* EventTestsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C07CB2D2BC2A49200207C38 /* EventTestsUtils.swift */; };
 		3C0B608D2BB2B84000FFECB4 /* ContactComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0B608C2BB2B84000FFECB4 /* ContactComponent.swift */; };
 		3C3CBDF72BB81D970001B8A9 /* TFCameraNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3CBDF62BB81D970001B8A9 /* TFCameraNode.swift */; };
 		3C3CBDF92BB821500001B8A9 /* TFScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3CBDF82BB821500001B8A9 /* TFScene.swift */; };
@@ -205,6 +212,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C07CB1E2BC27FDB00207C38 /* SystemManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemManagerTests.swift; sourceTree = "<group>"; };
+		3C07CB202BC287DD00207C38 /* GameModuleTestsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModuleTestsUtils.swift; sourceTree = "<group>"; };
+		3C07CB222BC28A2500207C38 /* EntityManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManagerTest.swift; sourceTree = "<group>"; };
+		3C07CB242BC2903000207C38 /* TFEntityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFEntityTests.swift; sourceTree = "<group>"; };
+		3C07CB262BC2990E00207C38 /* TFComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFComponentTests.swift; sourceTree = "<group>"; };
+		3C07CB2C2BC2A49200207C38 /* EventManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManagerTests.swift; sourceTree = "<group>"; };
+		3C07CB2D2BC2A49200207C38 /* EventTestsUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTestsUtils.swift; sourceTree = "<group>"; };
 		3C0B608C2BB2B84000FFECB4 /* ContactComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactComponent.swift; sourceTree = "<group>"; };
 		3C3CBDF62BB81D970001B8A9 /* TFCameraNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFCameraNode.swift; sourceTree = "<group>"; };
 		3C3CBDF82BB821500001B8A9 /* TFScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFScene.swift; sourceTree = "<group>"; };
@@ -798,6 +812,8 @@
 				BA443D462BB05C6E009F0FFB /* MoveEventTests.swift */,
 				BA443D482BB05EF0009F0FFB /* RemoveEventTests.swift */,
 				BA443D4A2BB05F73009F0FFB /* RequestSpawnEventTests.swift */,
+				3C07CB2C2BC2A49200207C38 /* EventManagerTests.swift */,
+				3C07CB2D2BC2A49200207C38 /* EventTestsUtils.swift */,
 			);
 			path = EventTests;
 			sourceTree = "<group>";
@@ -1036,6 +1052,11 @@
 			isa = PBXGroup;
 			children = (
 				BAFFB94F2BB12F9D00D8301F /* GameEngineTests.swift */,
+				3C07CB1E2BC27FDB00207C38 /* SystemManagerTests.swift */,
+				3C07CB222BC28A2500207C38 /* EntityManagerTest.swift */,
+				3C07CB242BC2903000207C38 /* TFEntityTests.swift */,
+				3C07CB262BC2990E00207C38 /* TFComponentTests.swift */,
+				3C07CB202BC287DD00207C38 /* GameModuleTestsUtils.swift */,
 			);
 			path = GameModuleTests;
 			sourceTree = "<group>";
@@ -1404,12 +1425,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C07CB252BC2903000207C38 /* TFEntityTests.swift in Sources */,
+				3C07CB2F2BC2A49200207C38 /* EventTestsUtils.swift in Sources */,
+				3C07CB232BC28A2500207C38 /* EntityManagerTest.swift in Sources */,
+				3C07CB1F2BC27FDB00207C38 /* SystemManagerTests.swift in Sources */,
 				52DF5FC22BA32B2600135367 /* TowerForgeTests.swift in Sources */,
+				3C07CB2E2BC2A49200207C38 /* EventManagerTests.swift in Sources */,
 				BA443D472BB05C6E009F0FFB /* MoveEventTests.swift in Sources */,
 				52DF5FE42BA3391200135367 /* TFTexturesTests.swift in Sources */,
+				3C07CB272BC2990E00207C38 /* TFComponentTests.swift in Sources */,
 				BAFFB9502BB12F9D00D8301F /* GameEngineTests.swift in Sources */,
 				BA443D4B2BB05F73009F0FFB /* RequestSpawnEventTests.swift in Sources */,
 				BA443D452BB05A3C009F0FFB /* SpawnEventTests.swift in Sources */,
+				3C07CB212BC287DD00207C38 /* GameModuleTestsUtils.swift in Sources */,
 				BA443D492BB05EF0009F0FFB /* RemoveEventTests.swift in Sources */,
 				BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */,
 			);

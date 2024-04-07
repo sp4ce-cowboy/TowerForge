@@ -66,8 +66,10 @@ class GameScene: SKScene {
 
     override func update(_ currentTime: TimeInterval) {
         if statePopupDelegate?.isPaused ?? false {
+            lastUpdatedTimeInterval = currentTime
             return
         }
+
         if lastUpdatedTimeInterval == TimeInterval(0) {
             lastUpdatedTimeInterval = currentTime
         }
@@ -98,6 +100,10 @@ extension GameScene: TFScene {
 
     func remove(node: TFNode) {
         node.node.removeFromParent()
+
+        if let name = node.name {
+            cameraNode?.removeChild(withName: name)
+        }
     }
 
     func contains(node: TFNode) -> Bool {

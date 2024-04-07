@@ -16,14 +16,14 @@ protocol StatePopupDelegate: AnyObject {
 
 class StatePopupNode: TFSpriteNode {
 
-    var delegate: StatePopupDelegate?
+    var delegate: StatePopupDelegate? { didSet { setupNode() } }
 
     init() {
         super.init(color: .clear, size: CGSize(width: 700, height: 300))
-        setupNode()
     }
 
     func setupNode() {
+        self.isUserInteractionEnabled = true
         let background = TFSpriteNode(imageName: "square-button", size: self.size)
 
         // TODO: Refactor into a constant
@@ -38,11 +38,13 @@ class StatePopupNode: TFSpriteNode {
                                          height: 200),
                             imageNamed: "play-button")
         resumeButton.name = "resumeButton"
+        resumeButton.isUserInteractionEnabled = true
 
         let menuButton = TFButtonNode(action: TFButtonDelegate(onTouchBegan: { [weak self] in
             self?.delegate?.onMenu()
         }, onTouchEnded: {}), size: CGSize(width: 200, height: 200), imageNamed: "menu-button")
         menuButton.name = "menuButton"
+        menuButton.isUserInteractionEnabled = true
 
         // TODO: Refactor the position into a constants
         resumeButton.position = CGPoint(x: background.position.x + 150, y: background.position.y)
@@ -55,7 +57,6 @@ class StatePopupNode: TFSpriteNode {
         self.add(child: background)
         self.add(child: menuButton)
         self.add(child: resumeButton)
-
     }
 
 }

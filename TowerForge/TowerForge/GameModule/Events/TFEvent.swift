@@ -26,9 +26,6 @@ extension TFEventTypeWrapper: Hashable {
 protocol TFEvent {
     var timestamp: TimeInterval { get }
     var entityId: UUID { get }
-
-    /// Execute method returns an optional EventOutput as not all event executions
-    /// will return an EventOutput
     func execute(in target: EventTarget) -> EventOutput
 }
 
