@@ -59,11 +59,12 @@ class GameRoom {
 
     private func postRoomDataToFirebase(completion: ((_ err: Any?, _ result: String?) -> Void)?) {
         let roomRef = FirebaseDatabaseReference(.Rooms).child(roomName)
-        roomRef.updateChildValues(["roomName": roomName ]) { err, snap in
+        let roomId = UUID().uuidString
+        roomRef.updateChildValues(["roomId": roomId ]) { err, _ in
             if err != nil {
                 completion?(err, nil)
             } else {
-                completion?(nil, snap.key)
+                completion?(nil, roomId)
             }
         }
     }
@@ -156,7 +157,7 @@ class GameRoom {
             }
             print("Finding the room and making it")
             let room = GameRoom(roomName: roomName, roomState: .waitingForPlayers)
-            room.roomId = snap.key
+            room.roomId = snap.childSnapshot(forPath: "roomId").value as? RoomId
             completion(room)
         }
     }
