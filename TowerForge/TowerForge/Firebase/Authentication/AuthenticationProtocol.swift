@@ -10,14 +10,16 @@ import Foundation
 struct AuthenticationData {
     let userId: String
     let email: String
+    let username: String?
 }
 
 protocol AuthenticationProtocol {
     func loginUser(email: String, password: String,
                    completion: @escaping (AuthenticationData?, Error?) -> Void)
     func logoutUser(completion: @escaping (Error?) -> Void)
-    func registerUser(data: AuthenticationData,
+    func registerUser(email: String,
+                      username: String,
                       password: String,
-                      completion: @escaping (AuthenticationData?, Error?) -> Void)
+                      onFinish: @escaping (AuthenticationData?, Error?) -> Void)
     func getUserData(completion: @escaping (AuthenticationData?, Error?) -> Void)
 }

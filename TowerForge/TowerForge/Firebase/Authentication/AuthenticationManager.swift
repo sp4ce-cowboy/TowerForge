@@ -14,20 +14,9 @@ protocol AuthenticationDelegate: AnyObject {
 }
 
 class AuthenticationManager: AuthenticationProtocol {
-   private var authStateHandle: AuthStateDidChangeListenerHandle?
+    private var authStateHandle: AuthStateDidChangeListenerHandle?
     private var delegate: AuthenticationDelegate?
-    init(delegate: AuthenticationDelegate) {
-       // Start observing authentication state changes
-        self.delegate = delegate
-       authStateHandle = Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
-           if let user = user, let email = user.email {
-               let userData = AuthenticationData(userId: user.uid, email: email)
-               self?.delegate?.onLogin(email: email)
-           } else {
-               self?.delegate?.onLogout()
-           }
-       }
-   }
+
    
    deinit {
        // Remove the authentication state listener when deinitializing the manager
@@ -35,17 +24,45 @@ class AuthenticationManager: AuthenticationProtocol {
            Auth.auth().removeStateDidChangeListener(handle)
        }
    }
-    func registerUser(data: AuthenticationData, password: String, completion: @escaping (AuthenticationData?, Error?) -> Void) {
-        guard !data.email.isEmpty, !password.isEmpty else {
+    
+    func setListener(delegate: AuthenticationDelegate) {
+       // Start observing authentication state changes
+       self.delegate = delegate
+       authStateHandle = Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
+           if let user = user, let email = user.email {
+               let userData = AuthenticationData(userId: user.uid,
+                                                 email: email,
+                                                 username: user.displayName)
+               self?.delegate?.onLogin(email: email)
+           } else {
+               self?.delegate?.onLogout()
+           }
+       }
+   }
+    func registerUser(email: String, username: String, password: String, onFinish: @escaping (AuthenticationData?, Error?) -> Void) {
+        guard !email.isEmpty, !password.isEmpty else {
             return
         }
-        Auth.auth().createUser(withEmail: data.email, password: password) { _, error in
+        Auth.auth().createUser(withEmail: email, password: password) { _, error in
             if error != nil {
                 print("Error in creating user")
             } else {
-                Auth.auth().signIn(withEmail: data.email, password: password)
+                Auth.auth().signIn(withEmail: email, password: password)
+                let user = Auth.auth().currentUser
+                let request = user?.createProfileChangeRequest()
+                request?.displayName = username
+                request?.commitChanges(completion: { err in
+                    if err == nil, let id = user?.uid {
+                        onFinish(AuthenticationData(userId: id,
+                                                    email: email,
+                                                    username: user?.displayName), nil)
+                    } else {
+                        onFinish(nil, err)
+                    }
+                })
             }
         }
+        
     }
     
     func loginUser(email: String, password: String, completion: @escaping (AuthenticationData?, Error?) -> Void) {
@@ -64,7 +81,8 @@ class AuthenticationManager: AuthenticationProtocol {
                 return
             }
             let userData = AuthenticationData(userId: user.uid,
-                                              email: email)
+                                              email: email,
+                                              username: user.displayName)
             completion(userData, nil)
         }
     }
@@ -81,7 +99,8 @@ class AuthenticationManager: AuthenticationProtocol {
         if let currentUser = Auth.auth().currentUser {
             // User is currently logged in, fetch user data
             let userData = AuthenticationData(userId: currentUser.uid,
-                                              email: currentUser.email ?? "")
+                                              email: currentUser.email ?? "",
+                                              username: currentUser.displayName)
             completion(userData, nil)
         } else {
             let error = NSError(domain: "Authentication",
