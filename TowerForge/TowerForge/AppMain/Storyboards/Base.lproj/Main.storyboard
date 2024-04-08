@@ -191,10 +191,10 @@
             </objects>
             <point key="canvasLocation" x="-1358.125915080527" y="722.4609375"/>
         </scene>
-        <!--View Controller-->
+        <!--Register View Controller-->
         <scene sceneID="BuJ-cm-X0w">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="cNh-ri-VnM" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="cNh-ri-VnM" customClass="RegisterViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NL5-LD-DVH">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -250,7 +250,7 @@
                                     <attributedString key="attributedTitle"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="onRegisterPressed:" destination="n8I-SW-Wif" eventType="touchUpInside" id="EIp-wR-lpM"/>
+                                    <action selector="onRegisterPressed:" destination="cNh-ri-VnM" eventType="touchUpInside" id="6EO-6Q-Gmb"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HwT-jV-dgL">
@@ -265,6 +265,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="syg-wm-UBD"/>
+                    <connections>
+                        <outlet property="emailInput" destination="43R-gn-FPE" id="N3H-oN-muB"/>
+                        <outlet property="passwordInput" destination="cPl-ZD-3KU" id="hSg-6O-1Oe"/>
+                        <outlet property="usernameInput" destination="lSf-hT-LLh" id="Fv6-XB-uhc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6j-N7-4S6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -24,24 +24,14 @@ class LoginViewController: UIViewController {
     }
     private func login(email: String, password: String) {
         let delegate = self
-        let authentication = AuthenticationProvider(delegate: delegate)
+        let authentication = AuthenticationProvider()
         authentication.login(email: email, password: password) { _, err in
             if let error = err {
                 print(error)
+            } else {
+                self.performSegue(withIdentifier: "segueToMenuGame", sender: self)
             }
         }
     }
 }
 
-extension LoginViewController: AuthenticationDelegate {
-    
-    func onLogout() {
-        //
-    }
-    
-    func onLogin(email: String) {
-        performSegue(withIdentifier: "segueToMenuGame", sender: self)
-    }
-    
-    
-}

@@ -9,9 +9,10 @@ import Foundation
 
 class AuthenticationProvider {
     private let authenticationManager: AuthenticationManager
-    init(authenticationManager: AuthenticationManager = AuthenticationManager(), delegate: AuthenticationDelegate) {
+    var isLoggedIn = false
+    
+    init(authenticationManager: AuthenticationManager = AuthenticationManager()) {
         self.authenticationManager = authenticationManager
-        self.authenticationManager.setListener(delegate: delegate)
     }
     func login(email: String, password: String, completion: @escaping (AuthenticationData?, Error?) -> Void) {
         self.authenticationManager.loginUser(email: email,
@@ -24,4 +25,16 @@ class AuthenticationProvider {
     func logout(completion: @escaping (Error?) -> Void){
         self.authenticationManager.logoutUser(completion: completion)
     }
+}
+
+extension AuthenticationProvider: AuthenticationDelegate {
+    func onLogout() {
+        isLoggedIn = false
+    }
+    
+    func onLogin(email: String) {
+        isLoggedIn = true
+    }
+    
+    
 }

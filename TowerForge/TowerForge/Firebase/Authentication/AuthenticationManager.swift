@@ -16,8 +16,6 @@ protocol AuthenticationDelegate: AnyObject {
 class AuthenticationManager: AuthenticationProtocol {
     private var authStateHandle: AuthStateDidChangeListenerHandle?
     private var delegate: AuthenticationDelegate?
-
-   
    deinit {
        // Remove the authentication state listener when deinitializing the manager
        if let handle = authStateHandle {
@@ -26,9 +24,8 @@ class AuthenticationManager: AuthenticationProtocol {
    }
     
     func setListener(delegate: AuthenticationDelegate) {
-       // Start observing authentication state changes
-       self.delegate = delegate
        authStateHandle = Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
+           self?.delegate = delegate
            if let user = user, let email = user.email {
                let userData = AuthenticationData(userId: user.uid,
                                                  email: email,
