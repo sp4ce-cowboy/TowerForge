@@ -13,7 +13,35 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordInputField: UITextField!
     
     @IBAction func onLoginPressed(_ sender: Any) {
+        guard let email = emailInputField.text,
+              let password = passwordInputField.text else {
+            return
+        }
+        self.login(email: email, password: password)
     }
     @IBAction func onRegisterPressed(_ sender: Any) {
+        performSegue(withIdentifier: "segueToRegister", sender: self)
     }
+    private func login(email: String, password: String) {
+        let delegate = self
+        let authentication = AuthenticationProvider(delegate: delegate)
+        authentication.login(email: email, password: password) { _, err in
+            if let error = err {
+                print(error)
+            }
+        }
+    }
+}
+
+extension LoginViewController: AuthenticationDelegate {
+    
+    func onLogout() {
+        //
+    }
+    
+    func onLogin(email: String) {
+        performSegue(withIdentifier: "segueToMenuGame", sender: self)
+    }
+    
+    
 }
