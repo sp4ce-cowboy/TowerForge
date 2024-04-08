@@ -105,6 +105,17 @@ class GameRoom {
             completion(.waitingForFinalConfirmation)
         }
     }
+    func deleteRoom() {
+        if roomState == .gameOnGoing {
+            roomRef.child(roomName).removeValue { error, _ in
+                if let error = error {
+                    print("Error deleting room: \(error.localizedDescription)")
+                } else {
+                    print("Room deleted successfully.")
+                }
+            }
+        }
+    }
 
     // Updates the current room state in the class and database
     private func updateRoomState(roomState: RoomState) {

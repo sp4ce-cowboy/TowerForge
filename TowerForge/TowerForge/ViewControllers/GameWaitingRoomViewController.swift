@@ -14,6 +14,7 @@ class GameWaitingRoomViewController: UIViewController {
 
     @IBOutlet private var startButton: UIButton!
     deinit {
+        gameRoom?.deleteRoom()
         gameRoom = nil
         currentPlayer = nil
         print("deinit")
@@ -37,7 +38,7 @@ class GameWaitingRoomViewController: UIViewController {
 
     @IBAction private func onStartButtonPressed(_ sender: Any) {
         gameRoom?.updatePlayerReady { _ in
-            self.startButton.isEnabled = false
+            self.startButton.isHidden = true
         }
     }
 
@@ -69,7 +70,12 @@ class GameWaitingRoomViewController: UIViewController {
             ListStackView.addArrangedSubview(playerTwoView)
         }
         if gameRoom?.roomState == .gameOnGoing {
-            self.performSegue(withIdentifier: "segueToGame", sender: self)
+            guard let gameViewController = self.storyboard?.instantiateViewController(withIdentifier: "GameViewController")
+                    as? GameViewController else {
+                return
+            }
+            self.present(gameViewController, animated: true)
+            gameRoom?.deleteRoom()
         }
     }
 
