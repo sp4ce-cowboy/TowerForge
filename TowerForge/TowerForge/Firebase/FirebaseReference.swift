@@ -12,6 +12,7 @@ enum FirebaseReference: String {
     case Game
     case Rooms
     case Players
+    case Ranks
 }
 
 func FirebaseDatabaseReference(_ reference: FirebaseReference) -> DatabaseReference {

@@ -125,6 +125,7 @@
 		5299D13C2BC3670E003EF746 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299D13B2BC3670E003EF746 /* LoginViewController.swift */; };
 		5299D13E2BC36E61003EF746 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299D13D2BC36E61003EF746 /* RegisterViewController.swift */; };
 		5299D1412BC3AA3A003EF746 /* GameRankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299D1402BC3AA3A003EF746 /* GameRankData.swift */; };
+		5299D1432BC3AB38003EF746 /* GameRankProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299D1422BC3AB38003EF746 /* GameRankProvider.swift */; };
 		529F91882BA6D7A7009551D9 /* SoldierUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F91872BA6D7A7009551D9 /* SoldierUnit.swift */; };
 		52A794022BBC2EB30083C976 /* FirebaseReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794012BBC2EB30083C976 /* FirebaseReference.swift */; };
 		52A794042BBC2FBF0083C976 /* FirebaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794032BBC2FBF0083C976 /* FirebaseRepository.swift */; };
@@ -333,6 +334,7 @@
 		5299D13B2BC3670E003EF746 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5299D13D2BC36E61003EF746 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		5299D1402BC3AA3A003EF746 /* GameRankData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRankData.swift; sourceTree = "<group>"; };
+		5299D1422BC3AB38003EF746 /* GameRankProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRankProvider.swift; sourceTree = "<group>"; };
 		529F91872BA6D7A7009551D9 /* SoldierUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldierUnit.swift; sourceTree = "<group>"; };
 		52A794012BBC2EB30083C976 /* FirebaseReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseReference.swift; sourceTree = "<group>"; };
 		52A794032BBC2FBF0083C976 /* FirebaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRepository.swift; sourceTree = "<group>"; };
@@ -666,6 +668,7 @@
 			isa = PBXGroup;
 			children = (
 				5299D1402BC3AA3A003EF746 /* GameRankData.swift */,
+				5299D1422BC3AB38003EF746 /* GameRankProvider.swift */,
 			);
 			path = RankingNetwork;
 			sourceTree = "<group>";
@@ -1315,6 +1318,7 @@
 				3CAC4A692BB697A400A5D22E /* SpriteRenderStage.swift in Sources */,
 				523C29302BBD0916004C6EAC /* GameWaitingRoomViewController.swift in Sources */,
 				3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */,
+				5299D1432BC3AB38003EF746 /* GameRankProvider.swift in Sources */,
 				5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */,
 				3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */,
 				BAFFB9602BB9828B00D8301F /* Achievement.swift in Sources */,

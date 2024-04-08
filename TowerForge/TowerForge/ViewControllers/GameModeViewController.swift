@@ -13,12 +13,19 @@ class GameModeViewController: UIViewController {
     @IBOutlet private var loginButton: UIButton!
     @IBOutlet private var rankingButton: UIButton!
 
-    @IBOutlet var loginButtonLabel: UILabel!
+    @IBOutlet private var loginButtonLabel: UILabel!
     var selectedGameMode = Mode.captureTheFlag
     private let authenticationProvider = AuthenticationProvider()
     override func viewDidLoad() {
         super.viewDidLoad()
         authenticationProvider.addObserver(self)
+        if authenticationProvider.isUserLoggedIn() {
+            loginButtonLabel.text = "Logout"
+            rankingButton.isHidden = false
+        } else {
+            loginButtonLabel.text = "Login"
+            rankingButton.isHidden = true
+        }
     }
 
     deinit {
@@ -77,7 +84,6 @@ class GameModeViewController: UIViewController {
 
 extension GameModeViewController: AuthenticationDelegate {
     func onLogin() {
-        print("Is this logged in game mode view controller")
         loginButtonLabel.text = "Logout"
         rankingButton.isHidden = false
     }
