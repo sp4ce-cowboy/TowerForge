@@ -19,7 +19,7 @@ class AuthenticationProvider {
         self.authenticationManager.loginUser(email: email,
                                              password: password,
                                              completion: completion)
-        print("In provider: login")
+        Logger.log("In provider: login", self)
     }
     func isUserLoggedIn() -> Bool {
         self.authenticationManager.isUserLoggedIn()
