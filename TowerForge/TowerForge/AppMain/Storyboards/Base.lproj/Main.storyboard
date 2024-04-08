@@ -394,7 +394,7 @@ Match</string>
                                 <rect key="frame" x="168" y="377" width="315" height="122"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Login"/>
+                                <buttonConfiguration key="configuration" style="filled"/>
                                 <connections>
                                     <action selector="onLoginViewPressed:" destination="bL0-ag-pcs" eventType="touchUpInside" id="Pdb-u1-H97"/>
                                     <segue destination="n8I-SW-Wif" kind="show" identifier="segueToLogin" id="N9c-Qd-Fdn"/>
@@ -409,6 +409,13 @@ Match</string>
                                     <action selector="onRankingPressed:" destination="bL0-ag-pcs" eventType="touchUpInside" id="FbC-ZM-BDt"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEW-7h-bJJ">
+                                <rect key="frame" x="181" y="300" width="289" height="225"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Nosifer-Regular" family="Nosifer" pointSize="23"/>
+                                <color key="textColor" red="1" green="0.98120184269999999" blue="0.34351523420000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kht-Y2-5Yi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -429,6 +436,8 @@ Match</string>
                     <connections>
                         <outlet property="captureTheFlagButton" destination="erv-RB-ZcW" id="o5k-6Q-PEr"/>
                         <outlet property="deathMatchButton" destination="TfO-fG-lEt" id="0Lp-kV-daK"/>
+                        <outlet property="loginButton" destination="Ral-67-ag6" id="exO-gJ-Bnd"/>
+                        <outlet property="loginButtonLabel" destination="fEW-7h-bJJ" id="Smd-T1-Zz1"/>
                         <outlet property="rankingButton" destination="KBY-6j-DYG" id="oaU-UL-buD"/>
                         <segue destination="BV1-FR-VrT" kind="show" identifier="segueToGame" id="WuO-mG-bY5"/>
                         <segue destination="tK4-EO-PjX" kind="show" identifier="segueToGameRoom" id="dHe-HM-byQ"/>

@@ -2,7 +2,7 @@
 //  AuthenticationManager.swift
 //  TowerForge
 //
-//  Created by MacBook Pro on 08/04/24.
+//  Created by Vanessa Mae on 08/04/24.
 //
 
 import Foundation
@@ -80,6 +80,7 @@ class AuthenticationManager: AuthenticationProtocol {
             let userData = AuthenticationData(userId: user.uid,
                                               email: email,
                                               username: user.displayName)
+            self.delegate?.onLogin()
             completion(userData, nil)
         }
     }
@@ -87,6 +88,7 @@ class AuthenticationManager: AuthenticationProtocol {
     func logoutUser(completion: @escaping (Error?) -> Void) {
         do {
             try Auth.auth().signOut()
+            self.delegate?.onLogout()
             completion(nil)
         } catch let error as NSError {
             completion(error)

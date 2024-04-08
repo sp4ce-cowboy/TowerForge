@@ -12,6 +12,7 @@ class GameModeViewController: UIViewController {
     @IBOutlet private var MultiplayerButton: UIButton!
     @IBOutlet private var loginButton: UIButton!
     @IBOutlet private var rankingButton: UIButton!
+    @IBOutlet private var loginButtonLabel: UILabel!
     var selectedGameMode = Mode.captureTheFlag
     private let authenticationProvider = AuthenticationProvider()
     override func viewDidLoad() {
@@ -25,12 +26,11 @@ class GameModeViewController: UIViewController {
    }
 
     private func updateButtonVisibility() {
-        let authentication = AuthenticationProvider()
-        if authentication.isLoggedIn {
-            loginButton.isHidden = true
+        if authenticationProvider.isLoggedIn {
+            loginButtonLabel.text = "Logout"
             rankingButton.isHidden = false
         } else {
-            loginButton.isHidden = false
+            loginButtonLabel.text = "Login"
             rankingButton.isHidden = true
         }
     }
@@ -48,7 +48,16 @@ class GameModeViewController: UIViewController {
     }
 
     @IBAction func onLoginViewPressed(_ sender: Any) {
-        performSegue(withIdentifier: "segueToLogin", sender: self)
+        if authenticationProvider.isLoggedIn {
+            authenticationProvider.logout { err in
+                if let err = err {
+                    print(err)
+                }
+            }
+        } else {
+            performSegue(withIdentifier: "segueToLogin", sender: self)
+        }
+
     }
     @IBAction private func multiButtonPressed(_ sender: Any) {
         navigateToGameRoomViewController()
@@ -71,7 +80,8 @@ class GameModeViewController: UIViewController {
 
 extension GameModeViewController: AuthenticationDelegate {
     func onLogin() {
-        updateButtonVisibility()
+        print("Is this logged in game mode view controller")
+        rankingButton.isHidden = false
     }
 
     func onLogout() {

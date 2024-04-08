@@ -2,7 +2,7 @@
 //  LoginViewController.swift
 //  TowerForge
 //
-//  Created by MacBook Pro on 08/04/24.
+//  Created by Vanessa Mae on 08/04/24.
 //
 
 import Foundation
@@ -29,7 +29,8 @@ class LoginViewController: UIViewController {
             if let error = err {
                 print(error)
             } else {
-                self.performSegue(withIdentifier: "segueToMenuGame", sender: self)
+                print("Is this touched")
+                // self.performSegue(withIdentifier: "segueToMenuGame", sender: self)
             }
         }
     }

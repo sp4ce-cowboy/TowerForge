@@ -2,7 +2,7 @@
 //  AuthenticationProvider.swift
 //  TowerForge
 //
-//  Created by MacBook Pro on 08/04/24.
+//  Created by Vanessa Mae on 08/04/24.
 //
 
 import Foundation
@@ -14,11 +14,13 @@ class AuthenticationProvider {
 
     init(authenticationManager: AuthenticationManager = AuthenticationManager()) {
         self.authenticationManager = authenticationManager
+        self.authenticationManager.setListener(delegate: self)
     }
     func login(email: String, password: String, completion: @escaping (AuthenticationData?, Error?) -> Void) {
         self.authenticationManager.loginUser(email: email,
                                              password: password,
                                              completion: completion)
+        print("In provider: login")
     }
     func register(email: String,
                   username: String,
@@ -36,7 +38,7 @@ class AuthenticationProvider {
         self.authenticationManager.logoutUser(completion: completion)
     }
     func addObserver(_ observer: AuthenticationDelegate) {
-            observers.append(observer)
+        observers.append(observer)
     }
     func removeObserver(_ observer: AuthenticationDelegate) {
         if let index = observers.firstIndex(where: { $0 === observer }) {
