@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 
 class RegisterViewController: UIViewController {
-    @IBOutlet weak var emailInput: UITextField!
-    @IBOutlet weak var usernameInput: UITextField!
-    @IBOutlet weak var passwordInput: UITextField!
+    @IBOutlet var emailInput: UITextField!
+    @IBOutlet var usernameInput: UITextField!
+    @IBOutlet var passwordInput: UITextField!
     private var authenticationProvider: AuthenticationProvider?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         authenticationProvider = AuthenticationProvider()
     }
 
@@ -26,7 +26,7 @@ class RegisterViewController: UIViewController {
               let password = passwordInput.text else {
             return
         }
-        
+
         authenticationProvider?.register(email: email, username: username, password: password) { _, err in
             if let error = err {
                 print(error)
@@ -36,4 +36,3 @@ class RegisterViewController: UIViewController {
         }
     }
 }
-

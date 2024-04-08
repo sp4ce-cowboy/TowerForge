@@ -10,8 +10,33 @@ class GameModeViewController: UIViewController {
     @IBOutlet private var deathMatchButton: UIButton!
     @IBOutlet private var captureTheFlagButton: UIButton!
     @IBOutlet private var MultiplayerButton: UIButton!
+    @IBOutlet private var loginButton: UIButton!
+    @IBOutlet private var rankingButton: UIButton!
     var selectedGameMode = Mode.captureTheFlag
+    private let authenticationProvider = AuthenticationProvider()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        authenticationProvider.addObserver(self)
+        updateButtonVisibility()
+    }
 
+    deinit {
+        authenticationProvider.removeObserver(self)
+   }
+
+    private func updateButtonVisibility() {
+        let authentication = AuthenticationProvider()
+        if authentication.isLoggedIn {
+            loginButton.isHidden = true
+            rankingButton.isHidden = false
+        } else {
+            loginButton.isHidden = false
+            rankingButton.isHidden = true
+        }
+    }
+
+    @IBAction func onRankingPressed(_ sender: Any) {
+    }
     @IBAction private func deathMatchButtonPressed(_ sender: UIButton) {
         selectedGameMode = .deathMatch
         navigateToGameViewController()
@@ -41,5 +66,15 @@ class GameModeViewController: UIViewController {
 
     private func navigateToGameViewController() {
         performSegue(withIdentifier: "segueToGame", sender: self)
+    }
+}
+
+extension GameModeViewController: AuthenticationDelegate {
+    func onLogin() {
+        updateButtonVisibility()
+    }
+
+    func onLogout() {
+        updateButtonVisibility()
     }
 }

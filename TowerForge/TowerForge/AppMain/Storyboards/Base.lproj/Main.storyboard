@@ -252,6 +252,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="onRegisterPressed:" destination="cNh-ri-VnM" eventType="touchUpInside" id="6EO-6Q-Gmb"/>
+                                    <segue destination="bL0-ag-pcs" kind="show" identifier="segueToMenuGame" id="KGy-3O-inv"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HwT-jV-dgL">
@@ -390,13 +391,22 @@ Match</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ral-67-ag6">
-                                <rect key="frame" x="168" y="451" width="315" height="122"/>
+                                <rect key="frame" x="168" y="377" width="315" height="122"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Login"/>
                                 <connections>
                                     <action selector="onLoginViewPressed:" destination="bL0-ag-pcs" eventType="touchUpInside" id="Pdb-u1-H97"/>
                                     <segue destination="n8I-SW-Wif" kind="show" identifier="segueToLogin" id="N9c-Qd-Fdn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBY-6j-DYG">
+                                <rect key="frame" x="168" y="533" width="315" height="122"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Ranking"/>
+                                <connections>
+                                    <action selector="onRankingPressed:" destination="bL0-ag-pcs" eventType="touchUpInside" id="FbC-ZM-BDt"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -417,9 +427,9 @@ Match</string>
                     </view>
                     <navigationItem key="navigationItem" id="eHk-cd-vLs"/>
                     <connections>
-                        <outlet property="MultiplayerButton" destination="9Ao-cU-Ulr" id="eZ6-bU-K2Y"/>
                         <outlet property="captureTheFlagButton" destination="erv-RB-ZcW" id="o5k-6Q-PEr"/>
                         <outlet property="deathMatchButton" destination="TfO-fG-lEt" id="0Lp-kV-daK"/>
+                        <outlet property="rankingButton" destination="KBY-6j-DYG" id="oaU-UL-buD"/>
                         <segue destination="BV1-FR-VrT" kind="show" identifier="segueToGame" id="WuO-mG-bY5"/>
                         <segue destination="tK4-EO-PjX" kind="show" identifier="segueToGameRoom" id="dHe-HM-byQ"/>
                     </connections>
@@ -614,7 +624,7 @@ Match</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="N9c-Qd-Fdn"/>
-        <segue reference="1ej-FD-YqB"/>
+        <segue reference="KGy-3O-inv"/>
         <segue reference="WuO-mG-bY5"/>
     </inferredMetricsTieBreakers>
     <resources>

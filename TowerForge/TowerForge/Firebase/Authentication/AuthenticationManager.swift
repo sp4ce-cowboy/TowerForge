@@ -10,7 +10,7 @@ import FirebaseAuth
 
 protocol AuthenticationDelegate: AnyObject {
     func onLogout()
-    func onLogin(email: String)
+    func onLogin()
 }
 
 class AuthenticationManager: AuthenticationProtocol {
@@ -22,15 +22,15 @@ class AuthenticationManager: AuthenticationProtocol {
            Auth.auth().removeStateDidChangeListener(handle)
        }
    }
-    
+
     func setListener(delegate: AuthenticationDelegate) {
-       authStateHandle = Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
+       authStateHandle = Auth.auth().addStateDidChangeListener { [weak self] _, user in
            self?.delegate = delegate
            if let user = user, let email = user.email {
                let userData = AuthenticationData(userId: user.uid,
                                                  email: email,
                                                  username: user.displayName)
-               self?.delegate?.onLogin(email: email)
+               self?.delegate?.onLogin()
            } else {
                self?.delegate?.onLogout()
            }
@@ -59,9 +59,9 @@ class AuthenticationManager: AuthenticationProtocol {
                 })
             }
         }
-        
+
     }
-    
+
     func loginUser(email: String, password: String, completion: @escaping (AuthenticationData?, Error?) -> Void) {
         guard !email.isEmpty, !password.isEmpty else {
             return
@@ -83,7 +83,7 @@ class AuthenticationManager: AuthenticationProtocol {
             completion(userData, nil)
         }
     }
-    
+
     func logoutUser(completion: @escaping (Error?) -> Void) {
         do {
             try Auth.auth().signOut()
@@ -106,5 +106,5 @@ class AuthenticationManager: AuthenticationProtocol {
             completion(nil, error)
         }
     }
-    
+
 }

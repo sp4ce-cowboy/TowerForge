@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 class LoginViewController: UIViewController {
-    @IBOutlet weak var emailInputField: UITextField!
-    @IBOutlet weak var passwordInputField: UITextField!
-    
+    @IBOutlet var emailInputField: UITextField!
+    @IBOutlet var passwordInputField: UITextField!
+
     @IBAction func onLoginPressed(_ sender: Any) {
         guard let email = emailInputField.text,
               let password = passwordInputField.text else {
@@ -34,4 +34,3 @@ class LoginViewController: UIViewController {
         }
     }
 }
-
