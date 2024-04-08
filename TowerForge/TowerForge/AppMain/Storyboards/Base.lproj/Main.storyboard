@@ -105,7 +105,7 @@
         <!--Login View Controller-->
         <scene sceneID="e1f-5K-0il">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="n8I-SW-Wif" customClass="LoginViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="n8I-SW-Wif" customClass="LoginViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="syL-tu-6N9">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,7 +195,7 @@
         <!--Register View Controller-->
         <scene sceneID="BuJ-cm-X0w">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="cNh-ri-VnM" customClass="RegisterViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cNh-ri-VnM" customClass="RegisterViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NL5-LD-DVH">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -252,7 +252,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="onRegisterPressed:" destination="cNh-ri-VnM" eventType="touchUpInside" id="6EO-6Q-Gmb"/>
-                                    <segue destination="bL0-ag-pcs" kind="show" identifier="segueToMenuGame" id="KGy-3O-inv"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HwT-jV-dgL">
@@ -280,7 +279,7 @@
         <!--Game Mode View Controller-->
         <scene sceneID="TxY-2C-loY">
             <objects>
-                <viewController storyboardIdentifier="GameModeViewController" modalPresentationStyle="fullScreen" id="bL0-ag-pcs" customClass="GameModeViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameModeViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bL0-ag-pcs" customClass="GameModeViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iEG-EI-hhj">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -397,7 +396,6 @@ Match</string>
                                 <buttonConfiguration key="configuration" style="filled"/>
                                 <connections>
                                     <action selector="onLoginViewPressed:" destination="bL0-ag-pcs" eventType="touchUpInside" id="Pdb-u1-H97"/>
-                                    <segue destination="n8I-SW-Wif" kind="show" identifier="segueToLogin" id="N9c-Qd-Fdn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBY-6j-DYG">
@@ -437,7 +435,7 @@ Match</string>
                         <outlet property="captureTheFlagButton" destination="erv-RB-ZcW" id="o5k-6Q-PEr"/>
                         <outlet property="deathMatchButton" destination="TfO-fG-lEt" id="0Lp-kV-daK"/>
                         <outlet property="loginButton" destination="Ral-67-ag6" id="exO-gJ-Bnd"/>
-                        <outlet property="loginButtonLabel" destination="fEW-7h-bJJ" id="Smd-T1-Zz1"/>
+                        <outlet property="loginButtonLabel" destination="fEW-7h-bJJ" id="dep-kA-HR9"/>
                         <outlet property="rankingButton" destination="KBY-6j-DYG" id="oaU-UL-buD"/>
                         <segue destination="BV1-FR-VrT" kind="show" identifier="segueToGame" id="WuO-mG-bY5"/>
                         <segue destination="tK4-EO-PjX" kind="show" identifier="segueToGameRoom" id="dHe-HM-byQ"/>
@@ -632,8 +630,7 @@ Match</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="N9c-Qd-Fdn"/>
-        <segue reference="KGy-3O-inv"/>
+        <segue reference="tXV-bd-lPZ"/>
         <segue reference="WuO-mG-bY5"/>
     </inferredMetricsTieBreakers>
     <resources>

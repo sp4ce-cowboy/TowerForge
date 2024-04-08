@@ -10,7 +10,6 @@ import Foundation
 class AuthenticationProvider {
     private let authenticationManager: AuthenticationManager
     private var observers = [AuthenticationDelegate]()
-    var isLoggedIn = false
 
     init(authenticationManager: AuthenticationManager = AuthenticationManager()) {
         self.authenticationManager = authenticationManager
@@ -21,6 +20,9 @@ class AuthenticationProvider {
                                              password: password,
                                              completion: completion)
         print("In provider: login")
+    }
+    func isUserLoggedIn() -> Bool {
+        self.authenticationManager.isUserLoggedIn()
     }
     func register(email: String,
                   username: String,
@@ -34,6 +36,7 @@ class AuthenticationProvider {
     func getUserDetails(completion: @escaping (AuthenticationData?, Error?) -> Void) {
         self.authenticationManager.getUserData(completion: completion)
     }
+
     func logout(completion: @escaping (Error?) -> Void) {
         self.authenticationManager.logoutUser(completion: completion)
     }
@@ -55,12 +58,10 @@ class AuthenticationProvider {
 
 extension AuthenticationProvider: AuthenticationDelegate {
     func onLogout() {
-        isLoggedIn = false
         self.notifyObserversLogout()
     }
 
     func onLogin() {
-        isLoggedIn = true
         self.notifyObserversLogin()
     }
 

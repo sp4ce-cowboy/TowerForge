@@ -9,17 +9,17 @@ import Foundation
 import UIKit
 
 class LoginViewController: UIViewController {
-    @IBOutlet var emailInputField: UITextField!
-    @IBOutlet var passwordInputField: UITextField!
-
-    @IBAction func onLoginPressed(_ sender: Any) {
+    @IBOutlet private var emailInputField: UITextField!
+    @IBOutlet private var passwordInputField: UITextField!
+    private var isLogInSuccessful = false
+    @IBAction private func onLoginPressed(_ sender: Any) {
         guard let email = emailInputField.text,
               let password = passwordInputField.text else {
             return
         }
         self.login(email: email, password: password)
     }
-    @IBAction func onRegisterPressed(_ sender: Any) {
+    @IBAction private func onRegisterPressed(_ sender: Any) {
         performSegue(withIdentifier: "segueToRegister", sender: self)
     }
     private func login(email: String, password: String) {
@@ -29,9 +29,14 @@ class LoginViewController: UIViewController {
             if let error = err {
                 print(error)
             } else {
-                print("Is this touched")
-                // self.performSegue(withIdentifier: "segueToMenuGame", sender: self)
+                self.isLogInSuccessful = true
             }
         }
+    }
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "segueToMenuGame" {
+            return isLogInSuccessful
+        }
+        return true
     }
 }

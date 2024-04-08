@@ -22,7 +22,9 @@ class AuthenticationManager: AuthenticationProtocol {
            Auth.auth().removeStateDidChangeListener(handle)
        }
    }
-
+    func isUserLoggedIn() -> Bool {
+        Auth.auth().currentUser != nil
+    }
     func setListener(delegate: AuthenticationDelegate) {
        authStateHandle = Auth.auth().addStateDidChangeListener { [weak self] _, user in
            self?.delegate = delegate
@@ -30,6 +32,7 @@ class AuthenticationManager: AuthenticationProtocol {
                let userData = AuthenticationData(userId: user.uid,
                                                  email: email,
                                                  username: user.displayName)
+               print("SOmething listened")
                self?.delegate?.onLogin()
            } else {
                self?.delegate?.onLogout()
@@ -42,7 +45,7 @@ class AuthenticationManager: AuthenticationProtocol {
         }
         Auth.auth().createUser(withEmail: email, password: password) { _, error in
             if error != nil {
-                print("Error in creating user")
+                print("Error in creating user \(error)")
             } else {
                 Auth.auth().signIn(withEmail: email, password: password)
                 let user = Auth.auth().currentUser

@@ -9,18 +9,17 @@ import Foundation
 import UIKit
 
 class RegisterViewController: UIViewController {
-    @IBOutlet var emailInput: UITextField!
-    @IBOutlet var usernameInput: UITextField!
-    @IBOutlet var passwordInput: UITextField!
+    @IBOutlet private var emailInput: UITextField!
+    @IBOutlet private var usernameInput: UITextField!
+    @IBOutlet private var passwordInput: UITextField!
     private var authenticationProvider: AuthenticationProvider?
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         authenticationProvider = AuthenticationProvider()
     }
 
-    @IBAction func onRegisterPressed(_ sender: Any) {
+    @IBAction private func onRegisterPressed(_ sender: Any) {
         guard let email = emailInput.text,
               let username = usernameInput.text,
               let password = passwordInput.text else {
@@ -31,7 +30,12 @@ class RegisterViewController: UIViewController {
             if let error = err {
                 print(error)
             } else {
-                self.performSegue(withIdentifier: "segueToMenuGame", sender: self)
+                guard let gameModeViewController = self.storyboard?.instantiateViewController(withIdentifier: "GameModeViewController")
+                        as? GameModeViewController else {
+                            return
+                        }
+
+                self.present(gameModeViewController, animated: true, completion: nil)
             }
         }
     }
