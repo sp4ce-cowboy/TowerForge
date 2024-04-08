@@ -15,7 +15,6 @@ class RegisterViewController: UIViewController {
     private var authenticationProvider: AuthenticationProvider?
     override func viewDidLoad() {
         super.viewDidLoad()
-
         authenticationProvider = AuthenticationProvider()
     }
 
