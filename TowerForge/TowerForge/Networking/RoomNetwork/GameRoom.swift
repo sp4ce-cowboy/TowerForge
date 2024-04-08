@@ -110,7 +110,7 @@ class GameRoom {
     private func updateRoomState(roomState: RoomState) {
         print("Updating room state from player")
         let roomStateRef = FirebaseDatabaseReference(.Rooms).child(roomName).child("roomState")
-        roomStateRef.setValue(roomState) { error, _ in
+        roomStateRef.setValue(roomState.rawValue) { error, _ in
             if let error = error {
                 print("Error updating room state: \(error.localizedDescription)")
             } else {
@@ -198,6 +198,7 @@ class GameRoom {
 
             let room = GameRoom(roomName: roomName, roomState: roomState)
             room.roomId = roomId
+            completion(room)
         }
     }
 

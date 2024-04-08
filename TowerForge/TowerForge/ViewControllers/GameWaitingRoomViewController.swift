@@ -36,10 +36,8 @@ class GameWaitingRoomViewController: UIViewController {
     }
 
     @IBAction private func onStartButtonPressed(_ sender: Any) {
-        gameRoom?.updatePlayerReady { state in
-            if state == .gameOnGoing {
-                self.performSegue(withIdentifier: "segueToGame", sender: self)
-            }
+        gameRoom?.updatePlayerReady { _ in
+            self.startButton.isEnabled = false
         }
     }
 
@@ -55,7 +53,6 @@ class GameWaitingRoomViewController: UIViewController {
                 self.navigationController?.popViewController(animated: true)
             }
         })
-        // performSegue(withIdentifier: "segueToGameRoom", sender: self)
     }
 
     private func updatePlayerList() {
