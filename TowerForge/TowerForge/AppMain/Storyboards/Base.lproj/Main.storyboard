@@ -105,7 +105,7 @@
         <!--Login View Controller-->
         <scene sceneID="e1f-5K-0il">
             <objects>
-                <viewController id="n8I-SW-Wif" customClass="LoginViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="n8I-SW-Wif" customClass="LoginViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="syL-tu-6N9">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -182,6 +182,7 @@
                         <viewLayoutGuide key="safeArea" id="3PZ-wv-Wjj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="4EC-0E-LBV"/>
                     <connections>
                         <outlet property="emailInputField" destination="NEZ-Ez-cbb" id="asO-43-uLT"/>
                         <outlet property="passwordInputField" destination="zaO-QM-i84" id="2m2-Fw-YHT"/>
@@ -380,12 +381,22 @@ Match</string>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ao-cU-Ulr">
-                                <rect key="frame" x="152" y="244" width="315" height="122"/>
+                                <rect key="frame" x="168" y="220" width="315" height="122"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                 <connections>
                                     <action selector="multiButtonPressed:" destination="bL0-ag-pcs" eventType="touchUpInside" id="u6W-dc-lim"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ral-67-ag6">
+                                <rect key="frame" x="168" y="451" width="315" height="122"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Login"/>
+                                <connections>
+                                    <action selector="onLoginViewPressed:" destination="bL0-ag-pcs" eventType="touchUpInside" id="Pdb-u1-H97"/>
+                                    <segue destination="n8I-SW-Wif" kind="show" identifier="segueToLogin" id="N9c-Qd-Fdn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -602,6 +613,7 @@ Match</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="N9c-Qd-Fdn"/>
         <segue reference="1ej-FD-YqB"/>
         <segue reference="WuO-mG-bY5"/>
     </inferredMetricsTieBreakers>

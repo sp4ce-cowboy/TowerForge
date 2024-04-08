@@ -22,6 +22,9 @@ class GameModeViewController: UIViewController {
         navigateToGameViewController()
     }
 
+    @IBAction func onLoginViewPressed(_ sender: Any) {
+        performSegue(withIdentifier: "segueToLogin", sender: self)
+    }
     @IBAction private func multiButtonPressed(_ sender: Any) {
         navigateToGameRoomViewController()
     }
