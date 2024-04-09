@@ -60,7 +60,10 @@ class GameRoom {
     private func postRoomDataToFirebase(completion: ((_ err: Any?, _ result: String?) -> Void)?) {
         let roomRef = FirebaseDatabaseReference(.Rooms).child(roomName)
         let roomId = UUID().uuidString
-        roomRef.updateChildValues(["roomId": roomId ]) { err, _ in
+        self.roomState = .empty
+        roomRef.updateChildValues(["roomId": roomId,
+                                   "roomState": RoomState.empty.rawValue
+                                  ]) { err, _ in
             if err != nil {
                 completion?(err, nil)
             } else {
@@ -83,9 +86,50 @@ class GameRoom {
         let playerRef = roomRef.child(roomName).child("players").childByAutoId()
         playerRef.setValue(player.userName)
         player.userPlayerId = playerRef.key
+        self.isRoomFull(roomName) { isFull in
+            if isFull {
+                self.updateRoomState(roomState: .waitingForBothConfirmation)
+            }
+        }
         completion(true) // Successfully joined the room
     }
 
+    // Logic to start the game when players are ready
+    func updatePlayerReady(completion: @escaping (RoomState) -> Void) {
+        print("Updating player start")
+        if self.roomState == .waitingForFinalConfirmation {
+            self.updateRoomState(roomState: .gameOnGoing)
+            completion(.gameOnGoing)
+        } else if self.roomState == .waitingForBothConfirmation {
+            self.updateRoomState(roomState: .waitingForFinalConfirmation)
+            completion(.waitingForFinalConfirmation)
+        }
+    }
+    func deleteRoom() {
+        if roomState == .gameOnGoing {
+            roomRef.child(roomName).removeValue { error, _ in
+                if let error = error {
+                    print("Error deleting room: \(error.localizedDescription)")
+                } else {
+                    print("Room deleted successfully.")
+                }
+            }
+        }
+    }
+
+    // Updates the current room state in the class and database
+    private func updateRoomState(roomState: RoomState) {
+        print("Updating room state from player")
+        let roomStateRef = FirebaseDatabaseReference(.Rooms).child(roomName).child("roomState")
+        roomStateRef.setValue(roomState.rawValue) { error, _ in
+            if let error = error {
+                print("Error updating room state: \(error.localizedDescription)")
+            } else {
+                self.roomState = roomState
+                print("Room state updated successfully.")
+            }
+        }
+    }
     func leaveRoom(player: GamePlayer, completion: @escaping (Bool) -> Void) {
         let roomPlayersRef = roomRef.child(roomName).child("players")
 
@@ -155,9 +199,16 @@ class GameRoom {
                 completion(nil)
                 return
             }
-            print("Finding the room and making it")
-            let room = GameRoom(roomName: roomName, roomState: .waitingForPlayers)
-            room.roomId = snap.childSnapshot(forPath: "roomId").value as? RoomId
+
+            guard let roomId = snap.childSnapshot(forPath: "roomId").value as? String,
+                  let roomStateRawValue = snap.childSnapshot(forPath: "roomState").value as? String,
+                  let roomState = RoomState.fromString(roomStateRawValue) else {
+                completion(nil)
+                return
+            }
+
+            let room = GameRoom(roomName: roomName, roomState: roomState)
+            room.roomId = roomId
             completion(room)
         }
     }
@@ -179,6 +230,9 @@ class GameRoom {
                         self?.playerTwo = player
                     }
                 }
+            }
+            if let roomStateData = snapshotValue["roomState"] as? String {
+                self?.roomState = RoomState.fromString(roomStateData)
             }
             self?.gameRoomDelegate?.onRoomChange()
         }

@@ -18,7 +18,7 @@
         <!--GameViewController-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController storyboardIdentifier="GameViewController" title="GameViewController" wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" id="BV1-FR-VrT" customClass="GameViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameViewController" title="GameViewController" wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BV1-FR-VrT" customClass="GameViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -628,7 +628,7 @@ Match</string>
                                     <action selector="onLeaveButtonPressed:" destination="FnT-Eh-Bya" eventType="touchUpInside" id="xhU-Xf-OGM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95L-Ms-1Jv">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95L-Ms-1Jv">
                                 <rect key="frame" x="851" y="449" width="476" height="127"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -662,7 +662,7 @@ Match</string>
                     <navigationItem key="navigationItem" id="RIh-Gm-msf"/>
                     <connections>
                         <outlet property="ListStackView" destination="FSQ-sC-jDO" id="21H-Es-ph1"/>
-                        <segue destination="BV1-FR-VrT" kind="show" identifier="segueToGame" id="22u-0c-ugI"/>
+                        <outlet property="startButton" destination="95L-Ms-1Jv" id="1ak-OX-1gU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srP-KJ-HWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

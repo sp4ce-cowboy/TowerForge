@@ -7,12 +7,26 @@
 
 import Foundation
 
-enum RoomState: Codable {
+enum RoomState: String, Codable {
     case empty
-    case waitingForPlayers
+    case waitingForMorePlayers
+    case waitingForBothConfirmation
+    case waitingForFinalConfirmation
     case disconnected
     case gameEnded
     case gameOnGoing
+}
+
+extension String {
+    func toRoomState() -> RoomState? {
+        RoomState(rawValue: self)
+    }
+}
+
+extension RoomState {
+    static func fromString(_ value: String) -> RoomState? {
+        value.toRoomState()
+    }
 }
 
 struct RoomData: Codable {

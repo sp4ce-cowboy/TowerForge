@@ -31,7 +31,6 @@ class GameRoomViewController: UIViewController {
         }
 
         let playerOne = GamePlayer(userName: playerName)
-        print("Attempting to make a room")
         gameRoom = GameRoom(roomName: roomName) { success in
             if success {
                 print("Now joining the room \(success)")
