@@ -8,17 +8,18 @@
 import Foundation
 
 class Life: TFEntity {
-    static let position = CGPoint(x: 300, y: 100)
-    static let size = CGSize(width: 100, height: 100)
-    init(initialLife: Int) {
+    init(initialLife: Int, position: CGPoint, player: Player) {
         super.init()
-        let spriteComponent = SpriteComponent(textureNames: ["Life"], size: Life.size, animatableKey: "life")
-
+        let spriteComponent = SpriteComponent(textureNames: ["Life"],
+                                              size: SizeConstants.CTF_POINT_SIZE,
+                                              animatableKey: "life")
         self.addComponent(spriteComponent)
         self.addComponent(HomeComponent(initialLifeCount: Team.lifeCount, pointInterval: Team.pointsInterval))
-        self.addComponent(LabelComponent(text: String(initialLife), name: "life"))
-        self.addComponent(PositionComponent(position: Life.position))
-        self.addComponent(PlayerComponent(player: .ownPlayer))
+        self.addComponent(LabelComponent(text: String(initialLife),
+                                         name: "life",
+                                         subtitle: player == .ownPlayer ? "Your Life" : "Opponent Life"))
+        self.addComponent(PositionComponent(position: position))
+        self.addComponent(PlayerComponent(player: player))
 
         spriteComponent.staticOnScreen = true
     }

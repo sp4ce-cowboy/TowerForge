@@ -15,7 +15,9 @@ class Death: TFEntity {
                                               animatableKey: "death")
 
         self.addComponent(spriteComponent)
-        self.addComponent(LabelComponent(text: String(0), name: "killCount"))
+        self.addComponent(LabelComponent(text: String(0),
+                                         name: "killCount",
+                                         subtitle: player == .ownPlayer ? "Your Kill" : "Opponent Kill"))
         self.addComponent(HomeComponent(initialLifeCount: Team.lifeCount,
                                         pointInterval: Team.pointsInterval))
         self.addComponent(PositionComponent(position: position))

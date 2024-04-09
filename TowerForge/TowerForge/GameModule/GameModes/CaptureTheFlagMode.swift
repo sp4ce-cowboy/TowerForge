@@ -19,7 +19,12 @@ class CaptureTheFlagMode: GameMode {
     var currentOpponentLife: Int
 
     init(initialLife: Int, eventManager: EventManager) {
-        self.gameProps.append(LifeProp(initialLife: initialLife))
+        self.gameProps.append(LifeProp(initialLife: initialLife,
+                                       position: PositionConstants.CTF_POINT_OWN,
+                                       player: .ownPlayer))
+        self.gameProps.append(LifeProp(initialLife: initialLife,
+                                       position: PositionConstants.CTF_POINT_OPP,
+                                       player: .oppositePlayer))
         self.currentOwnLife = initialLife
         self.currentOpponentLife = initialLife
         self.eventManager = eventManager

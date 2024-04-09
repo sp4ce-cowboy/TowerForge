@@ -33,9 +33,15 @@ class Constants {
 struct PositionConstants {
     // Death Match Mode Properties Positions
     static let DEATH_MATCH_POINT_OWN = CGPoint(x: 300, y: 50)
-    static let DEATH_MATCH_POINT_OPP = CGPoint(x: 300, y: 100)
+    static let DEATH_MATCH_POINT_OPP = CGPoint(x: 300, y: 110)
+
+    // Capture the Flag Mode Properties
+    static let CTF_POINT_OWN = CGPoint(x: 300, y: 50)
+    static let CTF_POINT_OPP = CGPoint(x: 300, y: 110)
 }
 
 struct SizeConstants {
     static let DEATH_MATCH_POINT_SIZE = CGSize(width: 50, height: 50)
+
+    static let CTF_POINT_SIZE = CGSize(width: 50, height: 50)
 }

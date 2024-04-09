@@ -10,7 +10,7 @@ import Foundation
 class LifeProp: GameProp {
     var renderableEntity: Life
 
-    init(initialLife: Int) {
-        self.renderableEntity = Life(initialLife: initialLife)
+    init(initialLife: Int, position: CGPoint, player: Player) {
+        self.renderableEntity = Life(initialLife: initialLife, position: position, player: player)
     }
 }

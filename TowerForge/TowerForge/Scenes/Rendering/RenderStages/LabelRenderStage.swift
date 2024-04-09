@@ -28,17 +28,28 @@ class LabelRenderStage: RenderStage {
               let labelComponent = entity.component(ofType: LabelComponent.self) else {
             return
         }
-        labelNode.text = labelComponent.text
+        labelNode.text = labelComponent.title
     }
 
     private func createLabelNode(with labelComponent: LabelComponent) -> TFLabelNode {
-        let labelNode = TFLabelNode(text: labelComponent.text)
+        let labelNode = TFLabelNode(text: labelComponent.title)
         labelNode.fontColor = labelComponent.fontColor
         labelNode.fontName = labelComponent.fontName
         labelNode.fontSize = labelComponent.fontSize
         labelNode.horizontalAlignmentMode = labelComponent.horizontalAlignment
         labelNode.verticalAlignmentMode = labelComponent.verticalAlignment
         labelNode.name = LabelRenderStage.name
+
+        if let subtitle = labelComponent.subtitle {
+            let subtitleNode = TFLabelNode(text: subtitle)
+            subtitleNode.fontColor = labelComponent.fontColor
+            subtitleNode.fontName = labelComponent.fontName
+            subtitleNode.fontSize = labelComponent.fontSize * 0.5
+            subtitleNode.horizontalAlignmentMode = labelComponent.horizontalAlignment
+            subtitleNode.verticalAlignmentMode = labelComponent.verticalAlignment
+            subtitleNode.position = CGPoint(x: 0, y: -20)
+            labelNode.add(child: subtitleNode)
+        }
 
         return labelNode
     }

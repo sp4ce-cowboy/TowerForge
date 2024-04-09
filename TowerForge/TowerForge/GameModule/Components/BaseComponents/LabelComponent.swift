@@ -8,7 +8,8 @@
 import SpriteKit
 
 class LabelComponent: TFComponent {
-    var text: String
+    var title: String
+    var subtitle: String?
     var name: String
     var fontColor: UIColor = .white
     var fontName: String = "HelveticaNeue-Bold"
@@ -18,13 +19,14 @@ class LabelComponent: TFComponent {
     var horizontalAlignment: AlignmentMode = .center
     var verticalAlignment: AlignmentMode = .center
 
-    init(text: String, name: String) {
-        self.text = text
+    init(text: String, name: String, subtitle: String? = nil) {
+        self.title = text
+        self.subtitle = subtitle
         self.name = name
         super.init()
     }
 
     func changeText(_ text: String) {
-        self.text = text
+        self.title = text
     }
 }
