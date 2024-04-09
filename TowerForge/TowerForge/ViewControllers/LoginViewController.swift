@@ -27,12 +27,13 @@ class LoginViewController: UIViewController {
             if let error = err {
                 print(error)
             } else {
-                guard let gameModeViewController = self.storyboard?.instantiateViewController(withIdentifier: "GameModeViewController")
-                        as? GameModeViewController else {
-                            return
-                        }
+//                guard let gameModeViewController = self.storyboard?.instantiateViewController(withIdentifier: "GameModeViewController")
+//                        as? GameModeViewController else {
+//                            return
+//                        }
 
-                self.present(gameModeViewController, animated: true, completion: nil)
+//                self.present(gameModeViewController, animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }

@@ -7,12 +7,7 @@
 import UIKit
 
 class GameModeViewController: UIViewController {
-    @IBOutlet private var deathMatchButton: UIButton!
-    @IBOutlet private var captureTheFlagButton: UIButton!
-    @IBOutlet private var MultiplayerButton: UIButton!
-    @IBOutlet private var loginButton: UIButton!
     @IBOutlet private var rankingButton: UIButton!
-
     @IBOutlet private var loginButtonLabel: UILabel!
 
     var selectedGameMode = Mode.captureTheFlag
@@ -42,10 +37,12 @@ class GameModeViewController: UIViewController {
 
     @IBAction private func onRankingPressed(_ sender: Any) {
     }
+
     @IBAction private func survivalMatchPressed(_ sender: Any) {
         print("PRESSED?")
         LevelPopupViewController.showDialogBox(parentVC: self)
     }
+
     @IBAction private func deathMatchButtonPressed(_ sender: UIButton) {
         selectedGameMode = .deathMatch
         navigateToGameViewController()
@@ -75,6 +72,7 @@ class GameModeViewController: UIViewController {
             present(loginViewController, animated: true, completion: nil)
         }
     }
+
     @IBAction private func multiButtonPressed(_ sender: Any) {
         navigateToGameRoomViewController()
     }
