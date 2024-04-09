@@ -11,7 +11,7 @@ import FirebaseDatabaseInternal
 class GameRankProvider {
     private let ranksRef = FirebaseDatabaseReference(.Ranks)
     func setNewRank(rank: GameRankData) {
-        let userRankData = ["username": rank.username, "score": rank.score] as [String : Any]
+        let userRankData = ["username": rank.username, "score": rank.score] as [String: Any]
         ranksRef.child(rank.userId).setValue(userRankData)
     }
     func getTopRanks(completion: @escaping ([GameRankData]?, Error?) -> Void) {
@@ -27,7 +27,7 @@ class GameRankProvider {
                     topRanks.append(rankData)
                 }
             }
-            
+
             topRanks.sort { $0.score > $1.score }
             completion(topRanks, nil)
         }
