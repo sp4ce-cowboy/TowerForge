@@ -10,13 +10,7 @@ import UIKit
 
 // Dummy still
 class GameRoomViewController: UIViewController {
-    @IBOutlet private var MultiplayerButton: UIView!
-
-    @IBOutlet private var CreateRoom: UIButton!
-    @IBOutlet private var JoinRoom: UIButton!
-
     @IBOutlet private var RoomNameInput: UITextField!
-
     @IBOutlet private var PlayerNameInput: UITextField!
 
     var gameRoom: GameRoom?

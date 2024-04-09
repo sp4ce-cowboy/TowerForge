@@ -28,13 +28,11 @@ class RegisterViewController: UIViewController {
         authenticationProvider?.register(email: email, username: username, password: password) { _, err in
             if let error = err {
                 print(error)
-            } else {
-                guard let gameModeViewController = self.storyboard?.instantiateViewController(withIdentifier: "GameModeViewController")
-                        as? GameModeViewController else {
-                            return
-                        }
-
-                self.present(gameModeViewController, animated: true, completion: nil)
+                return
+            }
+            if let navigationController = self.navigationController,
+               let gameModeVC = navigationController.viewControllers.first(where: { $0 is GameModeViewController }) {
+                self.navigationController?.popToViewController(gameModeVC, animated: true)
             }
         }
     }

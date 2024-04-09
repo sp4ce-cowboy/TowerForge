@@ -7,7 +7,7 @@
 import UIKit
 
 class GameModeViewController: UIViewController {
-    @IBOutlet private var rankingButton: UIButton!
+    @IBOutlet private var rankingView: UIView!
     @IBOutlet private var loginButtonLabel: UILabel!
 
     var selectedGameMode = Mode.captureTheFlag
@@ -24,10 +24,10 @@ class GameModeViewController: UIViewController {
         authenticationProvider.addObserver(self)
         if authenticationProvider.isUserLoggedIn() {
             loginButtonLabel.text = "Logout"
-            rankingButton.isHidden = false
+            rankingView.isHidden = false
         } else {
             loginButtonLabel.text = "Login"
-            rankingButton.isHidden = true
+            rankingView.isHidden = true
         }
     }
 
@@ -64,12 +64,8 @@ class GameModeViewController: UIViewController {
             guard !authenticationProvider.isUserLoggedIn() else {
                 return
             }
-            guard let loginViewController = storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
-                    as? LoginViewController else {
-                return
-            }
 
-            present(loginViewController, animated: true, completion: nil)
+            performSegue(withIdentifier: "segueToLogin", sender: self)
         }
     }
 
@@ -95,12 +91,12 @@ class GameModeViewController: UIViewController {
 extension GameModeViewController: AuthenticationDelegate {
     func onLogin() {
         loginButtonLabel.text = "Logout"
-        rankingButton.isHidden = false
+        rankingView.isHidden = false
     }
 
     func onLogout() {
         loginButtonLabel.text = "Login"
-        rankingButton.isHidden = true
+        rankingView.isHidden = true
     }
 }
 
@@ -111,5 +107,4 @@ extension GameModeViewController: LevelPopupDelegate {
             navigateToGameViewController()
         }
     }
-
 }

@@ -39,7 +39,8 @@ class AuthenticationManager: AuthenticationProtocol {
            }
        }
    }
-    func registerUser(email: String, username: String, password: String, onFinish: @escaping (AuthenticationData?, Error?) -> Void) {
+    func registerUser(email: String, username: String, password: String,
+                      onFinish: @escaping (AuthenticationData?, Error?) -> Void) {
         guard !email.isEmpty, !password.isEmpty else {
             return
         }

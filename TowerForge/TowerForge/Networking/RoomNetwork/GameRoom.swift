@@ -105,14 +105,16 @@ class GameRoom {
             completion(.waitingForFinalConfirmation)
         }
     }
+
     func deleteRoom() {
-        if roomState == .gameOnGoing {
-            roomRef.child(roomName).removeValue { error, _ in
-                if let error = error {
-                    print("Error deleting room: \(error.localizedDescription)")
-                } else {
-                    print("Room deleted successfully.")
-                }
+        guard roomState == .gameOnGoing else {
+            return
+        }
+        roomRef.child(roomName).removeValue { error, _ in
+            if let error = error {
+                print("Error deleting room: \(error.localizedDescription)")
+            } else {
+                print("Room deleted successfully.")
             }
         }
     }
@@ -130,6 +132,7 @@ class GameRoom {
             }
         }
     }
+
     func leaveRoom(player: GamePlayer, completion: @escaping (Bool) -> Void) {
         let roomPlayersRef = roomRef.child(roomName).child("players")
 

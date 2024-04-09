@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol LevelPopupDelegate {
+protocol LevelPopupDelegate: AnyObject {
     func handleLevel(level: Int)
 }
 
@@ -16,22 +16,25 @@ class LevelPopupViewController: UIViewController {
 
     var delegate: LevelPopupDelegate?
 
-    @IBAction func onLevelOnePressed(_ sender: Any) {
+    @IBAction private func onLevelOnePressed(_ sender: Any) {
         self.delegate?.handleLevel(level: 1)
         self.dismiss(animated: true)
     }
-    @IBAction func onLevelTwoPressed(_ sender: Any) {
+
+    @IBAction private func onLevelTwoPressed(_ sender: Any) {
         self.delegate?.handleLevel(level: 2)
         self.dismiss(animated: true)
     }
-    @IBAction func onLevelThreePressed(_ sender: Any) {
+
+    @IBAction private func onLevelThreePressed(_ sender: Any) {
         self.delegate?.handleLevel(level: 3)
         self.dismiss(animated: true)
     }
 
-    @IBAction func onClosePressed(_ sender: Any) {
+    @IBAction private func onClosePressed(_ sender: Any) {
         self.dismiss(animated: true)
     }
+
     static func showDialogBox(parentVC: UIViewController) {
         if let levelPopupViewController = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "LevelPopupViewController")
