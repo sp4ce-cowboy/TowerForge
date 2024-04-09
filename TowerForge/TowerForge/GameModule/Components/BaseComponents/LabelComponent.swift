@@ -17,6 +17,7 @@ class LabelComponent: TFComponent {
     var displacement: CGVector = .zero
     var horizontalAlignment: AlignmentMode = .center
     var verticalAlignment: AlignmentMode = .center
+    override var componentType: TFComponentType { .LabelComponent }
 
     init(text: String, name: String) {
         self.text = text

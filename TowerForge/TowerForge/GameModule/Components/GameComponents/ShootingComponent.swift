@@ -13,6 +13,7 @@ class ShootingComponent: TFComponent {
     private(set) var lastShotTime = TimeInterval(0)
     let attackPower: CGFloat
     let shootingType: BaseProjectile.Type
+    override var componentType: TFComponentType { .ShootingComponent }
 
     init(fireRate: TimeInterval, range: CGFloat, attackPower: CGFloat, shootingType: BaseProjectile.Type) {
         self.fireRate = fireRate

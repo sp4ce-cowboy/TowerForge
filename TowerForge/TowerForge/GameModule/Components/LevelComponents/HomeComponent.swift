@@ -8,6 +8,7 @@
 import QuartzCore
 
 class HomeComponent: TFComponent {
+    override var componentType: TFComponentType { .HomeComponent }
     var lifeLeft: Int {
         didSet {
             // Update the life left in the LabelComponent when it changes
@@ -42,11 +43,13 @@ class HomeComponent: TFComponent {
     private var lastPointIncrease = TimeInterval(0)
     private var pointInterval: TimeInterval
     private var pointsPerInterval: Int = 1
+
     init(initialLifeCount: Int, pointInterval: TimeInterval) {
         self.lifeLeft = initialLifeCount
         self.pointInterval = pointInterval
         super.init()
     }
+
     func decreaseLife(by amount: Int) -> Int {
         self.lifeLeft -= amount
         return self.lifeLeft

@@ -8,6 +8,7 @@
 import SpriteKit
 
 class HealthComponent: TFComponent {
+    override var componentType: TFComponentType { .HealthComponent }
     var currentHealth: CGFloat
     var maxHealth: CGFloat
     var isZero: Bool {

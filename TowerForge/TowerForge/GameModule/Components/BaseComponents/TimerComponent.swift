@@ -9,6 +9,7 @@ import Foundation
 
 class TimerComponent: TFComponent {
     var time: TimeInterval
+    override var componentType: TFComponentType { .TimerComponent }
     init(timeLength: TimeInterval) {
         self.time = timeLength
         super.init()

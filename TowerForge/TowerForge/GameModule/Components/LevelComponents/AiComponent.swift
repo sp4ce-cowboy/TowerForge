@@ -11,6 +11,7 @@ import UIKit
 class AiComponent: TFComponent {
     private var spawnableEntities: [(TFEntity & PlayerSpawnable).Type]
     private(set) var delayUnitNextSpawn: TimeInterval
+    override var componentType: TFComponentType { .AiComponent }
 
     var chosenUnit: (TFEntity & PlayerSpawnable).Type? {
         spawnableEntities.randomElement()

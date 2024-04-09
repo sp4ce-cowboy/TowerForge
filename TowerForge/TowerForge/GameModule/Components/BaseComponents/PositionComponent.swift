@@ -10,6 +10,7 @@ import CoreGraphics
 import UIKit
 
 class PositionComponent: TFComponent {
+    override var componentType: TFComponentType { .PositionComponent }
     private(set) var position: CGPoint
     var anchorPoint: CGPoint
 

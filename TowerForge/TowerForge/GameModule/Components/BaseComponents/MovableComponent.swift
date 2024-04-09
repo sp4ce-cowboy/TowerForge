@@ -11,6 +11,7 @@ import CoreGraphics
 class MovableComponent: TFComponent {
     var velocity: CGVector
     var shouldMove = true
+    override var componentType: TFComponentType { .MovableComponent }
 
     init(velocity: CGVector = .zero) {
         self.velocity = velocity

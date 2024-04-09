@@ -9,6 +9,7 @@ import Foundation
 
 class ContactComponent: TFComponent {
     let hitboxSize: CGSize
+    override var componentType: TFComponentType { .ContactComponent }
 
     init(hitboxSize: CGSize) {
         self.hitboxSize = hitboxSize

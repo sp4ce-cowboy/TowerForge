@@ -10,7 +10,7 @@ import Foundation
 typealias TFEntityType = EntityEnums.TFEntityType
 typealias TFComponentType = EntityEnums.TFComponentType
 class EntityEnums {
-    
+
     enum TFEntityType: String, Codable, CaseIterable {
         case TFEntity
         case BaseTower
@@ -29,7 +29,7 @@ class EntityEnums {
         case Timer
         case WizardBall
     }
-    
+
     enum TFComponentType: String, Codable, CaseIterable {
         case TFComponent
         case PlayerComponent
@@ -43,5 +43,7 @@ class EntityEnums {
         case LabelComponent
         case ButtonComponent
         case TimerComponent
+        case ContactComponent
+        case ShootingComponent
     }
 }

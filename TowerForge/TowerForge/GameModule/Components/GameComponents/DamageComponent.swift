@@ -12,6 +12,7 @@ class DamageComponent: TFComponent {
     private var lastAttackTime = TimeInterval(0)
     private let temporary: Bool
     let attackPower: CGFloat
+    override var componentType: TFComponentType { .DamageComponent }
 
     init(attackRate: TimeInterval, attackPower: CGFloat, temporary: Bool) {
         self.attackRate = attackRate
