@@ -33,6 +33,24 @@ class GameOverScene: SKScene {
         label.fontColor = .darkGray
         label.zPosition = 1_000
         addChild(label.node)
+        setupResultsUI()
+    }
+
+    func setupResultsUI() {
+        var yOffset: CGFloat = 80.0
+        let labelFontSize: CGFloat = 16.0
+        let labelFontName = "Nosifer-Regular"
+
+        for result in results {
+            let resultLabel = TFLabelNode(text: "\(result.variable): \(result.value)")
+            resultLabel.fontSize = labelFontSize
+            resultLabel.fontName = labelFontName
+            resultLabel.fontColor = .darkGray
+            resultLabel.position = CGPoint(x: 50, y: size.height - yOffset)
+            addChild(resultLabel.node)
+
+            yOffset += 30.0
+        }
     }
 
     @available(*, unavailable)
