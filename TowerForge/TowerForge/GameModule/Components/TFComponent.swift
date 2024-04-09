@@ -8,9 +8,9 @@
 import Foundation
 
 class TFComponent: Identifiable {
+    var componentType: TFComponentType { .TFComponent }
     var id = UUID()
     weak var entity: TFEntity?
-    var componentType: TFComponentType { .TFComponent }
 
     init() {
         // No initialisation logic needed as of now

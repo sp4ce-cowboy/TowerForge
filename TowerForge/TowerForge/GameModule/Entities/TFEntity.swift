@@ -9,43 +9,41 @@ import Foundation
 
 class TFEntity: Collidable {
     let id: UUID
-    private(set) var components: [UUID: TFComponent]
+    private(set) var components: [TFComponentType: TFComponent]
 
     init(id: UUID = UUID()) {
         self.id = id
         components = Dictionary()
     }
 
-    func component<T: TFComponent>(ofType type: T.Type) -> T? {
-        for component in components.values {
-            guard let component = component as? T else {
-                continue
-            }
+    func component<T: TFComponent>(ofType type: TFComponentType) -> T? {
+        if let component = components[type] as? T {
             return component
         }
+        
         return nil
     }
 
-    func hasComponent<T: TFComponent>(ofType type: T.Type) -> Bool {
+    func hasComponent(ofType type: TFComponentType) -> Bool {
         self.component(ofType: type) != nil
     }
 
     func addComponent<T: TFComponent>(_ component: T) {
         /// assert(checkRepresentation())
-        guard !hasComponent(ofType: type(of: component)) else {
+        guard !hasComponent(ofType: component.componentType) else {
             return
         }
         component.didAddToEntity(self)
-        components[component.id] = (component)
+        components[component.componentType] = component
     }
 
-    func removeComponent<T: TFComponent>(ofType type: T.Type) {
+    func removeComponent(ofType type: TFComponentType) {
         /// assert(checkRepresentation())
-        guard let componentToBeRemoved = component(ofType: type.self) else {
+        guard let componentToBeRemoved = component(ofType: type) else {
             return
         }
         componentToBeRemoved.willRemoveFromEntity()
-        components.removeValue(forKey: componentToBeRemoved.id)
+        components.removeValue(forKey: componentToBeRemoved.componentType)
     }
 
     // To be overriden by sub classes as needed
@@ -79,7 +77,7 @@ class TFEntity: Collidable {
     /// Ensures that the UUID keys of entries in the dictionary match the UUID id of
     /// the associated values
     private func checkRepresentation() -> Bool {
-        for (key, _) in components where key != components[key]?.id {
+        for (key, _) in components where key != components[key]?.componentType {
                 return false
         }
         return true

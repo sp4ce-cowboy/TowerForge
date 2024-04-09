@@ -9,7 +9,7 @@ import Foundation
 
 class PlayerComponent: TFComponent {
     var player: Player
-    override var componentType: TFComponentType { .PlayerComponent }
+    var componentType: TFComponentType { .PlayerComponent }
     init(player: Player) {
         self.player = player
         super.init()
