@@ -10,27 +10,27 @@ import UIKit
 
 class SurvivalGameMode: GameMode {
     var modeName: String = "Survival Game Mode"
-    
+
     var modeDescription: String = "Don't let the enemy invade your base!"
-    
+
     var gameProps: [any GameProp] = [PointProp(initialPoint: 0)]
-    
+
     var gameState = GameState.IDLE
-    
+
     var eventManager: EventManager
-    
+
     private var currentOwnLife = 1
-    
+
     private var currentLevel: Int = 1
     private var maxLevel: Int
-    
-    private var nextWaveTime: TimeInterval = TimeInterval(10)
-    private var waveTimeInterval: TimeInterval = TimeInterval(10)
-    
+
+    private var nextWaveTime = TimeInterval(10)
+    private var waveTimeInterval = TimeInterval(10)
+
     init(eventManager: EventManager, maxLevel: Int) {
         self.eventManager = eventManager
         self.maxLevel = maxLevel
-        
+
         eventManager.registerHandler(forEvent: LifeEvent.self) { event in
             if let lifeEvent = event as? LifeEvent {
                 // Check if the event reduces life
@@ -40,7 +40,7 @@ class SurvivalGameMode: GameMode {
             }
         }
     }
-    
+
     func updateGame(deltaTime: TimeInterval) {
         nextWaveTime -= deltaTime
         if nextWaveTime < 0 && self.currentLevel <= self.maxLevel {
@@ -55,11 +55,11 @@ class SurvivalGameMode: GameMode {
             gameState = .LOSE
         }
     }
-    
+
     func startGame() {
-        <#code#>
+        //
     }
-    
+
     private func generateWaveSpawns(enemyCount: Int) {
         for _ in 0..<enemyCount {
             let randPosition = getRandomPosition()
@@ -72,14 +72,13 @@ class SurvivalGameMode: GameMode {
                                                     player: .oppositePlayer))
         }
     }
-    
+
     private func getRandomPosition() -> CGPoint {
         let randomY = CGFloat.random(in: 200...UIScreen.main.bounds.height)
         // TODO: Change the GameWorld to a constant
         let randomX = CGFloat.random(in: (GameWorld.worldSize.width / 2)..<GameWorld.worldSize.width)
         return CGPoint(x: randomX, y: randomY)
-        
+
     }
-    
-    
+
 }

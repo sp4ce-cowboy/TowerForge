@@ -45,7 +45,7 @@ struct PositionConstants {
 struct SizeConstants {
     // Death Match Mode Properties Size
     static let DEATH_MATCH_POINT_SIZE = CGSize(width: 50, height: 50)
-    
+
     // Capture the Flag Mode Properties Size
     static let CTF_POINT_SIZE = CGSize(width: 50, height: 50)
 }
@@ -55,5 +55,5 @@ struct FontConstants {
 }
 
 struct GameModeSettingsConstants {
-    //static let LEVEL_ONE_WAVE
+    // static let LEVEL_ONE_WAVE
 }

@@ -138,6 +138,7 @@
 		52A794192BBC630F0083C976 /* RoomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794182BBC630F0083C976 /* RoomData.swift */; };
 		52A7941B2BBC726E0083C976 /* GameRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7941A2BBC726E0083C976 /* GameRoomViewController.swift */; };
 		52DD8F952BC5208900D96BAB /* SurvivalGameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD8F942BC5208800D96BAB /* SurvivalGameMode.swift */; };
+		52DD8F992BC52F8500D96BAB /* LevelPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD8F982BC52F8400D96BAB /* LevelPopupViewController.swift */; };
 		52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FA72BA32B2300135367 /* AppDelegate.swift */; };
 		52DF5FAA2BA32B2300135367 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52DF5FA92BA32B2300135367 /* GameScene.sks */; };
 		52DF5FAC2BA32B2300135367 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52DF5FAB2BA32B2300135367 /* Actions.sks */; };
@@ -348,6 +349,7 @@
 		52A794182BBC630F0083C976 /* RoomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomData.swift; sourceTree = "<group>"; };
 		52A7941A2BBC726E0083C976 /* GameRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRoomViewController.swift; sourceTree = "<group>"; };
 		52DD8F942BC5208800D96BAB /* SurvivalGameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalGameMode.swift; sourceTree = "<group>"; };
+		52DD8F982BC52F8400D96BAB /* LevelPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPopupViewController.swift; sourceTree = "<group>"; };
 		52DF5FA42BA32B2300135367 /* TowerForge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TowerForge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DF5FA72BA32B2300135367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52DF5FA92BA32B2300135367 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -655,6 +657,7 @@
 				523C292F2BBD0916004C6EAC /* GameWaitingRoomViewController.swift */,
 				5299D13B2BC3670E003EF746 /* LoginViewController.swift */,
 				5299D13D2BC36E61003EF746 /* RegisterViewController.swift */,
+				52DD8F982BC52F8400D96BAB /* LevelPopupViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1334,6 +1337,7 @@
 				BAFFB9552BB342FE00D8301F /* Storable.swift in Sources */,
 				52578B8C2BA627B200B4D76C /* Team.swift in Sources */,
 				BAFFB9532BB342F100D8301F /* StorageManager.swift in Sources */,
+				52DD8F992BC52F8500D96BAB /* LevelPopupViewController.swift in Sources */,
 				BAFFB9682BB9981700D8301F /* TotalGamesAchievement.swift in Sources */,
 				BAFFB9732BBAC14500D8301F /* AchievementManager.swift in Sources */,
 				3CBECF8E2BBE9EAC005EF39B /* RemoteSpawnEvent.swift in Sources */,
