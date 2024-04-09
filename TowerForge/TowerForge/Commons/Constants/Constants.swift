@@ -29,3 +29,13 @@ class Constants {
     static var SOUND_EFFECTS_VOLUME: Float = 0.8
 
 }
+
+struct PositionConstants {
+    // Death Match Mode Properties Positions
+    static let DEATH_MATCH_POINT_OWN = CGPoint(x: 300, y: 50)
+    static let DEATH_MATCH_POINT_OPP = CGPoint(x: 300, y: 100)
+}
+
+struct SizeConstants {
+    static let DEATH_MATCH_POINT_SIZE = CGSize(width: 50, height: 50)
+}

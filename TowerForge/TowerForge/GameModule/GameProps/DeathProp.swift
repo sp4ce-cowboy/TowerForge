@@ -10,7 +10,8 @@ import Foundation
 class DeathProp: GameProp {
     var renderableEntity: Death
 
-    init() {
-        self.renderableEntity = Death()
+    init(position: CGPoint, player: Player) {
+        self.renderableEntity = Death(position: position, player: player)
+
     }
 }

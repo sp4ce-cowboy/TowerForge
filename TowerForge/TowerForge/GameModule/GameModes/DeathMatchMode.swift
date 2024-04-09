@@ -11,7 +11,11 @@ class DeathMatchMode: GameMode {
     var eventManager: EventManager
     var modeName: String = "Death Match Mode"
     var modeDescription: String = "Kill as many units within the time limit"
-    var gameProps: [any GameProp] = [DeathProp(), PointProp(initialPoint: 0)]
+    var gameProps: [any GameProp] = [DeathProp(position: PositionConstants.DEATH_MATCH_POINT_OWN,
+                                               player: .ownPlayer),
+                                     DeathProp(position: PositionConstants.DEATH_MATCH_POINT_OPP,
+                                               player: .oppositePlayer),
+                                     PointProp(initialPoint: 0)]
     var timer = TimerProp(timeLength: TimeInterval(60))
     var gameState = GameState.IDLE
     var currentOwnKillCounter: Int
