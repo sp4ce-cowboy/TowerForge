@@ -137,6 +137,7 @@
 		52A794172BBC4F690083C976 /* GamePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794162BBC4F690083C976 /* GamePlayer.swift */; };
 		52A794192BBC630F0083C976 /* RoomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794182BBC630F0083C976 /* RoomData.swift */; };
 		52A7941B2BBC726E0083C976 /* GameRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7941A2BBC726E0083C976 /* GameRoomViewController.swift */; };
+		52DD8F952BC5208900D96BAB /* SurvivalGameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD8F942BC5208800D96BAB /* SurvivalGameMode.swift */; };
 		52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FA72BA32B2300135367 /* AppDelegate.swift */; };
 		52DF5FAA2BA32B2300135367 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52DF5FA92BA32B2300135367 /* GameScene.sks */; };
 		52DF5FAC2BA32B2300135367 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52DF5FAB2BA32B2300135367 /* Actions.sks */; };
@@ -346,6 +347,7 @@
 		52A794162BBC4F690083C976 /* GamePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayer.swift; sourceTree = "<group>"; };
 		52A794182BBC630F0083C976 /* RoomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomData.swift; sourceTree = "<group>"; };
 		52A7941A2BBC726E0083C976 /* GameRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRoomViewController.swift; sourceTree = "<group>"; };
+		52DD8F942BC5208800D96BAB /* SurvivalGameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalGameMode.swift; sourceTree = "<group>"; };
 		52DF5FA42BA32B2300135367 /* TowerForge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TowerForge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DF5FA72BA32B2300135367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52DF5FA92BA32B2300135367 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -587,6 +589,7 @@
 				5240D09F2BB330B4004F1486 /* GameMode.swift */,
 				5240D0A12BB33183004F1486 /* DeathMatchMode.swift */,
 				5240D0AA2BB3340F004F1486 /* CaptureTheFlagMode.swift */,
+				52DD8F942BC5208800D96BAB /* SurvivalGameMode.swift */,
 				527A07732BB3D8E800CD9D08 /* GameModeFactory.swift */,
 			);
 			path = GameModes;
@@ -1426,6 +1429,7 @@
 				5240D08F2BAE6D0A004F1486 /* Point.swift in Sources */,
 				3C769A742BA591BD00F454F9 /* SpawnSystem.swift in Sources */,
 				52A7941B2BBC726E0083C976 /* GameRoomViewController.swift in Sources */,
+				52DD8F952BC5208900D96BAB /* SurvivalGameMode.swift in Sources */,
 				527A07862BB411FB00CD9D08 /* GameOverScene.swift in Sources */,
 				3C9955B12BA4ACA100D33FA5 /* Bullet.swift in Sources */,
 				3CA829C62BB719A500D8E72A /* ButtonRenderStage.swift in Sources */,

@@ -13,9 +13,6 @@ protocol GameMode {
     var gameProps: [any GameProp] { get }
     var gameState: GameState { get set }
     var eventManager: EventManager { get set }
-    func updateGame()
+    func updateGame(deltaTime: TimeInterval)
     func startGame()
-    func pauseGame()
-    func winGame()
-    func resumeGame()
 }

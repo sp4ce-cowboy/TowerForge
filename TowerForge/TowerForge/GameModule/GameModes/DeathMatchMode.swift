@@ -37,7 +37,7 @@ class DeathMatchMode: GameMode {
             }
         }
     }
-    func updateGame() {
+    func updateGame(deltaTime: TimeInterval) {
         if timer.time < 0 {
             if currentOwnKillCounter > currentOpponentKillCounter {
                 gameState = .WIN
@@ -50,18 +50,6 @@ class DeathMatchMode: GameMode {
     }
     func startGame() {
         gameState = GameState.PLAYING
-    }
-
-    func resumeGame() {
-        gameState = GameState.PLAYING
-    }
-
-    func pauseGame() {
-        gameState = GameState.PAUSED
-    }
-
-    func winGame() {
-        gameState = GameState.WIN
     }
 
 }

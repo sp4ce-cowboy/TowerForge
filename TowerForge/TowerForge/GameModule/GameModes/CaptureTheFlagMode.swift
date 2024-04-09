@@ -39,7 +39,7 @@ class CaptureTheFlagMode: GameMode {
             }
         }
     }
-    func updateGame() {
+    func updateGame(deltaTime: TimeInterval) {
         if self.currentOwnLife <= 0 {
             gameState = .LOSE
         } else if self.currentOpponentLife <= 0 {
@@ -48,19 +48,6 @@ class CaptureTheFlagMode: GameMode {
     }
     func startGame() {
         gameState = GameState.PLAYING
-
-    }
-
-    func resumeGame() {
-        gameState = GameState.PLAYING
-    }
-
-    func pauseGame() {
-        gameState = GameState.PAUSED
-    }
-
-    func winGame() {
-        gameState = GameState.WIN
     }
 
 }
