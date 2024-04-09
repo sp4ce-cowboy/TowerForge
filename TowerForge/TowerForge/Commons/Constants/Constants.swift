@@ -38,10 +38,16 @@ struct PositionConstants {
     // Capture the Flag Mode Properties
     static let CTF_POINT_OWN = CGPoint(x: 300, y: 50)
     static let CTF_POINT_OPP = CGPoint(x: 300, y: 110)
+
+    static let SUBTITLE_LABEL_OFFSET = CGPoint(x: 0, y: -30)
 }
 
 struct SizeConstants {
     static let DEATH_MATCH_POINT_SIZE = CGSize(width: 50, height: 50)
 
     static let CTF_POINT_SIZE = CGSize(width: 50, height: 50)
+}
+
+struct FontConstants {
+    static let GAME_FONT_SIZE: CGFloat = 40.0
 }

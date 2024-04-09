@@ -44,10 +44,11 @@ class LabelRenderStage: RenderStage {
             let subtitleNode = TFLabelNode(text: subtitle)
             subtitleNode.fontColor = labelComponent.fontColor
             subtitleNode.fontName = labelComponent.fontName
-            subtitleNode.fontSize = labelComponent.fontSize * 0.5
+            subtitleNode.fontSize = labelComponent.fontSize * 0.2
             subtitleNode.horizontalAlignmentMode = labelComponent.horizontalAlignment
             subtitleNode.verticalAlignmentMode = labelComponent.verticalAlignment
-            subtitleNode.position = CGPoint(x: 0, y: -20)
+            subtitleNode.position = PositionConstants.SUBTITLE_LABEL_OFFSET
+            subtitleNode.name = "\(LabelRenderStage.name)-subtitle"
             labelNode.add(child: subtitleNode)
         }
 

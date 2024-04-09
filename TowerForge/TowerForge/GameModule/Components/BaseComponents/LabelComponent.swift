@@ -13,7 +13,7 @@ class LabelComponent: TFComponent {
     var name: String
     var fontColor: UIColor = .white
     var fontName: String = "HelveticaNeue-Bold"
-    var fontSize: CGFloat = 60
+    var fontSize: CGFloat = FontConstants.GAME_FONT_SIZE
     var zPosition: CGFloat = 0
     var displacement: CGVector = .zero
     var horizontalAlignment: AlignmentMode = .center
