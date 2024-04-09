@@ -170,6 +170,7 @@
 		9B8696552BAD759F0002377C /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8696542BAD759F0002377C /* Grid.swift */; };
 		9BC60BC82BB9BE6D001A6737 /* DisabledEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC60BC72BB9BE6D001A6737 /* DisabledEvent.swift */; };
 		9BD669682BAFDE5E00DC8C4C /* GridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD669672BAFDE5E00DC8C4C /* GridDelegate.swift */; };
+		BA2F5ABB2BC4FD5900CBD8E9 /* EntityEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5ABA2BC4FD5900CBD8E9 /* EntityEnums.swift */; };
 		BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */; };
 		BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */; };
 		BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D412BAD9885009F0FFB /* DamageEventTests.swift */; };
@@ -382,6 +383,7 @@
 		9B8696542BAD759F0002377C /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		9BC60BC72BB9BE6D001A6737 /* DisabledEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledEvent.swift; sourceTree = "<group>"; };
 		9BD669672BAFDE5E00DC8C4C /* GridDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridDelegate.swift; sourceTree = "<group>"; };
+		BA2F5ABA2BC4FD5900CBD8E9 /* EntityEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityEnums.swift; sourceTree = "<group>"; };
 		BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
 		BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		BA443D412BAD9885009F0FFB /* DamageEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEventTests.swift; sourceTree = "<group>"; };
@@ -1046,6 +1048,7 @@
 			children = (
 				BAFFB95C2BB978E500D8301F /* StorageEnums.swift */,
 				BAFFB9842BBDBA7D00D8301F /* MediaEnums.swift */,
+				BA2F5ABA2BC4FD5900CBD8E9 /* EntityEnums.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1463,6 +1466,7 @@
 				527A07742BB3D8E800CD9D08 /* GameModeFactory.swift in Sources */,
 				5240D0AF2BB3B415004F1486 /* LifeEvent.swift in Sources */,
 				5295A2072BAA02FD005018A8 /* TFButtonNode.swift in Sources */,
+				BA2F5ABB2BC4FD5900CBD8E9 /* EntityEnums.swift in Sources */,
 				BAFFB96A2BB9A64000D8301F /* ObjectSet.swift in Sources */,
 				3CD37AA32BBEC0F900222D8A /* FirebaseRemoteEventPublisher.swift in Sources */,
 				3CAC4A6B2BB6992F00A5D22E /* TFNode.swift in Sources */,
