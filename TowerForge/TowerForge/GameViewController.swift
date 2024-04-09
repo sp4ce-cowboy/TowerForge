@@ -72,8 +72,8 @@ extension GameViewController: SceneManagerDelegate {
     func showLevelScene() {
         // TODO : to implement after Keith is done
     }
-    func showGameOverScene(isWin: Bool) {
-        let gameOverScene = GameOverScene(win: isWin)
+    func showGameOverScene(isWin: Bool, results: [GameResult]) {
+        let gameOverScene = GameOverScene(win: isWin, results: results)
         gameOverScene.sceneManagerDelegate = self
         showScene(scene: gameOverScene)
     }

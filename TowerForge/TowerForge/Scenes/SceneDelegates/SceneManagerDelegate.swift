@@ -9,7 +9,7 @@ import Foundation
 
 protocol SceneManagerDelegate: AnyObject {
     func showMenuScene()
-    func showGameOverScene(isWin: Bool)
+    func showGameOverScene(isWin: Bool, results: [GameResult])
     func showLevelScene()
     func showGameLevelScene(level: Int)
 }

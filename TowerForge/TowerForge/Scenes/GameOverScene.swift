@@ -11,9 +11,11 @@ import SpriteKit
 class GameOverScene: SKScene {
     var sceneManagerDelegate: SceneManagerDelegate?
     var win: Bool
+    var results: [GameResult]
 
-    init(win: Bool) {
+    init(win: Bool, results: [GameResult]) {
         self.win = win
+        self.results = results
         super.init(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     }
 

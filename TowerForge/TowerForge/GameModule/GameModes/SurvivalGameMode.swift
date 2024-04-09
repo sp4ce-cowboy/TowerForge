@@ -24,8 +24,8 @@ class SurvivalGameMode: GameMode {
     private var currentLevel: Int = 1
     private var maxLevel: Int
 
-    private var nextWaveTime = TimeInterval(100)
-    private var waveTimeInterval = TimeInterval(100)
+    private var nextWaveTime = TimeInterval(50)
+    private var waveTimeInterval = TimeInterval(50)
 
     init(eventManager: EventManager, maxLevel: Int) {
         self.eventManager = eventManager
