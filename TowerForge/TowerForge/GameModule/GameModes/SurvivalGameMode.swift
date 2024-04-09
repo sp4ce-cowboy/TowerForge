@@ -24,12 +24,15 @@ class SurvivalGameMode: GameMode {
     private var currentLevel: Int = 1
     private var maxLevel: Int
 
-    private var nextWaveTime = TimeInterval(10)
+    private var nextWaveTime = TimeInterval(100)
     private var waveTimeInterval = TimeInterval(100)
 
     init(eventManager: EventManager, maxLevel: Int) {
         self.eventManager = eventManager
         self.maxLevel = maxLevel
+
+        var timer = TimerProp(timeLength: waveTimeInterval * Double(maxLevel))
+        self.gameProps.append(timer)
 
         eventManager.registerHandler(forEvent: LifeEvent.self) { event in
             if let lifeEvent = event as? LifeEvent {
@@ -46,7 +49,7 @@ class SurvivalGameMode: GameMode {
         if nextWaveTime < 0 && self.currentLevel <= self.maxLevel {
             nextWaveTime = waveTimeInterval
             self.currentLevel += 1
-            self.generateWaveSpawns(enemyCount: 10 * self.currentLevel)
+            self.generateWaveSpawns(enemyCount: 5 * self.currentLevel)
         }
         if self.currentLevel > self.maxLevel {
             gameState = .WIN
@@ -67,9 +70,9 @@ class SurvivalGameMode: GameMode {
                 continue
             }
             self.eventManager.add(WaveSpawnEvent(ofType: unit,
-                                             timestamp: CACurrentMediaTime(),
-                                             position: randPosition,
-                                             player: .oppositePlayer))
+                                                 timestamp: CACurrentMediaTime(),
+                                                 position: randPosition,
+                                                 player: .oppositePlayer))
             AudioManager.shared.playSpecialEffect()
         }
     }

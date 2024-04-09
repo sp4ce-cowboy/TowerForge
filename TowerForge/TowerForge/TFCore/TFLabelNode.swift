@@ -105,4 +105,8 @@ class TFLabelNode: TFNode {
         }
         return labelNode
     }
+
+    func run(_ action: SKAction) {
+        labelNode.run(action)
+    }
 }
