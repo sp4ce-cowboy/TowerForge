@@ -74,6 +74,29 @@ class HomeSystem: TFSystem {
         eventManager.add(spawnEvent)
     }
 
+    func waveSpawn<T: TFEntity & PlayerSpawnable>(at position: CGPoint, ofType type: T.Type, for player: Player) {
+        // Get HomeComponent for the player
+        let playerHomeComponentArr = entityManager.components(ofType: HomeComponent.self).filter(({
+            $0.entity?.component(ofType: PlayerComponent.self)?.player == player
+        }))
+        guard !playerHomeComponentArr.isEmpty, position.y >= gridDelegate.UNIT_SELECTION_NODE_HEIGHT else {
+            return
+        }
+
+        let snapPosition = getSnapPosition(at: position, for: player, with: type)
+
+        // If player is not playing in multiplayer, spawn as normal
+        guard let currentPlayer = eventManager.currentPlayer else {
+            let spawnEvent = SpawnEvent(ofType: type, timestamp: CACurrentMediaTime(),
+                                        position: snapPosition, player: player)
+            return eventManager.add(spawnEvent)
+        }
+
+        // Report spawn to which will propogate to all players evenly
+        let spawnEvent = RemoteSpawnEvent(ofType: type, location: snapPosition, player: currentPlayer)
+        eventManager.add(spawnEvent)
+    }
+
     private func getSnapPosition<T: TFEntity & PlayerSpawnable>(at requestedPosition: CGPoint,
                                                                 for player: Player, with type: T.Type) -> CGPoint {
         // Normalise to own player position

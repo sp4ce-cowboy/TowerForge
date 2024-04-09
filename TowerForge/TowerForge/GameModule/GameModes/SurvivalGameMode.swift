@@ -25,7 +25,7 @@ class SurvivalGameMode: GameMode {
     private var maxLevel: Int
 
     private var nextWaveTime = TimeInterval(10)
-    private var waveTimeInterval = TimeInterval(10)
+    private var waveTimeInterval = TimeInterval(100)
 
     init(eventManager: EventManager, maxLevel: Int) {
         self.eventManager = eventManager
@@ -66,18 +66,18 @@ class SurvivalGameMode: GameMode {
             guard let unit = SpawnableEntities.playerSpawnableEntities.randomElement() else {
                 continue
             }
-            self.eventManager.add(RequestSpawnEvent(ofType: unit,
-                                                    timestamp: CACurrentMediaTime(),
-                                                    position: randPosition,
-                                                    player: .oppositePlayer))
+            self.eventManager.add(WaveSpawnEvent(ofType: unit,
+                                             timestamp: CACurrentMediaTime(),
+                                             position: randPosition,
+                                             player: .oppositePlayer))
+            AudioManager.shared.playSpecialEffect()
         }
     }
 
     private func getRandomPosition() -> CGPoint {
         let randomY = CGFloat.random(in: 200...UIScreen.main.bounds.height)
         // TODO: Change the GameWorld to a constant
-        let randomX = CGFloat.random(in: (GameWorld.worldSize.width / 2)..<GameWorld.worldSize.width)
-        return CGPoint(x: randomX, y: randomY)
+        return CGPoint(x: GameWorld.worldSize.width, y: randomY)
 
     }
 

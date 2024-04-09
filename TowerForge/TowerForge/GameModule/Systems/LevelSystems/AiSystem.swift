@@ -36,8 +36,10 @@ class AiSystem: TFSystem {
                 continue
             }
 
-            let newEvent = RequestSpawnEvent(ofType: unitType, timestamp: CACurrentMediaTime(),
-                                             position: aiComponent.spawnLocation, player: aiPlayer)
+            let newEvent = RequestSpawnEvent(ofType: unitType,
+                                             timestamp: CACurrentMediaTime(),
+                                             position: aiComponent.spawnLocation,
+                                             player: aiPlayer)
             event = event.concurrentlyWith(newEvent)
         }
         eventManager.add(event)

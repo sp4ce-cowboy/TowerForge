@@ -794,7 +794,7 @@ Match</string>
         <!--Level Popup View Controller-->
         <scene sceneID="PcG-RK-Tjk">
             <objects>
-                <viewController storyboardIdentifier="LevelPopupViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Bys-y6-Asb" customClass="LevelPopupViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="LevelPopupViewController" storyboardIdentifier="LevelPopupViewController" id="Bys-y6-Asb" customClass="LevelPopupViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kjq-oI-Fwh">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

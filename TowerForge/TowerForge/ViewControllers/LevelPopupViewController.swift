@@ -33,11 +33,11 @@ class LevelPopupViewController: UIViewController {
         self.dismiss(animated: true)
     }
     static func showDialogBox(parentVC: UIViewController) {
-        if let levelPopupViewController = UIStoryboard(name: "LevelPopupViewController", bundle: nil)
+        if let levelPopupViewController = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "LevelPopupViewController")
             as? LevelPopupViewController {
-            levelPopupViewController.modalTransitionStyle = .partialCurl
-            levelPopupViewController.modalPresentationStyle = .custom
+            levelPopupViewController.modalTransitionStyle = .crossDissolve
+            levelPopupViewController.modalPresentationStyle = .fullScreen
             levelPopupViewController.delegate = parentVC as? LevelPopupDelegate
             parentVC.present(levelPopupViewController, animated: true)
         }
