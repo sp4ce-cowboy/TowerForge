@@ -19,7 +19,12 @@ class CaptureTheFlagMode: GameMode {
     var currentOpponentLife: Int
 
     init(initialLife: Int, eventManager: EventManager) {
-        self.gameProps.append(LifeProp(initialLife: initialLife))
+        self.gameProps.append(LifeProp(initialLife: initialLife,
+                                       position: PositionConstants.CTF_POINT_OWN,
+                                       player: .ownPlayer))
+        self.gameProps.append(LifeProp(initialLife: initialLife,
+                                       position: PositionConstants.CTF_POINT_OPP,
+                                       player: .oppositePlayer))
         self.currentOwnLife = initialLife
         self.currentOpponentLife = initialLife
         self.eventManager = eventManager
@@ -34,28 +39,14 @@ class CaptureTheFlagMode: GameMode {
             }
         }
     }
-    func updateGame() {
+    func updateGame(deltaTime: TimeInterval) {
         if self.currentOwnLife <= 0 {
             gameState = .LOSE
         } else if self.currentOpponentLife <= 0 {
             gameState = .WIN
         }
     }
-    func startGame() {
-        gameState = GameState.PLAYING
-
+    func getGameResults() -> [GameResult] {
+        [GameResult(variable: "Life left", value: String(self.currentOwnLife))]
     }
-
-    func resumeGame() {
-        gameState = GameState.PLAYING
-    }
-
-    func pauseGame() {
-        gameState = GameState.PAUSED
-    }
-
-    func winGame() {
-        gameState = GameState.WIN
-    }
-
 }

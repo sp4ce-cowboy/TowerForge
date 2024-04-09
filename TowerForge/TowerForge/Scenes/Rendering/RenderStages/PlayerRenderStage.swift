@@ -13,6 +13,11 @@ class PlayerRenderStage: RenderStage {
             return
         }
 
+        // prevent HUD labels from being scaled
+        if entity.hasComponent(ofType: LabelComponent.self) {
+            return
+        }
+
         if playerComponent.player == .oppositePlayer {
             node.xScale *= -1
         }

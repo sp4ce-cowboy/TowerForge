@@ -14,7 +14,15 @@ class GameModeViewController: UIViewController {
     @IBOutlet private var rankingButton: UIButton!
 
     @IBOutlet private var loginButtonLabel: UILabel!
+
     var selectedGameMode = Mode.captureTheFlag
+
+    let levelModes: [Int: Mode] = [
+        1: .survivalLevelOne,
+        2: .survivalLevelTwo,
+        3: .survivalLevelThree
+    ]
+
     private let authenticationProvider = AuthenticationProvider()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +40,11 @@ class GameModeViewController: UIViewController {
         authenticationProvider.removeObserver(self)
    }
 
-    @IBAction func onRankingPressed(_ sender: Any) {
+    @IBAction private func onRankingPressed(_ sender: Any) {
+    }
+    @IBAction private func survivalMatchPressed(_ sender: Any) {
+        print("PRESSED?")
+        LevelPopupViewController.showDialogBox(parentVC: self)
     }
     @IBAction private func deathMatchButtonPressed(_ sender: UIButton) {
         selectedGameMode = .deathMatch
@@ -92,4 +104,14 @@ extension GameModeViewController: AuthenticationDelegate {
         loginButtonLabel.text = "Login"
         rankingButton.isHidden = true
     }
+}
+
+extension GameModeViewController: LevelPopupDelegate {
+    func handleLevel(level: Int) {
+        if let levelMode = levelModes[level] {
+            selectedGameMode = levelMode
+            navigateToGameViewController()
+        }
+    }
+
 }

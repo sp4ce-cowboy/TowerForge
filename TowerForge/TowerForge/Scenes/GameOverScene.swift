@@ -11,9 +11,11 @@ import SpriteKit
 class GameOverScene: SKScene {
     var sceneManagerDelegate: SceneManagerDelegate?
     var win: Bool
+    var results: [GameResult]
 
-    init(win: Bool) {
+    init(win: Bool, results: [GameResult]) {
         self.win = win
+        self.results = results
         super.init(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     }
 
@@ -31,6 +33,24 @@ class GameOverScene: SKScene {
         label.fontColor = .darkGray
         label.zPosition = 1_000
         addChild(label.node)
+        setupResultsUI()
+    }
+
+    func setupResultsUI() {
+        var yOffset: CGFloat = 80.0
+        let labelFontSize: CGFloat = 16.0
+        let labelFontName = "Nosifer-Regular"
+
+        for result in results {
+            let resultLabel = TFLabelNode(text: "\(result.variable): \(result.value)")
+            resultLabel.fontSize = labelFontSize
+            resultLabel.fontName = labelFontName
+            resultLabel.fontColor = .darkGray
+            resultLabel.position = CGPoint(x: 50, y: size.height - yOffset)
+            addChild(resultLabel.node)
+
+            yOffset += 30.0
+        }
     }
 
     @available(*, unavailable)

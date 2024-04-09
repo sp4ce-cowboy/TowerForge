@@ -45,19 +45,19 @@ class Renderer {
             return
         }
         let labelNode = TFLabelNode(text: message)
-        let label = SKLabelNode(text: message)
-        labelNode.node = label
-        label.name = "message"
-        label.fontSize = 50.0
-        label.fontName = "Nosifer-Regular"
-        label.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
+        labelNode.name = "message"
+        labelNode.fontSize = 50.0
+        labelNode.fontName = "Nosifer-Regular"
+        labelNode.position = CGPoint(x: 0, y: 0)
+        labelNode.zPosition = 1_000
 
         let fadeInAction = SKAction.fadeIn(withDuration: 0.5)
         let waitAction = SKAction.wait(forDuration: 1.0)
         let fadeOutAction = SKAction.fadeOut(withDuration: 0.5)
         let removeAction = SKAction.removeFromParent()
         let sequence = SKAction.sequence([fadeInAction, waitAction, fadeOutAction, removeAction])
-        label.run(sequence)
+
+        labelNode.run(sequence)
         scene.add(node: labelNode, staticOnScreen: true)
     }
 

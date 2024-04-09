@@ -84,6 +84,7 @@
 		523C29272BBCFA13004C6EAC /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 523C29262BBCFA13004C6EAC /* FirebaseDatabaseSwift */; };
 		523C29282BBCFD93004C6EAC /* Nosifer-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5240D0952BB04E57004F1486 /* Nosifer-Regular.ttf */; };
 		523C29302BBD0916004C6EAC /* GameWaitingRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C292F2BBD0916004C6EAC /* GameWaitingRoomViewController.swift */; };
+		523E5C4C2BC53F70007444DA /* WaveSpawnEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523E5C4B2BC53F70007444DA /* WaveSpawnEvent.swift */; };
 		5240D08F2BAE6D0A004F1486 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D08E2BAE6D0A004F1486 /* Point.swift */; };
 		5240D0912BAF3453004F1486 /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0902BAF3453004F1486 /* Life.swift */; };
 		5240D0A02BB330B5004F1486 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D09F2BB330B4004F1486 /* GameMode.swift */; };
@@ -137,6 +138,8 @@
 		52A794172BBC4F690083C976 /* GamePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794162BBC4F690083C976 /* GamePlayer.swift */; };
 		52A794192BBC630F0083C976 /* RoomData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794182BBC630F0083C976 /* RoomData.swift */; };
 		52A7941B2BBC726E0083C976 /* GameRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A7941A2BBC726E0083C976 /* GameRoomViewController.swift */; };
+		52DD8F952BC5208900D96BAB /* SurvivalGameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD8F942BC5208800D96BAB /* SurvivalGameMode.swift */; };
+		52DD8F992BC52F8500D96BAB /* LevelPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DD8F982BC52F8400D96BAB /* LevelPopupViewController.swift */; };
 		52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DF5FA72BA32B2300135367 /* AppDelegate.swift */; };
 		52DF5FAA2BA32B2300135367 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52DF5FA92BA32B2300135367 /* GameScene.sks */; };
 		52DF5FAC2BA32B2300135367 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 52DF5FAB2BA32B2300135367 /* Actions.sks */; };
@@ -294,6 +297,7 @@
 		523AA3BC2BB88ED10041E60D /* WizardBall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardBall.swift; sourceTree = "<group>"; };
 		523AA3BE2BB88FBF0041E60D /* WizardUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardUnit.swift; sourceTree = "<group>"; };
 		523C292F2BBD0916004C6EAC /* GameWaitingRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWaitingRoomViewController.swift; sourceTree = "<group>"; };
+		523E5C4B2BC53F70007444DA /* WaveSpawnEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveSpawnEvent.swift; sourceTree = "<group>"; };
 		5240D08E2BAE6D0A004F1486 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		5240D0902BAF3453004F1486 /* Life.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Life.swift; sourceTree = "<group>"; };
 		5240D0952BB04E57004F1486 /* Nosifer-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nosifer-Regular.ttf"; sourceTree = "<group>"; };
@@ -346,6 +350,8 @@
 		52A794162BBC4F690083C976 /* GamePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayer.swift; sourceTree = "<group>"; };
 		52A794182BBC630F0083C976 /* RoomData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomData.swift; sourceTree = "<group>"; };
 		52A7941A2BBC726E0083C976 /* GameRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRoomViewController.swift; sourceTree = "<group>"; };
+		52DD8F942BC5208800D96BAB /* SurvivalGameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalGameMode.swift; sourceTree = "<group>"; };
+		52DD8F982BC52F8400D96BAB /* LevelPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPopupViewController.swift; sourceTree = "<group>"; };
 		52DF5FA42BA32B2300135367 /* TowerForge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TowerForge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DF5FA72BA32B2300135367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52DF5FA92BA32B2300135367 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -587,6 +593,7 @@
 				5240D09F2BB330B4004F1486 /* GameMode.swift */,
 				5240D0A12BB33183004F1486 /* DeathMatchMode.swift */,
 				5240D0AA2BB3340F004F1486 /* CaptureTheFlagMode.swift */,
+				52DD8F942BC5208800D96BAB /* SurvivalGameMode.swift */,
 				527A07732BB3D8E800CD9D08 /* GameModeFactory.swift */,
 			);
 			path = GameModes;
@@ -652,6 +659,7 @@
 				523C292F2BBD0916004C6EAC /* GameWaitingRoomViewController.swift */,
 				5299D13B2BC3670E003EF746 /* LoginViewController.swift */,
 				5299D13D2BC36E61003EF746 /* RegisterViewController.swift */,
+				52DD8F982BC52F8400D96BAB /* LevelPopupViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -697,6 +705,7 @@
 		52A7940E2BBC476B0083C976 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				52A794072BBC35E30083C976 /* Constants */,
 				5299D13F2BC3AA27003EF746 /* RankingNetwork */,
 				3CFA72E52BC039740081337F /* Utils */,
 				3CBECF822BBDC36A005EF39B /* GameNetwork */,
@@ -753,7 +762,6 @@
 				5240D0972BB0522A004F1486 /* Info.plist */,
 				BA443D432BAD98CD009F0FFB /* AppMain */,
 				52A7940E2BBC476B0083C976 /* Networking */,
-				52A794072BBC35E30083C976 /* Constants */,
 				52A794002BBC2E940083C976 /* Firebase */,
 				BAFFB92F2BB0A01700D8301F /* Commons */,
 				5295A2052BAA0208005018A8 /* Nodes */,
@@ -1014,6 +1022,7 @@
 			isa = PBXGroup;
 			children = (
 				3CE951682BAEB719008B2785 /* RequestSpawnEvent.swift */,
+				523E5C4B2BC53F70007444DA /* WaveSpawnEvent.swift */,
 			);
 			path = PlayerEvents;
 			sourceTree = "<group>";
@@ -1331,6 +1340,7 @@
 				BAFFB9552BB342FE00D8301F /* Storable.swift in Sources */,
 				52578B8C2BA627B200B4D76C /* Team.swift in Sources */,
 				BAFFB9532BB342F100D8301F /* StorageManager.swift in Sources */,
+				52DD8F992BC52F8500D96BAB /* LevelPopupViewController.swift in Sources */,
 				BAFFB9682BB9981700D8301F /* TotalGamesAchievement.swift in Sources */,
 				BAFFB9732BBAC14500D8301F /* AchievementManager.swift in Sources */,
 				3CBECF8E2BBE9EAC005EF39B /* RemoteSpawnEvent.swift in Sources */,
@@ -1348,6 +1358,7 @@
 				5200624E2BA8D597000DBA30 /* AiComponent.swift in Sources */,
 				3C9955C22BA5838900D33FA5 /* EventOutput.swift in Sources */,
 				BAFFB96C2BB9AB2400D8301F /* LocalDatabase.swift in Sources */,
+				523E5C4C2BC53F70007444DA /* WaveSpawnEvent.swift in Sources */,
 				5240D0912BAF3453004F1486 /* Life.swift in Sources */,
 				52A794192BBC630F0083C976 /* RoomData.swift in Sources */,
 				52DF5FAE2BA32B2300135367 /* GameScene.swift in Sources */,
@@ -1426,6 +1437,7 @@
 				5240D08F2BAE6D0A004F1486 /* Point.swift in Sources */,
 				3C769A742BA591BD00F454F9 /* SpawnSystem.swift in Sources */,
 				52A7941B2BBC726E0083C976 /* GameRoomViewController.swift in Sources */,
+				52DD8F952BC5208900D96BAB /* SurvivalGameMode.swift in Sources */,
 				527A07862BB411FB00CD9D08 /* GameOverScene.swift in Sources */,
 				3C9955B12BA4ACA100D33FA5 /* Bullet.swift in Sources */,
 				3CA829C62BB719A500D8E72A /* ButtonRenderStage.swift in Sources */,

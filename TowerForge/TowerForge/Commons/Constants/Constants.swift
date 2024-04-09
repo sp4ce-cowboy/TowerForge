@@ -29,3 +29,31 @@ class Constants {
     static var SOUND_EFFECTS_VOLUME: Float = 0.8
 
 }
+
+struct PositionConstants {
+    // Death Match Mode Properties Positions
+    static let DEATH_MATCH_POINT_OWN = CGPoint(x: 300, y: 50)
+    static let DEATH_MATCH_POINT_OPP = CGPoint(x: 300, y: 110)
+
+    // Capture the Flag Mode Properties
+    static let CTF_POINT_OWN = CGPoint(x: 300, y: 50)
+    static let CTF_POINT_OPP = CGPoint(x: 300, y: 110)
+
+    static let SUBTITLE_LABEL_OFFSET = CGPoint(x: 0, y: -30)
+}
+
+struct SizeConstants {
+    // Death Match Mode Properties Size
+    static let DEATH_MATCH_POINT_SIZE = CGSize(width: 50, height: 50)
+
+    // Capture the Flag Mode Properties Size
+    static let CTF_POINT_SIZE = CGSize(width: 50, height: 50)
+}
+
+struct FontConstants {
+    static let GAME_FONT_SIZE: CGFloat = 40.0
+}
+
+struct GameModeSettingsConstants {
+    // static let LEVEL_ONE_WAVE
+}

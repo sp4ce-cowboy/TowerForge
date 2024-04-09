@@ -42,10 +42,11 @@ class GameWorld {
 
     func update(deltaTime: TimeInterval) {
         gameEngine.updateGame(deltaTime: deltaTime)
-        gameMode.updateGame()
+        gameMode.updateGame(deltaTime: deltaTime)
         if checkGameEnded() {
             renderer?.renderMessage("You win")
-            delegate?.showGameOverScene(isWin: gameMode.gameState == .WIN ? true : false)
+            print(gameMode.gameState)
+            delegate?.showGameOverScene(isWin: gameMode.gameState == .WIN ? true : false, results: gameMode.getGameResults())
         }
         selectionNode.update()
         renderer?.render()
