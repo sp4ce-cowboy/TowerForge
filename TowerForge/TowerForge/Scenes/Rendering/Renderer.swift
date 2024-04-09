@@ -49,6 +49,7 @@ class Renderer {
         labelNode.fontSize = 50.0
         labelNode.fontName = "Nosifer-Regular"
         labelNode.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
+        labelNode.zPosition = 1_000
 
         let fadeInAction = SKAction.fadeIn(withDuration: 0.5)
         let waitAction = SKAction.wait(forDuration: 1.0)

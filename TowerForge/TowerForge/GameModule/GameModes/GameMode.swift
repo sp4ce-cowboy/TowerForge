@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct GameResult {
+    var variable: String
+    var value: String
+}
+
 protocol GameMode {
     var modeName: String { get }
     var modeDescription: String { get }
@@ -14,5 +19,5 @@ protocol GameMode {
     var gameState: GameState { get set }
     var eventManager: EventManager { get set }
     func updateGame(deltaTime: TimeInterval)
-    func startGame()
+    func getGameResults() -> [GameResult]
 }

@@ -43,6 +43,7 @@ class GameModeViewController: UIViewController {
     @IBAction private func onRankingPressed(_ sender: Any) {
     }
     @IBAction private func survivalMatchPressed(_ sender: Any) {
+        print("PRESSED?")
         LevelPopupViewController.showDialogBox(parentVC: self)
     }
     @IBAction private func deathMatchButtonPressed(_ sender: UIButton) {

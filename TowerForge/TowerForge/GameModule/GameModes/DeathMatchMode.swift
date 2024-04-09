@@ -48,8 +48,11 @@ class DeathMatchMode: GameMode {
             }
         }
     }
-    func startGame() {
-        gameState = GameState.PLAYING
+    func getGameResults() -> [GameResult] {
+        let result: [GameResult] = [GameResult(variable: "Total Kill",
+                                               value: String(self.currentOwnKillCounter)),
+        GameResult(variable: "Opponent Kill", value: String(self.currentOpponentKillCounter))]
+        return result
     }
 
 }

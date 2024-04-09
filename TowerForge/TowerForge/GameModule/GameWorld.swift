@@ -45,6 +45,7 @@ class GameWorld {
         gameMode.updateGame(deltaTime: deltaTime)
         if checkGameEnded() {
             renderer?.renderMessage("You win")
+            print(gameMode.gameState)
             delegate?.showGameOverScene(isWin: gameMode.gameState == .WIN ? true : false)
         }
         selectionNode.update()

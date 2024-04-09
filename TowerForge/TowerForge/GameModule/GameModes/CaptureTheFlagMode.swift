@@ -46,8 +46,7 @@ class CaptureTheFlagMode: GameMode {
             gameState = .WIN
         }
     }
-    func startGame() {
-        gameState = GameState.PLAYING
+    func getGameResults() -> [GameResult] {
+        [GameResult(variable: "Life left", value: String(self.currentOwnLife))]
     }
-
 }

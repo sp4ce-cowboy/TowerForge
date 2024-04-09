@@ -31,13 +31,14 @@ class SurvivalGameMode: GameMode {
         self.eventManager = eventManager
         self.maxLevel = maxLevel
 
-        var timer = TimerProp(timeLength: waveTimeInterval * Double(maxLevel))
+        let timer = TimerProp(timeLength: waveTimeInterval * Double(maxLevel))
         self.gameProps.append(timer)
 
         eventManager.registerHandler(forEvent: LifeEvent.self) { event in
             if let lifeEvent = event as? LifeEvent {
                 // Check if the event reduces life
                 if  lifeEvent.player == .oppositePlayer && lifeEvent.lifeDecrease > 0 {
+                    print("Triggered?")
                     self.currentOwnLife -= lifeEvent.lifeDecrease
                 }
             }
@@ -59,8 +60,8 @@ class SurvivalGameMode: GameMode {
         }
     }
 
-    func startGame() {
-        //
+    func getGameResults() -> [GameResult] {
+        [GameResult(variable: "Finished Waves", value: String(currentLevel))]
     }
 
     private func generateWaveSpawns(enemyCount: Int) {
