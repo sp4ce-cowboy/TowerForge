@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
             if let error = err {
                 self.showAlert(message: error.localizedDescription, title: "Oops")
             } else {
-                self.navigationController?.popViewController(animated: true
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }
