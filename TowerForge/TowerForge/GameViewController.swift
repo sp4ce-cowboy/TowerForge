@@ -9,6 +9,8 @@ import SpriteKit
 
 class GameViewController: UIViewController {
     private var gameWorld: GameWorld?
+    private var playerData: AuthenticationData?
+    private var gameRankProvider: GameRankProvider?
     var gameMode: Mode?
     var isPaused = false
     var gameRoom: GameRoom?
@@ -24,7 +26,14 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         AchievementManager.incrementTotalGamesStarted()
         AudioManager.shared.playBackground()
-        showGameLevelScene(level: 1) // TODO : Change hardcoded level value
+        showGameLevelScene()
+
+        let auth = AuthenticationProvider()
+        if auth.isUserLoggedIn() {
+            auth.getUserDetails { data, _ in
+                self.playerData = data
+            }
+        }
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -79,11 +88,22 @@ extension GameViewController: SceneManagerDelegate {
     }
     func showGameOverScene(isWin: Bool, results: [GameResult]) {
         let gameOverScene = GameOverScene(win: isWin, results: results)
+        if let data = self.playerData {
+            for result in results {
+                if let leaderboardResult = result as? LeaderboardResult {
+                    let rank = GameRankProvider(type: leaderboardResult.variable)
+                    let data = GameRankData(userId: data.userId,
+                                            username: data.username ?? "",
+                                            score: leaderboardResult.result)
+                    rank.setNewRank(rank: data)
+                }
+            }
+        }
         gameOverScene.sceneManagerDelegate = self
         gamePopupButton.isHidden = true
         showScene(scene: gameOverScene)
     }
-    func showGameLevelScene(level: Int) {
+    func showGameLevelScene() {
         guard let gameScene = GameScene(fileNamed: "GameScene") else {
             return
         }
