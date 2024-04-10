@@ -46,7 +46,7 @@ class AuthenticationManager: AuthenticationProtocol {
         }
         Auth.auth().createUser(withEmail: email, password: password) { _, error in
             if error != nil {
-                print("Error in creating user \(error)")
+                onFinish(nil, error)
             } else {
                 Auth.auth().signIn(withEmail: email, password: password)
                 let user = Auth.auth().currentUser

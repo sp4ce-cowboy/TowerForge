@@ -2,7 +2,7 @@
 //  LevelPopupViewController.swift
 //  TowerForge
 //
-//  Created by MacBook Pro on 09/04/24.
+//  Created by Vanessa Mae on 09/04/24.
 //
 
 import Foundation
@@ -20,12 +20,10 @@ class LevelPopupViewController: UIViewController {
         self.delegate?.handleLevel(level: 1)
         self.dismiss(animated: true)
     }
-
     @IBAction private func onLevelTwoPressed(_ sender: Any) {
         self.delegate?.handleLevel(level: 2)
         self.dismiss(animated: true)
     }
-
     @IBAction private func onLevelThreePressed(_ sender: Any) {
         self.delegate?.handleLevel(level: 3)
         self.dismiss(animated: true)

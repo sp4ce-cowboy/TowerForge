@@ -8,24 +8,30 @@
 import Foundation
 
 class DeathMatchMode: GameMode {
+
+    static var modeDescription: String = "Kill as many units within the time limit"
+    static let DEATH_MATCH_MODE_TIMER = TimeInterval(120)
+
     var eventManager: EventManager
     var modeName: String = "Death Match Mode"
-    var modeDescription: String = "Kill as many units within the time limit"
     var gameProps: [any GameProp] = [DeathProp(position: PositionConstants.DEATH_MATCH_POINT_OWN,
                                                player: .ownPlayer),
                                      DeathProp(position: PositionConstants.DEATH_MATCH_POINT_OPP,
                                                player: .oppositePlayer),
                                      PointProp(initialPoint: 0)]
-    var timer = TimerProp(timeLength: TimeInterval(60))
+    var timer = TimerProp(timeLength: DeathMatchMode.DEATH_MATCH_MODE_TIMER)
     var gameState = GameState.IDLE
     var currentOwnKillCounter: Int
     var currentOpponentKillCounter: Int
+    var remainingTime: TimeInterval
 
     init(eventManager: EventManager) {
         self.currentOwnKillCounter = 0
         self.currentOpponentKillCounter = 0
         self.eventManager = eventManager
         self.gameProps.append(timer)
+        self.gameState = .PLAYING
+        self.remainingTime = timer.time
         eventManager.registerHandler(forEvent: KillEvent.self) { event in
             if let killEvent = event as? KillEvent {
                 // Check if the event reduces life
@@ -38,7 +44,8 @@ class DeathMatchMode: GameMode {
         }
     }
     func updateGame(deltaTime: TimeInterval) {
-        if timer.time < 0 {
+        self.remainingTime = timer.time
+        if remainingTime <= 0 {
             if currentOwnKillCounter > currentOpponentKillCounter {
                 gameState = .WIN
             } else if currentOwnKillCounter < currentOpponentKillCounter {

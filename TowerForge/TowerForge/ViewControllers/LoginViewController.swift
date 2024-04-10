@@ -28,10 +28,21 @@ class LoginViewController: UIViewController {
         let authentication = AuthenticationProvider()
         authentication.login(email: email, password: password) { _, err in
             if let error = err {
-                print(error)
+                self.showAlert(message: error.localizedDescription, title: "Oops")
             } else {
-                self.navigationController?.popViewController(animated: true)
+                self.navigationController?.popViewController(animated: true
             }
         }
     }
+    private func showAlert(message: String, title: String) {
+        let alertController = UIAlertController(title: title,
+                                                message: message,
+                                                preferredStyle: .alert)
+        let onClose = UIAlertAction(title: "Okay", style: .default) { _ in
+
+        }
+        alertController.addAction(onClose)
+        present(alertController, animated: true, completion: nil)
+    }
+
 }

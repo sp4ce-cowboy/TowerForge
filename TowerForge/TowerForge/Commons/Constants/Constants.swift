@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 /// A class to encapsulate application wide constants to ensure a single source of truth
 /// across the entire application.
@@ -39,15 +40,25 @@ struct PositionConstants {
     static let CTF_POINT_OWN = CGPoint(x: 300, y: 50)
     static let CTF_POINT_OPP = CGPoint(x: 300, y: 110)
 
+    // Survival Mode Properties
+    static let SURVIVAL_POINT_OWN = CGPoint(x: 300, y: 100)
+
     static let SUBTITLE_LABEL_OFFSET = CGPoint(x: 0, y: -30)
 }
 
 struct SizeConstants {
+
     // Death Match Mode Properties Size
     static let DEATH_MATCH_POINT_SIZE = CGSize(width: 50, height: 50)
 
     // Capture the Flag Mode Properties Size
     static let CTF_POINT_SIZE = CGSize(width: 50, height: 50)
+
+    // Survival Mode Properties Size
+    static let SURVIVAL_POINT_SIZE = CGSize(width: 100, height: 100)
+
+    static let SCREEN_SIZE = CGSize(width: UIScreen.main.bounds.width,
+                                    height: UIScreen.main.bounds.height)
 }
 
 struct FontConstants {
@@ -55,5 +66,6 @@ struct FontConstants {
 }
 
 struct GameModeSettingsConstants {
-    // static let LEVEL_ONE_WAVE
+    // Survival Mode Settings
+
 }

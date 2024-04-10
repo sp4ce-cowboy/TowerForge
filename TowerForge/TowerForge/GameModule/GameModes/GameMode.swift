@@ -14,7 +14,7 @@ struct GameResult {
 
 protocol GameMode {
     var modeName: String { get }
-    var modeDescription: String { get }
+    static var modeDescription: String { get }
     var gameProps: [any GameProp] { get }
     var gameState: GameState { get set }
     var eventManager: EventManager { get set }

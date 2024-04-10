@@ -2,18 +2,25 @@
 //  SurvivalGameMode.swift
 //  TowerForge
 //
-//  Created by MacBook Pro on 09/04/24.
+//  Created by Vanessa Mae on 09/04/24.
 //
 
 import Foundation
 import UIKit
 
 class SurvivalGameMode: GameMode {
+
+    static let WAVE_TIME_INTERVAL = TimeInterval(50)
+
     var modeName: String = "Survival Game Mode"
 
-    var modeDescription: String = "Don't let the enemy invade your base!"
+    static var modeDescription: String = "Don't let the enemy invade your base!"
 
-    var gameProps: [any GameProp] = [PointProp(initialPoint: 0)]
+    var gameProps: [any GameProp] = [PointProp(initialPoint: 0),
+                                     LifeProp(initialLife: 1,
+                                              position: PositionConstants.SURVIVAL_POINT_OWN,
+                                              player: .ownPlayer,
+                                              size: SizeConstants.SURVIVAL_POINT_SIZE)]
 
     var gameState = GameState.IDLE
 
@@ -24,12 +31,13 @@ class SurvivalGameMode: GameMode {
     private var currentLevel: Int = 1
     private var maxLevel: Int
 
-    private var nextWaveTime = TimeInterval(50)
-    private var waveTimeInterval = TimeInterval(50)
+    private var nextWaveTime = SurvivalGameMode.WAVE_TIME_INTERVAL
+    private var waveTimeInterval = SurvivalGameMode.WAVE_TIME_INTERVAL
 
     init(eventManager: EventManager, maxLevel: Int) {
         self.eventManager = eventManager
         self.maxLevel = maxLevel
+        self.gameState = .PLAYING
 
         let timer = TimerProp(timeLength: waveTimeInterval * Double(maxLevel))
         self.gameProps.append(timer)
@@ -38,7 +46,6 @@ class SurvivalGameMode: GameMode {
             if let lifeEvent = event as? LifeEvent {
                 // Check if the event reduces life
                 if  lifeEvent.player == .oppositePlayer && lifeEvent.lifeDecrease > 0 {
-                    print("Triggered?")
                     self.currentOwnLife -= lifeEvent.lifeDecrease
                 }
             }
@@ -47,7 +54,7 @@ class SurvivalGameMode: GameMode {
 
     func updateGame(deltaTime: TimeInterval) {
         nextWaveTime -= deltaTime
-        if nextWaveTime < 0 && self.currentLevel <= self.maxLevel {
+        if nextWaveTime <= 0 && self.currentLevel <= self.maxLevel {
             nextWaveTime = waveTimeInterval
             self.currentLevel += 1
             self.generateWaveSpawns(enemyCount: 5 * self.currentLevel)
@@ -61,7 +68,7 @@ class SurvivalGameMode: GameMode {
     }
 
     func getGameResults() -> [GameResult] {
-        [GameResult(variable: "Finished Waves", value: String(currentLevel))]
+        [GameResult(variable: "Finished Waves", value: String(currentLevel - 1))]
     }
 
     private func generateWaveSpawns(enemyCount: Int) {
