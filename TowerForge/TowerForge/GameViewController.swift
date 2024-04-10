@@ -21,7 +21,6 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationController?.isNavigationBarHidden = true
         AchievementManager.incrementTotalGamesStarted()
         AudioManager.shared.playBackground()
         showGameLevelScene(level: 1) // TODO : Change hardcoded level value
@@ -29,7 +28,6 @@ class GameViewController: UIViewController {
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-//        self.navigationController?.isNavigationBarHidden = false
         AudioManager.shared.pauseBackground()
         gameWorld = nil
     }
