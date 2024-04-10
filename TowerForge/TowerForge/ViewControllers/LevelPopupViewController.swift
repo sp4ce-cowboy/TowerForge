@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol LevelPopupDelegate {
+protocol LevelPopupDelegate: AnyObject {
     func handleLevel(level: Int)
 }
 
@@ -32,6 +32,7 @@ class LevelPopupViewController: UIViewController {
     @IBAction private func onClosePressed(_ sender: Any) {
         self.dismiss(animated: true)
     }
+
     static func showDialogBox(parentVC: UIViewController) {
         if let levelPopupViewController = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "LevelPopupViewController")

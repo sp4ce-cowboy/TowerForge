@@ -9,6 +9,7 @@ import UIKit
 
 class SpriteRenderStage: RenderStage {
     static let name = "sprite"
+    // Make it retrieve all components that it needs from the renderable.
     func createAndAdd(node: TFNode, for entity: TFEntity) {
         guard let spriteComponent = entity.component(ofType: SpriteComponent.self) else {
             return

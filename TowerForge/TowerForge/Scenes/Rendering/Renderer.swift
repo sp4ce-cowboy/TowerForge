@@ -27,6 +27,7 @@ class Renderer {
 
         for entity in target.entitiesToRender {
             guard nodesToBeRemoved[entity.id] != nil else {
+                // Change to loop for the components that they are looking for.
                 addAndCache(entity: entity)
                 continue
             }

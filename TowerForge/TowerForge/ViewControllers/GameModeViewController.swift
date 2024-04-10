@@ -7,12 +7,7 @@
 import UIKit
 
 class GameModeViewController: UIViewController {
-    @IBOutlet private var deathMatchButton: UIButton!
-    @IBOutlet private var captureTheFlagButton: UIButton!
-    @IBOutlet private var MultiplayerButton: UIButton!
-    @IBOutlet private var loginButton: UIButton!
-    @IBOutlet private var rankingButton: UIButton!
-
+    @IBOutlet private var rankingView: UIView!
     @IBOutlet private var loginButtonLabel: UILabel!
 
     var selectedGameMode = Mode.captureTheFlag
@@ -29,10 +24,10 @@ class GameModeViewController: UIViewController {
         authenticationProvider.addObserver(self)
         if authenticationProvider.isUserLoggedIn() {
             loginButtonLabel.text = "Logout"
-            rankingButton.isHidden = false
+            rankingView.isHidden = false
         } else {
             loginButtonLabel.text = "Login"
-            rankingButton.isHidden = true
+            rankingView.isHidden = true
         }
     }
 
@@ -42,10 +37,12 @@ class GameModeViewController: UIViewController {
 
     @IBAction private func onRankingPressed(_ sender: Any) {
     }
+
     @IBAction private func survivalMatchPressed(_ sender: Any) {
         print("PRESSED?")
         LevelPopupViewController.showDialogBox(parentVC: self)
     }
+
     @IBAction private func deathMatchButtonPressed(_ sender: UIButton) {
         selectedGameMode = .deathMatch
         navigateToGameViewController()
@@ -67,14 +64,11 @@ class GameModeViewController: UIViewController {
             guard !authenticationProvider.isUserLoggedIn() else {
                 return
             }
-            guard let loginViewController = storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
-                    as? LoginViewController else {
-                return
-            }
 
-            present(loginViewController, animated: true, completion: nil)
+            performSegue(withIdentifier: "segueToLogin", sender: self)
         }
     }
+
     @IBAction private func multiButtonPressed(_ sender: Any) {
         navigateToGameRoomViewController()
     }
@@ -97,12 +91,12 @@ class GameModeViewController: UIViewController {
 extension GameModeViewController: AuthenticationDelegate {
     func onLogin() {
         loginButtonLabel.text = "Logout"
-        rankingButton.isHidden = false
+        rankingView.isHidden = false
     }
 
     func onLogout() {
         loginButtonLabel.text = "Login"
-        rankingButton.isHidden = true
+        rankingView.isHidden = true
     }
 }
 
@@ -113,5 +107,4 @@ extension GameModeViewController: LevelPopupDelegate {
             navigateToGameViewController()
         }
     }
-
 }

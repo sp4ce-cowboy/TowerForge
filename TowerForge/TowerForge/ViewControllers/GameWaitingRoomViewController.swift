@@ -26,16 +26,6 @@ class GameWaitingRoomViewController: UIViewController {
         updatePlayerList()
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-
-        guard let destVC = segue.destination as? GameViewController else {
-            return
-        }
-        destVC.gameRoom = gameRoom
-        destVC.currentPlayer = currentPlayer
-    }
-
     @IBAction private func onStartButtonPressed(_ sender: Any) {
         gameRoom?.updatePlayerReady { _ in
             self.startButton.isHidden = true
@@ -69,11 +59,14 @@ class GameWaitingRoomViewController: UIViewController {
             let playerTwoView = createPlayerView(for: playerTwo)
             ListStackView.addArrangedSubview(playerTwoView)
         }
+
         if gameRoom?.roomState == .gameOnGoing {
-            guard let gameViewController = self.storyboard?.instantiateViewController(withIdentifier: "GameViewController")
+            guard let gameViewController = storyboard?.instantiateViewController(withIdentifier: "GameViewController")
                     as? GameViewController else {
                 return
             }
+            gameViewController.currentPlayer = currentPlayer
+            gameViewController.gameRoom = gameRoom
             self.present(gameViewController, animated: true)
             gameRoom?.deleteRoom()
         }
