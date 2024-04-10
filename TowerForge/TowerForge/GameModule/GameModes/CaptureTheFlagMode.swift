@@ -50,6 +50,6 @@ class CaptureTheFlagMode: GameMode {
         }
     }
     func getGameResults() -> [GameResult] {
-        [GameResult(variable: "Life left", value: String(self.currentOwnLife))]
+        [LocalResult(variable: "Life left", value: String(self.currentOwnLife))]
     }
 }

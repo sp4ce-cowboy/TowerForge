@@ -7,7 +7,18 @@
 
 import Foundation
 
-struct GameResult {
+protocol GameResult {
+    var variable: String { get  }
+    var value: String { get }
+}
+
+struct LeaderboardResult: GameResult {
+    var variable: RankType.RawValue
+    var result: Double
+    var value: String
+}
+
+struct LocalResult: GameResult {
     var variable: String
     var value: String
 }

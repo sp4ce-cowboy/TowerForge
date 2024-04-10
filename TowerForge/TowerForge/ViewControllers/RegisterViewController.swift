@@ -33,7 +33,7 @@ class RegisterViewController: UIViewController {
             if let navigationController = self.navigationController,
                let gameModeVC = navigationController.viewControllers.first(where: { $0 is GameModeViewController }) {
                 self.navigationController?.popToViewController(gameModeVC, animated: true)
-            } 
+            }
         }
     }
     private func showAlert(message: String, title: String) {
