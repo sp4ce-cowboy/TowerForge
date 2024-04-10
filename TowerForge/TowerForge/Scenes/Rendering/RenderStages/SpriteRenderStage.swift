@@ -8,6 +8,7 @@
 import UIKit
 
 class SpriteRenderStage: RenderStage {
+    static var offset = CGFloat.zero
     static let name = "sprite"
     private unowned let renderer: RenderTarget
     private var renderedNodes: [UUID: TFAnimatableNode] = [:]
@@ -45,6 +46,8 @@ class SpriteRenderStage: RenderStage {
             return
         }
         renderer.renderedNodes[entity.id]?.staticOnScreen = spriteComponent.staticOnScreen
+        renderer.renderedNodes[entity.id]?.zPosition = spriteComponent.zPosition + SpriteRenderStage.offset
+        SpriteRenderStage.offset += 0.00001
         renderer.updateStaticNode(with: entity.id)
     }
 

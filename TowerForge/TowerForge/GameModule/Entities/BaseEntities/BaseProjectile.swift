@@ -8,6 +8,7 @@
 import Foundation
 
 class BaseProjectile: TFEntity, Spawnable {
+    static let zPosition: CGFloat = 0
     required init(position: CGPoint, player: Player) {
         // TODO: to fill
     }
@@ -16,7 +17,8 @@ class BaseProjectile: TFEntity, Spawnable {
          player: Player, velocity: CGVector = .zero) {
         super.init()
         // Core Components
-        self.addComponent(SpriteComponent(textureNames: textureNames, size: size, animatableKey: key))
+        self.addComponent(SpriteComponent(textureNames: textureNames, size: size,
+                                          animatableKey: key, zPosition: BaseProjectile.zPosition))
         self.addComponent(PositionComponent(position: position))
         self.addComponent(MovableComponent(velocity: velocity))
 

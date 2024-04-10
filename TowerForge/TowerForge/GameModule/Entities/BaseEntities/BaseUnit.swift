@@ -8,6 +8,7 @@
 import Foundation
 
 class BaseUnit: TFEntity {
+    static let zPosition: CGFloat = 100
     init(textureNames: [String],
          size: CGSize,
          key: String,
@@ -18,7 +19,8 @@ class BaseUnit: TFEntity {
          id: UUID = UUID()) {
         super.init(id: id)
         // Core Components
-        self.addComponent(SpriteComponent(textureNames: textureNames, size: size, animatableKey: key))
+        self.addComponent(SpriteComponent(textureNames: textureNames, size: size,
+                                          animatableKey: key, zPosition: BaseUnit.zPosition))
         self.addComponent(PositionComponent(position: position))
         self.addComponent(MovableComponent(velocity: velocity))
 
