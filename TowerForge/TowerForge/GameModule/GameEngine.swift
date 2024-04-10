@@ -27,6 +27,7 @@ protocol AbstractGameEngine: EventTarget {
     func addRemoteEvent(_ remoteEvent: TFRemoteEvent)
 
     func system<T: TFSystem>(ofType type: T.Type) -> T?
+    func entities<T: TFComponent>(with componentType: T.Type) -> [TFEntity]
 }
 
 /// A class that encapsulates handling of all Managers.
@@ -69,6 +70,10 @@ class GameEngine: AbstractGameEngine {
 
     func system<T: TFSystem>(ofType type: T.Type) -> T? {
         systemManager.system(ofType: type)
+    }
+
+    func entities<T: TFComponent>(with componentType: T.Type) -> [TFEntity] {
+        entityManager.entities(with: componentType)
     }
 
     private func setupTeam() {

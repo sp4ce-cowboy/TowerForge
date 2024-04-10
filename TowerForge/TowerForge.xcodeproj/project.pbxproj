@@ -61,7 +61,7 @@
 		3CD37AA52BBEC10700222D8A /* FirebaseRemoteEventSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD37AA42BBEC10700222D8A /* FirebaseRemoteEventSubscriber.swift */; };
 		3CD37AA72BBEC5EF00222D8A /* BaseRemoteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD37AA62BBEC5EF00222D8A /* BaseRemoteEvent.swift */; };
 		3CE9514B2BAC83FA008B2785 /* SpawnableEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9514A2BAC83FA008B2785 /* SpawnableEntities.swift */; };
-		3CE9514F2BAC8936008B2785 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9514E2BAC8936008B2785 /* Renderer.swift */; };
+		3CE9514F2BAC8936008B2785 /* TFRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE9514E2BAC8936008B2785 /* TFRenderer.swift */; };
 		3CE951512BAC8955008B2785 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE951502BAC8955008B2785 /* Renderable.swift */; };
 		3CE951562BACA0CF008B2785 /* Collidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE951552BACA0CF008B2785 /* Collidable.swift */; };
 		3CE951582BAD724D008B2785 /* TFContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE951572BAD724D008B2785 /* TFContact.swift */; };
@@ -71,6 +71,7 @@
 		3CE951652BAE0A04008B2785 /* HomeSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE951642BAE0A04008B2785 /* HomeSystem.swift */; };
 		3CE951672BAEAB0E008B2785 /* ContactSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE951662BAEAB0E008B2785 /* ContactSystem.swift */; };
 		3CE951692BAEB719008B2785 /* RequestSpawnEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE951682BAEB719008B2785 /* RequestSpawnEvent.swift */; };
+		3CF273242BC6E51F007E645C /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF273232BC6E51F007E645C /* Renderer.swift */; };
 		3CFA72E72BC0398E0081337F /* RemoteEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFA72E62BC0398E0081337F /* RemoteEventManager.swift */; };
 		5200624E2BA8D597000DBA30 /* AiComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5200624D2BA8D597000DBA30 /* AiComponent.swift */; };
 		520062562BA8E026000DBA30 /* PlayerSpawnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520062552BA8E026000DBA30 /* PlayerSpawnable.swift */; };
@@ -282,7 +283,7 @@
 		3CD37AA42BBEC10700222D8A /* FirebaseRemoteEventSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteEventSubscriber.swift; sourceTree = "<group>"; };
 		3CD37AA62BBEC5EF00222D8A /* BaseRemoteEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRemoteEvent.swift; sourceTree = "<group>"; };
 		3CE9514A2BAC83FA008B2785 /* SpawnableEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnableEntities.swift; sourceTree = "<group>"; };
-		3CE9514E2BAC8936008B2785 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		3CE9514E2BAC8936008B2785 /* TFRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFRenderer.swift; sourceTree = "<group>"; };
 		3CE951502BAC8955008B2785 /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
 		3CE951552BACA0CF008B2785 /* Collidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collidable.swift; sourceTree = "<group>"; };
 		3CE951572BAD724D008B2785 /* TFContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFContact.swift; sourceTree = "<group>"; };
@@ -292,6 +293,7 @@
 		3CE951642BAE0A04008B2785 /* HomeSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSystem.swift; sourceTree = "<group>"; };
 		3CE951662BAEAB0E008B2785 /* ContactSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactSystem.swift; sourceTree = "<group>"; };
 		3CE951682BAEB719008B2785 /* RequestSpawnEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSpawnEvent.swift; sourceTree = "<group>"; };
+		3CF273232BC6E51F007E645C /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		3CFA72E62BC0398E0081337F /* RemoteEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteEventManager.swift; sourceTree = "<group>"; };
 		5200624D2BA8D597000DBA30 /* AiComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiComponent.swift; sourceTree = "<group>"; };
 		520062552BA8E026000DBA30 /* PlayerSpawnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSpawnable.swift; sourceTree = "<group>"; };
@@ -550,7 +552,8 @@
 			isa = PBXGroup;
 			children = (
 				3CAC4A632BB696D700A5D22E /* RenderStages */,
-				3CE9514E2BAC8936008B2785 /* Renderer.swift */,
+				3CE9514E2BAC8936008B2785 /* TFRenderer.swift */,
+				3CF273232BC6E51F007E645C /* Renderer.swift */,
 				3CAC4A662BB6975200A5D22E /* RenderStage.swift */,
 				3CE951502BAC8955008B2785 /* Renderable.swift */,
 			);
@@ -1392,6 +1395,7 @@
 				3CE951632BAE037C008B2785 /* AiSystem.swift in Sources */,
 				3CE9515F2BADE2C5008B2785 /* ShootingSystem.swift in Sources */,
 				5240D0AB2BB3340F004F1486 /* CaptureTheFlagMode.swift in Sources */,
+				3CF273242BC6E51F007E645C /* Renderer.swift in Sources */,
 				3CD37A9D2BBEBD1600222D8A /* RemoteSpawnable.swift in Sources */,
 				3C9955CA2BA5888F00D33FA5 /* SpawnEvent.swift in Sources */,
 				3CE951582BAD724D008B2785 /* TFContact.swift in Sources */,
@@ -1459,7 +1463,7 @@
 				527A07862BB411FB00CD9D08 /* GameOverScene.swift in Sources */,
 				3C9955B12BA4ACA100D33FA5 /* Bullet.swift in Sources */,
 				3CA829C62BB719A500D8E72A /* ButtonRenderStage.swift in Sources */,
-				3CE9514F2BAC8936008B2785 /* Renderer.swift in Sources */,
+				3CE9514F2BAC8936008B2785 /* TFRenderer.swift in Sources */,
 				527A07802BB3F81C00CD9D08 /* TimerComponent.swift in Sources */,
 				BAFFB9662BB98ADC00D8301F /* AchievementStorage.swift in Sources */,
 				3C769A722BA58DE700F454F9 /* MovementSystem.swift in Sources */,

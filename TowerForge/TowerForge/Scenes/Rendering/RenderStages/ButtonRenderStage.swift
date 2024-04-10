@@ -9,21 +9,47 @@ import Foundation
 
 class ButtonRenderStage: RenderStage {
     static let name = "button"
-    func createAndAdd(node: TFNode, for entity: TFEntity) {
+
+    private unowned let renderer: RenderTarget
+    private var renderedNodes: [UUID: TFButtonNode] = [:]
+
+    init(renderer: RenderTarget) {
+        self.renderer = renderer
+    }
+
+    func render() {
+        let entitiesToRender = renderer.target.entities(with: ButtonComponent.self)
+
+        for entity in entitiesToRender {
+            if renderedNodes[entity.id] == nil {
+                create(for: entity)
+                continue
+            }
+
+            update(for: entity)
+        }
+    }
+
+    func create(for entity: TFEntity) {
         guard let buttonComponent = entity.component(ofType: ButtonComponent.self) else {
             return
         }
         let buttonNode = TFButtonNode(action: buttonComponent.onTouch, size: buttonComponent.size)
         buttonNode.name = ButtonRenderStage.name
         buttonNode.zPosition = 1_000
-        node.add(child: buttonNode)
+        renderedNodes[entity.id] = buttonNode
+        renderer.renderedNodes[entity.id]?.add(child: buttonNode)
     }
 
-    func update(node: TFNode, for entity: TFEntity) {
-        guard let buttonComponent = entity.component(ofType: ButtonComponent.self),
-              let buttonNode = node.child(withName: ButtonRenderStage.name) else {
+    func update(for entity: TFEntity) {
+        guard let buttonComponent = entity.component(ofType: ButtonComponent.self) else {
             return
         }
-        buttonNode.isUserInteractionEnabled = buttonComponent.userInteracterable
+        renderedNodes[entity.id]?.isUserInteractionEnabled = buttonComponent.userInteracterable
+        renderer.flagNodeUpdated(with: entity.id)
+    }
+
+    func removeAndUncache(for id: UUID) {
+        renderedNodes.removeValue(forKey: id)
     }
 }

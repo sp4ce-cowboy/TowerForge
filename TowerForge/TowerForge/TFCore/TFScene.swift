@@ -17,4 +17,6 @@ protocol TFScene: AnyObject {
 
     func setBounds(_ bounds: CGRect)
     func panCamera(by displacement: CGVector)
+    func isStatic(node: TFNode) -> Bool
+    func setNode(_ node: TFNode, isStatic: Bool)
 }

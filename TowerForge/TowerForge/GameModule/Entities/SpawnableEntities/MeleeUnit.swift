@@ -12,8 +12,8 @@ class MeleeUnit: BaseUnit, PlayerSpawnable {
     static let textureNames = ["melee-1", "melee-2"]
     static let size = CGSize(width: 100, height: 100)
     static let key = "melee"
-    static let maxHealth = 100.0
-    static let damage = 10.0
+    static let maxHealth = 150.0
+    static let damage = 15.0
     static var cost = 10
     static let attackRate = 1.0
     static let velocity = CGVector(dx: 30.0, dy: 0.0)
