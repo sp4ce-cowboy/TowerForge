@@ -14,6 +14,7 @@ class GameViewController: UIViewController {
     var gameRoom: GameRoom?
     var currentPlayer: GamePlayer?
 
+    @IBOutlet var gamePopupButton: UIButton!
     @IBAction private func onStatePressed(_ sender: Any) {
         isPaused = true
         gameWorld?.presentStatePopup()
@@ -75,6 +76,7 @@ extension GameViewController: SceneManagerDelegate {
     func showGameOverScene(isWin: Bool, results: [GameResult]) {
         let gameOverScene = GameOverScene(win: isWin, results: results)
         gameOverScene.sceneManagerDelegate = self
+        gamePopupButton.isHidden = true
         showScene(scene: gameOverScene)
     }
     func showGameLevelScene(level: Int) {

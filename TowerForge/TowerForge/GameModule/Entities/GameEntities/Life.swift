@@ -8,10 +8,10 @@
 import Foundation
 
 class Life: TFEntity {
-    init(initialLife: Int, position: CGPoint, player: Player) {
+    init(initialLife: Int, position: CGPoint, player: Player, size: CGSize) {
         super.init()
         let spriteComponent = SpriteComponent(textureNames: ["Life"],
-                                              size: SizeConstants.CTF_POINT_SIZE,
+                                              size: size,
                                               animatableKey: "life")
         self.addComponent(spriteComponent)
         self.addComponent(HomeComponent(initialLifeCount: Team.lifeCount, pointInterval: Team.pointsInterval))

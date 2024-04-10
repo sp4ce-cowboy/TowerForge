@@ -85,6 +85,8 @@
 		523C29282BBCFD93004C6EAC /* Nosifer-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5240D0952BB04E57004F1486 /* Nosifer-Regular.ttf */; };
 		523C29302BBD0916004C6EAC /* GameWaitingRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C292F2BBD0916004C6EAC /* GameWaitingRoomViewController.swift */; };
 		523E5C4C2BC53F70007444DA /* WaveSpawnEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523E5C4B2BC53F70007444DA /* WaveSpawnEvent.swift */; };
+		523E5C512BC60563007444DA /* SurvivalModeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523E5C502BC60563007444DA /* SurvivalModeTests.swift */; };
+		523E5C532BC60A15007444DA /* DeathMatchModeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523E5C522BC60A15007444DA /* DeathMatchModeTests.swift */; };
 		5240D08F2BAE6D0A004F1486 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D08E2BAE6D0A004F1486 /* Point.swift */; };
 		5240D0912BAF3453004F1486 /* Life.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D0902BAF3453004F1486 /* Life.swift */; };
 		5240D0A02BB330B5004F1486 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240D09F2BB330B4004F1486 /* GameMode.swift */; };
@@ -298,6 +300,8 @@
 		523AA3BE2BB88FBF0041E60D /* WizardUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardUnit.swift; sourceTree = "<group>"; };
 		523C292F2BBD0916004C6EAC /* GameWaitingRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWaitingRoomViewController.swift; sourceTree = "<group>"; };
 		523E5C4B2BC53F70007444DA /* WaveSpawnEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveSpawnEvent.swift; sourceTree = "<group>"; };
+		523E5C502BC60563007444DA /* SurvivalModeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalModeTests.swift; sourceTree = "<group>"; };
+		523E5C522BC60A15007444DA /* DeathMatchModeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathMatchModeTests.swift; sourceTree = "<group>"; };
 		5240D08E2BAE6D0A004F1486 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		5240D0902BAF3453004F1486 /* Life.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Life.swift; sourceTree = "<group>"; };
 		5240D0952BB04E57004F1486 /* Nosifer-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nosifer-Regular.ttf"; sourceTree = "<group>"; };
@@ -579,6 +583,15 @@
 			path = GameComponents;
 			sourceTree = "<group>";
 		};
+		523E5C4F2BC6054F007444DA /* GameModeTests */ = {
+			isa = PBXGroup;
+			children = (
+				523E5C502BC60563007444DA /* SurvivalModeTests.swift */,
+				523E5C522BC60A15007444DA /* DeathMatchModeTests.swift */,
+			);
+			path = GameModeTests;
+			sourceTree = "<group>";
+		};
 		5240D0942BB04E2B004F1486 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -779,6 +792,7 @@
 		52DF5FC02BA32B2600135367 /* TowerForgeTests */ = {
 			isa = PBXGroup;
 			children = (
+				523E5C4F2BC6054F007444DA /* GameModeTests */,
 				BAFFB94C2BB12F7D00D8301F /* GameModuleTests */,
 				BA443D402BAD9872009F0FFB /* EventTests */,
 				52DF5FE22BA3386400135367 /* CoreUITests */,
@@ -1501,7 +1515,9 @@
 				3C07CB272BC2990E00207C38 /* TFComponentTests.swift in Sources */,
 				BAFFB9502BB12F9D00D8301F /* GameEngineTests.swift in Sources */,
 				BA443D4B2BB05F73009F0FFB /* RequestSpawnEventTests.swift in Sources */,
+				523E5C532BC60A15007444DA /* DeathMatchModeTests.swift in Sources */,
 				BA443D452BB05A3C009F0FFB /* SpawnEventTests.swift in Sources */,
+				523E5C512BC60563007444DA /* SurvivalModeTests.swift in Sources */,
 				3C07CB212BC287DD00207C38 /* GameModuleTestsUtils.swift in Sources */,
 				BA443D492BB05EF0009F0FFB /* RemoveEventTests.swift in Sources */,
 				BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */,

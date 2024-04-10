@@ -16,23 +16,29 @@ class GameOverScene: SKScene {
     init(win: Bool, results: [GameResult]) {
         self.win = win
         self.results = results
-        super.init(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        super.init(size: CGSize(width: SizeConstants.SCREEN_SIZE.width,
+                                height: SizeConstants.SCREEN_SIZE.height))
     }
 
     override func didMove(to view: SKView) {
         setupScene()
         AudioManager.shared.stopBackground()
-        self.win ? AudioManager.shared.playWinSoundEffect() : AudioManager.shared.playLoseSoundEffect()
+        if self.win {
+            AudioManager.shared.playWinSoundEffect()
+        } else {
+            AudioManager.shared.playLoseSoundEffect()
+        }
     }
 
     func setupScene() {
         let label = TFLabelNode(text: self.win ? "WIN" : "LOST")
-        label.position = CGPoint(x: 110, y: 110)
-        label.fontSize = 24.0
+        label.position = CGPoint(x: SizeConstants.SCREEN_SIZE.width / 2, y: SizeConstants.SCREEN_SIZE.height * 0.9)
+        label.fontSize = 44.0
         label.fontName = "Nosifer-Regular"
         label.fontColor = .darkGray
         label.zPosition = 1_000
         addChild(label.node)
+
         setupResultsUI()
     }
 
@@ -46,7 +52,8 @@ class GameOverScene: SKScene {
             resultLabel.fontSize = labelFontSize
             resultLabel.fontName = labelFontName
             resultLabel.fontColor = .darkGray
-            resultLabel.position = CGPoint(x: 50, y: size.height - yOffset)
+            resultLabel.position = CGPoint(x: SizeConstants.SCREEN_SIZE.width / 2,
+                                           y: SizeConstants.SCREEN_SIZE.height * 0.8 - yOffset)
             addChild(resultLabel.node)
 
             yOffset += 30.0

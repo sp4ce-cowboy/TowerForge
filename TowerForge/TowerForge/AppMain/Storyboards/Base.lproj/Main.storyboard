@@ -39,6 +39,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="9Rh-a0-sTy"/>
+                    <connections>
+                        <outlet property="gamePopupButton" destination="FRf-Sx-cuP" id="9ja-00-9KT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
