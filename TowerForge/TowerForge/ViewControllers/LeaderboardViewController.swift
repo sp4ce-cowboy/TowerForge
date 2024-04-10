@@ -23,6 +23,7 @@ class LeaderboardViewController: UIViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 10
+        stackView.backgroundColor = .yellow
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -56,7 +57,7 @@ class LeaderboardViewController: UIViewController {
         for rankData in ranks {
             let rankLabel = UILabel()
             rankLabel.text = "\(rankData.username): \(rankData.score)"
-            rankLabel.textColor = .black
+            rankLabel.textColor = .white
             stackView.addArrangedSubview(rankLabel)
         }
     }
