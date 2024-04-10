@@ -115,7 +115,7 @@
         <!--Leaderboard Selection View Controller-->
         <scene sceneID="SlJ-QI-6Dh">
             <objects>
-                <tabBarController storyboardIdentifier="LeaderboardSelectionViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="22d-FP-2g3" customClass="LeaderboardSelectionViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="LeaderboardSelectionViewController" extendedLayoutIncludesOpaqueBars="YES" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="22d-FP-2g3" customClass="LeaderboardSelectionViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="LUD-kC-ATN"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ecM-56-JFJ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
