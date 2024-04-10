@@ -56,8 +56,13 @@ class DeathMatchMode: GameMode {
         }
     }
     func getGameResults() -> [GameResult] {
-        let result = [GameResult(variable: "Total Kill", value: String(self.currentOwnKillCounter)),
-                      GameResult(variable: "Opponent Kill", value: String(self.currentOpponentKillCounter))]
+        let result: [GameResult] = [
+            LeaderboardResult(variable: RankType.TotalKill.rawValue,
+                              result: Double(self.currentOwnKillCounter),
+                              value: String(self.currentOwnKillCounter)),
+            LocalResult(variable: "Opponent Kill",
+                        value: String(self.currentOpponentKillCounter))
+        ]
         return result
     }
 

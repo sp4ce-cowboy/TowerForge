@@ -8,11 +8,41 @@
 import Foundation
 import FirebaseDatabaseInternal
 
+enum RankType: String, CaseIterable {
+    case TotalKill
+    static var allCasesAsString: [String] {
+        allCases.map { $0.rawValue }
+    }
+}
+
 class GameRankProvider {
-    private let ranksRef = FirebaseDatabaseReference(.Ranks)
+    private let ranksRef: DatabaseReference
+    init(type: String) {
+        self.ranksRef = FirebaseDatabaseReference(.Ranks).child(type)
+    }
     func setNewRank(rank: GameRankData) {
-        let userRankData = ["username": rank.username, "score": rank.score] as [String: Any]
-        ranksRef.child(rank.userId).setValue(userRankData)
+        self.getHighScore(forPlayer: rank.userId) { result, _ in
+            guard let oldResult = result else {
+                let userRankData = ["username": rank.username, "score": rank.score] as [String: Any]
+                self.ranksRef.child(rank.userId).setValue(userRankData)
+                return
+            }
+            if rank.score > oldResult {
+                let userRankData = ["username": rank.username, "score": rank.score] as [String: Any]
+                self.ranksRef.child(rank.userId).setValue(userRankData)
+            }
+        }
+
+    }
+    private func getHighScore(forPlayer playerId: String, completion: @escaping (Double?, Error?) -> Void) {
+        ranksRef.child(playerId).observeSingleEvent(of: .value) { snapshot in
+            if let userData = snapshot.value as? [String: Any],
+               let score = userData["score"] as? Double {
+                completion(score, nil)
+            } else {
+                completion(nil, nil)
+            }
+        }
     }
     func getTopRanks(completion: @escaping ([GameRankData]?, Error?) -> Void) {
         ranksRef.queryOrdered(byChild: "score").queryLimited(toLast: 10).observeSingleEvent(of: .value) { snapshot in

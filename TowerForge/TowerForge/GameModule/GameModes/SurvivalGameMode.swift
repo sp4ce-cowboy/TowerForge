@@ -68,7 +68,7 @@ class SurvivalGameMode: GameMode {
     }
 
     func getGameResults() -> [GameResult] {
-        [GameResult(variable: "Finished Waves", value: String(currentLevel - 1))]
+        [LocalResult(variable: "Finished Waves", value: String(currentLevel - 1))]
     }
 
     private func generateWaveSpawns(enemyCount: Int) {
