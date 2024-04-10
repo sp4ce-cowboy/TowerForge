@@ -27,9 +27,10 @@ class RegisterViewController: UIViewController {
 
         authenticationProvider?.register(email: email, username: username, password: password) { _, err in
             if let error = err {
-                print(error)
+                self.showAlert(message: error.localizedDescription, title: "Oops")
             } else {
-                guard let gameModeViewController = self.storyboard?.instantiateViewController(withIdentifier: "GameModeViewController")
+                guard let gameModeViewController =
+                        self.storyboard?.instantiateViewController(withIdentifier: "GameModeViewController")
                         as? GameModeViewController else {
                             return
                         }
@@ -37,5 +38,15 @@ class RegisterViewController: UIViewController {
                 self.present(gameModeViewController, animated: true, completion: nil)
             }
         }
+    }
+    private func showAlert(message: String, title: String) {
+        let alertController = UIAlertController(title: title,
+                                                message: message,
+                                                preferredStyle: .alert)
+        let onClose = UIAlertAction(title: "Okay", style: .default) { _ in
+
+        }
+        alertController.addAction(onClose)
+        present(alertController, animated: true, completion: nil)
     }
 }

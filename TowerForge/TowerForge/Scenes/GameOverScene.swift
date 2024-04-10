@@ -30,6 +30,19 @@ class GameOverScene: SKScene {
         }
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+        let touchLocation = touch.location(in: self)
+
+        if let node = self.nodes(at: touchLocation).first {
+            if node.contains(touchLocation) {
+                sceneManagerDelegate?.showMenuScene()
+            }
+        }
+    }
+
     func setupScene() {
         let label = TFLabelNode(text: self.win ? "WIN" : "LOST")
         label.position = CGPoint(x: SizeConstants.SCREEN_SIZE.width / 2, y: SizeConstants.SCREEN_SIZE.height * 0.9)

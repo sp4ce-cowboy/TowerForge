@@ -8,7 +8,7 @@
 import XCTest
 @testable import TowerForge
 
-class SurvivalGameModeTests: XCTestCase {
+class SurvivalModeTests: XCTestCase {
 
     func testUpdateGame_WaveGeneration() {
         // Setup

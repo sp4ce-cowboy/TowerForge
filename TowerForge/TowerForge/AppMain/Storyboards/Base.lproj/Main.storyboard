@@ -50,7 +50,7 @@
         <!--MainMenuViewController-->
         <scene sceneID="vFw-SO-Nq3">
             <objects>
-                <viewController storyboardIdentifier="MainMenuViewController" title="MainMenuViewController" id="NJ9-hN-4Nf" customClass="MainMenuViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainMenuViewController" title="MainMenuViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NJ9-hN-4Nf" customClass="MainMenuViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleAspectFill" id="QTh-pm-dcu">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -151,7 +151,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="onLoginPressed:" destination="n8I-SW-Wif" eventType="touchUpInside" id="dkv-Wu-Nb7"/>
-                                    <segue destination="bL0-ag-pcs" kind="showDetail" identifier="segueToMenuGame" id="1ej-FD-YqB"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDM-Xl-gio">
@@ -336,7 +335,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ewd-d2-Lxq">
-                                <rect key="frame" x="205" y="124" width="257.5" height="198"/>
+                                <rect key="frame" x="205" y="194" width="257.5" height="128"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ao-cU-Ulr">
                                         <rect key="frame" x="-38" y="3" width="315" height="122"/>
@@ -848,9 +847,6 @@ Match</string>
             <point key="canvasLocation" x="139.67789165446558" y="722.4609375"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="1ej-FD-YqB"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="Flag" width="500" height="500"/>
         <image name="Sword" width="500" height="500"/>

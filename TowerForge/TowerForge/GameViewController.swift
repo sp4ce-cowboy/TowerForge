@@ -66,9 +66,13 @@ extension GameViewController: SceneUpdateDelegate {
 
 extension GameViewController: SceneManagerDelegate {
     func showMenuScene() {
-        let menuScene = MenuScene()
-        menuScene.sceneManagerDelegate = self
-        showScene(scene: menuScene)
+        guard let mainMenuViewController =
+                self.storyboard?.instantiateViewController(withIdentifier: "MainMenuViewController")
+                as? MainMenuViewController else {
+                    return
+                }
+
+        self.present(mainMenuViewController, animated: true, completion: nil)
     }
     func showLevelScene() {
         // TODO : to implement after Keith is done
