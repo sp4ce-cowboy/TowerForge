@@ -2,7 +2,7 @@
 //  LevelPopupViewController.swift
 //  TowerForge
 //
-//  Created by MacBook Pro on 09/04/24.
+//  Created by Vanessa Mae on 09/04/24.
 //
 
 import Foundation
@@ -16,20 +16,20 @@ class LevelPopupViewController: UIViewController {
 
     var delegate: LevelPopupDelegate?
 
-    @IBAction func onLevelOnePressed(_ sender: Any) {
+    @IBAction private func onLevelOnePressed(_ sender: Any) {
         self.delegate?.handleLevel(level: 1)
         self.dismiss(animated: true)
     }
-    @IBAction func onLevelTwoPressed(_ sender: Any) {
+    @IBAction private func onLevelTwoPressed(_ sender: Any) {
         self.delegate?.handleLevel(level: 2)
         self.dismiss(animated: true)
     }
-    @IBAction func onLevelThreePressed(_ sender: Any) {
+    @IBAction private func onLevelThreePressed(_ sender: Any) {
         self.delegate?.handleLevel(level: 3)
         self.dismiss(animated: true)
     }
 
-    @IBAction func onClosePressed(_ sender: Any) {
+    @IBAction private func onClosePressed(_ sender: Any) {
         self.dismiss(animated: true)
     }
     static func showDialogBox(parentVC: UIViewController) {

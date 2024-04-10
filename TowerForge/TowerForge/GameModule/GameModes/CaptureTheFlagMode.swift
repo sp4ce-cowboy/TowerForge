@@ -12,7 +12,7 @@ class CaptureTheFlagMode: GameMode {
     static let INITIAL_POINT = 5
 
     var modeName: String = "Capture The Flag"
-    var modeDescription: String = "Destroy the enemy base!"
+    static var modeDescription: String = "Destroy the enemy base!"
     var gameProps: [any GameProp] = [PointProp(initialPoint: 0)]
     var gameState = GameState.IDLE
     var currentOwnLife: Int
@@ -21,13 +21,16 @@ class CaptureTheFlagMode: GameMode {
     init(initialLife: Int, eventManager: EventManager) {
         self.gameProps.append(LifeProp(initialLife: initialLife,
                                        position: PositionConstants.CTF_POINT_OWN,
-                                       player: .ownPlayer))
+                                       player: .ownPlayer,
+                                       size: SizeConstants.CTF_POINT_SIZE))
         self.gameProps.append(LifeProp(initialLife: initialLife,
                                        position: PositionConstants.CTF_POINT_OPP,
-                                       player: .oppositePlayer))
+                                       player: .oppositePlayer,
+                                       size: SizeConstants.CTF_POINT_SIZE))
         self.currentOwnLife = initialLife
         self.currentOpponentLife = initialLife
         self.eventManager = eventManager
+        self.gameState = .PLAYING
         eventManager.registerHandler(forEvent: LifeEvent.self) { event in
             if let lifeEvent = event as? LifeEvent {
                 // Check if the event reduces life
