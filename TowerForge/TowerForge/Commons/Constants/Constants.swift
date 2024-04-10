@@ -40,6 +40,9 @@ struct PositionConstants {
     static let CTF_POINT_OWN = CGPoint(x: 300, y: 50)
     static let CTF_POINT_OPP = CGPoint(x: 300, y: 110)
 
+    // Survival Mode Properties
+    static let SURVIVAL_POINT_OWN = CGPoint(x: 300, y: 100)
+
     static let SUBTITLE_LABEL_OFFSET = CGPoint(x: 0, y: -30)
 }
 
@@ -52,7 +55,7 @@ struct SizeConstants {
     static let CTF_POINT_SIZE = CGSize(width: 50, height: 50)
 
     // Survival Mode Properties Size
-    static let SURVIVAL_POINT_SIZE = CGSize(width: 50, height: 100)
+    static let SURVIVAL_POINT_SIZE = CGSize(width: 100, height: 100)
 
     static let SCREEN_SIZE = CGSize(width: UIScreen.main.bounds.width,
                                     height: UIScreen.main.bounds.height)

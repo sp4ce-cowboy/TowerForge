@@ -18,7 +18,7 @@ class SurvivalGameMode: GameMode {
 
     var gameProps: [any GameProp] = [PointProp(initialPoint: 0),
                                      LifeProp(initialLife: 1,
-                                              position: PositionConstants.CTF_POINT_OWN,
+                                              position: PositionConstants.SURVIVAL_POINT_OWN,
                                               player: .ownPlayer,
                                               size: SizeConstants.SURVIVAL_POINT_SIZE)]
 
