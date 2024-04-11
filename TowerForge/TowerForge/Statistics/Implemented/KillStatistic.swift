@@ -17,12 +17,7 @@ class KillStatistic: Statistic {
         self.getStatisticUpdateLinks()
     }
 
-    init(statisticName: StatisticName,
-         statisticOriginalValue: Double,
-         statisticAdditionalValue: Double) {
-        self.statisticName = statisticName
-        self.statisticOriginalValue = statisticOriginalValue
-        self.statisticAdditionalValue = statisticAdditionalValue
+    init() {
     }
 
     func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {

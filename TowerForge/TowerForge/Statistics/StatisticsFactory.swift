@@ -8,7 +8,7 @@
 import Foundation
 
 class StatisticsFactory {
-    public static let availableEventTypes: [TFEvent.Type] = [
+    static let availableEventTypes: [TFEvent.Type] = [
         DamageEvent.self,
         MoveEvent.self,
         SpawnEvent.self,
@@ -19,8 +19,12 @@ class StatisticsFactory {
         RequestSpawnEvent.self,
         WaveSpawnEvent.self
     ]
-    
-    public static func getDefaultEmptyLinkDatabase() -> EventStatisticLinkDatabase {
+
+    static let availableStatisticsTypes: [Statistic.Type] = [
+        KillStatistic.self
+    ]
+
+    static func getDefaultEventLinkDatabase() -> EventStatisticLinkDatabase {
         var eventStatLinkDatabase = EventStatisticLinkDatabase()
         availableEventTypes.forEach { eventStatLinkDatabase.registerEmptyEventType(for: $0) }
         return eventStatLinkDatabase

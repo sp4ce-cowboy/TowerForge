@@ -14,6 +14,10 @@ class EventStatisticLinkDatabase {
         self.eventLinks = eventLinks
     }
 
+    func getAllEventTypes() -> [TFEventTypeWrapper] {
+        Array(eventLinks.keys)
+    }
+
     func registerEmptyEventType<T: TFEvent>(for eventType: T.Type) {
         let wrappedEvent = TFEventTypeWrapper(type: eventType)
         eventLinks[wrappedEvent] = []
@@ -24,13 +28,14 @@ class EventStatisticLinkDatabase {
         eventLinks.removeValue(forKey: wrappedEvent)
     }
 
-    func addStatisticLink<T: TFEvent>(for eventType: T.Type, with statistic: Statistic) {
-        let wrappedEvent = TFEventTypeWrapper(type: eventType)
-        eventLinks[wrappedEvent]?.append(statistic)
+    func addStatisticLink<T: TFEvent>(for eventType: T.Type,
+                                      with statistic: Statistic) {
+        let wrappedValue = TFEventTypeWrapper(type: eventType)
+        eventLinks[wrappedValue]?.append(statistic)
     }
 
     func getStatisticLinks(for eventType: TFEventTypeWrapper) -> [Statistic]? {
         eventLinks[eventType]
     }
-    
+
 }

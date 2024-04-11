@@ -11,24 +11,28 @@ import Foundation
 /// to act accordingly when an EventType is executed elsewhere.
 typealias StatisticUpdateActor = ((Statistic) -> Void)?
 
-struct StatisticUpdateLinkDatabase {
+class StatisticUpdateLinkDatabase {
     var statisticUpdateLinks: [TFEventTypeWrapper: StatisticUpdateActor]
 
     init(statisticUpdateLinks: [TFEventTypeWrapper: StatisticUpdateActor] = [:]) {
         self.statisticUpdateLinks = statisticUpdateLinks
     }
 
-    mutating func registerEmptyEventType<T: TFEvent>(for eventType: T.Type) {
+    func getAllEventTypes() -> [TFEventTypeWrapper] {
+        Array(statisticUpdateLinks.keys)
+    }
+
+    func registerEmptyEventType<T: TFEvent>(for eventType: T.Type) {
         let wrappedEvent = TFEventTypeWrapper(type: eventType)
         statisticUpdateLinks[wrappedEvent] = nil
     }
 
-    mutating func removeEventType<T: TFEvent>(for eventType: T.Type) {
+    func removeEventType<T: TFEvent>(for eventType: T.Type) {
         let wrappedEvent = TFEventTypeWrapper(type: eventType)
         statisticUpdateLinks.removeValue(forKey: wrappedEvent)
     }
 
-    mutating func addStatisticUpdateActor<T: TFEvent>(for eventType: T.Type,
+    func addStatisticUpdateActor<T: TFEvent>(for eventType: T.Type,
                                                       with statisticUpdateActor: StatisticUpdateActor) {
         let wrappedEvent = TFEventTypeWrapper(type: eventType)
         statisticUpdateLinks[wrappedEvent] = statisticUpdateActor

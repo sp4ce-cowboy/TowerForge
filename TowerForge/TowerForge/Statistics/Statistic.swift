@@ -24,7 +24,6 @@ struct StatisticTypeWrapper: Equatable, Hashable {
 protocol Statistic: AnyObject {
     var statisticName: StatisticName { get }
     var statisticUpdateLinks: StatisticUpdateLinkDatabase { get }
-    func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase
 
     /// The original value of the statistic prior to the start of the game
     var statisticOriginalValue: Double { get set }
@@ -32,6 +31,8 @@ protocol Statistic: AnyObject {
     var statisticCurrentValue: Double { get }
 
     func update(for eventType: TFEventTypeWrapper)
+    func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase
+    func getEventLinksOnly() -> [TFEventTypeWrapper]
 
 }
 
@@ -61,6 +62,10 @@ extension Statistic {
         }
 
         updateLink?(self)
+    }
+
+    func getEventLinksOnly() -> [TFEventTypeWrapper] {
+        statisticUpdateLinks.getAllEventTypes()
     }
 
 }

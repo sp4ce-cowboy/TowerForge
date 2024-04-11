@@ -52,6 +52,7 @@ class GameEngine: AbstractGameEngine {
         self.systemManager = systemManager
         self.eventManager = EventManager(roomId: roomId, currentPlayer: currentPlayer)
         self.setupTeam()
+        self.setupGame()
     }
 
     init(eventManager: EventManager,
@@ -61,6 +62,7 @@ class GameEngine: AbstractGameEngine {
         self.systemManager = systemManager
         self.eventManager = eventManager
         self.setupTeam()
+        self.setupGame()
     }
 
     func updateGame(deltaTime: TimeInterval) {
@@ -81,6 +83,10 @@ class GameEngine: AbstractGameEngine {
         let oppositeTeam = Team(player: .oppositePlayer)
         entityManager.add(ownTeam)
         entityManager.add(oppositeTeam)
+    }
+
+    private func setupGame() {
+        addEvent(GameStartEvent())
     }
 
     func setUpPlayerInfo(mode: GameMode) {

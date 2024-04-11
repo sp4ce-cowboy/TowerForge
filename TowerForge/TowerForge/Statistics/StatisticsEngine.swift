@@ -8,7 +8,7 @@
 import Foundation
 
 protocol StatisticsUpdateDelegate: AnyObject {
-    func onReceive(_ eventType: TFEventTypeWrapper)
+    func updateOnReceive(_ eventType: TFEventTypeWrapper)
 }
 
 class StatisticsEngine {
@@ -18,7 +18,8 @@ class StatisticsEngine {
         self.eventStatisticLinks = eventStatisticLinks
     }
 
-    func onReceive(_ eventType: TFEventTypeWrapper) {
+    /// Main update
+    func updateStatisticsOnReceive(_ eventType: TFEventTypeWrapper) {
         guard let stats = eventStatisticLinks.getStatisticLinks(for: eventType) else {
             return
         }
@@ -26,6 +27,14 @@ class StatisticsEngine {
         stats.forEach { $0.update(for: eventType) }
     }
 
-    
+    /// Add statistics links
+    func setUp() {
+        self.initializeStatisticsDatabase()
+        eventStatisticLinks.addStatisticLink(for: KillEvent.self, with: KillStatistic())
+    }
+
+    private func initializeStatisticsDatabase() {
+        eventStatisticLinks = StatisticsFactory.getDefaultEventLinkDatabase()
+    }
 
 }
