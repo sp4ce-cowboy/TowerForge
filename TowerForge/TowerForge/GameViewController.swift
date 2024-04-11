@@ -24,7 +24,6 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        AchievementManager.incrementTotalGamesStarted()
         AudioManager.shared.playBackground()
         showGameLevelScene()
 

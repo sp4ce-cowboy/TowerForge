@@ -200,6 +200,8 @@
 		BA82C74A2BC88FE5000515A0 /* StatisticSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7492BC88FE5000515A0 /* StatisticSystem.swift */; };
 		BA82C74E2BC8A024000515A0 /* DeathEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C74D2BC8A024000515A0 /* DeathEvent.swift */; };
 		BA82C7502BC8A20A000515A0 /* TotalDeathsStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C74F2BC8A20A000515A0 /* TotalDeathsStatistic.swift */; };
+		BA82C7532BC8A41B000515A0 /* AchievementsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7522BC8A41B000515A0 /* AchievementsEngine.swift */; };
+		BA82C7552BC8A441000515A0 /* AchievementStatsLinkDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7542BC8A441000515A0 /* AchievementStatsLinkDatabase.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -435,6 +437,8 @@
 		BA82C7492BC88FE5000515A0 /* StatisticSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticSystem.swift; sourceTree = "<group>"; };
 		BA82C74D2BC8A024000515A0 /* DeathEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathEvent.swift; sourceTree = "<group>"; };
 		BA82C74F2BC8A20A000515A0 /* TotalDeathsStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalDeathsStatistic.swift; sourceTree = "<group>"; };
+		BA82C7522BC8A41B000515A0 /* AchievementsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsEngine.swift; sourceTree = "<group>"; };
+		BA82C7542BC8A441000515A0 /* AchievementStatsLinkDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementStatsLinkDatabase.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -914,8 +918,11 @@
 		BA2F5ABC2BC80A2300CBD8E9 /* TFAchievements */ = {
 			isa = PBXGroup;
 			children = (
+				BA82C7512BC8A3CF000515A0 /* Implemented */,
 				BA2F5ABD2BC80A8B00CBD8E9 /* TFAchievement.swift */,
 				BA2F5AC22BC813F200CBD8E9 /* TFAchievementDelegate.swift */,
+				BA82C7522BC8A41B000515A0 /* AchievementsEngine.swift */,
+				BA82C7542BC8A441000515A0 /* AchievementStatsLinkDatabase.swift */,
 			);
 			path = TFAchievements;
 			sourceTree = "<group>";
@@ -982,6 +989,13 @@
 				BA82C7432BC86FFE000515A0 /* GameStartEvent.swift */,
 			);
 			path = WorldEvents;
+			sourceTree = "<group>";
+		};
+		BA82C7512BC8A3CF000515A0 /* Implemented */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Implemented;
 			sourceTree = "<group>";
 		};
 		BAFFB9272BB09E0E00D8301F /* Storyboards */ = {
@@ -1453,6 +1467,7 @@
 				BAFFB9532BB342F100D8301F /* StorageManager.swift in Sources */,
 				52DD8F992BC52F8500D96BAB /* LevelPopupViewController.swift in Sources */,
 				BAFFB9682BB9981700D8301F /* TotalGamesAchievement.swift in Sources */,
+				BA82C7532BC8A41B000515A0 /* AchievementsEngine.swift in Sources */,
 				BAFFB9732BBAC14500D8301F /* AchievementManager.swift in Sources */,
 				3CBECF8E2BBE9EAC005EF39B /* RemoteSpawnEvent.swift in Sources */,
 				3CAC4A752BB6BDD500A5D22E /* HealthRenderStage.swift in Sources */,
@@ -1525,6 +1540,7 @@
 				5299D1322BC31050003EF746 /* AuthenticationManager.swift in Sources */,
 				3C3CBE012BB870950001B8A9 /* CGVector+Extensions.swift in Sources */,
 				5299D13C2BC3670E003EF746 /* LoginViewController.swift in Sources */,
+				BA82C7552BC8A441000515A0 /* AchievementStatsLinkDatabase.swift in Sources */,
 				BA2F5ACD2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift in Sources */,
 				52A794092BBC35F20083C976 /* Constant.swift in Sources */,
 				3C9955C82BA5865C00D33FA5 /* ConcurrentEvent.swift in Sources */,
