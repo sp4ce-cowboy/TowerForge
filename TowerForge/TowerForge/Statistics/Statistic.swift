@@ -25,7 +25,7 @@ extension StatisticTypeWrapper: Hashable {
 
 /// Each Statistic can be identified with a name and it will be linked to a particular
 /// event.
-protocol Statistic {
+protocol Statistic: AnyObject {
     var statisticName: StatisticName { get }
     var statisticUpdateLinks: StatisticUpdateLinkDatabase { get set }
 
@@ -34,8 +34,6 @@ protocol Statistic {
     var statisticAdditionalValue: Double { get set }
     var statisticCurrentValue: Double { get }
 
-    func updateOriginalValue(by amount: Double)
-    func updateAdditionalValue(by amount: Double)
     func update(for eventType: TFEventTypeWrapper)
 
 }
@@ -46,21 +44,26 @@ extension Statistic {
         statisticOriginalValue + statisticOriginalValue
     }
 
-    mutating func updateOriginalValue(by amount: Double) {
+    func updateOriginalValue(by amount: Double) {
         statisticOriginalValue += amount
     }
 
-    mutating func updateAdditionalValue(by amount: Double) {
+    func updateAdditionalValue(by amount: Double) {
         statisticAdditionalValue += amount
     }
 
-    mutating func recalibrateStatistic() {
+    func recalibrateStatistic() {
         statisticOriginalValue += statisticAdditionalValue
         statisticAdditionalValue = .zero
     }
-    
-    mutating func update(for eventType: TFEventTypeWrapper) {
-        guard let
+
+    func update(for eventType: TFEventTypeWrapper) {
+        guard let updateLink = statisticUpdateLinks
+                            .getStatisticUpdateActor(for: eventType) else {
+            return
+        }
+
+        updateLink?(self)
     }
 
 }
