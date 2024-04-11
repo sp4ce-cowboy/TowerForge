@@ -13,11 +13,13 @@ class SpriteComponent: TFComponent {
     var animatableKey: String
     var alpha = 1.0
     var staticOnScreen = false
+    var zPosition: CGFloat
 
-    init(textureNames: [String], size: CGSize, animatableKey: String) {
+    init(textureNames: [String], size: CGSize, animatableKey: String, zPosition: CGFloat = .zero) {
         self.textures = TFTextures(textureNames: textureNames, textureAtlasName: "Sprites")
         self.size = size
         self.animatableKey = animatableKey
+        self.zPosition = zPosition
         super.init()
     }
 }

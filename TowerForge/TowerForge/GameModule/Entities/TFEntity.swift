@@ -9,7 +9,7 @@ import Foundation
 
 class TFEntity: Collidable {
     let id: UUID
-    private(set) var components: [UUID: TFComponent]
+    private(set) var components: [TFComponentTypeWrapper: TFComponent]
 
     init(id: UUID = UUID()) {
         self.id = id
@@ -17,13 +17,8 @@ class TFEntity: Collidable {
     }
 
     func component<T: TFComponent>(ofType type: T.Type) -> T? {
-        for component in components.values {
-            guard let component = component as? T else {
-                continue
-            }
-            return component
-        }
-        return nil
+        let typeWrapper = TFComponentTypeWrapper(type: type)
+        return components[typeWrapper] as? T
     }
 
     func hasComponent<T: TFComponent>(ofType type: T.Type) -> Bool {
@@ -36,7 +31,8 @@ class TFEntity: Collidable {
             return
         }
         component.didAddToEntity(self)
-        components[component.id] = (component)
+        let typeWrapper = TFComponentTypeWrapper(type: type(of: component))
+        components[typeWrapper] = component
     }
 
     func removeComponent<T: TFComponent>(ofType type: T.Type) {
@@ -45,7 +41,8 @@ class TFEntity: Collidable {
             return
         }
         componentToBeRemoved.willRemoveFromEntity()
-        components.removeValue(forKey: componentToBeRemoved.id)
+        let typeWrapper = TFComponentTypeWrapper(type: type)
+        components.removeValue(forKey: typeWrapper)
     }
 
     // To be overriden by sub classes as needed
@@ -79,8 +76,8 @@ class TFEntity: Collidable {
     /// Ensures that the UUID keys of entries in the dictionary match the UUID id of
     /// the associated values
     private func checkRepresentation() -> Bool {
-        for (key, _) in components where key != components[key]?.id {
-                return false
+        for (key, _) in components where type(of: components[key]) == key.type {
+            return false
         }
         return true
     }

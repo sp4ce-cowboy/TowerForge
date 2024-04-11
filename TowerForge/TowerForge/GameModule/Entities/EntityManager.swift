@@ -9,9 +9,11 @@ import Foundation
 
 class EntityManager {
     private var entitiesMap: [UUID: TFEntity]
+    private var componentsMap: [TFComponentTypeWrapper: [UUID: TFEntity]]
 
     init() {
-        entitiesMap = Dictionary()
+        entitiesMap = [:]
+        componentsMap = [:]
     }
 
     var entities: [TFEntity] {
@@ -24,12 +26,32 @@ class EntityManager {
 
     func add(_ entity: TFEntity) {
         entitiesMap[entity.id] = entity
+        for (key, _) in entity.components {
+            if componentsMap[key] == nil {
+                componentsMap[key] = [:]
+            }
+            componentsMap[key]?[entity.id] = entity
+        }
         /// assert(checkRepresentation())
     }
 
     func removeEntity(with id: UUID) {
-        entitiesMap.removeValue(forKey: id)
+        guard let entity = entitiesMap.removeValue(forKey: id) else {
+            return
+        }
+
+        for (key, _) in entity.components {
+            componentsMap[key]?.removeValue(forKey: entity.id)
+        }
         /// assert(checkRepresentation())
+    }
+
+    func entities<T: TFComponent>(with componentType: T.Type) -> [TFEntity] {
+        guard let entityMap = componentsMap[TFComponentTypeWrapper(type: componentType)] else {
+            return []
+        }
+
+        return Array(entityMap.values)
     }
 
     func component<T: TFComponent>(ofType type: T.Type, of entityId: UUID) -> T? {
@@ -42,7 +64,8 @@ class EntityManager {
 
     func components<T: TFComponent>(ofType type: T.Type) -> [T] {
         /// assert(checkRepresentation())
-        entities.compactMap { $0.component(ofType: type) }
+        let typeWrapper = TFComponentTypeWrapper(type: type)
+        return componentsMap[typeWrapper]?.compactMap({ $0.value.component(ofType: type) }) ?? []
     }
 
     /// Ensures that the UUID keys of entries in the dictionary match the UUID id of

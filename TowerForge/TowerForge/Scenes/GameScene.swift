@@ -117,4 +117,17 @@ extension GameScene: TFScene {
     func panCamera(by displacement: CGVector) {
         cameraNode?.move(by: displacement)
     }
+
+    func isStatic(node: TFNode) -> Bool {
+        cameraNode?.contains(node) ?? false
+    }
+
+    func setNode(_ node: TFNode, isStatic: Bool) {
+        guard isStatic != self.isStatic(node: node) else {
+            return
+        }
+
+        remove(node: node)
+        add(node: node, staticOnScreen: isStatic)
+    }
 }

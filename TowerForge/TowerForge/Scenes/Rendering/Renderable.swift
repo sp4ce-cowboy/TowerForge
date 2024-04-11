@@ -9,4 +9,5 @@ import Foundation
 
 protocol Renderable: AnyObject {
     var entitiesToRender: [TFEntity] { get }
+    func entities<T: TFComponent>(with componentType: T.Type) -> [TFEntity]
 }

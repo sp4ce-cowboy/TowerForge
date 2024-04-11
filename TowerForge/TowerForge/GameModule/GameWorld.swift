@@ -35,7 +35,7 @@ class GameWorld {
         powerUpSelectionNode = PowerUpSelectionNode(eventManager: gameEngine.eventManager)
         grid = Grid(screenSize: worldBounds)
         popup = StatePopupNode()
-        renderer = Renderer(target: self, scene: scene)
+        renderer = TFRenderer(target: self, scene: scene)
 
         setUp()
     }
@@ -115,6 +115,10 @@ class GameWorld {
 extension GameWorld: Renderable {
     var entitiesToRender: [TFEntity] {
         gameEngine.entities
+    }
+
+    func entities<T: TFComponent>(with componentType: T.Type) -> [TFEntity] {
+        gameEngine.entities(with: componentType)
     }
 }
 

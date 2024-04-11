@@ -12,7 +12,7 @@ class ArrowTower: BaseTower, PlayerSpawnable {
     static let textureNames = ["LightHouse-1"]
     static let size = CGSize(width: 100, height: 100)
     static let key = "arrowTower"
-    static let maxHealth = 200.0
+    static let maxHealth = 500.0
     static let damage = 10.0
     static var cost = 10
     static let range = 400.0

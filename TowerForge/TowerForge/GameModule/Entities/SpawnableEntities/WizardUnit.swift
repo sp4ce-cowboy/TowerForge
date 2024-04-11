@@ -12,9 +12,9 @@ class WizardUnit: BaseUnit, PlayerSpawnable {
     static let textureNames = ["Wizard-0", "Wizard-1", "Wizard-2"]
     static let size = CGSize(width: 100, height: 100)
     static let key = "shoot"
-    static let maxHealth = 100.0
+    static let maxHealth = 80.0
     static let damage = 10.0
-    static var cost = 5
+    static var cost = 10
     static let attackRate = 1.0
     static let velocity = CGVector(dx: 50.0, dy: 0.0)
     static let range = 400.0

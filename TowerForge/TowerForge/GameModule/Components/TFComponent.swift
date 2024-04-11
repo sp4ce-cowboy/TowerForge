@@ -7,6 +7,20 @@
 
 import Foundation
 
+struct TFComponentTypeWrapper {
+    let type: TFComponent.Type
+}
+
+extension TFComponentTypeWrapper: Hashable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.type == rhs.type
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(type))
+    }
+}
+
 class TFComponent: Identifiable {
     var id = UUID()
     weak var entity: TFEntity?
