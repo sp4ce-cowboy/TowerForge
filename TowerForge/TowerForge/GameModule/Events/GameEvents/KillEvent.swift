@@ -22,9 +22,10 @@ struct KillEvent: TFEvent {
         if let removeSystem = target.system(ofType: RemoveSystem.self) {
             removeSystem.handleRemove(for: entityId)
 
-            if player != .ownPlayer {
-                removeSystem.handleUpdateCount(for: entityId)
-            }
+        }
+
+        if let statsSystem = target.system(ofType: StatisticSystem.self) {
+            statsSystem.broadcast(for: self)
         }
 
         /*if player != .ownPlayer {

@@ -21,7 +21,7 @@ class GameWorld {
     private var renderer: Renderer?
     private let worldBounds: CGRect
     private var popup: StatePopupNode
-
+    private var statisticsEngine = StatisticsEngine()
     unowned var delegate: SceneManagerDelegate?
     unowned var statePopupDelegate: StatePopupDelegate? { didSet { popup.delegate = statePopupDelegate }  }
 
@@ -78,7 +78,7 @@ class GameWorld {
     }
 
     private func setUpGameEngine() {
-        gameEngine.setUpSystems(with: grid)
+        gameEngine.setUpSystems(with: grid, and: statisticsEngine)
         gameEngine.setUpPlayerInfo(mode: gameMode)
     }
 

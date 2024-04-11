@@ -197,6 +197,7 @@
 		BA82C7442BC86FFE000515A0 /* GameStartEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7432BC86FFE000515A0 /* GameStartEvent.swift */; };
 		BA82C7462BC8797F000515A0 /* StatisticsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7452BC8797F000515A0 /* StatisticsDatabase.swift */; };
 		BA82C7482BC87DB9000515A0 /* DefaultStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7472BC87DB9000515A0 /* DefaultStatistic.swift */; };
+		BA82C74A2BC88FE5000515A0 /* StatisticSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7492BC88FE5000515A0 /* StatisticSystem.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -429,6 +430,7 @@
 		BA82C7432BC86FFE000515A0 /* GameStartEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartEvent.swift; sourceTree = "<group>"; };
 		BA82C7452BC8797F000515A0 /* StatisticsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsDatabase.swift; sourceTree = "<group>"; };
 		BA82C7472BC87DB9000515A0 /* DefaultStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStatistic.swift; sourceTree = "<group>"; };
+		BA82C7492BC88FE5000515A0 /* StatisticSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticSystem.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -1095,6 +1097,7 @@
 				3C769A732BA591BD00F454F9 /* SpawnSystem.swift */,
 				3CE951662BAEAB0E008B2785 /* ContactSystem.swift */,
 				527A07832BB3FD9A00CD9D08 /* TimerSystem.swift */,
+				BA82C7492BC88FE5000515A0 /* StatisticSystem.swift */,
 			);
 			path = BaseSystems;
 			sourceTree = "<group>";
@@ -1451,6 +1454,7 @@
 				52578B822BA61AAF00B4D76C /* PositionComponent.swift in Sources */,
 				9BC60BC82BB9BE6D001A6737 /* DisabledEvent.swift in Sources */,
 				52A794022BBC2EB30083C976 /* FirebaseReference.swift in Sources */,
+				BA82C74A2BC88FE5000515A0 /* StatisticSystem.swift in Sources */,
 				3C9955A32BA47DBB00D33FA5 /* BaseUnit.swift in Sources */,
 				523AA3BD2BB88ED10041E60D /* WizardBall.swift in Sources */,
 				BA2F5AC72BC8148C00CBD8E9 /* StatisticEnums.swift in Sources */,

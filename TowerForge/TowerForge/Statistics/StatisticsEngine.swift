@@ -20,8 +20,9 @@ class StatisticsEngine {
         self.eventStatisticLinks = eventStatisticLinks
     }
 
-    /// Main update
-    func updateStatisticsOnReceive(_ eventType: TFEventTypeWrapper) {
+    /// Main update function
+    func updateStatisticsOnReceive<T: TFEvent>(_ event: T) {
+        let eventType = TFEventTypeWrapper(type: T.self)
         guard let stats = eventStatisticLinks.getStatisticLinks(for: eventType) else {
             return
         }
@@ -32,11 +33,11 @@ class StatisticsEngine {
     /// Add statistics links
     func setUp() {
         self.initializeStatisticsDatabase()
-        eventStatisticLinks.addStatisticLink(for: KillEvent.self,
+        /*eventStatisticLinks.addStatisticLink(for: KillEvent.self,
                                              with: statisticsDatabase.getStatistic(for: .totalKills))
 
         eventStatisticLinks.addStatisticLink(for: GameStartEvent.self,
-                                             with: statisticsDatabase.getStatistic(for: .totalGamesPlayed))
+                                             with: statisticsDatabase.getStatistic(for: .totalGamesPlayed))*/
     }
 
     private func initializeStatisticsDatabase() {

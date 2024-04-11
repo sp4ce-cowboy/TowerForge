@@ -19,7 +19,7 @@ protocol AbstractGameEngine: EventTarget {
     var eventManager: EventManager { get }
 
     func updateGame(deltaTime: TimeInterval)
-    func setUpSystems(with grid: Grid)
+    func setUpSystems(with grid: Grid, and statsEngine: StatisticsEngine)
     func setUpPlayerInfo(mode: GameMode)
 
     func addEntity(_ entity: TFEntity)
@@ -97,7 +97,7 @@ class GameEngine: AbstractGameEngine {
         }
     }
 
-    func setUpSystems(with grid: Grid) {
+    func setUpSystems(with grid: Grid, and statsEngine: StatisticsEngine) {
         systemManager.add(system: HealthSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: MovementSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: PositionSystem(entityManager: entityManager, eventManager: eventManager))
@@ -108,6 +108,8 @@ class GameEngine: AbstractGameEngine {
         systemManager.add(system: ContactSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: HomeSystem(entityManager: entityManager, eventManager: eventManager,
                                              gridDelegate: grid))
+        systemManager.add(system: StatisticSystem(entityManager: entityManager,
+                                                  eventManager: eventManager, statsEngine: statsEngine))
 
         // Temporary until we have different gamemodes
         guard eventManager.remoteEventManager == nil else {
