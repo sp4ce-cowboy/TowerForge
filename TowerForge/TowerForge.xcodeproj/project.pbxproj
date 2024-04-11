@@ -183,6 +183,8 @@
 		BA2F5AC52BC8143E00CBD8E9 /* KillStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC42BC8143E00CBD8E9 /* KillStatistic.swift */; };
 		BA2F5AC72BC8148C00CBD8E9 /* StatisticEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC62BC8148C00CBD8E9 /* StatisticEnums.swift */; };
 		BA2F5AC92BC81BDB00CBD8E9 /* StatisticsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */; };
+		BA2F5ACB2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5ACA2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift */; };
+		BA2F5ACD2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5ACC2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift */; };
 		BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */; };
 		BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */; };
 		BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D412BAD9885009F0FFB /* DamageEventTests.swift */; };
@@ -408,6 +410,8 @@
 		BA2F5AC42BC8143E00CBD8E9 /* KillStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KillStatistic.swift; sourceTree = "<group>"; };
 		BA2F5AC62BC8148C00CBD8E9 /* StatisticEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticEnums.swift; sourceTree = "<group>"; };
 		BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsEngine.swift; sourceTree = "<group>"; };
+		BA2F5ACA2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStatisticLinkDatabase.swift; sourceTree = "<group>"; };
+		BA2F5ACC2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticUpdateLinkDatabase.swift; sourceTree = "<group>"; };
 		BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
 		BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		BA443D412BAD9885009F0FFB /* DamageEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEventTests.swift; sourceTree = "<group>"; };
@@ -904,6 +908,8 @@
 				BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */,
 				BA2F5AC42BC8143E00CBD8E9 /* KillStatistic.swift */,
 				BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */,
+				BA2F5ACA2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift */,
+				BA2F5ACC2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift */,
 			);
 			path = Statistics;
 			sourceTree = "<group>";
@@ -1468,6 +1474,7 @@
 				5299D1322BC31050003EF746 /* AuthenticationManager.swift in Sources */,
 				3C3CBE012BB870950001B8A9 /* CGVector+Extensions.swift in Sources */,
 				5299D13C2BC3670E003EF746 /* LoginViewController.swift in Sources */,
+				BA2F5ACD2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift in Sources */,
 				52A794092BBC35F20083C976 /* Constant.swift in Sources */,
 				3C9955C82BA5865C00D33FA5 /* ConcurrentEvent.swift in Sources */,
 				52F268702BB4B319009599AD /* GameModeViewController.swift in Sources */,
@@ -1489,6 +1496,7 @@
 				3C9955B42BA4B12000D33FA5 /* ArrowTower.swift in Sources */,
 				3CE951612BADE881008B2785 /* Spawnable.swift in Sources */,
 				52DF5FE92BA33F9700135367 /* Animatable.swift in Sources */,
+				BA2F5ACB2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift in Sources */,
 				3C9955AF2BA48FD200D33FA5 /* MeleeUnit.swift in Sources */,
 				5240D0AD2BB33D4C004F1486 /* PositionSystem.swift in Sources */,
 				5295A2022BA9FBD9005018A8 /* SceneManagerDelegate.swift in Sources */,
