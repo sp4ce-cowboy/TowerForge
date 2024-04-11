@@ -39,7 +39,6 @@ class GameModeViewController: UIViewController {
     }
 
     @IBAction private func survivalMatchPressed(_ sender: Any) {
-        print("PRESSED?")
         LevelPopupViewController.showDialogBox(parentVC: self)
     }
 

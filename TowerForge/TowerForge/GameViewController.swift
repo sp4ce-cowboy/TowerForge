@@ -16,7 +16,7 @@ class GameViewController: UIViewController {
     var gameRoom: GameRoom?
     var currentPlayer: GamePlayer?
 
-    @IBOutlet var gamePopupButton: UIButton!
+    @IBOutlet private var gamePopupButton: UIButton!
     @IBAction private func onStatePressed(_ sender: Any) {
         isPaused = true
         gameWorld?.presentStatePopup()
@@ -31,6 +31,7 @@ class GameViewController: UIViewController {
         let auth = AuthenticationProvider()
         if auth.isUserLoggedIn() {
             auth.getUserDetails { data, _ in
+                print(data)
                 self.playerData = data
             }
         }
@@ -89,6 +90,7 @@ extension GameViewController: SceneManagerDelegate {
     func showGameOverScene(isWin: Bool, results: [GameResult]) {
         let gameOverScene = GameOverScene(win: isWin, results: results)
         if let data = self.playerData {
+            print(self.playerData)
             for result in results {
                 if let leaderboardResult = result as? LeaderboardResult {
                     let rank = GameRankProvider(type: leaderboardResult.variable)

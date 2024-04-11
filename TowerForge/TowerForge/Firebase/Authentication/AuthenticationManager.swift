@@ -32,7 +32,6 @@ class AuthenticationManager: AuthenticationProtocol {
                let userData = AuthenticationData(userId: user.uid,
                                                  email: email,
                                                  username: user.displayName)
-               print("SOmething listened")
                self?.delegate?.onLogin()
            } else {
                self?.delegate?.onLogout()
@@ -44,23 +43,25 @@ class AuthenticationManager: AuthenticationProtocol {
         guard !email.isEmpty, !password.isEmpty else {
             return
         }
-        Auth.auth().createUser(withEmail: email, password: password) { _, error in
-            if error != nil {
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            if let error = error {
                 onFinish(nil, error)
-            } else {
-                Auth.auth().signIn(withEmail: email, password: password)
-                let user = Auth.auth().currentUser
-                let request = user?.createProfileChangeRequest()
-                request?.displayName = username
-                request?.commitChanges(completion: { err in
-                    if err == nil, let id = user?.uid {
-                        onFinish(AuthenticationData(userId: id,
-                                                    email: email,
-                                                    username: user?.displayName), nil)
-                    } else {
-                        onFinish(nil, err)
-                    }
-                })
+                return
+            }
+
+            guard let user = authResult?.user else {
+                onFinish(nil, NSError(domain: "Authentication", code: 0, userInfo: [NSLocalizedDescriptionKey: "User not found"]))
+                return
+            }
+
+            let request = user.createProfileChangeRequest()
+            request.displayName = username
+            request.commitChanges { err in
+                if let err = err {
+                    onFinish(nil, err)
+                } else {
+                    onFinish(AuthenticationData(userId: user.uid, email: email, username: username), nil)
+                }
             }
         }
 
@@ -101,6 +102,7 @@ class AuthenticationManager: AuthenticationProtocol {
     func getUserData(completion: @escaping (AuthenticationData?, Error?) -> Void) {
         if let currentUser = Auth.auth().currentUser {
             // User is currently logged in, fetch user data
+            print(currentUser)
             let userData = AuthenticationData(userId: currentUser.uid,
                                               email: currentUser.email ?? "",
                                               username: currentUser.displayName)
