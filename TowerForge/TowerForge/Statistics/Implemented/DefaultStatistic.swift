@@ -1,13 +1,15 @@
 //
-//  KillStatistic.swift
+//  DefaultStatistic.swift
 //  TowerForge
 //
-//  Created by Rubesh on 11/4/24.
+//  Created by Rubesh on 12/4/24.
 //
 
 import Foundation
 
-class KillStatistic: Statistic {
+import Foundation
+
+class DefaultStatistic: Statistic {
 
     var statisticName: StatisticName = .totalKills
     var statisticOriginalValue: Double = .zero
@@ -20,7 +22,7 @@ class KillStatistic: Statistic {
     init() { }
 
     func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
-        let eventType = TFEventTypeWrapper(type: KillEvent.self)
+        let eventType = TFEventTypeWrapper(type: DisabledEvent.self)
         let updateActor: StatisticUpdateActor = { statistic in statistic.updateAdditionalValue(by: 1.0) }
         let eventUpdateDictionary = [eventType: updateActor]
         let statsLink = StatisticUpdateLinkDatabase(statisticUpdateLinks: eventUpdateDictionary)

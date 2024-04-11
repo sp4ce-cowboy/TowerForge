@@ -85,6 +85,7 @@ class GameEngine: AbstractGameEngine {
         entityManager.add(oppositeTeam)
     }
 
+    /// Add game start event to trigger the total games statistic
     private func setupGame() {
         addEvent(GameStartEvent())
     }

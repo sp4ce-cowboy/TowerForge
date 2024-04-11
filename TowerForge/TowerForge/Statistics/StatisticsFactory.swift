@@ -17,15 +17,17 @@ class StatisticsFactory {
         KillEvent.self,
         DisabledEvent.self,
         RequestSpawnEvent.self,
-        WaveSpawnEvent.self
+        WaveSpawnEvent.self,
+        GameStartEvent.self
     ]
 
     static let availableStatisticsTypes: [Statistic.Type] = [
-        KillStatistic.self
+        KillStatistic.self,
+        TotalGamesStatistic.self
     ]
 
     static func getDefaultEventLinkDatabase() -> EventStatisticLinkDatabase {
-        var eventStatLinkDatabase = EventStatisticLinkDatabase()
+        let eventStatLinkDatabase = EventStatisticLinkDatabase()
         availableEventTypes.forEach { eventStatLinkDatabase.registerEmptyEventType(for: $0) }
         return eventStatLinkDatabase
     }

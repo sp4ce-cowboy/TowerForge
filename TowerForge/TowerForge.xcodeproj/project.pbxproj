@@ -195,6 +195,8 @@
 		BA82C7402BC8674A000515A0 /* StatisticsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C73F2BC8674A000515A0 /* StatisticsFactory.swift */; };
 		BA82C7422BC86FE1000515A0 /* TotalGamesStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7412BC86FE1000515A0 /* TotalGamesStatistic.swift */; };
 		BA82C7442BC86FFE000515A0 /* GameStartEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7432BC86FFE000515A0 /* GameStartEvent.swift */; };
+		BA82C7462BC8797F000515A0 /* StatisticsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7452BC8797F000515A0 /* StatisticsDatabase.swift */; };
+		BA82C7482BC87DB9000515A0 /* DefaultStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7472BC87DB9000515A0 /* DefaultStatistic.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -425,6 +427,8 @@
 		BA82C73F2BC8674A000515A0 /* StatisticsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsFactory.swift; sourceTree = "<group>"; };
 		BA82C7412BC86FE1000515A0 /* TotalGamesStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalGamesStatistic.swift; sourceTree = "<group>"; };
 		BA82C7432BC86FFE000515A0 /* GameStartEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartEvent.swift; sourceTree = "<group>"; };
+		BA82C7452BC8797F000515A0 /* StatisticsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsDatabase.swift; sourceTree = "<group>"; };
+		BA82C7472BC87DB9000515A0 /* DefaultStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStatistic.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -912,9 +916,9 @@
 			isa = PBXGroup;
 			children = (
 				BA82C73E2BC85D90000515A0 /* Implemented */,
-				BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */,
 				BA82C73F2BC8674A000515A0 /* StatisticsFactory.swift */,
 				BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */,
+				BA82C7452BC8797F000515A0 /* StatisticsDatabase.swift */,
 				BA2F5ACA2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift */,
 				BA2F5ACC2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift */,
 			);
@@ -947,8 +951,10 @@
 		BA82C73E2BC85D90000515A0 /* Implemented */ = {
 			isa = PBXGroup;
 			children = (
+				BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */,
 				BA2F5AC42BC8143E00CBD8E9 /* KillStatistic.swift */,
 				BA82C7412BC86FE1000515A0 /* TotalGamesStatistic.swift */,
+				BA82C7472BC87DB9000515A0 /* DefaultStatistic.swift */,
 			);
 			path = Implemented;
 			sourceTree = "<group>";
@@ -1503,6 +1509,7 @@
 				BA2F5AC32BC813F200CBD8E9 /* TFAchievementDelegate.swift in Sources */,
 				BAFFB9852BBDBA7D00D8301F /* MediaEnums.swift in Sources */,
 				527A07842BB3FD9A00CD9D08 /* TimerSystem.swift in Sources */,
+				BA82C7462BC8797F000515A0 /* StatisticsDatabase.swift in Sources */,
 				3C3CBDF72BB81D970001B8A9 /* TFCameraNode.swift in Sources */,
 				3CE951562BACA0CF008B2785 /* Collidable.swift in Sources */,
 				BA82C7422BC86FE1000515A0 /* TotalGamesStatistic.swift in Sources */,
@@ -1534,6 +1541,7 @@
 				BAFFB9662BB98ADC00D8301F /* AchievementStorage.swift in Sources */,
 				3C769A722BA58DE700F454F9 /* MovementSystem.swift in Sources */,
 				52A794062BBC32A10083C976 /* FirebaseRepositoryProtocol.swift in Sources */,
+				BA82C7482BC87DB9000515A0 /* DefaultStatistic.swift in Sources */,
 				BA82C7442BC86FFE000515A0 /* GameStartEvent.swift in Sources */,
 				9B0406102BB879990026E903 /* InvulnerabilityPowerUp.swift in Sources */,
 				5299D1412BC3AA3A003EF746 /* GameRankData.swift in Sources */,

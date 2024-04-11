@@ -12,6 +12,8 @@ protocol StatisticsUpdateDelegate: AnyObject {
 }
 
 class StatisticsEngine {
+    /// Core storage of Statistics
+    var statisticsDatabase = StatisticsDatabase()
     var eventStatisticLinks = EventStatisticLinkDatabase()
 
     init(eventStatisticLinks: EventStatisticLinkDatabase = EventStatisticLinkDatabase()) {
@@ -30,11 +32,23 @@ class StatisticsEngine {
     /// Add statistics links
     func setUp() {
         self.initializeStatisticsDatabase()
-        eventStatisticLinks.addStatisticLink(for: KillEvent.self, with: KillStatistic())
+        eventStatisticLinks.addStatisticLink(for: KillEvent.self,
+                                             with: statisticsDatabase.getStatistic(for: .totalKills))
+        
+        eventStatisticLinks.addStatisticLink(for: GameStartEvent.self,
+                                             with: statisticsDatabase.getStatistic(for: .totalGamesPlayed))
     }
 
     private func initializeStatisticsDatabase() {
         eventStatisticLinks = StatisticsFactory.getDefaultEventLinkDatabase()
+    }
+
+    private func saveStatistics() {
+
+    }
+
+    private func loadStatistics() {
+
     }
 
 }

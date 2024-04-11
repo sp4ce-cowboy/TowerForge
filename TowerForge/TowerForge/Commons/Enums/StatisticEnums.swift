@@ -11,6 +11,7 @@ typealias StatisticName = StatisticEnums.StatisticName
 class StatisticEnums {
 
     enum StatisticName: String, Codable, CaseIterable {
+        case defaultStatistic
         case totalKills
         case totalGamesPlayed
     }
