@@ -34,7 +34,7 @@ class StatisticsEngine {
         self.initializeStatisticsDatabase()
         eventStatisticLinks.addStatisticLink(for: KillEvent.self,
                                              with: statisticsDatabase.getStatistic(for: .totalKills))
-        
+
         eventStatisticLinks.addStatisticLink(for: GameStartEvent.self,
                                              with: statisticsDatabase.getStatistic(for: .totalGamesPlayed))
     }

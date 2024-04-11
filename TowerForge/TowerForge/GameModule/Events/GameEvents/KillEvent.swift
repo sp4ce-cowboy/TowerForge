@@ -21,15 +21,15 @@ struct KillEvent: TFEvent {
     func execute(in target: any EventTarget) -> EventOutput {
         if let removeSystem = target.system(ofType: RemoveSystem.self) {
             removeSystem.handleRemove(for: entityId)
+
+            if player != .ownPlayer {
+                removeSystem.handleUpdateCount(for: entityId)
+            }
         }
 
         /*if player != .ownPlayer {
             AchievementManager.incrementTotalKillCount()
         }*/
-        
-        if player != .ownPlayer {
-            removeSystem.handleUpdateCount(for: entityId)
-        }
 
         if let homeSystem = target.system(ofType: HomeSystem.self) {
             homeSystem.changeDeathCount(for: player.getOppositePlayer(), change: 1)

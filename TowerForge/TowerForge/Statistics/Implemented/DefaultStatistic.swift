@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 class DefaultStatistic: Statistic {
 
     var statisticName: StatisticName = .totalKills

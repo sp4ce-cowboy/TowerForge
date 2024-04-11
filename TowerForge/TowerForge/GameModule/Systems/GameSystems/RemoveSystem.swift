@@ -15,8 +15,8 @@ class RemoveSystem: TFSystem {
     func handleRemove(for entityId: UUID) {
         entityManager.removeEntity(with: entityId)
     }
-    
+
     func handleUpdateCount(for entityId: UUID) {
-        
+
     }
 }
