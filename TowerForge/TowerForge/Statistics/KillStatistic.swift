@@ -10,23 +10,29 @@ import Foundation
 class KillStatistic: Statistic {
 
     var statisticName: StatisticName = .totalKills
-
-    var statisticUpdateLinks: StatisticUpdateLinkDatabase = StatisticUpdateLinkFactory.getKillStatisticLinks()
     var statisticOriginalValue: Double = .zero
     var statisticAdditionalValue: Double = .zero
 
+    var statisticUpdateLinks: StatisticUpdateLinkDatabase {
+        self.getStatisticUpdateLinks()
+    }
+
     init(statisticName: StatisticName,
-         statisticUpdateLinks: StatisticUpdateLinkDatabase,
          statisticOriginalValue: Double,
          statisticAdditionalValue: Double) {
         self.statisticName = statisticName
-        self.statisticUpdateLinks = statisticUpdateLinks
         self.statisticOriginalValue = statisticOriginalValue
         self.statisticAdditionalValue = statisticAdditionalValue
     }
 
-    func update(for eventType: TFEventTypeWrapper) {
 
+    func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
+        let eventType = TFEventTypeWrapper(type: KillEvent.self)
+        let updateActor: StatisticUpdateActor = { statistic in statistic.updateAdditionalValue(by: 1.0) }
+        let eventUpdateDictionary = [eventType: updateActor]
+        let statsLink = StatisticUpdateLinkDatabase(statisticUpdateLinks: eventUpdateDictionary)
+
+        return statsLink
     }
 
 }

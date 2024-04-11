@@ -27,7 +27,8 @@ extension StatisticTypeWrapper: Hashable {
 /// event.
 protocol Statistic: AnyObject {
     var statisticName: StatisticName { get }
-    var statisticUpdateLinks: StatisticUpdateLinkDatabase { get set }
+    var statisticUpdateLinks: StatisticUpdateLinkDatabase { get }
+    func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase
 
     /// The original value of the statistic prior to the start of the game
     var statisticOriginalValue: Double { get set }
