@@ -177,6 +177,8 @@
 		9B8696552BAD759F0002377C /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8696542BAD759F0002377C /* Grid.swift */; };
 		9BC60BC82BB9BE6D001A6737 /* DisabledEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC60BC72BB9BE6D001A6737 /* DisabledEvent.swift */; };
 		9BD669682BAFDE5E00DC8C4C /* GridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD669672BAFDE5E00DC8C4C /* GridDelegate.swift */; };
+		BA2F5ABE2BC80A8B00CBD8E9 /* TFAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5ABD2BC80A8B00CBD8E9 /* TFAchievement.swift */; };
+		BA2F5AC12BC80BE500CBD8E9 /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */; };
 		BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */; };
 		BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */; };
 		BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D412BAD9885009F0FFB /* DamageEventTests.swift */; };
@@ -396,6 +398,8 @@
 		9B8696542BAD759F0002377C /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		9BC60BC72BB9BE6D001A6737 /* DisabledEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledEvent.swift; sourceTree = "<group>"; };
 		9BD669672BAFDE5E00DC8C4C /* GridDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridDelegate.swift; sourceTree = "<group>"; };
+		BA2F5ABD2BC80A8B00CBD8E9 /* TFAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFAchievement.swift; sourceTree = "<group>"; };
+		BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
 		BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
 		BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		BA443D412BAD9885009F0FFB /* DamageEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEventTests.swift; sourceTree = "<group>"; };
@@ -791,6 +795,8 @@
 				BAFFB9332BB0A24400D8301F /* GameModule */,
 				BAFFB9512BB342E200D8301F /* Storage */,
 				BAFFB95E2BB9826800D8301F /* Achievements */,
+				BA2F5ABF2BC80BD200CBD8E9 /* Statistics */,
+				BA2F5ABC2BC80A2300CBD8E9 /* TFAchievements */,
 			);
 			path = TowerForge;
 			sourceTree = "<group>";
@@ -873,6 +879,22 @@
 				9BD669672BAFDE5E00DC8C4C /* GridDelegate.swift */,
 			);
 			path = Grid;
+			sourceTree = "<group>";
+		};
+		BA2F5ABC2BC80A2300CBD8E9 /* TFAchievements */ = {
+			isa = PBXGroup;
+			children = (
+				BA2F5ABD2BC80A8B00CBD8E9 /* TFAchievement.swift */,
+			);
+			path = TFAchievements;
+			sourceTree = "<group>";
+		};
+		BA2F5ABF2BC80BD200CBD8E9 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */,
+			);
+			path = Statistics;
 			sourceTree = "<group>";
 		};
 		BA443D402BAD9872009F0FFB /* EventTests */ = {
@@ -1149,7 +1171,6 @@
 			isa = PBXGroup;
 			children = (
 				BAFFB96F2BBA7F0100D8301F /* Implemented */,
-				BAFFB95F2BB9828B00D8301F /* Achievement.swift */,
 				BAFFB9652BB98ADC00D8301F /* AchievementStorage.swift */,
 				BAFFB9722BBAC14500D8301F /* AchievementManager.swift */,
 			);
@@ -1159,6 +1180,7 @@
 		BAFFB96F2BBA7F0100D8301F /* Implemented */ = {
 			isa = PBXGroup;
 			children = (
+				BAFFB95F2BB9828B00D8301F /* Achievement.swift */,
 				BAFFB9562BB3449D00D8301F /* TotalKillsAchievement.swift */,
 				BAFFB9672BB9981700D8301F /* TotalGamesAchievement.swift */,
 			);
@@ -1349,6 +1371,7 @@
 				BAFFB9592BB345CF00D8301F /* Storage.swift in Sources */,
 				3CAC4A692BB697A400A5D22E /* SpriteRenderStage.swift in Sources */,
 				523C29302BBD0916004C6EAC /* GameWaitingRoomViewController.swift in Sources */,
+				BA2F5AC12BC80BE500CBD8E9 /* Statistic.swift in Sources */,
 				3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */,
 				5299D1432BC3AB38003EF746 /* GameRankProvider.swift in Sources */,
 				5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */,
@@ -1443,6 +1466,7 @@
 				527A07842BB3FD9A00CD9D08 /* TimerSystem.swift in Sources */,
 				3C3CBDF72BB81D970001B8A9 /* TFCameraNode.swift in Sources */,
 				3CE951562BACA0CF008B2785 /* Collidable.swift in Sources */,
+				BA2F5ABE2BC80A8B00CBD8E9 /* TFAchievement.swift in Sources */,
 				3CBECF8C2BBE9A41005EF39B /* TFRemoteEvent.swift in Sources */,
 				5240D0A92BB333B5004F1486 /* PointProp.swift in Sources */,
 				52DF5FE62BA33AF300135367 /* TFSpriteNode.swift in Sources */,
