@@ -22,13 +22,13 @@ class StatisticsDatabase {
         ]
     }
 
-    func getStatistic(for statName: StatisticName) -> Statistic? {
-        statistics[statName]
+    func getStatistic(for statName: StatisticName) -> Statistic {
+        statistics[statName] ?? DefaultStatistic()
     }
 
+    /// TODO: Maybe can change this to firebase repository?
     func load() {
         let databaseReference = FirebaseDatabaseReference(.Statistics)
-
         databaseReference.child("statistics").getData(completion: { error, snapshot in
             guard error == nil else {
                 Logger.log(error!.localizedDescription)
@@ -62,7 +62,6 @@ class StatisticsDatabase {
 
     func save() {
         let databaseReference = FirebaseDatabaseReference(.Statistics)
-
         var statisticsDictionary = [String: Any]()
 
         for (name, statistic) in statistics {

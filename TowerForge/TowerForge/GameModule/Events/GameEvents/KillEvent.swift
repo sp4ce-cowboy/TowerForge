@@ -25,7 +25,9 @@ struct KillEvent: TFEvent {
         }
 
         if let statsSystem = target.system(ofType: StatisticSystem.self) {
-            statsSystem.broadcast(for: self)
+            if player != .ownPlayer {
+                statsSystem.broadcast(for: self)
+            }
         }
 
         /*if player != .ownPlayer {

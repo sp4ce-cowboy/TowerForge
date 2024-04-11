@@ -51,6 +51,7 @@ extension Statistic {
         }
 
         updateLink?(self)
+        Logger.log("Value update for eventType \(eventType)", self)
     }
 
     func getEventLinksOnly() -> [TFEventTypeWrapper] {
