@@ -179,6 +179,10 @@
 		9BD669682BAFDE5E00DC8C4C /* GridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD669672BAFDE5E00DC8C4C /* GridDelegate.swift */; };
 		BA2F5ABE2BC80A8B00CBD8E9 /* TFAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5ABD2BC80A8B00CBD8E9 /* TFAchievement.swift */; };
 		BA2F5AC12BC80BE500CBD8E9 /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */; };
+		BA2F5AC32BC813F200CBD8E9 /* TFAchievementDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC22BC813F200CBD8E9 /* TFAchievementDelegate.swift */; };
+		BA2F5AC52BC8143E00CBD8E9 /* KillStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC42BC8143E00CBD8E9 /* KillStatistic.swift */; };
+		BA2F5AC72BC8148C00CBD8E9 /* StatisticEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC62BC8148C00CBD8E9 /* StatisticEnums.swift */; };
+		BA2F5AC92BC81BDB00CBD8E9 /* StatisticsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */; };
 		BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */; };
 		BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */; };
 		BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D412BAD9885009F0FFB /* DamageEventTests.swift */; };
@@ -400,6 +404,10 @@
 		9BD669672BAFDE5E00DC8C4C /* GridDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridDelegate.swift; sourceTree = "<group>"; };
 		BA2F5ABD2BC80A8B00CBD8E9 /* TFAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFAchievement.swift; sourceTree = "<group>"; };
 		BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
+		BA2F5AC22BC813F200CBD8E9 /* TFAchievementDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFAchievementDelegate.swift; sourceTree = "<group>"; };
+		BA2F5AC42BC8143E00CBD8E9 /* KillStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KillStatistic.swift; sourceTree = "<group>"; };
+		BA2F5AC62BC8148C00CBD8E9 /* StatisticEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticEnums.swift; sourceTree = "<group>"; };
+		BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsEngine.swift; sourceTree = "<group>"; };
 		BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
 		BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		BA443D412BAD9885009F0FFB /* DamageEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEventTests.swift; sourceTree = "<group>"; };
@@ -885,6 +893,7 @@
 			isa = PBXGroup;
 			children = (
 				BA2F5ABD2BC80A8B00CBD8E9 /* TFAchievement.swift */,
+				BA2F5AC22BC813F200CBD8E9 /* TFAchievementDelegate.swift */,
 			);
 			path = TFAchievements;
 			sourceTree = "<group>";
@@ -893,6 +902,8 @@
 			isa = PBXGroup;
 			children = (
 				BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */,
+				BA2F5AC42BC8143E00CBD8E9 /* KillStatistic.swift */,
+				BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */,
 			);
 			path = Statistics;
 			sourceTree = "<group>";
@@ -1097,6 +1108,7 @@
 			children = (
 				BAFFB95C2BB978E500D8301F /* StorageEnums.swift */,
 				BAFFB9842BBDBA7D00D8301F /* MediaEnums.swift */,
+				BA2F5AC62BC8148C00CBD8E9 /* StatisticEnums.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1411,6 +1423,7 @@
 				52A794022BBC2EB30083C976 /* FirebaseReference.swift in Sources */,
 				3C9955A32BA47DBB00D33FA5 /* BaseUnit.swift in Sources */,
 				523AA3BD2BB88ED10041E60D /* WizardBall.swift in Sources */,
+				BA2F5AC72BC8148C00CBD8E9 /* StatisticEnums.swift in Sources */,
 				527A07782BB3F31100CD9D08 /* Death.swift in Sources */,
 				3C9955BA2BA5637200D33FA5 /* DamageEvent.swift in Sources */,
 				3CD37AA52BBEC10700222D8A /* FirebaseRemoteEventSubscriber.swift in Sources */,
@@ -1462,6 +1475,7 @@
 				3C9955AD2BA483B100D33FA5 /* TFSystem.swift in Sources */,
 				3CAC4A672BB6975200A5D22E /* RenderStage.swift in Sources */,
 				3C9955BE2BA57E4B00D33FA5 /* EventManager.swift in Sources */,
+				BA2F5AC32BC813F200CBD8E9 /* TFAchievementDelegate.swift in Sources */,
 				BAFFB9852BBDBA7D00D8301F /* MediaEnums.swift in Sources */,
 				527A07842BB3FD9A00CD9D08 /* TimerSystem.swift in Sources */,
 				3C3CBDF72BB81D970001B8A9 /* TFCameraNode.swift in Sources */,
@@ -1471,6 +1485,7 @@
 				5240D0A92BB333B5004F1486 /* PointProp.swift in Sources */,
 				52DF5FE62BA33AF300135367 /* TFSpriteNode.swift in Sources */,
 				BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */,
+				BA2F5AC92BC81BDB00CBD8E9 /* StatisticsEngine.swift in Sources */,
 				3C9955B42BA4B12000D33FA5 /* ArrowTower.swift in Sources */,
 				3CE951612BADE881008B2785 /* Spawnable.swift in Sources */,
 				52DF5FE92BA33F9700135367 /* Animatable.swift in Sources */,
@@ -1508,6 +1523,7 @@
 				520062562BA8E026000DBA30 /* PlayerSpawnable.swift in Sources */,
 				9B0406142BB89BE00026E903 /* PowerUpSelectionNode.swift in Sources */,
 				5240D0A22BB33183004F1486 /* DeathMatchMode.swift in Sources */,
+				BA2F5AC52BC8143E00CBD8E9 /* KillStatistic.swift in Sources */,
 				3CAC4A6F2BB6A4F200A5D22E /* LabelRenderStage.swift in Sources */,
 				3CD37A9F2BBEBFFB00222D8A /* TFRemoteEventPublisher.swift in Sources */,
 				3C0B608D2BB2B84000FFECB4 /* ContactComponent.swift in Sources */,

@@ -22,4 +22,5 @@ protocol AuthenticationProtocol {
                       password: String,
                       onFinish: @escaping (AuthenticationData?, Error?) -> Void)
     func getUserData(completion: @escaping (AuthenticationData?, Error?) -> Void)
+    func getCurrentUserAuthData() -> AuthenticationData?
 }

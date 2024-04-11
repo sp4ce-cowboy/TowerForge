@@ -112,5 +112,15 @@ class AuthenticationManager: AuthenticationProtocol {
             completion(nil, error)
         }
     }
+    
+    func getCurrentUserAuthData() -> AuthenticationData? {
+        guard let user = Auth.auth().currentUser else {
+            return nil
+        }
+
+        return AuthenticationData(userId: user.uid,
+                                  email: user.email ?? "defaultEmail@gmail.com",
+                                  username: user.displayName)
+    }
 
 }
