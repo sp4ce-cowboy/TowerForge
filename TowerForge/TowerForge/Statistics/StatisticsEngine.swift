@@ -7,21 +7,25 @@
 
 import Foundation
 
-protocol StatisticsUpdateDelegate {
+protocol StatisticsUpdateDelegate: AnyObject {
     func onReceive(_ eventType: TFEventTypeWrapper)
 }
 
-class StatisticsEngine: StatisticsUpdateDelegate {
+class StatisticsEngine {
     var eventStatisticLinks = EventStatisticLinkDatabase()
 
+    init(eventStatisticLinks: EventStatisticLinkDatabase = EventStatisticLinkDatabase()) {
+        self.eventStatisticLinks = eventStatisticLinks
+    }
+
     func onReceive(_ eventType: TFEventTypeWrapper) {
-        guard let stats = eventStatisticLinks
-                                .getStatisticLinks(for: eventType) else {
+        guard let stats = eventStatisticLinks.getStatisticLinks(for: eventType) else {
             return
         }
 
-        for stat in stats {
-            stat.update(for: eventType)
-        }
+        stats.forEach { $0.update(for: eventType) }
     }
+
+    
+
 }

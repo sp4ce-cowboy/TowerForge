@@ -29,12 +29,8 @@ class EventStatisticLinkDatabase {
         eventLinks[wrappedEvent]?.append(statistic)
     }
 
-    func getStatisticLinks<T: TFEvent>(for eventType: T.Type) -> [Statistic]? {
-        let wrappedEvent = TFEventTypeWrapper(type: eventType)
-        return eventLinks[wrappedEvent]
-    }
-
     func getStatisticLinks(for eventType: TFEventTypeWrapper) -> [Statistic]? {
         eventLinks[eventType]
     }
+    
 }

@@ -7,17 +7,13 @@
 
 import Foundation
 
-struct StatisticTypeWrapper {
+struct StatisticTypeWrapper: Equatable, Hashable {
     let type: Statistic.Type
-}
 
-extension StatisticTypeWrapper: Equatable {
     static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.type == rhs.type
     }
-}
 
-extension StatisticTypeWrapper: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(ObjectIdentifier(type))
     }

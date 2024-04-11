@@ -25,7 +25,6 @@ class KillStatistic: Statistic {
         self.statisticAdditionalValue = statisticAdditionalValue
     }
 
-
     func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
         let eventType = TFEventTypeWrapper(type: KillEvent.self)
         let updateActor: StatisticUpdateActor = { statistic in statistic.updateAdditionalValue(by: 1.0) }
