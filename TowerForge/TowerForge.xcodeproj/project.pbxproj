@@ -180,7 +180,7 @@
 		BA2F5ABE2BC80A8B00CBD8E9 /* TFAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5ABD2BC80A8B00CBD8E9 /* TFAchievement.swift */; };
 		BA2F5AC12BC80BE500CBD8E9 /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */; };
 		BA2F5AC32BC813F200CBD8E9 /* TFAchievementDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC22BC813F200CBD8E9 /* TFAchievementDelegate.swift */; };
-		BA2F5AC52BC8143E00CBD8E9 /* KillStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC42BC8143E00CBD8E9 /* KillStatistic.swift */; };
+		BA2F5AC52BC8143E00CBD8E9 /* TotalKillsStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC42BC8143E00CBD8E9 /* TotalKillsStatistic.swift */; };
 		BA2F5AC72BC8148C00CBD8E9 /* StatisticEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC62BC8148C00CBD8E9 /* StatisticEnums.swift */; };
 		BA2F5AC92BC81BDB00CBD8E9 /* StatisticsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */; };
 		BA2F5ACB2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5ACA2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift */; };
@@ -198,6 +198,8 @@
 		BA82C7462BC8797F000515A0 /* StatisticsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7452BC8797F000515A0 /* StatisticsDatabase.swift */; };
 		BA82C7482BC87DB9000515A0 /* DefaultStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7472BC87DB9000515A0 /* DefaultStatistic.swift */; };
 		BA82C74A2BC88FE5000515A0 /* StatisticSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7492BC88FE5000515A0 /* StatisticSystem.swift */; };
+		BA82C74E2BC8A024000515A0 /* DeathEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C74D2BC8A024000515A0 /* DeathEvent.swift */; };
+		BA82C7502BC8A20A000515A0 /* TotalDeathsStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C74F2BC8A20A000515A0 /* TotalDeathsStatistic.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -413,7 +415,7 @@
 		BA2F5ABD2BC80A8B00CBD8E9 /* TFAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFAchievement.swift; sourceTree = "<group>"; };
 		BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
 		BA2F5AC22BC813F200CBD8E9 /* TFAchievementDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFAchievementDelegate.swift; sourceTree = "<group>"; };
-		BA2F5AC42BC8143E00CBD8E9 /* KillStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KillStatistic.swift; sourceTree = "<group>"; };
+		BA2F5AC42BC8143E00CBD8E9 /* TotalKillsStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalKillsStatistic.swift; sourceTree = "<group>"; };
 		BA2F5AC62BC8148C00CBD8E9 /* StatisticEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticEnums.swift; sourceTree = "<group>"; };
 		BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsEngine.swift; sourceTree = "<group>"; };
 		BA2F5ACA2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStatisticLinkDatabase.swift; sourceTree = "<group>"; };
@@ -431,6 +433,8 @@
 		BA82C7452BC8797F000515A0 /* StatisticsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsDatabase.swift; sourceTree = "<group>"; };
 		BA82C7472BC87DB9000515A0 /* DefaultStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStatistic.swift; sourceTree = "<group>"; };
 		BA82C7492BC88FE5000515A0 /* StatisticSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticSystem.swift; sourceTree = "<group>"; };
+		BA82C74D2BC8A024000515A0 /* DeathEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathEvent.swift; sourceTree = "<group>"; };
+		BA82C74F2BC8A20A000515A0 /* TotalDeathsStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalDeathsStatistic.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -514,6 +518,8 @@
 				9B04060C2BB875740026E903 /* EventTransformation.swift */,
 				BAFFB93C2BB0A5B200D8301F /* GameEvents */,
 				BAFFB93B2BB0A5AD00D8301F /* PlayerEvents */,
+				BA82C74C2BC8A000000515A0 /* WorldEvents */,
+				BA82C74B2BC89FDC000515A0 /* StatsEvents */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -954,11 +960,28 @@
 			isa = PBXGroup;
 			children = (
 				BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */,
-				BA2F5AC42BC8143E00CBD8E9 /* KillStatistic.swift */,
-				BA82C7412BC86FE1000515A0 /* TotalGamesStatistic.swift */,
 				BA82C7472BC87DB9000515A0 /* DefaultStatistic.swift */,
+				BA2F5AC42BC8143E00CBD8E9 /* TotalKillsStatistic.swift */,
+				BA82C7412BC86FE1000515A0 /* TotalGamesStatistic.swift */,
+				BA82C74F2BC8A20A000515A0 /* TotalDeathsStatistic.swift */,
 			);
 			path = Implemented;
+			sourceTree = "<group>";
+		};
+		BA82C74B2BC89FDC000515A0 /* StatsEvents */ = {
+			isa = PBXGroup;
+			children = (
+				BA82C74D2BC8A024000515A0 /* DeathEvent.swift */,
+			);
+			path = StatsEvents;
+			sourceTree = "<group>";
+		};
+		BA82C74C2BC8A000000515A0 /* WorldEvents */ = {
+			isa = PBXGroup;
+			children = (
+				BA82C7432BC86FFE000515A0 /* GameStartEvent.swift */,
+			);
+			path = WorldEvents;
 			sourceTree = "<group>";
 		};
 		BAFFB9272BB09E0E00D8301F /* Storyboards */ = {
@@ -1121,7 +1144,6 @@
 				5240D0AE2BB3B415004F1486 /* LifeEvent.swift */,
 				527A077B2BB3F4CC00CD9D08 /* KillEvent.swift */,
 				9BC60BC72BB9BE6D001A6737 /* DisabledEvent.swift */,
-				BA82C7432BC86FFE000515A0 /* GameStartEvent.swift */,
 			);
 			path = GameEvents;
 			sourceTree = "<group>";
@@ -1413,6 +1435,7 @@
 				9B0406122BB889940026E903 /* PowerUpNode.swift in Sources */,
 				3CCF9CAF2BAB1A96004D170E /* SceneUpdateDelegate.swift in Sources */,
 				BAFFB9592BB345CF00D8301F /* Storage.swift in Sources */,
+				BA82C74E2BC8A024000515A0 /* DeathEvent.swift in Sources */,
 				BA82C7402BC8674A000515A0 /* StatisticsFactory.swift in Sources */,
 				3CAC4A692BB697A400A5D22E /* SpriteRenderStage.swift in Sources */,
 				523C29302BBD0916004C6EAC /* GameWaitingRoomViewController.swift in Sources */,
@@ -1506,6 +1529,7 @@
 				52A794092BBC35F20083C976 /* Constant.swift in Sources */,
 				3C9955C82BA5865C00D33FA5 /* ConcurrentEvent.swift in Sources */,
 				52F268702BB4B319009599AD /* GameModeViewController.swift in Sources */,
+				BA82C7502BC8A20A000515A0 /* TotalDeathsStatistic.swift in Sources */,
 				527A07762BB3E4CF00CD9D08 /* GameState.swift in Sources */,
 				3C9955AD2BA483B100D33FA5 /* TFSystem.swift in Sources */,
 				3CAC4A672BB6975200A5D22E /* RenderStage.swift in Sources */,
@@ -1563,7 +1587,7 @@
 				520062562BA8E026000DBA30 /* PlayerSpawnable.swift in Sources */,
 				9B0406142BB89BE00026E903 /* PowerUpSelectionNode.swift in Sources */,
 				5240D0A22BB33183004F1486 /* DeathMatchMode.swift in Sources */,
-				BA2F5AC52BC8143E00CBD8E9 /* KillStatistic.swift in Sources */,
+				BA2F5AC52BC8143E00CBD8E9 /* TotalKillsStatistic.swift in Sources */,
 				3CAC4A6F2BB6A4F200A5D22E /* LabelRenderStage.swift in Sources */,
 				3CD37A9F2BBEBFFB00222D8A /* TFRemoteEventPublisher.swift in Sources */,
 				3C0B608D2BB2B84000FFECB4 /* ContactComponent.swift in Sources */,

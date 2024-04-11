@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class KillStatistic: Statistic {
+final class TotalKillsStatistic: Statistic {
 
     var statisticName: StatisticName = .totalKills
     var statisticValue: Double = .zero

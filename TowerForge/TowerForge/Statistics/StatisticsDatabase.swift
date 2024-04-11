@@ -17,9 +17,22 @@ class StatisticsDatabase {
 
     private var defaultStatisticDecoder: [StatisticName: (JSONDecoder, Data) throws -> Statistic] {
         [
-            .totalKills: { decoder, data in try decoder.decode(KillStatistic.self, from: data) },
-            .totalGamesPlayed: { decoder, data in try decoder.decode(TotalGamesStatistic.self, from: data) }
+            .totalKills: { decoder, data in try decoder.decode(TotalKillsStatistic.self, from: data) },
+            .totalGamesPlayed: { decoder, data in try decoder.decode(TotalGamesStatistic.self, from: data) },
+            .totalDeaths: { decoder, data in try decoder.decode(TotalDeathsStatistic.self, from: data) }
         ]
+    }
+
+    private var defaultStatisticGenerator: [StatisticName: () -> Statistic] {
+        [
+            .totalKills: { TotalKillsStatistic() },
+            .totalGamesPlayed: { TotalGamesStatistic() },
+            .totalDeaths: { TotalDeathsStatistic() }
+        ]
+    }
+
+    func addStatistic(for statName: StatisticName) {
+        statistics[statName] = defaultStatisticGenerator[statName]?()
     }
 
     func getStatistic(for statName: StatisticName) -> Statistic {

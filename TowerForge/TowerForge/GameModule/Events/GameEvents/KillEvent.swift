@@ -27,12 +27,10 @@ struct KillEvent: TFEvent {
         if let statsSystem = target.system(ofType: StatisticSystem.self) {
             if player != .ownPlayer {
                 statsSystem.broadcast(for: self)
+            } else {
+                statsSystem.broadcast(for: DeathEvent(entityId))
             }
         }
-
-        /*if player != .ownPlayer {
-            AchievementManager.incrementTotalKillCount()
-        }*/
 
         if let homeSystem = target.system(ofType: HomeSystem.self) {
             homeSystem.changeDeathCount(for: player.getOppositePlayer(), change: 1)

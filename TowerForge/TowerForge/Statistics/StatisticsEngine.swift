@@ -18,6 +18,7 @@ class StatisticsEngine {
 
     init(eventStatisticLinks: EventStatisticLinkDatabase = EventStatisticLinkDatabase()) {
         self.eventStatisticLinks = eventStatisticLinks
+        self.setUp()
     }
 
     /// Main update function
@@ -28,27 +29,35 @@ class StatisticsEngine {
         }
 
         stats.forEach { $0.update(for: eventType) }
+        Logger.log("\(self.statisticsDatabase)")
+        saveStatistics()
     }
 
     /// Add statistics links
     func setUp() {
-        self.initializeStatisticsDatabase()
+        self.initializeStatistics()
         eventStatisticLinks.addStatisticLink(for: KillEvent.self,
                                              with: statisticsDatabase.getStatistic(for: .totalKills))
 
         eventStatisticLinks.addStatisticLink(for: GameStartEvent.self,
                                              with: statisticsDatabase.getStatistic(for: .totalGamesPlayed))
+
+        eventStatisticLinks.addStatisticLink(for: DeathEvent.self,
+                                             with: statisticsDatabase.getStatistic(for: .totalDeaths))
     }
 
-    private func initializeStatisticsDatabase() {
+    private func initializeStatistics() {
         eventStatisticLinks = StatisticsFactory.getDefaultEventLinkDatabase()
+        statisticsDatabase = StatisticsFactory.getDefaultStatisticsDatabase()
+        loadStatistics()
     }
 
     private func saveStatistics() {
-
+        statisticsDatabase.save()
     }
 
     private func loadStatistics() {
+        statisticsDatabase.load()
 
     }
 

@@ -14,5 +14,6 @@ class StatisticEnums {
         case defaultStatistic
         case totalKills
         case totalGamesPlayed
+        case totalDeaths
     }
 }

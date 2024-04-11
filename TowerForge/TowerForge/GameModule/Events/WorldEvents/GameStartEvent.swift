@@ -11,8 +11,7 @@ struct GameStartEvent: TFEvent {
     let timestamp: TimeInterval = .zero
     let entityId = UUID()
 
-    init() {
-    }
+    init() { }
 
     func execute(in target: any EventTarget) -> EventOutput {
         EventOutput()
