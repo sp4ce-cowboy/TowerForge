@@ -15,6 +15,13 @@ class StatisticsDatabase {
         self.statistics = statistics
     }
 
+    private var defaultStatisticDecoder: [StatisticName: (JSONDecoder, Data) throws -> Statistic] {
+        [
+            .totalKills: { decoder, data in try decoder.decode(KillStatistic.self, from: data) },
+            .totalGamesPlayed: { decoder, data in try decoder.decode(TotalGamesStatistic.self, from: data) }
+        ]
+    }
+
     func getStatistic(for statName: StatisticName) -> Statistic? {
         statistics[statName]
     }
@@ -30,17 +37,23 @@ class StatisticsDatabase {
 
             if let value = snapshot?.value as? [String: Any] {
                 for (key, statisticValue) in value {
-                    guard let statisticData = try? JSONSerialization.data(withJSONObject:
-                                                                            statisticValue, options: []) else {
-
-                        Logger.log("Can't create data from statisticValue")
+                    guard let statisticDict = statisticValue as? [String: Any],
+                          let statisticData = try? JSONSerialization
+                                                        .data(withJSONObject: statisticDict, options: []) else {
                         continue
                     }
+
                     do {
-                        let statistic = try JSONDecoder().decode(Statistic.self, from: statisticData)
-                        self.statistics[StatisticName(rawValue: key)!] = statistic
+                        guard let statisticName = StatisticName(rawValue: key) else {
+                            continue
+                        }
+                        let decoder = JSONDecoder()
+                        let statistic: Statistic?
+                        statistic = try self.defaultStatisticDecoder[statisticName]?(decoder, statisticData)
+                        if let stat = statistic { self.statistics[statisticName] = stat }
+
                     } catch {
-                        Logger.log("Error decoding statistic for \(key): \(error)")
+                        Logger.log("Error decoding \(key):, \(error)")
                     }
                 }
             }
