@@ -21,38 +21,27 @@ struct StatisticTypeWrapper: Equatable, Hashable {
 
 /// Each Statistic can be identified with a name and it will be linked to a particular
 /// event.
-protocol Statistic: AnyObject {
+protocol Statistic: AnyObject, Codable {
     var statisticName: StatisticName { get }
     var statisticUpdateLinks: StatisticUpdateLinkDatabase { get }
 
     /// The original value of the statistic prior to the start of the game
-    var statisticOriginalValue: Double { get set }
-    var statisticAdditionalValue: Double { get set }
-    var statisticCurrentValue: Double { get }
+    var statisticValue: Double { get set }
+    // var statisticAdditionalValue: Double { get set }
+    // var statisticCurrentValue: Double { get }
 
     func update(for eventType: TFEventTypeWrapper)
     func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase
     func getEventLinksOnly() -> [TFEventTypeWrapper]
 
+    init(name: StatisticName, value: Double)
+
 }
 
 extension Statistic {
 
-    var statisticCurrentValue: Double {
-        statisticOriginalValue + statisticOriginalValue
-    }
-
-    func updateOriginalValue(by amount: Double) {
-        statisticOriginalValue += amount
-    }
-
-    func updateAdditionalValue(by amount: Double) {
-        statisticAdditionalValue += amount
-    }
-
-    func recalibrateStatistic() {
-        statisticOriginalValue += statisticAdditionalValue
-        statisticAdditionalValue = .zero
+    func updateValue(by value: Double) {
+        statisticValue += value
     }
 
     func update(for eventType: TFEventTypeWrapper) {
@@ -66,6 +55,20 @@ extension Statistic {
 
     func getEventLinksOnly() -> [TFEventTypeWrapper] {
         statisticUpdateLinks.getAllEventTypes()
+    }
+
+    func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: StorageEnums.StatisticDefaultCodingKeys.self)
+        try container.encode(statisticName, forKey: .statisticName)
+        try container.encode(statisticValue, forKey: .statisticValue)
+    }
+
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: StorageEnums.StatisticDefaultCodingKeys.self)
+        let name = try container.decode(StatisticName.self, forKey: .statisticName)
+        let value = try container.decode(Double.self, forKey: .statisticValue)
+
+        self.init(name: name, value: value)
     }
 
 }
