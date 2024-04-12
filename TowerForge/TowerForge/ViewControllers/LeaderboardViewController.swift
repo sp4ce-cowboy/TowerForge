@@ -14,6 +14,7 @@ class LeaderboardViewController: UIViewController {
     init(type: RankType) {
         self.type = type
         super.init(nibName: nil, bundle: nil)
+        self.view.layoutMargins = UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0)
     }
 
     required init?(coder: NSCoder) {
@@ -23,7 +24,7 @@ class LeaderboardViewController: UIViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 10
-        stackView.backgroundColor = .yellow
+        stackView.backgroundColor = .lightGray
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -87,16 +88,29 @@ class LeaderboardViewController: UIViewController {
             }
 
             rankLabel.text = "\(rankData.username): \(rankData.score)"
-            rankLabel.textColor = .white
+            rankLabel.textColor = .black
 
-            rankLabel.backgroundColor = .gray
+            rankLabel.backgroundColor = .clear
             rankLabel.layer.cornerRadius = 8
             rankLabel.layer.masksToBounds = true
             rankLabel.textAlignment = .center
             rankLabel.layoutMargins = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
 
             rankLabel.translatesAutoresizingMaskIntoConstraints = false
-            stackView.addArrangedSubview(rankLabel)
+
+            let avatarImageView = UIImageView(image: UIImage(named: "medal"))
+            avatarImageView.contentMode = .scaleAspectFit
+            avatarImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+
+            let stackView = UIStackView(arrangedSubviews: [avatarImageView, rankLabel])
+            stackView.axis = .horizontal
+            stackView.spacing = 8
+
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            self.stackView.addArrangedSubview(stackView)
+
+            rankLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
+            stackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         }
     }
 }
