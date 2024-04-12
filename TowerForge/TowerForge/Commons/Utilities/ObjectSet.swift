@@ -41,7 +41,7 @@ class ObjectSet {
         .totalKillsAchievement: { TotalKillsAchievement() },
         .totalGamesAchievement: { TotalGamesAchievement() }
     ]
-    
+
     static let availableEventTypes: [TFEvent.Type] =
         [
             DamageEvent.self,

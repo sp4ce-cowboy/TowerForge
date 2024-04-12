@@ -9,7 +9,7 @@ import Foundation
 
 class StatisticsFactory {
 
-    static let availableStatisticsTypes: [Statistic.Type] = 
+    static let availableStatisticsTypes: [Statistic.Type] =
         [
             TotalKillsStatistic.self,
             TotalGamesStatistic.self,
