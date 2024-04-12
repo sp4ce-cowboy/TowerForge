@@ -56,7 +56,11 @@ class AuthenticationProvider {
     }
 
     func getCurrentUserId() -> String? {
-        self.authenticationManager.getCurrentUserAuthData()?.userId
+        var currentUserId: String?
+        self.authenticationManager.getUserData { authData, _ in
+            currentUserId = authData?.userId
+        }
+        return currentUserId
     }
 }
 
