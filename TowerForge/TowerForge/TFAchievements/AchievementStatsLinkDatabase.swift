@@ -9,6 +9,5 @@ import Foundation
 
 /// All achievements must be linked to a specific statistic
 class AchievementStatsLinkDatabase {
-
     var achievementLinks: [TFAchievementTypeWrapper: [Statistic]] = [:]
 }
