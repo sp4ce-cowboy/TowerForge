@@ -27,6 +27,7 @@ protocol TFEvent {
     var timestamp: TimeInterval { get }
     var entityId: UUID { get }
     func execute(in target: EventTarget) -> EventOutput
+
 }
 
 extension TFEvent {

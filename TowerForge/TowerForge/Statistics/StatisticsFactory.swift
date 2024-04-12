@@ -8,29 +8,17 @@
 import Foundation
 
 class StatisticsFactory {
-    static let availableEventTypes: [TFEvent.Type] = [
-        DamageEvent.self,
-        MoveEvent.self,
-        SpawnEvent.self,
-        RemoveEvent.self,
-        LifeEvent.self,
-        KillEvent.self,
-        DisabledEvent.self,
-        RequestSpawnEvent.self,
-        WaveSpawnEvent.self,
-        GameStartEvent.self,
-        DeathEvent.self
-    ]
 
-    static let availableStatisticsTypes: [Statistic.Type] = [
-        TotalKillsStatistic.self,
-        TotalGamesStatistic.self,
-        TotalDeathsStatistic.self
-    ]
+    static let availableStatisticsTypes: [Statistic.Type] = 
+        [
+            TotalKillsStatistic.self,
+            TotalGamesStatistic.self,
+            TotalDeathsStatistic.self
+        ]
 
     static func getDefaultEventLinkDatabase() -> EventStatisticLinkDatabase {
         let eventStatLinkDatabase = EventStatisticLinkDatabase()
-        availableEventTypes.forEach { eventStatLinkDatabase.registerEmptyEventType(for: $0) }
+        ObjectSet.availableEventTypes.forEach { eventStatLinkDatabase.registerEmptyEventType(for: $0) }
         return eventStatLinkDatabase
     }
 

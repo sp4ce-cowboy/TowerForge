@@ -41,5 +41,20 @@ class ObjectSet {
         .totalKillsAchievement: { TotalKillsAchievement() },
         .totalGamesAchievement: { TotalGamesAchievement() }
     ]
+    
+    static let availableEventTypes: [TFEvent.Type] =
+        [
+            DamageEvent.self,
+            MoveEvent.self,
+            SpawnEvent.self,
+            RemoveEvent.self,
+            LifeEvent.self,
+            KillEvent.self,
+            DisabledEvent.self,
+            RequestSpawnEvent.self,
+            WaveSpawnEvent.self,
+            GameStartEvent.self,
+            DeathEvent.self
+        ]
 
 }
