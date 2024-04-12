@@ -181,7 +181,7 @@
 		BA2F5AC12BC80BE500CBD8E9 /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */; };
 		BA2F5AC32BC813F200CBD8E9 /* TFAchievementDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC22BC813F200CBD8E9 /* TFAchievementDelegate.swift */; };
 		BA2F5AC52BC8143E00CBD8E9 /* TotalKillsStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC42BC8143E00CBD8E9 /* TotalKillsStatistic.swift */; };
-		BA2F5AC72BC8148C00CBD8E9 /* StatisticEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC62BC8148C00CBD8E9 /* StatisticEnums.swift */; };
+		BA2F5AC72BC8148C00CBD8E9 /* StatisticName.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC62BC8148C00CBD8E9 /* StatisticName.swift */; };
 		BA2F5AC92BC81BDB00CBD8E9 /* StatisticsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */; };
 		BA2F5ACB2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5ACA2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift */; };
 		BA2F5ACD2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5ACC2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift */; };
@@ -418,7 +418,7 @@
 		BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
 		BA2F5AC22BC813F200CBD8E9 /* TFAchievementDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFAchievementDelegate.swift; sourceTree = "<group>"; };
 		BA2F5AC42BC8143E00CBD8E9 /* TotalKillsStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalKillsStatistic.swift; sourceTree = "<group>"; };
-		BA2F5AC62BC8148C00CBD8E9 /* StatisticEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticEnums.swift; sourceTree = "<group>"; };
+		BA2F5AC62BC8148C00CBD8E9 /* StatisticName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticName.swift; sourceTree = "<group>"; };
 		BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsEngine.swift; sourceTree = "<group>"; };
 		BA2F5ACA2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStatisticLinkDatabase.swift; sourceTree = "<group>"; };
 		BA2F5ACC2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticUpdateLinkDatabase.swift; sourceTree = "<group>"; };
@@ -1176,7 +1176,7 @@
 			children = (
 				BAFFB95C2BB978E500D8301F /* StorageEnums.swift */,
 				BAFFB9842BBDBA7D00D8301F /* MediaEnums.swift */,
-				BA2F5AC62BC8148C00CBD8E9 /* StatisticEnums.swift */,
+				BA2F5AC62BC8148C00CBD8E9 /* StatisticName.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1495,7 +1495,7 @@
 				BA82C74A2BC88FE5000515A0 /* StatisticSystem.swift in Sources */,
 				3C9955A32BA47DBB00D33FA5 /* BaseUnit.swift in Sources */,
 				523AA3BD2BB88ED10041E60D /* WizardBall.swift in Sources */,
-				BA2F5AC72BC8148C00CBD8E9 /* StatisticEnums.swift in Sources */,
+				BA2F5AC72BC8148C00CBD8E9 /* StatisticName.swift in Sources */,
 				527A07782BB3F31100CD9D08 /* Death.swift in Sources */,
 				3C9955BA2BA5637200D33FA5 /* DamageEvent.swift in Sources */,
 				3CD37AA52BBEC10700222D8A /* FirebaseRemoteEventSubscriber.swift in Sources */,

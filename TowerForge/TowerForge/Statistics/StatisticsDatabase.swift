@@ -11,8 +11,16 @@ import FirebaseDatabaseInternal
 class StatisticsDatabase {
     var statistics: [StatisticName: Statistic] = [:]
 
-    init(statistics: [StatisticName: Statistic] = [:]) {
-        self.statistics = statistics
+    init() {
+        self.load()
+    }
+
+    func addStatistic(for statName: StatisticName) {
+        statistics[statName] = defaultStatisticGenerator[statName]?()
+    }
+
+    func getStatistic(for statName: StatisticName) -> Statistic {
+        statistics[statName] ?? DefaultStatistic()
     }
 
     private var defaultStatisticDecoder: [StatisticName: (JSONDecoder, Data) throws -> Statistic] {
@@ -31,15 +39,7 @@ class StatisticsDatabase {
         ]
     }
 
-    func addStatistic(for statName: StatisticName) {
-        statistics[statName] = defaultStatisticGenerator[statName]?()
-    }
-
-    func getStatistic(for statName: StatisticName) -> Statistic {
-        statistics[statName] ?? DefaultStatistic()
-    }
-
-    /// TODO: Maybe can change this to firebase repository?
+    /// TODO: Maybe can change this to FirebaseRepository
     func load() {
         let databaseReference = FirebaseDatabaseReference(.Statistics)
         databaseReference.child("statistics").getData(completion: { error, snapshot in
@@ -91,7 +91,7 @@ class StatisticsDatabase {
             if let error = error {
                 Logger.log("Data could not be saved: \(error).")
             } else {
-                Logger.log("Data saved successfully!")
+                Logger.log("StorageDatabase saved successfully!", self)
             }
         }
     }

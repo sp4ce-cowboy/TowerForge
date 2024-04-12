@@ -31,7 +31,6 @@ protocol Statistic: AnyObject, Codable {
     // var statisticCurrentValue: Double { get }
 
     func update(for eventType: TFEventTypeWrapper)
-    func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase
     func getEventLinksOnly() -> [TFEventTypeWrapper]
 
     init(name: StatisticName, value: Double)

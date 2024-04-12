@@ -16,9 +16,9 @@ class StatisticsEngine {
     var statisticsDatabase = StatisticsDatabase()
     var eventStatisticLinks = EventStatisticLinkDatabase()
 
-    init(eventStatisticLinks: EventStatisticLinkDatabase = EventStatisticLinkDatabase()) {
-        self.eventStatisticLinks = eventStatisticLinks
-        self.setUp()
+    init() {
+        self.initializeStatistics()
+        self.setUpLinks()
     }
 
     /// Main update function
@@ -29,13 +29,11 @@ class StatisticsEngine {
         }
 
         stats.forEach { $0.update(for: eventType) }
-        Logger.log("\(self.statisticsDatabase)")
         saveStatistics()
     }
 
     /// Add statistics links
-    func setUp() {
-        self.initializeStatistics()
+    func setUpLinks() {
         eventStatisticLinks.addStatisticLink(for: KillEvent.self,
                                              with: statisticsDatabase.getStatistic(for: .totalKills))
 
@@ -58,7 +56,6 @@ class StatisticsEngine {
 
     private func loadStatistics() {
         statisticsDatabase.load()
-
     }
 
 }
