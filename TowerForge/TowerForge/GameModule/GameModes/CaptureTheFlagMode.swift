@@ -55,8 +55,8 @@ class CaptureTheFlagMode: GameMode {
         [LocalResult(variable: "Life left",
                      value: String(self.currentOwnLife)),
          LeaderboardResult(variable: RankType.TotalTime.rawValue,
-                           result: self.time,
-                           value: String(self.time))
+                           value: String(self.time),
+                           sortingRule: .decreasing)
         ]
     }
 }
