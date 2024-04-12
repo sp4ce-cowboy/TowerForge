@@ -10,6 +10,7 @@ import FirebaseDatabaseInternal
 
 enum RankType: String, CaseIterable {
     case TotalKill
+    case TotalTime
     static var allCasesAsString: [String] {
         allCases.map { $0.rawValue }
     }

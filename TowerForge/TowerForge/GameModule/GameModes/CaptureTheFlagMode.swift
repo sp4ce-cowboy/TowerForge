@@ -17,6 +17,7 @@ class CaptureTheFlagMode: GameMode {
     var gameState = GameState.IDLE
     var currentOwnLife: Int
     var currentOpponentLife: Int
+    var time = TimeInterval(0)
 
     init(initialLife: Int, eventManager: EventManager) {
         self.gameProps.append(LifeProp(initialLife: initialLife,
@@ -43,6 +44,7 @@ class CaptureTheFlagMode: GameMode {
         }
     }
     func updateGame(deltaTime: TimeInterval) {
+        self.time += deltaTime
         if self.currentOwnLife <= 0 {
             gameState = .LOSE
         } else if self.currentOpponentLife <= 0 {
@@ -50,6 +52,11 @@ class CaptureTheFlagMode: GameMode {
         }
     }
     func getGameResults() -> [GameResult] {
-        [LocalResult(variable: "Life left", value: String(self.currentOwnLife))]
+        [LocalResult(variable: "Life left",
+                     value: String(self.currentOwnLife)),
+         LeaderboardResult(variable: RankType.TotalTime.rawValue,
+                           result: self.time,
+                           value: String(self.time))
+        ]
     }
 }
