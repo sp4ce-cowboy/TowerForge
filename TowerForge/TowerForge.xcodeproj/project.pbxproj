@@ -210,16 +210,11 @@
 		BAFFB9502BB12F9D00D8301F /* GameEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94F2BB12F9D00D8301F /* GameEngineTests.swift */; };
 		BAFFB9532BB342F100D8301F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9522BB342F100D8301F /* StorageManager.swift */; };
 		BAFFB9552BB342FE00D8301F /* Storable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9542BB342FE00D8301F /* Storable.swift */; };
-		BAFFB9572BB3449D00D8301F /* TotalKillsAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9562BB3449D00D8301F /* TotalKillsAchievement.swift */; };
 		BAFFB9592BB345CF00D8301F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9582BB345CF00D8301F /* Storage.swift */; };
 		BAFFB95D2BB978E500D8301F /* StorageEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB95C2BB978E500D8301F /* StorageEnums.swift */; };
-		BAFFB9602BB9828B00D8301F /* TFOAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB95F2BB9828B00D8301F /* TFOAchievement.swift */; };
-		BAFFB9662BB98ADC00D8301F /* AchievementStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9652BB98ADC00D8301F /* AchievementStorage.swift */; };
-		BAFFB9682BB9981700D8301F /* TotalGamesAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9672BB9981700D8301F /* TotalGamesAchievement.swift */; };
 		BAFFB96A2BB9A64000D8301F /* ObjectSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9692BB9A64000D8301F /* ObjectSet.swift */; };
 		BAFFB96C2BB9AB2400D8301F /* LocalDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB96B2BB9AB2400D8301F /* LocalDatabase.swift */; };
 		BAFFB9712BBA830F00D8301F /* StorageManager+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9702BBA830F00D8301F /* StorageManager+Operations.swift */; };
-		BAFFB9732BBAC14500D8301F /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9722BBAC14500D8301F /* AchievementManager.swift */; };
 		BAFFB9752BBD833400D8301F /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9742BBD833400D8301F /* AudioManager.swift */; };
 		BAFFB97C2BBD83B200D8301F /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB9762BBD83B200D8301F /* beep.mp3 */; };
 		BAFFB97D2BBD83B200D8301F /* hit-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB9772BBD83B200D8301F /* hit-sound.mp3 */; };
@@ -450,16 +445,11 @@
 		BAFFB94F2BB12F9D00D8301F /* GameEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngineTests.swift; sourceTree = "<group>"; };
 		BAFFB9522BB342F100D8301F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		BAFFB9542BB342FE00D8301F /* Storable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storable.swift; sourceTree = "<group>"; };
-		BAFFB9562BB3449D00D8301F /* TotalKillsAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalKillsAchievement.swift; sourceTree = "<group>"; };
 		BAFFB9582BB345CF00D8301F /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		BAFFB95C2BB978E500D8301F /* StorageEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageEnums.swift; sourceTree = "<group>"; };
-		BAFFB95F2BB9828B00D8301F /* TFOAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFOAchievement.swift; sourceTree = "<group>"; };
-		BAFFB9652BB98ADC00D8301F /* AchievementStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementStorage.swift; sourceTree = "<group>"; };
-		BAFFB9672BB9981700D8301F /* TotalGamesAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalGamesAchievement.swift; sourceTree = "<group>"; };
 		BAFFB9692BB9A64000D8301F /* ObjectSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSet.swift; sourceTree = "<group>"; };
 		BAFFB96B2BB9AB2400D8301F /* LocalDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDatabase.swift; sourceTree = "<group>"; };
 		BAFFB9702BBA830F00D8301F /* StorageManager+Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageManager+Operations.swift"; sourceTree = "<group>"; };
-		BAFFB9722BBAC14500D8301F /* AchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementManager.swift; sourceTree = "<group>"; };
 		BAFFB9742BBD833400D8301F /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		BAFFB9762BBD83B200D8301F /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
 		BAFFB9772BBD83B200D8301F /* hit-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "hit-sound.mp3"; sourceTree = "<group>"; };
@@ -832,7 +822,6 @@
 				52DF5FDB2BA32CEF00135367 /* LevelModule */,
 				BAFFB9332BB0A24400D8301F /* GameModule */,
 				BAFFB9512BB342E200D8301F /* Storage */,
-				BAFFB95E2BB9826800D8301F /* Achievements */,
 				BA2F5ABF2BC80BD200CBD8E9 /* Metrics */,
 			);
 			path = TowerForge;
@@ -1261,26 +1250,6 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
-		BAFFB95E2BB9826800D8301F /* Achievements */ = {
-			isa = PBXGroup;
-			children = (
-				BAFFB96F2BBA7F0100D8301F /* Implemented */,
-				BAFFB9652BB98ADC00D8301F /* AchievementStorage.swift */,
-				BAFFB9722BBAC14500D8301F /* AchievementManager.swift */,
-			);
-			path = Achievements;
-			sourceTree = "<group>";
-		};
-		BAFFB96F2BBA7F0100D8301F /* Implemented */ = {
-			isa = PBXGroup;
-			children = (
-				BAFFB95F2BB9828B00D8301F /* TFOAchievement.swift */,
-				BAFFB9562BB3449D00D8301F /* TotalKillsAchievement.swift */,
-				BAFFB9672BB9981700D8301F /* TotalGamesAchievement.swift */,
-			);
-			path = Implemented;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1472,7 +1441,6 @@
 				5299D1432BC3AB38003EF746 /* GameRankProvider.swift in Sources */,
 				5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */,
 				3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */,
-				BAFFB9602BB9828B00D8301F /* TFOAchievement.swift in Sources */,
 				5295A20F2BAAE7CF005018A8 /* TeamController.swift in Sources */,
 				9B04060D2BB875740026E903 /* EventTransformation.swift in Sources */,
 				3C9955A52BA47DC600D33FA5 /* BaseProjectile.swift in Sources */,
@@ -1480,9 +1448,7 @@
 				52578B8C2BA627B200B4D76C /* Team.swift in Sources */,
 				BAFFB9532BB342F100D8301F /* StorageManager.swift in Sources */,
 				52DD8F992BC52F8500D96BAB /* LevelPopupViewController.swift in Sources */,
-				BAFFB9682BB9981700D8301F /* TotalGamesAchievement.swift in Sources */,
 				BA82C7532BC8A41B000515A0 /* AchievementsEngine.swift in Sources */,
-				BAFFB9732BBAC14500D8301F /* AchievementManager.swift in Sources */,
 				3CBECF8E2BBE9EAC005EF39B /* RemoteSpawnEvent.swift in Sources */,
 				3CAC4A752BB6BDD500A5D22E /* HealthRenderStage.swift in Sources */,
 				3CCF9CB72BAB2877004D170E /* MainMenuViewController.swift in Sources */,
@@ -1597,7 +1563,6 @@
 				3CA829C62BB719A500D8E72A /* ButtonRenderStage.swift in Sources */,
 				3CE9514F2BAC8936008B2785 /* TFRenderer.swift in Sources */,
 				527A07802BB3F81C00CD9D08 /* TimerComponent.swift in Sources */,
-				BAFFB9662BB98ADC00D8301F /* AchievementStorage.swift in Sources */,
 				3C769A722BA58DE700F454F9 /* MovementSystem.swift in Sources */,
 				52A794062BBC32A10083C976 /* FirebaseRepositoryProtocol.swift in Sources */,
 				BA82C7482BC87DB9000515A0 /* DefaultStatistic.swift in Sources */,
@@ -1612,7 +1577,6 @@
 				BAFFB95D2BB978E500D8301F /* StorageEnums.swift in Sources */,
 				52DF5FED2BA34D0300135367 /* TFComponent.swift in Sources */,
 				527E3A242BA613F000FE1628 /* PlayerComponent.swift in Sources */,
-				BAFFB9572BB3449D00D8301F /* TotalKillsAchievement.swift in Sources */,
 				3C9955C52BA585DD00D33FA5 /* HealthSystem.swift in Sources */,
 				5240D0A02BB330B5004F1486 /* GameMode.swift in Sources */,
 				520062562BA8E026000DBA30 /* PlayerSpawnable.swift in Sources */,
