@@ -18,6 +18,9 @@ final class GameEngineTests: XCTestCase {
         // After adding team components (2)
         let entityCount = emptyEntityManager.entities.count + 2
 
+        // Add default game count
+        let eventCount = emptyEventManager.eventQueue.count + 1
+
         let gameEngine = GameEngine()
 
         XCTAssertEqual(gameEngine.entities.count,
@@ -29,7 +32,7 @@ final class GameEngineTests: XCTestCase {
                        "The GameEngine's system manager must have the same count as the empty system manager")
 
         XCTAssertEqual(gameEngine.eventManager.eventQueue.count,
-                       emptyEventManager.eventQueue.count,
+                       eventCount,
                        "The GameEngine's event manager must have the same count as the empty event manager")
     }
 

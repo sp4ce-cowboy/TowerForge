@@ -26,6 +26,7 @@ extension TFEventTypeWrapper: Hashable {
 protocol TFEvent {
     var timestamp: TimeInterval { get }
     func execute(in target: EventTarget) -> EventOutput
+
 }
 
 extension TFEvent {

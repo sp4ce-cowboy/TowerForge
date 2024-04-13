@@ -54,6 +54,14 @@ class AuthenticationProvider {
     private func notifyObserversLogout() {
         observers.forEach { $0.onLogout() }
     }
+
+    func getCurrentUserId() -> String? {
+        var currentUserId: String?
+        self.authenticationManager.getUserData { authData, _ in
+            currentUserId = authData?.userId
+        }
+        return currentUserId
+    }
 }
 
 extension AuthenticationProvider: AuthenticationDelegate {
