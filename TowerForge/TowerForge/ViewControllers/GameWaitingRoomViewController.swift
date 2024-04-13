@@ -66,7 +66,8 @@ class GameWaitingRoomViewController: UIViewController {
                 return
             }
             gameViewController.currentPlayer = currentPlayer
-            gameViewController.gameRoom = gameRoom
+            gameViewController.roomId = gameRoom?.roomId
+            gameViewController.isHost = currentPlayer?.userPlayerId == gameRoom?.host
             self.present(gameViewController, animated: true)
             gameRoom?.deleteRoom()
         }

@@ -14,8 +14,9 @@ class EventManager {
     var eventHandler: [TFEventTypeWrapper: [EventHandler]]
     private(set) var remoteEventManager: RemoteEventManager?
     private(set) var currentPlayer: GamePlayer?
+    private(set) var isHost = true
 
-    init(roomId: RoomId? = nil, currentPlayer: GamePlayer? = nil) {
+    init(roomId: RoomId? = nil, isHost: Bool = true, currentPlayer: GamePlayer? = nil) {
         eventTransformations = []
         eventQueue = []
         eventHandler = [:]
@@ -25,6 +26,7 @@ class EventManager {
             let subscriber = FirebaseRemoteEventSubscriber(roomId: roomId, eventManager: self)
             self.remoteEventManager = RemoteEventManager(publisher: publisher, subscriber: subscriber)
             self.currentPlayer = currentPlayer
+            self.isHost = isHost
         }
     }
 

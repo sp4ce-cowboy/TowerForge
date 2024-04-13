@@ -14,6 +14,8 @@ class GameViewController: UIViewController {
     var gameMode: Mode?
     var isPaused = false
     var gameRoom: GameRoom?
+    var roomId: RoomId?
+    var isHost = true
     var currentPlayer: GamePlayer?
 
     @IBOutlet private var gamePopupButton: UIButton!
@@ -56,9 +58,10 @@ class GameViewController: UIViewController {
     }
 
     private func setUpGameWorld(scene: GameScene) {
-        self.gameWorld = GameWorld(scene: scene, screenSize: self.view.frame,
+        self.gameWorld = GameWorld(screenSize: self.view.frame,
                                    mode: self.gameMode ?? .captureTheFlag,
-                                   gameRoom: gameRoom, currentPlayer: currentPlayer)
+                                   roomId: roomId, isHost: isHost, currentPlayer: currentPlayer)
+        self.gameWorld?.scene = scene
         self.gameWorld?.delegate = self
         self.gameWorld?.statePopupDelegate = self
     }

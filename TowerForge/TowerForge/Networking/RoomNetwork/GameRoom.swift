@@ -12,7 +12,7 @@ class GameRoom {
     private(set) var roomName: String
     private(set) var roomState: RoomState?
     private(set) var roomId: RoomId?
-    private(set) var host: GamePlayer?
+    private(set) var host: UserPlayerId?
 
     private(set) var playerOne: GamePlayer?
     private(set) var playerTwo: GamePlayer?
@@ -260,7 +260,7 @@ class GameRoom {
             if let roomStateData = snapshotValue["roomState"] as? String {
                 self?.roomState = RoomState.fromString(roomStateData)
             }
-            if let hostData = snapshotValue["host"] as? GamePlayer {
+            if let hostData = snapshotValue["host"] as? UserPlayerId {
                 self?.host = hostData
             }
             self?.gameRoomDelegate?.onRoomChange()

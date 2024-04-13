@@ -19,7 +19,7 @@ class RemoteSpawnEvent: TFRemoteEvent {
     init<T: TFEntity & RemoteSpawnable>(ofType type: T.Type, location: CGPoint, player: GamePlayer) {
         self.type = String(describing: RemoteSpawnEvent.self)
         self.timeStamp = Date().timeIntervalSince1970
-        self.source = player.userPlayerId ?? ""
+        self.source = player.userPlayerId
 
         self.spawnType = String(describing: type)
         self.spawnLocation = location

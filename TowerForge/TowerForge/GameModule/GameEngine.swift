@@ -47,10 +47,10 @@ class GameEngine: AbstractGameEngine {
 
     init(entityManager: EntityManager = EntityManager(),
          systemManager: SystemManager = SystemManager(),
-         roomId: RoomId? = nil, currentPlayer: GamePlayer? = nil) {
+         roomId: RoomId? = nil, isHost: Bool = true, currentPlayer: GamePlayer? = nil) {
         self.entityManager = entityManager
         self.systemManager = systemManager
-        self.eventManager = EventManager(roomId: roomId, currentPlayer: currentPlayer)
+        self.eventManager = EventManager(roomId: roomId, isHost: isHost, currentPlayer: currentPlayer)
         self.setupTeam()
     }
 

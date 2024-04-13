@@ -69,7 +69,7 @@ class HomeSystem: TFSystem {
             return eventManager.add(spawnEvent)
         }
 
-        // Report spawn to which will propogate to all players evenly
+        // Report spawn to network which will propogate to all players evenly
         let spawnEvent = RemoteSpawnEvent(ofType: type, location: snapPosition, player: currentPlayer)
         eventManager.add(spawnEvent)
     }
