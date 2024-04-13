@@ -29,7 +29,7 @@ class RemotePowerupEvent: TFRemoteEvent {
             return
         }
         let player: Player = (gamePlayer == source) == targetIsSource ? .ownPlayer : .oppositePlayer
-        let powerup = type.init(player: player)
-        eventManager.addTransformation(eventTransformation: powerup)
+//        let powerup = type.init(player: player)
+//        eventManager.addTransformation(eventTransformation: powerup)
     }
 }
