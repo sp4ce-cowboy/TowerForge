@@ -27,21 +27,6 @@ import Foundation
 /// be called.
 class ObjectSet {
 
-    /// A dictionary of available Achievement types and closures that create full instances of them
-    static var fullStorableCreation: [TFStorableType: (UUID, TFStorableType, Double) -> any Storable] = [
-        .totalKillsAchievement: { id, type, value in TotalKillsAchievement(id: id, name: type, value: value) },
-        .totalGamesAchievement: { id, type, value in TotalGamesAchievement(id: id, name: type, value: value) }
-    ]
-
-    static var fullStorageCreation: [TFStorageType: (Storage) -> Storage] = [
-        .achievementStorage: { storage in AchievementStorage(objects: storage.storedObjects) }
-    ]
-
-    static var defaultAchievementCreation: [TFAchievementType: () -> any TFOAchievement] = [
-        .totalKillsAchievement: { TotalKillsAchievement() },
-        .totalGamesAchievement: { TotalGamesAchievement() }
-    ]
-
     static let availableEventTypes: [TFEvent.Type] =
         [
             DamageEvent.self,

@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         /// Load the local storage and data
-        StorageManager.initializeData()
+        // StorageManager.initializeData()
 
         /// Connect to Firebase
         FirebaseApp.configure()
