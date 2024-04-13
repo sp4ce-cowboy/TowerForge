@@ -9,13 +9,11 @@ import Foundation
 
 struct LifeEvent: TFEvent {
     let timestamp: TimeInterval
-    let entityId: UUID
     let lifeDecrease: Int
     let player: Player
 
-    init(on entityId: UUID, at timestamp: TimeInterval, reduceBy: Int, player: Player) {
+    init(at timestamp: TimeInterval, reduceBy: Int, player: Player) {
         self.timestamp = timestamp
-        self.entityId = entityId
         self.lifeDecrease = reduceBy
         self.player = player
     }

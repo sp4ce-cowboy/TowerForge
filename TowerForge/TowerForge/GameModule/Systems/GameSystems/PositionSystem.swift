@@ -38,11 +38,19 @@ class PositionSystem: TFSystem {
         guard let playerComponent = entity.component(ofType: PlayerComponent.self) else {
             return
         }
-        // TODO: Might need some change
-        if entity is BaseUnit {
-            eventManager.add(LifeEvent(on: entity.id, at: CACurrentMediaTime(),
-                                       reduceBy: 1, player: playerComponent.player))
-        }
+
         eventManager.add(RemoveEvent(on: entity.id, at: CACurrentMediaTime()))
+
+        guard entity is BaseUnit else {
+            return
+        }
+
+        guard let player = eventManager.currentPlayer else {
+            return eventManager.add(LifeEvent(at: CACurrentMediaTime(), reduceBy: 1, player: playerComponent.player))
+        }
+
+        if eventManager.isHost {
+            eventManager.add(RemoteLifeEvent(reduceBy: 1, player: playerComponent.player, source: player))
+        }
     }
 }

@@ -26,6 +26,15 @@ class GameWaitingRoomViewController: UIViewController {
         updatePlayerList()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destVC = segue.destination as? GameViewController {
+            destVC.currentPlayer = currentPlayer
+            destVC.roomId = gameRoom?.roomId
+            destVC.isHost = currentPlayer?.userPlayerId == gameRoom?.host
+            gameRoom?.deleteRoom()
+        }
+    }
+
     @IBAction private func onStartButtonPressed(_ sender: Any) {
         gameRoom?.updatePlayerReady { _ in
             self.startButton.isHidden = true
@@ -61,15 +70,7 @@ class GameWaitingRoomViewController: UIViewController {
         }
 
         if gameRoom?.roomState == .gameOnGoing {
-            guard let gameViewController = storyboard?.instantiateViewController(withIdentifier: "GameViewController")
-                    as? GameViewController else {
-                return
-            }
-            gameViewController.currentPlayer = currentPlayer
-            gameViewController.roomId = gameRoom?.roomId
-            gameViewController.isHost = currentPlayer?.userPlayerId == gameRoom?.host
-            self.present(gameViewController, animated: true)
-            gameRoom?.deleteRoom()
+            performSegue(withIdentifier: "segueToGame", sender: self)
         }
     }
 

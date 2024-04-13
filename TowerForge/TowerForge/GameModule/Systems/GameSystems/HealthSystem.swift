@@ -37,7 +37,7 @@ class HealthSystem: TFSystem {
         }
 
         if eventManager.isHost {
-            let remoteRemoveEvent = RemoteRemoveEvent(id: entityId, player: currentPlayer)
+            let remoteRemoveEvent = RemoteKillEvent(id: entityId, player: playerComponent.player, source: currentPlayer)
             eventManager.add(remoteRemoveEvent)
         }
     }
