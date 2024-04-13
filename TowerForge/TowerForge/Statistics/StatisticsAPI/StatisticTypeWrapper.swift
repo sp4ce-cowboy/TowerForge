@@ -22,7 +22,7 @@ struct StatisticTypeWrapper: Equatable, Hashable {
     }
 }
 
-/// This extension allows the wrapped type to be written to file
+/// This extension allows the wrapped type to be written to and read from file
 extension StatisticTypeWrapper: Codable {
     enum CodingKeys: String, CodingKey {
         case typeName

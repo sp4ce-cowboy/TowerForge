@@ -12,7 +12,7 @@ class StatisticsDatabase {
     var statistics: [StatisticTypeWrapper: Statistic] = [:]
 
     init() {
-        self.load()
+        self.loadFromFirebase()
     }
 
     func addStatistic(for statName: StatisticTypeWrapper) {
@@ -40,7 +40,7 @@ class StatisticsDatabase {
     }
 
     /// TODO: Maybe can change this to FirebaseRepository
-    func load() {
+    func loadFromFirebase() {
         let databaseReference = FirebaseDatabaseReference(.Statistics)
         databaseReference.child("statistics").getData(completion: { error, snapshot in
             guard error == nil else {
@@ -62,9 +62,13 @@ class StatisticsDatabase {
                         }
                         let statisticName = statisticType.asType
                         let decoder = JSONDecoder()
+                        
                         let statistic: Statistic?
                         statistic = try self.defaultStatisticDecoder[statisticName]?(decoder, statisticData)
-                        if let stat = statistic { self.statistics[statisticName] = stat }
+                        
+                        if let stat = statistic {
+                            self.statistics[statisticName] = stat
+                        }
 
                     } catch {
                         Logger.log("Error decoding \(key):, \(error)")
@@ -74,7 +78,7 @@ class StatisticsDatabase {
         })
     }
 
-    func save() {
+    func saveToFirebase() {
         let databaseReference = FirebaseDatabaseReference(.Statistics)
         var statisticsDictionary = [StatisticTypeWrapper: Any]()
 
