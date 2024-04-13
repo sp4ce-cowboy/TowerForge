@@ -10,8 +10,18 @@ import FirebaseDatabaseInternal
 
 enum RankType: String, CaseIterable {
     case TotalKill
+    case TotalTime
     static var allCasesAsString: [String] {
         allCases.map { $0.rawValue }
+    }
+
+    func getSortingRule() -> Sorting {
+        switch self {
+        case .TotalKill:
+            return .decreasing
+        case .TotalTime:
+            return .increasing
+        }
     }
 }
 
@@ -44,8 +54,8 @@ class GameRankProvider {
             }
         }
     }
-    func getTopRanks(completion: @escaping ([GameRankData]?, Error?) -> Void) {
-        ranksRef.queryOrdered(byChild: "score").queryLimited(toLast: 10).observeSingleEvent(of: .value) { snapshot in
+    func getTopRanks(increasingOrder: Sorting, completion: @escaping ([GameRankData]?, Error?) -> Void) {
+        ranksRef.queryOrdered(byChild: "score").observeSingleEvent(of: .value) { snapshot in
             var topRanks: [GameRankData] = []
             for child in snapshot.children {
                 if let rankSnapshot = child as? DataSnapshot,
@@ -58,7 +68,11 @@ class GameRankProvider {
                 }
             }
 
-            topRanks.sort { $0.score > $1.score }
+            if increasingOrder == .increasing {
+                topRanks.sort { $0.score < $1.score }
+            } else {
+                topRanks.sort { $0.score > $1.score }
+            }
             completion(topRanks, nil)
         }
     }

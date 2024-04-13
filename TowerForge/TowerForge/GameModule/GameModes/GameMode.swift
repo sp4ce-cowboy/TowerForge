@@ -12,10 +12,15 @@ protocol GameResult {
     var value: String { get }
 }
 
+enum Sorting {
+    case decreasing
+    case increasing
+}
+
 struct LeaderboardResult: GameResult {
     var variable: RankType.RawValue
-    var result: Double
     var value: String
+    var sortingRule: Sorting
 }
 
 struct LocalResult: GameResult {

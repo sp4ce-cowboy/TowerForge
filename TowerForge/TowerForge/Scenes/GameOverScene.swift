@@ -44,11 +44,20 @@ class GameOverScene: SKScene {
     }
 
     func setupScene() {
+
+        let backgroundColor = SKSpriteNode(color: SKColor.white,
+                                           size: CGSize(width: SizeConstants.SCREEN_SIZE.width,
+                                                        height: SizeConstants.SCREEN_SIZE.height))
+        backgroundColor.position = CGPoint(x: SizeConstants.SCREEN_SIZE.width / 2,
+                                           y: SizeConstants.SCREEN_SIZE.height / 2)
+        backgroundColor.zPosition = -1
+        addChild(backgroundColor)
+
         let label = TFLabelNode(text: self.win ? "WIN" : "LOST")
         label.position = CGPoint(x: SizeConstants.SCREEN_SIZE.width / 2, y: SizeConstants.SCREEN_SIZE.height * 0.9)
-        label.fontSize = 44.0
+        label.fontSize = 64.0
         label.fontName = "Nosifer-Regular"
-        label.fontColor = .darkGray
+        label.fontColor = .black
         label.zPosition = 1_000
         addChild(label.node)
 

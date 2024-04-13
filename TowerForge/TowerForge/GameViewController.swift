@@ -90,13 +90,12 @@ extension GameViewController: SceneManagerDelegate {
     func showGameOverScene(isWin: Bool, results: [GameResult]) {
         let gameOverScene = GameOverScene(win: isWin, results: results)
         if let data = self.playerData {
-            print(self.playerData)
             for result in results {
-                if let leaderboardResult = result as? LeaderboardResult {
+                if let leaderboardResult = result as? LeaderboardResult, let score = Double(leaderboardResult.value) {
                     let rank = GameRankProvider(type: leaderboardResult.variable)
                     let data = GameRankData(userId: data.userId,
                                             username: data.username ?? "",
-                                            score: leaderboardResult.result)
+                                            score: score)
                     rank.setNewRank(rank: data)
                 }
             }
