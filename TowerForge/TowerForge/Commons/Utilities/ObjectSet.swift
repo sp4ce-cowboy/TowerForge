@@ -37,7 +37,7 @@ class ObjectSet {
         .achievementStorage: { storage in AchievementStorage(objects: storage.storedObjects) }
     ]
 
-    static var defaultAchievementCreation: [TFAchievementType: () -> any Achievement] = [
+    static var defaultAchievementCreation: [TFAchievementType: () -> any TFOAchievement] = [
         .totalKillsAchievement: { TotalKillsAchievement() },
         .totalGamesAchievement: { TotalGamesAchievement() }
     ]

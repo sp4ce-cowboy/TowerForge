@@ -7,21 +7,9 @@
 
 import Foundation
 
-struct TFAchievementTypeWrapper: Equatable, Hashable {
-    let type: TFAchievement.Type
-
-    static func == (lhs: Self, rhs: Self) -> Bool {
-        lhs.type == rhs.type
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(ObjectIdentifier(type))
-    }
-}
-
 /// The TFAchievement protocol specifies the requirements for all concrete
 /// achievements to conform to.
-protocol TFAchievement {
+protocol Achievement {
     var achievementName: String { get }
     var achievementDescription: String { get }
 
@@ -33,6 +21,6 @@ protocol TFAchievement {
 
 }
 
-extension TFAchievement {
+extension Achievement {
 
 }

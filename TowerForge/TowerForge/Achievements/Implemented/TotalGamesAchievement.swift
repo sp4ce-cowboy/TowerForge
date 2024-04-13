@@ -8,7 +8,7 @@
 import Foundation
 
 /// A sample achievement that keeps track of total games started.
-class TotalGamesAchievement: Achievement {
+class TotalGamesAchievement: TFOAchievement {
     var storableId = UUID()
     var storableName: TFStorableType = .totalGamesAchievement
     var storableValue: Double = 0

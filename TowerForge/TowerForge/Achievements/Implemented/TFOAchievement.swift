@@ -12,11 +12,11 @@ import Foundation
 ///
 /// TODO: Replace current storable with generic storable that can
 /// support Achievement
-protocol Achievement: Storable {
+protocol TFOAchievement: Storable {
 
 }
 
-extension Achievement {
+extension TFOAchievement {
     func encode(to encoder: any Encoder) throws {
         Logger.log("Storable Default encode function called", (any Storable).self)
         var container = encoder.container(keyedBy: StorageEnums.StorableDefaultCodingKeys.self)

@@ -177,9 +177,9 @@
 		9B8696552BAD759F0002377C /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8696542BAD759F0002377C /* Grid.swift */; };
 		9BC60BC82BB9BE6D001A6737 /* DisabledEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC60BC72BB9BE6D001A6737 /* DisabledEvent.swift */; };
 		9BD669682BAFDE5E00DC8C4C /* GridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD669672BAFDE5E00DC8C4C /* GridDelegate.swift */; };
-		BA2F5ABE2BC80A8B00CBD8E9 /* TFAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5ABD2BC80A8B00CBD8E9 /* TFAchievement.swift */; };
+		BA2F5ABE2BC80A8B00CBD8E9 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5ABD2BC80A8B00CBD8E9 /* Achievement.swift */; };
 		BA2F5AC12BC80BE500CBD8E9 /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */; };
-		BA2F5AC32BC813F200CBD8E9 /* TFAchievementDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC22BC813F200CBD8E9 /* TFAchievementDelegate.swift */; };
+		BA2F5AC32BC813F200CBD8E9 /* AchievementDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC22BC813F200CBD8E9 /* AchievementDelegate.swift */; };
 		BA2F5AC52BC8143E00CBD8E9 /* TotalKillsStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC42BC8143E00CBD8E9 /* TotalKillsStatistic.swift */; };
 		BA2F5AC72BC8148C00CBD8E9 /* StatisticName.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC62BC8148C00CBD8E9 /* StatisticName.swift */; };
 		BA2F5AC92BC81BDB00CBD8E9 /* StatisticsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */; };
@@ -203,6 +203,7 @@
 		BA82C7532BC8A41B000515A0 /* AchievementsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7522BC8A41B000515A0 /* AchievementsEngine.swift */; };
 		BA82C7552BC8A441000515A0 /* AchievementStatsLinkDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7542BC8A441000515A0 /* AchievementStatsLinkDatabase.swift */; };
 		BA82C7582BCAB4C2000515A0 /* StatisticTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7572BCAB4C2000515A0 /* StatisticTypeWrapper.swift */; };
+		BA82C75A2BCB0DFD000515A0 /* AchievementTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7592BCB0DFD000515A0 /* AchievementTypeWrapper.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -212,7 +213,7 @@
 		BAFFB9572BB3449D00D8301F /* TotalKillsAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9562BB3449D00D8301F /* TotalKillsAchievement.swift */; };
 		BAFFB9592BB345CF00D8301F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9582BB345CF00D8301F /* Storage.swift */; };
 		BAFFB95D2BB978E500D8301F /* StorageEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB95C2BB978E500D8301F /* StorageEnums.swift */; };
-		BAFFB9602BB9828B00D8301F /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB95F2BB9828B00D8301F /* Achievement.swift */; };
+		BAFFB9602BB9828B00D8301F /* TFOAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB95F2BB9828B00D8301F /* TFOAchievement.swift */; };
 		BAFFB9662BB98ADC00D8301F /* AchievementStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9652BB98ADC00D8301F /* AchievementStorage.swift */; };
 		BAFFB9682BB9981700D8301F /* TotalGamesAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9672BB9981700D8301F /* TotalGamesAchievement.swift */; };
 		BAFFB96A2BB9A64000D8301F /* ObjectSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9692BB9A64000D8301F /* ObjectSet.swift */; };
@@ -415,9 +416,9 @@
 		9B8696542BAD759F0002377C /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		9BC60BC72BB9BE6D001A6737 /* DisabledEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledEvent.swift; sourceTree = "<group>"; };
 		9BD669672BAFDE5E00DC8C4C /* GridDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridDelegate.swift; sourceTree = "<group>"; };
-		BA2F5ABD2BC80A8B00CBD8E9 /* TFAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFAchievement.swift; sourceTree = "<group>"; };
+		BA2F5ABD2BC80A8B00CBD8E9 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
 		BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
-		BA2F5AC22BC813F200CBD8E9 /* TFAchievementDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFAchievementDelegate.swift; sourceTree = "<group>"; };
+		BA2F5AC22BC813F200CBD8E9 /* AchievementDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementDelegate.swift; sourceTree = "<group>"; };
 		BA2F5AC42BC8143E00CBD8E9 /* TotalKillsStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalKillsStatistic.swift; sourceTree = "<group>"; };
 		BA2F5AC62BC8148C00CBD8E9 /* StatisticName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticName.swift; sourceTree = "<group>"; };
 		BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsEngine.swift; sourceTree = "<group>"; };
@@ -441,6 +442,7 @@
 		BA82C7522BC8A41B000515A0 /* AchievementsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsEngine.swift; sourceTree = "<group>"; };
 		BA82C7542BC8A441000515A0 /* AchievementStatsLinkDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementStatsLinkDatabase.swift; sourceTree = "<group>"; };
 		BA82C7572BCAB4C2000515A0 /* StatisticTypeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTypeWrapper.swift; sourceTree = "<group>"; };
+		BA82C7592BCB0DFD000515A0 /* AchievementTypeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementTypeWrapper.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -451,7 +453,7 @@
 		BAFFB9562BB3449D00D8301F /* TotalKillsAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalKillsAchievement.swift; sourceTree = "<group>"; };
 		BAFFB9582BB345CF00D8301F /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		BAFFB95C2BB978E500D8301F /* StorageEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageEnums.swift; sourceTree = "<group>"; };
-		BAFFB95F2BB9828B00D8301F /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
+		BAFFB95F2BB9828B00D8301F /* TFOAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFOAchievement.swift; sourceTree = "<group>"; };
 		BAFFB9652BB98ADC00D8301F /* AchievementStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementStorage.swift; sourceTree = "<group>"; };
 		BAFFB9672BB9981700D8301F /* TotalGamesAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalGamesAchievement.swift; sourceTree = "<group>"; };
 		BAFFB9692BB9A64000D8301F /* ObjectSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSet.swift; sourceTree = "<group>"; };
@@ -831,8 +833,7 @@
 				BAFFB9332BB0A24400D8301F /* GameModule */,
 				BAFFB9512BB342E200D8301F /* Storage */,
 				BAFFB95E2BB9826800D8301F /* Achievements */,
-				BA2F5ABF2BC80BD200CBD8E9 /* Statistics */,
-				BA2F5ABC2BC80A2300CBD8E9 /* TFAchievements */,
+				BA2F5ABF2BC80BD200CBD8E9 /* Metrics */,
 			);
 			path = TowerForge;
 			sourceTree = "<group>";
@@ -917,25 +918,26 @@
 			path = Grid;
 			sourceTree = "<group>";
 		};
-		BA2F5ABC2BC80A2300CBD8E9 /* TFAchievements */ = {
+		BA2F5ABC2BC80A2300CBD8E9 /* Achievements */ = {
 			isa = PBXGroup;
 			children = (
 				BA82C7512BC8A3CF000515A0 /* Implemented */,
-				BA2F5ABD2BC80A8B00CBD8E9 /* TFAchievement.swift */,
-				BA2F5AC22BC813F200CBD8E9 /* TFAchievementDelegate.swift */,
+				BA2F5ABD2BC80A8B00CBD8E9 /* Achievement.swift */,
+				BA82C7592BCB0DFD000515A0 /* AchievementTypeWrapper.swift */,
+				BA2F5AC22BC813F200CBD8E9 /* AchievementDelegate.swift */,
 				BA82C7522BC8A41B000515A0 /* AchievementsEngine.swift */,
 				BA82C7542BC8A441000515A0 /* AchievementStatsLinkDatabase.swift */,
 			);
-			path = TFAchievements;
+			path = Achievements;
 			sourceTree = "<group>";
 		};
-		BA2F5ABF2BC80BD200CBD8E9 /* Statistics */ = {
+		BA2F5ABF2BC80BD200CBD8E9 /* Metrics */ = {
 			isa = PBXGroup;
 			children = (
-				BA82C7562BCAB482000515A0 /* StatisticsAPI */,
-				BA82C73E2BC85D90000515A0 /* Implemented */,
+				BA82C7562BCAB482000515A0 /* Statistics */,
+				BA2F5ABC2BC80A2300CBD8E9 /* Achievements */,
 			);
-			path = Statistics;
+			path = Metrics;
 			sourceTree = "<group>";
 		};
 		BA443D402BAD9872009F0FFB /* EventTests */ = {
@@ -995,9 +997,10 @@
 			path = Implemented;
 			sourceTree = "<group>";
 		};
-		BA82C7562BCAB482000515A0 /* StatisticsAPI */ = {
+		BA82C7562BCAB482000515A0 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
+				BA82C73E2BC85D90000515A0 /* Implemented */,
 				BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */,
 				BA82C7572BCAB4C2000515A0 /* StatisticTypeWrapper.swift */,
 				BA82C73F2BC8674A000515A0 /* StatisticsFactory.swift */,
@@ -1006,7 +1009,7 @@
 				BA2F5ACA2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift */,
 				BA2F5ACC2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift */,
 			);
-			path = StatisticsAPI;
+			path = Statistics;
 			sourceTree = "<group>";
 		};
 		BAFFB9272BB09E0E00D8301F /* Storyboards */ = {
@@ -1271,7 +1274,7 @@
 		BAFFB96F2BBA7F0100D8301F /* Implemented */ = {
 			isa = PBXGroup;
 			children = (
-				BAFFB95F2BB9828B00D8301F /* Achievement.swift */,
+				BAFFB95F2BB9828B00D8301F /* TFOAchievement.swift */,
 				BAFFB9562BB3449D00D8301F /* TotalKillsAchievement.swift */,
 				BAFFB9672BB9981700D8301F /* TotalGamesAchievement.swift */,
 			);
@@ -1469,7 +1472,7 @@
 				5299D1432BC3AB38003EF746 /* GameRankProvider.swift in Sources */,
 				5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */,
 				3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */,
-				BAFFB9602BB9828B00D8301F /* Achievement.swift in Sources */,
+				BAFFB9602BB9828B00D8301F /* TFOAchievement.swift in Sources */,
 				5295A20F2BAAE7CF005018A8 /* TeamController.swift in Sources */,
 				9B04060D2BB875740026E903 /* EventTransformation.swift in Sources */,
 				3C9955A52BA47DC600D33FA5 /* BaseProjectile.swift in Sources */,
@@ -1494,6 +1497,7 @@
 				5240D0A52BB332FB004F1486 /* GameProp.swift in Sources */,
 				BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */,
 				5200624E2BA8D597000DBA30 /* AiComponent.swift in Sources */,
+				BA82C75A2BCB0DFD000515A0 /* AchievementTypeWrapper.swift in Sources */,
 				3C9955C22BA5838900D33FA5 /* EventOutput.swift in Sources */,
 				BAFFB96C2BB9AB2400D8301F /* LocalDatabase.swift in Sources */,
 				523E5C4C2BC53F70007444DA /* WaveSpawnEvent.swift in Sources */,
@@ -1561,14 +1565,14 @@
 				3C9955AD2BA483B100D33FA5 /* TFSystem.swift in Sources */,
 				3CAC4A672BB6975200A5D22E /* RenderStage.swift in Sources */,
 				3C9955BE2BA57E4B00D33FA5 /* EventManager.swift in Sources */,
-				BA2F5AC32BC813F200CBD8E9 /* TFAchievementDelegate.swift in Sources */,
+				BA2F5AC32BC813F200CBD8E9 /* AchievementDelegate.swift in Sources */,
 				BAFFB9852BBDBA7D00D8301F /* MediaEnums.swift in Sources */,
 				527A07842BB3FD9A00CD9D08 /* TimerSystem.swift in Sources */,
 				BA82C7462BC8797F000515A0 /* StatisticsDatabase.swift in Sources */,
 				3C3CBDF72BB81D970001B8A9 /* TFCameraNode.swift in Sources */,
 				3CE951562BACA0CF008B2785 /* Collidable.swift in Sources */,
 				BA82C7422BC86FE1000515A0 /* TotalGamesStatistic.swift in Sources */,
-				BA2F5ABE2BC80A8B00CBD8E9 /* TFAchievement.swift in Sources */,
+				BA2F5ABE2BC80A8B00CBD8E9 /* Achievement.swift in Sources */,
 				3CBECF8C2BBE9A41005EF39B /* TFRemoteEvent.swift in Sources */,
 				5240D0A92BB333B5004F1486 /* PointProp.swift in Sources */,
 				52DF5FE62BA33AF300135367 /* TFSpriteNode.swift in Sources */,

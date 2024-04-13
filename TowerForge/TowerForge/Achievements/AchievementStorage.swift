@@ -20,12 +20,12 @@ final class AchievementStorage: Storage {
     }
 
     /// Adds storable if it doesn't exists and updates it if it does
-    func addStorable(_ storable: Achievement) {
+    func addStorable(_ storable: TFOAchievement) {
         storedObjects[storable.storableName] = storable
     }
 
     /// Removes a storable value if it exists
-    func removeStorable(_ storable: Achievement) {
+    func removeStorable(_ storable: TFOAchievement) {
         storedObjects.removeValue(forKey: storable.storableName)
     }
 }
