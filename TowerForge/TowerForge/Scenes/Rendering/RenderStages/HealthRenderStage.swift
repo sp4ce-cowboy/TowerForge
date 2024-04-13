@@ -11,6 +11,7 @@ class HealthRenderStage: RenderStage {
     static let name = "health"
     static let size = CGSize(width: 100, height: 10)
     static let color: UIColor = .green
+    static let opponentColor: UIColor = .systemGreen
 
     private unowned let renderer: RenderTarget
     private var renderedNodes: [UUID: TFSpriteNode] = [:]
@@ -33,13 +34,22 @@ class HealthRenderStage: RenderStage {
     }
 
     func create(for entity: TFEntity) {
-        guard let spriteComponent = entity.component(ofType: SpriteComponent.self), entity.hasComponent(ofType: HealthComponent.self) else {
+        guard let playerComponent = entity.component(ofType: PlayerComponent.self),
+              let spriteComponent = entity.component(ofType: SpriteComponent.self),
+              entity.hasComponent(ofType: HealthComponent.self) else {
             return
         }
-        let healthNode = TFSpriteNode(color: HealthRenderStage.color, size: HealthRenderStage.size)
+
+        var color = HealthRenderStage.color
+        if playerComponent.player == .oppositePlayer {
+            color = HealthRenderStage.opponentColor
+        }
+
+        let healthNode = TFSpriteNode(color: color, size: HealthRenderStage.size)
         healthNode.name = HealthRenderStage.name
         healthNode.position = CGPoint(x: -spriteComponent.size.width / 2, y: spriteComponent.size.height / 2 + 5)
         healthNode.anchorPoint = CGPoint(x: 0, y: 0)
+
         renderedNodes[entity.id] = healthNode
         renderer.renderedNodes[entity.id]?.add(child: healthNode)
     }

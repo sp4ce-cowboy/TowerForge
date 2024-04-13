@@ -34,7 +34,7 @@ class LeaderboardViewController: UIViewController {
         setupScrollView()
         setupViews()
 
-        fetchTopRanks(type: self.type.rawValue)
+        fetchTopRanks(type: self.type.rawValue, sortingRule: self.type.getSortingRule())
     }
 
     private func setupViews() {
@@ -46,9 +46,9 @@ class LeaderboardViewController: UIViewController {
         ])
     }
 
-    private func fetchTopRanks(type: String) {
+    private func fetchTopRanks(type: String, sortingRule: Sorting) {
         let rank = GameRankProvider(type: type)
-        rank.getTopRanks { data, _ in
+        rank.getTopRanks(increasingOrder: sortingRule) { data, _ in
             guard let result = data else {
                 return
             }
