@@ -202,6 +202,7 @@
 		BA82C7502BC8A20A000515A0 /* TotalDeathsStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C74F2BC8A20A000515A0 /* TotalDeathsStatistic.swift */; };
 		BA82C7532BC8A41B000515A0 /* AchievementsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7522BC8A41B000515A0 /* AchievementsEngine.swift */; };
 		BA82C7552BC8A441000515A0 /* AchievementStatsLinkDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7542BC8A441000515A0 /* AchievementStatsLinkDatabase.swift */; };
+		BA82C7582BCAB4C2000515A0 /* StatisticTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7572BCAB4C2000515A0 /* StatisticTypeWrapper.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -439,6 +440,7 @@
 		BA82C74F2BC8A20A000515A0 /* TotalDeathsStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalDeathsStatistic.swift; sourceTree = "<group>"; };
 		BA82C7522BC8A41B000515A0 /* AchievementsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsEngine.swift; sourceTree = "<group>"; };
 		BA82C7542BC8A441000515A0 /* AchievementStatsLinkDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementStatsLinkDatabase.swift; sourceTree = "<group>"; };
+		BA82C7572BCAB4C2000515A0 /* StatisticTypeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTypeWrapper.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -930,12 +932,8 @@
 		BA2F5ABF2BC80BD200CBD8E9 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
+				BA82C7562BCAB482000515A0 /* StatisticsAPI */,
 				BA82C73E2BC85D90000515A0 /* Implemented */,
-				BA82C73F2BC8674A000515A0 /* StatisticsFactory.swift */,
-				BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */,
-				BA82C7452BC8797F000515A0 /* StatisticsDatabase.swift */,
-				BA2F5ACA2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift */,
-				BA2F5ACC2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift */,
 			);
 			path = Statistics;
 			sourceTree = "<group>";
@@ -966,7 +964,6 @@
 		BA82C73E2BC85D90000515A0 /* Implemented */ = {
 			isa = PBXGroup;
 			children = (
-				BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */,
 				BA82C7472BC87DB9000515A0 /* DefaultStatistic.swift */,
 				BA2F5AC42BC8143E00CBD8E9 /* TotalKillsStatistic.swift */,
 				BA82C7412BC86FE1000515A0 /* TotalGamesStatistic.swift */,
@@ -996,6 +993,20 @@
 			children = (
 			);
 			path = Implemented;
+			sourceTree = "<group>";
+		};
+		BA82C7562BCAB482000515A0 /* StatisticsAPI */ = {
+			isa = PBXGroup;
+			children = (
+				BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */,
+				BA82C7572BCAB4C2000515A0 /* StatisticTypeWrapper.swift */,
+				BA82C73F2BC8674A000515A0 /* StatisticsFactory.swift */,
+				BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */,
+				BA82C7452BC8797F000515A0 /* StatisticsDatabase.swift */,
+				BA2F5ACA2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift */,
+				BA2F5ACC2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift */,
+			);
+			path = StatisticsAPI;
 			sourceTree = "<group>";
 		};
 		BAFFB9272BB09E0E00D8301F /* Storyboards */ = {
@@ -1610,6 +1621,7 @@
 				3CE951652BAE0A04008B2785 /* HomeSystem.swift in Sources */,
 				BAFFB9752BBD833400D8301F /* AudioManager.swift in Sources */,
 				52DF5FFB2BA3601400135367 /* HealthComponent.swift in Sources */,
+				BA82C7582BCAB4C2000515A0 /* StatisticTypeWrapper.swift in Sources */,
 				3C9955BC2BA563A800D33FA5 /* TFEvent.swift in Sources */,
 				527A077A2BB3F35300CD9D08 /* DeathProp.swift in Sources */,
 				BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */,

@@ -1,8 +1,8 @@
 //
-//  TotalGamesStatistic.swift
+//  KillStatistic.swift
 //  TowerForge
 //
-//  Created by Rubesh on 12/4/24.
+//  Created by Rubesh on 11/4/24.
 //
 
 import Foundation
@@ -10,21 +10,24 @@ import Foundation
 final class TotalGamesStatistic: Statistic {
 
     var statisticName: StatisticName = .totalGamesPlayed
-    var statisticValue: Double = .zero
+    var permanentValue: Double = .zero
+    var currentValue: Double = .zero
 
     var statisticUpdateLinks: StatisticUpdateLinkDatabase {
         self.getStatisticUpdateLinks()
     }
 
-    init(name: StatisticName = .totalGamesPlayed,
-         value: Double = .zero) {
+    init(name: StatisticName = .totalKills,
+         permanentValue: Double = .zero,
+         currentValue: Double = .zero) {
         self.statisticName = name
-        self.statisticValue = value
+        self.permanentValue = permanentValue
+        self.currentValue = currentValue
     }
 
     func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
         let eventType = TFEventTypeWrapper(type: GameStartEvent.self)
-        let updateActor: StatisticUpdateActor = { statistic in statistic.updateValue(by: 1.0) }
+        let updateActor: StatisticUpdateActor = { statistic in statistic.updateCurrentValue(by: 1.0) }
         let eventUpdateDictionary = [eventType: updateActor]
         let statsLink = StatisticUpdateLinkDatabase(statisticUpdateLinks: eventUpdateDictionary)
 

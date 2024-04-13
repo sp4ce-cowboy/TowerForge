@@ -10,21 +10,24 @@ import Foundation
 final class TotalKillsStatistic: Statistic {
 
     var statisticName: StatisticName = .totalKills
-    var statisticValue: Double = .zero
+    var permanentValue: Double = .zero
+    var currentValue: Double = .zero
 
     var statisticUpdateLinks: StatisticUpdateLinkDatabase {
         self.getStatisticUpdateLinks()
     }
 
     init(name: StatisticName = .totalKills,
-         value: Double = .zero) {
+         permanentValue: Double = .zero,
+         currentValue: Double = .zero) {
         self.statisticName = name
-        self.statisticValue = value
+        self.permanentValue = permanentValue
+        self.currentValue = currentValue
     }
 
     func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
         let eventType = TFEventTypeWrapper(type: KillEvent.self)
-        let updateActor: StatisticUpdateActor = { statistic in statistic.updateValue(by: 1.0) }
+        let updateActor: StatisticUpdateActor = { statistic in statistic.updateCurrentValue(by: 1.0) }
         let eventUpdateDictionary = [eventType: updateActor]
         let statsLink = StatisticUpdateLinkDatabase(statisticUpdateLinks: eventUpdateDictionary)
 

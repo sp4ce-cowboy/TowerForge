@@ -51,7 +51,8 @@ class StorageEnums {
 
     enum StatisticDefaultCodingKeys: String, CodingKey, Codable {
         case statisticName
-        case statisticValue
+        case permanentValue
+        case currentValue
     }
 
 }
