@@ -23,7 +23,7 @@ class StatisticSystem: TFSystem {
         self.statsEngine = statsEngine
     }
 
-    func broadcast<T: TFEvent>(for event: T) {
+    func notify<T: TFEvent>(for event: T) {
         statsEngine.updateStatisticsOnReceive(event)
     }
 

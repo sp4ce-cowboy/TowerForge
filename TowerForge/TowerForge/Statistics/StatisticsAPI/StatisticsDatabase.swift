@@ -13,6 +13,7 @@ class StatisticsDatabase {
 
     init() {
         self.loadFromFirebase()
+        Logger.log("Current killcount is \(String(describing: self.statistics[TotalKillsStatistic.asType]))", self)
     }
 
     func addStatistic(for statName: StatisticTypeWrapper) {
@@ -57,15 +58,16 @@ class StatisticsDatabase {
                     }
 
                     do {
-                        guard let statisticType = NSClassFromString(key) as? Statistic.Type else {
+                        guard let statisticType = NSClassFromString("TowerForge.\(key)") as? Statistic.Type else {
+                            Logger.log("NSClassFromString call failed for \(key)", self)
                             continue
                         }
                         let statisticName = statisticType.asType
                         let decoder = JSONDecoder()
-                        
+
                         let statistic: Statistic?
                         statistic = try self.defaultStatisticDecoder[statisticName]?(decoder, statisticData)
-                        
+
                         if let stat = statistic {
                             self.statistics[statisticName] = stat
                         }
@@ -80,13 +82,13 @@ class StatisticsDatabase {
 
     func saveToFirebase() {
         let databaseReference = FirebaseDatabaseReference(.Statistics)
-        var statisticsDictionary = [StatisticTypeWrapper: Any]()
+        var statisticsDictionary = [String: Any]()
 
         for (name, statistic) in statistics {
             do {
                 let data = try JSONEncoder().encode(statistic)
                 let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                statisticsDictionary[name] = dictionary
+                statisticsDictionary[name.toString] = dictionary
             } catch {
                 Logger.log("Error encoding statistic \(name): \(error)")
             }

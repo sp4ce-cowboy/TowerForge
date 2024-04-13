@@ -51,11 +51,11 @@ class StatisticsEngine {
     }
 
     private func saveStatistics() {
-        statisticsDatabase.save()
+        statisticsDatabase.saveToFirebase()
     }
 
     private func loadStatistics() {
-        statisticsDatabase.load()
+        statisticsDatabase.loadFromFirebase()
     }
 
 }

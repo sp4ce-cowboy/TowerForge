@@ -9,11 +9,11 @@ import Foundation
 
 class StatisticsFactory {
 
-    static let availableStatisticsTypes: [Statistic.Type] =
+    static let availableStatisticsTypes: [String: Statistic.Type] =
         [
-            TotalKillsStatistic.self,
-            TotalGamesStatistic.self,
-            TotalDeathsStatistic.self
+            String(describing: TotalKillsStatistic.self): TotalKillsStatistic.self,
+            String(describing: TotalGamesStatistic.self): TotalGamesStatistic.self,
+            String(describing: TotalDeathsStatistic.self): TotalDeathsStatistic.self
         ]
 
     static func getDefaultEventLinkDatabase() -> EventStatisticLinkDatabase {
@@ -24,7 +24,14 @@ class StatisticsFactory {
 
     static func getDefaultStatisticsDatabase() -> StatisticsDatabase {
         let statsDatabase = StatisticsDatabase()
-        availableStatisticsTypes.forEach { statsDatabase.addStatistic(for: $0.asType) }
+        availableStatisticsTypes.values.forEach { statsDatabase.addStatistic(for: $0.asType) }
         return statsDatabase
+    }
+
+    static func createInstance(of typeName: String, permanentValue: Double, currentValue: Double) -> Statistic? {
+        guard let type = availableStatisticsTypes[typeName] else {
+            return nil
+        }
+        return type.init(permanentValue: permanentValue, currentValue: currentValue)
     }
 }

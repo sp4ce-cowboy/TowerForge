@@ -8,8 +8,6 @@
 import Foundation
 
 final class TotalKillsStatistic: Statistic {
-
-    var statisticName: StatisticName = .totalKills
     var permanentValue: Double = .zero
     var currentValue: Double = .zero
 
@@ -17,10 +15,8 @@ final class TotalKillsStatistic: Statistic {
         self.getStatisticUpdateLinks()
     }
 
-    init(name: StatisticName = .totalKills,
-         permanentValue: Double = .zero,
+    init(permanentValue: Double = .zero,
          currentValue: Double = .zero) {
-        self.statisticName = name
         self.permanentValue = permanentValue
         self.currentValue = currentValue
     }

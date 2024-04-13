@@ -8,15 +8,11 @@
 import Foundation
 
 final class DefaultStatistic: Statistic {
-
-    var statisticName: StatisticName = .defaultStatistic
     var permanentValue: Double = .zero
     var currentValue: Double = .zero
 
-    init(name: StatisticName = .defaultStatistic,
-         permanentValue: Double = .zero,
+    init(permanentValue: Double = .zero,
          currentValue: Double = .zero) {
-        self.statisticName = name
         self.permanentValue = permanentValue
         self.currentValue = currentValue
     }

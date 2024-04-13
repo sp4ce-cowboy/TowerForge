@@ -13,6 +13,10 @@ import Foundation
 struct StatisticTypeWrapper: Equatable, Hashable {
     let type: Statistic.Type
 
+    var toString: String {
+        String(describing: type)
+    }
+
     static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.type == rhs.type
     }
@@ -20,6 +24,7 @@ struct StatisticTypeWrapper: Equatable, Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(ObjectIdentifier(type))
     }
+
 }
 
 /// This extension allows the wrapped type to be written to and read from file
