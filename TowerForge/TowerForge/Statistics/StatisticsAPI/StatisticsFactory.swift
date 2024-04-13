@@ -24,7 +24,7 @@ class StatisticsFactory {
 
     static func getDefaultStatisticsDatabase() -> StatisticsDatabase {
         let statsDatabase = StatisticsDatabase()
-        StatisticName.allCases.forEach { statsDatabase.addStatistic(for: $0) }
+        availableStatisticsTypes.forEach { statsDatabase.addStatistic(for: $0.asType) }
         return statsDatabase
     }
 }

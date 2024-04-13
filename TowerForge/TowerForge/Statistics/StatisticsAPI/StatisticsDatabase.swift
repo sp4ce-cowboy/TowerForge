@@ -9,33 +9,33 @@ import Foundation
 import FirebaseDatabaseInternal
 
 class StatisticsDatabase {
-    var statistics: [StatisticName: Statistic] = [:]
+    var statistics: [StatisticTypeWrapper: Statistic] = [:]
 
     init() {
         self.load()
     }
 
-    func addStatistic(for statName: StatisticName) {
+    func addStatistic(for statName: StatisticTypeWrapper) {
         statistics[statName] = defaultStatisticGenerator[statName]?()
     }
 
-    func getStatistic(for statName: StatisticName) -> Statistic {
+    func getStatistic(for statName: StatisticTypeWrapper) -> Statistic {
         statistics[statName] ?? DefaultStatistic()
     }
 
-    private var defaultStatisticDecoder: [StatisticName: (JSONDecoder, Data) throws -> Statistic] {
+    private var defaultStatisticDecoder: [StatisticTypeWrapper: (JSONDecoder, Data) throws -> Statistic] {
         [
-            .totalKills: { decoder, data in try decoder.decode(TotalKillsStatistic.self, from: data) },
-            .totalGamesPlayed: { decoder, data in try decoder.decode(TotalGamesStatistic.self, from: data) },
-            .totalDeaths: { decoder, data in try decoder.decode(TotalDeathsStatistic.self, from: data) }
+            TotalKillsStatistic.asType: { decoder, data in try decoder.decode(TotalKillsStatistic.self, from: data) },
+            TotalGamesStatistic.asType: { decoder, data in try decoder.decode(TotalGamesStatistic.self, from: data) },
+            TotalDeathsStatistic.asType: { decoder, data in try decoder.decode(TotalDeathsStatistic.self, from: data) }
         ]
     }
 
-    private var defaultStatisticGenerator: [StatisticName: () -> Statistic] {
+    private var defaultStatisticGenerator: [StatisticTypeWrapper: () -> Statistic] {
         [
-            .totalKills: { TotalKillsStatistic() },
-            .totalGamesPlayed: { TotalGamesStatistic() },
-            .totalDeaths: { TotalDeathsStatistic() }
+            TotalKillsStatistic.asType: { TotalKillsStatistic() },
+            TotalGamesStatistic.asType: { TotalGamesStatistic() },
+            TotalDeathsStatistic.asType: { TotalDeathsStatistic() }
         ]
     }
 
@@ -57,9 +57,10 @@ class StatisticsDatabase {
                     }
 
                     do {
-                        guard let statisticName = StatisticName(rawValue: key) else {
+                        guard let statisticType = NSClassFromString(key) as? Statistic.Type else {
                             continue
                         }
+                        let statisticName = statisticType.asType
                         let decoder = JSONDecoder()
                         let statistic: Statistic?
                         statistic = try self.defaultStatisticDecoder[statisticName]?(decoder, statisticData)
@@ -75,13 +76,13 @@ class StatisticsDatabase {
 
     func save() {
         let databaseReference = FirebaseDatabaseReference(.Statistics)
-        var statisticsDictionary = [String: Any]()
+        var statisticsDictionary = [StatisticTypeWrapper: Any]()
 
         for (name, statistic) in statistics {
             do {
                 let data = try JSONEncoder().encode(statistic)
                 let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                statisticsDictionary[name.rawValue] = dictionary
+                statisticsDictionary[name] = dictionary
             } catch {
                 Logger.log("Error encoding statistic \(name): \(error)")
             }

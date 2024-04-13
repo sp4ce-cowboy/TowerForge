@@ -8,10 +8,8 @@
 import Foundation
 
 /// A Statistic is a metric to be tracked within TowerForge.
-///
-/// Conform
 protocol Statistic: AnyObject, Codable {
-    var statisticName: StatisticName { get }
+    var statisticName: StatisticTypeWrapper { get }
 
     /// The original value of the statistic prior to the start of the game seequence
     var permanentValue: Double { get set }
@@ -38,6 +36,14 @@ protocol Statistic: AnyObject, Codable {
 /// This extension adds default utility functions such as generic increments
 /// and decrements of values.
 extension Statistic {
+
+    static var asType: StatisticTypeWrapper {
+        StatisticTypeWrapper(type: Self.self)
+    }
+
+    var statisticName: StatisticTypeWrapper {
+        StatisticTypeWrapper(type: Self.self)
+    }
 
     /// Returns the total value of the statistic taking into account the
     /// permanent value of the Statistic prior to changes and the current changes

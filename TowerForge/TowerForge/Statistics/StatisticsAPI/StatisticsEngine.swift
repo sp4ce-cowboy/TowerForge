@@ -35,13 +35,13 @@ class StatisticsEngine {
     /// Add statistics links
     func setUpLinks() {
         eventStatisticLinks.addStatisticLink(for: KillEvent.self,
-                                             with: statisticsDatabase.getStatistic(for: .totalKills))
+                                             with: statisticsDatabase.getStatistic(for: TotalKillsStatistic.asType))
 
         eventStatisticLinks.addStatisticLink(for: GameStartEvent.self,
-                                             with: statisticsDatabase.getStatistic(for: .totalGamesPlayed))
+                                             with: statisticsDatabase.getStatistic(for: TotalGamesStatistic.asType))
 
         eventStatisticLinks.addStatisticLink(for: DeathEvent.self,
-                                             with: statisticsDatabase.getStatistic(for: .totalDeaths))
+                                             with: statisticsDatabase.getStatistic(for: TotalDeathsStatistic.asType))
     }
 
     private func initializeStatistics() {
