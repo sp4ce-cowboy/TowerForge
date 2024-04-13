@@ -9,10 +9,8 @@ import Foundation
 
 struct DisabledEvent: TFEvent {
     let timestamp: TimeInterval
-    let entityId: UUID
 
-    init(on entityId: UUID = UUID(), at timestamp: TimeInterval = .zero) {
-        self.entityId = entityId
+    init(at timestamp: TimeInterval = .zero) {
         self.timestamp = timestamp
     }
 
