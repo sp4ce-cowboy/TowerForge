@@ -21,10 +21,15 @@ struct KillEvent: TFEvent {
     func execute(in target: any EventTarget) -> EventOutput {
         if let removeSystem = target.system(ofType: RemoveSystem.self) {
             removeSystem.handleRemove(for: entityId)
+
         }
 
-        if player != .ownPlayer {
-            AchievementManager.incrementTotalKillCount()
+        if let statsSystem = target.system(ofType: StatisticSystem.self) {
+            if player != .ownPlayer {
+                statsSystem.broadcast(for: self)
+            } else {
+                statsSystem.broadcast(for: DeathEvent(entityId))
+            }
         }
 
         if let homeSystem = target.system(ofType: HomeSystem.self) {

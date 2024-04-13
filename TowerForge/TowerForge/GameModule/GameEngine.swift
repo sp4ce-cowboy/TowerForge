@@ -19,7 +19,7 @@ protocol AbstractGameEngine: EventTarget {
     var eventManager: EventManager { get }
 
     func updateGame(deltaTime: TimeInterval)
-    func setUpSystems(with grid: Grid)
+    func setUpSystems(with grid: Grid, and statsEngine: StatisticsEngine)
     func setUpPlayerInfo(mode: GameMode)
 
     func addEntity(_ entity: TFEntity)
@@ -52,6 +52,7 @@ class GameEngine: AbstractGameEngine {
         self.systemManager = systemManager
         self.eventManager = EventManager(roomId: roomId, currentPlayer: currentPlayer)
         self.setupTeam()
+        self.setupGame()
     }
 
     init(eventManager: EventManager,
@@ -61,6 +62,7 @@ class GameEngine: AbstractGameEngine {
         self.systemManager = systemManager
         self.eventManager = eventManager
         self.setupTeam()
+        self.setupGame()
     }
 
     func updateGame(deltaTime: TimeInterval) {
@@ -83,6 +85,11 @@ class GameEngine: AbstractGameEngine {
         entityManager.add(oppositeTeam)
     }
 
+    /// Add game start event to trigger the total games statistic
+    private func setupGame() {
+        addEvent(GameStartEvent())
+    }
+
     func setUpPlayerInfo(mode: GameMode) {
         for prop in mode.gameProps {
             let hudEntity = prop.renderableEntity
@@ -90,7 +97,7 @@ class GameEngine: AbstractGameEngine {
         }
     }
 
-    func setUpSystems(with grid: Grid) {
+    func setUpSystems(with grid: Grid, and statsEngine: StatisticsEngine) {
         systemManager.add(system: HealthSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: MovementSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: PositionSystem(entityManager: entityManager, eventManager: eventManager))
@@ -101,6 +108,8 @@ class GameEngine: AbstractGameEngine {
         systemManager.add(system: ContactSystem(entityManager: entityManager, eventManager: eventManager))
         systemManager.add(system: HomeSystem(entityManager: entityManager, eventManager: eventManager,
                                              gridDelegate: grid))
+        systemManager.add(system: StatisticSystem(entityManager: entityManager,
+                                                  eventManager: eventManager, statsEngine: statsEngine))
 
         // Temporary until we have different gamemodes
         guard eventManager.remoteEventManager == nil else {
