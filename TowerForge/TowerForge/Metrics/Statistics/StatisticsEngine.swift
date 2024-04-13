@@ -7,29 +7,15 @@
 
 import Foundation
 
-protocol StatisticsUpdateDelegate: AnyObject {
-    func updateOnReceive(_ eventType: TFEventTypeWrapper)
-}
-
 class StatisticsEngine {
     /// Core storage of Statistics
     var statisticsDatabase = StatisticsDatabase()
     var eventStatisticLinks = EventStatisticLinkDatabase()
+    var inferenceEngines: [InferenceEngine] = []
 
     init() {
         self.initializeStatistics()
         self.setUpLinks()
-    }
-
-    /// Main update function
-    func updateStatisticsOnReceive<T: TFEvent>(_ event: T) {
-        let eventType = TFEventTypeWrapper(type: T.self)
-        guard let stats = eventStatisticLinks.getStatisticLinks(for: eventType) else {
-            return
-        }
-
-        stats.forEach { $0.update(for: eventType) }
-        saveStatistics()
     }
 
     /// Add statistics links
@@ -48,6 +34,17 @@ class StatisticsEngine {
         eventStatisticLinks = StatisticsFactory.getDefaultEventLinkDatabase()
         statisticsDatabase = StatisticsFactory.getDefaultStatisticsDatabase()
         loadStatistics()
+    }
+
+    /// Main update function
+    func updateStatisticsOnReceive<T: TFEvent>(_ event: T) {
+        let eventType = TFEventTypeWrapper(type: T.self)
+        guard let stats = eventStatisticLinks.getStatisticLinks(for: eventType) else {
+            return
+        }
+
+        stats.forEach { $0.update(for: eventType) }
+        saveStatistics()
     }
 
     private func saveStatistics() {

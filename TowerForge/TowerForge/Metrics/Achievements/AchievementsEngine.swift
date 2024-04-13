@@ -7,6 +7,17 @@
 
 import Foundation
 
-class AchievementsEngine {
+class AchievementsEngine: InferenceEngine {
+
+    var statisticsDatabase: StatisticsDatabase
+    var achievementsDatabase = AchievementsDatabase()
+
+    init(statisticsDatabase: StatisticsDatabase) {
+        self.statisticsDatabase = statisticsDatabase
+    }
+
+    func updateOnReceive(stats: StatisticsDatabase) {
+        statisticsDatabase = stats
+    }
 
 }
