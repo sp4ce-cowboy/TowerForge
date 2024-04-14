@@ -33,6 +33,24 @@ protocol Statistic: AnyObject, Codable {
 
 }
 
+extension Statistic {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        (lhs.statisticName == rhs.statisticName) &&
+        (lhs.permanentValue == rhs.permanentValue)
+    }
+
+    /// Compares two Statistic objects of the same type and returns that whose permanent value is
+    /// larger
+    static func maximum(lhs: Self, rhs: Self) -> Self {
+        Double.maximumMagnitude(lhs.permanentValue, rhs.permanentValue) == lhs.permanentValue ? lhs : rhs
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(statisticName)
+        hasher.combine(permanentValue)
+    }
+}
+
 /// This extension adds default utility functions such as generic increments
 /// and decrements of values.
 extension Statistic {

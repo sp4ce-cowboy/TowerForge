@@ -209,6 +209,10 @@
 		BA82C7632BCBBB2A000515A0 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7622BCBBB2A000515A0 /* Double+Extensions.swift */; };
 		BA82C7652BCBC868000515A0 /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7642BCBC868000515A0 /* LocalStorageManager.swift */; };
 		BA82C7672BCBCB00000515A0 /* StatisticsDatabase+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7662BCBCB00000515A0 /* StatisticsDatabase+Codable.swift */; };
+		BA82C7692BCBD21F000515A0 /* RemoteStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7682BCBD21F000515A0 /* RemoteStorageManager.swift */; };
+		BA82C76B2BCBD682000515A0 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C76A2BCBD682000515A0 /* StorageManager.swift */; };
+		BA82C76D2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C76C2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift */; };
+		BA82C76F2BCBDE91000515A0 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C76E2BCBDE91000515A0 /* Metadata.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -443,6 +447,10 @@
 		BA82C7622BCBBB2A000515A0 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Double+Extensions.swift"; path = "TowerForge/Commons/Protocols/Double+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		BA82C7642BCBC868000515A0 /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
 		BA82C7662BCBCB00000515A0 /* StatisticsDatabase+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsDatabase+Codable.swift"; sourceTree = "<group>"; };
+		BA82C7682BCBD21F000515A0 /* RemoteStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStorageManager.swift; sourceTree = "<group>"; };
+		BA82C76A2BCBD682000515A0 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		BA82C76C2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsDatabase+Merge.swift"; sourceTree = "<group>"; };
+		BA82C76E2BCBDE91000515A0 /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -996,6 +1004,7 @@
 				BA82C7572BCAB4C2000515A0 /* StatisticTypeWrapper.swift */,
 				BA82C7452BC8797F000515A0 /* StatisticsDatabase.swift */,
 				BA82C7662BCBCB00000515A0 /* StatisticsDatabase+Codable.swift */,
+				BA82C76C2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift */,
 				BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */,
 				BA82C73F2BC8674A000515A0 /* StatisticsFactory.swift */,
 				BA2F5ACA2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift */,
@@ -1245,7 +1254,10 @@
 		BAFFB9512BB342E200D8301F /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				BA82C76A2BCBD682000515A0 /* StorageManager.swift */,
+				BA82C76E2BCBDE91000515A0 /* Metadata.swift */,
 				BA82C7642BCBC868000515A0 /* LocalStorageManager.swift */,
+				BA82C7682BCBD21F000515A0 /* RemoteStorageManager.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -1535,6 +1547,7 @@
 				527A07842BB3FD9A00CD9D08 /* TimerSystem.swift in Sources */,
 				BA82C7462BC8797F000515A0 /* StatisticsDatabase.swift in Sources */,
 				3C3CBDF72BB81D970001B8A9 /* TFCameraNode.swift in Sources */,
+				BA82C76D2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift in Sources */,
 				3CE951562BACA0CF008B2785 /* Collidable.swift in Sources */,
 				BA82C7422BC86FE1000515A0 /* TotalGamesStatistic.swift in Sources */,
 				BA2F5ABE2BC80A8B00CBD8E9 /* Achievement.swift in Sources */,
@@ -1566,9 +1579,12 @@
 				52A794062BBC32A10083C976 /* FirebaseRepositoryProtocol.swift in Sources */,
 				BA82C7482BC87DB9000515A0 /* DefaultStatistic.swift in Sources */,
 				BA82C7442BC86FFE000515A0 /* GameStartEvent.swift in Sources */,
+				BA82C7692BCBD21F000515A0 /* RemoteStorageManager.swift in Sources */,
 				9B0406102BB879990026E903 /* InvulnerabilityPowerUp.swift in Sources */,
 				5299D1412BC3AA3A003EF746 /* GameRankData.swift in Sources */,
 				52F930E72BC63F7F003D11B5 /* LeaderboardSelectionViewController.swift in Sources */,
+				BA82C76F2BCBDE91000515A0 /* Metadata.swift in Sources */,
+				BA82C76B2BCBD682000515A0 /* StorageManager.swift in Sources */,
 				9BD669682BAFDE5E00DC8C4C /* GridDelegate.swift in Sources */,
 				52DF5FEB2BA3400C00135367 /* TFAnimatableNode.swift in Sources */,
 				3C3CBDFF2BB8708A0001B8A9 /* CGPoint+Extensions.swift in Sources */,

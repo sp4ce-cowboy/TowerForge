@@ -15,11 +15,12 @@ import Foundation
 class LocalStorageManager {
     static let folderName = Constants.LOCAL_STORAGE_CONTAINER_NAME
     static let fileName = Constants.LOCAL_STORAGE_FILE_NAME
+    static let metadataName = Constants.METADATA_NAME
 
     /// Creates an empty local file to store the database if one doesn't already exist.
     /// Called by the AppDelegate when the application is run.
-    static func initializeLocalData() {
-        if let loadedLocalStorage = Self.loadDatabaseFromLocalStorage() {
+    static func initializeLocalStatisticsDatabase() {
+        if Self.loadDatabaseFromLocalStorage() != nil {
             Logger.log("Loaded existing database.", Self.self)
         } else {
             Self.saveDatabaseToLocalStorage(StatisticsFactory.getDefaultStatisticsDatabase())
@@ -29,13 +30,12 @@ class LocalStorageManager {
 
     /// Saves the input statistics database to file
     static func saveDatabaseToLocalStorage(_ stats: StatisticsDatabase) {
-        let fileNameCombined = Self.fileName + ".json"
         let encoder = JSONEncoder()
 
         do {
             let data = try encoder.encode(stats)
             let folderURL = try Self.createFolderIfNeeded(folderName: Self.folderName)
-            let fileURL = folderURL.appendingPathComponent(fileNameCombined)
+            let fileURL = folderURL.appendingPathComponent(Self.fileName)
             try data.write(to: fileURL)
             Logger.log("Saved Statistics Database at: \(fileURL.path)", self)
         } catch {
@@ -69,6 +69,58 @@ class LocalStorageManager {
         Logger.log("Database successfully deleted.", self)
     }
 
+    static func saveMetadataToLocalStorage() {
+        let dateFormatter = ISO8601DateFormatter()
+        let currentTimeString = dateFormatter.string(from: Date())
+
+        do {
+            let folderURL = try createFolderIfNeeded(folderName: folderName)
+            let fileURL = folderURL.appendingPathComponent(metadataName)
+            try currentTimeString.write(to: fileURL, atomically: true, encoding: .utf8)
+            Logger.log("Saved metadata at: \(fileURL.path)", self)
+        } catch {
+            Logger.log("Error saving metadata: \(error)", self)
+        }
+    }
+
+    static func loadMetadataFromLocalStorage() -> Date? {
+        do {
+            let folderURL = try createFolderIfNeeded(folderName: folderName)
+            let fileURL = folderURL.appendingPathComponent(metadataName)
+            let dateString = try String(contentsOf: fileURL, encoding: .utf8)
+            let dateFormatter = ISO8601DateFormatter()
+            return dateFormatter.date(from: dateString)
+        } catch {
+            Logger.log("Error loading metadata: \(error)", self)
+            return nil
+        }
+    }
+
+    /// Deletes the stored database from file
+    static func deleteMetadataFromLocalStorage() {
+        do {
+            let folderURL = try Self.createFolderIfNeeded(folderName: Self.folderName)
+            let fileURL = folderURL.appendingPathComponent(Self.fileName)
+            try FileManager.default.removeItem(at: fileURL)
+        } catch {
+            Logger.log("Error deleting file: \(Self.fileName), \(error)", self)
+        }
+        Logger.log("Database successfully deleted.", self)
+    }
+
+    /// Retrieves file metadata provided by iOS for a given filename in the document directory.
+    static func getFileMetadata(for filename: String) -> [FileAttributeKey: Any]? {
+        do {
+            let folderURL = try createFolderIfNeeded(folderName: folderName)
+            let fileURL = folderURL.appendingPathComponent(filename)
+            let attributes = try FileManager.default.attributesOfItem(atPath: fileURL.path)
+            return attributes
+        } catch {
+            Logger.log("Error retrieving file metadata: \(error)", self)
+            return nil
+        }
+    }
+
     /// Helper function to construct a FileURL
     static func fileURL(for directory: FileManager.SearchPathDirectory, withName name: String) throws -> URL {
         let fileManager = FileManager.default
@@ -90,4 +142,9 @@ class LocalStorageManager {
         }
         return folderURL
     }
+
+    static func compareTimes(_ time1: Date, _ time2: Date) -> Bool {
+        time1 > time2
+    }
+
 }

@@ -15,7 +15,10 @@ class Constants {
     static let LOCAL_STORAGE_CONTAINER_NAME = "TowerForge"
 
     /// The name of the file that contains TowerForge data locally
-    static let LOCAL_STORAGE_FILE_NAME = "TowerForgeLocalStorage"
+    static let LOCAL_STORAGE_FILE_NAME = "TowerForgeLocalStorage.json"
+
+    /// The name of the file that contains metadata about local storage
+    static let METADATA_NAME = "TowerForgeMetadata.json"
 
     /// Universal setting to enable or disable sound effects
     static var SOUND_EFFECTS_ENABLED = true
