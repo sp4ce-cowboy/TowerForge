@@ -205,6 +205,8 @@
 		BA82C75A2BCB0DFD000515A0 /* AchievementTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7592BCB0DFD000515A0 /* AchievementTypeWrapper.swift */; };
 		BA82C75D2BCB1451000515A0 /* InferenceEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C75C2BCB1451000515A0 /* InferenceEngine.swift */; };
 		BA82C75F2BCB1528000515A0 /* AchievementsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C75E2BCB1528000515A0 /* AchievementsDatabase.swift */; };
+		BA82C7612BCBBA8A000515A0 /* FiftyKillsAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7602BCBBA8A000515A0 /* FiftyKillsAchievement.swift */; };
+		BA82C7632BCBBB2A000515A0 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7622BCBBB2A000515A0 /* Double+Extensions.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -435,6 +437,8 @@
 		BA82C7592BCB0DFD000515A0 /* AchievementTypeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementTypeWrapper.swift; sourceTree = "<group>"; };
 		BA82C75C2BCB1451000515A0 /* InferenceEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InferenceEngine.swift; sourceTree = "<group>"; };
 		BA82C75E2BCB1528000515A0 /* AchievementsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsDatabase.swift; sourceTree = "<group>"; };
+		BA82C7602BCBBA8A000515A0 /* FiftyKillsAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiftyKillsAchievement.swift; sourceTree = "<group>"; };
+		BA82C7622BCBBB2A000515A0 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Double+Extensions.swift"; path = "TowerForge/Commons/Protocols/Double+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -975,6 +979,7 @@
 		BA82C7512BC8A3CF000515A0 /* Implemented */ = {
 			isa = PBXGroup;
 			children = (
+				BA82C7602BCBBA8A000515A0 /* FiftyKillsAchievement.swift */,
 			);
 			path = Implemented;
 			sourceTree = "<group>";
@@ -1163,6 +1168,7 @@
 			children = (
 				3C3CBDFE2BB8708A0001B8A9 /* CGPoint+Extensions.swift */,
 				3C3CBE002BB870950001B8A9 /* CGVector+Extensions.swift */,
+				BA82C7622BCBBB2A000515A0 /* Double+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1453,9 +1459,11 @@
 				523E5C4C2BC53F70007444DA /* WaveSpawnEvent.swift in Sources */,
 				5240D0912BAF3453004F1486 /* Life.swift in Sources */,
 				52A794192BBC630F0083C976 /* RoomData.swift in Sources */,
+				BA82C7632BCBBB2A000515A0 /* Double+Extensions.swift in Sources */,
 				52DF5FAE2BA32B2300135367 /* GameScene.swift in Sources */,
 				52578B822BA61AAF00B4D76C /* PositionComponent.swift in Sources */,
 				9BC60BC82BB9BE6D001A6737 /* DisabledEvent.swift in Sources */,
+				BA82C7612BCBBA8A000515A0 /* FiftyKillsAchievement.swift in Sources */,
 				52A794022BBC2EB30083C976 /* FirebaseReference.swift in Sources */,
 				BA82C74A2BC88FE5000515A0 /* StatisticSystem.swift in Sources */,
 				3C9955A32BA47DBB00D33FA5 /* BaseUnit.swift in Sources */,
