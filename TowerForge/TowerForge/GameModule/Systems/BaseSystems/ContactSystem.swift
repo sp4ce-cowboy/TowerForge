@@ -76,9 +76,20 @@ class ContactSystem: TFSystem {
     }
 
     private func handleContact(between entityA: TFEntity, and entityB: TFEntity) {
-        let event1 = entityA.collide(with: entityB)
-        let event2 = entityB.collide(with: entityA)
-        eventManager.add(event1.concurrentlyWith(event2))
+        var events = entityA.collide(with: entityB)
+        events.append(contentsOf: entityB.collide(with: entityA))
+
+        for event in events {
+            guard let damageEvent = event as? DamageEvent, let player = eventManager.currentPlayer else {
+                eventManager.add(event)
+                continue
+            }
+            guard eventManager.isHost else {
+                continue
+            }
+            eventManager.add(RemoteDamageEvent(id: damageEvent.entityId, damage: damageEvent.damage,
+                                               player: damageEvent.player, gamePlayer: player))
+        }
     }
 
     private func handleSeparation(for entity: TFEntity) {
