@@ -8,7 +8,14 @@
 import Foundation
 
 /// The class responsible for providing application wide Storage access and
-/// synchronizing between 
-class StorageManager {
+/// synchronizing between Local Storage and Remote Storage
+class StorageManager: AuthenticationDelegate {
+    func onLogout() {
+
+    }
+
+    func onLogin() {
+
+    }
 
 }

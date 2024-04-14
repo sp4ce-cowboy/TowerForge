@@ -13,7 +13,7 @@ import Foundation
 struct StatisticTypeWrapper: Equatable, Hashable {
     let type: Statistic.Type
 
-    var toString: String {
+    var asString: String {
         String(describing: type)
     }
 

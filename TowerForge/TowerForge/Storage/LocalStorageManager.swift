@@ -28,6 +28,35 @@ class LocalStorageManager {
         }
     }
 
+    /// Helper function to construct a FileURL
+    static func fileURL(for directory: FileManager.SearchPathDirectory, withName name: String) throws -> URL {
+        let fileManager = FileManager.default
+
+        return try fileManager.url(for: directory,
+                                   in: .userDomainMask,
+                                   appropriateFor: nil,
+                                   create: true).appendingPathComponent(name)
+    }
+
+    /// Helper function to create a folder using the shared FileManager for a given folderName
+    static func createFolderIfNeeded(folderName: String) throws -> URL {
+        let fileManager = FileManager.default
+        let documentsURL: URL = try fileManager.url(for: .documentDirectory,
+                                                    in: .userDomainMask,
+                                                    appropriateFor: nil,
+                                                    create: false)
+
+        let folderURL = documentsURL.appendingPathComponent(folderName)
+        if !fileManager.fileExists(atPath: folderURL.path) {
+            try fileManager.createDirectory(at: folderURL,
+                                            withIntermediateDirectories: true,
+                                            attributes: nil)
+        }
+        return folderURL
+    }
+}
+
+extension LocalStorageManager {
     /// Saves the input statistics database to file
     static func saveDatabaseToLocalStorage(_ stats: StatisticsDatabase) {
         let encoder = JSONEncoder()
@@ -67,32 +96,6 @@ class LocalStorageManager {
             Logger.log("Error deleting file: \(Self.fileName), \(error)", self)
         }
         Logger.log("Database successfully deleted.", self)
-    }
-
-    /// Helper function to construct a FileURL
-    static func fileURL(for directory: FileManager.SearchPathDirectory, withName name: String) throws -> URL {
-        let fileManager = FileManager.default
-
-        return try fileManager.url(for: directory, in: .userDomainMask,
-                                   appropriateFor: nil, create: true).appendingPathComponent(name)
-    }
-
-    /// Helper function to create a folder using the shared FileManager for a given folderName
-    static func createFolderIfNeeded(folderName: String) throws -> URL {
-        let fileManager = FileManager.default
-        let documentsURL: URL = try fileManager.url(for: .documentDirectory, in: .userDomainMask,
-                                                    appropriateFor: nil, create: false)
-
-        let folderURL = documentsURL.appendingPathComponent(folderName)
-        if !fileManager.fileExists(atPath: folderURL.path) {
-            try fileManager.createDirectory(at: folderURL,
-                                            withIntermediateDirectories: true, attributes: nil)
-        }
-        return folderURL
-    }
-
-    static func compareTimes(_ time1: Date, _ time2: Date) -> Bool {
-        time1 > time2
     }
 
 }

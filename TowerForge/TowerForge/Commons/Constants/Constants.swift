@@ -20,6 +20,13 @@ class Constants {
     /// The name of the file that contains metadata about local storage
     static let METADATA_NAME = "TowerForgeMetadata.json"
 
+    /// The name of the player currently logged in.
+    /// By default, this is set to the default id associated with the device
+    static var CURRENT_PLAYER_ID = ""
+
+    /// The default id associated with the device
+    static var CURRENT_DEVICE_ID = ""
+
     /// Universal setting to enable or disable sound effects
     static var SOUND_EFFECTS_ENABLED = true
 

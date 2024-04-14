@@ -195,7 +195,6 @@
 		BA82C7422BC86FE1000515A0 /* TotalGamesStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7412BC86FE1000515A0 /* TotalGamesStatistic.swift */; };
 		BA82C7442BC86FFE000515A0 /* GameStartEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7432BC86FFE000515A0 /* GameStartEvent.swift */; };
 		BA82C7462BC8797F000515A0 /* StatisticsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7452BC8797F000515A0 /* StatisticsDatabase.swift */; };
-		BA82C7482BC87DB9000515A0 /* DefaultStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7472BC87DB9000515A0 /* DefaultStatistic.swift */; };
 		BA82C74A2BC88FE5000515A0 /* StatisticSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7492BC88FE5000515A0 /* StatisticSystem.swift */; };
 		BA82C74E2BC8A024000515A0 /* DeathEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C74D2BC8A024000515A0 /* DeathEvent.swift */; };
 		BA82C7502BC8A20A000515A0 /* TotalDeathsStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C74F2BC8A20A000515A0 /* TotalDeathsStatistic.swift */; };
@@ -434,7 +433,6 @@
 		BA82C7412BC86FE1000515A0 /* TotalGamesStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalGamesStatistic.swift; sourceTree = "<group>"; };
 		BA82C7432BC86FFE000515A0 /* GameStartEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartEvent.swift; sourceTree = "<group>"; };
 		BA82C7452BC8797F000515A0 /* StatisticsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsDatabase.swift; sourceTree = "<group>"; };
-		BA82C7472BC87DB9000515A0 /* DefaultStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStatistic.swift; sourceTree = "<group>"; };
 		BA82C7492BC88FE5000515A0 /* StatisticSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticSystem.swift; sourceTree = "<group>"; };
 		BA82C74D2BC8A024000515A0 /* DeathEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathEvent.swift; sourceTree = "<group>"; };
 		BA82C74F2BC8A20A000515A0 /* TotalDeathsStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalDeathsStatistic.swift; sourceTree = "<group>"; };
@@ -966,7 +964,6 @@
 		BA82C73E2BC85D90000515A0 /* Implemented */ = {
 			isa = PBXGroup;
 			children = (
-				BA82C7472BC87DB9000515A0 /* DefaultStatistic.swift */,
 				BA2F5AC42BC8143E00CBD8E9 /* TotalKillsStatistic.swift */,
 				BA82C7412BC86FE1000515A0 /* TotalGamesStatistic.swift */,
 				BA82C74F2BC8A20A000515A0 /* TotalDeathsStatistic.swift */,
@@ -1581,7 +1578,6 @@
 				527A07802BB3F81C00CD9D08 /* TimerComponent.swift in Sources */,
 				3C769A722BA58DE700F454F9 /* MovementSystem.swift in Sources */,
 				52A794062BBC32A10083C976 /* FirebaseRepositoryProtocol.swift in Sources */,
-				BA82C7482BC87DB9000515A0 /* DefaultStatistic.swift in Sources */,
 				BA82C7442BC86FFE000515A0 /* GameStartEvent.swift in Sources */,
 				BA82C7692BCBD21F000515A0 /* RemoteStorageManager.swift in Sources */,
 				9B0406102BB879990026E903 /* InvulnerabilityPowerUp.swift in Sources */,

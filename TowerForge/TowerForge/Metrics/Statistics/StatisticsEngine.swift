@@ -9,7 +9,7 @@ import Foundation
 
 class StatisticsEngine {
     /// Core storage of Statistics
-    var statisticsDatabase = StatisticsDatabase()
+    var statistics = StatisticsDatabase()
     var eventStatisticLinks = EventStatisticLinkDatabase()
     var inferenceEngines: [InferenceEngine] = []
 
@@ -21,18 +21,18 @@ class StatisticsEngine {
     /// Add statistics links
     func setUpLinks() {
         eventStatisticLinks.addStatisticLink(for: KillEvent.self,
-                                             with: statisticsDatabase.getStatistic(for: TotalKillsStatistic.asType))
+                                             with: statistics.getStatistic(for: TotalKillsStatistic.asType))
 
         eventStatisticLinks.addStatisticLink(for: GameStartEvent.self,
-                                             with: statisticsDatabase.getStatistic(for: TotalGamesStatistic.asType))
+                                             with: statistics.getStatistic(for: TotalGamesStatistic.asType))
 
         eventStatisticLinks.addStatisticLink(for: DeathEvent.self,
-                                             with: statisticsDatabase.getStatistic(for: TotalDeathsStatistic.asType))
+                                             with: statistics.getStatistic(for: TotalDeathsStatistic.asType))
     }
 
     private func initializeStatistics() {
         eventStatisticLinks = StatisticsFactory.getDefaultEventLinkDatabase()
-        statisticsDatabase = StatisticsFactory.getDefaultStatisticsDatabase()
+        statistics = StatisticsFactory.getDefaultStatisticsDatabase()
         loadStatistics()
     }
 
@@ -61,15 +61,17 @@ class StatisticsEngine {
     /// to follow delegate pattern and have unowned statsEngine/db variables inside
     /// InferenceEngines
     func notifyInferenceEngines() {
-        inferenceEngines.forEach { $0.updateOnReceive(stats: statisticsDatabase) }
+        inferenceEngines.forEach { $0.updateOnReceive(stats: statistics) }
     }
 
     private func saveStatistics() {
-        statisticsDatabase.saveToFirebase()
+        LocalStorageManager.saveDatabaseToLocalStorage(statistics)
     }
 
     private func loadStatistics() {
-        statisticsDatabase.loadFromFirebase()
+        if let stats = LocalStorageManager.loadDatabaseFromLocalStorage() {
+            statistics = stats
+        }
     }
 
 }

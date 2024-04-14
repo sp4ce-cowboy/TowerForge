@@ -34,6 +34,10 @@ protocol Statistic: AnyObject, Codable {
 }
 
 extension Statistic {
+    init() {
+        self.init(permanentValue: .zero, currentValue: .zero)
+    }
+
     static func == (lhs: Self, rhs: Self) -> Bool {
         (lhs.statisticName == rhs.statisticName) &&
         (lhs.permanentValue == rhs.permanentValue)
