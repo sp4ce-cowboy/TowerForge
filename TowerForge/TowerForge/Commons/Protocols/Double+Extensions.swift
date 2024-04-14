@@ -14,6 +14,7 @@ extension Double {
     var oneHalf: Double { self * 1.5 }
     var square: Double { pow(self, 2) }
     var sqroot: Double { sqrt(self) }
+    func divide(by value: Double) -> Double { self / value }
 }
 
 extension Int {

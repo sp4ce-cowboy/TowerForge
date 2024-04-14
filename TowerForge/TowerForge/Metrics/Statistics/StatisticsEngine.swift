@@ -47,6 +47,10 @@ class StatisticsEngine {
         saveStatistics()
     }
 
+    func addInferenceEngine(_ engine: InferenceEngine) {
+        inferenceEngines.append(engine)
+    }
+
     private func saveStatistics() {
         statisticsDatabase.saveToFirebase()
     }

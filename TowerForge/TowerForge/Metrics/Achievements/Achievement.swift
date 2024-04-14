@@ -21,6 +21,7 @@ protocol Achievement: AnyObject {
     var requiredValues: [StatisticTypeWrapper: Double] { get }
 
     var currentProgressRates: [StatisticTypeWrapper: Double] { get }
+    var overallProgressRate: Double { get }
     var isComplete: Bool { get }
 
     func loadStatistic(_ stat: Statistic)
@@ -29,7 +30,7 @@ protocol Achievement: AnyObject {
 }
 
 extension Achievement {
-    
+
     func loadStatistic(_ stat: any Statistic) {
         dependentStatistics[stat.statisticName] = stat
     }
@@ -54,6 +55,15 @@ extension Achievement {
         }
 
         return rates
+    }
+
+    var overallProgressRate: Double {
+        currentProgressRates.values.reduce(into: .zero) { $0 += $1 }
+            .divide(by: Double(currentProgressRates.values.count))
+    }
+
+    var overallProgressRateRounded: Double {
+        overallProgressRate.rounded()
     }
 
     var isComplete: Bool {
