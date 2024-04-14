@@ -27,7 +27,7 @@ class RemoteStorageManager {
                 return
             }
 
-            if let exists = snapshot?.exists(), let value = snapshot?.value {
+            if snapshot?.exists() != nil && snapshot?.value != nil {
                 completion(true)
             } else {
                 completion(false)
@@ -36,6 +36,74 @@ class RemoteStorageManager {
     }
 
     static func loadFromFirebase(completion: @escaping (StatisticsDatabase?, Error?) -> Void) {
+        let databaseReference = FirebaseDatabaseReference(.Statistics)
+
+        databaseReference.child(currentPlayer).getData(completion: { error, snapshot in
+            if let error = error {
+                Logger.log(error.localizedDescription, self)
+                completion(nil, error)
+                return
+            }
+
+            guard let value = snapshot?.value as? [String: Any],
+                  let jsonData = try? JSONSerialization.data(withJSONObject: value, options: []) else {
+                completion(nil, nil)
+                return
+            }
+
+            do {
+                let decoder = JSONDecoder()
+                let statsDatabase = try decoder.decode(StatisticsDatabase.self, from: jsonData)
+                completion(statsDatabase, nil)
+            } catch {
+                Logger.log("Error decoding StatisticsDatabase from Firebase: \(error)", self)
+                completion(nil, error)
+            }
+        })
+    }
+
+    static func saveToFirebase(_ stats: StatisticsDatabase, completion: @escaping (Error?) -> Void) {
+        let databaseReference = FirebaseDatabaseReference(.Statistics)
+
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(stats)
+            let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
+
+            databaseReference.child(currentPlayer).setValue(dictionary) { error, _ in
+                if let error = error {
+                    Logger.log("Data could not be saved: \(error).", StatisticsDatabase.self)
+                    completion(error)
+                } else {
+                    Logger.log("StatisticsDatabase saved to Firebase successfully!", StatisticsDatabase.self)
+                    completion(nil)
+                }
+            }
+        } catch {
+            Logger.log("Error encoding StatisticsDatabase: \(error)", StatisticsDatabase.self)
+            completion(error)
+        }
+    }
+
+    /// Deletes the player's statistics database from Firebase
+    static func deleteFromFirebase(completion: @escaping (Error?) -> Void) {
+        let databaseReference = FirebaseDatabaseReference(.Statistics)
+
+        // Remove the data at the specific currentPlayer node
+        databaseReference.child(currentPlayer).removeValue { error, _ in
+            if let error = error {
+                Logger.log("Error deleting data: \(error).", self)
+                completion(error)
+                return
+            }
+            Logger.log("Data for player \(currentPlayer) successfully deleted from Firebase.", self)
+            completion(nil)
+        }
+    }
+}
+
+extension RemoteStorageManager {
+    static func loadFromFirebaseOld(completion: @escaping (StatisticsDatabase?, Error?) -> Void) {
         let databaseReference = FirebaseDatabaseReference(.Statistics)
 
         databaseReference.child(currentPlayer).getData(completion: { error, snapshot in
@@ -59,8 +127,7 @@ class RemoteStorageManager {
                 }
 
                 do {
-                    guard let statisticType = NSClassFromString("TowerForge.\(key)") as? Statistic.Type else {
-                        Logger.log("NSClassFromString call failed for \(key)", StatisticsDatabase.self)
+                    guard let statisticType = key.asTFClassFromString as? Statistic.Type else {
                         continue
                     }
                     let statisticName = statisticType.asType
@@ -70,7 +137,7 @@ class RemoteStorageManager {
                                                         .defaultStatisticDecoder[statisticName]?(decoder, statisticData)
                     if let stat = statistic { statistics[statisticName] = stat }
                 } catch {
-                    Logger.log("Error decoding \(key):, \(error)", StatisticsDatabase.self)
+                    Logger.log("Error decoding from Firebase \(key):, \(error)", self)
                 }
             }
 
@@ -79,7 +146,7 @@ class RemoteStorageManager {
         })
     }
 
-    static func saveToFirebase(_ stats: StatisticsDatabase, completion: @escaping (Error?) -> Void) {
+    static func saveToFirebaseOld(_ stats: StatisticsDatabase, completion: @escaping (Error?) -> Void) {
         let databaseReference = FirebaseDatabaseReference(.Statistics)
         var statisticsDictionary = [String: Any]()
 
@@ -97,25 +164,9 @@ class RemoteStorageManager {
             if let error = error {
                 Logger.log("Data could not be saved: \(error).", StatisticsDatabase.self)
             } else {
-                Logger.log("StorageDatabase saved successfully!", StatisticsDatabase.self)
+                Logger.log("StatisticsDatabase saved to Firebase successfully!", StatisticsDatabase.self)
             }
             completion(error)
-        }
-    }
-
-    /// Deletes the player's statistics database from Firebase
-    static func deleteFromFirebase(completion: @escaping (Error?) -> Void) {
-        let databaseReference = FirebaseDatabaseReference(.Statistics)
-
-        // Remove the data at the specific currentPlayer node
-        databaseReference.child(currentPlayer).removeValue { error, _ in
-            if let error = error {
-                Logger.log("Error deleting data: \(error).", self)
-                completion(error)
-                return
-            }
-            Logger.log("Data for player \(currentPlayer) successfully deleted from Firebase.", self)
-            completion(nil)
         }
     }
 }

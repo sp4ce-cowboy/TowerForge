@@ -36,3 +36,18 @@ extension CGPoint {
         CGPoint(x: self.x / 2.0, y: self.y / 2.0)
     }
 }
+
+extension Bundle {
+    /// A convenience extension to safely retrieve the bundle name
+    var projectName: String {
+        object(forInfoDictionaryKey: "CFBundleName") as? String ?? Constants.PROJECT_NAME_PREFIX
+    }
+}
+
+extension String {
+    /// The NSClass name of a given class within the TowerForge Module represented in its full
+    /// form
+    var asTFClassFromString: AnyClass? {
+        NSClassFromString(Bundle.main.projectName + "." + self)
+    }
+}

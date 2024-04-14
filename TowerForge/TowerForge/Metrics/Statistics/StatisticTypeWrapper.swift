@@ -29,26 +29,26 @@ struct StatisticTypeWrapper: Equatable, Hashable {
 
 /// This extension allows the wrapped type to be written to and read from file
 extension StatisticTypeWrapper: Codable {
-    enum CodingKeys: String, CodingKey {
-        case typeName
-    }
 
     func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        let typeName = String(describing: type)
-        try container.encode(typeName, forKey: .typeName)
+        var container = encoder.singleValueContainer()
+        let typeName = self.asString
+        try container.encode(typeName)
     }
 
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        let typeName = try container.decode(String.self, forKey: .typeName)
+        let container = try decoder.singleValueContainer()
+        let typeName = try container.decode(String.self)
 
-        guard let type = NSClassFromString(typeName) as? Statistic.Type else {
-            throw DecodingError.dataCorruptedError(forKey: .typeName,
-                                                   in: container,
-                                                   debugDescription: "Cannot decode Statistic.Type from \(typeName)")
+        guard let statType = typeName.asTFClassFromString as? Statistic.Type else {
+            Logger.log("Error at decoding StatisticType", Self.self)
+
+            let context = DecodingError.Context(codingPath: container.codingPath,
+                                                debugDescription: "Cannot decode \(typeName) as Statistic.Type")
+
+            throw DecodingError.typeMismatch(Statistic.Type.self, context)
         }
 
-        self.type = type
+        self.type = statType
     }
 }

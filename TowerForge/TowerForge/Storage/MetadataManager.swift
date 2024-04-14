@@ -22,6 +22,7 @@ class MetadataManager {
     static func initializeUserIdentifier() {
         let metadata = MetadataManager.checkAndCreateMetadata()
         Constants.CURRENT_PLAYER_ID = metadata.uniqueIdentifier
+        Logger.log("Current player set to \(Constants.CURRENT_PLAYER_ID)", self)
     }
 
     static func checkAndCreateMetadata() -> Metadata {

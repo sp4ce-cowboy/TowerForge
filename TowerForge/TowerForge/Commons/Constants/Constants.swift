@@ -14,6 +14,9 @@ class Constants {
     /// The name of the folder in which information is stored locally
     static let LOCAL_STORAGE_CONTAINER_NAME = "TowerForge"
 
+    /// The name of the TowerForge project to prefix
+    static let PROJECT_NAME_PREFIX = "TowerForge"
+
     /// The name of the file that contains TowerForge data locally
     static let LOCAL_STORAGE_FILE_NAME = "TowerForgeLocalStorage.json"
 
@@ -28,7 +31,7 @@ class Constants {
     static var CURRENT_DEVICE_ID = ""
 
     /// Universal setting to enable or disable sound effects
-    static var SOUND_EFFECTS_ENABLED = true
+    static var SOUND_EFFECTS_ENABLED = false
 
     /// Universal background audio soundtrack to play during game modes
     static let GAME_BACKGROUND_AUDIO: String = BackgroundMusic.gameMode.rawValue

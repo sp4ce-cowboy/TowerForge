@@ -121,39 +121,10 @@ extension Statistic {
 
 /// This extension adds default implementations for encoding and decoding a statistic
 extension Statistic {
-    /*func encode(to encoder: any Encoder) throws {
-        var container = encoder.container(keyedBy: StorageEnums.StatisticDefaultCodingKeys.self)
+    func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: StatisticsDefaultCodingKeys.self)
         try container.encode(statisticName, forKey: .statisticName)
         try container.encode(permanentValue, forKey: .permanentValue)
         try container.encode(currentValue, forKey: .currentValue)
-    }*/
-
-    /*init(from decoder: any Decoder) throws {
-        let container = try decoder.container(keyedBy: StorageEnums.StatisticDefaultCodingKeys.self)
-        let type = try container.decode(StatisticTypeWrapper.self, forKey: .statisticName)
-        let value = try container.decode(Double.self, forKey: .permanentValue)
-        let current = try container.decode(Double.self, forKey: .currentValue)
-
-        type.type.init(permanentValue: value, currentValue: current)
-        self.init(permanentValue: value, currentValue: current)
-    }*/
-
-    /*init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: StorageEnums.StatisticDefaultCodingKeys.self)
-        let type = try container.decode(StatisticTypeWrapper.self, forKey: .statisticName)
-        let typeName = String(describing: type)
-        let permanentValue = try container.decode(Double.self, forKey: .permanentValue)
-        let currentValue = try container.decode(Double.self, forKey: .currentValue)
-
-        guard let instance = StatisticsFactory.createInstance(of: typeName,
-                                                              permanentValue: permanentValue,
-                                                              currentValue: currentValue) else {
-
-            throw DecodingError.dataCorruptedError(forKey: .statisticName,
-                                                   in: container,
-                                                   debugDescription: "Cannot instantiate Statistic of type \(typeName)")
-        }
-
-        self = instance
-    }*/
+    }
 }
