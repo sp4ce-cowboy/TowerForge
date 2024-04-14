@@ -65,13 +65,11 @@ class StatisticsEngine {
     }
 
     private func saveStatistics() {
-        LocalStorageManager.saveDatabaseToLocalStorage(statistics)
+        _ = StorageManager.saveUniversally(statistics)
     }
 
     private func loadStatistics() {
-        if let stats = LocalStorageManager.loadDatabaseFromLocalStorage() {
-            statistics = stats
-        }
+        statistics = StorageManager.loadUniversally()
     }
 
 }

@@ -16,6 +16,25 @@ import FirebaseDatabaseInternal
 class RemoteStorageManager {
     static var currentPlayer: String = Constants.CURRENT_PLAYER_ID
 
+    /// Queries the firebase backend to determine if remote storage exists for the current player
+    static func remoteStorageExistsForCurrentPlayer(completion: @escaping (Bool) -> Void) {
+        let databaseReference = FirebaseDatabaseReference(.Statistics)
+
+        databaseReference.child(currentPlayer).getData(completion: { error, snapshot in
+            if let error = error {
+                Logger.log("Error checking data existence: \(error.localizedDescription)", self)
+                completion(false) // Assuming no data exists if an error occurs
+                return
+            }
+
+            if let exists = snapshot?.exists(), let value = snapshot?.value {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        })
+    }
+
     static func loadFromFirebase(completion: @escaping (StatisticsDatabase?, Error?) -> Void) {
         let databaseReference = FirebaseDatabaseReference(.Statistics)
 

@@ -22,4 +22,8 @@ final class StatisticsDatabase {
     func getStatistic(for statName: StatisticTypeWrapper) -> Statistic? {
         statistics[statName]
     }
+
+    func setToDefault() {
+        statistics = StatisticsFactory.getDefaultStatisticsDatabase().statistics
+    }
 }

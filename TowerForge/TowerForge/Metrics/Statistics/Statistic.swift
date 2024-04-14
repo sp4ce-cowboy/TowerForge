@@ -39,7 +39,7 @@ extension Statistic {
         self.init(permanentValue: .zero, currentValue: .zero)
     }
 
-    static func == (lhs: Self, rhs: Self) -> Bool {
+    static func equals(lhs: Self, rhs: Self) -> Bool {
         (lhs.statisticName == rhs.statisticName) &&
         (lhs.permanentValue == rhs.permanentValue)
     }

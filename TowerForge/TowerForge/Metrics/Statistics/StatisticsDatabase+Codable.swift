@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// This extension adds encoding and decoding functionality to
+/// the Statistics Database to allow for storing and loading from file.
 extension StatisticsDatabase: Codable {
 
     private static func generateStatisticsCollection(_ statsArray: [Statistic]) -> [StatisticTypeWrapper: Statistic] {

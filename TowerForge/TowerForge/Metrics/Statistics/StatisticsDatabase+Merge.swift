@@ -10,7 +10,18 @@ import Foundation
 /// This extension adds merging abilities to the StatisticsDatabase.
 ///
 /// Represen
-extension StatisticsDatabase {
+extension StatisticsDatabase: Equatable {
+
+    static func == (lhs: StatisticsDatabase, rhs: StatisticsDatabase) -> Bool {
+        guard lhs.statistics.count == rhs.statistics.count else {
+            return false
+        }
+
+        return lhs.statistics.keys.allSatisfy {
+            (lhs.statistics[$0]?.statisticName == rhs.statistics[$0]?.statisticName) &&
+            (lhs.statistics[$0]?.permanentValue == rhs.statistics[$0]?.permanentValue)
+        }
+    }
 
     /// Compares two StatisticsDatabase instances and outputs a merged version
     ///
