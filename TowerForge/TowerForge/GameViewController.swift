@@ -13,7 +13,8 @@ class GameViewController: UIViewController {
     private var gameRankProvider: GameRankProvider?
     var gameMode: Mode?
     var isPaused = false
-    var gameRoom: GameRoom?
+    var roomId: RoomId?
+    var isHost = true
     var currentPlayer: GamePlayer?
 
     @IBOutlet private var gamePopupButton: UIButton!
@@ -24,6 +25,8 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
+        AchievementManager.incrementTotalGamesStarted()
         AudioManager.shared.playBackground()
         showGameLevelScene()
 
@@ -38,6 +41,7 @@ class GameViewController: UIViewController {
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false
         AudioManager.shared.pauseBackground()
         gameWorld = nil
     }
@@ -55,9 +59,10 @@ class GameViewController: UIViewController {
     }
 
     private func setUpGameWorld(scene: GameScene) {
-        self.gameWorld = GameWorld(scene: scene, screenSize: self.view.frame,
+        self.gameWorld = GameWorld(screenSize: self.view.frame,
                                    mode: self.gameMode ?? .captureTheFlag,
-                                   gameRoom: gameRoom, currentPlayer: currentPlayer)
+                                   roomId: roomId, isHost: isHost, currentPlayer: currentPlayer)
+        self.gameWorld?.scene = scene
         self.gameWorld?.delegate = self
         self.gameWorld?.statePopupDelegate = self
     }
@@ -75,13 +80,14 @@ extension GameViewController: SceneUpdateDelegate {
 
 extension GameViewController: SceneManagerDelegate {
     func showMenuScene() {
-        guard let mainMenuViewController =
-                self.storyboard?.instantiateViewController(withIdentifier: "MainMenuViewController")
-                as? MainMenuViewController else {
-                    return
-                }
-
-        self.present(mainMenuViewController, animated: true, completion: nil)
+        if let targetVC = navigationController?.viewControllers.first(where: { $0 is MainMenuViewController }) {
+            navigationController?.popToViewController(targetVC, animated: true)
+            return
+        }
+        if let targetVC = storyboard?
+            .instantiateViewController(withIdentifier: "MainMenuViewController") as? MainMenuViewController {
+            present(targetVC, animated: true)
+        }
     }
     func showLevelScene() {
         // TODO : to implement after Keith is done

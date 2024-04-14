@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-enum PowerUp {
+enum PowerUp: String {
     case invulnerability
 
     var imageName: String {

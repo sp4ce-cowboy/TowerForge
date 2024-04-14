@@ -12,7 +12,6 @@ class GameWorld {
     // Need to ensure that width is a multiple of 1024 - unit selection node height
     static let worldSize = CGSize(width: 2_472, height: 1_024)
 
-    private unowned var scene: GameScene?
     private var gameEngine: AbstractGameEngine
     private var gameMode: GameMode
     private var selectionNode: UnitSelectionNode
@@ -22,20 +21,20 @@ class GameWorld {
     private let worldBounds: CGRect
     private var popup: StatePopupNode
     private var statisticsEngine = StatisticsEngine()
+
+    unowned var scene: GameScene? { didSet { setUpScene() } }
     unowned var delegate: SceneManagerDelegate?
     unowned var statePopupDelegate: StatePopupDelegate? { didSet { popup.delegate = statePopupDelegate }  }
 
-    init(scene: GameScene?, screenSize: CGRect, mode: Mode,
-         gameRoom: GameRoom? = nil, currentPlayer: GamePlayer? = nil) {
-        self.scene = scene
+    init(screenSize: CGRect, mode: Mode, roomId: RoomId? = nil,
+         isHost: Bool = true, currentPlayer: GamePlayer? = nil) {
         worldBounds = CGRect(origin: screenSize.origin, size: GameWorld.worldSize)
-        gameEngine = GameEngine(roomId: gameRoom?.roomId, currentPlayer: currentPlayer)
+        gameEngine = GameEngine(roomId: roomId, isHost: isHost, currentPlayer: currentPlayer)
         gameMode = GameModeFactory.createGameMode(mode: mode, eventManager: gameEngine.eventManager)
         selectionNode = UnitSelectionNode()
         powerUpSelectionNode = PowerUpSelectionNode(eventManager: gameEngine.eventManager)
         grid = Grid(screenSize: worldBounds)
         popup = StatePopupNode()
-        renderer = TFRenderer(target: self, scene: scene)
 
         setUp()
     }
@@ -69,12 +68,12 @@ class GameWorld {
     }
 
     private func setUpScene() {
+        renderer = TFRenderer(target: self, scene: scene)
         scene?.setBounds(worldBounds)
         if let scene = self.scene {
             grid.generateTileMap(scene: scene)
         }
         renderer?.renderMessage("Game Starts")
-
     }
 
     private func setUpGameEngine() {

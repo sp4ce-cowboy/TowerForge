@@ -8,10 +8,10 @@
 import Foundation
 
 class GamePlayer: Codable {
-    var userPlayerId: UserPlayerId?
+    var userPlayerId: UserPlayerId
     let userName: String
 
-    init(userPlayerId: UserPlayerId? = nil, userName: String) {
+    init(userPlayerId: UserPlayerId = UUID().uuidString, userName: String) {
         self.userName = userName
         self.userPlayerId = userPlayerId
     }

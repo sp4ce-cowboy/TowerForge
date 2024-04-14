@@ -17,10 +17,8 @@ class PlayerRenderStage: RenderStage {
 
     func render() {
         let entities = renderer.target.entities(with: PlayerComponent.self)
-        for entity in entities {
-            if !renderedNodes.contains(entity.id) {
-                transform(for: entity)
-            }
+        for entity in entities where !renderedNodes.contains(entity.id) {
+            transform(for: entity)
         }
     }
 

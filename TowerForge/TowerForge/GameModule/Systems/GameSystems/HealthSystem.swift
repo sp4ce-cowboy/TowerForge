@@ -27,8 +27,18 @@ class HealthSystem: TFSystem {
 
         healthComponent.adjustHealth(amount: hp)
 
-        if healthComponent.currentHealth <= 0 {
+        guard healthComponent.currentHealth <= 0 else {
+            return
+        }
+
+        guard let currentPlayer = eventManager.currentPlayer else {
             eventManager.add(KillEvent(on: currentEntity.id, at: CACurrentMediaTime(), player: playerComponent.player))
+            return
+        }
+
+        if eventManager.isHost {
+            let remoteRemoveEvent = RemoteKillEvent(id: entityId, player: playerComponent.player, source: currentPlayer)
+            eventManager.add(remoteRemoveEvent)
         }
     }
 }
