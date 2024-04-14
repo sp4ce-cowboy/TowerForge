@@ -18,7 +18,8 @@ class StatisticsEngine {
         self.setUpLinks()
     }
 
-    /// Add statistics links
+    /// Add statistics links manually
+    /// TODO: Consider a more elegant way to do this
     func setUpLinks() {
         eventStatisticLinks.addStatisticLink(for: KillEvent.self,
                                              with: statistics.getStatistic(for: TotalKillsStatistic.asType))
