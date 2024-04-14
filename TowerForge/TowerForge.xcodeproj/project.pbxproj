@@ -47,6 +47,9 @@
 		3CAC4A712BB6AB3100A5D22E /* TFLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC4A702BB6AB3100A5D22E /* TFLabelNode.swift */; };
 		3CAC4A732BB6B61C00A5D22E /* PlayerRenderStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC4A722BB6B61C00A5D22E /* PlayerRenderStage.swift */; };
 		3CAC4A752BB6BDD500A5D22E /* HealthRenderStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC4A742BB6BDD500A5D22E /* HealthRenderStage.swift */; };
+		3CBE72F92BC8D63500CC446A /* RemoteKillEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE72F82BC8D63500CC446A /* RemoteKillEvent.swift */; };
+		3CBE72FF2BC8D66C00CC446A /* RemotePowerupEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE72FE2BC8D66C00CC446A /* RemotePowerupEvent.swift */; };
+		3CBE73012BC8D69A00CC446A /* RemoteLifeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE73002BC8D69A00CC446A /* RemoteLifeEvent.swift */; };
 		3CBECF892BBE9797005EF39B /* TFNetworkCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBECF882BBE9797005EF39B /* TFNetworkCoder.swift */; };
 		3CBECF8C2BBE9A41005EF39B /* TFRemoteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBECF8B2BBE9A41005EF39B /* TFRemoteEvent.swift */; };
 		3CBECF8E2BBE9EAC005EF39B /* RemoteSpawnEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBECF8D2BBE9EAC005EF39B /* RemoteSpawnEvent.swift */; };
@@ -288,6 +291,9 @@
 		3CAC4A702BB6AB3100A5D22E /* TFLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFLabelNode.swift; sourceTree = "<group>"; };
 		3CAC4A722BB6B61C00A5D22E /* PlayerRenderStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRenderStage.swift; sourceTree = "<group>"; };
 		3CAC4A742BB6BDD500A5D22E /* HealthRenderStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRenderStage.swift; sourceTree = "<group>"; };
+		3CBE72F82BC8D63500CC446A /* RemoteKillEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteKillEvent.swift; sourceTree = "<group>"; };
+		3CBE72FE2BC8D66C00CC446A /* RemotePowerupEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePowerupEvent.swift; sourceTree = "<group>"; };
+		3CBE73002BC8D69A00CC446A /* RemoteLifeEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLifeEvent.swift; sourceTree = "<group>"; };
 		3CBECF882BBE9797005EF39B /* TFNetworkCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFNetworkCoder.swift; sourceTree = "<group>"; };
 		3CBECF8B2BBE9A41005EF39B /* TFRemoteEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFRemoteEvent.swift; sourceTree = "<group>"; };
 		3CBECF8D2BBE9EAC005EF39B /* RemoteSpawnEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSpawnEvent.swift; sourceTree = "<group>"; };
@@ -573,7 +579,10 @@
 			children = (
 				3CBECF8B2BBE9A41005EF39B /* TFRemoteEvent.swift */,
 				3CBECF8D2BBE9EAC005EF39B /* RemoteSpawnEvent.swift */,
+				3CBE72F82BC8D63500CC446A /* RemoteKillEvent.swift */,
+				3CBE73002BC8D69A00CC446A /* RemoteLifeEvent.swift */,
 				3CD37AA62BBEC5EF00222D8A /* BaseRemoteEvent.swift */,
+				3CBE72FE2BC8D66C00CC446A /* RemotePowerupEvent.swift */,
 			);
 			path = RemoteEvents;
 			sourceTree = "<group>";
@@ -1478,6 +1487,7 @@
 				5240D0912BAF3453004F1486 /* Life.swift in Sources */,
 				52A794192BBC630F0083C976 /* RoomData.swift in Sources */,
 				BA82C7632BCBBB2A000515A0 /* Double+Extensions.swift in Sources */,
+				3CBE72F92BC8D63500CC446A /* RemoteKillEvent.swift in Sources */,
 				52DF5FAE2BA32B2300135367 /* GameScene.swift in Sources */,
 				52578B822BA61AAF00B4D76C /* PositionComponent.swift in Sources */,
 				9BC60BC82BB9BE6D001A6737 /* DisabledEvent.swift in Sources */,
@@ -1571,6 +1581,7 @@
 				52A7941B2BBC726E0083C976 /* GameRoomViewController.swift in Sources */,
 				52DD8F952BC5208900D96BAB /* SurvivalGameMode.swift in Sources */,
 				527A07862BB411FB00CD9D08 /* GameOverScene.swift in Sources */,
+				3CBE72FF2BC8D66C00CC446A /* RemotePowerupEvent.swift in Sources */,
 				3C9955B12BA4ACA100D33FA5 /* Bullet.swift in Sources */,
 				3CA829C62BB719A500D8E72A /* ButtonRenderStage.swift in Sources */,
 				3CE9514F2BAC8936008B2785 /* TFRenderer.swift in Sources */,
@@ -1616,6 +1627,7 @@
 				3CD37AA32BBEC0F900222D8A /* FirebaseRemoteEventPublisher.swift in Sources */,
 				3CAC4A6B2BB6992F00A5D22E /* TFNode.swift in Sources */,
 				BA82C7732BCBF657000515A0 /* MetadataManager.swift in Sources */,
+				3CBE73012BC8D69A00CC446A /* RemoteLifeEvent.swift in Sources */,
 				3CAC4A6D2BB6A13B00A5D22E /* PositionRenderStage.swift in Sources */,
 				3CE951672BAEAB0E008B2785 /* ContactSystem.swift in Sources */,
 				529190E32BBFB59B001D8821 /* StatePopupNode.swift in Sources */,
