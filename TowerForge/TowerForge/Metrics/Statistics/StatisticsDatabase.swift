@@ -13,8 +13,6 @@ final class StatisticsDatabase {
 
     init(_ stats: [StatisticTypeWrapper: Statistic] = [:]) {
         self.statistics = stats
-        // self.loadFromFirebase()
-        // Logger.log("Current killcount is \(String(describing: self.statistics[TotalKillsStatistic.asType]))", self)
     }
 
     func addStatistic(for statName: StatisticTypeWrapper) {

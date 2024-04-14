@@ -83,4 +83,20 @@ class RemoteStorageManager {
             completion(error)
         }
     }
+
+    /// Deletes the player's statistics database from Firebase
+    static func deleteFromFirebase(completion: @escaping (Error?) -> Void) {
+        let databaseReference = FirebaseDatabaseReference(.Statistics)
+
+        // Remove the data at the specific currentPlayer node
+        databaseReference.child(currentPlayer).removeValue { error, _ in
+            if let error = error {
+                Logger.log("Error deleting data: \(error).", self)
+                completion(error)
+                return
+            }
+            Logger.log("Data for player \(currentPlayer) successfully deleted from Firebase.", self)
+            completion(nil)
+        }
+    }
 }

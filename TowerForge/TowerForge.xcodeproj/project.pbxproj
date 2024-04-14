@@ -212,7 +212,7 @@
 		BA82C76B2BCBD682000515A0 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C76A2BCBD682000515A0 /* StorageManager.swift */; };
 		BA82C76D2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C76C2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift */; };
 		BA82C76F2BCBDE91000515A0 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C76E2BCBDE91000515A0 /* Metadata.swift */; };
-		BA82C7712BCBE3EB000515A0 /* LocalStorageManager+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7702BCBE3EB000515A0 /* LocalStorageManager+Metadata.swift */; };
+		BA82C7732BCBF657000515A0 /* MetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7722BCBF657000515A0 /* MetadataManager.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -450,7 +450,7 @@
 		BA82C76A2BCBD682000515A0 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		BA82C76C2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsDatabase+Merge.swift"; sourceTree = "<group>"; };
 		BA82C76E2BCBDE91000515A0 /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
-		BA82C7702BCBE3EB000515A0 /* LocalStorageManager+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorageManager+Metadata.swift"; sourceTree = "<group>"; };
+		BA82C7722BCBF657000515A0 /* MetadataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataManager.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -1253,10 +1253,10 @@
 		BAFFB9512BB342E200D8301F /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				BA82C76A2BCBD682000515A0 /* StorageManager.swift */,
 				BA82C76E2BCBDE91000515A0 /* Metadata.swift */,
+				BA82C7722BCBF657000515A0 /* MetadataManager.swift */,
+				BA82C76A2BCBD682000515A0 /* StorageManager.swift */,
 				BA82C7642BCBC868000515A0 /* LocalStorageManager.swift */,
-				BA82C7702BCBE3EB000515A0 /* LocalStorageManager+Metadata.swift */,
 				BA82C7682BCBD21F000515A0 /* RemoteStorageManager.swift */,
 			);
 			path = Storage;
@@ -1499,7 +1499,6 @@
 				3CD37A9D2BBEBD1600222D8A /* RemoteSpawnable.swift in Sources */,
 				3C9955CA2BA5888F00D33FA5 /* SpawnEvent.swift in Sources */,
 				3CE951582BAD724D008B2785 /* TFContact.swift in Sources */,
-				BA82C7712BCBE3EB000515A0 /* LocalStorageManager+Metadata.swift in Sources */,
 				5295A2132BAAEA16005018A8 /* UnitNode.swift in Sources */,
 				52DF5FF32BA351E100135367 /* SpriteComponent.swift in Sources */,
 				3CE9514B2BAC83FA008B2785 /* SpawnableEntities.swift in Sources */,
@@ -1616,6 +1615,7 @@
 				BAFFB96A2BB9A64000D8301F /* ObjectSet.swift in Sources */,
 				3CD37AA32BBEC0F900222D8A /* FirebaseRemoteEventPublisher.swift in Sources */,
 				3CAC4A6B2BB6992F00A5D22E /* TFNode.swift in Sources */,
+				BA82C7732BCBF657000515A0 /* MetadataManager.swift in Sources */,
 				3CAC4A6D2BB6A13B00A5D22E /* PositionRenderStage.swift in Sources */,
 				3CE951672BAEAB0E008B2785 /* ContactSystem.swift in Sources */,
 				529190E32BBFB59B001D8821 /* StatePopupNode.swift in Sources */,

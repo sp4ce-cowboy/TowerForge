@@ -18,7 +18,7 @@ class Constants {
     static let LOCAL_STORAGE_FILE_NAME = "TowerForgeLocalStorage.json"
 
     /// The name of the file that contains metadata about local storage
-    static let METADATA_NAME = "TowerForgeMetadata.json"
+    static let METADATA_FILE_NAME = "TowerForgeMetadata.json"
 
     /// The name of the player currently logged in.
     /// By default, this is set to the default id associated with the device

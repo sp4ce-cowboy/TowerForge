@@ -34,6 +34,7 @@ protocol Statistic: AnyObject, Codable {
 }
 
 extension Statistic {
+
     init() {
         self.init(permanentValue: .zero, currentValue: .zero)
     }

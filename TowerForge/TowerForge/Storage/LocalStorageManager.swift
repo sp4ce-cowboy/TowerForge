@@ -15,7 +15,7 @@ import Foundation
 class LocalStorageManager {
     static let folderName = Constants.LOCAL_STORAGE_CONTAINER_NAME
     static let fileName = Constants.LOCAL_STORAGE_FILE_NAME
-    static let metadataName = Constants.METADATA_NAME
+    static let metadataName = Constants.METADATA_FILE_NAME
 
     /// Creates an empty local file to store the database if one doesn't already exist.
     /// Called by the AppDelegate when the application is run.
@@ -96,6 +96,19 @@ extension LocalStorageManager {
             Logger.log("Error deleting file: \(Self.fileName), \(error)", self)
         }
         Logger.log("Database successfully deleted.", self)
+    }
+
+    /// Retrieves file attributes provided by iOS for a given filename in the document directory.
+    static func getDatabaseFileAttributes() -> [FileAttributeKey: Any]? {
+        do {
+            let folderURL = try createFolderIfNeeded(folderName: folderName)
+            let fileURL = folderURL.appendingPathComponent(Self.fileName)
+            let attributes = try FileManager.default.attributesOfItem(atPath: fileURL.path)
+            return attributes
+        } catch {
+            Logger.log("Error retrieving file metadata: \(error)", self)
+            return nil
+        }
     }
 
 }
