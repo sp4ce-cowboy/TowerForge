@@ -37,7 +37,7 @@ class MetadataManager {
     }
 
     static func updateMetadataInLocalStorage() {
-        var metadata = loadMetadataFromLocalStorage() ?? Metadata()
+        let metadata = loadMetadataFromLocalStorage() ?? Metadata()
         metadata.lastUpdated = Date()
         saveMetadataToLocalStorage(metadata)
         Logger.log("Metadata updated at: \(metadata.lastUpdated)", self)

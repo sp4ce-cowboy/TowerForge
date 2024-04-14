@@ -21,7 +21,7 @@ class LocalStorageManager {
     /// Called by the AppDelegate when the application is run.
     static func initializeLocalStatisticsDatabase() {
         if Self.loadDatabaseFromLocalStorage() != nil {
-            Logger.log("Loaded existing database.", Self.self)
+            Logger.log("Database exists locally", Self.self)
         } else {
             Self.saveDatabaseToLocalStorage(StatisticsFactory.getDefaultStatisticsDatabase())
             Logger.log("Created and saved a new empty database.", Self.self)
