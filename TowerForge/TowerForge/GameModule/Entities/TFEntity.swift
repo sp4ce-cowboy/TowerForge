@@ -46,31 +46,31 @@ class TFEntity: Collidable {
     }
 
     // To be overriden by sub classes as needed
-    func collide(with other: any Collidable) -> TFEvent {
+    func collide(with other: any Collidable) -> [TFEvent] {
         /// assert(checkRepresentation())
-        DisabledEvent()
+        []
     }
 
     func onSeparate() {}
 
-    func collide(with damageComponent: DamageComponent) -> TFEvent {
+    func collide(with damageComponent: DamageComponent) -> [TFEvent] {
         /// assert(checkRepresentation())
-        DisabledEvent()
+        []
     }
 
-    func collide(with healthComponent: HealthComponent) -> TFEvent {
+    func collide(with healthComponent: HealthComponent) -> [TFEvent] {
         /// assert(checkRepresentation())
-        DisabledEvent()
+        []
     }
 
-    func collide(with movableComponent: MovableComponent) -> TFEvent {
+    func collide(with movableComponent: MovableComponent) -> [TFEvent] {
         /// assert(checkRepresentation())
-        DisabledEvent()
+        []
     }
 
-    func collide(with playerComponent: PlayerComponent) -> TFEvent {
+    func collide(with playerComponent: PlayerComponent) -> [TFEvent] {
         /// assert(checkRepresentation())
-        DisabledEvent()
+        []
     }
 
     /// Ensures that the UUID keys of entries in the dictionary match the UUID id of

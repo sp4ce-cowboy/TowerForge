@@ -24,23 +24,23 @@ class DamageComponent: TFComponent {
         CACurrentMediaTime() - lastAttackTime >= attackRate
     }
 
-    func damage(_ healthComponent: HealthComponent) -> TFEvent {
+    func damage(_ healthComponent: HealthComponent) -> [TFEvent] {
         guard canDamage, let enemyId = healthComponent.entity?.id, let entityId = entity?.id else {
-            return DisabledEvent()
+            return []
         }
 
         guard let teamA = self.entity?.component(ofType: PlayerComponent.self)?.player,
               let teamB = healthComponent.entity?.component(ofType: PlayerComponent.self)?.player,
               teamA != teamB else {
-            return DisabledEvent()
+            return []
         }
 
         lastAttackTime = CACurrentMediaTime()
-        let event = DamageEvent(on: enemyId, at: lastAttackTime, with: attackPower, player: teamA)
+        var events: [TFEvent] = [DamageEvent(on: enemyId, at: lastAttackTime, with: attackPower, player: teamA)]
 
         if temporary {
-            return event.concurrentlyWith(RemoveEvent(on: entityId, at: lastAttackTime))
+            events.append(RemoveEvent(on: entityId, at: lastAttackTime))
         }
-        return event
+        return events
     }
 }

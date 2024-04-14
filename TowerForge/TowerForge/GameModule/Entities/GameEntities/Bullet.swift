@@ -27,17 +27,17 @@ class Bullet: BaseProjectile {
                                           temporary: true))
     }
 
-    override func collide(with other: any Collidable) -> TFEvent {
-        let superEvent = super.collide(with: other)
-        guard let damageComponent = self.component(ofType: DamageComponent.self) else {
-            return superEvent
+    override func collide(with other: any Collidable) -> [TFEvent] {
+        var events = super.collide(with: other)
+        if let damageComponent = self.component(ofType: DamageComponent.self) {
+            events.append(contentsOf: other.collide(with: damageComponent))
         }
-        return superEvent.concurrentlyWith(other.collide(with: damageComponent))
+        return events
     }
 
-    override func collide(with healthComponent: HealthComponent) -> TFEvent {
+    override func collide(with healthComponent: HealthComponent) -> [TFEvent] {
         guard let damageComponent = self.component(ofType: DamageComponent.self) else {
-            return DisabledEvent()
+            return []
         }
         return damageComponent.damage(healthComponent)
     }
