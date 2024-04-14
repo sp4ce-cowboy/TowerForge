@@ -34,19 +34,36 @@ extension StatisticsDatabase: Codable {
         var objects: [Statistic] = []
 
         while !objectsArrayForType.isAtEnd {
-            let statObjectDict = try objectsArrayForType.nestedContainer(keyedBy: StatisticsDefaultCodingKeys.self)
+            let statObjectDict = try objectsArrayForType.nestedContainer(keyedBy: StatisticCodingKeys.self)
             if let statObject = try Self.decodeObject(statObjectDict) {
                 objects.append(statObject)
             }
         }
 
-        Logger.log("Loaded Statistics Database with \(objects.count)", self)
+        Logger.log("Loaded Statistics Database with \(objects.count)", Self.self)
         let statObjectsMap = Self.generateStatisticsCollection(objects)
 
         self.init(statObjectsMap)
     }
 
-    private static func decodeObject(_ statObjectDict: KeyedDecodingContainer<StatisticsDefaultCodingKeys>)
+    /*convenience init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: StatisticsDatabaseCodingKeys.self)
+        var statistics = [StatisticTypeWrapper: Statistic]()
+        let statsContainer = try container.nestedContainer(keyedBy: DynamicCodingKeys.self, forKey: .statistics)
+
+        for key in statsContainer.allKeys {
+            let statDecoder = try statsContainer.superDecoder(forKey: key)
+            if let statistic = try StatisticsFactory.statisticDecoder[key.stringValue]?(statDecoder) {
+                if let statType = key.stringValue.asTFClassFromString as? Statistic.Type {
+                    statistics[statType.asType] = statistic
+                }
+            }
+        }
+
+        self.init(statistics)
+    }*/
+
+    private static func decodeObject(_ statObjectDict: KeyedDecodingContainer<StatisticCodingKeys>)
     throws -> (any Statistic)? {
 
         let type = try statObjectDict.decode(String.self, forKey: .statisticName)

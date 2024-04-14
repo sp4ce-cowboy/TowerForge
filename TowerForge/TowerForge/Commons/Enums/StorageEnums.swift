@@ -7,35 +7,11 @@
 
 import Foundation
 
-typealias TFAchievementType = StorageEnums.StorableAchievementNameType
 typealias StatisticsDatabaseCodingKeys = StorageEnums.StatisticsDatabaseCodingKeys
-typealias StatisticsDefaultCodingKeys = StorageEnums.StatisticsDefaultCodingKeys
+typealias StatisticCodingKeys = StorageEnums.StatisticsDefaultCodingKeys
+typealias DynamicCodingKeys = StorageEnums.DynamicCodingKeys
 class StorageEnums {
 
-    /// An enum for the names of every Storable that can be stored.
-    /// Adds an implicit "CheckRep", malicious actors cannot load
-    /// random storables perhaps using obj-c's dynamic runtime.
-    enum StorableNameType: String, CodingKey, Codable, CaseIterable {
-        case dummyStorable // Temp dummy case to replace later
-        case totalKillsAchievement
-        case totalGamesAchievement
-    }
-
-    /// For achievements only.
-    /// Rep-invariant: All cases must also be contained within StorableNameType
-    enum StorableAchievementNameType: String, CodingKey, Codable, CaseIterable {
-        case totalKillsAchievement
-        case totalGamesAchievement
-    }
-
-    /// Used in the default implementation of Storage
-    enum StorableDefaultCodingKeys: String, CodingKey {
-        case storableId
-        case storableName
-        case storableValue
-    }
-
-    /// Used in StorageManager class
     enum StatisticsDatabaseCodingKeys: String, CodingKey, Codable {
         case statistics
     }
@@ -44,5 +20,20 @@ class StorageEnums {
         case statisticName
         case permanentValue
         case currentValue
+    }
+
+    struct DynamicCodingKeys: CodingKey {
+        var stringValue: String
+        var intValue: Int?
+
+        init?(stringValue: String) {
+            self.stringValue = stringValue
+            self.intValue = nil
+        }
+
+        init?(intValue: Int) {
+            self.stringValue = String(intValue)
+            self.intValue = intValue
+        }
     }
 }

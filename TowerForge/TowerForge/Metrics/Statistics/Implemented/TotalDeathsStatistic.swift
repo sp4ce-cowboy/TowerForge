@@ -31,7 +31,7 @@ final class TotalDeathsStatistic: Statistic {
     }
 
     convenience init(from decoder: any Decoder) throws {
-          let container = try decoder.container(keyedBy: StatisticsDefaultCodingKeys.self)
+          let container = try decoder.container(keyedBy: StatisticCodingKeys.self)
           _ = try container.decode(StatisticTypeWrapper.self, forKey: .statisticName)
           let value = try container.decode(Double.self, forKey: .permanentValue)
           let current = try container.decode(Double.self, forKey: .currentValue)

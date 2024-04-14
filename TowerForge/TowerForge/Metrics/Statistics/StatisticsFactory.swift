@@ -23,6 +23,13 @@ class StatisticsFactory {
             TotalDeathsStatistic.asType: { decoder, data in try decoder.decode(TotalDeathsStatistic.self, from: data) }
         ]
 
+    static var statisticDecoder: [String: (Decoder) throws -> Statistic] =
+        [
+            TotalKillsStatistic.asType.asString: { decoder in try TotalKillsStatistic(from: decoder) },
+            TotalGamesStatistic.asType.asString: { decoder in try TotalGamesStatistic(from: decoder) },
+            TotalDeathsStatistic.asType.asString: { decoder in try TotalDeathsStatistic(from: decoder) }
+        ]
+
     static var defaultStatisticGenerator: [StatisticTypeWrapper: () -> Statistic] =
         [
             TotalKillsStatistic.asType: { TotalKillsStatistic() },

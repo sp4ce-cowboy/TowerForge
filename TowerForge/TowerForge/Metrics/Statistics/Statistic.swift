@@ -122,9 +122,21 @@ extension Statistic {
 /// This extension adds default implementations for encoding and decoding a statistic
 extension Statistic {
     func encode(to encoder: any Encoder) throws {
-        var container = encoder.container(keyedBy: StatisticsDefaultCodingKeys.self)
+        var container = encoder.container(keyedBy: StatisticCodingKeys.self)
         try container.encode(statisticName, forKey: .statisticName)
         try container.encode(permanentValue, forKey: .permanentValue)
         try container.encode(currentValue, forKey: .currentValue)
     }
+
+    /* TODO: Fix new implementation
+     func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: StorageEnums.DynamicCodingKeys.self)
+        guard let statKey = DynamicCodingKeys(stringValue: statisticName.asString) else {
+            Logger.log("Encoding statistic failed", self)
+            return
+        }
+        var nestedContainer = container.nestedContainer(keyedBy: StatisticCodingKeys.self, forKey: statKey)
+        try nestedContainer.encode(permanentValue, forKey: .permanentValue)
+        try nestedContainer.encode(currentValue, forKey: .currentValue)
+    }*/
 }
