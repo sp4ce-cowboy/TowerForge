@@ -19,7 +19,8 @@ extension StatisticsDatabase: Equatable {
 
         return lhs.statistics.keys.allSatisfy {
             (lhs.statistics[$0]?.statisticName == rhs.statistics[$0]?.statisticName) &&
-            (lhs.statistics[$0]?.permanentValue == rhs.statistics[$0]?.permanentValue)
+            (lhs.statistics[$0]?.permanentValue == rhs.statistics[$0]?.permanentValue) &&
+            (lhs.statistics[$0]?.currentValue == rhs.statistics[$0]?.currentValue)
         }
     }
 
@@ -43,8 +44,13 @@ extension StatisticsDatabase: Equatable {
             if let lhsStat = mergedStats.statistics[key] {
 
                 // If lhs has the key, compare and choose the one with the greater magnitude.
-                if lhsStat.permanentValue < rhsStat.permanentValue {
-                    mergedStats.statistics[key] = rhsStat
+                if lhsStat.permanentValue < rhsStat.permanentValue || lhsStat.currentValue < rhsStat.currentValue {
+
+                    mergedStats.statistics[key]?.permanentValue = Double.maximumMagnitude(lhsStat.permanentValue,
+                                                                                          rhsStat.permanentValue)
+
+                    mergedStats.statistics[key]?.currentValue = Double.maximumMagnitude(lhsStat.currentValue,
+                                                                                        rhsStat.currentValue)
                 }
                 // If they are equal, lhsStat is already set, so do nothing.
             } else {

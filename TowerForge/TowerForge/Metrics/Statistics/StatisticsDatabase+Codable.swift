@@ -40,7 +40,7 @@ extension StatisticsDatabase: Codable {
             }
         }
 
-        Logger.log("Loaded Statistics Database with \(objects.count)")
+        Logger.log("Loaded Statistics Database with \(objects.count)", self)
         let statObjectsMap = Self.generateStatisticsCollection(objects)
 
         self.init(statObjectsMap)
