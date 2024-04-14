@@ -42,7 +42,7 @@ extension StatisticsDatabase {
                 mergedStats.statistics[key] = rhsStat
             }
         }
-        
+
         return mergedStats
     }
 }

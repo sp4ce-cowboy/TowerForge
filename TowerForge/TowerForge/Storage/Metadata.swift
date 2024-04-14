@@ -7,7 +7,8 @@
 
 import Foundation
 
-/// The metadata class is used to encapsulate meta-information about storage
+/// The metadata class is used to encapsulate meta-information about files
+/// stored locally, possibly for use with conflict resolution.
 class Metadata: Codable, Comparable, Equatable {
     let lastUpdated: Date
 
