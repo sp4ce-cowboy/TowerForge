@@ -207,6 +207,8 @@
 		BA82C75F2BCB1528000515A0 /* AchievementsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C75E2BCB1528000515A0 /* AchievementsDatabase.swift */; };
 		BA82C7612BCBBA8A000515A0 /* FiftyKillsAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7602BCBBA8A000515A0 /* FiftyKillsAchievement.swift */; };
 		BA82C7632BCBBB2A000515A0 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7622BCBBB2A000515A0 /* Double+Extensions.swift */; };
+		BA82C7652BCBC868000515A0 /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7642BCBC868000515A0 /* LocalStorageManager.swift */; };
+		BA82C7672BCBCB00000515A0 /* StatisticsDatabase+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7662BCBCB00000515A0 /* StatisticsDatabase+Codable.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -439,6 +441,8 @@
 		BA82C75E2BCB1528000515A0 /* AchievementsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsDatabase.swift; sourceTree = "<group>"; };
 		BA82C7602BCBBA8A000515A0 /* FiftyKillsAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiftyKillsAchievement.swift; sourceTree = "<group>"; };
 		BA82C7622BCBBB2A000515A0 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Double+Extensions.swift"; path = "TowerForge/Commons/Protocols/Double+Extensions.swift"; sourceTree = SOURCE_ROOT; };
+		BA82C7642BCBC868000515A0 /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
+		BA82C7662BCBCB00000515A0 /* StatisticsDatabase+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsDatabase+Codable.swift"; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -991,6 +995,7 @@
 				BA2F5AC02BC80BE500CBD8E9 /* Statistic.swift */,
 				BA82C7572BCAB4C2000515A0 /* StatisticTypeWrapper.swift */,
 				BA82C7452BC8797F000515A0 /* StatisticsDatabase.swift */,
+				BA82C7662BCBCB00000515A0 /* StatisticsDatabase+Codable.swift */,
 				BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */,
 				BA82C73F2BC8674A000515A0 /* StatisticsFactory.swift */,
 				BA2F5ACA2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift */,
@@ -1240,6 +1245,7 @@
 		BAFFB9512BB342E200D8301F /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				BA82C7642BCBC868000515A0 /* LocalStorageManager.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -1471,6 +1477,7 @@
 				BA2F5AC72BC8148C00CBD8E9 /* StatisticName.swift in Sources */,
 				527A07782BB3F31100CD9D08 /* Death.swift in Sources */,
 				3C9955BA2BA5637200D33FA5 /* DamageEvent.swift in Sources */,
+				BA82C7672BCBCB00000515A0 /* StatisticsDatabase+Codable.swift in Sources */,
 				3CD37AA52BBEC10700222D8A /* FirebaseRemoteEventSubscriber.swift in Sources */,
 				52A794172BBC4F690083C976 /* GamePlayer.swift in Sources */,
 				3CE951632BAE037C008B2785 /* AiSystem.swift in Sources */,
@@ -1485,6 +1492,7 @@
 				3CE9514B2BAC83FA008B2785 /* SpawnableEntities.swift in Sources */,
 				5299D1302BC31002003EF746 /* AuthenticationProvider.swift in Sources */,
 				3C3CBDF92BB821500001B8A9 /* TFScene.swift in Sources */,
+				BA82C7652BCBC868000515A0 /* LocalStorageManager.swift in Sources */,
 				9B8696552BAD759F0002377C /* Grid.swift in Sources */,
 				527A077E2BB3F75700CD9D08 /* Timer.swift in Sources */,
 				52578B872BA6209700B4D76C /* DamageComponent.swift in Sources */,

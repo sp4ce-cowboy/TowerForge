@@ -7,8 +7,9 @@
 
 import Foundation
 
-typealias TFStorageType = StorageEnums.StorageType
 typealias TFAchievementType = StorageEnums.StorableAchievementNameType
+typealias StatisticsDatabaseCodingKeys = StorageEnums.StatisticsDatabaseCodingKeys
+typealias StatisticsDefaultCodingKeys = StorageEnums.StatisticsDefaultCodingKeys
 class StorageEnums {
 
     /// An enum for the names of every Storable that can be stored.
@@ -35,24 +36,13 @@ class StorageEnums {
     }
 
     /// Used in StorageManager class
-    enum StorageType: String, CodingKey, Codable {
-        case achievementStorage
+    enum StatisticsDatabaseCodingKeys: String, CodingKey, Codable {
+        case statistics
     }
 
-    /// Used in Storage class
-    enum StorageCodingKeys: String, CodingKey, Codable {
-        case storageName
-        case storedObjects
-    }
-
-    enum DatabaseCodingKeys: String, CodingKey, Codable {
-        case storedData
-    }
-
-    enum StatisticDefaultCodingKeys: String, CodingKey, Codable {
+    enum StatisticsDefaultCodingKeys: String, CodingKey, Codable {
         case statisticName
         case permanentValue
         case currentValue
     }
-
 }

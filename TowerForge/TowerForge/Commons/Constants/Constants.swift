@@ -12,10 +12,10 @@ class Constants {
     static let DATABASE_URL = "https://towerforge-d5ba7-default-rtdb.asia-southeast1.firebasedatabase.app"
 
     /// The name of the folder in which information is stored locally
-    static let STORAGE_CONTAINER_NAME = "TowerForge"
+    static let LOCAL_STORAGE_CONTAINER_NAME = "TowerForge"
 
     /// The name of the file that contains TowerForge data locally
-    static let TF_DATABASE_NAME = "TowerForgeDatabase"
+    static let LOCAL_STORAGE_FILE_NAME = "TowerForgeLocalStorage"
 
     /// Universal setting to enable or disable sound effects
     static var SOUND_EFFECTS_ENABLED = true

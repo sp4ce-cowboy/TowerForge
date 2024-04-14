@@ -8,12 +8,13 @@
 import Foundation
 import FirebaseDatabaseInternal
 
-class StatisticsDatabase {
+final class StatisticsDatabase {
     var statistics: [StatisticTypeWrapper: Statistic] = [:]
 
-    init() {
-        self.loadFromFirebase()
-        Logger.log("Current killcount is \(String(describing: self.statistics[TotalKillsStatistic.asType]))", self)
+    init(_ stats: [StatisticTypeWrapper: Statistic] = [:]) {
+        self.statistics = stats
+        // self.loadFromFirebase()
+        // Logger.log("Current killcount is \(String(describing: self.statistics[TotalKillsStatistic.asType]))", self)
     }
 
     func addStatistic(for statName: StatisticTypeWrapper) {
