@@ -24,7 +24,7 @@ class StatisticSystem: TFSystem {
     }
 
     func notify<T: TFEvent>(for event: T) {
-        statsEngine.updateStatisticsOnReceive(event)
+        statsEngine.update(with: event)
     }
 
 }

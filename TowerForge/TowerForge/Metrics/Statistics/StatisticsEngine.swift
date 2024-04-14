@@ -37,7 +37,13 @@ class StatisticsEngine {
     }
 
     /// Main update function
-    func updateStatisticsOnReceive<T: TFEvent>(_ event: T) {
+   func update<T: TFEvent>(with event: T) {
+       self.updateStatisticsOnReceive(event)
+       self.notifyInferenceEngines()
+    }
+
+    /// Main update function
+   private func updateStatisticsOnReceive<T: TFEvent>(_ event: T) {
         let eventType = TFEventTypeWrapper(type: T.self)
         guard let stats = eventStatisticLinks.getStatisticLinks(for: eventType) else {
             return
@@ -49,6 +55,13 @@ class StatisticsEngine {
 
     func addInferenceEngine(_ engine: InferenceEngine) {
         inferenceEngines.append(engine)
+    }
+
+    /// TODO: Consider if passing the stats database directly is better or
+    /// to follow delegate pattern and have unowned statsEngine/db variables inside
+    /// InferenceEngines
+    func notifyInferenceEngines() {
+        inferenceEngines.forEach { $0.updateOnReceive(stats: statisticsDatabase) }
     }
 
     private func saveStatistics() {
