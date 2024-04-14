@@ -32,7 +32,6 @@ class StatisticsEngine {
 
     private func initializeStatistics() {
         eventStatisticLinks = StatisticsFactory.getDefaultEventLinkDatabase()
-        statistics = StatisticsFactory.getDefaultStatisticsDatabase()
         loadStatistics()
     }
 
@@ -40,6 +39,12 @@ class StatisticsEngine {
    func update<T: TFEvent>(with event: T) {
        self.updateStatisticsOnReceive(event)
        self.notifyInferenceEngines()
+    }
+
+    /// Transfers over all transient metrics within statistics to permanent value.
+    func finalize() {
+        statistics.statistics.values.forEach { $0.finalizeStatistic() }
+        saveStatistics()
     }
 
     /// Main update function
