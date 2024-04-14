@@ -1179,9 +1179,9 @@
 		BAFFB93E2BB0A67000D8301F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BA82C7622BCBBB2A000515A0 /* Double+Extensions.swift */,
 				3C3CBDFE2BB8708A0001B8A9 /* CGPoint+Extensions.swift */,
 				3C3CBE002BB870950001B8A9 /* CGVector+Extensions.swift */,
-				BA82C7622BCBBB2A000515A0 /* Double+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
