@@ -10,6 +10,10 @@ import Foundation
 struct AchievementTypeWrapper: Equatable, Hashable {
     let type: Achievement.Type
 
+    var asString: String {
+        String(describing: type)
+    }
+
     static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.type == rhs.type
     }

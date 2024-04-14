@@ -13,16 +13,15 @@ import Foundation
 /// It contains a Database of Achievements, and when notified by the StatisticsEngine,
 /// will update all Achievements therein contained.
 class AchievementsEngine: InferenceEngine {
-
-    var statisticsDatabase: StatisticsDatabase
+    unowned var statisticsEngine: StatisticsEngine
     var achievementsDatabase = AchievementsDatabase()
 
-    init(statisticsDatabase: StatisticsDatabase) {
-        self.statisticsDatabase = statisticsDatabase
+    init(_ statisticsEngine: StatisticsEngine) {
+        self.statisticsEngine = statisticsEngine
     }
 
-    func updateOnReceive(stats: StatisticsDatabase) {
-        statisticsDatabase = stats
+    func updateOnReceive() {
+        achievementsDatabase.updateAll(with: statisticsEngine.statistics)
     }
 
 }

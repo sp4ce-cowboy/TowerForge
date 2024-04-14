@@ -8,5 +8,6 @@
 import Foundation
 
 protocol InferenceEngine: AnyObject {
-    func updateOnReceive(stats: StatisticsDatabase)
+    var statisticsEngine: StatisticsEngine
+    func updateOnReceive()
 }

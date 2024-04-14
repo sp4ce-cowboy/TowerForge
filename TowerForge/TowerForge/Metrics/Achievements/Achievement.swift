@@ -25,14 +25,26 @@ protocol Achievement: AnyObject {
     var isComplete: Bool { get }
 
     func loadStatistic(_ stat: Statistic)
-    func update()
+    func update(with stats: StatisticsDatabase)
+
+    init(dependentStatistics: [Statistic])
 
 }
 
 extension Achievement {
 
+    static var asType: AchievementTypeWrapper {
+        AchievementTypeWrapper(type: Self.self)
+    }
+
     func loadStatistic(_ stat: any Statistic) {
         dependentStatistics[stat.statisticName] = stat
+    }
+
+    func update(with stats: StatisticsDatabase) {
+        dependentStatistics.keys.forEach {
+            self.dependentStatistics[$0] = stats.statistics[$0]
+        }
     }
 
     var currentValues: [StatisticTypeWrapper: Double] {

@@ -7,12 +7,16 @@
 
 import Foundation
 
-class FiftyKillsAchievement: Achievement {
+final class FiftyKillsAchievement: Achievement {
 
     var achievementName: String = "50 Kills"
     var achievementDescription: String = "Attain 50 total kills in TowerForge"
 
-    var dependentStatistics: [StatisticTypeWrapper: any Statistic] = [:]
+    var dependentStatistics: [StatisticTypeWrapper: any Statistic] {
+        [
+            TotalKillsStatistic.asType: TotalKillsStatistic()
+        ]
+    }
 
     var requiredValues: [StatisticTypeWrapper: Double] {
         [
@@ -24,10 +28,6 @@ class FiftyKillsAchievement: Achievement {
         var stats: [StatisticTypeWrapper: any Statistic] = [:]
         dependentStatistics.forEach { stats[$0.statisticName] = $0 }
         self.dependentStatistics = stats
-    }
-
-    func update() {
-
     }
 
 }
