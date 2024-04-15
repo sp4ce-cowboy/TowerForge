@@ -15,6 +15,33 @@ import FirebaseDatabaseInternal
 /// expansion to a generic types can be considered.
 class RemoteStorageManager {
     static var currentPlayer: String = Constants.CURRENT_PLAYER_ID
+    static var currentDevice: String = Constants.CURRENT_DEVICE_ID
+
+    static func initializeRemoteStatisticsDatabase() {
+        Self.loadDatabaseFromFirebase { statisticsDatabase, error in
+            if let error = error {
+                Logger.log("Error initializing data: \(error)", self)
+                return
+            }
+
+            if statisticsDatabase != nil {
+                Logger.log("Statistics database already initialized.", self)
+                return
+            }
+        }
+
+        // No error but no database implies that database is empty, thus initialize new one
+        Logger.log("No error and empty database, new one will be created", self)
+        var remoteStorage = StatisticsFactory.getDefaultStatisticsDatabase()
+
+        Self.saveDatabaseToFirebase(remoteStorage) { error in
+            if let error = error {
+                Logger.log("Saving to firebase error: \(error)", self)
+            } else {
+                Logger.log("Saving to firebase success", self)
+            }
+        }
+    }
 
     /// Queries the firebase backend to determine if remote storage exists for the current player
     static func remoteStorageExistsForCurrentPlayer(completion: @escaping (Bool) -> Void) {

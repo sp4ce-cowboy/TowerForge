@@ -12,7 +12,7 @@ class RemoteMetadataManager {
     static var currentPlayer: String = Constants.CURRENT_PLAYER_ID
     static var currentDevice: String = Constants.CURRENT_DEVICE_ID
 
-    /// Queries the firebase backend to determine if remote storage exists for the current player
+    /// Queries the firebase backend to determine if remote metadata exists for the current player
     static func remoteMetadataExistsForCurrentPlayer(completion: @escaping (Bool) -> Void) {
         let databaseReference = FirebaseDatabaseReference(.Metadata)
 
@@ -81,7 +81,6 @@ class RemoteMetadataManager {
         }
     }
 
-    /// Deletes the player's metadat from Firebase
     static func deleteMetadataFromFirebase(completion: @escaping (Error?) -> Void) {
         let databaseReference = FirebaseDatabaseReference(.Metadata)
 
