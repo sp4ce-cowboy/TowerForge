@@ -11,7 +11,7 @@ class StatisticsEngine {
     /// Core storage of Statistics
     var statistics = StatisticsDatabase()
     var eventStatisticLinks = EventStatisticLinkDatabase()
-    var inferenceEngines: [InferenceEngine] = []
+    var inferenceEngines: [InferenceEngineTypeWrapper: InferenceEngine] = [:]
 
     init() {
         self.initializeStatistics()
@@ -40,7 +40,7 @@ class StatisticsEngine {
     }
 
     func addInferenceEngine(_ engine: InferenceEngine) {
-        inferenceEngines.append(engine)
+        inferenceEngines[engine.asType]
     }
 
     /// Main update function
@@ -71,7 +71,21 @@ class StatisticsEngine {
     /// to follow delegate pattern and have unowned statsEngine/db variables inside
     /// InferenceEngines
     func notifyInferenceEngines() {
-        inferenceEngines.forEach { $0.updateOnReceive() }
+        inferenceEngines.values.forEach { $0.updateOnReceive() }
+    }
+
+    func getCurrentRank() -> Rank? {
+        if let rankEngine = inferenceEngines[RankingEngine.asType] as? RankingEngine {
+            return rankEngine.currentRank
+        }
+        return nil
+    }
+
+    func getCurrentExp() -> Double? {
+        if let rankEngine = inferenceEngines[RankingEngine.asType] as? RankingEngine {
+            return rankEngine.currentExp
+        }
+        return nil
     }
 
     private func saveStatistics() {

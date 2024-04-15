@@ -232,6 +232,7 @@
 		BA82C7942BCDAA83000515A0 /* InferenceDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7932BCDAA83000515A0 /* InferenceDataDelegate.swift */; };
 		BA82C7992BCDAFE3000515A0 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7982BCDAFE3000515A0 /* Rank.swift */; };
 		BA82C79B2BCDD5C8000515A0 /* RankingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C79A2BCDD5C8000515A0 /* RankingEngine.swift */; };
+		BA82C79D2BCDD9ED000515A0 /* InferenceEngineTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C79C2BCDD9ED000515A0 /* InferenceEngineTypeWrapper.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -489,6 +490,7 @@
 		BA82C7932BCDAA83000515A0 /* InferenceDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InferenceDataDelegate.swift; sourceTree = "<group>"; };
 		BA82C7982BCDAFE3000515A0 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		BA82C79A2BCDD5C8000515A0 /* RankingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingEngine.swift; sourceTree = "<group>"; };
+		BA82C79C2BCDD9ED000515A0 /* InferenceEngineTypeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InferenceEngineTypeWrapper.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -1063,6 +1065,7 @@
 			isa = PBXGroup;
 			children = (
 				BA82C75C2BCB1451000515A0 /* InferenceEngine.swift */,
+				BA82C79C2BCDD9ED000515A0 /* InferenceEngineTypeWrapper.swift */,
 				BA82C77F2BCD284D000515A0 /* InferenceEngineFactory.swift */,
 				BA82C7932BCDAA83000515A0 /* InferenceDataDelegate.swift */,
 			);
@@ -1093,6 +1096,7 @@
 		BA82C7952BCDAF6E000515A0 /* Ranking */ = {
 			isa = PBXGroup;
 			children = (
+				BA82C7982BCDAFE3000515A0 /* Rank.swift */,
 				BA82C79A2BCDD5C8000515A0 /* RankingEngine.swift */,
 			);
 			path = Ranking;
@@ -1278,7 +1282,6 @@
 				BAFFB95C2BB978E500D8301F /* StorageEnums.swift */,
 				BAFFB9842BBDBA7D00D8301F /* MediaEnums.swift */,
 				BA2F5AC62BC8148C00CBD8E9 /* StatisticName.swift */,
-				BA82C7982BCDAFE3000515A0 /* Rank.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1637,6 +1640,7 @@
 				BA82C7502BC8A20A000515A0 /* TotalDeathsStatistic.swift in Sources */,
 				527A07762BB3E4CF00CD9D08 /* GameState.swift in Sources */,
 				3C9955AD2BA483B100D33FA5 /* TFSystem.swift in Sources */,
+				BA82C79D2BCDD9ED000515A0 /* InferenceEngineTypeWrapper.swift in Sources */,
 				BA82C77B2BCD05DC000515A0 /* MetadataManager.swift in Sources */,
 				3CAC4A672BB6975200A5D22E /* RenderStage.swift in Sources */,
 				BA82C75D2BCB1451000515A0 /* InferenceEngine.swift in Sources */,

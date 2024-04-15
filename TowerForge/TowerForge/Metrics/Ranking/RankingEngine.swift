@@ -8,15 +8,16 @@
 import Foundation
 
 class RankingEngine: InferenceEngine, InferenceDataDelegate {
-    /// Adds the rank value of all contained statistics
-    static var expFormula: ((StatisticsDatabase) -> Double) = {
+
+    // TODO: Consider expanding to more formula for .e.g double exp.
+    static var defaultExpFormula: ((StatisticsDatabase) -> Double) = {
         $0.statistics.values.map { $0.rankValue }.reduce(into: .zero) { $0 += $1 }
     }
 
     unowned var statisticsEngine: StatisticsEngine
 
     var statisticsDatabase: StatisticsDatabase { statisticsEngine.statistics }
-    var currentExp: Double { Self.expFormula(statisticsDatabase) }
+    var currentExp: Double { Self.defaultExpFormula(statisticsDatabase) }
     var currentRank: Rank {
         Rank.allCases.first { $0.valueRange.contains(Int(self.currentExp)) } ?? .PRIVATE
     }
