@@ -12,14 +12,6 @@ class StatisticsEngine {
     var statistics = StatisticsDatabase()
     var eventStatisticLinks = EventStatisticLinkDatabase()
     var inferenceEngines: [InferenceEngine] = []
-    
-    var currentExp: Double {
-        RankGenerator.getTotalExp(from: statistics)
-    }
-    
-    var currentRank: Rank {
-        RankGenerator.rank(forValue: currentExp) ?? .PRIVATE
-    }
 
     init() {
         self.initializeStatistics()

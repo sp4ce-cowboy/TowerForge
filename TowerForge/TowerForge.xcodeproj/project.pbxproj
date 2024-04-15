@@ -230,8 +230,8 @@
 		BA82C7902BCD2FAF000515A0 /* TotalDamageDealtStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C78F2BCD2FAF000515A0 /* TotalDamageDealtStatistic.swift */; };
 		BA82C7922BCD6579000515A0 /* StatisticUpdateActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7912BCD6579000515A0 /* StatisticUpdateActor.swift */; };
 		BA82C7942BCDAA83000515A0 /* InferenceDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7932BCDAA83000515A0 /* InferenceDataDelegate.swift */; };
-		BA82C7972BCDAF8A000515A0 /* RankGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7962BCDAF8A000515A0 /* RankGenerator.swift */; };
 		BA82C7992BCDAFE3000515A0 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7982BCDAFE3000515A0 /* Rank.swift */; };
+		BA82C79B2BCDD5C8000515A0 /* RankingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C79A2BCDD5C8000515A0 /* RankingEngine.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -487,8 +487,8 @@
 		BA82C78F2BCD2FAF000515A0 /* TotalDamageDealtStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalDamageDealtStatistic.swift; sourceTree = "<group>"; };
 		BA82C7912BCD6579000515A0 /* StatisticUpdateActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticUpdateActor.swift; sourceTree = "<group>"; };
 		BA82C7932BCDAA83000515A0 /* InferenceDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InferenceDataDelegate.swift; sourceTree = "<group>"; };
-		BA82C7962BCDAF8A000515A0 /* RankGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankGenerator.swift; sourceTree = "<group>"; };
 		BA82C7982BCDAFE3000515A0 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
+		BA82C79A2BCDD5C8000515A0 /* RankingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingEngine.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -1093,7 +1093,7 @@
 		BA82C7952BCDAF6E000515A0 /* Ranking */ = {
 			isa = PBXGroup;
 			children = (
-				BA82C7962BCDAF8A000515A0 /* RankGenerator.swift */,
+				BA82C79A2BCDD5C8000515A0 /* RankingEngine.swift */,
 			);
 			path = Ranking;
 			sourceTree = "<group>";
@@ -1704,6 +1704,7 @@
 				BA82C75F2BCB1528000515A0 /* AchievementsDatabase.swift in Sources */,
 				3CD37A9F2BBEBFFB00222D8A /* TFRemoteEventPublisher.swift in Sources */,
 				3C0B608D2BB2B84000FFECB4 /* ContactComponent.swift in Sources */,
+				BA82C79B2BCDD5C8000515A0 /* RankingEngine.swift in Sources */,
 				3CE951652BAE0A04008B2785 /* HomeSystem.swift in Sources */,
 				BAFFB9752BBD833400D8301F /* AudioManager.swift in Sources */,
 				52DF5FFB2BA3601400135367 /* HealthComponent.swift in Sources */,
@@ -1716,7 +1717,6 @@
 				5240D0AF2BB3B415004F1486 /* LifeEvent.swift in Sources */,
 				5295A2072BAA02FD005018A8 /* TFButtonNode.swift in Sources */,
 				BAFFB96A2BB9A64000D8301F /* ObjectSet.swift in Sources */,
-				BA82C7972BCDAF8A000515A0 /* RankGenerator.swift in Sources */,
 				BA82C7902BCD2FAF000515A0 /* TotalDamageDealtStatistic.swift in Sources */,
 				3CD37AA32BBEC0F900222D8A /* FirebaseRemoteEventPublisher.swift in Sources */,
 				3CAC4A6B2BB6992F00A5D22E /* TFNode.swift in Sources */,

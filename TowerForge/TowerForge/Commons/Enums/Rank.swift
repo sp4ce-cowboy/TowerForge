@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum Rank: String, CaseIterable {
     case PRIVATE
     case CORPORAL
@@ -17,18 +16,17 @@ enum Rank: String, CaseIterable {
     case MAJOR
     case COLONEL
     case GENERAL
-    
+
     var valueRange: Range<Int> {
         switch self {
-        case .PRIVATE:      return 0..<1001
-        case .CORPORAL:     return 1001..<2001
-        case .SERGEANT:     return 2001..<3001
-        case .LIEUTENANT:   return 3001..<4001
-        case .CAPTAIN:      return 4001..<5001
-        case .MAJOR:        return 6001..<7001
-        case .COLONEL:      return 7001..<8001
-        case .GENERAL:      return 8001..<9001
+        case .PRIVATE:      return 0..<1_001
+        case .CORPORAL:     return 1_001..<2_001
+        case .SERGEANT:     return 2_001..<3_001
+        case .LIEUTENANT:   return 3_001..<4_001
+        case .CAPTAIN:      return 4_001..<5_001
+        case .MAJOR:        return 6_001..<7_001
+        case .COLONEL:      return 7_001..<8_001
+        case .GENERAL:      return 8_001..<9_001
         }
     }
 }
-
