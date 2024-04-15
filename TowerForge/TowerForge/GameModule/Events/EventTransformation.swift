@@ -9,5 +9,6 @@ import Foundation
 
 protocol EventTransformation: Identifiable, AnyObject {
     var id: UUID { get}
+    init(player: Player)
     func transformEvent(event: TFEvent) -> TFEvent
 }

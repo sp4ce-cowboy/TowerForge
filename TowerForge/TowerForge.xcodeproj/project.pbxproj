@@ -48,6 +48,8 @@
 		3CAC4A732BB6B61C00A5D22E /* PlayerRenderStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC4A722BB6B61C00A5D22E /* PlayerRenderStage.swift */; };
 		3CAC4A752BB6BDD500A5D22E /* HealthRenderStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC4A742BB6BDD500A5D22E /* HealthRenderStage.swift */; };
 		3CBE72F92BC8D63500CC446A /* RemoteKillEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE72F82BC8D63500CC446A /* RemoteKillEvent.swift */; };
+		3CBE72FB2BC8D63E00CC446A /* RemoteDamageEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE72FA2BC8D63E00CC446A /* RemoteDamageEvent.swift */; };
+		3CBE72FD2BC8D64F00CC446A /* RemoteMoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE72FC2BC8D64F00CC446A /* RemoteMoveEvent.swift */; };
 		3CBE72FF2BC8D66C00CC446A /* RemotePowerupEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE72FE2BC8D66C00CC446A /* RemotePowerupEvent.swift */; };
 		3CBE73012BC8D69A00CC446A /* RemoteLifeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE73002BC8D69A00CC446A /* RemoteLifeEvent.swift */; };
 		3CBECF892BBE9797005EF39B /* TFNetworkCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBECF882BBE9797005EF39B /* TFNetworkCoder.swift */; };
@@ -291,6 +293,8 @@
 		3CAC4A722BB6B61C00A5D22E /* PlayerRenderStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerRenderStage.swift; sourceTree = "<group>"; };
 		3CAC4A742BB6BDD500A5D22E /* HealthRenderStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRenderStage.swift; sourceTree = "<group>"; };
 		3CBE72F82BC8D63500CC446A /* RemoteKillEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteKillEvent.swift; sourceTree = "<group>"; };
+		3CBE72FA2BC8D63E00CC446A /* RemoteDamageEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDamageEvent.swift; sourceTree = "<group>"; };
+		3CBE72FC2BC8D64F00CC446A /* RemoteMoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMoveEvent.swift; sourceTree = "<group>"; };
 		3CBE72FE2BC8D66C00CC446A /* RemotePowerupEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePowerupEvent.swift; sourceTree = "<group>"; };
 		3CBE73002BC8D69A00CC446A /* RemoteLifeEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLifeEvent.swift; sourceTree = "<group>"; };
 		3CBECF882BBE9797005EF39B /* TFNetworkCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFNetworkCoder.swift; sourceTree = "<group>"; };
@@ -579,6 +583,8 @@
 				3CBECF8D2BBE9EAC005EF39B /* RemoteSpawnEvent.swift */,
 				3CBE72F82BC8D63500CC446A /* RemoteKillEvent.swift */,
 				3CBE73002BC8D69A00CC446A /* RemoteLifeEvent.swift */,
+				3CBE72FC2BC8D64F00CC446A /* RemoteMoveEvent.swift */,
+				3CBE72FA2BC8D63E00CC446A /* RemoteDamageEvent.swift */,
 				3CD37AA62BBEC5EF00222D8A /* BaseRemoteEvent.swift */,
 				3CBE72FE2BC8D66C00CC446A /* RemotePowerupEvent.swift */,
 			);
@@ -1510,6 +1516,7 @@
 				3C9955BA2BA5637200D33FA5 /* DamageEvent.swift in Sources */,
 				3CD37AA52BBEC10700222D8A /* FirebaseRemoteEventSubscriber.swift in Sources */,
 				52A794172BBC4F690083C976 /* GamePlayer.swift in Sources */,
+				3CBE72FD2BC8D64F00CC446A /* RemoteMoveEvent.swift in Sources */,
 				3CE951632BAE037C008B2785 /* AiSystem.swift in Sources */,
 				3CE9515F2BADE2C5008B2785 /* ShootingSystem.swift in Sources */,
 				5240D0AB2BB3340F004F1486 /* CaptureTheFlagMode.swift in Sources */,
@@ -1544,6 +1551,7 @@
 				5299D1342BC31067003EF746 /* AuthenticationProtocol.swift in Sources */,
 				527A07822BB3F8D300CD9D08 /* TimerProp.swift in Sources */,
 				52DF5FDE2BA32D7E00135367 /* EntityManager.swift in Sources */,
+				3CBE72FB2BC8D63E00CC446A /* RemoteDamageEvent.swift in Sources */,
 				52A794112BBC48FE0083C976 /* GameRoom.swift in Sources */,
 				3CD37AA72BBEC5EF00222D8A /* BaseRemoteEvent.swift in Sources */,
 				527A077C2BB3F4CC00CD9D08 /* KillEvent.swift in Sources */,

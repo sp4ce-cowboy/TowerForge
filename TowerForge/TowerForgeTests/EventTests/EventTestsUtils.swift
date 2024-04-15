@@ -35,6 +35,8 @@ class TestEventTransformation: EventTransformation {
     var id = UUID()
     private(set) var didTransformEvent = false
 
+    required init(player: TowerForge.Player = .ownPlayer) {}
+
     func transformEvent(event: any TowerForge.TFEvent) -> any TowerForge.TFEvent {
         didTransformEvent = true
         return event
