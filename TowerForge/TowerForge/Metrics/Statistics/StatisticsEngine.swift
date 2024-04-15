@@ -36,7 +36,11 @@ class StatisticsEngine {
     }
 
     private func setUpInferenceEngines() {
-        InferenceEngineFactory.availableInferenceEngines.forEach { self.inferenceEngines.append($0(self)) }
+        InferenceEngineFactory.availableInferenceEngines.forEach { self.addInferenceEngine($0(self)) }
+    }
+
+    func addInferenceEngine(_ engine: InferenceEngine) {
+        inferenceEngines.append(engine)
     }
 
     /// Main update function
@@ -60,10 +64,6 @@ class StatisticsEngine {
 
         stats.forEach { $0.update(for: eventType) }
         saveStatistics()
-    }
-
-    func addInferenceEngine(_ engine: InferenceEngine) {
-        inferenceEngines.append(engine)
     }
 
     /// TODO: Consider if passing the stats database directly is better or

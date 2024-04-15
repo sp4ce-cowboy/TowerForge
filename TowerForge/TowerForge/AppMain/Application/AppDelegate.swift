@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        /// Initialize local metadata for current user
-        LocalMetadataManager.initializeUserIdentifier()
+        /// Initialize all local storage
+        StorageManager.initializeAllStorage()
 
         /// Connect to Firebase
         FirebaseApp.configure()

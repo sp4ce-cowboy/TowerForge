@@ -14,8 +14,8 @@ class StorageManager {
     static var CONFLICT_RESOLUTION = Constants.CONFLICT_RESOLTION
 
     static func initializeAllStorage() {
-        LocalStorageManager.initializeLocalStatisticsDatabase()
         LocalMetadataManager.initializeUserIdentifier()
+        LocalStorageManager.initializeLocalStatisticsDatabase()
     }
 
     static var defaultErrorClosure: (Error?) -> Void = { error in

@@ -42,17 +42,17 @@ class RemoteMetadataManager {
                 Logger.log("Metadata database already initialized.", self)
                 return
             }
-        }
 
-        // No error but no metadata implies that metadata is empty, thus initialize new one
-        Logger.log("No error but empty metadata, new one will be created", self)
-        let remoteMetadata = Metadata(lastUpdated: Date.now, uniqueIdentifier: Constants.CURRENT_PLAYER_ID)
+            // No error but no metadata implies that metadata is empty, thus initialize new one
+            Logger.log("No error but empty metadata, new one will be created", self)
+            let remoteMetadata = Metadata(lastUpdated: Date.now, uniqueIdentifier: Constants.CURRENT_PLAYER_ID)
 
-        Self.saveMetadataToFirebase(remoteMetadata) { error in
-            if let error = error {
-                Logger.log("Saving metadata to firebase error: \(error)", self)
-            } else {
-                Logger.log("Saving metadata to firebase success", self)
+            Self.saveMetadataToFirebase(remoteMetadata) { error in
+                if let error = error {
+                    Logger.log("Saving metadata to firebase error: \(error)", self)
+                } else {
+                    Logger.log("Saving metadata to firebase success", self)
+                }
             }
         }
     }

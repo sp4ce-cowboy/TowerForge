@@ -28,17 +28,17 @@ class RemoteStorageManager {
                 Logger.log("Statistics database already initialized.", self)
                 return
             }
-        }
 
-        // No error but no database implies that database is empty, thus initialize new one
-        Logger.log("No error but empty database, new one will be created", self)
-        let remoteStorage = StatisticsFactory.getDefaultStatisticsDatabase()
+            // No error but no database implies that database is empty, thus initialize new one
+            Logger.log("No error but empty database, new one will be created", self)
+            let remoteStorage = StatisticsFactory.getDefaultStatisticsDatabase()
 
-        Self.saveDatabaseToFirebase(remoteStorage) { error in
-            if let error = error {
-                Logger.log("Saving to firebase error: \(error)", self)
-            } else {
-                Logger.log("Saving to firebase success", self)
+            Self.saveDatabaseToFirebase(remoteStorage) { error in
+                if let error = error {
+                    Logger.log("Saving to firebase error: \(error)", self)
+                } else {
+                    Logger.log("Saving to firebase success", self)
+                }
             }
         }
     }
