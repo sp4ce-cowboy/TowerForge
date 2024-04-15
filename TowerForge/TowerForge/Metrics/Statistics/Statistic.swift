@@ -109,6 +109,16 @@ extension Statistic {
         updatePermanentValue(by: currentValue)
         currentValue = .zero
     }
+    
+    func resetMaxValue() {
+        maximumCurrentValue = .zero
+    }
+    
+    func resetStatistic() {
+        permanentValue = .zero
+        maximumCurrentValue = .zero
+        currentValue = .zero
+    }
 
     /// Returns the event types for which this Statistic would be involved
     func getEventLinksOnly() -> [TFEventTypeWrapper] {
@@ -159,16 +169,4 @@ extension Statistic {
 
         self.init(permanentValue: value, currentValue: current, maxCurrentValue: max)
     }
-
-    /* TODO: Fix new implementation
-     func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: StorageEnums.DynamicCodingKeys.self)
-        guard let statKey = DynamicCodingKeys(stringValue: statisticName.asString) else {
-            Logger.log("Encoding statistic failed", self)
-            return
-        }
-        var nestedContainer = container.nestedContainer(keyedBy: StatisticCodingKeys.self, forKey: statKey)
-        try nestedContainer.encode(permanentValue, forKey: .permanentValue)
-        try nestedContainer.encode(currentValue, forKey: .currentValue)
-    }*/
 }
