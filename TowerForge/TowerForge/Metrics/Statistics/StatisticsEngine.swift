@@ -19,16 +19,14 @@ class StatisticsEngine {
     }
 
     /// Add statistics links manually
-    /// TODO: Consider a more elegant way to do this
-    func setUpLinks() {
-        eventStatisticLinks.addStatisticLink(for: KillEvent.self,
-                                             with: statistics.getStatistic(for: TotalKillsStatistic.asType))
-
-        eventStatisticLinks.addStatisticLink(for: GameStartEvent.self,
-                                             with: statistics.getStatistic(for: TotalGamesStatistic.asType))
-
-        eventStatisticLinks.addStatisticLink(for: DeathEvent.self,
-                                             with: statistics.getStatistic(for: TotalDeathsStatistic.asType))
+    private func setUpLinks() {
+        let links = StatisticsFactory.eventStatisticLinks
+        for key in links.keys {
+            links[key]?.forEach {
+                eventStatisticLinks.addStatisticLink(for: key.type,
+                                                     with: statistics.getStatistic(for: $0))
+            }
+        }
     }
 
     private func initializeStatistics() {

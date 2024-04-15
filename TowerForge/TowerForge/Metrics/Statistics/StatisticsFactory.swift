@@ -9,18 +9,18 @@ import Foundation
 
 class StatisticsFactory {
 
+    static var eventStatisticLinks: [TFEventTypeWrapper: [StatisticTypeWrapper]] =
+        [
+            KillEvent.asType: [TotalKillsStatistic.asType],
+            GameStartEvent.asType: [TotalGamesStatistic.asType],
+            DeathEvent.asType: [TotalDeathsStatistic.asType]
+        ]
+
     static var availableStatisticsTypes: [String: Statistic.Type] =
         [
             String(describing: TotalKillsStatistic.self): TotalKillsStatistic.self,
             String(describing: TotalGamesStatistic.self): TotalGamesStatistic.self,
             String(describing: TotalDeathsStatistic.self): TotalDeathsStatistic.self
-        ]
-
-    static var defaultStatisticDecoder: [StatisticTypeWrapper: (JSONDecoder, Data) throws -> Statistic] =
-        [
-            TotalKillsStatistic.asType: { decoder, data in try decoder.decode(TotalKillsStatistic.self, from: data) },
-            TotalGamesStatistic.asType: { decoder, data in try decoder.decode(TotalGamesStatistic.self, from: data) },
-            TotalDeathsStatistic.asType: { decoder, data in try decoder.decode(TotalDeathsStatistic.self, from: data) }
         ]
 
     static var statisticDecoder: [String: (Decoder) throws -> Statistic] =
@@ -39,7 +39,7 @@ class StatisticsFactory {
 
     static func registerStatisticType<T: Statistic>(_ stat: T) {
         availableStatisticsTypes[String(describing: T.self)] = T.self
-        defaultStatisticDecoder[T.asType] = { decoder, data in try decoder.decode(T.self, from: data) }
+        statisticDecoder[T.asType.asString] = { decoder in try T(from: decoder) }
         defaultStatisticGenerator[T.asType] = { T() }
     }
 
