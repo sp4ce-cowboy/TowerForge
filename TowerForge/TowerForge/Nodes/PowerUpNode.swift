@@ -27,7 +27,7 @@ protocol PowerUpNodeDelegate: AnyObject {
 }
 
 class PowerUpNode: TFEntity {
-    static let size = CGSize(width: 140, height: 200)
+    static let size = UnitNode.size
     let type: PowerUp
     var delegate: PowerUpNodeDelegate
 

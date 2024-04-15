@@ -17,7 +17,6 @@ class GameWaitingRoomViewController: UIViewController {
         gameRoom?.deleteRoom()
         gameRoom = nil
         currentPlayer = nil
-        print("deinit")
     }
 
     override func viewDidLoad() {

@@ -10,7 +10,7 @@ import SpriteKit
 class TFNode {
     var staticOnScreen = false
     var node: SKNode
-    private var children: [String: TFNode] = [:]
+    var children: [String: TFNode] = [:]
 
     var name: String? {
         get { node.name }
@@ -61,7 +61,6 @@ class TFNode {
     }
 
     func add(child: TFNode) {
-        // TODO: This enforces child to have name
         guard let name = child.name, children[name] == nil else {
             return
         }
