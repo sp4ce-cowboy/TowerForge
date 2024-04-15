@@ -67,7 +67,7 @@ class StatisticsEngine {
     /// to follow delegate pattern and have unowned statsEngine/db variables inside
     /// InferenceEngines
     func notifyInferenceEngines() {
-        inferenceEngines.forEach { $0.updateOnReceive(stats: statistics) }
+        inferenceEngines.forEach { $0.updateOnReceive() }
     }
 
     private func saveStatistics() {

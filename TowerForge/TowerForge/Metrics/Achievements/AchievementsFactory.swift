@@ -20,8 +20,9 @@ class AchievementsFactory {
         availableAchievementTypes[String(describing: T.self)] = T.self
     }
 
-    static func getDefaultAchievementsDatabase() -> AchievementsDatabase {
+    static func getDefaultAchievementsDatabase(_ data: AchievementsDataDelegate?) -> AchievementsDatabase {
         let achievementsDatabase = AchievementsDatabase()
+        achievementsDatabase.achievementsDataDelegate = data
         availableAchievementTypes.values.forEach { achievementsDatabase.addAchievement(for: $0.asType) }
         return achievementsDatabase
     }
@@ -30,6 +31,13 @@ class AchievementsFactory {
         guard let type = availableAchievementTypes[typeName] else {
             return nil
         }
-        return type.init(permanentValue: permanentValue, currentValue: currentValue)
+
+        let stats: [Statistic] = db.statistics.values.filter { key in
+            type.dependentStatisticsTypes.contains {
+                $0 == key.statisticName
+            }
+        }
+
+        return type.init(dependentStatistics: stats)
     }
 }

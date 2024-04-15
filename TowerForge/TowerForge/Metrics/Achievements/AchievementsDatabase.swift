@@ -8,6 +8,7 @@
 import Foundation
 
 class AchievementsDatabase {
+    weak var achievementsDataDelegate: AchievementsDataDelegate?
     var achievements: [AchievementTypeWrapper: Achievement] = [:]
 
     init(achievements: [AchievementTypeWrapper: Achievement] = [:]) {
@@ -15,7 +16,9 @@ class AchievementsDatabase {
     }
 
     func addAchievement(for name: AchievementTypeWrapper) {
-        achievements[name] = name.type
+        if let stats = achievementsDataDelegate?.statisticsDatabase {
+            achievements[name] = AchievementsFactory.createDefaultInstance(of: name.asString, with: stats)
+        }
     }
 
     func getAchievement(for name: AchievementTypeWrapper) -> Achievement? {
@@ -23,7 +26,7 @@ class AchievementsDatabase {
     }
 
     func setToDefault() {
-        achievements = StatisticsFactory.getDefaultStatisticsDatabase().statistics
+        achievements = AchievementsFactory.getDefaultAchievementsDatabase(achievementsDataDelegate).achievements
     }
 
     func updateAll(with stats: StatisticsDatabase) {

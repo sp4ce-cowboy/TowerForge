@@ -36,4 +36,8 @@ class Metadata: Codable, Comparable, Equatable {
     static func > (lhs: Metadata, rhs: Metadata) -> Bool {
         lhs.lastUpdated > rhs.lastUpdated
     }
+
+    static func latest(lhs: Metadata, rhs: Metadata) -> Metadata {
+        rhs.lastUpdated > lhs.lastUpdated ? rhs : lhs
+    }
 }

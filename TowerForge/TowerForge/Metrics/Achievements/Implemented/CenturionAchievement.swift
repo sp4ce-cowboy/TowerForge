@@ -12,6 +12,13 @@ final class CenturionAchievement: Achievement {
     var achievementName: String = "Centurion"
     var achievementDescription: String = "Kill 100 enemies and die 100 times!"
 
+    static var dependentStatisticsTypes: [StatisticTypeWrapper] {
+        [
+            TotalKillsStatistic.asType,
+            TotalDeathsStatistic.asType
+        ]
+    }
+
     var dependentStatistics: [StatisticTypeWrapper: any Statistic] = [:]
 
     var requiredValues: [StatisticTypeWrapper: Double] {

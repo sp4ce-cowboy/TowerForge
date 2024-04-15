@@ -15,9 +15,9 @@ protocol Achievement: AnyObject {
     var achievementName: String { get }
     var achievementDescription: String { get }
 
+    static var dependentStatisticsTypes: [StatisticTypeWrapper] { get }
     var dependentStatistics: [StatisticTypeWrapper: Statistic] { get set }
     var currentValues: [StatisticTypeWrapper: Double] { get }
-
     var requiredValues: [StatisticTypeWrapper: Double] { get }
 
     var currentProgressRates: [StatisticTypeWrapper: Double] { get }
