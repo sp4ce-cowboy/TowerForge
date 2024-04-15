@@ -228,6 +228,7 @@
 		BA82C78C2BCD2B68000515A0 /* MissionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C78B2BCD2B68000515A0 /* MissionsFactory.swift */; };
 		BA82C78E2BCD2D2B000515A0 /* GrandDamageMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C78D2BCD2D2B000515A0 /* GrandDamageMission.swift */; };
 		BA82C7902BCD2FAF000515A0 /* TotalDamageDealtStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C78F2BCD2FAF000515A0 /* TotalDamageDealtStatistic.swift */; };
+		BA82C7922BCD6579000515A0 /* StatisticUpdateActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7912BCD6579000515A0 /* StatisticUpdateActor.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -481,6 +482,7 @@
 		BA82C78B2BCD2B68000515A0 /* MissionsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsFactory.swift; sourceTree = "<group>"; };
 		BA82C78D2BCD2D2B000515A0 /* GrandDamageMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrandDamageMission.swift; sourceTree = "<group>"; };
 		BA82C78F2BCD2FAF000515A0 /* TotalDamageDealtStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalDamageDealtStatistic.swift; sourceTree = "<group>"; };
+		BA82C7912BCD6579000515A0 /* StatisticUpdateActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticUpdateActor.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -1045,6 +1047,7 @@
 				BA82C73F2BC8674A000515A0 /* StatisticsFactory.swift */,
 				BA2F5ACA2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift */,
 				BA2F5ACC2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift */,
+				BA82C7912BCD6579000515A0 /* StatisticUpdateActor.swift */,
 			);
 			path = Statistics;
 			sourceTree = "<group>";
@@ -1323,10 +1326,10 @@
 				BA82C76E2BCBDE91000515A0 /* Metadata.swift */,
 				BA82C77A2BCD05DC000515A0 /* MetadataManager.swift */,
 				BA82C76A2BCBD682000515A0 /* StorageManager.swift */,
-				BA82C7722BCBF657000515A0 /* LocalMetadataManager.swift */,
-				BA82C77C2BCD07F4000515A0 /* RemoteMetadataManager.swift */,
 				BA82C7642BCBC868000515A0 /* LocalStorageManager.swift */,
+				BA82C7722BCBF657000515A0 /* LocalMetadataManager.swift */,
 				BA82C7682BCBD21F000515A0 /* RemoteStorageManager.swift */,
+				BA82C77C2BCD07F4000515A0 /* RemoteMetadataManager.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -1679,6 +1682,7 @@
 				5240D0A22BB33183004F1486 /* DeathMatchMode.swift in Sources */,
 				BA2F5AC52BC8143E00CBD8E9 /* TotalKillsStatistic.swift in Sources */,
 				3CAC4A6F2BB6A4F200A5D22E /* LabelRenderStage.swift in Sources */,
+				BA82C7922BCD6579000515A0 /* StatisticUpdateActor.swift in Sources */,
 				BA82C75F2BCB1528000515A0 /* AchievementsDatabase.swift in Sources */,
 				3CD37A9F2BBEBFFB00222D8A /* TFRemoteEventPublisher.swift in Sources */,
 				3C0B608D2BB2B84000FFECB4 /* ContactComponent.swift in Sources */,

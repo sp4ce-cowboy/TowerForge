@@ -16,32 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        /// Initialize all local storage
-        StorageManager.initializeAllStorage()
-
         /// Connect to Firebase
         FirebaseApp.configure()
+
+        /// Initialize all local storage
+        StorageManager.initializeAllStorage()
 
         /// Prepare audio player to begin playing music
         AudioManager.shared.setupAllAudioPlayers()
 
-        /// Temporary tests
-        Logger.log("StatisticTypeWrapper: \(TotalGamesStatistic.asType)", self)
-        Logger.log("Wrapper.asString: \(TotalGamesStatistic.asType.asString)", self)
-        Logger.log("Wrapper.type: \(TotalGamesStatistic.asType.type)", self)
-
-        let string = "TotalGamesStatistic"
-
-        Logger.log("TotalGamesStatistics as represented by NSClass is "
-                   + "\(String(describing: NSClassFromString("TowerForge.TotalGamesStatistic")))", self)
-
-        guard let type = string.asTFClassFromString as? Statistic.Type else {
-            Logger.log("Failed", self)
-            return true
-        }
-
-        Logger.log("Success: \(type)", self)
-        Logger.log(Bundle.main.projectName)
         return true
     }
 

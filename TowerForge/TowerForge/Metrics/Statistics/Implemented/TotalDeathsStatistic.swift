@@ -30,6 +30,8 @@ final class TotalDeathsStatistic: Statistic {
         return statsLink
     }*/
 
+    /// The total deaths statistic no longer requires the DeathEvent, it is able
+    /// to directly parse a KillEvent to determine whe
     func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
         let eventType = TFEventTypeWrapper(type: KillEvent.self)
         let eventUpdateClosure: (Statistic, KillEvent?) -> Void = { statistic, event in
@@ -42,7 +44,8 @@ final class TotalDeathsStatistic: Statistic {
 
         let statisticUpdateActor = StatisticUpdateActor<KillEvent>(action: eventUpdateClosure)
         let anyStatisticUpdateActorWrapper = AnyStatisticUpdateActorWrapper(statisticUpdateActor)
-
+        // let anyStatisticUpdateActorWrapper =
+        //        AnyStatisticUpdateActorWrapper(updateStatistic: eventUpdateClosure)
         var statisticUpdateLinksMap: [TFEventTypeWrapper: AnyStatisticUpdateActor] = [:]
         statisticUpdateLinksMap[eventType] = anyStatisticUpdateActorWrapper
         return StatisticUpdateLinkDatabase(statisticUpdateLinks: statisticUpdateLinksMap)

@@ -110,6 +110,8 @@ class RemoteStorageManager {
             Logger.log("Error encoding StatisticsDatabase: \(error)", StatisticsDatabase.self)
             completion(error)
         }
+
+        RemoteMetadataManager.updateMetadataInFirebase()
     }
 
     /// Deletes the player's statistics database from Firebase

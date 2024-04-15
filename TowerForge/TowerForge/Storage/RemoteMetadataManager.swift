@@ -61,11 +61,10 @@ class RemoteMetadataManager {
         var existingRemoteMetadata: Metadata?
 
         Self.loadMetadataFromFirebase { metadata, error in
-            if error != nil {
+            if let error = error {
                 Logger.log("Error occured while loading metadata from firebase for update", self)
                 return
             }
-
             existingRemoteMetadata = metadata
         }
 
@@ -78,12 +77,11 @@ class RemoteMetadataManager {
         }
 
         Self.saveMetadataToFirebase(existingRemoteMetadata) { error in
-            if error != nil {
+            if let error = error {
                 Logger.log("Error occured while saving metadata to firebase for update", self)
                 return
             }
         }
-
     }
 
     static func loadMetadataFromFirebase(completion: @escaping (Metadata?, Error?) -> Void) {

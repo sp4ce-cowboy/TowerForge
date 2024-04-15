@@ -44,7 +44,7 @@ class LocalMetadataManager {
         metadata.lastUpdated = Date.now
         saveMetadataToLocalStorage(metadata)
         Logger.log("Metadata updated at: \(metadata.lastUpdated)", self)
-        RemoteMetadataManager.updateMetadataInFirebase()
+        // RemoteMetadataManager.updateMetadataInFirebase()
     }
 
     static func saveMetadataToLocalStorage(_ metadata: Metadata) {
