@@ -15,7 +15,11 @@ class RankGenerator {
         $0.statistics.values.map { $0.rankValue }.reduce(into: .zero) { $0 += $1 }
     }
     
-    static func getExp(from stats: StatisticsDatabase) -> Double {
+    static func getTotalExp(from stats: StatisticsDatabase) -> Double {
         Self.expFormula(stats)
+    }
+    
+    static func rank(forValue value: Double) -> Rank? {
+        return Rank.allCases.first { $0.valueRange.contains(Int(value)) }
     }
 }
