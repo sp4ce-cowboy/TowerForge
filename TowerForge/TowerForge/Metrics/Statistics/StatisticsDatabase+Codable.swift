@@ -69,10 +69,12 @@ extension StatisticsDatabase: Codable {
         let type = try statObjectDict.decode(String.self, forKey: .statisticName)
         let permanentValue = try statObjectDict.decode(Double.self, forKey: .permanentValue)
         let currentValue = try statObjectDict.decode(Double.self, forKey: .currentValue)
+        let maxValue = try statObjectDict.decode(Double.self, forKey: .maximumCurrentValue)
 
         guard let instance = StatisticsFactory.createInstance(of: type,
                                                               permanentValue: permanentValue,
-                                                              currentValue: currentValue) else {
+                                                              currentValue: currentValue,
+                                                              max: maxValue) else {
 
             throw DecodingError.dataCorruptedError(forKey: .statisticName,
                                                    in: statObjectDict,

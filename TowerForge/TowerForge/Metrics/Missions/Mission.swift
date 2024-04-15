@@ -21,9 +21,6 @@ protocol Mission: AnyObject {
     var overallProgressRate: Double { get }
     var isComplete: Bool { get }
 
-    /// Missions will become "done" once and continue to persist across game instances
-    static var isDone: Bool { get set }
-
     func loadStatistic(_ stat: Statistic)
     func update(with stats: StatisticsDatabase)
 
@@ -53,17 +50,13 @@ extension Mission {
         currentParameters.keys.forEach {
             self.currentParameters[$0] = stats.statistics[$0]
         }
-
-        if self.isComplete {
-            Self.isDone = true
-        }
     }
 
     var currentValues: [StatisticTypeWrapper: Double] {
         var values: [StatisticTypeWrapper: Double] = [:]
         currentParameters.keys.forEach { key in
             if let currentStatistic = currentParameters[key] {
-                values[key] = currentStatistic.currentValue
+                values[key] = currentStatistic.maximumCurrentValue
             }
         }
 

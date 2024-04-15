@@ -8,15 +8,14 @@
 import Foundation
 
 final class GrandDamageMission: Mission {
-    static var isDone = false
 
-    var missionName: String = "50 Kills"
-    var missionDescription: String = "Attain 50 total kills in TowerForge"
+    var missionName: String = "Mission: 1000 Damage"
+    var missionDescription: String = "Attain 1000 Damage in 1 game"
     var currentParameters: [StatisticTypeWrapper: any Statistic]
 
     static var definedParameters: [StatisticTypeWrapper: Double] {
         [
-            TotalKillsStatistic.asType: 50.0
+            TotalDamageDealtStatistic.asType: 1_000.0
         ]
     }
 

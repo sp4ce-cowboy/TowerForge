@@ -8,17 +8,21 @@
 import Foundation
 
 final class TotalKillsStatistic: Statistic {
+
     var permanentValue: Double = .zero
     var currentValue: Double = .zero
+    var maximumCurrentValue: Double = .zero
 
     var statisticUpdateLinks: StatisticUpdateLinkDatabase {
         self.getStatisticUpdateLinks()
     }
 
     init(permanentValue: Double = .zero,
-         currentValue: Double = .zero) {
+         currentValue: Double = .zero,
+         maxCurrentValue: Double = .zero) {
         self.permanentValue = permanentValue
         self.currentValue = currentValue
+        self.maximumCurrentValue = maxCurrentValue
     }
 
     func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
@@ -44,7 +48,8 @@ final class TotalKillsStatistic: Statistic {
           _ = try container.decode(StatisticTypeWrapper.self, forKey: .statisticName)
           let value = try container.decode(Double.self, forKey: .permanentValue)
           let current = try container.decode(Double.self, forKey: .currentValue)
+          let max = try container.decode(Double.self, forKey: .maximumCurrentValue)
 
-          self.init(permanentValue: value, currentValue: current)
-      }
+          self.init(permanentValue: value, currentValue: current, maxCurrentValue: max)
+    }
 }

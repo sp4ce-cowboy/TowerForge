@@ -23,6 +23,7 @@ class StorageEnums {
         case statisticName
         case permanentValue
         case currentValue
+        case maximumCurrentValue
     }
 
     enum StorageLocation: String, Codable {

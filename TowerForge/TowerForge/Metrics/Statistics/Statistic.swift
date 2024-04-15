@@ -17,6 +17,9 @@ protocol Statistic: AnyObject, Codable {
     /// The changes incurred to the statistic in the course of the current game sequence
     var currentValue: Double { get set }
 
+    /// Stores the maximum currentValue reached for this statistic in the course of the game
+    var maximumCurrentValue: Double { get set }
+
     /// A computed sum of the permanent value and the current value of the statistic
     var currentTotalValue: Double { get }
 
@@ -29,14 +32,14 @@ protocol Statistic: AnyObject, Codable {
     func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase
     func getEventLinksOnly() -> [TFEventTypeWrapper]
 
-    init(permanentValue: Double, currentValue: Double)
+    init(permanentValue: Double, currentValue: Double, maxCurrentValue: Double)
 
 }
 
 extension Statistic {
 
     init() {
-        self.init(permanentValue: .zero, currentValue: .zero)
+        self.init(permanentValue: .zero, currentValue: .zero, maxCurrentValue: .zero)
     }
 
     static func equals(lhs: Self, rhs: Self) -> Bool {
@@ -83,6 +86,10 @@ extension Statistic {
     /// Increments the current value of the statistic by the given amount
     func updateCurrentValue(by value: Double) {
         currentValue += value
+
+        if currentValue > maximumCurrentValue {
+            maximumCurrentValue = currentValue
+        }
     }
 
     /// Generic increment of the permanent value
@@ -108,7 +115,6 @@ extension Statistic {
         self.getStatisticUpdateLinks().getAllEventTypes()
     }
 
-    /// Updates the statistic according to an UpdateActor that is retrieved from the
     /*func update<T: TFEvent>(for event: T) {
      let eventType = T.asType
      guard let updateLink = self.getStatisticUpdateLinks().getStatisticUpdateActor(for: eventType) else {
@@ -141,6 +147,17 @@ extension Statistic {
         try container.encode(statisticName, forKey: .statisticName)
         try container.encode(permanentValue, forKey: .permanentValue)
         try container.encode(currentValue, forKey: .currentValue)
+        try container.encode(maximumCurrentValue, forKey: .maximumCurrentValue)
+    }
+
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: StatisticCodingKeys.self)
+        _ = try container.decode(StatisticTypeWrapper.self, forKey: .statisticName)
+        let value = try container.decode(Double.self, forKey: .permanentValue)
+        let current = try container.decode(Double.self, forKey: .currentValue)
+        let max = try container.decode(Double.self, forKey: .maximumCurrentValue)
+
+        self.init(permanentValue: value, currentValue: current, maxCurrentValue: max)
     }
 
     /* TODO: Fix new implementation

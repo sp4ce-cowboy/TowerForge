@@ -11,15 +11,18 @@ import Foundation
 final class TotalDamageDealtStatistic: Statistic {
     var permanentValue: Double = .zero
     var currentValue: Double = .zero
+    var maximumCurrentValue: Double = .zero
 
     var statisticUpdateLinks: StatisticUpdateLinkDatabase {
         self.getStatisticUpdateLinks()
     }
 
     init(permanentValue: Double = .zero,
-         currentValue: Double = .zero) {
+         currentValue: Double = .zero,
+         maxCurrentValue: Double = .zero) {
         self.permanentValue = permanentValue
         self.currentValue = currentValue
+        self.maximumCurrentValue = maxCurrentValue
     }
 
     /*func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
@@ -57,5 +60,5 @@ final class TotalDamageDealtStatistic: Statistic {
           let current = try container.decode(Double.self, forKey: .currentValue)
 
           self.init(permanentValue: value, currentValue: current)
-      }
+    }
 }

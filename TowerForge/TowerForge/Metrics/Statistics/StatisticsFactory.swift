@@ -58,10 +58,13 @@ class StatisticsFactory {
         return statsDatabase
     }
 
-    static func createInstance(of typeName: String, permanentValue: Double, currentValue: Double) -> Statistic? {
+    static func createInstance(of typeName: String,
+                               permanentValue: Double,
+                               currentValue: Double,
+                               max: Double) -> Statistic? {
         guard let type = availableStatisticsTypes[typeName] else {
             return nil
         }
-        return type.init(permanentValue: permanentValue, currentValue: currentValue)
+        return type.init(permanentValue: permanentValue, currentValue: currentValue, maxCurrentValue: max)
     }
 }

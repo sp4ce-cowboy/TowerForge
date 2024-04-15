@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol InferenceDataDelegate: AnyObject {
-    var statisticsDatabase: StatisticsDatabase { get }
-}
-
 /// The AchievementsEngine is an InferenceEngine that interprets permanent
 /// information received from the Statistics component.
 ///
