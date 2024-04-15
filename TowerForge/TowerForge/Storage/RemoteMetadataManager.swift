@@ -38,7 +38,7 @@ class RemoteMetadataManager {
                 return
             }
 
-            if metadata != nil {
+            if let metadata = metadata {
                 Logger.log("Metadata database already initialized.", self)
                 return
             }
@@ -58,27 +58,26 @@ class RemoteMetadataManager {
     }
 
     static func updateMetadataInFirebase() {
-        var existingRemoteMetadata: Metadata?
+        var existingRemoteMetadata = Metadata(lastUpdated: Date.now,
+                                              uniqueIdentifier: Constants.CURRENT_PLAYER_ID)
 
         Self.loadMetadataFromFirebase { metadata, error in
             if let error = error {
-                Logger.log("Error occured while loading metadata from firebase for update", self)
+                Logger.log("Error occured while loading metadata from firebase for update --- \(error)", self)
                 return
             }
-            existingRemoteMetadata = metadata
+
+            if let metadata = metadata {
+                existingRemoteMetadata = metadata
+            }
         }
 
-        existingRemoteMetadata?.lastUpdated = Date.now
-        Logger.log("Metadata updated at: \(String(describing: existingRemoteMetadata?.lastUpdated))", self)
-
-        guard let existingRemoteMetadata = existingRemoteMetadata else {
-            Logger.log("Error occured while updating metadata", self)
-            return
-        }
+        existingRemoteMetadata.lastUpdated = Date.now
+        Logger.log("Metadata updated at: \(String(describing: existingRemoteMetadata.lastUpdated))", self)
 
         Self.saveMetadataToFirebase(existingRemoteMetadata) { error in
             if let error = error {
-                Logger.log("Error occured while saving metadata to firebase for update", self)
+                Logger.log("Error occured while saving metadata to firebase for update --- \(error)", self)
                 return
             }
         }
