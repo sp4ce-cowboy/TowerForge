@@ -33,7 +33,7 @@ class AchievementsFactory {
         }
 
         let stats: [Statistic] = db.statistics.values.filter { key in
-            type.dependentStatisticsTypes.contains {
+            type.definedParameters.keys.contains {
                 $0 == key.statisticName
             }
         }

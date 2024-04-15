@@ -15,8 +15,9 @@ protocol Achievement: AnyObject {
     var achievementName: String { get }
     var achievementDescription: String { get }
 
-    static var dependentStatisticsTypes: [StatisticTypeWrapper] { get }
-    var dependentStatistics: [StatisticTypeWrapper: Statistic] { get set }
+    static var definedParameters: [StatisticTypeWrapper: Double] { get }
+    var currentParameters: [StatisticTypeWrapper: Statistic] { get set }
+
     var currentValues: [StatisticTypeWrapper: Double] { get }
     var requiredValues: [StatisticTypeWrapper: Double] { get }
 
@@ -37,20 +38,24 @@ extension Achievement {
         AchievementTypeWrapper(type: Self.self)
     }
 
+    var requiredValues: [StatisticTypeWrapper: Double] {
+        Self.definedParameters
+    }
+
     func loadStatistic(_ stat: any Statistic) {
-        dependentStatistics[stat.statisticName] = stat
+        currentParameters[stat.statisticName] = stat
     }
 
     func update(with stats: StatisticsDatabase) {
-        dependentStatistics.keys.forEach {
-            self.dependentStatistics[$0] = stats.statistics[$0]
+        currentParameters.keys.forEach {
+            self.currentParameters[$0] = stats.statistics[$0]
         }
     }
 
     var currentValues: [StatisticTypeWrapper: Double] {
         var values: [StatisticTypeWrapper: Double] = [:]
-        dependentStatistics.keys.forEach { key in
-            if let currentStatistic = dependentStatistics[key] {
+        currentParameters.keys.forEach { key in
+            if let currentStatistic = currentParameters[key] {
                 values[key] = currentStatistic.permanentValue
             }
         }
