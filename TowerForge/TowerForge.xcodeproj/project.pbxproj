@@ -221,6 +221,7 @@
 		BA82C7792BCC6943000515A0 /* CenturionAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7782BCC6943000515A0 /* CenturionAchievement.swift */; };
 		BA82C77B2BCD05DC000515A0 /* MetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C77A2BCD05DC000515A0 /* MetadataManager.swift */; };
 		BA82C77D2BCD07F4000515A0 /* RemoteMetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C77C2BCD07F4000515A0 /* RemoteMetadataManager.swift */; };
+		BA82C7802BCD284D000515A0 /* InferenceEngineFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C77F2BCD284D000515A0 /* InferenceEngineFactory.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -467,6 +468,7 @@
 		BA82C7782BCC6943000515A0 /* CenturionAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenturionAchievement.swift; sourceTree = "<group>"; };
 		BA82C77A2BCD05DC000515A0 /* MetadataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataManager.swift; sourceTree = "<group>"; };
 		BA82C77C2BCD07F4000515A0 /* RemoteMetadataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMetadataManager.swift; sourceTree = "<group>"; };
+		BA82C77F2BCD284D000515A0 /* InferenceEngineFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InferenceEngineFactory.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -951,9 +953,9 @@
 		BA2F5ABF2BC80BD200CBD8E9 /* Metrics */ = {
 			isa = PBXGroup;
 			children = (
+				BA82C77E2BCD2652000515A0 /* Inference */,
 				BA82C7562BCAB482000515A0 /* Statistics */,
 				BA2F5ABC2BC80A2300CBD8E9 /* Achievements */,
-				BA82C75C2BCB1451000515A0 /* InferenceEngine.swift */,
 			);
 			path = Metrics;
 			sourceTree = "<group>";
@@ -1032,6 +1034,15 @@
 				BA2F5ACC2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift */,
 			);
 			path = Statistics;
+			sourceTree = "<group>";
+		};
+		BA82C77E2BCD2652000515A0 /* Inference */ = {
+			isa = PBXGroup;
+			children = (
+				BA82C75C2BCB1451000515A0 /* InferenceEngine.swift */,
+				BA82C77F2BCD284D000515A0 /* InferenceEngineFactory.swift */,
+			);
+			path = Inference;
 			sourceTree = "<group>";
 		};
 		BAFFB9272BB09E0E00D8301F /* Storyboards */ = {
@@ -1539,6 +1550,7 @@
 				3CD37AA12BBEC00C00222D8A /* TFRemoteEventSubscriber.swift in Sources */,
 				52A794152BBC4EF50083C976 /* GameRoomDelegate.swift in Sources */,
 				52DF5FB02BA32B2300135367 /* GameViewController.swift in Sources */,
+				BA82C7802BCD284D000515A0 /* InferenceEngineFactory.swift in Sources */,
 				3CE951512BAC8955008B2785 /* Renderable.swift in Sources */,
 				3CAC4A712BB6AB3100A5D22E /* TFLabelNode.swift in Sources */,
 				529F91882BA6D7A7009551D9 /* SoldierUnit.swift in Sources */,

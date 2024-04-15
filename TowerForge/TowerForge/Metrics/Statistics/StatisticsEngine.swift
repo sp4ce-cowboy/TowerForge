@@ -16,6 +16,7 @@ class StatisticsEngine {
     init() {
         self.initializeStatistics()
         self.setUpLinks()
+        self.setUpInferenceEngines()
     }
 
     /// Add statistics links manually
@@ -32,6 +33,10 @@ class StatisticsEngine {
     private func initializeStatistics() {
         eventStatisticLinks = StatisticsFactory.getDefaultEventLinkDatabase()
         loadStatistics()
+    }
+
+    private func setUpInferenceEngines() {
+        InferenceEngineFactory.availableInferenceEngines.forEach { self.inferenceEngines.append($0(self)) }
     }
 
     /// Main update function
