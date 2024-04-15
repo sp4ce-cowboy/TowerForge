@@ -39,7 +39,7 @@ class RemoteMetadataManager {
             }
 
             if let metadata = metadata {
-                Logger.log("Metadata database already initialized.", self)
+                Logger.log("Metadata database already initialized : \(metadata)", self)
                 return
             }
 
