@@ -230,6 +230,8 @@
 		BA82C7902BCD2FAF000515A0 /* TotalDamageDealtStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C78F2BCD2FAF000515A0 /* TotalDamageDealtStatistic.swift */; };
 		BA82C7922BCD6579000515A0 /* StatisticUpdateActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7912BCD6579000515A0 /* StatisticUpdateActor.swift */; };
 		BA82C7942BCDAA83000515A0 /* InferenceDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7932BCDAA83000515A0 /* InferenceDataDelegate.swift */; };
+		BA82C7972BCDAF8A000515A0 /* RankGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7962BCDAF8A000515A0 /* RankGenerator.swift */; };
+		BA82C7992BCDAFE3000515A0 /* RankingEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7982BCDAFE3000515A0 /* RankingEnums.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -485,6 +487,8 @@
 		BA82C78F2BCD2FAF000515A0 /* TotalDamageDealtStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalDamageDealtStatistic.swift; sourceTree = "<group>"; };
 		BA82C7912BCD6579000515A0 /* StatisticUpdateActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticUpdateActor.swift; sourceTree = "<group>"; };
 		BA82C7932BCDAA83000515A0 /* InferenceDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InferenceDataDelegate.swift; sourceTree = "<group>"; };
+		BA82C7962BCDAF8A000515A0 /* RankGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankGenerator.swift; sourceTree = "<group>"; };
+		BA82C7982BCDAFE3000515A0 /* RankingEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingEnums.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -969,8 +973,9 @@
 			isa = PBXGroup;
 			children = (
 				BA82C77E2BCD2652000515A0 /* Inference */,
-				BA82C7812BCD2B20000515A0 /* Missions */,
 				BA82C7562BCAB482000515A0 /* Statistics */,
+				BA82C7952BCDAF6E000515A0 /* Ranking */,
+				BA82C7812BCD2B20000515A0 /* Missions */,
 				BA2F5ABC2BC80A2300CBD8E9 /* Achievements */,
 			);
 			path = Metrics;
@@ -1083,6 +1088,14 @@
 				BA82C78D2BCD2D2B000515A0 /* GrandDamageMission.swift */,
 			);
 			path = Implemented;
+			sourceTree = "<group>";
+		};
+		BA82C7952BCDAF6E000515A0 /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+				BA82C7962BCDAF8A000515A0 /* RankGenerator.swift */,
+			);
+			path = Ranking;
 			sourceTree = "<group>";
 		};
 		BAFFB9272BB09E0E00D8301F /* Storyboards */ = {
@@ -1265,6 +1278,7 @@
 				BAFFB95C2BB978E500D8301F /* StorageEnums.swift */,
 				BAFFB9842BBDBA7D00D8301F /* MediaEnums.swift */,
 				BA2F5AC62BC8148C00CBD8E9 /* StatisticName.swift */,
+				BA82C7982BCDAFE3000515A0 /* RankingEnums.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1601,6 +1615,7 @@
 				3CAC4A732BB6B61C00A5D22E /* PlayerRenderStage.swift in Sources */,
 				523AA3BF2BB88FBF0041E60D /* WizardUnit.swift in Sources */,
 				3C9955C02BA57E5500D33FA5 /* EventTarget.swift in Sources */,
+				BA82C7992BCDAFE3000515A0 /* RankingEnums.swift in Sources */,
 				3CCF9CB12BAB1BCE004D170E /* GameWorld.swift in Sources */,
 				9B0406162BB89E140026E903 /* InvulnerabilityPowerUpDelegate.swift in Sources */,
 				5295A2152BAAF335005018A8 /* UnitSelectionNode.swift in Sources */,
@@ -1701,6 +1716,7 @@
 				5240D0AF2BB3B415004F1486 /* LifeEvent.swift in Sources */,
 				5295A2072BAA02FD005018A8 /* TFButtonNode.swift in Sources */,
 				BAFFB96A2BB9A64000D8301F /* ObjectSet.swift in Sources */,
+				BA82C7972BCDAF8A000515A0 /* RankGenerator.swift in Sources */,
 				BA82C7902BCD2FAF000515A0 /* TotalDamageDealtStatistic.swift in Sources */,
 				3CD37AA32BBEC0F900222D8A /* FirebaseRemoteEventPublisher.swift in Sources */,
 				3CAC4A6B2BB6992F00A5D22E /* TFNode.swift in Sources */,

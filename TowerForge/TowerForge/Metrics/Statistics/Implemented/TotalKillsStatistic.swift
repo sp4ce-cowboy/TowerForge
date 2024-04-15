@@ -8,6 +8,7 @@
 import Foundation
 
 final class TotalKillsStatistic: Statistic {
+    static let expMultiplier: Double = 10
 
     var permanentValue: Double = .zero
     var currentValue: Double = .zero

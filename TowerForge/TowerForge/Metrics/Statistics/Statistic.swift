@@ -26,6 +26,9 @@ protocol Statistic: AnyObject, Codable {
     /// The principal interface for modifying the Statistic
     func update<T: TFEvent>(for event: T)
 
+    /// The significance value which this Statistic holds in generating XP
+    static var expMultiplier: Double { get }
+
     /// Returns a StatisticUpdateLinkDatabase pertaining to this Statistic.
     /// Conforming Statistic types will have to implement their own links between event
     /// types and the action to take upon reception of that event's execution.
@@ -67,8 +70,16 @@ extension Statistic {
         StatisticTypeWrapper(type: Self.self)
     }
 
+    static var expMultiplier: Double {
+        0.0
+    }
+
     var statisticName: StatisticTypeWrapper {
         StatisticTypeWrapper(type: Self.self)
+    }
+
+    var rankValue: Double {
+        permanentValue * Self.expMultiplier
     }
 
     /// Returns the total value of the statistic taking into account the
@@ -109,11 +120,11 @@ extension Statistic {
         updatePermanentValue(by: currentValue)
         currentValue = .zero
     }
-    
+
     func resetMaxValue() {
         maximumCurrentValue = .zero
     }
-    
+
     func resetStatistic() {
         permanentValue = .zero
         maximumCurrentValue = .zero

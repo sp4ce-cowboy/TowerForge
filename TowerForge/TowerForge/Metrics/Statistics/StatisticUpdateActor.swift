@@ -14,6 +14,7 @@ protocol AnyStatisticUpdateActor {
 // typealias StatisticUpdateActor = ((Statistic, (any TFEvent)?) -> Void)?
 /// This struct contains pairs that each Statistic will refer to,
 /// to act accordingly when an EventType is executed elsewhere.
+
 class StatisticUpdateActor<T: TFEvent> {
     var action: ((Statistic, T?) -> Void)?
 

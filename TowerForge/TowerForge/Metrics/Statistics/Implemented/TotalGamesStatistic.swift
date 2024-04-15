@@ -8,6 +8,7 @@
 import Foundation
 
 final class TotalGamesStatistic: Statistic {
+    static let expMultiplier: Double = 100
 
     var permanentValue: Double = .zero
     var currentValue: Double = .zero
