@@ -62,7 +62,8 @@ class StatisticsEngine {
             return
         }
 
-        stats.forEach { $0.update(for: eventType) }
+        // stats.forEach { $0.update(for: eventType) }
+        stats.forEach { $0.update(for: event) }
         saveStatistics()
     }
 

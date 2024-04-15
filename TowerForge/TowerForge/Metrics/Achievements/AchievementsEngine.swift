@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AchievementsDataDelegate: AnyObject {
+protocol InferenceDataDelegate: AnyObject {
     var statisticsDatabase: StatisticsDatabase { get }
 }
 
@@ -16,7 +16,7 @@ protocol AchievementsDataDelegate: AnyObject {
 ///
 /// It contains a Database of Achievements, and when notified by the StatisticsEngine,
 /// will update all Achievements therein contained.
-class AchievementsEngine: InferenceEngine, AchievementsDataDelegate {
+class AchievementsEngine: InferenceEngine, InferenceDataDelegate {
     unowned var statisticsEngine: StatisticsEngine
     var achievementsDatabase: AchievementsDatabase
     var statisticsDatabase: StatisticsDatabase {
@@ -30,7 +30,7 @@ class AchievementsEngine: InferenceEngine, AchievementsDataDelegate {
     }
 
     func updateOnReceive() {
-        achievementsDatabase.updateAll(with: statisticsEngine.statistics)
+        achievementsDatabase.updateAll(with: statisticsDatabase)
     }
 
 }

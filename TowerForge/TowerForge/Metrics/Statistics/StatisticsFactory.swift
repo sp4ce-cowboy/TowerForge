@@ -11,30 +11,33 @@ class StatisticsFactory {
 
     static var eventStatisticLinks: [TFEventTypeWrapper: [StatisticTypeWrapper]] =
         [
-            KillEvent.asType: [TotalKillsStatistic.asType],
+            KillEvent.asType: [TotalKillsStatistic.asType, TotalDeathsStatistic.asType],
             GameStartEvent.asType: [TotalGamesStatistic.asType],
-            DeathEvent.asType: [TotalDeathsStatistic.asType]
+            DamageEvent.asType: [TotalDamageDealtStatistic.asType]
         ]
 
     static var availableStatisticsTypes: [String: Statistic.Type] =
         [
             String(describing: TotalKillsStatistic.self): TotalKillsStatistic.self,
             String(describing: TotalGamesStatistic.self): TotalGamesStatistic.self,
-            String(describing: TotalDeathsStatistic.self): TotalDeathsStatistic.self
+            String(describing: TotalDeathsStatistic.self): TotalDeathsStatistic.self,
+            String(describing: TotalDamageDealtStatistic.self): TotalDamageDealtStatistic.self
         ]
 
     static var statisticDecoder: [String: (Decoder) throws -> Statistic] =
         [
             TotalKillsStatistic.asType.asString: { decoder in try TotalKillsStatistic(from: decoder) },
             TotalGamesStatistic.asType.asString: { decoder in try TotalGamesStatistic(from: decoder) },
-            TotalDeathsStatistic.asType.asString: { decoder in try TotalDeathsStatistic(from: decoder) }
+            TotalDeathsStatistic.asType.asString: { decoder in try TotalDeathsStatistic(from: decoder) },
+            TotalDamageDealtStatistic.asType.asString: { decoder in try TotalDamageDealtStatistic(from: decoder) }
         ]
 
     static var defaultStatisticGenerator: [StatisticTypeWrapper: () -> Statistic] =
         [
             TotalKillsStatistic.asType: { TotalKillsStatistic() },
             TotalGamesStatistic.asType: { TotalGamesStatistic() },
-            TotalDeathsStatistic.asType: { TotalDeathsStatistic() }
+            TotalDeathsStatistic.asType: { TotalDeathsStatistic() },
+            TotalDamageDealtStatistic.asType: { TotalDamageDealtStatistic() }
         ]
 
     static func registerStatisticType<T: Statistic>(_ stat: T) {

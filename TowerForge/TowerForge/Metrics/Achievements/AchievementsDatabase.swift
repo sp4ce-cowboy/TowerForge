@@ -8,7 +8,7 @@
 import Foundation
 
 class AchievementsDatabase {
-    weak var achievementsDataDelegate: AchievementsDataDelegate?
+    weak var achievementsDataDelegate: InferenceDataDelegate?
     var achievements: [AchievementTypeWrapper: Achievement] = [:]
 
     init(achievements: [AchievementTypeWrapper: Achievement] = [:]) {

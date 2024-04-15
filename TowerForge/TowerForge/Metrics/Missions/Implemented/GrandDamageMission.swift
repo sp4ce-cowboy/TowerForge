@@ -1,15 +1,17 @@
 //
-//  50KillsAchievement.swift
+//  ThousandDamageMission.swift
 //  TowerForge
 //
-//  Created by Rubesh on 14/4/24.
+//  Created by Rubesh on 15/4/24.
 //
 
 import Foundation
 
-final class FiftyKillsAchievement: Achievement {
-    var achievementName: String = "50 Kills"
-    var achievementDescription: String = "Attain 50 total kills in TowerForge"
+final class GrandDamageMission: Mission {
+    static var isDone = false
+
+    var missionName: String = "50 Kills"
+    var missionDescription: String = "Attain 50 total kills in TowerForge"
     var currentParameters: [StatisticTypeWrapper: any Statistic]
 
     static var definedParameters: [StatisticTypeWrapper: Double] {

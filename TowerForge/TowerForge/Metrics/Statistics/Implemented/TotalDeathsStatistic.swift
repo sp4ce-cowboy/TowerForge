@@ -21,13 +21,32 @@ final class TotalDeathsStatistic: Statistic {
         self.currentValue = currentValue
     }
 
-    func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
+    /*func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
         let eventType = TFEventTypeWrapper(type: DeathEvent.self)
         let updateActor: StatisticUpdateActor = { statistic in statistic.updateCurrentValue(by: 1.0) }
         let eventUpdateDictionary = [eventType: updateActor]
         let statsLink = StatisticUpdateLinkDatabase(statisticUpdateLinks: eventUpdateDictionary)
 
         return statsLink
+    }*/
+
+    func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
+        let eventType = TFEventTypeWrapper(type: KillEvent.self)
+        let eventUpdateClosure: (Statistic, KillEvent?) -> Void = { statistic, event in
+            guard let event = event, event.player == .ownPlayer else {
+                return
+            }
+            statistic.updateCurrentValue(by: 1.0)
+            Logger.log("Updating statistic with event detail: \(String(describing: event))", self)
+        }
+
+        let statisticUpdateActor = StatisticUpdateActor<KillEvent>(action: eventUpdateClosure)
+        let anyStatisticUpdateActorWrapper = AnyStatisticUpdateActorWrapper(statisticUpdateActor)
+
+        var statisticUpdateLinksMap: [TFEventTypeWrapper: AnyStatisticUpdateActor] = [:]
+        statisticUpdateLinksMap[eventType] = anyStatisticUpdateActorWrapper
+        return StatisticUpdateLinkDatabase(statisticUpdateLinks: statisticUpdateLinksMap)
+
     }
 
     convenience init(from decoder: any Decoder) throws {

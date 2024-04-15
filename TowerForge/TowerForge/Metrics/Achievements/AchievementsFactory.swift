@@ -20,7 +20,7 @@ class AchievementsFactory {
         availableAchievementTypes[String(describing: T.self)] = T.self
     }
 
-    static func getDefaultAchievementsDatabase(_ data: AchievementsDataDelegate?) -> AchievementsDatabase {
+    static func getDefaultAchievementsDatabase(_ data: InferenceDataDelegate?) -> AchievementsDatabase {
         let achievementsDatabase = AchievementsDatabase()
         achievementsDatabase.achievementsDataDelegate = data
         availableAchievementTypes.values.forEach { achievementsDatabase.addAchievement(for: $0.asType) }

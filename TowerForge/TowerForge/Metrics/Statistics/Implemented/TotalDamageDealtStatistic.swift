@@ -1,13 +1,14 @@
 //
-//  KillStatistic.swift
+//  TotalDamageStatistic.swift
 //  TowerForge
 //
-//  Created by Rubesh on 11/4/24.
+//  Created by Rubesh on 15/4/24.
 //
 
 import Foundation
 
-final class TotalGamesStatistic: Statistic {
+/// Total Damage dealt by the player in the course of the game
+final class TotalDamageDealtStatistic: Statistic {
     var permanentValue: Double = .zero
     var currentValue: Double = .zero
 
@@ -22,8 +23,8 @@ final class TotalGamesStatistic: Statistic {
     }
 
     /*func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
-        let eventType = TFEventTypeWrapper(type: GameStartEvent.self)
-        let updateActor: StatisticUpdateActor = { statistic in statistic.updateCurrentValue(by: 1.0) }
+        let eventType = TFEventTypeWrapper(type: DamageEvent.self)
+        let updateActor: StatisticUpdateActor = { statistic in statistic.updateCurrentValue(by: ) }
         let eventUpdateDictionary = [eventType: updateActor]
         let statsLink = StatisticUpdateLinkDatabase(statisticUpdateLinks: eventUpdateDictionary)
 
@@ -31,13 +32,16 @@ final class TotalGamesStatistic: Statistic {
     }*/
 
     func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
-        let eventType = TFEventTypeWrapper(type: GameStartEvent.self)
-        let eventUpdateClosure: (Statistic, GameStartEvent?) -> Void = { statistic, event in
-            statistic.updateCurrentValue(by: 1.0)
+        let eventType = TFEventTypeWrapper(type: DamageEvent.self)
+        let eventUpdateClosure: (Statistic, DamageEvent?) -> Void = { statistic, event in
+            guard let event = event, event.player != .ownPlayer else {
+                return
+            }
+            statistic.updateCurrentValue(by: Double(event.damage))
             Logger.log("Updating statistic with event detail: \(String(describing: event))", self)
         }
 
-        let statisticUpdateActor = StatisticUpdateActor<GameStartEvent>(action: eventUpdateClosure)
+        let statisticUpdateActor = StatisticUpdateActor<DamageEvent>(action: eventUpdateClosure)
         let anyStatisticUpdateActorWrapper = AnyStatisticUpdateActorWrapper(statisticUpdateActor)
 
         var statisticUpdateLinksMap: [TFEventTypeWrapper: AnyStatisticUpdateActor] = [:]
@@ -54,5 +58,4 @@ final class TotalGamesStatistic: Statistic {
 
           self.init(permanentValue: value, currentValue: current)
       }
-
 }

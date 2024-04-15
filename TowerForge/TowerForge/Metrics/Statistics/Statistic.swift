@@ -21,7 +21,7 @@ protocol Statistic: AnyObject, Codable {
     var currentTotalValue: Double { get }
 
     /// The principal interface for modifying the Statistic
-    func update(for eventType: TFEventTypeWrapper)
+    func update<T: TFEvent>(for event: T)
 
     /// Returns a StatisticUpdateLinkDatabase pertaining to this Statistic.
     /// Conforming Statistic types will have to implement their own links between event
@@ -108,14 +108,29 @@ extension Statistic {
         self.getStatisticUpdateLinks().getAllEventTypes()
     }
 
-    /// Updates the statistic according to an UpdateActor that is retrieved from the 
-    func update(for eventType: TFEventTypeWrapper) {
-        guard let updateLink = self.getStatisticUpdateLinks().getStatisticUpdateActor(for: eventType) else {
-            return
-        }
+    /// Updates the statistic according to an UpdateActor that is retrieved from the
+    /*func update<T: TFEvent>(for event: T) {
+     let eventType = T.asType
+     guard let updateLink = self.getStatisticUpdateLinks().getStatisticUpdateActor(for: eventType) else {
+     return
+     }
+     
+     updateLink.updateStatistic(statistic: self, withEvent: T.self)
+     
+     updateLink?(self)
+     Logger.log("Value update for eventType \(eventType)", self)
+     }*/
 
-        updateLink?(self)
-        Logger.log("Value update for eventType \(eventType)", self)
+    /// Updates the statistic according to an UpdateActor that is retrieved from the
+    /// StatisticsUpdateLinkDatabase
+    func update<T: TFEvent>(for event: T) {
+        let eventType = T.asType
+        if let actor = self.getStatisticUpdateLinks().getStatisticUpdateActor(for: eventType) {
+            Logger.log("Value update for eventType \(eventType)", self)
+            actor.updateStatistic(statistic: self, withEvent: event)
+        } else {
+            Logger.log("No actor registered for event type \(eventType)", self)
+        }
     }
 }
 
