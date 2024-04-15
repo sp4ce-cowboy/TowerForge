@@ -30,6 +30,9 @@ class Constants {
     /// The default id associated with the device
     static var CURRENT_DEVICE_ID = ""
 
+    /// The universally declared conflict resolution method
+    static var CONFLICT_RESOLTION: StorageConflictResolution = .MERGE
+
     /// Universal setting to enable or disable sound effects
     static var SOUND_EFFECTS_ENABLED = false
 

@@ -15,7 +15,8 @@ class Metadata: Codable, Comparable, Equatable {
     let uniqueIdentifier: String
     var lastUpdated: Date
 
-    init(lastUpdated: Date, uniqueIdentifier: String) {
+    init(lastUpdated: Date,
+         uniqueIdentifier: String = Constants.CURRENT_PLAYER_ID) {
         self.lastUpdated = lastUpdated
         self.uniqueIdentifier = uniqueIdentifier
     }

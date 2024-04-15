@@ -33,7 +33,7 @@ class StatisticUpdateLinkDatabase {
     }
 
     func addStatisticUpdateActor<T: TFEvent>(for eventType: T.Type,
-                                                      with statisticUpdateActor: StatisticUpdateActor) {
+                                             with statisticUpdateActor: StatisticUpdateActor) {
         let wrappedEvent = TFEventTypeWrapper(type: eventType)
         statisticUpdateLinks[wrappedEvent] = statisticUpdateActor
     }

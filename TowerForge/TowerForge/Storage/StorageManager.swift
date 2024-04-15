@@ -11,6 +11,13 @@ import Foundation
 /// synchronizing between Local Storage and Remote Storage. The application interacts only
 /// with StorageManager which handles all storage operations.
 class StorageManager {
+    static var CONFLICT_RESOLUTION = Constants.CONFLICT_RESOLTION
+
+    static func initializeAllStorage() {
+        LocalStorageManager.initializeLocalStatisticsDatabase()
+        LocalMetadataManager.initializeUserIdentifier()
+    }
+
     static var defaultErrorClosure: (Error?) -> Void = { error in
         if let error = error {
             Logger.log("Generic error message invoked: \(error)")
@@ -20,15 +27,10 @@ class StorageManager {
     }
 
     static func onLogin(with userId: String) {
-        var localStorage = LocalStorageManager.loadDatabaseFromLocalStorage()
+        let localStorage = LocalStorageManager.loadDatabaseFromLocalStorage()
+                                    ?? StatisticsFactory.getDefaultStatisticsDatabase()
 
-        if let localStorage = localStorage {
-            _ = Self.saveUniversally(localStorage)
-        } else {
-            var defaultStorage = StatisticsFactory.getDefaultStatisticsDatabase()
-            _ = Self.saveUniversally(defaultStorage)
-            localStorage = defaultStorage
-        }
+        _ = Self.saveUniversally(localStorage)
 
         Constants.CURRENT_PLAYER_ID = userId
         var remoteStorage = StatisticsDatabase()
@@ -46,9 +48,7 @@ class StorageManager {
             }
         }
 
-        var finalStorage = StatisticsDatabase.merge(this: localStorage, that: remoteStorage)
-
-        if let finalStorage = finalStorage {
+        if let finalStorage = Self.resolveConflict(this: localStorage, that: remoteStorage) {
             _ = Self.saveUniversally(finalStorage)
         }
 
@@ -81,7 +81,6 @@ class StorageManager {
     static func saveUniversally(_ statistics: StatisticsDatabase) -> StatisticsDatabase? {
         LocalStorageManager.saveDatabaseToLocalStorage(statistics)
         return Self.pushToRemote()
-
     }
 
     static func loadUniversally() -> StatisticsDatabase? {
@@ -91,6 +90,44 @@ class StorageManager {
             let localStorage = StatisticsFactory.getDefaultStatisticsDatabase()
             return saveUniversally(localStorage)
         }
+    }
+
+    /// Returns the StatisticsDatabase from the location that corresponds to the most recent
+    /// save.
+    static func loadLatest() -> StatisticsDatabase? {
+        var stats: StatisticsDatabase?
+
+        guard let location = MetadataManager.getLocationWithLatestMetadata() else {
+            return nil
+        }
+
+        switch location {
+        case .Local:
+            stats = LocalStorageManager.loadDatabaseFromLocalStorage()
+        case .Remote:
+            RemoteStorageManager.loadDatabaseFromFirebase { statsData, error in
+                if error != nil {
+                    Logger.log("Error occured loading from database")
+                }
+
+                stats = statsData
+            }
+        }
+
+        return stats
+    }
+
+    private static func resolveConflict(this: StatisticsDatabase, that: StatisticsDatabase) -> StatisticsDatabase? {
+        var finalStorage: StatisticsDatabase?
+
+        switch CONFLICT_RESOLUTION {
+        case .MERGE:
+            finalStorage = StatisticsDatabase.merge(this: this, that: that)
+        case .KEEP_LATEST_ONLY:
+            finalStorage = Self.loadLatest()
+        }
+
+        return finalStorage
     }
 
     /// Pushes local data to remote

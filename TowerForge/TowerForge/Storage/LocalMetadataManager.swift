@@ -24,6 +24,7 @@ class LocalMetadataManager {
         Constants.CURRENT_PLAYER_ID = metadata.uniqueIdentifier
         Constants.CURRENT_DEVICE_ID = metadata.uniqueIdentifier
         Logger.log("Current player set to \(Constants.CURRENT_PLAYER_ID)", self)
+        RemoteMetadataManager.initializeRemoteMetadata()
     }
 
     static func checkAndCreateMetadata() -> Metadata {
@@ -43,6 +44,7 @@ class LocalMetadataManager {
         metadata.lastUpdated = Date.now
         saveMetadataToLocalStorage(metadata)
         Logger.log("Metadata updated at: \(metadata.lastUpdated)", self)
+        RemoteMetadataManager.updateMetadataInFirebase()
     }
 
     static func saveMetadataToLocalStorage(_ metadata: Metadata) {

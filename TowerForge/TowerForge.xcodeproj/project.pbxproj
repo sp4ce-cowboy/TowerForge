@@ -1277,9 +1277,9 @@
 			children = (
 				BA82C76E2BCBDE91000515A0 /* Metadata.swift */,
 				BA82C77A2BCD05DC000515A0 /* MetadataManager.swift */,
+				BA82C76A2BCBD682000515A0 /* StorageManager.swift */,
 				BA82C7722BCBF657000515A0 /* LocalMetadataManager.swift */,
 				BA82C77C2BCD07F4000515A0 /* RemoteMetadataManager.swift */,
-				BA82C76A2BCBD682000515A0 /* StorageManager.swift */,
 				BA82C7642BCBC868000515A0 /* LocalStorageManager.swift */,
 				BA82C7682BCBD21F000515A0 /* RemoteStorageManager.swift */,
 			);

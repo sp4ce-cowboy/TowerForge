@@ -95,7 +95,7 @@ class AuthenticationManager: AuthenticationProtocol {
         do {
             try Auth.auth().signOut()
             self.delegate?.onLogout()
-            Constants.CURRENT_PLAYER_ID = Constants.CURRENT_DEVICE_ID
+            StorageManager.onLogout()
             completion(nil)
         } catch let error as NSError {
             completion(error)

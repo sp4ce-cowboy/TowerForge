@@ -31,8 +31,8 @@ class RemoteStorageManager {
         }
 
         // No error but no database implies that database is empty, thus initialize new one
-        Logger.log("No error and empty database, new one will be created", self)
-        var remoteStorage = StatisticsFactory.getDefaultStatisticsDatabase()
+        Logger.log("No error but empty database, new one will be created", self)
+        let remoteStorage = StatisticsFactory.getDefaultStatisticsDatabase()
 
         Self.saveDatabaseToFirebase(remoteStorage) { error in
             if let error = error {

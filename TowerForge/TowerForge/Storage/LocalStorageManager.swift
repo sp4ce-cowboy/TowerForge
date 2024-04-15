@@ -26,6 +26,8 @@ class LocalStorageManager {
             Self.saveDatabaseToLocalStorage(StatisticsFactory.getDefaultStatisticsDatabase())
             Logger.log("Created and saved a new empty database.", Self.self)
         }
+
+        RemoteStorageManager.initializeRemoteStatisticsDatabase()
     }
 
     /// Helper function to construct a FileURL
