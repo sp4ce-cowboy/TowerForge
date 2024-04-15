@@ -1,24 +1,20 @@
 //
-//  RemoteStorageManager.swift
+//  RemoteMetadataManager.swift
 //  TowerForge
 //
-//  Created by Rubesh on 14/4/24.
+//  Created by Rubesh on 15/4/24.
 //
 
 import Foundation
 import FirebaseDatabaseInternal
 
-/// A utility class to provide standard storage operations and interaction with
-/// the Firebase Database.
-///
-/// Currently the Storage means is limited to storing Statistics only, possible
-/// expansion to a generic types can be considered.
-class RemoteStorageManager {
+class RemoteMetadataManager {
     static var currentPlayer: String = Constants.CURRENT_PLAYER_ID
+    static var currentDevice: String = Constants.CURRENT_DEVICE_ID
 
     /// Queries the firebase backend to determine if remote storage exists for the current player
-    static func remoteStorageExistsForCurrentPlayer(completion: @escaping (Bool) -> Void) {
-        let databaseReference = FirebaseDatabaseReference(.Statistics)
+    static func remoteMetadataExistsForCurrentPlayer(completion: @escaping (Bool) -> Void) {
+        let databaseReference = FirebaseDatabaseReference(.Metadata)
 
         databaseReference.child(currentPlayer).getData(completion: { error, snapshot in
             if let error = error {
@@ -35,8 +31,8 @@ class RemoteStorageManager {
         })
     }
 
-    static func loadDatabaseFromFirebase(completion: @escaping (StatisticsDatabase?, Error?) -> Void) {
-        let databaseReference = FirebaseDatabaseReference(.Statistics)
+    static func loadMetadataFromFirebase(completion: @escaping (Metadata?, Error?) -> Void) {
+        let databaseReference = FirebaseDatabaseReference(.Metadata)
 
         databaseReference.child(currentPlayer).getData(completion: { error, snapshot in
             if let error = error {
@@ -53,17 +49,17 @@ class RemoteStorageManager {
 
             do {
                 let decoder = JSONDecoder()
-                let statsDatabase = try decoder.decode(StatisticsDatabase.self, from: jsonData)
-                completion(statsDatabase, nil)
+                let metadata = try decoder.decode(Metadata.self, from: jsonData)
+                completion(metadata, nil)
             } catch {
-                Logger.log("Error decoding StatisticsDatabase from Firebase: \(error)", self)
+                Logger.log("Error decoding Metadata from Firebase: \(error)", self)
                 completion(nil, error)
             }
         })
     }
 
-    static func saveDatabaseToFirebase(_ stats: StatisticsDatabase, completion: @escaping (Error?) -> Void) {
-        let databaseReference = FirebaseDatabaseReference(.Statistics)
+    static func saveMetadataToFirebase(_ stats: Metadata, completion: @escaping (Error?) -> Void) {
+        let databaseReference = FirebaseDatabaseReference(.Metadata)
 
         do {
             let encoder = JSONEncoder()
@@ -72,22 +68,22 @@ class RemoteStorageManager {
 
             databaseReference.child(currentPlayer).setValue(dictionary) { error, _ in
                 if let error = error {
-                    Logger.log("StatisticsDatabase could not be saved: \(error).", StatisticsDatabase.self)
+                    Logger.log("Metadata could not be saved: \(error).", Metadata.self)
                     completion(error)
                 } else {
-                    Logger.log("StatisticsDatabase saved to Firebase successfully!", StatisticsDatabase.self)
+                    Logger.log("Metadata saved to Firebase successfully!", Metadata.self)
                     completion(nil)
                 }
             }
         } catch {
-            Logger.log("Error encoding StatisticsDatabase: \(error)", StatisticsDatabase.self)
+            Logger.log("Error encoding StatisticsDatabase: \(error)", Metadata.self)
             completion(error)
         }
     }
 
-    /// Deletes the player's statistics database from Firebase
-    static func deleteDatabaseFromFirebase(completion: @escaping (Error?) -> Void) {
-        let databaseReference = FirebaseDatabaseReference(.Statistics)
+    /// Deletes the player's metadat from Firebase
+    static func deleteMetadataFromFirebase(completion: @escaping (Error?) -> Void) {
+        let databaseReference = FirebaseDatabaseReference(.Metadata)
 
         // Remove the data at the specific currentPlayer node
         databaseReference.child(currentPlayer).removeValue { error, _ in
@@ -96,7 +92,7 @@ class RemoteStorageManager {
                 completion(error)
                 return
             }
-            Logger.log("StatisticsDatabase for player \(currentPlayer) successfully deleted from Firebase.", self)
+            Logger.log("Metadata for player \(currentPlayer) successfully deleted from Firebase.", self)
             completion(nil)
         }
     }

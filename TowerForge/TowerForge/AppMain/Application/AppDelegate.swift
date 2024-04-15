@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         /// Initialize local metadata for current user
-        MetadataManager.initializeUserIdentifier()
+        LocalMetadataManager.initializeUserIdentifier()
 
         /// Connect to Firebase
         FirebaseApp.configure()

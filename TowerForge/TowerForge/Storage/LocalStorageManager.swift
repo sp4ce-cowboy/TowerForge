@@ -70,6 +70,8 @@ extension LocalStorageManager {
         } catch {
             Logger.log("Error saving statistics Database: \(error)", self)
         }
+
+        LocalMetadataManager.updateMetadataInLocalStorage()
     }
 
     /// Loads a database (with the class constant folderName and fileName) from file

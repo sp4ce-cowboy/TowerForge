@@ -31,7 +31,22 @@ extension StatisticsDatabase: Equatable {
     /// - 2. Retain the value that has the greater magnitude in the final database for duplicate keys
     /// - 3. There should not be any keys in the final database that are not within the first or second database.
     /// - 4. For duplicate keys that have the same value, either value can be retained in the final database.
-    static func merge(lhs: StatisticsDatabase, rhs: StatisticsDatabase) -> StatisticsDatabase {
+    static func merge(this: StatisticsDatabase?, that: StatisticsDatabase?) -> StatisticsDatabase? {
+        guard this != nil || that != nil else {
+            return nil
+        }
+
+        var lhs = StatisticsDatabase()
+        var rhs = StatisticsDatabase()
+
+        if let this = this {
+            lhs = this
+        }
+
+        if let that = that {
+            rhs = that
+        }
+
         let mergedStats = StatisticsDatabase()
 
         // Merge lhs statistics

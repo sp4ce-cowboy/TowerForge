@@ -215,10 +215,12 @@
 		BA82C76B2BCBD682000515A0 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C76A2BCBD682000515A0 /* StorageManager.swift */; };
 		BA82C76D2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C76C2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift */; };
 		BA82C76F2BCBDE91000515A0 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C76E2BCBDE91000515A0 /* Metadata.swift */; };
-		BA82C7732BCBF657000515A0 /* MetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7722BCBF657000515A0 /* MetadataManager.swift */; };
+		BA82C7732BCBF657000515A0 /* LocalMetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7722BCBF657000515A0 /* LocalMetadataManager.swift */; };
 		BA82C7752BCC689F000515A0 /* AchievementsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7742BCC689F000515A0 /* AchievementsFactory.swift */; };
 		BA82C7772BCC6913000515A0 /* HundredKillsAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7762BCC6913000515A0 /* HundredKillsAchievement.swift */; };
 		BA82C7792BCC6943000515A0 /* CenturionAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7782BCC6943000515A0 /* CenturionAchievement.swift */; };
+		BA82C77B2BCD05DC000515A0 /* MetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C77A2BCD05DC000515A0 /* MetadataManager.swift */; };
+		BA82C77D2BCD07F4000515A0 /* RemoteMetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C77C2BCD07F4000515A0 /* RemoteMetadataManager.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -459,10 +461,12 @@
 		BA82C76A2BCBD682000515A0 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		BA82C76C2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsDatabase+Merge.swift"; sourceTree = "<group>"; };
 		BA82C76E2BCBDE91000515A0 /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
-		BA82C7722BCBF657000515A0 /* MetadataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataManager.swift; sourceTree = "<group>"; };
+		BA82C7722BCBF657000515A0 /* LocalMetadataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMetadataManager.swift; sourceTree = "<group>"; };
 		BA82C7742BCC689F000515A0 /* AchievementsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsFactory.swift; sourceTree = "<group>"; };
 		BA82C7762BCC6913000515A0 /* HundredKillsAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HundredKillsAchievement.swift; sourceTree = "<group>"; };
 		BA82C7782BCC6943000515A0 /* CenturionAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenturionAchievement.swift; sourceTree = "<group>"; };
+		BA82C77A2BCD05DC000515A0 /* MetadataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataManager.swift; sourceTree = "<group>"; };
+		BA82C77C2BCD07F4000515A0 /* RemoteMetadataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMetadataManager.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -1272,7 +1276,9 @@
 			isa = PBXGroup;
 			children = (
 				BA82C76E2BCBDE91000515A0 /* Metadata.swift */,
-				BA82C7722BCBF657000515A0 /* MetadataManager.swift */,
+				BA82C77A2BCD05DC000515A0 /* MetadataManager.swift */,
+				BA82C7722BCBF657000515A0 /* LocalMetadataManager.swift */,
+				BA82C77C2BCD07F4000515A0 /* RemoteMetadataManager.swift */,
 				BA82C76A2BCBD682000515A0 /* StorageManager.swift */,
 				BA82C7642BCBC868000515A0 /* LocalStorageManager.swift */,
 				BA82C7682BCBD21F000515A0 /* RemoteStorageManager.swift */,
@@ -1493,6 +1499,7 @@
 				BA82C75A2BCB0DFD000515A0 /* AchievementTypeWrapper.swift in Sources */,
 				3C9955C22BA5838900D33FA5 /* EventOutput.swift in Sources */,
 				523E5C4C2BC53F70007444DA /* WaveSpawnEvent.swift in Sources */,
+				BA82C77D2BCD07F4000515A0 /* RemoteMetadataManager.swift in Sources */,
 				5240D0912BAF3453004F1486 /* Life.swift in Sources */,
 				52A794192BBC630F0083C976 /* RoomData.swift in Sources */,
 				BA82C7632BCBBB2A000515A0 /* Double+Extensions.swift in Sources */,
@@ -1560,6 +1567,7 @@
 				BA82C7502BC8A20A000515A0 /* TotalDeathsStatistic.swift in Sources */,
 				527A07762BB3E4CF00CD9D08 /* GameState.swift in Sources */,
 				3C9955AD2BA483B100D33FA5 /* TFSystem.swift in Sources */,
+				BA82C77B2BCD05DC000515A0 /* MetadataManager.swift in Sources */,
 				3CAC4A672BB6975200A5D22E /* RenderStage.swift in Sources */,
 				BA82C75D2BCB1451000515A0 /* InferenceEngine.swift in Sources */,
 				3C9955BE2BA57E4B00D33FA5 /* EventManager.swift in Sources */,
@@ -1638,7 +1646,7 @@
 				BAFFB96A2BB9A64000D8301F /* ObjectSet.swift in Sources */,
 				3CD37AA32BBEC0F900222D8A /* FirebaseRemoteEventPublisher.swift in Sources */,
 				3CAC4A6B2BB6992F00A5D22E /* TFNode.swift in Sources */,
-				BA82C7732BCBF657000515A0 /* MetadataManager.swift in Sources */,
+				BA82C7732BCBF657000515A0 /* LocalMetadataManager.swift in Sources */,
 				3CBE73012BC8D69A00CC446A /* RemoteLifeEvent.swift in Sources */,
 				3CAC4A6D2BB6A13B00A5D22E /* PositionRenderStage.swift in Sources */,
 				3CE951672BAEAB0E008B2785 /* ContactSystem.swift in Sources */,

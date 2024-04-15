@@ -73,7 +73,9 @@ class StatisticsEngine {
     }
 
     private func loadStatistics() {
-        statistics = StorageManager.loadUniversally()
+        if let loadedStats = StorageManager.loadUniversally() {
+            statistics = loadedStats
+        }
     }
 
 }
