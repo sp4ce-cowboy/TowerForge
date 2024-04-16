@@ -199,7 +199,6 @@
 		BA82C7442BC86FFE000515A0 /* GameStartEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7432BC86FFE000515A0 /* GameStartEvent.swift */; };
 		BA82C7462BC8797F000515A0 /* StatisticsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7452BC8797F000515A0 /* StatisticsDatabase.swift */; };
 		BA82C74A2BC88FE5000515A0 /* StatisticSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7492BC88FE5000515A0 /* StatisticSystem.swift */; };
-		BA82C74E2BC8A024000515A0 /* DeathEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C74D2BC8A024000515A0 /* DeathEvent.swift */; };
 		BA82C7502BC8A20A000515A0 /* TotalDeathsStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C74F2BC8A20A000515A0 /* TotalDeathsStatistic.swift */; };
 		BA82C7532BC8A41B000515A0 /* AchievementsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7522BC8A41B000515A0 /* AchievementsEngine.swift */; };
 		BA82C7582BCAB4C2000515A0 /* StatisticTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7572BCAB4C2000515A0 /* StatisticTypeWrapper.swift */; };
@@ -459,7 +458,6 @@
 		BA82C7432BC86FFE000515A0 /* GameStartEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartEvent.swift; sourceTree = "<group>"; };
 		BA82C7452BC8797F000515A0 /* StatisticsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsDatabase.swift; sourceTree = "<group>"; };
 		BA82C7492BC88FE5000515A0 /* StatisticSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticSystem.swift; sourceTree = "<group>"; };
-		BA82C74D2BC8A024000515A0 /* DeathEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeathEvent.swift; sourceTree = "<group>"; };
 		BA82C74F2BC8A20A000515A0 /* TotalDeathsStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalDeathsStatistic.swift; sourceTree = "<group>"; };
 		BA82C7522BC8A41B000515A0 /* AchievementsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsEngine.swift; sourceTree = "<group>"; };
 		BA82C7572BCAB4C2000515A0 /* StatisticTypeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticTypeWrapper.swift; sourceTree = "<group>"; };
@@ -1025,7 +1023,6 @@
 		BA82C74B2BC89FDC000515A0 /* StatsEvents */ = {
 			isa = PBXGroup;
 			children = (
-				BA82C74D2BC8A024000515A0 /* DeathEvent.swift */,
 			);
 			path = StatsEvents;
 			sourceTree = "<group>";
@@ -1549,7 +1546,6 @@
 			files = (
 				9B0406122BB889940026E903 /* PowerUpNode.swift in Sources */,
 				3CCF9CAF2BAB1A96004D170E /* SceneUpdateDelegate.swift in Sources */,
-				BA82C74E2BC8A024000515A0 /* DeathEvent.swift in Sources */,
 				BA82C7402BC8674A000515A0 /* StatisticsFactory.swift in Sources */,
 				3CAC4A692BB697A400A5D22E /* SpriteRenderStage.swift in Sources */,
 				523C29302BBD0916004C6EAC /* GameWaitingRoomViewController.swift in Sources */,
