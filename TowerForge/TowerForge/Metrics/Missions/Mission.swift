@@ -10,7 +10,6 @@ import Foundation
 protocol Mission: AbstractGoal { }
 
 extension Mission {
-
     static var asType: MissionTypeWrapper {
         MissionTypeWrapper(type: Self.self)
     }
@@ -22,7 +21,6 @@ extension Mission {
                 values[key] = currentStatistic.maximumCurrentValue
             }
         }
-
         return values
     }
 }

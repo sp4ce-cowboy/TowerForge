@@ -60,12 +60,12 @@ extension AbstractGoal {
                 rates[key] = currentValue / requiredValue
             }
         }
-
         return rates
     }
 
     var overallProgressRate: Double {
-        currentProgressRates.values.reduce(into: .zero) { $0 += $1 }
+        currentProgressRates.values
+            .reduce(into: .zero) { $0 += $1 }
             .divide(by: Double(currentProgressRates.values.count))
     }
 

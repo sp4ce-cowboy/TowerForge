@@ -10,7 +10,6 @@ import Foundation
 protocol Achievement: AbstractGoal { }
 
 extension Achievement {
-
     static var asType: AchievementTypeWrapper {
         AchievementTypeWrapper(type: Self.self)
     }
@@ -22,7 +21,6 @@ extension Achievement {
                 values[key] = currentStatistic.permanentValue
             }
         }
-
         return values
     }
 }
