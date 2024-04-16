@@ -81,9 +81,13 @@ class GameScene: SKScene {
 
     private func setupCamera() {
         let cameraNode = TFCameraNode()
+        let scaleRatio = size.height / UIScreen.main.bounds.height
         self.cameraNode = cameraNode
         cameraNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
         cameraNode.zPosition = 1_000
+        cameraNode.xScale = scaleRatio
+        cameraNode.yScale = scaleRatio
+
         addChild(cameraNode.node)
         camera = cameraNode.cameraNode
     }

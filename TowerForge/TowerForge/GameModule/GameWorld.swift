@@ -9,8 +9,8 @@ import QuartzCore
 import UIKit
 
 class GameWorld {
-    // Need to ensure that width is a multiple of 1024 - unit selection node height
-    static let worldSize = CGSize(width: 2_472, height: 1_024)
+    // Must subtract one else there will be an extra unintended tile for each row.
+    static let worldSize = CGSize(width: (1_024 * 0.8) * 3 - 1, height: 1_024)
 
     private var gameEngine: AbstractGameEngine
     private var gameMode: GameMode

@@ -32,10 +32,11 @@ class TFCameraNode: TFNode {
     func setBounds(_ bounds: CGRect) {
         let size = UIScreen.main.bounds.size
 
-        self.minX = bounds.minX + size.width / 2
-        self.maxX = bounds.maxX - size.width / 2
-        self.minY = bounds.minY + size.height / 2
-        self.maxY = bounds.maxY - size.height / 2
+        self.minX = (bounds.minX + size.width / 2) * self.xScale
+        self.maxX = (bounds.maxX - size.width / 2) - minX * (self.xScale - 1) / self.xScale
+        self.minY = (bounds.minY + size.height / 2) * self.yScale
+        self.maxY = (bounds.maxY - size.height / 2) - minY * (self.yScale - 1) / self.yScale
+        self.move(by: .zero)
     }
 
     override func move(by displacement: CGVector) {

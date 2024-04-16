@@ -9,7 +9,7 @@ import SpriteKit
 
 class Grid: GridDelegate {
     static let DEFAULT_NUM_ROWS = 5
-    let UNIT_SELECTION_NODE_HEIGHT = CGFloat(200)
+    var UNIT_SELECTION_NODE_HEIGHT: CGFloat { GameWorld.worldSize.height / 5 }
     let playableBounds: CGRect
 
     private let numRows: Int

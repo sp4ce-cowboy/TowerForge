@@ -13,7 +13,11 @@ protocol UnitNodeDelegate: AnyObject {
 }
 
 class UnitNode: TFEntity {
-    static let size = CGSize(width: 140, height: 200)
+    static var size: CGSize {
+        let height = UIScreen.main.bounds.height / 5
+        let width = height * 0.7
+        return CGSize(width: width, height: height)
+    }
 
     let type: (TFEntity & PlayerSpawnable).Type
     weak var delegate: UnitNodeDelegate?

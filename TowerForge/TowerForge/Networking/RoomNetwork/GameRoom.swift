@@ -56,7 +56,6 @@ class GameRoom {
     }
 
     deinit {
-        print("deinit")
         removeAllListeners()
     }
 
