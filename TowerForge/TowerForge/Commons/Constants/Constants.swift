@@ -12,13 +12,29 @@ class Constants {
     static let DATABASE_URL = "https://towerforge-d5ba7-default-rtdb.asia-southeast1.firebasedatabase.app"
 
     /// The name of the folder in which information is stored locally
-    static let STORAGE_CONTAINER_NAME = "TowerForge"
+    static let LOCAL_STORAGE_CONTAINER_NAME = "TowerForge"
+
+    /// The name of the TowerForge project to prefix
+    static let PROJECT_NAME_PREFIX = "TowerForge"
 
     /// The name of the file that contains TowerForge data locally
-    static let TF_DATABASE_NAME = "TowerForgeDatabase"
+    static let LOCAL_STORAGE_FILE_NAME = "TowerForgeLocalStorage.json"
+
+    /// The name of the file that contains metadata about local storage
+    static let METADATA_FILE_NAME = "TowerForgeMetadata.json"
+
+    /// The name of the player currently logged in.
+    /// By default, this is set to the default id associated with the device
+    static var CURRENT_PLAYER_ID = ""
+
+    /// The default id associated with the device
+    static var CURRENT_DEVICE_ID = ""
+
+    /// The universally declared conflict resolution method
+    static var CONFLICT_RESOLTION: StorageConflictResolution = .MERGE
 
     /// Universal setting to enable or disable sound effects
-    static var SOUND_EFFECTS_ENABLED = true
+    static var SOUND_EFFECTS_ENABLED = false
 
     /// Universal background audio soundtrack to play during game modes
     static let GAME_BACKGROUND_AUDIO: String = BackgroundMusic.gameMode.rawValue

@@ -7,51 +7,47 @@
 
 import Foundation
 
-typealias TFStorageType = StorageEnums.StorageType
-typealias TFAchievementType = StorageEnums.StorableAchievementNameType
+typealias StatisticsDatabaseCodingKeys = StorageEnums.StatisticsDatabaseCodingKeys
+typealias StatisticCodingKeys = StorageEnums.StatisticsDefaultCodingKeys
+typealias DynamicCodingKeys = StorageEnums.DynamicCodingKeys
+typealias StorageLocation = StorageEnums.StorageLocation
+typealias StorageConflictResolution = StorageEnums.StorageConflictResolution
+
 class StorageEnums {
 
-    /// An enum for the names of every Storable that can be stored.
-    /// Adds an implicit "CheckRep", malicious actors cannot load
-    /// random storables perhaps using obj-c's dynamic runtime.
-    enum StorableNameType: String, CodingKey, Codable, CaseIterable {
-        case dummyStorable // Temp dummy case to replace later
-        case totalKillsAchievement
-        case totalGamesAchievement
+    enum StatisticsDatabaseCodingKeys: String, CodingKey, Codable {
+        case statistics
     }
 
-    /// For achievements only.
-    /// Rep-invariant: All cases must also be contained within StorableNameType
-    enum StorableAchievementNameType: String, CodingKey, Codable, CaseIterable {
-        case totalKillsAchievement
-        case totalGamesAchievement
-    }
-
-    /// Used in the default implementation of Storage
-    enum StorableDefaultCodingKeys: String, CodingKey {
-        case storableId
-        case storableName
-        case storableValue
-    }
-
-    /// Used in StorageManager class
-    enum StorageType: String, CodingKey, Codable {
-        case achievementStorage
-    }
-
-    /// Used in Storage class
-    enum StorageCodingKeys: String, CodingKey, Codable {
-        case storageName
-        case storedObjects
-    }
-
-    enum DatabaseCodingKeys: String, CodingKey, Codable {
-        case storedData
-    }
-
-    enum StatisticDefaultCodingKeys: String, CodingKey, Codable {
+    enum StatisticsDefaultCodingKeys: String, CodingKey, Codable {
         case statisticName
-        case statisticValue
+        case permanentValue
+        case currentValue
+        case maximumCurrentValue
     }
 
+    enum StorageLocation: String, Codable {
+        case Local
+        case Remote
+    }
+
+    enum StorageConflictResolution: String {
+        case MERGE
+        case KEEP_LATEST_ONLY
+    }
+
+    struct DynamicCodingKeys: CodingKey {
+        var stringValue: String
+        var intValue: Int?
+
+        init?(stringValue: String) {
+            self.stringValue = stringValue
+            self.intValue = nil
+        }
+
+        init?(intValue: Int) {
+            self.stringValue = String(intValue)
+            self.intValue = intValue
+        }
+    }
 }

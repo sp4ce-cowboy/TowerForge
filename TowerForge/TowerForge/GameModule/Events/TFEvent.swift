@@ -34,3 +34,9 @@ extension TFEvent {
         ConcurrentEvent(self, otherEvent)
     }
 }
+
+extension TFEvent {
+    static var asType: TFEventTypeWrapper {
+        TFEventTypeWrapper(type: Self.self)
+    }
+}

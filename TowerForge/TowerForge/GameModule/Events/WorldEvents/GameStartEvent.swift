@@ -15,7 +15,7 @@ struct GameStartEvent: TFEvent {
 
     func execute(in target: any EventTarget) -> EventOutput {
         if let statsSystem = target.system(ofType: StatisticSystem.self) {
-            statsSystem.broadcast(for: self)
+            statsSystem.notify(for: self)
         }
 
         return EventOutput()
