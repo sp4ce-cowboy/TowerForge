@@ -15,13 +15,13 @@ final class GameEngineTests: XCTestCase {
         let emptySystemManager = SystemManager()
         let emptyEventManager = EventManager()
 
-        // After adding team components (2)
-        let entityCount = emptyEntityManager.entities.count + 2
+        // After adding team components (2 for Teams, 3 for ui elements)
+        let entityCount = emptyEntityManager.entities.count + 2 + 3
 
         // Add default game count
         let eventCount = emptyEventManager.eventQueue.count + 1
 
-        let gameEngine = GameEngine()
+        let gameEngine = GameEngine(gameMode: .captureTheFlag)
 
         XCTAssertEqual(gameEngine.entities.count,
                        entityCount,

@@ -32,8 +32,9 @@ protocol GameMode {
     var modeName: String { get }
     static var modeDescription: String { get }
     var gameProps: [any GameProp] { get }
-    var gameState: GameState { get set }
-    var eventManager: EventManager { get set }
+    var gameState: GameState { get }
+    var eventManager: EventManager { get }
     func updateGame(deltaTime: TimeInterval)
     func getGameResults() -> [GameResult]
+    func concede(player: Player)
 }

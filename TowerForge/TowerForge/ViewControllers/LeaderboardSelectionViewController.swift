@@ -38,7 +38,8 @@ class LeaderboardSelectionViewController: UITabBarController {
                 navigationController.tabBarItem.setTitleTextAttributes(attributes, for: .normal)
             }
 
-            navigationController.viewControllers.first?.view.layoutMargins = UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0)
+            navigationController.viewControllers.first?
+                .view.layoutMargins = UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0)
             return navigationController
         }
 

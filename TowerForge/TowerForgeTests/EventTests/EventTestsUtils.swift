@@ -44,6 +44,8 @@ class TestEventTransformation: EventTransformation {
 }
 
 class TestEventTarget: EventTarget {
+    var gameMode: GameMode = DeathMatchMode(eventManager: EventManager())
+
     func system<T: TFSystem>(ofType type: T.Type) -> T? {
         TestSystemA() as? T
     }

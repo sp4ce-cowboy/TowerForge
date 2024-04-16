@@ -10,5 +10,7 @@ import Foundation
 class InferenceEngineFactory {
 
     static var availableInferenceEngines: [(StatisticsEngine) -> any InferenceEngine] =
-        [ { stats in AchievementsEngine(stats) }, { stats in MissionsEngine(stats) }, { stats in RankingEngine(stats) } ]
+        [ { stats in AchievementsEngine(stats) },
+          { stats in MissionsEngine(stats) },
+          { stats in RankingEngine(stats) } ]
 }

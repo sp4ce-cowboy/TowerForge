@@ -13,7 +13,6 @@ class GameWorld {
     static let worldSize = CGSize(width: (1_024 * 0.8) * 3 - 1, height: 1_024)
 
     private var gameEngine: AbstractGameEngine
-    private var gameMode: GameMode
     private var selectionNode: UnitSelectionNode
     private var powerUpSelectionNode: PowerUpSelectionNode
     private var grid: Grid
@@ -29,8 +28,7 @@ class GameWorld {
     init(screenSize: CGRect, mode: Mode, roomId: RoomId? = nil,
          isHost: Bool = true, currentPlayer: GamePlayer? = nil) {
         worldBounds = CGRect(origin: screenSize.origin, size: GameWorld.worldSize)
-        gameEngine = GameEngine(roomId: roomId, isHost: isHost, currentPlayer: currentPlayer)
-        gameMode = GameModeFactory.createGameMode(mode: mode, eventManager: gameEngine.eventManager)
+        gameEngine = GameEngine(gameMode: mode, roomId: roomId, isHost: isHost, currentPlayer: currentPlayer)
         selectionNode = UnitSelectionNode()
         powerUpSelectionNode = PowerUpSelectionNode(eventManager: gameEngine.eventManager)
         grid = Grid(screenSize: worldBounds)
@@ -41,19 +39,8 @@ class GameWorld {
 
     func update(deltaTime: TimeInterval) {
         gameEngine.updateGame(deltaTime: deltaTime)
-        gameMode.updateGame(deltaTime: deltaTime)
-        if checkGameEnded() {
-            renderer?.renderMessage("You win")
-            Logger.log("\(gameMode.gameState)", self)
-            delegate?.showGameOverScene(isWin: gameMode.gameState == .WIN, results: gameMode.getGameResults())
-            statisticsEngine.finalize()
-        }
         selectionNode.update()
         renderer?.render()
-    }
-
-    func checkGameEnded() -> Bool {
-        gameMode.gameState == .WIN || gameMode.gameState == .LOSE || gameMode.gameState == .DRAW
     }
 
     func spawnUnit(at location: CGPoint) {
@@ -78,8 +65,8 @@ class GameWorld {
     }
 
     private func setUpGameEngine() {
+        gameEngine.delegate = self
         gameEngine.setUpSystems(with: grid, and: statisticsEngine)
-        gameEngine.setUpPlayerInfo(mode: gameMode)
     }
 
     private func setUpSelectionNode() {
@@ -110,6 +97,16 @@ class GameWorld {
     func removeStatePopup() {
         scene?.remove(node: popup)
     }
+
+    func concede(playerid: UserPlayerId?) {
+        removeStatePopup()
+
+        guard let playerid = playerid else {
+            gameEngine.addEvent(ConcedeEvent(timestamp: Date().timeIntervalSince1970, player: .ownPlayer))
+            return
+        }
+        gameEngine.addRemoteEvent(RemoteConcedeEvent(source: playerid, targetIsSource: true))
+    }
 }
 
 extension GameWorld: Renderable {
@@ -126,5 +123,13 @@ extension GameWorld: UnitSelectionNodeDelegate {
     func unitSelectionNodeDidSpawn<T: TFEntity & PlayerSpawnable>(ofType type: T.Type, position: CGPoint) {
         gameEngine.addEvent(RequestSpawnEvent(ofType: type, timestamp: CACurrentMediaTime(),
                                               position: position, player: .ownPlayer))
+    }
+}
+
+extension GameWorld: GameEngineDelegate {
+    func onGameCompleted(gameState: GameState, gameResults: [GameResult]) {
+        Logger.log("\(gameState)", self)
+        delegate?.showGameOverScene(isWin: gameState == .WIN, results: gameResults)
+        statisticsEngine.finalize()
     }
 }

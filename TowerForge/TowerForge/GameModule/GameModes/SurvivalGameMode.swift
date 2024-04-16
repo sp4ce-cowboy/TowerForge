@@ -54,6 +54,9 @@ class SurvivalGameMode: GameMode {
 
     func updateGame(deltaTime: TimeInterval) {
         nextWaveTime -= deltaTime
+        guard gameState != .LOSE else {
+            return
+        }
         if nextWaveTime <= 0 && self.currentLevel <= self.maxLevel {
             nextWaveTime = waveTimeInterval
             self.currentLevel += 1
@@ -92,4 +95,7 @@ class SurvivalGameMode: GameMode {
 
     }
 
+    func concede(player: Player) {
+        self.gameState = player == .ownPlayer ? .LOSE : .WIN
+    }
 }

@@ -29,6 +29,8 @@ class GameRoomViewController: UIViewController {
             if success {
                 print("Now joining the room \(success)")
                 self.joinRoom(player: playerOne)
+            } else {
+                self.gameRoom = nil
             }
         }
     }

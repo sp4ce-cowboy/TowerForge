@@ -17,9 +17,6 @@ class LeaderboardViewController: UIViewController {
         self.view.layoutMargins = UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0)
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -112,5 +109,10 @@ class LeaderboardViewController: UIViewController {
             rankLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
             stackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         }
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
