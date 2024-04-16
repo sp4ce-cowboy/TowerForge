@@ -8,8 +8,8 @@
 import Foundation
 
 final class GrandDamageMission: Mission {
-    var missionName: String = "Mission: 1000 Damage"
-    var missionDescription: String = "Attain 1000 Damage in 1 game"
+    var name: String = "Mission: 1000 Damage"
+    var description: String = "Attain 1000 Damage in 1 game"
     var currentParameters: [StatisticTypeWrapper: any Statistic]
 
     static var definedParameters: [StatisticTypeWrapper: Double] {

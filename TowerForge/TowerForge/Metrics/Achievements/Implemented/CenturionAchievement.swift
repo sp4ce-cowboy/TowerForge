@@ -8,8 +8,8 @@
 import Foundation
 
 final class CenturionAchievement: Achievement {
-    var achievementName: String = "Centurion"
-    var achievementDescription: String = "Kill 100 enemies and die 100 times!"
+    var name: String = "Centurion"
+    var description: String = "Kill 100 enemies and die 100 times!"
     var currentParameters: [StatisticTypeWrapper: any Statistic]
 
     static var definedParameters: [StatisticTypeWrapper: Double] =

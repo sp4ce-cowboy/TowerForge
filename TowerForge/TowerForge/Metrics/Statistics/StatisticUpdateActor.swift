@@ -14,7 +14,6 @@ protocol AnyStatisticUpdateActor {
 // typealias StatisticUpdateActor = ((Statistic, (any TFEvent)?) -> Void)?
 /// This struct contains pairs that each Statistic will refer to,
 /// to act accordingly when an EventType is executed elsewhere.
-
 class StatisticUpdateActor<T: TFEvent> {
     var action: ((Statistic, T?) -> Void)?
 
@@ -39,7 +38,7 @@ struct AnyStatisticUpdateActorWrapper<T: TFEvent>: AnyStatisticUpdateActor {
             _updateStatistic?(statistic, event)
         } else {
             // Handle the case where event cannot be cast to T, possibly call with nil
-            Logger.log("Warning: Attempted to pass an event of the wrong type to a StatisticUpdateActor")
+            Logger.log("Warning: Attempted to pass an event of the wrong type to a StatisticUpdateActor", self)
             _updateStatistic?(statistic, nil)
         }
     }

@@ -11,7 +11,6 @@ import Foundation
 ///
 /// Represen
 extension StatisticsDatabase: Equatable {
-
     static func == (lhs: StatisticsDatabase, rhs: StatisticsDatabase) -> Bool {
         guard lhs.statistics.count == rhs.statistics.count else {
             return false
@@ -66,6 +65,9 @@ extension StatisticsDatabase: Equatable {
 
                     mergedStats.statistics[key]?.currentValue = Double.maximumMagnitude(lhsStat.currentValue,
                                                                                         rhsStat.currentValue)
+
+                    mergedStats.statistics[key]?.currentValue = Double.maximumMagnitude(lhsStat.maximumCurrentValue,
+                                                                                        rhsStat.maximumCurrentValue)
                 }
                 // If they are equal, lhsStat is already set, so do nothing.
             } else {

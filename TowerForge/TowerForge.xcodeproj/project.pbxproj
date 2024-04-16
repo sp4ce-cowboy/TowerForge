@@ -233,6 +233,8 @@
 		BA82C7992BCDAFE3000515A0 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7982BCDAFE3000515A0 /* Rank.swift */; };
 		BA82C79B2BCDD5C8000515A0 /* RankingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C79A2BCDD5C8000515A0 /* RankingEngine.swift */; };
 		BA82C79D2BCDD9ED000515A0 /* InferenceEngineTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C79C2BCDD9ED000515A0 /* InferenceEngineTypeWrapper.swift */; };
+		BA82C79F2BCE7FBA000515A0 /* AbstractGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C79E2BCE7FBA000515A0 /* AbstractGoal.swift */; };
+		BA82C7A22BCE8138000515A0 /* AbstractGoalTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7A12BCE8138000515A0 /* AbstractGoalTypeWrapper.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -491,6 +493,8 @@
 		BA82C7982BCDAFE3000515A0 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 		BA82C79A2BCDD5C8000515A0 /* RankingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingEngine.swift; sourceTree = "<group>"; };
 		BA82C79C2BCDD9ED000515A0 /* InferenceEngineTypeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InferenceEngineTypeWrapper.swift; sourceTree = "<group>"; };
+		BA82C79E2BCE7FBA000515A0 /* AbstractGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractGoal.swift; sourceTree = "<group>"; };
+		BA82C7A12BCE8138000515A0 /* AbstractGoalTypeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractGoalTypeWrapper.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -977,6 +981,7 @@
 				BA82C77E2BCD2652000515A0 /* Inference */,
 				BA82C7562BCAB482000515A0 /* Statistics */,
 				BA82C7952BCDAF6E000515A0 /* Ranking */,
+				BA82C7A02BCE80FB000515A0 /* Goals */,
 				BA82C7812BCD2B20000515A0 /* Missions */,
 				BA2F5ABC2BC80A2300CBD8E9 /* Achievements */,
 			);
@@ -1010,8 +1015,8 @@
 			isa = PBXGroup;
 			children = (
 				BA2F5AC42BC8143E00CBD8E9 /* TotalKillsStatistic.swift */,
-				BA82C7412BC86FE1000515A0 /* TotalGamesStatistic.swift */,
 				BA82C74F2BC8A20A000515A0 /* TotalDeathsStatistic.swift */,
+				BA82C7412BC86FE1000515A0 /* TotalGamesStatistic.swift */,
 				BA82C78F2BCD2FAF000515A0 /* TotalDamageDealtStatistic.swift */,
 			);
 			path = Implemented;
@@ -1100,6 +1105,15 @@
 				BA82C79A2BCDD5C8000515A0 /* RankingEngine.swift */,
 			);
 			path = Ranking;
+			sourceTree = "<group>";
+		};
+		BA82C7A02BCE80FB000515A0 /* Goals */ = {
+			isa = PBXGroup;
+			children = (
+				BA82C79E2BCE7FBA000515A0 /* AbstractGoal.swift */,
+				BA82C7A12BCE8138000515A0 /* AbstractGoalTypeWrapper.swift */,
+			);
+			path = Goals;
 			sourceTree = "<group>";
 		};
 		BAFFB9272BB09E0E00D8301F /* Storyboards */ = {
@@ -1597,9 +1611,11 @@
 				3CE951582BAD724D008B2785 /* TFContact.swift in Sources */,
 				5295A2132BAAEA16005018A8 /* UnitNode.swift in Sources */,
 				52DF5FF32BA351E100135367 /* SpriteComponent.swift in Sources */,
+				BA82C7A22BCE8138000515A0 /* AbstractGoalTypeWrapper.swift in Sources */,
 				3CE9514B2BAC83FA008B2785 /* SpawnableEntities.swift in Sources */,
 				5299D1302BC31002003EF746 /* AuthenticationProvider.swift in Sources */,
 				3C3CBDF92BB821500001B8A9 /* TFScene.swift in Sources */,
+				BA82C79F2BCE7FBA000515A0 /* AbstractGoal.swift in Sources */,
 				BA82C7652BCBC868000515A0 /* LocalStorageManager.swift in Sources */,
 				9B8696552BAD759F0002377C /* Grid.swift in Sources */,
 				527A077E2BB3F75700CD9D08 /* Timer.swift in Sources */,

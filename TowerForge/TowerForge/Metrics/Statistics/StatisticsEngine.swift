@@ -40,7 +40,7 @@ class StatisticsEngine {
     }
 
     func addInferenceEngine(_ engine: InferenceEngine) {
-        inferenceEngines[engine.asType]
+        inferenceEngines[engine.asType] = engine
     }
 
     /// Main update function

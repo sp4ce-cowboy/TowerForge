@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// The RankingEngine is responsible for generating rank and exp information.
 class RankingEngine: InferenceEngine, InferenceDataDelegate {
 
     // TODO: Consider expanding to more formula for .e.g double exp.

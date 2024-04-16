@@ -8,8 +8,8 @@
 import Foundation
 
 final class HundredKillsAchievement: Achievement {
-    var achievementName: String = "100 Kills"
-    var achievementDescription: String = "Attain 100 total kills in TowerForge"
+    var name: String = "100 Kills"
+    var description: String = "Attain 100 total kills in TowerForge"
     var currentParameters: [StatisticTypeWrapper: any Statistic] = [:]
 
     static var definedParameters: [StatisticTypeWrapper: Double] =
