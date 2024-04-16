@@ -26,10 +26,8 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        AchievementManager.incrementTotalGamesStarted()
         AudioManager.shared.playBackground()
         showGameLevelScene()
-
         let auth = AuthenticationProvider()
         if auth.isUserLoggedIn() {
             auth.getUserDetails { data, _ in

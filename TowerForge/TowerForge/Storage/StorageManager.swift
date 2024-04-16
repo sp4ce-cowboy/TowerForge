@@ -1,121 +1,180 @@
 //
-//  Storage.swift
+//  StorageManager.swift
 //  TowerForge
 //
-//  Created by Rubesh on 27/3/24.
+//  Created by Rubesh on 14/4/24.
 //
 
 import Foundation
 
-/// The Storage Architecture of TowerForge consists of a few layers. From highest
-/// to lowest, these are:
-/// - StorageManager: Interface that allows application wide access to data persistence
-/// - Database: A data structure that underlies storage manager, essentially a collection of Storages
-/// - Storage: A collection of a specific type of items that can be written to file
-/// - Storable: The lowest level of storage, represents a single unit of an item that can be written to file
-///
-/// This allows for a nuanced, sequential and hierarchial approach to data persistence,
-/// within a monolithic Storage Architecture, and thus, without having to fragment
-/// Storage across TowerForge. This also allows for Storage Manager to transform into an adaptor
-/// if the need arises to replace FileManager with some other form of persistence, like CloudKit or
-/// Firebase or something else.
-///
-/// Hypothetical Example: local copy of the TowerForge application may contain information
-/// such as a list of Achievements and a list of user preferences. This would translate
-/// to a "AchievementStorage: Storage" class and "UserPrefStorage: Storage" class being
-/// stored within Database inside the StorageManager and loaded upon every launch of the application.
-/// "Achievement: Storable" would be stored inside AchievementStorage and "UserPreferenece: Storable"
-/// would be stored within the UserPrefStorage.
-///
-/// A singular, universal StorageManager that allows for simultaneously storing and isolating
-/// storable items of different types.
+/// The class responsible for providing application wide Storage access and
+/// synchronizing between Local Storage and Remote Storage. The application interacts only
+/// with StorageManager which handles all storage operations.
 class StorageManager {
-    static let folderName = Constants.STORAGE_CONTAINER_NAME
-    static let fileName = Constants.TF_DATABASE_NAME
+    static var CONFLICT_RESOLUTION = Constants.CONFLICT_RESOLTION
 
-    internal static let shared = StorageManager() // Singleton instance (might need to consider)
-    internal var storedDatabase: LocalDatabase
-
-    init(storedData: LocalDatabase = LocalDatabase()) {
-        self.storedDatabase = storedData
+    static func initializeAllStorage() {
+        LocalMetadataManager.initializeUserIdentifier()
+        LocalStorageManager.initializeLocalStatisticsDatabase()
     }
 
-    /// Creates an empty local file to store the database if one doesn't already exist.
-    /// Called by the AppDelegate when the application is run.
-    static func initializeData() {
-        if let loadedDatabase = StorageManager.shared.loadFromFile() {
-            StorageManager.shared.storedDatabase = loadedDatabase
-            Logger.log("Loaded existing database.", Self.self)
+    static var defaultErrorClosure: (Error?) -> Void = { error in
+        if let error = error {
+            Logger.log("Generic error message invoked: \(error)")
         } else {
-            StorageManager.shared.storedDatabase = LocalDatabase() // Create empty database
-            StorageManager.shared.saveToFile() // Save the new empty database
-            Logger.log("Created and saved a new empty database.", Self.self)
-        }
-
-        StorageManager.shared.initializeDefaultAchievements()
-    }
-
-    /// Saves the current Database to file
-    func saveToFile() {
-        let fileNameCombined = Self.fileName + ".json"
-        let encoder = JSONEncoder()
-
-        do {
-            let data = try encoder.encode(storedDatabase)
-            let folderURL = try Self.createFolderIfNeeded(folderName: Self.folderName)
-            let fileURL = folderURL.appendingPathComponent(fileNameCombined)
-            try data.write(to: fileURL)
-            Logger.log("Saved Storage at: \(fileURL.path)")
-        } catch {
-            Logger.log("Error saving Database: \(error)")
+            Logger.log("Generic success message invoked.")
         }
     }
 
-    /// Loads a database (with the class constant folderName and fileName) from file
-    func loadFromFile() -> LocalDatabase? {
-        do {
-            let folderURL = try Self.createFolderIfNeeded(folderName: Self.folderName)
-            let fileURL = folderURL.appendingPathComponent(Self.fileName)
-            let data = try Data(contentsOf: fileURL)
-            let decoder = JSONDecoder()
-            return try decoder.decode(LocalDatabase.self, from: data)
-        } catch {
-            Logger.log("Error loading Storage: \(error)")
+    static func onLogin(with userId: String) {
+        let localStorage = LocalStorageManager.loadDatabaseFromLocalStorage()
+                                    ?? StatisticsFactory.getDefaultStatisticsDatabase()
+
+        _ = Self.saveUniversally(localStorage)
+
+        Constants.CURRENT_PLAYER_ID = userId
+        var remoteStorage = StatisticsDatabase()
+
+        RemoteStorageManager.loadDatabaseFromFirebase { statisticsDatabase, error in
+            if let error = error {
+                Logger.log("Error loading data: \(error)", self)
+            } else if let statisticsDatabase = statisticsDatabase {
+                Logger.log("Successfully loaded statistics database.", self)
+                remoteStorage = statisticsDatabase
+            } else {
+                // No error and no database implies that database is empty, thus initialize new one
+                Logger.log("No error and empty database, new one will be created", self)
+                remoteStorage = StatisticsFactory.getDefaultStatisticsDatabase()
+            }
+        }
+
+        if let finalStorage = Self.resolveConflict(this: localStorage, that: remoteStorage) {
+            _ = Self.saveUniversally(finalStorage)
+        }
+
+    }
+
+    static func onLogout() {
+        Constants.CURRENT_PLAYER_ID = Constants.CURRENT_DEVICE_ID
+    }
+
+    static func resetAllStorage() {
+        Self.deleteAllRemoteStorage()
+        Self.deleteAllLocalStorage()
+    }
+
+    static func deleteAllLocalStorage() {
+        LocalStorageManager.deleteDatabaseFromLocalStorage()
+        LocalMetadataManager.deleteMetadataFromLocalStorage()
+    }
+
+    static func deleteAllRemoteStorage() {
+        RemoteStorageManager.deleteDatabaseFromFirebase { error in
+            if let error = error {
+                Logger.log("Deletion of all remote storage failed by StorageManager: \(error)", self)
+            } else {
+                Logger.log("Delete of all remote storage success", self)
+            }
+        }
+    }
+
+    static func saveUniversally(_ statistics: StatisticsDatabase) -> StatisticsDatabase? {
+        LocalStorageManager.saveDatabaseToLocalStorage(statistics)
+        return Self.pushToRemote()
+    }
+
+    static func loadUniversally() -> StatisticsDatabase? {
+        if let stats = LocalStorageManager.loadDatabaseFromLocalStorage() {
+            return stats
+        } else {
+            let localStorage = StatisticsFactory.getDefaultStatisticsDatabase()
+            return saveUniversally(localStorage)
+        }
+    }
+
+    /// Returns the StatisticsDatabase from the location that corresponds to the most recent
+    /// save.
+    static func loadLatest() -> StatisticsDatabase? {
+        var stats: StatisticsDatabase?
+
+        guard let location = MetadataManager.getLocationWithLatestMetadata() else {
             return nil
         }
-    }
 
-    /// Deletes the stored Database from file
-    func deleteDatabaseFromFile() {
-        do {
-            let folderURL = try Self.createFolderIfNeeded(folderName: Self.folderName)
-            let fileURL = folderURL.appendingPathComponent(Self.fileName)
-            try FileManager.default.removeItem(at: fileURL)
-        } catch {
-            Logger.log("Error deleting file: \(Self.fileName), \(error)")
+        switch location {
+        case .Local:
+            stats = LocalStorageManager.loadDatabaseFromLocalStorage()
+        case .Remote:
+            RemoteStorageManager.loadDatabaseFromFirebase { statsData, error in
+                if error != nil {
+                    Logger.log("Error occured loading from database")
+                }
+
+                stats = statsData
+            }
         }
-        Logger.log("Database successfully deleted.")
+
+        return stats
     }
 
-    /// Helper function to construct a FileURL
-    static func fileURL(for directory: FileManager.SearchPathDirectory, withName name: String) throws -> URL {
-        let fileManager = FileManager.default
+    private static func resolveConflict(this: StatisticsDatabase, that: StatisticsDatabase) -> StatisticsDatabase? {
+        var finalStorage: StatisticsDatabase?
 
-        return try fileManager.url(for: directory, in: .userDomainMask,
-                                   appropriateFor: nil, create: true).appendingPathComponent(name)
-    }
-
-    /// Helper function to create a folder for a given
-    static func createFolderIfNeeded(folderName: String) throws -> URL {
-        let fileManager = FileManager.default
-        let documentsURL: URL = try fileManager.url(for: .documentDirectory, in: .userDomainMask,
-                                                    appropriateFor: nil, create: false)
-
-        let folderURL = documentsURL.appendingPathComponent(folderName)
-        if !fileManager.fileExists(atPath: folderURL.path) {
-            try fileManager.createDirectory(at: folderURL,
-                                            withIntermediateDirectories: true, attributes: nil)
+        switch CONFLICT_RESOLUTION {
+        case .MERGE:
+            finalStorage = StatisticsDatabase.merge(this: this, that: that)
+        case .KEEP_LATEST_ONLY:
+            finalStorage = Self.loadLatest()
         }
-        return folderURL
+
+        return finalStorage
     }
+
+    /// Pushes local data to remote
+    /// - Firstly loads data from local storage (or creates empty storage if it doesn't exist)
+    /// - Then loads data from remote storage (or creates empty storage if it doesn't exist)
+    /// - Compares both data, merges them, and pushes back to remote.
+    ///
+    /// This ensures that no information is overwritten in the process.
+    private static func pushToRemote() -> StatisticsDatabase? {
+        // Explicitly load storage to ensure that uploaded data is
+        var localStorage: StatisticsDatabase
+        var remoteStorage = StatisticsDatabase()
+
+        if let localStats = LocalStorageManager.loadDatabaseFromLocalStorage() {
+            localStorage = localStats
+        } else {
+            LocalStorageManager.initializeLocalStatisticsDatabase()
+            localStorage = StatisticsFactory.getDefaultStatisticsDatabase()
+        }
+
+        RemoteStorageManager.loadDatabaseFromFirebase { statisticsDatabase, error in
+            if let error = error {
+                Logger.log("Error loading data: \(error)", self)
+            } else if let statisticsDatabase = statisticsDatabase {
+                Logger.log("Successfully loaded statistics database.", self)
+                remoteStorage = statisticsDatabase
+            } else {
+                // No error and no database implies that database is empty, thus initialize new one
+                Logger.log("No error and empty database, new one will be created", self)
+                remoteStorage = StatisticsFactory.getDefaultStatisticsDatabase()
+            }
+        }
+
+        guard let finalStorage = StatisticsDatabase.merge(this: localStorage, that: remoteStorage) else {
+            return nil
+        }
+
+        RemoteStorageManager.saveDatabaseToFirebase(finalStorage) { error in
+            if let error = error {
+                Logger.log("Saving to firebase error: \(error)", self)
+            } else {
+                Logger.log("Saving to firebase success", self)
+            }
+        }
+
+        LocalStorageManager.saveDatabaseToLocalStorage(finalStorage)
+        return finalStorage
+    }
+
 }

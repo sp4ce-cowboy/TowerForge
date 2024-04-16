@@ -128,6 +128,8 @@ extension GameWorld: UnitSelectionNodeDelegate {
 
 extension GameWorld: GameEngineDelegate {
     func onGameCompleted(gameState: GameState, gameResults: [GameResult]) {
+        Logger.log("\(gameState)", self)
         delegate?.showGameOverScene(isWin: gameState == .WIN, results: gameResults)
+        statisticsEngine.finalize()
     }
 }

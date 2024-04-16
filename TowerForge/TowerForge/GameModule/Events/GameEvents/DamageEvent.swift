@@ -25,6 +25,11 @@ struct DamageEvent: TFEvent {
         if let healthSystem = target.system(ofType: HealthSystem.self) {
             healthSystem.modifyHealth(for: entityId, with: -damage)
         }
+
+        if let statsSystem = target.system(ofType: StatisticSystem.self) {
+            statsSystem.notify(for: self)
+        }
+
         return EventOutput()
     }
 }

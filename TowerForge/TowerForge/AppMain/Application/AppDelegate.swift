@@ -16,14 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        /// Load the local storage and data
-        StorageManager.initializeData()
-
         /// Connect to Firebase
         FirebaseApp.configure()
 
+        /// Initialize all local storage
+        StorageManager.initializeAllStorage()
+
         /// Prepare audio player to begin playing music
         AudioManager.shared.setupAllAudioPlayers()
+
         return true
     }
 
