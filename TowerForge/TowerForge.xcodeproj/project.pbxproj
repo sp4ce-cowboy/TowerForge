@@ -467,7 +467,7 @@
 		BA82C75C2BCB1451000515A0 /* InferenceEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InferenceEngine.swift; sourceTree = "<group>"; };
 		BA82C75E2BCB1528000515A0 /* AchievementsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsDatabase.swift; sourceTree = "<group>"; };
 		BA82C7602BCBBA8A000515A0 /* FiftyKillsAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiftyKillsAchievement.swift; sourceTree = "<group>"; };
-		BA82C7622BCBBB2A000515A0 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Double+Extensions.swift"; path = "TowerForge/Commons/Protocols/Double+Extensions.swift"; sourceTree = SOURCE_ROOT; };
+		BA82C7622BCBBB2A000515A0 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Double+Extensions.swift"; path = "TowerForge/Commons/Extensions/Double+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		BA82C7642BCBC868000515A0 /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
 		BA82C7662BCBCB00000515A0 /* StatisticsDatabase+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsDatabase+Codable.swift"; sourceTree = "<group>"; };
 		BA82C7682BCBD21F000515A0 /* RemoteStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStorageManager.swift; sourceTree = "<group>"; };
