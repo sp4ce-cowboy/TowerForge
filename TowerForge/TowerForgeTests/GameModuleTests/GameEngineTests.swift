@@ -21,7 +21,7 @@ final class GameEngineTests: XCTestCase {
         // Add default game count
         let eventCount = emptyEventManager.eventQueue.count + 1
 
-        let gameEngine = GameEngine()
+        let gameEngine = GameEngine(gameMode: .captureTheFlag)
 
         XCTAssertEqual(gameEngine.entities.count,
                        entityCount,

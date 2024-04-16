@@ -50,7 +50,8 @@ class AuthenticationManager: AuthenticationProtocol {
             }
 
             guard let user = authResult?.user else {
-                onFinish(nil, NSError(domain: "Authentication", code: 0, userInfo: [NSLocalizedDescriptionKey: "User not found"]))
+                onFinish(nil, NSError(domain: "Authentication", code: 0,
+                                      userInfo: [NSLocalizedDescriptionKey: "User not found"]))
                 return
             }
 

@@ -30,9 +30,7 @@ class GameRoom {
     }
 
     // the player creating the room will auto join the room
-    init(roomName: String,
-          roomState: RoomState? = nil,
-          completion: @escaping (Bool) -> Void) {
+    init(roomName: String, roomState: RoomState? = nil, completion: @escaping (Bool) -> Void) {
         self.roomName = roomName
         self.roomState = roomState
 
