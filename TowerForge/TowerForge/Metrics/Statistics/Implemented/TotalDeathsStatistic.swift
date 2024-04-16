@@ -38,7 +38,7 @@ final class TotalDeathsStatistic: Statistic {
 
         let statisticUpdateActor = StatisticUpdateActor<KillEvent>(action: eventUpdateClosure)
         let anyStatisticUpdateActorWrapper = AnyStatisticUpdateActorWrapper(statisticUpdateActor)
-        
+
         var statisticUpdateLinksMap: [TFEventTypeWrapper: AnyStatisticUpdateActor] = [:]
         statisticUpdateLinksMap[eventType] = anyStatisticUpdateActorWrapper
         return StatisticUpdateLinkDatabase(statisticUpdateLinks: statisticUpdateLinksMap)

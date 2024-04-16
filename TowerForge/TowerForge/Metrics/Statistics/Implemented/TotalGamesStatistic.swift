@@ -34,7 +34,7 @@ final class TotalGamesStatistic: Statistic {
 
         let statisticUpdateActor = StatisticUpdateActor<GameStartEvent>(action: eventUpdateClosure)
         let anyStatisticUpdateActorWrapper = AnyStatisticUpdateActorWrapper(statisticUpdateActor)
-        
+
         var statisticUpdateLinksMap: [TFEventTypeWrapper: AnyStatisticUpdateActor] = [:]
         statisticUpdateLinksMap[eventType] = anyStatisticUpdateActorWrapper
         return StatisticUpdateLinkDatabase(statisticUpdateLinks: statisticUpdateLinksMap)

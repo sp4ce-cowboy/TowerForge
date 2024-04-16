@@ -38,8 +38,7 @@ class ObjectSet {
             DisabledEvent.self,
             RequestSpawnEvent.self,
             WaveSpawnEvent.self,
-            GameStartEvent.self,
-            DeathEvent.self
+            GameStartEvent.self
         ]
 
 }
