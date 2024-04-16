@@ -19,7 +19,7 @@ class GameViewController: UIViewController {
 
     @IBOutlet private var gamePopupButton: UIButton!
     @IBAction private func onStatePressed(_ sender: Any) {
-        isPaused = true
+        isPaused = (roomId == nil && currentPlayer == nil) // Allow pausing only on singleplayer.
         gameWorld?.presentStatePopup()
     }
 
@@ -134,6 +134,8 @@ extension GameViewController: SceneManagerDelegate {
 
 extension GameViewController: StatePopupDelegate {
     func onMenu() {
+        isPaused = false
+        gameWorld?.concede(playerid: currentPlayer?.userPlayerId)
     }
 
     func onResume() {

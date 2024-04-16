@@ -150,8 +150,4 @@ class GameEngine: AbstractGameEngine {
     func addRemoteEvent(_ remoteEvent: TFRemoteEvent) {
         eventManager.add(remoteEvent)
     }
-
-    func concede(player: Player) {
-        gameMode.gameState = player == .ownPlayer ? .LOSE : .WIN
-    }
 }

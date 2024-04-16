@@ -45,14 +45,18 @@ class DeathMatchMode: GameMode {
     }
     func updateGame(deltaTime: TimeInterval) {
         self.remainingTime = timer.time
-        if remainingTime <= 0 {
-            if currentOwnKillCounter > currentOpponentKillCounter {
-                gameState = .WIN
-            } else if currentOwnKillCounter < currentOpponentKillCounter {
-                gameState = .LOSE
-            } else {
-                gameState = .DRAW
-            }
+        guard gameState != .LOSE else {
+            return
+        }
+        guard remainingTime < 0 else {
+            return
+        }
+        if currentOwnKillCounter > currentOpponentKillCounter {
+            gameState = .WIN
+        } else if currentOwnKillCounter < currentOpponentKillCounter {
+            gameState = .LOSE
+        } else {
+            gameState = .DRAW
         }
     }
     func getGameResults() -> [GameResult] {
@@ -66,4 +70,7 @@ class DeathMatchMode: GameMode {
         return result
     }
 
+    func concede(player: Player) {
+        self.gameState = player == .ownPlayer ? .LOSE : .WIN
+    }
 }

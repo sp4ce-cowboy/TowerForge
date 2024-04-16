@@ -45,6 +45,9 @@ class CaptureTheFlagMode: GameMode {
     }
     func updateGame(deltaTime: TimeInterval) {
         self.time += deltaTime
+        guard gameState != .LOSE else {
+            return
+        }
         if self.currentOwnLife <= 0 {
             gameState = .LOSE
         } else if self.currentOpponentLife <= 0 {
@@ -58,5 +61,9 @@ class CaptureTheFlagMode: GameMode {
                            value: String(self.time),
                            sortingRule: .decreasing)
         ]
+    }
+
+    func concede(player: Player) {
+        self.gameState = player == .ownPlayer ? .LOSE : .WIN
     }
 }

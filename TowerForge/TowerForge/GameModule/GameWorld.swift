@@ -97,6 +97,16 @@ class GameWorld {
     func removeStatePopup() {
         scene?.remove(node: popup)
     }
+
+    func concede(playerid: UserPlayerId?) {
+        removeStatePopup()
+
+        guard let playerid = playerid else {
+            gameEngine.addEvent(ConcedeEvent(timestamp: Date().timeIntervalSince1970, player: .ownPlayer))
+            return
+        }
+        gameEngine.addRemoteEvent(RemoteConcedeEvent(source: playerid, targetIsSource: true))
+    }
 }
 
 extension GameWorld: Renderable {
