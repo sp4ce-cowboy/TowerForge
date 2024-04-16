@@ -24,15 +24,6 @@ final class TotalDeathsStatistic: Statistic {
         self.maximumCurrentValue = maxCurrentValue
     }
 
-    /*func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
-        let eventType = TFEventTypeWrapper(type: DeathEvent.self)
-        let updateActor: StatisticUpdateActor = { statistic in statistic.updateCurrentValue(by: 1.0) }
-        let eventUpdateDictionary = [eventType: updateActor]
-        let statsLink = StatisticUpdateLinkDatabase(statisticUpdateLinks: eventUpdateDictionary)
-
-        return statsLink
-    }*/
-
     /// The total deaths statistic no longer requires the DeathEvent, it is able
     /// to directly parse a KillEvent to determine whe
     func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
@@ -47,8 +38,7 @@ final class TotalDeathsStatistic: Statistic {
 
         let statisticUpdateActor = StatisticUpdateActor<KillEvent>(action: eventUpdateClosure)
         let anyStatisticUpdateActorWrapper = AnyStatisticUpdateActorWrapper(statisticUpdateActor)
-        // let anyStatisticUpdateActorWrapper =
-        //        AnyStatisticUpdateActorWrapper(updateStatistic: eventUpdateClosure)
+        
         var statisticUpdateLinksMap: [TFEventTypeWrapper: AnyStatisticUpdateActor] = [:]
         statisticUpdateLinksMap[eventType] = anyStatisticUpdateActorWrapper
         return StatisticUpdateLinkDatabase(statisticUpdateLinks: statisticUpdateLinksMap)

@@ -25,15 +25,6 @@ final class TotalGamesStatistic: Statistic {
         self.maximumCurrentValue = maxCurrentValue
     }
 
-    /*func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
-        let eventType = TFEventTypeWrapper(type: GameStartEvent.self)
-        let updateActor: StatisticUpdateActor = { statistic in statistic.updateCurrentValue(by: 1.0) }
-        let eventUpdateDictionary = [eventType: updateActor]
-        let statsLink = StatisticUpdateLinkDatabase(statisticUpdateLinks: eventUpdateDictionary)
-
-        return statsLink
-    }*/
-
     func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
         let eventType = TFEventTypeWrapper(type: GameStartEvent.self)
         let eventUpdateClosure: (Statistic, GameStartEvent?) -> Void = { statistic, event in
@@ -43,7 +34,7 @@ final class TotalGamesStatistic: Statistic {
 
         let statisticUpdateActor = StatisticUpdateActor<GameStartEvent>(action: eventUpdateClosure)
         let anyStatisticUpdateActorWrapper = AnyStatisticUpdateActorWrapper(statisticUpdateActor)
-
+        
         var statisticUpdateLinksMap: [TFEventTypeWrapper: AnyStatisticUpdateActor] = [:]
         statisticUpdateLinksMap[eventType] = anyStatisticUpdateActorWrapper
         return StatisticUpdateLinkDatabase(statisticUpdateLinks: statisticUpdateLinksMap)

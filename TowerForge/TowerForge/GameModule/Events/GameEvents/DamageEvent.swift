@@ -27,9 +27,7 @@ struct DamageEvent: TFEvent {
         }
 
         if let statsSystem = target.system(ofType: StatisticSystem.self) {
-            if player != .ownPlayer {
-                statsSystem.notify(for: self)
-            }
+            statsSystem.notify(for: self)
         }
 
         return EventOutput()

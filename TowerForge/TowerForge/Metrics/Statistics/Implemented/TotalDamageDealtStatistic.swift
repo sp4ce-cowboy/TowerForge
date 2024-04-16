@@ -26,15 +26,6 @@ final class TotalDamageDealtStatistic: Statistic {
         self.maximumCurrentValue = maxCurrentValue
     }
 
-    /*func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
-        let eventType = TFEventTypeWrapper(type: DamageEvent.self)
-        let updateActor: StatisticUpdateActor = { statistic in statistic.updateCurrentValue(by: ) }
-        let eventUpdateDictionary = [eventType: updateActor]
-        let statsLink = StatisticUpdateLinkDatabase(statisticUpdateLinks: eventUpdateDictionary)
-
-        return statsLink
-    }*/
-
     func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
         let eventType = TFEventTypeWrapper(type: DamageEvent.self)
         let eventUpdateClosure: (Statistic, DamageEvent?) -> Void = { statistic, event in
