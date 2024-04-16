@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol GameEngineDelegate: AnyObject {
+    func onGameCompleted(gameState: GameState, gameResults: [GameResult])
+}
+
 /// The AbstractGameEngine defines the interface specifications between any concrete
 /// implementation of a GameEngine and a client that requires a GameEngine. This is
 /// is line with both the Interface Segregation Principle and the Dependency Inversion
@@ -15,12 +19,14 @@ import Foundation
 /// Where necessary, an appropriate GameEngine stub can be used to replace GameEngine
 /// wherever it is required.
 protocol AbstractGameEngine: EventTarget {
+    var delegate: GameEngineDelegate? { get set }
     var entities: [TFEntity] { get }
     var eventManager: EventManager { get }
+    var gameMode: GameMode { get }
 
     func updateGame(deltaTime: TimeInterval)
+    func checkGameEnded() -> Bool
     func setUpSystems(with grid: Grid, and statsEngine: StatisticsEngine)
-    func setUpPlayerInfo(mode: GameMode)
 
     func addEntity(_ entity: TFEntity)
     func addEvent(_ event: TFEvent)
@@ -37,37 +43,52 @@ protocol AbstractGameEngine: EventTarget {
 ///
 /// A concrete implementation of the AbstractGameEngine protocol
 class GameEngine: AbstractGameEngine {
-
     /// TODO: privatize these attributes after unit testing for private attibutes is sorted out
+    var delegate: GameEngineDelegate?
     var entityManager: EntityManager
     var systemManager: SystemManager
     var eventManager: EventManager
+    var gameMode: GameMode
 
     var entities: [TFEntity] { entityManager.entities }
 
-    init(entityManager: EntityManager = EntityManager(),
+    init(gameMode: Mode,
+         entityManager: EntityManager = EntityManager(),
          systemManager: SystemManager = SystemManager(),
          roomId: RoomId? = nil, isHost: Bool = true, currentPlayer: GamePlayer? = nil) {
         self.entityManager = entityManager
         self.systemManager = systemManager
         self.eventManager = EventManager(roomId: roomId, isHost: isHost, currentPlayer: currentPlayer)
+        self.gameMode = GameModeFactory.createGameMode(mode: gameMode, eventManager: eventManager)
         self.setupTeam()
         self.setupGame()
+        self.setUpPlayerInfo(mode: self.gameMode)
     }
 
-    init(eventManager: EventManager,
+    init(gameMode: Mode,
+         eventManager: EventManager,
          entityManager: EntityManager = EntityManager(),
          systemManager: SystemManager = SystemManager()) {
         self.entityManager = entityManager
         self.systemManager = systemManager
         self.eventManager = eventManager
+        self.gameMode = GameModeFactory.createGameMode(mode: gameMode, eventManager: eventManager)
         self.setupTeam()
         self.setupGame()
+        self.setUpPlayerInfo(mode: self.gameMode)
     }
 
     func updateGame(deltaTime: TimeInterval) {
         systemManager.update(deltaTime)
         eventManager.executeEvents(in: self)
+        gameMode.updateGame(deltaTime: deltaTime)
+        if checkGameEnded() {
+            delegate?.onGameCompleted(gameState: gameMode.gameState, gameResults: gameMode.getGameResults())
+        }
+    }
+
+    func checkGameEnded() -> Bool {
+        gameMode.gameState == .WIN || gameMode.gameState == .LOSE || gameMode.gameState == .DRAW
     }
 
     func system<T: TFSystem>(ofType type: T.Type) -> T? {
@@ -90,7 +111,7 @@ class GameEngine: AbstractGameEngine {
         addEvent(GameStartEvent())
     }
 
-    func setUpPlayerInfo(mode: GameMode) {
+    private func setUpPlayerInfo(mode: GameMode) {
         for prop in mode.gameProps {
             let hudEntity = prop.renderableEntity
             entityManager.add(hudEntity)
@@ -111,7 +132,6 @@ class GameEngine: AbstractGameEngine {
         systemManager.add(system: StatisticSystem(entityManager: entityManager,
                                                   eventManager: eventManager, statsEngine: statsEngine))
 
-        // Temporary until we have different gamemodes
         guard eventManager.remoteEventManager == nil else {
             return
         }
@@ -129,5 +149,9 @@ class GameEngine: AbstractGameEngine {
 
     func addRemoteEvent(_ remoteEvent: TFRemoteEvent) {
         eventManager.add(remoteEvent)
+    }
+
+    func concede(player: Player) {
+        gameMode.gameState = player == .ownPlayer ? .LOSE : .WIN
     }
 }
