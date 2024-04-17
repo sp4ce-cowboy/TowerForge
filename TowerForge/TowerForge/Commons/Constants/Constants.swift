@@ -34,7 +34,7 @@ class Constants {
     static var CONFLICT_RESOLTION: StorageConflictResolution = .MERGE
 
     /// Universal setting to enable or disable sound effects
-    static var SOUND_EFFECTS_ENABLED = false
+    static var SOUND_EFFECTS_ENABLED = true
 
     /// Universal background audio soundtrack to play during game modes
     static let GAME_BACKGROUND_AUDIO: String = BackgroundMusic.gameMode.rawValue
