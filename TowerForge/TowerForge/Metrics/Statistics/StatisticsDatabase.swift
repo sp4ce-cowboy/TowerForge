@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseDatabaseInternal
 
-final class StatisticsDatabase {
+final class StatisticsDatabase: StorageDatabase {
     var statistics: [StatisticTypeWrapper: Statistic] = [:]
 
     init(_ stats: [StatisticTypeWrapper: Statistic] = [:]) {

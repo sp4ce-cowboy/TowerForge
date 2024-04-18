@@ -70,11 +70,11 @@ extension Statistic {
         StatisticTypeWrapper(type: Self.self)
     }
 
-    static var expMultiplier: Double { 0.0 }
-
     var statisticName: StatisticTypeWrapper {
         StatisticTypeWrapper(type: Self.self)
     }
+
+    static var expMultiplier: Double { 0.0 }
 
     var rankValue: Double {
         permanentValue * Self.expMultiplier

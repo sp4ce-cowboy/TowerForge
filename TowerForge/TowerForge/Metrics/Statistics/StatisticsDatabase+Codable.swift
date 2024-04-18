@@ -9,7 +9,7 @@ import Foundation
 
 /// This extension adds encoding and decoding functionality to
 /// the Statistics Database to allow for storing and loading from file.
-extension StatisticsDatabase: Codable {
+extension StatisticsDatabase {
 
     private static func generateStatisticsCollection(_ statsArray: [Statistic]) -> [StatisticTypeWrapper: Statistic] {
         var statisticsMap: [StatisticTypeWrapper: Statistic] = [:]
@@ -45,23 +45,6 @@ extension StatisticsDatabase: Codable {
 
         self.init(statObjectsMap)
     }
-
-    /*convenience init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: StatisticsDatabaseCodingKeys.self)
-        var statistics = [StatisticTypeWrapper: Statistic]()
-        let statsContainer = try container.nestedContainer(keyedBy: DynamicCodingKeys.self, forKey: .statistics)
-
-        for key in statsContainer.allKeys {
-            let statDecoder = try statsContainer.superDecoder(forKey: key)
-            if let statistic = try StatisticsFactory.statisticDecoder[key.stringValue]?(statDecoder) {
-                if let statType = key.stringValue.asTFClassFromString as? Statistic.Type {
-                    statistics[statType.asType] = statistic
-                }
-            }
-        }
-
-        self.init(statistics)
-    }*/
 
     private static func decodeObject(_ statObjectDict: KeyedDecodingContainer<StatisticCodingKeys>)
     throws -> (any Statistic)? {

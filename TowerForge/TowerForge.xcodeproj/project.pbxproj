@@ -238,6 +238,9 @@
 		BA82C79D2BCDD9ED000515A0 /* InferenceEngineTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C79C2BCDD9ED000515A0 /* InferenceEngineTypeWrapper.swift */; };
 		BA82C79F2BCE7FBA000515A0 /* AbstractGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C79E2BCE7FBA000515A0 /* AbstractGoal.swift */; };
 		BA82C7A22BCE8138000515A0 /* AbstractGoalTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7A12BCE8138000515A0 /* AbstractGoalTypeWrapper.swift */; };
+		BAEC99FA2BD13F2600E0C437 /* AbstractTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC99F92BD13F2600E0C437 /* AbstractTypeWrapper.swift */; };
+		BAEC99FC2BD15AAB00E0C437 /* StorageDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC99FB2BD15AAB00E0C437 /* StorageDatabase.swift */; };
+		BAEC99FE2BD15E0200E0C437 /* PlayerStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC99FD2BD15E0200E0C437 /* PlayerStatsViewController.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -502,6 +505,9 @@
 		BA82C79E2BCE7FBA000515A0 /* AbstractGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractGoal.swift; sourceTree = "<group>"; };
 		BA82C7A12BCE8138000515A0 /* AbstractGoalTypeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractGoalTypeWrapper.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
+		BAEC99F92BD13F2600E0C437 /* AbstractTypeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractTypeWrapper.swift; sourceTree = "<group>"; };
+		BAEC99FB2BD15AAB00E0C437 /* StorageDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDatabase.swift; sourceTree = "<group>"; };
+		BAEC99FD2BD15E0200E0C437 /* PlayerStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatsViewController.swift; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		BAFFB94A2BB11F9800D8301F /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
@@ -774,6 +780,7 @@
 				52DD8F982BC52F8400D96BAB /* LevelPopupViewController.swift */,
 				523E5C542BC63A16007444DA /* LeaderboardViewController.swift */,
 				52F930E62BC63F7F003D11B5 /* LeaderboardSelectionViewController.swift */,
+				BAEC99FD2BD15E0200E0C437 /* PlayerStatsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1338,6 +1345,7 @@
 			children = (
 				BAFFB9482BB0ABC400D8301F /* Logger.swift */,
 				BAFFB9692BB9A64000D8301F /* ObjectSet.swift */,
+				BAEC99F92BD13F2600E0C437 /* AbstractTypeWrapper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1358,6 +1366,7 @@
 		BAFFB9512BB342E200D8301F /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				BAEC99FB2BD15AAB00E0C437 /* StorageDatabase.swift */,
 				BA82C76E2BCBDE91000515A0 /* Metadata.swift */,
 				BA82C77A2BCD05DC000515A0 /* MetadataManager.swift */,
 				BA82C76A2BCBD682000515A0 /* StorageManager.swift */,
@@ -1555,6 +1564,7 @@
 				523C29302BBD0916004C6EAC /* GameWaitingRoomViewController.swift in Sources */,
 				BA2F5AC12BC80BE500CBD8E9 /* Statistic.swift in Sources */,
 				3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */,
+				BAEC99FA2BD13F2600E0C437 /* AbstractTypeWrapper.swift in Sources */,
 				5299D1432BC3AB38003EF746 /* GameRankProvider.swift in Sources */,
 				5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */,
 				3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */,
@@ -1648,6 +1658,7 @@
 				52A794112BBC48FE0083C976 /* GameRoom.swift in Sources */,
 				3CD37AA72BBEC5EF00222D8A /* BaseRemoteEvent.swift in Sources */,
 				527A077C2BB3F4CC00CD9D08 /* KillEvent.swift in Sources */,
+				BAEC99FE2BD15E0200E0C437 /* PlayerStatsViewController.swift in Sources */,
 				5299D1322BC31050003EF746 /* AuthenticationManager.swift in Sources */,
 				3C3CBE012BB870950001B8A9 /* CGVector+Extensions.swift in Sources */,
 				5299D13C2BC3670E003EF746 /* LoginViewController.swift in Sources */,
@@ -1723,6 +1734,7 @@
 				9B0406142BB89BE00026E903 /* PowerUpSelectionNode.swift in Sources */,
 				5240D0A22BB33183004F1486 /* DeathMatchMode.swift in Sources */,
 				BA2F5AC52BC8143E00CBD8E9 /* TotalKillsStatistic.swift in Sources */,
+				BAEC99FC2BD15AAB00E0C437 /* StorageDatabase.swift in Sources */,
 				3CAC4A6F2BB6A4F200A5D22E /* LabelRenderStage.swift in Sources */,
 				BA82C7922BCD6579000515A0 /* StatisticUpdateActor.swift in Sources */,
 				BA82C75F2BCB1528000515A0 /* AchievementsDatabase.swift in Sources */,

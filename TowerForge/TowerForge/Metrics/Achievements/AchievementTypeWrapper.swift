@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AchievementTypeWrapper: Equatable, Hashable {
+struct AchievementTypeWrapper: Equatable, Hashable, Comparable {
     let type: Achievement.Type
 
     var asString: String {
@@ -20,5 +20,13 @@ struct AchievementTypeWrapper: Equatable, Hashable {
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(ObjectIdentifier(type))
+    }
+
+    static func < (lhs: AchievementTypeWrapper, rhs: AchievementTypeWrapper) -> Bool {
+        lhs.asString < rhs.asString
+    }
+
+    static func > (lhs: AchievementTypeWrapper, rhs: AchievementTypeWrapper) -> Bool {
+        lhs.asString > rhs.asString
     }
 }
