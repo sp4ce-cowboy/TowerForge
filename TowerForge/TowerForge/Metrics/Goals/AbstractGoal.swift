@@ -15,6 +15,7 @@ protocol AbstractGoal: AnyObject {
     static var goalType: AbstractGoalTypeWrapper { get }
     var name: String { get }
     var description: String { get }
+    var imageIdentifier: String { get }
 
     static var definedParameters: [StatisticTypeWrapper: Double] { get }
     var currentParameters: [StatisticTypeWrapper: Statistic] { get set }
@@ -34,6 +35,8 @@ protocol AbstractGoal: AnyObject {
 }
 
 extension AbstractGoal {
+
+    var imageIdentifier: String { "coin" }
 
     static var goalType: AbstractGoalTypeWrapper {
         AbstractGoalTypeWrapper(type: Self.self)
@@ -70,7 +73,7 @@ extension AbstractGoal {
     }
 
     var overallProgressRateRounded: Double {
-        overallProgressRate.rounded()
+        overallProgressRate.rounded() > 1.0 ? 1.0 : overallProgressRate.rounded()
     }
 
     var isComplete: Bool {

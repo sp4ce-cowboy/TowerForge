@@ -29,4 +29,17 @@ enum Rank: String, CaseIterable {
         case .GENERAL:      return 8_001..<9_001
         }
     }
+    
+    var imageIdentifer: String {
+        switch self {
+        case .PRIVATE:      return "private"
+        case .CORPORAL:     return "corporal"
+        case .SERGEANT:     return "sergeant"
+        case .LIEUTENANT:   return "lieutenant"
+        case .CAPTAIN:      return "captain"
+        case .MAJOR:        return "major"
+        case .COLONEL:      return "colonel"
+        case .GENERAL:      return "general"
+        }
+    }
 }

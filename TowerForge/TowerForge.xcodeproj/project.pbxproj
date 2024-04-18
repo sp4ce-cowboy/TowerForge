@@ -241,6 +241,7 @@
 		BAEC99FA2BD13F2600E0C437 /* AbstractTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC99F92BD13F2600E0C437 /* AbstractTypeWrapper.swift */; };
 		BAEC99FC2BD15AAB00E0C437 /* StorageDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC99FB2BD15AAB00E0C437 /* StorageDatabase.swift */; };
 		BAEC99FE2BD15E0200E0C437 /* PlayerStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC99FD2BD15E0200E0C437 /* PlayerStatsViewController.swift */; };
+		BAEC9A002BD1A4B700E0C437 /* CustomAchievementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC99FF2BD1A4B700E0C437 /* CustomAchievementCell.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -508,6 +509,7 @@
 		BAEC99F92BD13F2600E0C437 /* AbstractTypeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractTypeWrapper.swift; sourceTree = "<group>"; };
 		BAEC99FB2BD15AAB00E0C437 /* StorageDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDatabase.swift; sourceTree = "<group>"; };
 		BAEC99FD2BD15E0200E0C437 /* PlayerStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatsViewController.swift; sourceTree = "<group>"; };
+		BAEC99FF2BD1A4B700E0C437 /* CustomAchievementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAchievementCell.swift; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		BAFFB94A2BB11F9800D8301F /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
@@ -781,6 +783,7 @@
 				523E5C542BC63A16007444DA /* LeaderboardViewController.swift */,
 				52F930E62BC63F7F003D11B5 /* LeaderboardSelectionViewController.swift */,
 				BAEC99FD2BD15E0200E0C437 /* PlayerStatsViewController.swift */,
+				BAEC99FF2BD1A4B700E0C437 /* CustomAchievementCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1612,6 +1615,7 @@
 				BA82C7672BCBCB00000515A0 /* StatisticsDatabase+Codable.swift in Sources */,
 				3CD37AA52BBEC10700222D8A /* FirebaseRemoteEventSubscriber.swift in Sources */,
 				BA82C7792BCC6943000515A0 /* CenturionAchievement.swift in Sources */,
+				BAEC9A002BD1A4B700E0C437 /* CustomAchievementCell.swift in Sources */,
 				52A794172BBC4F690083C976 /* GamePlayer.swift in Sources */,
 				3CBE72FD2BC8D64F00CC446A /* RemoteMoveEvent.swift in Sources */,
 				3CE951632BAE037C008B2785 /* AiSystem.swift in Sources */,

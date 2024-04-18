@@ -11,19 +11,23 @@ import UIKit
 class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet private var achievementsView: UITableView!
+    @IBOutlet private var rankView: UILabel!
 
     var achievements: AchievementsDatabase = getAchievements()
+    var rank: Rank = getRank()
+    
 
     static func getAchievements() -> AchievementsDatabase {
         let statsEngine = StatisticsEngine()
         let achEngine = statsEngine.inferenceEngines[AchievementsEngine.asType] as? AchievementsEngine
-
-        Logger.log("Count is \(String(describing: achEngine?.achievementsDatabase.achievements.values.count))", self)
-
-        achEngine!.achievementsDatabase.achievements = AchievementsFactory
-            .getDefaultAchievementsDatabase(achEngine).achievements
-
+        achEngine!.achievementsDatabase.setToDefault()
         return achEngine!.achievementsDatabase
+    }
+    
+    static func getRank() -> Rank {
+        let statsEngine = StatisticsEngine()
+        let rankEngine = statsEngine.inferenceEngines[RankingEngine.asType] as? RankingEngine
+        return rankEngine!.currentRank
     }
 
     override func viewDidLoad() {
@@ -41,17 +45,41 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        achievements.achievements.count
+        achievements.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    /*func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
         // Sort achievements if necessary and configure the cell
-        let achievementPair = Array(achievements.achievements).sorted(by: { $0.key < $1.key })[indexPath.row]
+        let achievementPair = achievements.asSortedArray[indexPath.row]
         let achievement = achievementPair.value
-        
+
         cell.textLabel?.text = achievement.name
+
+        let permanentValue = achievement.currentProgressRates
+        cell.detailTextLabel?.text = String(describing: permanentValue)
+
+        return cell
+    }*/
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
+                                                       for: indexPath) as? CustomAchievementCell else {
+            fatalError("Could not dequeue CustomAchievementCell")
+        }
+
+        let achievementPair = achievements.asSortedArray[indexPath.row]
+        let achievement = achievementPair.value
+
+        // Configure the cell elements
+        cell.nameLabel.text = achievement.name
+        cell.descriptionLabel.text = achievement.description
+        cell.achievementImageView.image = UIImage(named: achievement.imageIdentifier)
+        cell.progressView.progress = Float(achievement.overallProgressRateRounded)
+        //cell.progressPercentage.text = String(describing: Float(achievement.overallProgressRateRounded))
+        let statusImageName = achievement.isComplete ? "checkmark.circle" : "x.circle"
+        cell.statusImageView.image = UIImage(systemName: statusImageName)
 
         return cell
     }
@@ -65,7 +93,7 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.deselectRow(at: indexPath, animated: true)
 
         // Get the selected achievement
-        let achievementPair = Array(achievements.achievements).sorted(by: { $0.key < $1.key })[indexPath.row]
+        let achievementPair = achievements.asSortedArray[indexPath.row]
         let achievement = achievementPair.value
 
         // Show a detail view controller
