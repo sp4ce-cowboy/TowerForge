@@ -8,14 +8,26 @@
 import Foundation
 import UIKit
 
+class RankUIView: UIView {
+    @IBOutlet var rankImageView: UIImageView!
+    @IBOutlet var rankNameLabel: UILabel!
+
+    // You can add methods here to configure the view
+    func configure(with rank: Rank) {
+        rankImageView = UIImageView(image: UIImage(named: rank.imageIdentifer))
+        var rankLabel = UILabel()
+        rankLabel.text = rank.rawValue
+        rankNameLabel = rankLabel
+    }
+}
+
 class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet private var achievementsView: UITableView!
-    @IBOutlet private var rankView: UILabel!
+    @IBOutlet var rankingView: RankUIView!
 
     var achievements: AchievementsDatabase = getAchievements()
     var rank: Rank = getRank()
-    
 
     static func getAchievements() -> AchievementsDatabase {
         let statsEngine = StatisticsEngine()
@@ -23,7 +35,7 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         achEngine!.achievementsDatabase.setToDefault()
         return achEngine!.achievementsDatabase
     }
-    
+
     static func getRank() -> Rank {
         let statsEngine = StatisticsEngine()
         let rankEngine = statsEngine.inferenceEngines[RankingEngine.asType] as? RankingEngine
@@ -35,6 +47,9 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
 
         achievementsView.delegate = self
         achievementsView.dataSource = self
+
+        let rank = Self.getRank()
+        rankingView.configure(with: rank)
         reloadAchievements()
     }
 
@@ -77,7 +92,7 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         cell.descriptionLabel.text = achievement.description
         cell.achievementImageView.image = UIImage(named: achievement.imageIdentifier)
         cell.progressView.progress = Float(achievement.overallProgressRateRounded)
-        //cell.progressPercentage.text = String(describing: Float(achievement.overallProgressRateRounded))
+        // cell.progressPercentage.text = String(describing: Float(achievement.overallProgressRateRounded))
         let statusImageName = achievement.isComplete ? "checkmark.circle" : "x.circle"
         cell.statusImageView.image = UIImage(systemName: statusImageName)
 

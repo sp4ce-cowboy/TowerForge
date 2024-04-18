@@ -22,5 +22,3 @@ class CustomMissionCell: UITableViewCell {
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var statusImageView: UIImageView!
 }
-
-

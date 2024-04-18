@@ -191,6 +191,7 @@
 		BA2F5AC92BC81BDB00CBD8E9 /* StatisticsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */; };
 		BA2F5ACB2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5ACA2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift */; };
 		BA2F5ACD2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5ACC2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift */; };
+		BA436ADD2BD1BC3300BE3E4F /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436ADC2BD1BC3300BE3E4F /* RankView.swift */; };
 		BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */; };
 		BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */; };
 		BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D412BAD9885009F0FFB /* DamageEventTests.swift */; };
@@ -458,6 +459,7 @@
 		BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsEngine.swift; sourceTree = "<group>"; };
 		BA2F5ACA2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStatisticLinkDatabase.swift; sourceTree = "<group>"; };
 		BA2F5ACC2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticUpdateLinkDatabase.swift; sourceTree = "<group>"; };
+		BA436ADC2BD1BC3300BE3E4F /* RankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
 		BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
 		BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		BA443D412BAD9885009F0FFB /* DamageEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEventTests.swift; sourceTree = "<group>"; };
@@ -783,7 +785,6 @@
 				523E5C542BC63A16007444DA /* LeaderboardViewController.swift */,
 				52F930E62BC63F7F003D11B5 /* LeaderboardSelectionViewController.swift */,
 				BAEC99FD2BD15E0200E0C437 /* PlayerStatsViewController.swift */,
-				BAEC99FF2BD1A4B700E0C437 /* CustomAchievementCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -891,6 +892,7 @@
 				5295A2052BAA0208005018A8 /* Nodes */,
 				BAFFB9462BB0AABF00D8301F /* TFCore */,
 				5295A2002BA9FB97005018A8 /* Scenes */,
+				BA436ADB2BD1BC1F00BE3E4F /* Views */,
 				5295A2082BAAE14B005018A8 /* ViewControllers */,
 				52DF5FDB2BA32CEF00135367 /* LevelModule */,
 				BAFFB9332BB0A24400D8301F /* GameModule */,
@@ -1004,6 +1006,15 @@
 				BA2F5ABC2BC80A2300CBD8E9 /* Achievements */,
 			);
 			path = Metrics;
+			sourceTree = "<group>";
+		};
+		BA436ADB2BD1BC1F00BE3E4F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BAEC99FF2BD1A4B700E0C437 /* CustomAchievementCell.swift */,
+				BA436ADC2BD1BC3300BE3E4F /* RankView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		BA443D402BAD9872009F0FFB /* EventTests */ = {
@@ -1756,6 +1767,7 @@
 				527A07742BB3D8E800CD9D08 /* GameModeFactory.swift in Sources */,
 				5240D0AF2BB3B415004F1486 /* LifeEvent.swift in Sources */,
 				5295A2072BAA02FD005018A8 /* TFButtonNode.swift in Sources */,
+				BA436ADD2BD1BC3300BE3E4F /* RankView.swift in Sources */,
 				BAFFB96A2BB9A64000D8301F /* ObjectSet.swift in Sources */,
 				BA82C7902BCD2FAF000515A0 /* TotalDamageDealtStatistic.swift in Sources */,
 				3CD37AA32BBEC0F900222D8A /* FirebaseRemoteEventPublisher.swift in Sources */,
