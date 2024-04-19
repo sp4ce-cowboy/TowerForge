@@ -133,7 +133,7 @@ extension GameViewController: SceneManagerDelegate {
 extension GameViewController: StatePopupDelegate {
     func onMenu() {
         isPaused = false
-        gameWorld?.concede(playerid: currentPlayer?.userPlayerId)
+        gameWorld?.concede(player: currentPlayer)
     }
 
     func onResume() {

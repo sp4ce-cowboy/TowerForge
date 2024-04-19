@@ -31,13 +31,9 @@ class HealthSystem: TFSystem {
             return
         }
 
-        guard let currentPlayer = eventManager.currentPlayer else {
-            eventManager.add(KillEvent(on: currentEntity.id, at: CACurrentMediaTime(), player: playerComponent.player))
-            return
-        }
-
         if eventManager.isHost {
-            let remoteRemoveEvent = RemoteKillEvent(id: entityId, player: playerComponent.player, source: currentPlayer)
+            let remoteRemoveEvent = RemoteKillEvent(id: entityId, player: playerComponent.player,
+                                                    source: eventManager.currentPlayer ?? .defaultPlayer)
             eventManager.add(remoteRemoveEvent)
         }
     }

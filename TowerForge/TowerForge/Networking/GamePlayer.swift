@@ -8,6 +8,7 @@
 import Foundation
 
 class GamePlayer: Codable {
+    static let defaultPlayer = GamePlayer(userPlayerId: "", userName: "")
     var userPlayerId: UserPlayerId
     let userName: String
 
