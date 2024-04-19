@@ -14,7 +14,7 @@ final class HundredKillsAchievement: Achievement {
 
     static var definedParameters: [StatisticTypeWrapper: Double] =
     [
-        TotalKillsStatistic.asType: 100.0
+        TotalKillsStatistic.asType: 200.0
     ]
 
     init(dependentStatistics: [Statistic]) {

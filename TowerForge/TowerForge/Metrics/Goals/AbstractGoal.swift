@@ -73,7 +73,7 @@ extension AbstractGoal {
     }
 
     var overallProgressRateRounded: Double {
-        overallProgressRate.rounded() > 1.0 ? 1.0 : overallProgressRate.rounded()
+        overallProgressRate > 1.0 ? 1.0 : overallProgressRate
     }
 
     var isComplete: Bool {
