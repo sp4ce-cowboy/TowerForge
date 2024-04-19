@@ -9,7 +9,7 @@ import Foundation
 
 class EventManager {
     typealias EventHandler = (TFEvent) -> Void
-    var eventTransformations: [any EventTransformation]
+    var eventTransformations: [UUID: any EventTransformation]
     var eventQueue: [TFEvent]
     var eventHandler: [TFEventTypeWrapper: [EventHandler]]
     private(set) var remoteEventManager: RemoteEventManager?
@@ -17,7 +17,7 @@ class EventManager {
     private(set) var isHost = true
 
     init(roomId: RoomId? = nil, isHost: Bool = true, currentPlayer: GamePlayer? = nil) {
-        eventTransformations = []
+        eventTransformations = [:]
         eventQueue = []
         eventHandler = [:]
 
@@ -38,7 +38,10 @@ class EventManager {
         guard let remoteEventManager = remoteEventManager else {
             return event.unpack(into: self, for: event.source) // Unpack for self
         }
-        remoteEventManager.publisher.publish(remoteEvent: event)
+
+        DispatchQueue.global().async {
+            remoteEventManager.publisher.publish(remoteEvent: event)
+        }
     }
 
     func registerHandler<T: TFEvent>(forEvent eventType: T.Type, handler: @escaping EventHandler) {
@@ -56,37 +59,50 @@ class EventManager {
     }
 
     func addTransformation(eventTransformation: any EventTransformation) {
-        self.eventTransformations.append(eventTransformation)
+        self.eventTransformations[eventTransformation.id] = eventTransformation
     }
 
-    func removeTransformation(eventTransformation: any EventTransformation) {
-        self.eventTransformations.removeAll(where: { $0.id == eventTransformation.id })
+    func removeTransformation(with id: UUID) {
+        self.eventTransformations.removeValue(forKey: id)
     }
 
     func executeEvents(in target: EventTarget) {
-        while !eventQueue.isEmpty {
-            var currentEvent = eventQueue.removeFirst()
-
-            for eventTransformation in eventTransformations {
-                if let concurrentEvent = currentEvent as? ConcurrentEvent {
-                    currentEvent = concurrentEvent.transform(eventTransformation: eventTransformation)
-                } else {
-                    currentEvent = eventTransformation.transformEvent(event: currentEvent)
-                }
-            }
-
+        var newEvents: [TFEvent] = []
+        let numEvents = eventQueue.count
+        for event in eventQueue {
+            let currentEvent = transform(event: event)
             let output = currentEvent.execute(in: target)
-            output.events.forEach { eventQueue.append($0) }
+            newEvents.append(contentsOf: output.events)
 
-            // Get the type of the current event
-            let eventTypeWrapper = TFEventTypeWrapper(type: type(of: currentEvent))
+            updateHandlers(event: currentEvent)
+        }
+        eventQueue.removeFirst(numEvents)
+        eventQueue.append(contentsOf: newEvents)
+    }
 
-            // Check if there are any handlers registered for this event type
-            if let handlers = eventHandler[eventTypeWrapper] {
-                // Execute each handler with the current event
-                for handler in handlers {
-                    handler(currentEvent)
-                }
+    private func transform(event: TFEvent) -> TFEvent {
+        var currentEvent = event
+        for eventTransformation in eventTransformations.values {
+            print(type(of: currentEvent))
+            if let concurrentEvent = currentEvent as? ConcurrentEvent {
+                currentEvent = concurrentEvent.transform(eventTransformation: eventTransformation)
+            } else {
+                currentEvent = eventTransformation.transformEvent(event: currentEvent)
+            }
+            print(type(of: currentEvent))
+        }
+        return currentEvent
+    }
+
+    private func updateHandlers(event: TFEvent) {
+        // Get the type of the current event
+        let eventTypeWrapper = TFEventTypeWrapper(type: type(of: event))
+
+        // Check if there are any handlers registered for this event type
+        if let handlers = eventHandler[eventTypeWrapper] {
+            // Execute each handler with the current event
+            for handler in handlers {
+                handler(event)
             }
         }
     }

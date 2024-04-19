@@ -55,6 +55,7 @@
 		3CBECF892BBE9797005EF39B /* TFNetworkCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBECF882BBE9797005EF39B /* TFNetworkCoder.swift */; };
 		3CBECF8C2BBE9A41005EF39B /* TFRemoteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBECF8B2BBE9A41005EF39B /* TFRemoteEvent.swift */; };
 		3CBECF8E2BBE9EAC005EF39B /* RemoteSpawnEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBECF8D2BBE9EAC005EF39B /* RemoteSpawnEvent.swift */; };
+		3CCA1EEE2BD247E8009302F8 /* RemoteRemovePowerupEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA1EED2BD247E8009302F8 /* RemoteRemovePowerupEvent.swift */; };
 		3CCA1EF02BD2861B009302F8 /* UpdatePostionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA1EEF2BD2861B009302F8 /* UpdatePostionEvent.swift */; };
 		3CCF9CAF2BAB1A96004D170E /* SceneUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF9CAE2BAB1A96004D170E /* SceneUpdateDelegate.swift */; };
 		3CCF9CB12BAB1BCE004D170E /* GameWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF9CB02BAB1BCE004D170E /* GameWorld.swift */; };
@@ -322,6 +323,7 @@
 		3CBECF882BBE9797005EF39B /* TFNetworkCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFNetworkCoder.swift; sourceTree = "<group>"; };
 		3CBECF8B2BBE9A41005EF39B /* TFRemoteEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFRemoteEvent.swift; sourceTree = "<group>"; };
 		3CBECF8D2BBE9EAC005EF39B /* RemoteSpawnEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSpawnEvent.swift; sourceTree = "<group>"; };
+		3CCA1EED2BD247E8009302F8 /* RemoteRemovePowerupEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRemovePowerupEvent.swift; sourceTree = "<group>"; };
 		3CCA1EEF2BD2861B009302F8 /* UpdatePostionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePostionEvent.swift; sourceTree = "<group>"; };
 		3CCF9CAE2BAB1A96004D170E /* SceneUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneUpdateDelegate.swift; sourceTree = "<group>"; };
 		3CCF9CB02BAB1BCE004D170E /* GameWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWorld.swift; sourceTree = "<group>"; };
@@ -630,6 +632,7 @@
 				3CBE72FA2BC8D63E00CC446A /* RemoteDamageEvent.swift */,
 				3CD37AA62BBEC5EF00222D8A /* BaseRemoteEvent.swift */,
 				3CBE72FE2BC8D66C00CC446A /* RemotePowerupEvent.swift */,
+				3CCA1EED2BD247E8009302F8 /* RemoteRemovePowerupEvent.swift */,
 				3CD7DE372BCEB6D200CB21F0 /* RemoteConcedeEvent.swift */,
 			);
 			path = RemoteEvents;
@@ -1690,6 +1693,7 @@
 				5295A2022BA9FBD9005018A8 /* SceneManagerDelegate.swift in Sources */,
 				52DF5FE12BA3349600135367 /* TFTextures.swift in Sources */,
 				520062582BA8ED73000DBA30 /* HomeComponent.swift in Sources */,
+				3CCA1EEE2BD247E8009302F8 /* RemoteRemovePowerupEvent.swift in Sources */,
 				3CCA1EF02BD2861B009302F8 /* UpdatePostionEvent.swift in Sources */,
 				52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */,
 				5240D08F2BAE6D0A004F1486 /* Point.swift in Sources */,

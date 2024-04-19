@@ -8,17 +8,17 @@
 import SpriteKit
 
 enum PowerUp: String {
-    case invulnerability
+    case Invulnerability
 
     var imageName: String {
         switch self {
-        case .invulnerability:
+        case .Invulnerability:
             return "invulnerability"
         }
     }
 
     static var allPowerUps: [PowerUp] {
-        [.invulnerability]
+        [.Invulnerability]
     }
 }
 
