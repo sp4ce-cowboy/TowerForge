@@ -21,5 +21,4 @@ extension GamePlayer: Equatable {
     static func == (lhs: GamePlayer, rhs: GamePlayer) -> Bool {
         lhs.userPlayerId == rhs.userPlayerId
     }
-
 }

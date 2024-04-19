@@ -49,12 +49,13 @@
 		3CAC4A752BB6BDD500A5D22E /* HealthRenderStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CAC4A742BB6BDD500A5D22E /* HealthRenderStage.swift */; };
 		3CBE72F92BC8D63500CC446A /* RemoteKillEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE72F82BC8D63500CC446A /* RemoteKillEvent.swift */; };
 		3CBE72FB2BC8D63E00CC446A /* RemoteDamageEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE72FA2BC8D63E00CC446A /* RemoteDamageEvent.swift */; };
-		3CBE72FD2BC8D64F00CC446A /* RemoteMoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE72FC2BC8D64F00CC446A /* RemoteMoveEvent.swift */; };
+		3CBE72FD2BC8D64F00CC446A /* RemoteSyncPositionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE72FC2BC8D64F00CC446A /* RemoteSyncPositionEvent.swift */; };
 		3CBE72FF2BC8D66C00CC446A /* RemotePowerupEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE72FE2BC8D66C00CC446A /* RemotePowerupEvent.swift */; };
 		3CBE73012BC8D69A00CC446A /* RemoteLifeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBE73002BC8D69A00CC446A /* RemoteLifeEvent.swift */; };
 		3CBECF892BBE9797005EF39B /* TFNetworkCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBECF882BBE9797005EF39B /* TFNetworkCoder.swift */; };
 		3CBECF8C2BBE9A41005EF39B /* TFRemoteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBECF8B2BBE9A41005EF39B /* TFRemoteEvent.swift */; };
 		3CBECF8E2BBE9EAC005EF39B /* RemoteSpawnEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBECF8D2BBE9EAC005EF39B /* RemoteSpawnEvent.swift */; };
+		3CCA1EF02BD2861B009302F8 /* UpdatePostionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCA1EEF2BD2861B009302F8 /* UpdatePostionEvent.swift */; };
 		3CCF9CAF2BAB1A96004D170E /* SceneUpdateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF9CAE2BAB1A96004D170E /* SceneUpdateDelegate.swift */; };
 		3CCF9CB12BAB1BCE004D170E /* GameWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF9CB02BAB1BCE004D170E /* GameWorld.swift */; };
 		3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF9CB22BAB1F42004D170E /* SystemManager.swift */; };
@@ -315,12 +316,13 @@
 		3CAC4A742BB6BDD500A5D22E /* HealthRenderStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRenderStage.swift; sourceTree = "<group>"; };
 		3CBE72F82BC8D63500CC446A /* RemoteKillEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteKillEvent.swift; sourceTree = "<group>"; };
 		3CBE72FA2BC8D63E00CC446A /* RemoteDamageEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDamageEvent.swift; sourceTree = "<group>"; };
-		3CBE72FC2BC8D64F00CC446A /* RemoteMoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMoveEvent.swift; sourceTree = "<group>"; };
+		3CBE72FC2BC8D64F00CC446A /* RemoteSyncPositionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSyncPositionEvent.swift; sourceTree = "<group>"; };
 		3CBE72FE2BC8D66C00CC446A /* RemotePowerupEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePowerupEvent.swift; sourceTree = "<group>"; };
 		3CBE73002BC8D69A00CC446A /* RemoteLifeEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLifeEvent.swift; sourceTree = "<group>"; };
 		3CBECF882BBE9797005EF39B /* TFNetworkCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFNetworkCoder.swift; sourceTree = "<group>"; };
 		3CBECF8B2BBE9A41005EF39B /* TFRemoteEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFRemoteEvent.swift; sourceTree = "<group>"; };
 		3CBECF8D2BBE9EAC005EF39B /* RemoteSpawnEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSpawnEvent.swift; sourceTree = "<group>"; };
+		3CCA1EEF2BD2861B009302F8 /* UpdatePostionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePostionEvent.swift; sourceTree = "<group>"; };
 		3CCF9CAE2BAB1A96004D170E /* SceneUpdateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneUpdateDelegate.swift; sourceTree = "<group>"; };
 		3CCF9CB02BAB1BCE004D170E /* GameWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWorld.swift; sourceTree = "<group>"; };
 		3CCF9CB22BAB1F42004D170E /* SystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemManager.swift; sourceTree = "<group>"; };
@@ -624,7 +626,7 @@
 				3CBECF8D2BBE9EAC005EF39B /* RemoteSpawnEvent.swift */,
 				3CBE72F82BC8D63500CC446A /* RemoteKillEvent.swift */,
 				3CBE73002BC8D69A00CC446A /* RemoteLifeEvent.swift */,
-				3CBE72FC2BC8D64F00CC446A /* RemoteMoveEvent.swift */,
+				3CBE72FC2BC8D64F00CC446A /* RemoteSyncPositionEvent.swift */,
 				3CBE72FA2BC8D63E00CC446A /* RemoteDamageEvent.swift */,
 				3CD37AA62BBEC5EF00222D8A /* BaseRemoteEvent.swift */,
 				3CBE72FE2BC8D66C00CC446A /* RemotePowerupEvent.swift */,
@@ -1274,6 +1276,7 @@
 				3C9955C92BA5888F00D33FA5 /* SpawnEvent.swift */,
 				BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */,
 				5240D0AE2BB3B415004F1486 /* LifeEvent.swift */,
+				3CCA1EEF2BD2861B009302F8 /* UpdatePostionEvent.swift */,
 				527A077B2BB3F4CC00CD9D08 /* KillEvent.swift */,
 				9BC60BC72BB9BE6D001A6737 /* DisabledEvent.swift */,
 				3CD7DE392BCEB87900CB21F0 /* ConcedeEvent.swift */,
@@ -1603,7 +1606,7 @@
 				3CD37AA52BBEC10700222D8A /* FirebaseRemoteEventSubscriber.swift in Sources */,
 				BA82C7792BCC6943000515A0 /* CenturionAchievement.swift in Sources */,
 				52A794172BBC4F690083C976 /* GamePlayer.swift in Sources */,
-				3CBE72FD2BC8D64F00CC446A /* RemoteMoveEvent.swift in Sources */,
+				3CBE72FD2BC8D64F00CC446A /* RemoteSyncPositionEvent.swift in Sources */,
 				3CE951632BAE037C008B2785 /* AiSystem.swift in Sources */,
 				3CE9515F2BADE2C5008B2785 /* ShootingSystem.swift in Sources */,
 				5240D0AB2BB3340F004F1486 /* CaptureTheFlagMode.swift in Sources */,
@@ -1687,6 +1690,7 @@
 				5295A2022BA9FBD9005018A8 /* SceneManagerDelegate.swift in Sources */,
 				52DF5FE12BA3349600135367 /* TFTextures.swift in Sources */,
 				520062582BA8ED73000DBA30 /* HomeComponent.swift in Sources */,
+				3CCA1EF02BD2861B009302F8 /* UpdatePostionEvent.swift in Sources */,
 				52DF5FA82BA32B2300135367 /* AppDelegate.swift in Sources */,
 				5240D08F2BAE6D0A004F1486 /* Point.swift in Sources */,
 				3C769A742BA591BD00F454F9 /* SpawnSystem.swift in Sources */,
