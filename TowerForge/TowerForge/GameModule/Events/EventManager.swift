@@ -83,13 +83,11 @@ class EventManager {
     private func transform(event: TFEvent) -> TFEvent {
         var currentEvent = event
         for eventTransformation in eventTransformations.values {
-            print(type(of: currentEvent))
             if let concurrentEvent = currentEvent as? ConcurrentEvent {
                 currentEvent = concurrentEvent.transform(eventTransformation: eventTransformation)
             } else {
                 currentEvent = eventTransformation.transformEvent(event: currentEvent)
             }
-            print(type(of: currentEvent))
         }
         return currentEvent
     }

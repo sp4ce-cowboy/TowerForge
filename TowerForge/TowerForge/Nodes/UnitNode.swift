@@ -26,13 +26,11 @@ class UnitNode: TFEntity {
     init<T: TFEntity & PlayerSpawnable>(ofType type: T.Type, position: CGPoint) {
         self.type = type
         super.init()
-        let spriteComponent = SpriteComponent(textureNames: [type.title], size: UnitNode.size, animatableKey: "node")
-        addComponent(spriteComponent)
+        setUpSpriteComponent()
         addComponent(PositionComponent(position: position))
         setUpButtonComponent(size: UnitNode.size)
         setupLabelComponent(cost: type.cost, displacement: CGVector(dx: -UnitNode.size.width, dy: 0))
 
-        spriteComponent.staticOnScreen = true
     }
 
     func update(alpha: CGFloat) {
@@ -42,17 +40,26 @@ class UnitNode: TFEntity {
         spriteComponent.alpha = alpha
     }
 
+    private func setUpSpriteComponent() {
+        let spriteComponent = SpriteComponent(textureNames: [type.title], size: UnitNode.size, animatableKey: "node")
+        spriteComponent.tint = .black
+        spriteComponent.zPosition = 1_000
+        addComponent(spriteComponent)
+        spriteComponent.staticOnScreen = true
+    }
+
     private func setUpButtonComponent(size: CGSize) {
         let buttonDelegate = TFButtonDelegate(onTouchBegan: { self.delegate?.unitNodeDidSelect(self) },
                                               onTouchEnded: {})
-        addComponent(ButtonComponent(size: size, buttonDelegate: buttonDelegate))
+        let buttonComponent = ButtonComponent(size: size, buttonDelegate: buttonDelegate)
+        addComponent(buttonComponent)
     }
 
     private func setupLabelComponent(cost amount: Int, displacement: CGVector) {
         let labelComponent = LabelComponent(text: String(amount), name: "unitLabel")
         labelComponent.fontColor = .yellow
         labelComponent.fontSize = 20.0
-        labelComponent.zPosition = 10.0
+        labelComponent.zPosition = 10_000
         labelComponent.displacement = displacement
         labelComponent.verticalAlignment = .trailing
         labelComponent.horizontalAlignment = .center

@@ -58,6 +58,7 @@ class SpriteRenderStage: RenderStage {
             return
         }
         spriteNode.alpha = spriteComponent.alpha
+        spriteNode.color = spriteComponent.tint
 
         if let node = renderer.renderedNodes[entity.id], node.staticOnScreen {
             node.position.x -= UIScreen.main.bounds.midX

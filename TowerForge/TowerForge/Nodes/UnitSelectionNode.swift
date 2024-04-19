@@ -61,6 +61,8 @@ class UnitSelectionNode: TFEntity {
 extension UnitSelectionNode: UnitNodeDelegate {
     func unitNodeDidSelect(_ unitNode: UnitNode) {
         if unitNode.purchasable {
+            selectedNode?.component(ofType: SpriteComponent.self)?.tint = .black
+            unitNode.component(ofType: SpriteComponent.self)?.tint = .white
             selectedNode = unitNode
         }
     }

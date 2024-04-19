@@ -36,7 +36,7 @@ class ButtonRenderStage: RenderStage {
         }
         let buttonNode = TFButtonNode(action: buttonComponent.onTouch, size: buttonComponent.size)
         buttonNode.name = ButtonRenderStage.name
-        buttonNode.zPosition = 1_000
+        buttonNode.zPosition = 1_000_000
         renderedNodes[entity.id] = buttonNode
         renderer.renderedNodes[entity.id]?.add(child: buttonNode)
     }

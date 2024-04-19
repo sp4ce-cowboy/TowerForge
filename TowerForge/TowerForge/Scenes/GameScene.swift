@@ -26,7 +26,7 @@ class GameScene: SKScene {
             return
         }
         super.touchesBegan(touches, with: event)
-        guard let touch = touches.first else {
+        guard let touch = touches.first, touch.phase == .began else {
             return
         }
 
@@ -39,13 +39,13 @@ class GameScene: SKScene {
             return
         }
         super.touchesEnded(touches, with: event)
-        guard let touch = touches.first else {
+        guard let touch = touches.first, touch.phase == .ended else {
             return
         }
 
         let location = touch.location(in: self)
 
-        if location.distanceTo(startLocation) < 10 {
+        if location.distanceTo(startLocation) < 15 {
             updateDelegate?.touch(at: location)
         }
     }

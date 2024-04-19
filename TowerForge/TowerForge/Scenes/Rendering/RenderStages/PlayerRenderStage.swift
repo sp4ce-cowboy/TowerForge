@@ -34,8 +34,9 @@ class PlayerRenderStage: RenderStage {
 
         if playerComponent.player == .oppositePlayer, let node = renderer.renderedNodes[entity.id] {
             node.xScale *= -1
-            if let spriteNode = node.child(withName: SpriteRenderStage.name) as? TFSpriteNode {
-                spriteNode.color = SpriteRenderStage.opponentTint
+
+            if let spriteComponent = entity.component(ofType: SpriteComponent.self) {
+                spriteComponent.tint = SpriteRenderStage.opponentTint
             }
 
             if let healthNode = node.child(withName: HealthRenderStage.name) as? TFSpriteNode {
