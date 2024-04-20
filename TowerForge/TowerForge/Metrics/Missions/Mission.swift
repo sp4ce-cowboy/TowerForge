@@ -10,6 +10,8 @@ import Foundation
 protocol Mission: AbstractGoal { }
 
 extension Mission {
+    var imageIdentifier: String { "damage" }
+
     static var asType: MissionTypeWrapper {
         MissionTypeWrapper(type: Self.self)
     }

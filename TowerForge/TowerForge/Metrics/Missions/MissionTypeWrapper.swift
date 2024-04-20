@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MissionTypeWrapper: Equatable, Hashable {
+struct MissionTypeWrapper: Equatable, Hashable, Comparable {
     let type: Mission.Type
 
     var asString: String {
@@ -20,5 +20,13 @@ struct MissionTypeWrapper: Equatable, Hashable {
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(ObjectIdentifier(type))
+    }
+
+    static func < (lhs: MissionTypeWrapper, rhs: MissionTypeWrapper) -> Bool {
+        lhs.asString < rhs.asString
+    }
+
+    static func > (lhs: MissionTypeWrapper, rhs: MissionTypeWrapper) -> Bool {
+        lhs.asString > rhs.asString
     }
 }

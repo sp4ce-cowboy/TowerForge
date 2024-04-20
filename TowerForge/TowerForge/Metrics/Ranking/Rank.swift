@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Rank: String, CaseIterable {
+enum Rank: String, CaseIterable, Comparable {
     case PRIVATE
     case CORPORAL
     case SERGEANT
@@ -19,14 +19,35 @@ enum Rank: String, CaseIterable {
 
     var valueRange: Range<Int> {
         switch self {
-        case .PRIVATE:      return 0..<1_001
-        case .CORPORAL:     return 1_001..<2_001
-        case .SERGEANT:     return 2_001..<3_001
-        case .LIEUTENANT:   return 3_001..<4_001
-        case .CAPTAIN:      return 4_001..<5_001
-        case .MAJOR:        return 6_001..<7_001
-        case .COLONEL:      return 7_001..<8_001
-        case .GENERAL:      return 8_001..<9_001
+        case .PRIVATE:      return 0..<10_001
+        case .CORPORAL:     return 10_001..<20_001
+        case .SERGEANT:     return 20_001..<30_001
+        case .LIEUTENANT:   return 30_001..<50_001
+        case .CAPTAIN:      return 50_001..<100_001
+        case .MAJOR:        return 100_001..<300_001
+        case .COLONEL:      return 300_001..<800_001
+        case .GENERAL:      return 800_001..<Int.max
         }
+    }
+
+    var imageIdentifer: String {
+        switch self {
+        case .PRIVATE:      return "private"
+        case .CORPORAL:     return "corporal"
+        case .SERGEANT:     return "sergeant"
+        case .LIEUTENANT:   return "lieutenant"
+        case .CAPTAIN:      return "captain"
+        case .MAJOR:        return "major"
+        case .COLONEL:      return "colonel"
+        case .GENERAL:      return "general"
+        }
+    }
+
+    static func < (lhs: Rank, rhs: Rank) -> Bool {
+        allCases.firstIndex(of: lhs)! < allCases.firstIndex(of: rhs)!
+    }
+
+    func isOfficer() -> Bool {
+        self > .SERGEANT
     }
 }

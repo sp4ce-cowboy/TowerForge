@@ -15,6 +15,7 @@ import Foundation
 class AchievementsEngine: InferenceEngine, InferenceDataDelegate {
     unowned var statisticsEngine: StatisticsEngine
     var achievementsDatabase: AchievementsDatabase
+
     var statisticsDatabase: StatisticsDatabase {
         statisticsEngine.statistics
     }

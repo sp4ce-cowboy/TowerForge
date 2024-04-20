@@ -9,7 +9,15 @@ import Foundation
 
 class AchievementsDatabase {
     weak var achievementsDataDelegate: InferenceDataDelegate?
-    var achievements: [AchievementTypeWrapper: Achievement] = [:]
+    private var achievements: [AchievementTypeWrapper: Achievement] = [:]
+
+    var count: Int {
+        achievements.count
+    }
+
+    var asSortedArray: [Dictionary<AchievementTypeWrapper, any Achievement>.Element] {
+        Array(achievements).sorted(by: { $0.key < $1.key })
+    }
 
     init(achievements: [AchievementTypeWrapper: Achievement] = [:]) {
         self.achievements = achievements

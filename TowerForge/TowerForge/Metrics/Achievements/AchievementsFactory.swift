@@ -24,6 +24,14 @@ class AchievementsFactory {
         let achievementsDatabase = AchievementsDatabase()
         achievementsDatabase.achievementsDataDelegate = data
         availableAchievementTypes.values.forEach { achievementsDatabase.addAchievement(for: $0.asType) }
+        Logger.log("Default achievements retrieved with \(achievementsDatabase.count)", self)
+        return achievementsDatabase
+    }
+
+    static func getEmptyAchievementsDatabase() -> AchievementsDatabase {
+        let achievementsDatabase = AchievementsDatabase()
+        availableAchievementTypes.values.forEach { achievementsDatabase.addAchievement(for: $0.asType) }
+        Logger.log("Empty achievements retrieved with \(achievementsDatabase.count)", self)
         return achievementsDatabase
     }
 

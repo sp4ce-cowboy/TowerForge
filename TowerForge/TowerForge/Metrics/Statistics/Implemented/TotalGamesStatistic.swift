@@ -9,6 +9,7 @@ import Foundation
 
 final class TotalGamesStatistic: Statistic {
     static let expMultiplier: Double = 100
+    var prettyName: String = "Total Games"
     var permanentValue: Double = .zero
     var currentValue: Double = .zero
     var maximumCurrentValue: Double

@@ -39,8 +39,8 @@ class MovementSystem: TFSystem {
     ///   - displacement: Value of the required displacement
     func handleMovement(for entityId: UUID, with displacement: CGVector) {
         /*guard isActive else { TODO: Implement boolean check
-            return
-        }*/
+         return
+         }*/
         guard let currentEntity = entityManager.entity(with: entityId),
               let movementComponent = currentEntity.component(ofType: MovableComponent.self) else {
             return
@@ -59,6 +59,7 @@ class MovementSystem: TFSystem {
     }
 
     private func processMovableComponent(_ movableComponent: MovableComponent, time: CGFloat) {
+
         guard movableComponent.shouldMove, let entity = movableComponent.entity,
               let player = entity.component(ofType: PlayerComponent.self)?.player else {
             return

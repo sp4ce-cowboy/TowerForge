@@ -13,6 +13,7 @@ import Foundation
 /// Each achievement will correspond to a collection of statistics.
 protocol AbstractGoal: AnyObject {
     static var goalType: AbstractGoalTypeWrapper { get }
+    var imageIdentifier: String { get }
     var name: String { get }
     var description: String { get }
 
@@ -70,7 +71,7 @@ extension AbstractGoal {
     }
 
     var overallProgressRateRounded: Double {
-        overallProgressRate.rounded()
+        overallProgressRate > 1.0 ? 1.0 : overallProgressRate
     }
 
     var isComplete: Bool {

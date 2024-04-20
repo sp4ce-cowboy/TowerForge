@@ -197,6 +197,9 @@
 		BA2F5AC92BC81BDB00CBD8E9 /* StatisticsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */; };
 		BA2F5ACB2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5ACA2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift */; };
 		BA2F5ACD2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F5ACC2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift */; };
+		BA436ADF2BD3CE9600BE3E4F /* CustomMissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436ADE2BD3CE9600BE3E4F /* CustomMissionCell.swift */; };
+		BA436AE12BD3D66800BE3E4F /* MassKillMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AE02BD3D66800BE3E4F /* MassKillMission.swift */; };
+		BA436AE32BD3D6FF00BE3E4F /* MassDeathMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AE22BD3D6FF00BE3E4F /* MassDeathMission.swift */; };
 		BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */; };
 		BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */; };
 		BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D412BAD9885009F0FFB /* DamageEventTests.swift */; };
@@ -235,7 +238,7 @@
 		BA82C7882BCD2B51000515A0 /* MissionsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7872BCD2B51000515A0 /* MissionsDatabase.swift */; };
 		BA82C78A2BCD2B5D000515A0 /* MissionsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7892BCD2B5D000515A0 /* MissionsEngine.swift */; };
 		BA82C78C2BCD2B68000515A0 /* MissionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C78B2BCD2B68000515A0 /* MissionsFactory.swift */; };
-		BA82C78E2BCD2D2B000515A0 /* GrandDamageMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C78D2BCD2D2B000515A0 /* GrandDamageMission.swift */; };
+		BA82C78E2BCD2D2B000515A0 /* MassDamageMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C78D2BCD2D2B000515A0 /* MassDamageMission.swift */; };
 		BA82C7902BCD2FAF000515A0 /* TotalDamageDealtStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C78F2BCD2FAF000515A0 /* TotalDamageDealtStatistic.swift */; };
 		BA82C7922BCD6579000515A0 /* StatisticUpdateActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7912BCD6579000515A0 /* StatisticUpdateActor.swift */; };
 		BA82C7942BCDAA83000515A0 /* InferenceDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7932BCDAA83000515A0 /* InferenceDataDelegate.swift */; };
@@ -244,6 +247,10 @@
 		BA82C79D2BCDD9ED000515A0 /* InferenceEngineTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C79C2BCDD9ED000515A0 /* InferenceEngineTypeWrapper.swift */; };
 		BA82C79F2BCE7FBA000515A0 /* AbstractGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C79E2BCE7FBA000515A0 /* AbstractGoal.swift */; };
 		BA82C7A22BCE8138000515A0 /* AbstractGoalTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7A12BCE8138000515A0 /* AbstractGoalTypeWrapper.swift */; };
+		BAEC99FA2BD13F2600E0C437 /* AbstractTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC99F92BD13F2600E0C437 /* AbstractTypeWrapper.swift */; };
+		BAEC99FC2BD15AAB00E0C437 /* StorageDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC99FB2BD15AAB00E0C437 /* StorageDatabase.swift */; };
+		BAEC99FE2BD15E0200E0C437 /* PlayerStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC99FD2BD15E0200E0C437 /* PlayerStatsViewController.swift */; };
+		BAEC9A002BD1A4B700E0C437 /* CustomAchievementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC99FF2BD1A4B700E0C437 /* CustomAchievementCell.swift */; };
 		BAFFB9452BB0A8C800D8301F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9442BB0A8C800D8301F /* Constants.swift */; };
 		BAFFB9492BB0ABC400D8301F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9482BB0ABC400D8301F /* Logger.swift */; };
 		BAFFB94B2BB11F9800D8301F /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB94A2BB11F9800D8301F /* GameEngine.swift */; };
@@ -466,6 +473,9 @@
 		BA2F5AC82BC81BDB00CBD8E9 /* StatisticsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsEngine.swift; sourceTree = "<group>"; };
 		BA2F5ACA2BC82CCC00CBD8E9 /* EventStatisticLinkDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStatisticLinkDatabase.swift; sourceTree = "<group>"; };
 		BA2F5ACC2BC8313900CBD8E9 /* StatisticUpdateLinkDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticUpdateLinkDatabase.swift; sourceTree = "<group>"; };
+		BA436ADE2BD3CE9600BE3E4F /* CustomMissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMissionCell.swift; sourceTree = "<group>"; };
+		BA436AE02BD3D66800BE3E4F /* MassKillMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassKillMission.swift; sourceTree = "<group>"; };
+		BA436AE22BD3D6FF00BE3E4F /* MassDeathMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassDeathMission.swift; sourceTree = "<group>"; };
 		BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
 		BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		BA443D412BAD9885009F0FFB /* DamageEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEventTests.swift; sourceTree = "<group>"; };
@@ -504,7 +514,7 @@
 		BA82C7872BCD2B51000515A0 /* MissionsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsDatabase.swift; sourceTree = "<group>"; };
 		BA82C7892BCD2B5D000515A0 /* MissionsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsEngine.swift; sourceTree = "<group>"; };
 		BA82C78B2BCD2B68000515A0 /* MissionsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsFactory.swift; sourceTree = "<group>"; };
-		BA82C78D2BCD2D2B000515A0 /* GrandDamageMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrandDamageMission.swift; sourceTree = "<group>"; };
+		BA82C78D2BCD2D2B000515A0 /* MassDamageMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassDamageMission.swift; sourceTree = "<group>"; };
 		BA82C78F2BCD2FAF000515A0 /* TotalDamageDealtStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalDamageDealtStatistic.swift; sourceTree = "<group>"; };
 		BA82C7912BCD6579000515A0 /* StatisticUpdateActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticUpdateActor.swift; sourceTree = "<group>"; };
 		BA82C7932BCDAA83000515A0 /* InferenceDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InferenceDataDelegate.swift; sourceTree = "<group>"; };
@@ -514,6 +524,10 @@
 		BA82C79E2BCE7FBA000515A0 /* AbstractGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractGoal.swift; sourceTree = "<group>"; };
 		BA82C7A12BCE8138000515A0 /* AbstractGoalTypeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractGoalTypeWrapper.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
+		BAEC99F92BD13F2600E0C437 /* AbstractTypeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractTypeWrapper.swift; sourceTree = "<group>"; };
+		BAEC99FB2BD15AAB00E0C437 /* StorageDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDatabase.swift; sourceTree = "<group>"; };
+		BAEC99FD2BD15E0200E0C437 /* PlayerStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatsViewController.swift; sourceTree = "<group>"; };
+		BAEC99FF2BD1A4B700E0C437 /* CustomAchievementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAchievementCell.swift; sourceTree = "<group>"; };
 		BAFFB9442BB0A8C800D8301F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BAFFB9482BB0ABC400D8301F /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		BAFFB94A2BB11F9800D8301F /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
@@ -787,6 +801,7 @@
 				52DD8F982BC52F8400D96BAB /* LevelPopupViewController.swift */,
 				523E5C542BC63A16007444DA /* LeaderboardViewController.swift */,
 				52F930E62BC63F7F003D11B5 /* LeaderboardSelectionViewController.swift */,
+				BAEC99FD2BD15E0200E0C437 /* PlayerStatsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -894,6 +909,7 @@
 				5295A2052BAA0208005018A8 /* Nodes */,
 				BAFFB9462BB0AABF00D8301F /* TFCore */,
 				5295A2002BA9FB97005018A8 /* Scenes */,
+				BA436ADB2BD1BC1F00BE3E4F /* Views */,
 				5295A2082BAAE14B005018A8 /* ViewControllers */,
 				52DF5FDB2BA32CEF00135367 /* LevelModule */,
 				BAFFB9332BB0A24400D8301F /* GameModule */,
@@ -1013,6 +1029,15 @@
 			path = Metrics;
 			sourceTree = "<group>";
 		};
+		BA436ADB2BD1BC1F00BE3E4F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BAEC99FF2BD1A4B700E0C437 /* CustomAchievementCell.swift */,
+				BA436ADE2BD3CE9600BE3E4F /* CustomMissionCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		BA443D402BAD9872009F0FFB /* EventTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1110,7 +1135,9 @@
 		BA82C7842BCD2B35000515A0 /* Implemented */ = {
 			isa = PBXGroup;
 			children = (
-				BA82C78D2BCD2D2B000515A0 /* GrandDamageMission.swift */,
+				BA82C78D2BCD2D2B000515A0 /* MassDamageMission.swift */,
+				BA436AE02BD3D66800BE3E4F /* MassKillMission.swift */,
+				BA436AE22BD3D6FF00BE3E4F /* MassDeathMission.swift */,
 			);
 			path = Implemented;
 			sourceTree = "<group>";
@@ -1356,6 +1383,7 @@
 			children = (
 				BAFFB9482BB0ABC400D8301F /* Logger.swift */,
 				BAFFB9692BB9A64000D8301F /* ObjectSet.swift */,
+				BAEC99F92BD13F2600E0C437 /* AbstractTypeWrapper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1376,6 +1404,7 @@
 		BAFFB9512BB342E200D8301F /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				BAEC99FB2BD15AAB00E0C437 /* StorageDatabase.swift */,
 				BA82C76E2BCBDE91000515A0 /* Metadata.swift */,
 				BA82C77A2BCD05DC000515A0 /* MetadataManager.swift */,
 				BA82C76A2BCBD682000515A0 /* StorageManager.swift */,
@@ -1573,6 +1602,7 @@
 				523C29302BBD0916004C6EAC /* GameWaitingRoomViewController.swift in Sources */,
 				BA2F5AC12BC80BE500CBD8E9 /* Statistic.swift in Sources */,
 				3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */,
+				BAEC99FA2BD13F2600E0C437 /* AbstractTypeWrapper.swift in Sources */,
 				5299D1432BC3AB38003EF746 /* GameRankProvider.swift in Sources */,
 				5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */,
 				3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */,
@@ -1588,7 +1618,7 @@
 				5240D0A72BB33356004F1486 /* LifeProp.swift in Sources */,
 				3CA829C42BB70C5E00D8E72A /* ButtonComponent.swift in Sources */,
 				3CBECF892BBE9797005EF39B /* TFNetworkCoder.swift in Sources */,
-				BA82C78E2BCD2D2B000515A0 /* GrandDamageMission.swift in Sources */,
+				BA82C78E2BCD2D2B000515A0 /* MassDamageMission.swift in Sources */,
 				523E5C552BC63A16007444DA /* LeaderboardViewController.swift in Sources */,
 				5299D13E2BC36E61003EF746 /* RegisterViewController.swift in Sources */,
 				52DF5FFF2BA3656500135367 /* ShootingComponent.swift in Sources */,
@@ -1620,6 +1650,7 @@
 				BA82C7672BCBCB00000515A0 /* StatisticsDatabase+Codable.swift in Sources */,
 				3CD37AA52BBEC10700222D8A /* FirebaseRemoteEventSubscriber.swift in Sources */,
 				BA82C7792BCC6943000515A0 /* CenturionAchievement.swift in Sources */,
+				BAEC9A002BD1A4B700E0C437 /* CustomAchievementCell.swift in Sources */,
 				9B274DC82BD250420062715C /* NoCostPowerUp.swift in Sources */,
 				52A794172BBC4F690083C976 /* GamePlayer.swift in Sources */,
 				3CBE72FD2BC8D64F00CC446A /* RemoteSyncPositionEvent.swift in Sources */,
@@ -1635,6 +1666,7 @@
 				BA82C7A22BCE8138000515A0 /* AbstractGoalTypeWrapper.swift in Sources */,
 				3CE9514B2BAC83FA008B2785 /* SpawnableEntities.swift in Sources */,
 				5299D1302BC31002003EF746 /* AuthenticationProvider.swift in Sources */,
+				BA436ADF2BD3CE9600BE3E4F /* CustomMissionCell.swift in Sources */,
 				3C3CBDF92BB821500001B8A9 /* TFScene.swift in Sources */,
 				BA82C79F2BCE7FBA000515A0 /* AbstractGoal.swift in Sources */,
 				BA82C7652BCBC868000515A0 /* LocalStorageManager.swift in Sources */,
@@ -1667,6 +1699,7 @@
 				52A794112BBC48FE0083C976 /* GameRoom.swift in Sources */,
 				3CD37AA72BBEC5EF00222D8A /* BaseRemoteEvent.swift in Sources */,
 				527A077C2BB3F4CC00CD9D08 /* KillEvent.swift in Sources */,
+				BAEC99FE2BD15E0200E0C437 /* PlayerStatsViewController.swift in Sources */,
 				5299D1322BC31050003EF746 /* AuthenticationManager.swift in Sources */,
 				3C3CBE012BB870950001B8A9 /* CGVector+Extensions.swift in Sources */,
 				5299D13C2BC3670E003EF746 /* LoginViewController.swift in Sources */,
@@ -1727,6 +1760,7 @@
 				BA82C7442BC86FFE000515A0 /* GameStartEvent.swift in Sources */,
 				BA82C7692BCBD21F000515A0 /* RemoteStorageManager.swift in Sources */,
 				9B0406102BB879990026E903 /* InvulnerabilityPowerUp.swift in Sources */,
+				BA436AE12BD3D66800BE3E4F /* MassKillMission.swift in Sources */,
 				5299D1412BC3AA3A003EF746 /* GameRankData.swift in Sources */,
 				52F930E72BC63F7F003D11B5 /* LeaderboardSelectionViewController.swift in Sources */,
 				BA82C76F2BCBDE91000515A0 /* Metadata.swift in Sources */,
@@ -1740,12 +1774,14 @@
 				BAFFB95D2BB978E500D8301F /* StorageEnums.swift in Sources */,
 				52DF5FED2BA34D0300135367 /* TFComponent.swift in Sources */,
 				527E3A242BA613F000FE1628 /* PlayerComponent.swift in Sources */,
+				BA436AE32BD3D6FF00BE3E4F /* MassDeathMission.swift in Sources */,
 				3C9955C52BA585DD00D33FA5 /* HealthSystem.swift in Sources */,
 				5240D0A02BB330B5004F1486 /* GameMode.swift in Sources */,
 				520062562BA8E026000DBA30 /* PlayerSpawnable.swift in Sources */,
 				9B0406142BB89BE00026E903 /* PowerUpSelectionNode.swift in Sources */,
 				5240D0A22BB33183004F1486 /* DeathMatchMode.swift in Sources */,
 				BA2F5AC52BC8143E00CBD8E9 /* TotalKillsStatistic.swift in Sources */,
+				BAEC99FC2BD15AAB00E0C437 /* StorageDatabase.swift in Sources */,
 				3CAC4A6F2BB6A4F200A5D22E /* LabelRenderStage.swift in Sources */,
 				BA82C7922BCD6579000515A0 /* StatisticUpdateActor.swift in Sources */,
 				BA82C75F2BCB1528000515A0 /* AchievementsDatabase.swift in Sources */,
