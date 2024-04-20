@@ -205,7 +205,7 @@
 		BA436AEC2BD42F7800BE3E4F /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AEB2BD42F7800BE3E4F /* LocalStorage.swift */; };
 		BA436AEE2BD42F8100BE3E4F /* RemoteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AED2BD42F8100BE3E4F /* RemoteStorage.swift */; };
 		BA436AF02BD437D900BE3E4F /* LocalStorage+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AEF2BD437D900BE3E4F /* LocalStorage+Metadata.swift */; };
-		BA436AF22BD443A500BE3E4F /* RemoteStorage+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AF12BD443A500BE3E4F /* RemoteStorage+Metadata.swift */; };
+		BA436AF22BD443A500BE3E4F /* RemoteStorage+Access.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AF12BD443A500BE3E4F /* RemoteStorage+Access.swift */; };
 		BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */; };
 		BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */; };
 		BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D412BAD9885009F0FFB /* DamageEventTests.swift */; };
@@ -487,7 +487,7 @@
 		BA436AEB2BD42F7800BE3E4F /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		BA436AED2BD42F8100BE3E4F /* RemoteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStorage.swift; sourceTree = "<group>"; };
 		BA436AEF2BD437D900BE3E4F /* LocalStorage+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+Metadata.swift"; sourceTree = "<group>"; };
-		BA436AF12BD443A500BE3E4F /* RemoteStorage+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteStorage+Metadata.swift"; sourceTree = "<group>"; };
+		BA436AF12BD443A500BE3E4F /* RemoteStorage+Access.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteStorage+Access.swift"; sourceTree = "<group>"; };
 		BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
 		BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		BA443D412BAD9885009F0FFB /* DamageEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEventTests.swift; sourceTree = "<group>"; };
@@ -1055,10 +1055,11 @@
 			isa = PBXGroup;
 			children = (
 				BA436AE92BD42F5400BE3E4F /* StorageHandler.swift */,
+				BAEC99FB2BD15AAB00E0C437 /* StorageDatabase.swift */,
 				BA436AEB2BD42F7800BE3E4F /* LocalStorage.swift */,
 				BA436AEF2BD437D900BE3E4F /* LocalStorage+Metadata.swift */,
 				BA436AED2BD42F8100BE3E4F /* RemoteStorage.swift */,
-				BA436AF12BD443A500BE3E4F /* RemoteStorage+Metadata.swift */,
+				BA436AF12BD443A500BE3E4F /* RemoteStorage+Access.swift */,
 			);
 			path = StorageAPI;
 			sourceTree = "<group>";
@@ -1430,7 +1431,6 @@
 		BAFFB9512BB342E200D8301F /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				BAEC99FB2BD15AAB00E0C437 /* StorageDatabase.swift */,
 				BA82C76E2BCBDE91000515A0 /* Metadata.swift */,
 				BA82C77A2BCD05DC000515A0 /* MetadataManager.swift */,
 				BA82C76A2BCBD682000515A0 /* StorageManager.swift */,
@@ -1721,7 +1721,7 @@
 				52DF5FF92BA35D2B00135367 /* MovableComponent.swift in Sources */,
 				BA436AEA2BD42F5400BE3E4F /* StorageHandler.swift in Sources */,
 				5299D1342BC31067003EF746 /* AuthenticationProtocol.swift in Sources */,
-				BA436AF22BD443A500BE3E4F /* RemoteStorage+Metadata.swift in Sources */,
+				BA436AF22BD443A500BE3E4F /* RemoteStorage+Access.swift in Sources */,
 				527A07822BB3F8D300CD9D08 /* TimerProp.swift in Sources */,
 				52DF5FDE2BA32D7E00135367 /* EntityManager.swift in Sources */,
 				3CBE72FB2BC8D63E00CC446A /* RemoteDamageEvent.swift in Sources */,

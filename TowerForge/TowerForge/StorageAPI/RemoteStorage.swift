@@ -34,15 +34,79 @@ class RemoteStorage {
         })
     }
 
-    /// Checks if a player's statistics exists without requiring a closure input
-    static func checkIfPlayerStorageExists(for playerId: String) -> Bool {
-        var exists = false
+    /// Saves the input StorageDatabase to firebase
+    static func saveDataToFirebase(for ref: FirebaseReference,
+                                   player: String,
+                                   with inputData: StorageDatabase,
+                                   completion: @escaping (Error?) -> Void) {
+        let databaseReference = FirebaseDatabaseReference(ref)
 
-        RemoteStorage.remoteStorageExists(for: .Statistics, player: playerId) { bool in
-            exists = bool
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(inputData)
+            let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
+
+            databaseReference.child(player).setValue(dictionary) { error, _ in
+                if let error = error {
+                    Logger.log("Data could not be saved: \(error).", Self.self)
+                    completion(error)
+                } else {
+                    Logger.log("Data saved to Firebase successfully!", Self.self)
+                    completion(nil)
+                }
+            }
+        } catch {
+            Logger.log("Error encoding Data: \(error)", Self.self)
+            completion(error)
         }
+    }
 
-        return exists
+    /// Saves the input StorageDatabase to firebase
+    static func deleteDataFromFirebase(for ref: FirebaseReference,
+                                       player: String,
+                                       completion: @escaping (Error?) -> Void) {
+        let databaseReference = FirebaseDatabaseReference(ref)
+
+        // Remove the data at the specific player node
+        databaseReference.child(player).removeValue { error, _ in
+            if let error = error {
+                Logger.log("Error deleting data: \(error).", self)
+                completion(error)
+                return
+            }
+
+            Logger.log("Data for player \(player) successfully deleted from Firebase.", self)
+            completion(nil)
+        }
+    }
+
+    static func loadDataFromFirebase<T: StorageDatabase>(for ref: FirebaseReference,
+                                                         player: String,
+                                                         completion: @escaping (T?, Error?) -> Void) {
+        let databaseReference = FirebaseDatabaseReference(ref)
+
+        databaseReference.child(player).getData(completion: { error, snapshot in
+            if let error = error {
+                Logger.log("Error loading data from firebase: \(error.localizedDescription)", self)
+                completion(nil, error)
+                return
+            }
+
+            guard let value = snapshot?.value as? [String: Any],
+                  let jsonData = try? JSONSerialization.data(withJSONObject: value, options: []) else {
+                completion(nil, nil)
+                return
+            }
+
+            do {
+                let decoder = JSONDecoder()
+                let storageDatabase = try decoder.decode(T.self, from: jsonData)
+                completion(storageDatabase, nil)
+            } catch {
+                Logger.log("Error decoding StatisticsDatabase from Firebase: \(error)", self)
+                completion(nil, error)
+            }
+        })
     }
 
 }

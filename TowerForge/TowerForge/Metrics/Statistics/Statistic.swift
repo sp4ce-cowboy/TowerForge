@@ -141,18 +141,6 @@ extension Statistic {
         self.getStatisticUpdateLinks().getAllEventTypes()
     }
 
-    /*func update<T: TFEvent>(for event: T) {
-     let eventType = T.asType
-     guard let updateLink = self.getStatisticUpdateLinks().getStatisticUpdateActor(for: eventType) else {
-     return
-     }
-     
-     updateLink.updateStatistic(statistic: self, withEvent: T.self)
-     
-     updateLink?(self)
-     Logger.log("Value update for eventType \(eventType)", self)
-     }*/
-
     /// Updates the statistic according to an UpdateActor that is retrieved from the
     /// StatisticsUpdateLinkDatabase
     func update<T: TFEvent>(for event: T) {
@@ -184,5 +172,19 @@ extension Statistic {
         let max = try container.decode(Double.self, forKey: .maximumCurrentValue)
 
         self.init(permanentValue: value, currentValue: current, maxCurrentValue: max)
+    }
+}
+
+/// This extension allows Statistic to be merged
+extension Statistic {
+
+    static func merge(this: Self, that: Self) -> Self {
+        let largerPermanent = Double.maximum(this.permanentValue, that.permanentValue)
+        let largerCurrent = Double.maximum(this.currentValue, that.currentValue)
+        let largerMaxCurrent = Double.maximum(this.maximumCurrentValue, that.maximumCurrentValue)
+
+        return Self(permanentValue: largerPermanent,
+                    currentValue: largerCurrent,
+                    maxCurrentValue: largerMaxCurrent)
     }
 }

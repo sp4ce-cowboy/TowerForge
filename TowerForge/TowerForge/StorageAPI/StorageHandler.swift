@@ -8,6 +8,7 @@
 import Foundation
 
 class StorageHandler: AuthenticationDelegate {
+
     static let folderName = Constants.LOCAL_STORAGE_CONTAINER_NAME
     static let fileName = Constants.LOCAL_STORAGE_FILE_NAME
     static let metadataName = Constants.METADATA_FILE_NAME
@@ -69,6 +70,12 @@ class StorageHandler: AuthenticationDelegate {
     }
 
     func onLogin() {
+        Task {
+            await onAsyncLogin()
+        }
+    }
+
+    func onAsyncLogin() async {
         Logger.log("IMPT: onLogin IS CALLED FROM STORAGE_HANDLER", Self.self)
 
         guard let userId = authenticationProvider.getCurrentUserId() else {
@@ -78,11 +85,10 @@ class StorageHandler: AuthenticationDelegate {
 
         /// Update the playerId and metadata locally
         self.localUpdatePlayerIdAndMetadata(with: userId)
-
-        if checkIfRemotePlayerDataExists() {
-            
+        if await checkIfRemotePlayerDataExists() {
+            await self.onReLogin()
         } else {
-
+            self.onFirstLogin()
         }
 
         // if they don't, execute onFirstLogin
@@ -97,9 +103,9 @@ class StorageHandler: AuthenticationDelegate {
     }
 
     /// Returns true only if both Metadata and Storage exist
-    func checkIfRemotePlayerDataExists() -> Bool {
+    func checkIfRemotePlayerDataExists() async -> Bool {
         let storageExists = RemoteStorage.checkIfPlayerStorageExists(for: Self.currentPlayerId)
-        let metadataExists = RemoteStorage.checkIfPlayerMetadataExists(for: Self.currentPlayerId)
+        let metadataExists = await RemoteStorage.checkIfPlayerMetadataExistsAsync(for: Self.currentPlayerId)
 
         if (storageExists && !metadataExists) || (!storageExists && metadataExists) {
             Logger.log("Inconsisteny error: Storage Exists: \(storageExists), Metadata Exists: \(metadataExists)")
@@ -111,11 +117,44 @@ class StorageHandler: AuthenticationDelegate {
     func onLogout() {
         Logger.log("IMPT: onLOGOUT IS CALLED FROM STORAGE_HANDLER", Self.self)
         self.save() // Save any potential unsaved changes
-
-        // Reset metadata to original value
-        metadata.resetIdentifier()
+        metadata.resetIdentifier() // Reset metadata to original value
         Logger.log("--- metadata reset to \(metadata.uniqueIdentifier)", Self.self)
         self.save() // Save updated metadata
+    }
+
+    /// Returns true if re-login success, false otherwise
+    func onReLogin() async -> Bool {
+        // Fetch metadata
+        guard let remoteMetadata = await RemoteStorage.loadMetadataFromFirebase(player: Self.currentPlayerId) else {
+            Logger.log("RELOGIN ERROR: REMOTE METADATA NOT FOUND")
+            return false
+        }
+
+        // Fetch storage
+        guard let remoteStorage = RemoteStorage.loadStorageFromFirebase(player: Self.currentPlayerId) else {
+            Logger.log("RELOGIN ERROR: REMOTE STORAGE NOT FOUND")
+            return false
+        }
+
+        var finalStorage = StatisticsDatabase.merge(this: remoteStorage, that: statisticsDatabase)
+
+        // Merge storage - MERGE
+        // Merge metadata - KEEP LATEST
+        // Set storage to merged storage
+        // Save new storage to file
+        // Universal save will automatically update metadata
+        // Universal save to remote
+
+        return true
+
+    }
+
+    func onFirstLogin() {
+        RemoteStorage.saveStorageToFirebase(player: Self.currentPlayerId,
+                                            with: statisticsDatabase)
+
+        RemoteStorage.saveMetadataToFirebase(player: Self.currentPlayerId,
+                                             with: metadata)
     }
 
 }
