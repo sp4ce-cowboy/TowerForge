@@ -60,10 +60,11 @@ class RankingEngine: InferenceEngine, InferenceDataDelegate {
         let minScore = currentRank.valueRange.lowerBound
         let currentScore = Int(currentExp)
         let maxScore = currentRank.valueRange.upperBound
-        let range = maxScore - minScore
-        let adjustedScore = currentScore - minScore
+        let range = Double(maxScore - minScore)
+        let adjustedScore = Double(currentScore - minScore)
+        let percentageToNextRank = adjustedScore / range
 
-        return Double(adjustedScore / range)
+        return percentageToNextRank
 
     }
 }
