@@ -13,9 +13,9 @@ import Foundation
 /// Each achievement will correspond to a collection of statistics.
 protocol AbstractGoal: AnyObject {
     static var goalType: AbstractGoalTypeWrapper { get }
+    var imageIdentifier: String { get }
     var name: String { get }
     var description: String { get }
-    var imageIdentifier: String { get }
 
     static var definedParameters: [StatisticTypeWrapper: Double] { get }
     var currentParameters: [StatisticTypeWrapper: Statistic] { get set }
@@ -35,8 +35,6 @@ protocol AbstractGoal: AnyObject {
 }
 
 extension AbstractGoal {
-
-    var imageIdentifier: String { "coin" }
 
     static var goalType: AbstractGoalTypeWrapper {
         AbstractGoalTypeWrapper(type: Self.self)

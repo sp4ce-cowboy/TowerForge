@@ -11,7 +11,9 @@ class MissionsFactory {
 
     static var availableMissionTypes: [String: Mission.Type] =
         [
-            String(describing: GrandDamageMission.self): GrandDamageMission.self
+            String(describing: MassDamageMission.self): MassDamageMission.self,
+            String(describing: MassKillMission.self): MassKillMission.self,
+            String(describing: MassDeathMission.self): MassDeathMission.self
         ]
 
     static func registerMissionType<T: Mission>(_ stat: T) {

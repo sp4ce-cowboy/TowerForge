@@ -1,20 +1,20 @@
 //
-//  ThousandDamageMission.swift
+//  MassDeathMission.swift
 //  TowerForge
 //
-//  Created by Rubesh on 15/4/24.
+//  Created by Rubesh on 20/4/24.
 //
 
 import Foundation
 
-final class GrandDamageMission: Mission {
-    var name: String = "Mission: 1000 Damage"
-    var description: String = "Attain 1000 Damage in 1 game"
+final class MassDeathMission: Mission {
+    var name: String = "Mass Death"
+    var description: String = "Die 100 times in 1 game"
     var currentParameters: [StatisticTypeWrapper: any Statistic]
 
     static var definedParameters: [StatisticTypeWrapper: Double] {
         [
-            TotalDamageDealtStatistic.asType: 1_000.0
+            TotalDeathsStatistic.asType: 100.0
         ]
     }
 

@@ -15,10 +15,3 @@ class CustomAchievementCell: UITableViewCell {
     @IBOutlet var progressView: UIProgressView!
     @IBOutlet var statusImageView: UIImageView!
 }
-
-class CustomMissionCell: UITableViewCell {
-    @IBOutlet var missionImageView: UIImageView!
-    @IBOutlet var missionNameLabel: UILabel!
-    @IBOutlet var descriptionLabel: UILabel!
-    @IBOutlet var statusImageView: UIImageView!
-}

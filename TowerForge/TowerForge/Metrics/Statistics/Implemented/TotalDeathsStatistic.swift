@@ -8,6 +8,7 @@
 import Foundation
 
 final class TotalDeathsStatistic: Statistic {
+    var prettyName: String = "Total Deaths"
     var permanentValue: Double = .zero
     var currentValue: Double = .zero
     var maximumCurrentValue: Double = .zero

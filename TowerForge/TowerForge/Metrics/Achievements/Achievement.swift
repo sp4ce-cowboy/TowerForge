@@ -10,6 +10,8 @@ import Foundation
 protocol Achievement: AbstractGoal { }
 
 extension Achievement {
+    var imageIdentifier: String { "coin" }
+
     static var asType: AchievementTypeWrapper {
         AchievementTypeWrapper(type: Self.self)
     }

@@ -11,6 +11,14 @@ class MissionsDatabase {
     weak var missionsDataDelegate: InferenceDataDelegate?
     var missions: [MissionTypeWrapper: Mission] = [:]
 
+    var count: Int {
+        missions.count
+    }
+
+    var asSortedArray: [Dictionary<MissionTypeWrapper, any Mission>.Element] {
+        Array(missions).sorted(by: { $0.key < $1.key })
+    }
+
     init(missions: [MissionTypeWrapper: Mission] = [:]) {
         self.missions = missions
     }

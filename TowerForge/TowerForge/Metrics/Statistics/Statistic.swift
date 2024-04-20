@@ -11,6 +11,9 @@ import Foundation
 protocol Statistic: AnyObject, Codable {
     var statisticName: StatisticTypeWrapper { get }
 
+    /// A presentable version of the Statistic's identifier
+    var prettyName: String { get }
+
     /// The original value of the statistic prior to the start of the game seequence
     var permanentValue: Double { get set }
 
