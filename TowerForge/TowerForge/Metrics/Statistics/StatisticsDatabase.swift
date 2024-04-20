@@ -26,4 +26,10 @@ final class StatisticsDatabase: StorageDatabase {
     func setToDefault() {
         statistics = StatisticsFactory.getDefaultStatisticsDatabase().statistics
     }
+
+    func toString() -> String {
+        var output = ""
+        statistics.values.forEach { output += ($0.toString() + "\n") }
+        return output
+    }
 }

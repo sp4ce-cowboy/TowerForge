@@ -31,7 +31,9 @@ extension StatisticsDatabase: Equatable {
     /// - 3. There should not be any keys in the final database that are not within the first or second database.
     /// - 4. For duplicate keys that have the same value, either value can be retained in the final database.
     static func merge(this: StatisticsDatabase?, that: StatisticsDatabase?) -> StatisticsDatabase? {
+        Logger.log("SDB: Merge function entered.", self)
         guard this != nil || that != nil else {
+            Logger.log("SDB: Both nil, returning nil", self)
             return nil
         }
 
@@ -77,6 +79,7 @@ extension StatisticsDatabase: Equatable {
             }
         }
 
+        Logger.log("SDB: Merged stats contain \(mergedStats.toString())")
         return mergedStats
     }
 }

@@ -87,6 +87,7 @@ class AuthenticationManager: AuthenticationProtocol {
                                               email: email,
                                               username: user.displayName)
             StorageManager.onLogin(with: userData.userId) // TODO: Consider if there might be a better way to do this
+            Logger.log("LOGIN: userId is \(userData.userId), email is \(userData.email)", self)
             self.delegate?.onLogin()
             completion(userData, nil)
         }

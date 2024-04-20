@@ -48,6 +48,10 @@ extension Statistic {
         self.init(permanentValue: .zero, currentValue: .zero, maxCurrentValue: .zero)
     }
 
+    func toString() -> String {
+        "[\(prettyName): \(permanentValue)]"
+    }
+
     static func equals(lhs: Self, rhs: Self) -> Bool {
         (lhs.statisticName == rhs.statisticName) &&
         (lhs.permanentValue == rhs.permanentValue)

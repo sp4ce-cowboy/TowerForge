@@ -27,12 +27,14 @@ class StorageManager {
     }
 
     static func onLogin(with userId: String) {
+        Logger.log("LOGIN: onLogin method invoked from Storage Manager", self)
         let localStorage = LocalStorageManager.loadDatabaseFromLocalStorage()
                                     ?? StatisticsFactory.getDefaultStatisticsDatabase()
 
         _ = Self.saveUniversally(localStorage)
 
         Constants.CURRENT_PLAYER_ID = userId
+        LocalMetadataManager.synchronizeMetadataInLocalStorage()
         var remoteStorage = StatisticsDatabase()
 
         RemoteStorageManager.loadDatabaseFromFirebase { statisticsDatabase, error in
@@ -49,6 +51,7 @@ class StorageManager {
         }
 
         if let finalStorage = Self.resolveConflict(this: localStorage, that: remoteStorage) {
+            Logger.log("LOGIN: Resolve conflict closure entered", self)
             _ = Self.saveUniversally(finalStorage)
         }
 
@@ -138,6 +141,7 @@ class StorageManager {
     /// This ensures that no information is overwritten in the process.
     private static func pushToRemote() -> StatisticsDatabase? {
         // Explicitly load storage to ensure that uploaded data is
+        Logger.log("PUSH: Push to remote entered", self)
         var localStorage: StatisticsDatabase
         var remoteStorage = StatisticsDatabase()
 
@@ -162,6 +166,7 @@ class StorageManager {
         }
 
         guard let finalStorage = StatisticsDatabase.merge(this: localStorage, that: remoteStorage) else {
+            Logger.log("PUSH: Merge failed, returning nil")
             return nil
         }
 

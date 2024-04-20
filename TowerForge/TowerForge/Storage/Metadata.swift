@@ -12,16 +12,16 @@ import Foundation
 /// - Information about device and the current user for use with Remote Storage
 /// - Meta-information about files stored locally, possibly for use with conflict resolution.
 class Metadata: Codable, Comparable, Equatable {
-    let uniqueIdentifier: String
+    var uniqueIdentifier: String
     var lastUpdated: Date
 
-    init(lastUpdated: Date,
+    init(lastUpdated: Date = .now,
          uniqueIdentifier: String = Constants.CURRENT_PLAYER_ID) {
         self.lastUpdated = lastUpdated
         self.uniqueIdentifier = uniqueIdentifier
     }
 
-    required init() {
+    init() {
         self.lastUpdated = Date()
         self.uniqueIdentifier = UUID().uuidString
     }

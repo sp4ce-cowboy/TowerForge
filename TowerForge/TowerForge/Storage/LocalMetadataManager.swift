@@ -47,6 +47,15 @@ class LocalMetadataManager {
         // RemoteMetadataManager.updateMetadataInFirebase()
     }
 
+    static func synchronizeMetadataInLocalStorage() {
+        let metadata = loadMetadataFromLocalStorage() ?? Metadata()
+        metadata.lastUpdated = Date.now
+        metadata.uniqueIdentifier = Constants.CURRENT_PLAYER_ID
+        saveMetadataToLocalStorage(metadata)
+        Logger.log("Metadata synchronized at: \(metadata.lastUpdated)", self)
+        // RemoteMetadataManager.updateMetadataInFirebase()
+    }
+
     static func saveMetadataToLocalStorage(_ metadata: Metadata) {
         do {
             let folderURL = try LocalStorageManager.createFolderIfNeeded(folderName: folderName)
