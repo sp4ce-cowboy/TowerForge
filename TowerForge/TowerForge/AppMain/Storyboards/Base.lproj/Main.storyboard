@@ -94,7 +94,7 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
-                                    <backgroundConfiguration key="background" image="start-button"/>
+                                    <backgroundConfiguration key="background" image="player-button"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="Vde-N6-EjF" kind="show" id="OyP-uk-YaK"/>
@@ -1360,6 +1360,7 @@
         <image name="background1" width="1600" height="1000"/>
         <image name="circle-button" width="1600" height="1000"/>
         <image name="logo" width="1000" height="500"/>
+        <image name="player-button" width="1000" height="500"/>
         <image name="resume-button" width="1600" height="1000"/>
         <image name="square-button" width="1600" height="1000"/>
         <image name="start-button" width="1000" height="500"/>

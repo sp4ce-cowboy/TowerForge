@@ -29,8 +29,17 @@ class RankingEngine: InferenceEngine, InferenceDataDelegate {
         Rank.allCases.first { $0.valueRange.contains(Int(self.currentExp)) } ?? .PRIVATE
     }
 
-    var currentKD: Double {
+    var currentKd: Double {
         getPermanentValueFor(TotalKillsStatistic.self) / getPermanentValueFor(TotalDeathsStatistic.self)
+    }
+
+    var currentExpAsString: String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+
+        let number = Int(currentExp)
+        let formattedString = numberFormatter.string(from: NSNumber(value: number)) ?? ""
+        return formattedString
     }
 
     var isOfficer: Bool {

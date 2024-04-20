@@ -33,8 +33,8 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     var rank: Rank { rankingEngine.currentRank }
-    var exp: Int { Int(rankingEngine.currentExp) }
-    var kd: Double { rankingEngine.currentKD }
+    var exp: String { rankingEngine.currentExpAsString }
+    var kd: Double { rankingEngine.currentKd }
     var kills: Int { Int(rankingEngine.getPermanentValueFor(TotalKillsStatistic.self)) }
     var deaths: Int { Int(rankingEngine.getPermanentValueFor(TotalDeathsStatistic.self)) }
     var games: Int { Int(rankingEngine.getPermanentValueFor(TotalGamesStatistic.self)) }
@@ -73,7 +73,7 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         // rankImageView.image = UIImage(named: currentRank.imageIdentifer)
         rankNameLabel.text = String("--- Rank: \(rank.rawValue) ---")
         characterImage.image = rank.isOfficer() ? UIImage(named: "Shooter-1") : UIImage(named: "melee-1")
-        currentExp.text = String("Exp: \(exp)")
+        currentExp.text = String("XP: \(exp)")
         totalKills.text = String("Kills: \(kills)")
         totalDeaths.text = String("Deaths: \(deaths)")
         totalGames.text = String("Games: \(games)")
@@ -120,7 +120,7 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         }
 
         guard let missionCell = tableView.dequeueReusableCell(withIdentifier: "cell",
-                                                       for: indexPath) as? CustomMissionCell else {
+                                                              for: indexPath) as? CustomMissionCell else {
             fatalError("Could not dequeue CustomMissionCell")
         }
 
