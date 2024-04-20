@@ -53,7 +53,7 @@ class StorageHandler: AuthenticationDelegate {
         LocalStorage.initializeDatabaseToLocalStorage()
     }
 
-    /// Saves the current statistics database to file
+    /// Universal save
     func save() {
         Logger.log("SAVE: Saving Stats and Metadata to LocalStorage", Self.self)
         LocalStorage.saveDatabaseToLocalStorage(statisticsDatabase)
@@ -61,6 +61,7 @@ class StorageHandler: AuthenticationDelegate {
         LocalStorage.saveMetadataToLocalStorage(metadata)
     }
 
+    /// Universal delete
     func delete() {
         Logger.log("DELETE: Deleting Stats and Metadata to LocalStorage", Self.self)
         LocalStorage.deleteDatabaseFromLocalStorage()
@@ -78,8 +79,8 @@ class StorageHandler: AuthenticationDelegate {
         /// Update the playerId and metadata locally
         self.localUpdatePlayerIdAndMetadata(with: userId)
 
-        if checkIfPlayerDataExists() {
-
+        if checkIfRemotePlayerDataExists() {
+            
         } else {
 
         }
@@ -96,7 +97,7 @@ class StorageHandler: AuthenticationDelegate {
     }
 
     /// Returns true only if both Metadata and Storage exist
-    func checkIfPlayerDataExists() -> Bool {
+    func checkIfRemotePlayerDataExists() -> Bool {
         let storageExists = RemoteStorage.checkIfPlayerStorageExists(for: Self.currentPlayerId)
         let metadataExists = RemoteStorage.checkIfPlayerMetadataExists(for: Self.currentPlayerId)
 
@@ -105,7 +106,6 @@ class StorageHandler: AuthenticationDelegate {
         }
 
         return storageExists && metadataExists
-
     }
 
     func onLogout() {
