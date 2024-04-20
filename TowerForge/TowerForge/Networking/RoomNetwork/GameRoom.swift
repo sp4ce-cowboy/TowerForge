@@ -124,10 +124,10 @@ class GameRoom {
         let roomStateRef = FirebaseDatabaseReference(.Rooms).child(roomName).child("gameMode")
         roomStateRef.setValue(mode.rawValue) { error, _ in
             if let error = error {
-                print("Error updating game mode: \(error.localizedDescription)")
+                Logger.log("Error updating game mode: \(error.localizedDescription)", self)
             } else {
                 self.gameMode = mode
-                print("Game mode updated successfully.")
+                Logger.log("Game mode updated successfully.", self)
             }
         }
     }
