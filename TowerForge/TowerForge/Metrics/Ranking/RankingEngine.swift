@@ -55,4 +55,15 @@ class RankingEngine: InferenceEngine, InferenceDataDelegate {
     func getPermanentValueFor<T: Statistic>(_ stat: T.Type) -> Double {
         statisticsDatabase.getStatistic(for: stat.asType)?.permanentValue ?? .zero
     }
+
+    func percentageToNextRank() -> Double {
+        let minScore = currentRank.valueRange.lowerBound
+        let currentScore = Int(currentExp)
+        let maxScore = currentRank.valueRange.upperBound
+        let range = maxScore - minScore
+        let adjustedScore = currentScore - minScore
+
+        return Double(adjustedScore / range)
+
+    }
 }

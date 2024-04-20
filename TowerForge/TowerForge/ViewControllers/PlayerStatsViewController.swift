@@ -22,6 +22,15 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet private var kdRatio: UILabel!
     @IBOutlet private var totalGames: UILabel!
 
+    @IBOutlet private var pte: UILabel!
+    @IBOutlet private var cpl: UILabel!
+    @IBOutlet private var sgt: UILabel!
+    @IBOutlet private var lta: UILabel!
+    @IBOutlet private var cpt: UILabel!
+    @IBOutlet private var maj: UILabel!
+    @IBOutlet private var col: UILabel!
+    @IBOutlet private var gen: UILabel!
+
     var statsEngine = StatisticsEngine()
 
     var achievements: AchievementsDatabase = getAchievements()
@@ -70,6 +79,25 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         achievementsView.allowsSelection = false
         missionsView.allowsSelection = false
 
+        // initializeBackground()
+
+        initializePlayerStats()
+        initializeRanks()
+        highlightCurrentRank()
+        reloadAchievements()
+    }
+
+    func initializeBackground() {
+        /* TODO: Add background image
+         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "stone-tile")
+        backgroundImage.contentMode = .scaleAspectFill
+        view.addSubview(backgroundImage) // Add the image view to the view hierarchy
+        view.sendSubviewToBack(backgroundImage) // Send the image to the background
+         */
+    }
+
+    func initializePlayerStats() {
         // rankImageView.image = UIImage(named: currentRank.imageIdentifer)
         rankNameLabel.text = String("--- Rank: \(rank.rawValue) ---")
         characterImage.image = rank.isOfficer() ? UIImage(named: "Shooter-1") : UIImage(named: "melee-1")
@@ -78,19 +106,39 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         totalDeaths.text = String("Deaths: \(deaths)")
         totalGames.text = String("Games: \(games)")
         kdRatio.text = String("K/D Ratio: ") + String(format: "%.2f", kd)
-
-        /* TODO: Add background image
-         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "stone-tile")
-        backgroundImage.contentMode = .scaleAspectFill
-        view.addSubview(backgroundImage) // Add the image view to the view hierarchy
-        view.sendSubviewToBack(backgroundImage) // Send the image to the background
-         */
-
-        reloadAchievements()
     }
 
-    // MARK: - Table view data source
+    func initializeRanks() {
+        pte.text = "PTE"
+        cpl.text = "CPL"
+        sgt.text = "SGT"
+        lta.text = "LTA"
+        cpt.text = "CPT"
+        maj.text = "MAJ"
+        col.text = "COL"
+        gen.text = "GEN"
+    }
+
+    func highlightCurrentRank() {
+        switch rank {
+        case .PRIVATE:
+            pte.textColor = .red
+        case .CORPORAL:
+            cpl.textColor = .red
+        case .SERGEANT:
+            sgt.textColor = .red
+        case .LIEUTENANT:
+            lta.textColor = .red
+        case .CAPTAIN:
+            cpt.textColor = .red
+        case .MAJOR:
+            maj.textColor = .red
+        case .COLONEL:
+            col.textColor = .red
+        case .GENERAL:
+            gen.textColor = .red
+        }
+    }
 
     func numberOfSections(in tableView: UITableView) -> Int {
         1
