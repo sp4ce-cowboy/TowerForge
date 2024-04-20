@@ -17,10 +17,24 @@ class RankingEngine: InferenceEngine, InferenceDataDelegate {
 
     unowned var statisticsEngine: StatisticsEngine
 
-    var statisticsDatabase: StatisticsDatabase { statisticsEngine.statistics }
-    var currentExp: Double { Self.defaultExpFormula(statisticsDatabase) }
+    var statisticsDatabase: StatisticsDatabase {
+        statisticsEngine.statistics
+    }
+
+    var currentExp: Double {
+        Self.defaultExpFormula(statisticsDatabase)
+    }
+
     var currentRank: Rank {
         Rank.allCases.first { $0.valueRange.contains(Int(self.currentExp)) } ?? .PRIVATE
+    }
+
+    var currentKD: Double {
+        getPermanentValueFor(TotalKillsStatistic.self) / getPermanentValueFor(TotalDeathsStatistic.self)
+    }
+
+    var isOfficer: Bool {
+        currentRank.isOfficer()
     }
 
     init(_ statisticsEngine: StatisticsEngine) {
@@ -28,4 +42,8 @@ class RankingEngine: InferenceEngine, InferenceDataDelegate {
     }
 
     func updateOnReceive() {  }
+
+    func getPermanentValueFor<T: Statistic>(_ stat: T.Type) -> Double {
+        statisticsDatabase.getStatistic(for: stat.asType)?.permanentValue ?? .zero
+    }
 }

@@ -16,9 +16,28 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet private var rankNameLabel: UILabel!
     @IBOutlet private var characterImage: UIImageView!
 
+    @IBOutlet private var currentExp: UILabel!
+    @IBOutlet private var totalKills: UILabel!
+    @IBOutlet private var totalDeaths: UILabel!
+    @IBOutlet private var kdRatio: UILabel!
+    @IBOutlet private var totalGames: UILabel!
+
+    var statsEngine = StatisticsEngine()
+
     var achievements: AchievementsDatabase = getAchievements()
     var missions: MissionsDatabase = getMissions()
-    var rank: Rank = getRank()
+
+    var rankingEngine: RankingEngine {
+        let rankEngine = statsEngine.inferenceEngines[RankingEngine.asType] as? RankingEngine
+        return rankEngine!
+    }
+
+    var rank: Rank { rankingEngine.currentRank }
+    var exp: Int { Int(rankingEngine.currentExp) }
+    var kd: Double { rankingEngine.currentKD }
+    var kills: Int { Int(rankingEngine.getPermanentValueFor(TotalKillsStatistic.self)) }
+    var deaths: Int { Int(rankingEngine.getPermanentValueFor(TotalDeathsStatistic.self)) }
+    var games: Int { Int(rankingEngine.getPermanentValueFor(TotalGamesStatistic.self)) }
 
     static func getAchievements() -> AchievementsDatabase {
         let statsEngine = StatisticsEngine()
@@ -34,11 +53,10 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         return missionsEngine!.missionsDatabase
     }
 
-    static func getRank() -> Rank {
-
+    static func getRankingEngine() -> RankingEngine {
         let statsEngine = StatisticsEngine()
         let rankEngine = statsEngine.inferenceEngines[RankingEngine.asType] as? RankingEngine
-        return rankEngine!.currentRank
+        return rankEngine!
     }
 
     override func viewDidLoad() {
@@ -52,11 +70,15 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         achievementsView.allowsSelection = false
         missionsView.allowsSelection = false
 
-        self.rank = Self.getRank()
         // rankImageView.image = UIImage(named: currentRank.imageIdentifer)
         rankNameLabel.text = String("--- Rank: \(rank.rawValue) ---")
+        characterImage.image = rank.isOfficer() ? UIImage(named: "Shooter-1") : UIImage(named: "melee-1")
+        currentExp.text = String("Exp: \(exp)")
+        totalKills.text = String("Kills: \(kills)")
+        totalDeaths.text = String("Deaths: \(deaths)")
+        totalGames.text = String("Games: \(games)")
+        kdRatio.text = String("K/D Ratio: ") + String(format: "%.2f", kd)
 
-        characterImage.image = UIImage(named: "melee-1")
         reloadAchievements()
     }
 
