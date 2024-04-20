@@ -221,60 +221,48 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NpB-F0-9hb" customClass="RankUIView" customModule="TowerForge" customModuleProvider="target">
-                                <rect key="frame" x="100" y="120" width="366" height="95"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rank Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WyF-VS-BYE">
-                                        <rect key="frame" x="175" y="37" width="87.5" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pA1-QA-x6J">
-                                        <rect key="frame" x="0.0" y="0.0" width="95" height="95"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="pA1-QA-x6J" secondAttribute="height" multiplier="1:1" id="PNU-JI-Xyy"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="WyF-VS-BYE" firstAttribute="centerY" secondItem="NpB-F0-9hb" secondAttribute="centerY" id="O6o-wC-50W"/>
-                                    <constraint firstItem="pA1-QA-x6J" firstAttribute="leading" secondItem="NpB-F0-9hb" secondAttribute="leading" id="OLx-1Y-h0B"/>
-                                    <constraint firstItem="pA1-QA-x6J" firstAttribute="centerY" secondItem="NpB-F0-9hb" secondAttribute="centerY" id="S3e-5N-3wA"/>
-                                    <constraint firstItem="pA1-QA-x6J" firstAttribute="height" secondItem="NpB-F0-9hb" secondAttribute="height" id="dFO-oh-Dur"/>
-                                    <constraint firstItem="WyF-VS-BYE" firstAttribute="leading" secondItem="pA1-QA-x6J" secondAttribute="trailing" constant="80" id="fFn-hb-GLJ"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WyF-VS-BYE" secondAttribute="trailing" constant="20" symbolic="YES" id="lu8-r1-EdH"/>
-                                </constraints>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHARACTER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3F5-6P-B3x">
                                 <rect key="frame" x="192.5" y="50" width="181" height="35"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rank:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNC-ad-u17">
+                                <rect key="frame" x="193" y="135" width="180" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1aZ-FF-wKr">
+                                <rect key="frame" x="100" y="329" width="362" height="367"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dJD-fA-97D"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="WUz-SV-r2V" firstAttribute="top" secondItem="dJD-fA-97D" secondAttribute="top" constant="50" id="1oQ-Pi-llg"/>
                             <constraint firstItem="dJD-fA-97D" firstAttribute="trailing" secondItem="WUz-SV-r2V" secondAttribute="trailing" constant="50" id="DRg-wA-jye" userLabel="Safe Area.trailing = Achievements View.trailing + 100"/>
-                            <constraint firstItem="NpB-F0-9hb" firstAttribute="leading" secondItem="dJD-fA-97D" secondAttribute="leading" constant="100" id="F81-fa-345"/>
-                            <constraint firstItem="NpB-F0-9hb" firstAttribute="top" secondItem="3fc-40-3P4" secondAttribute="topMargin" constant="50" id="NT2-xd-pIF"/>
+                            <constraint firstItem="3F5-6P-B3x" firstAttribute="leading" secondItem="dJD-fA-97D" secondAttribute="leading" constant="192.5" id="GJK-R8-g2s"/>
+                            <constraint firstItem="1aZ-FF-wKr" firstAttribute="width" secondItem="3F5-6P-B3x" secondAttribute="width" multiplier="2" id="Js1-7X-i1y"/>
+                            <constraint firstItem="1aZ-FF-wKr" firstAttribute="height" secondItem="3fc-40-3P4" secondAttribute="height" multiplier="0.358398" id="MRg-w3-49j"/>
+                            <constraint firstItem="1aZ-FF-wKr" firstAttribute="leading" secondItem="dJD-fA-97D" secondAttribute="leading" constant="100" id="Thr-sW-NdB"/>
+                            <constraint firstItem="dNC-ad-u17" firstAttribute="centerX" secondItem="3F5-6P-B3x" secondAttribute="centerX" id="VH0-eK-jvU"/>
                             <constraint firstItem="WUz-SV-r2V" firstAttribute="leading" secondItem="dJD-fA-97D" secondAttribute="leading" constant="600" id="XPS-6r-Omy" userLabel="Achievements View.leading = Safe Area.leading + 100"/>
+                            <constraint firstItem="JkC-L0-7EL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3F5-6P-B3x" secondAttribute="trailing" constant="8" symbolic="YES" id="YfM-tm-sUN"/>
                             <constraint firstItem="JkC-L0-7EL" firstAttribute="centerX" secondItem="WUz-SV-r2V" secondAttribute="centerX" id="Zc2-0C-Ik0"/>
-                            <constraint firstItem="dJD-fA-97D" firstAttribute="bottom" secondItem="NpB-F0-9hb" secondAttribute="bottom" constant="759" id="jNT-xy-4bk"/>
+                            <constraint firstItem="dNC-ad-u17" firstAttribute="leading" secondItem="dJD-fA-97D" secondAttribute="leading" constant="193" id="ajN-x8-Lfg"/>
+                            <constraint firstItem="3F5-6P-B3x" firstAttribute="centerY" secondItem="JkC-L0-7EL" secondAttribute="centerY" id="cbu-gR-dM8"/>
+                            <constraint firstItem="1aZ-FF-wKr" firstAttribute="top" secondItem="3F5-6P-B3x" secondAttribute="bottom" constant="244" id="miC-34-FU6"/>
                             <constraint firstItem="WUz-SV-r2V" firstAttribute="top" secondItem="JkC-L0-7EL" secondAttribute="bottom" constant="35" id="n9F-jB-a5V"/>
-                            <constraint firstItem="3F5-6P-B3x" firstAttribute="centerX" secondItem="NpB-F0-9hb" secondAttribute="centerX" id="oJV-XL-yaH"/>
+                            <constraint firstItem="dNC-ad-u17" firstAttribute="top" secondItem="3F5-6P-B3x" secondAttribute="bottom" constant="50" id="u5H-tG-c8m"/>
                             <constraint firstItem="dJD-fA-97D" firstAttribute="bottom" secondItem="WUz-SV-r2V" secondAttribute="bottom" constant="400" id="ui2-Tq-XqP"/>
-                            <constraint firstItem="dJD-fA-97D" firstAttribute="trailing" secondItem="NpB-F0-9hb" secondAttribute="trailing" constant="900" id="xZ0-K1-UAx"/>
-                            <constraint firstItem="NpB-F0-9hb" firstAttribute="top" secondItem="3F5-6P-B3x" secondAttribute="bottom" constant="35" id="yDO-3l-eig"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oa5-Be-lEU"/>
                     <connections>
                         <outlet property="achievementsView" destination="WUz-SV-r2V" id="oXa-Af-QSO"/>
-                        <outlet property="rankingView" destination="NpB-F0-9hb" id="MbN-I6-Rtk"/>
+                        <outlet property="characterImage" destination="1aZ-FF-wKr" id="e8E-ss-pzX"/>
+                        <outlet property="rankNameLabel" destination="dNC-ad-u17" id="We1-CA-8OY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vmv-iU-woV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

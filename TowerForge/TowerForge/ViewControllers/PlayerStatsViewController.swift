@@ -8,23 +8,11 @@
 import Foundation
 import UIKit
 
-class RankUIView: UIView {
-    @IBOutlet var rankImageView: UIImageView!
-    @IBOutlet var rankNameLabel: UILabel!
-
-    // You can add methods here to configure the view
-    func configure(with rank: Rank) {
-        rankImageView = UIImageView(image: UIImage(named: rank.imageIdentifer))
-        var rankLabel = UILabel()
-        rankLabel.text = rank.rawValue
-        rankNameLabel = rankLabel
-    }
-}
-
 class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet private var achievementsView: UITableView!
-    @IBOutlet var rankingView: RankUIView!
+    @IBOutlet private var rankNameLabel: UILabel!
+    @IBOutlet private var characterImage: UIImageView!
 
     var achievements: AchievementsDatabase = getAchievements()
     var rank: Rank = getRank()
@@ -47,9 +35,11 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
 
         achievementsView.delegate = self
         achievementsView.dataSource = self
+        self.rank = Self.getRank()
+        // rankImageView.image = UIImage(named: currentRank.imageIdentifer)
+        rankNameLabel.text = String("--- Rank: \(rank.rawValue) ---")
 
-        let rank = Self.getRank()
-        rankingView.configure(with: rank)
+        characterImage.image = UIImage(named: "melee-1")
         reloadAchievements()
     }
 
@@ -62,21 +52,6 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         achievements.count
     }
-
-    /*func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-
-        // Sort achievements if necessary and configure the cell
-        let achievementPair = achievements.asSortedArray[indexPath.row]
-        let achievement = achievementPair.value
-
-        cell.textLabel?.text = achievement.name
-
-        let permanentValue = achievement.currentProgressRates
-        cell.detailTextLabel?.text = String(describing: permanentValue)
-
-        return cell
-    }*/
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
@@ -101,6 +76,7 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
 
     func reloadAchievements() {
         achievementsView.reloadData()
+        rankNameLabel.reloadInputViews()
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
