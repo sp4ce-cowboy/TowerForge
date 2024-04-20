@@ -32,8 +32,8 @@ class WizardUnit: BaseUnit, PlayerSpawnable {
         self.addComponent(ShootingComponent(fireRate: WizardUnit.attackRate,
                                             range: WizardUnit.range,
                                             attackPower: WizardUnit.attackPower, shootingType: WizardBall.self))
-        self.addComponent(DamageComponent(attackRate: 1,
-                                          attackPower: 1,
+        self.addComponent(DamageComponent(attackRate: .unit,
+                                          attackPower: .unit,
                                           temporary: false))
     }
 
