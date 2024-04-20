@@ -45,7 +45,7 @@ final class EventManagerTests: XCTestCase {
         eventManager.addTransformation(eventTransformation: eventTransformation)
 
         XCTAssertEqual(eventManager.eventTransformations.count, 1)
-        XCTAssertIdentical(eventManager.eventTransformations[0], eventTransformation)
+        XCTAssertIdentical(eventManager.eventTransformations[eventTransformation.id], eventTransformation)
     }
 
     func test_removeEventTransformation_transformationRemoved() {
@@ -56,9 +56,9 @@ final class EventManagerTests: XCTestCase {
         eventManager.addTransformation(eventTransformation: eventTransformation)
 
         XCTAssertEqual(eventManager.eventTransformations.count, 1)
-        XCTAssertIdentical(eventManager.eventTransformations[0], eventTransformation)
+        XCTAssertIdentical(eventManager.eventTransformations[eventTransformation.id], eventTransformation)
 
-        eventManager.removeTransformation(eventTransformation: eventTransformation)
+        eventManager.removeTransformation(with: eventTransformation.id)
 
         XCTAssertEqual(eventManager.eventTransformations.count, 0)
     }

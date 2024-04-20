@@ -10,6 +10,7 @@ import UIKit
 class SpriteRenderStage: RenderStage {
     static var offset = CGFloat.zero
     static let name = "sprite"
+    static let opponentTint: UIColor = .red
     private unowned let renderer: RenderTarget
     private var renderedNodes: [UUID: TFAnimatableNode] = [:]
 
@@ -57,6 +58,7 @@ class SpriteRenderStage: RenderStage {
             return
         }
         spriteNode.alpha = spriteComponent.alpha
+        spriteNode.color = spriteComponent.tint
 
         if let node = renderer.renderedNodes[entity.id], node.staticOnScreen {
             node.position.x -= UIScreen.main.bounds.midX

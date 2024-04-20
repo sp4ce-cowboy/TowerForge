@@ -13,13 +13,6 @@ struct WaveSpawnEvent: TFEvent {
     let entityType: (PlayerSpawnable & TFEntity).Type
     let player: Player
 
-    /// TODO: might need to change this to something other than throwing fatal error,
-    /// because it could cause accidental application crash, for example iterating through
-    /// a collection of TFEvents.
-    var entityId: UUID {
-        fatalError("entityId is not to be used here")
-    }
-
     init<T: TFEntity & PlayerSpawnable>(ofType type: T.Type, timestamp: TimeInterval,
                                         position: CGPoint, player: Player) {
         self.timestamp = timestamp

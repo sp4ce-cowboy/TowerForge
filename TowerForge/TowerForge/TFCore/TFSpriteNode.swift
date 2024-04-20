@@ -19,19 +19,27 @@ class TFSpriteNode: TFNode {
         set(size) { spriteNode.size = size }
     }
 
+    var color: UIColor {
+        get { spriteNode.color }
+        set(color) { spriteNode.color = color }
+    }
+
     init(color: UIColor, size: CGSize) {
         super.init()
         node = SKSpriteNode(color: color, size: size)
+        spriteNode.colorBlendFactor = 1.0
     }
 
     init(textures: TFTextures?, size: CGSize) {
         super.init()
-        node = SKSpriteNode(texture: textures?.mainTexture, color: .clear, size: size)
+        node = SKSpriteNode(texture: textures?.mainTexture, color: .white, size: size)
+        spriteNode.colorBlendFactor = 0.3
     }
 
     init(imageName: String, size: CGSize) {
         super.init()
-        node = SKSpriteNode(texture: SKTexture(imageNamed: imageName), color: .clear, size: size)
+        node = SKSpriteNode(texture: SKTexture(imageNamed: imageName), color: .white, size: size)
+        spriteNode.colorBlendFactor = 0.3
     }
 
     private var spriteNode: SKSpriteNode {

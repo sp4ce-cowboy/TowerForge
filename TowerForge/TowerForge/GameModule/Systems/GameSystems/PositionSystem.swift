@@ -45,12 +45,9 @@ class PositionSystem: TFSystem {
             return
         }
 
-        guard let player = eventManager.currentPlayer else {
-            return eventManager.add(LifeEvent(at: CACurrentMediaTime(), reduceBy: 1, player: playerComponent.player))
-        }
-
         if eventManager.isHost {
-            eventManager.add(RemoteLifeEvent(reduceBy: 1, player: playerComponent.player, source: player))
+            eventManager.add(RemoteLifeEvent(reduceBy: 1, player: playerComponent.player,
+                                             source: eventManager.currentPlayer ?? .defaultPlayer))
         }
     }
 }

@@ -8,13 +8,13 @@
 import Foundation
 
 class DamagePowerUp: EventTransformation {
-    let DURATION = CGFloat(5)
+    static let DURATION = CGFloat(5)
     let DAMAGE_SCALE = CGFloat(2)
     let id: UUID
     let player: Player
 
-    required init(player: Player = .ownPlayer) {
-        self.id = UUID()
+    required init(player: Player = .ownPlayer, id: UUID = UUID()) {
+        self.id = id
         self.player = player
     }
 

@@ -8,12 +8,12 @@
 import Foundation
 
 class NoCostPowerUp: EventTransformation {
-    let DURATION = CGFloat(3)
+    static let DURATION = CGFloat(3)
     let id: UUID
     let player: Player
 
-    required init(player: Player = .ownPlayer) {
-        self.id = UUID()
+    required init(player: Player = .ownPlayer, id: UUID = UUID()) {
+        self.id = id
         self.player = player
     }
 
@@ -22,7 +22,7 @@ class NoCostPowerUp: EventTransformation {
             return event
         }
 
-        return WaveSpawnEvent(ofType: requestSpawnEvent.entityType, timestamp: requestSpawnEvent.timestamp, position:
-                                requestSpawnEvent.position, player: requestSpawnEvent.player)
+        return WaveSpawnEvent(ofType: requestSpawnEvent.entityType, timestamp: requestSpawnEvent.timestamp,
+                              position: requestSpawnEvent.position, player: requestSpawnEvent.player)
     }
 }

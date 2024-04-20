@@ -14,7 +14,7 @@ class GameScene: SKScene {
     unowned var statePopupDelegate: StatePopupDelegate?
     private var lastUpdatedTimeInterval = TimeInterval(0)
     private var cameraNode: TFCameraNode?
-    private var isPan = false
+    private var startLocation: CGPoint = .zero
 
     override func sceneDidLoad() {
         super.sceneDidLoad()
@@ -26,7 +26,12 @@ class GameScene: SKScene {
             return
         }
         super.touchesBegan(touches, with: event)
-        isPan = false
+        guard let touch = touches.first, touch.phase == .began else {
+            return
+        }
+
+        let location = touch.location(in: self)
+        startLocation = location
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -34,13 +39,13 @@ class GameScene: SKScene {
             return
         }
         super.touchesEnded(touches, with: event)
-        guard let touch = touches.first else {
+        guard let touch = touches.first, touch.phase == .ended else {
             return
         }
 
         let location = touch.location(in: self)
 
-        if !isPan {
+        if location.distanceTo(startLocation) < 15 {
             updateDelegate?.touch(at: location)
         }
     }
@@ -58,10 +63,7 @@ class GameScene: SKScene {
         let previousLocation = touch.previousLocation(in: self)
         let translation = CGVector(point: location - previousLocation)
 
-        if translation.length() > 1 {
-            cameraNode?.move(by: translation * -1)
-            isPan = true
-        }
+        cameraNode?.move(by: translation * -1)
     }
 
     override func update(_ currentTime: TimeInterval) {

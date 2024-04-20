@@ -16,7 +16,7 @@ class BaseTower: TFEntity {
          maxHealth: CGFloat,
          player: Player,
          id: UUID = UUID()) {
-        super.init()
+        super.init(id: id)
         // Core Components
         self.addComponent(SpriteComponent(textureNames: textureNames, size: size,
                                           animatableKey: key, zPosition: BaseTower.zPosition))

@@ -15,11 +15,8 @@ class NoCostPowerUpDelegate: PowerUpNodeDelegate {
     }
 
     func powerUpNodeDidSelect() {
-        let noCostPowerUp = NoCostPowerUp()
-        eventManager.addTransformation(eventTransformation: noCostPowerUp)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + noCostPowerUp.DURATION) {
-            self.eventManager.removeTransformation(eventTransformation: noCostPowerUp)
-        }
+        let remoteEvent = RemotePowerupEvent(powerup: .NoCost, player: .ownPlayer,
+                                             source: eventManager.currentPlayer ?? .defaultPlayer)
+        eventManager.add(remoteEvent)
     }
 }

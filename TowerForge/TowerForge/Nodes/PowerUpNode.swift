@@ -8,34 +8,34 @@
 import SpriteKit
 
 enum PowerUp: String {
-    case invulnerability
-    case damage
-    case nocost
+    case Invulnerability
+    case Damage
+    case NoCost
 
     var imageName: String {
         switch self {
-        case .invulnerability:
+        case .Invulnerability:
             return "invulnerability"
-        case .damage:
+        case .Damage:
             return "damage"
-        case .nocost:
+        case .NoCost:
             return "nocost"
         }
     }
 
     var cooldown: CGFloat {
         switch self {
-        case .invulnerability:
+        case .Invulnerability:
             return CGFloat(10)
-        case .damage:
+        case .Damage:
             return CGFloat(10)
-        case .nocost:
+        case .NoCost:
             return CGFloat(30)
         }
     }
 
     static var allPowerUps: [PowerUp] {
-        [.invulnerability, .damage, .nocost]
+        [.Invulnerability, .Damage, .NoCost]
     }
 }
 

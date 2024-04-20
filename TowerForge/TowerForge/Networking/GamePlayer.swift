@@ -8,6 +8,7 @@
 import Foundation
 
 class GamePlayer: Codable {
+    static let defaultPlayer = GamePlayer(userPlayerId: "", userName: "")
     var userPlayerId: UserPlayerId
     let userName: String
 
@@ -21,5 +22,4 @@ extension GamePlayer: Equatable {
     static func == (lhs: GamePlayer, rhs: GamePlayer) -> Bool {
         lhs.userPlayerId == rhs.userPlayerId
     }
-
 }
