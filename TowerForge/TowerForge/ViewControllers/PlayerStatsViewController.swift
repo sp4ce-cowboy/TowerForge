@@ -79,6 +79,14 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         totalGames.text = String("Games: \(games)")
         kdRatio.text = String("K/D Ratio: ") + String(format: "%.2f", kd)
 
+        /* TODO: Add background image
+         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "stone-tile")
+        backgroundImage.contentMode = .scaleAspectFill
+        view.addSubview(backgroundImage) // Add the image view to the view hierarchy
+        view.sendSubviewToBack(backgroundImage) // Send the image to the background
+         */
+
         reloadAchievements()
     }
 
