@@ -13,6 +13,7 @@ class GameRoom {
     private(set) var roomState: RoomState?
     private(set) var roomId: RoomId?
     private(set) var host: UserPlayerId?
+    private(set) var gameMode: Mode?
 
     private(set) var playerOne: GamePlayer?
     private(set) var playerTwo: GamePlayer?
@@ -62,7 +63,8 @@ class GameRoom {
         let roomId = UUID().uuidString
         self.roomState = .empty
         roomRef.updateChildValues(["roomId": roomId,
-                                   "roomState": RoomState.empty.rawValue
+                                   "roomState": RoomState.empty.rawValue,
+                                   "gameMode": Mode.captureTheFlag.rawValue
                                   ]) { err, _ in
             if err != nil {
                 completion?(err, nil)
@@ -115,6 +117,18 @@ class GameRoom {
         } else if self.roomState == .waitingForBothConfirmation {
             self.updateRoomState(roomState: .waitingForFinalConfirmation)
             completion(.waitingForFinalConfirmation)
+        }
+    }
+
+    func updateGameMode(to mode: Mode) {
+        let roomStateRef = FirebaseDatabaseReference(.Rooms).child(roomName).child("gameMode")
+        roomStateRef.setValue(mode.rawValue) { error, _ in
+            if let error = error {
+                print("Error updating game mode: \(error.localizedDescription)")
+            } else {
+                self.gameMode = mode
+                print("Game mode updated successfully.")
+            }
         }
     }
 
@@ -259,6 +273,9 @@ class GameRoom {
             }
             if let hostData = snapshotValue["host"] as? UserPlayerId {
                 self?.host = hostData
+            }
+            if let gameModeData = snapshotValue["gameMode"] as? String {
+                self?.gameMode = Mode.fromString(gameModeData)
             }
             self?.gameRoomDelegate?.onRoomChange()
         }
