@@ -12,11 +12,14 @@ import Foundation
 /// - Information about device and the current user for use with Remote Storage
 /// - Meta-information about files stored locally, possibly for use with conflict resolution.
 class Metadata: Codable, Comparable, Equatable {
+    static var currentPlayerId: String { Constants.CURRENT_PLAYER_ID }
+    static var currentDeviceId: String { Constants.CURRENT_DEVICE_ID }
+
     var uniqueIdentifier: String
     var lastUpdated: Date
 
     init(lastUpdated: Date = .now,
-         uniqueIdentifier: String = Constants.CURRENT_PLAYER_ID) {
+         uniqueIdentifier: String = Metadata.currentPlayerId) {
         self.lastUpdated = lastUpdated
         self.uniqueIdentifier = uniqueIdentifier
     }
@@ -26,9 +29,19 @@ class Metadata: Codable, Comparable, Equatable {
         self.uniqueIdentifier = UUID().uuidString
     }
 
-    func update() {
-        Logger.log("Metadata update as at \(Date.now.ISO8601Format())")
+    func updateTimeToNow() {
         lastUpdated = .now
+        Logger.log("Metadata time updated to \(self.lastUpdated.ISO8601Format())", self)
+    }
+
+    func updateIdentifierToCurrentID() {
+        uniqueIdentifier = Self.currentPlayerId
+        Logger.log("Metadata id updated to \(self.uniqueIdentifier)", self)
+    }
+
+    func resetIdentifier() {
+        uniqueIdentifier = Self.currentDeviceId
+        Logger.log("Metadata id updated to \(self.uniqueIdentifier)", self)
     }
 
     static func == (lhs: Metadata, rhs: Metadata) -> Bool {

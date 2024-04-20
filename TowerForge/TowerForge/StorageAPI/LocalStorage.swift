@@ -55,7 +55,7 @@ class LocalStorage {
         }
     }
 
-    /// Deletes the stored database from file
+    /// Deletes the stored statistics database from file
     static func deleteDatabaseFromLocalStorage() {
         do {
             let folderURL = try Self.createFolderIfNeeded(folderName: Self.folderName)

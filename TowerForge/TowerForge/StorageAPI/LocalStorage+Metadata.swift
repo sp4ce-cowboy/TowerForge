@@ -48,6 +48,7 @@ extension LocalStorage {
         }
     }
 
+    /// Deletes the stored metadata from file
     static func deleteMetadataFromLocalStorage() {
         do {
             let folderURL = try LocalStorageManager.createFolderIfNeeded(folderName: folderName)
@@ -57,7 +58,7 @@ extension LocalStorage {
         } catch {
             Logger.log("Error deleting metadata: \(error)", self)
         }
-        
+
         Logger.log("Metadata successfully deleted.", self)
     }
 }
