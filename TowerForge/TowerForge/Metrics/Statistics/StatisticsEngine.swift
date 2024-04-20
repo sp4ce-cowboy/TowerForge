@@ -15,6 +15,14 @@ class StatisticsEngine {
 
     init() {
         self.initializeStatistics()
+        self.loadStatistics()
+        self.setUpLinks()
+        self.setUpInferenceEngines()
+    }
+
+    init(with statistics: StatisticsDatabase) {
+        self.statistics = statistics
+        self.initializeStatistics()
         self.setUpLinks()
         self.setUpInferenceEngines()
     }
@@ -32,7 +40,6 @@ class StatisticsEngine {
 
     private func initializeStatistics() {
         eventStatisticLinks = StatisticsFactory.getDefaultEventLinkDatabase()
-        loadStatistics()
     }
 
     private func setUpInferenceEngines() {

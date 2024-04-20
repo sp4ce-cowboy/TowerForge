@@ -22,8 +22,13 @@ class Metadata: Codable, Comparable, Equatable {
     }
 
     init() {
-        self.lastUpdated = Date()
+        self.lastUpdated = .now
         self.uniqueIdentifier = UUID().uuidString
+    }
+
+    func update() {
+        Logger.log("Metadata update as at \(Date.now.ISO8601Format())")
+        lastUpdated = .now
     }
 
     static func == (lhs: Metadata, rhs: Metadata) -> Bool {

@@ -201,6 +201,10 @@
 		BA436AE12BD3D66800BE3E4F /* MassKillMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AE02BD3D66800BE3E4F /* MassKillMission.swift */; };
 		BA436AE32BD3D6FF00BE3E4F /* MassDeathMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AE22BD3D6FF00BE3E4F /* MassDeathMission.swift */; };
 		BA436AE72BD4180400BE3E4F /* MassEffectMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AE62BD4180400BE3E4F /* MassEffectMission.swift */; };
+		BA436AEA2BD42F5400BE3E4F /* StorageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AE92BD42F5400BE3E4F /* StorageHandler.swift */; };
+		BA436AEC2BD42F7800BE3E4F /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AEB2BD42F7800BE3E4F /* LocalStorage.swift */; };
+		BA436AEE2BD42F8100BE3E4F /* RemoteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AED2BD42F8100BE3E4F /* RemoteStorage.swift */; };
+		BA436AF02BD437D900BE3E4F /* LocalStorage+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AEF2BD437D900BE3E4F /* LocalStorage+Metadata.swift */; };
 		BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */; };
 		BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */; };
 		BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D412BAD9885009F0FFB /* DamageEventTests.swift */; };
@@ -478,6 +482,10 @@
 		BA436AE02BD3D66800BE3E4F /* MassKillMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassKillMission.swift; sourceTree = "<group>"; };
 		BA436AE22BD3D6FF00BE3E4F /* MassDeathMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassDeathMission.swift; sourceTree = "<group>"; };
 		BA436AE62BD4180400BE3E4F /* MassEffectMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassEffectMission.swift; sourceTree = "<group>"; };
+		BA436AE92BD42F5400BE3E4F /* StorageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageHandler.swift; sourceTree = "<group>"; };
+		BA436AEB2BD42F7800BE3E4F /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		BA436AED2BD42F8100BE3E4F /* RemoteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStorage.swift; sourceTree = "<group>"; };
+		BA436AEF2BD437D900BE3E4F /* LocalStorage+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+Metadata.swift"; sourceTree = "<group>"; };
 		BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
 		BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		BA443D412BAD9885009F0FFB /* DamageEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEventTests.swift; sourceTree = "<group>"; };
@@ -915,6 +923,7 @@
 				5295A2082BAAE14B005018A8 /* ViewControllers */,
 				52DF5FDB2BA32CEF00135367 /* LevelModule */,
 				BAFFB9332BB0A24400D8301F /* GameModule */,
+				BA436AE82BD42F1100BE3E4F /* StorageAPI */,
 				BAFFB9512BB342E200D8301F /* Storage */,
 				BA2F5ABF2BC80BD200CBD8E9 /* Metrics */,
 			);
@@ -1038,6 +1047,17 @@
 				BA436ADE2BD3CE9600BE3E4F /* CustomMissionCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		BA436AE82BD42F1100BE3E4F /* StorageAPI */ = {
+			isa = PBXGroup;
+			children = (
+				BA436AE92BD42F5400BE3E4F /* StorageHandler.swift */,
+				BA436AEB2BD42F7800BE3E4F /* LocalStorage.swift */,
+				BA436AEF2BD437D900BE3E4F /* LocalStorage+Metadata.swift */,
+				BA436AED2BD42F8100BE3E4F /* RemoteStorage.swift */,
+			);
+			path = StorageAPI;
 			sourceTree = "<group>";
 		};
 		BA443D402BAD9872009F0FFB /* EventTests */ = {
@@ -1696,6 +1716,7 @@
 				9B0406162BB89E140026E903 /* InvulnerabilityPowerUpDelegate.swift in Sources */,
 				5295A2152BAAF335005018A8 /* UnitSelectionNode.swift in Sources */,
 				52DF5FF92BA35D2B00135367 /* MovableComponent.swift in Sources */,
+				BA436AEA2BD42F5400BE3E4F /* StorageHandler.swift in Sources */,
 				5299D1342BC31067003EF746 /* AuthenticationProtocol.swift in Sources */,
 				527A07822BB3F8D300CD9D08 /* TimerProp.swift in Sources */,
 				52DF5FDE2BA32D7E00135367 /* EntityManager.swift in Sources */,
@@ -1711,6 +1732,7 @@
 				52A794092BBC35F20083C976 /* Constant.swift in Sources */,
 				3C9955C82BA5865C00D33FA5 /* ConcurrentEvent.swift in Sources */,
 				52F268702BB4B319009599AD /* GameModeViewController.swift in Sources */,
+				BA436AEC2BD42F7800BE3E4F /* LocalStorage.swift in Sources */,
 				BA82C7862BCD2B44000515A0 /* MissionTypeWrapper.swift in Sources */,
 				BA82C7502BC8A20A000515A0 /* TotalDeathsStatistic.swift in Sources */,
 				527A07762BB3E4CF00CD9D08 /* GameState.swift in Sources */,
@@ -1720,9 +1742,11 @@
 				3CAC4A672BB6975200A5D22E /* RenderStage.swift in Sources */,
 				BA82C75D2BCB1451000515A0 /* InferenceEngine.swift in Sources */,
 				3C9955BE2BA57E4B00D33FA5 /* EventManager.swift in Sources */,
+				BA436AF02BD437D900BE3E4F /* LocalStorage+Metadata.swift in Sources */,
 				BAFFB9852BBDBA7D00D8301F /* MediaEnums.swift in Sources */,
 				527A07842BB3FD9A00CD9D08 /* TimerSystem.swift in Sources */,
 				BA82C7462BC8797F000515A0 /* StatisticsDatabase.swift in Sources */,
+				BA436AEE2BD42F8100BE3E4F /* RemoteStorage.swift in Sources */,
 				3C3CBDF72BB81D970001B8A9 /* TFCameraNode.swift in Sources */,
 				9B274DCA2BD252330062715C /* NoCostPowerUpDelegate.swift in Sources */,
 				BA82C76D2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift in Sources */,
