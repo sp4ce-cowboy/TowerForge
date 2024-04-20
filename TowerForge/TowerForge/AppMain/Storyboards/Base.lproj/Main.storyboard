@@ -387,6 +387,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="DbN-3L-bg3">
+                                <rect key="frame" x="163" y="317" width="240" height="4"/>
+                            </progressView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dJD-fA-97D"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -402,6 +405,7 @@
                             <constraint firstItem="Hpy-dH-maM" firstAttribute="top" secondItem="YEh-RK-VN1" secondAttribute="bottom" constant="7" id="808-gL-x7A"/>
                             <constraint firstItem="YEh-RK-VN1" firstAttribute="leading" secondItem="APf-xY-z5O" secondAttribute="leading" id="9XQ-LS-ZRN"/>
                             <constraint firstItem="zCJ-Kt-R6R" firstAttribute="top" secondItem="WUz-SV-r2V" secondAttribute="bottom" constant="100" id="BhH-zO-Kbk"/>
+                            <constraint firstItem="DbN-3L-bg3" firstAttribute="width" secondItem="TIB-Zw-QKC" secondAttribute="width" id="CZO-q9-MhP"/>
                             <constraint firstItem="dJD-fA-97D" firstAttribute="trailing" secondItem="WUz-SV-r2V" secondAttribute="trailing" constant="50" id="DRg-wA-jye" userLabel="Safe Area.trailing = Achievements View.trailing + 100"/>
                             <constraint firstItem="RSP-Id-lVl" firstAttribute="top" secondItem="Tmz-Aw-Vwr" secondAttribute="bottom" constant="8" symbolic="YES" id="DlE-N6-Nrm"/>
                             <constraint firstItem="Qde-Fj-IGv" firstAttribute="top" secondItem="q64-a7-JWi" secondAttribute="bottom" constant="8" symbolic="YES" id="Dxh-8k-jgX"/>
@@ -414,6 +418,7 @@
                             <constraint firstItem="Tmz-Aw-Vwr" firstAttribute="top" secondItem="C93-Qf-WKB" secondAttribute="bottom" constant="8" symbolic="YES" id="Le5-Rr-r00"/>
                             <constraint firstItem="TIB-Zw-QKC" firstAttribute="leading" secondItem="1Qb-a0-zCj" secondAttribute="trailing" constant="73" id="PyK-p9-piV"/>
                             <constraint firstItem="NCk-CE-h9i" firstAttribute="width" secondItem="sar-mD-1WJ" secondAttribute="width" id="SU8-ZR-jr3"/>
+                            <constraint firstItem="TIB-Zw-QKC" firstAttribute="top" secondItem="DbN-3L-bg3" secondAttribute="bottom" constant="10" id="SdH-qB-KmL"/>
                             <constraint firstItem="YEh-RK-VN1" firstAttribute="top" secondItem="APf-xY-z5O" secondAttribute="bottom" constant="8" symbolic="YES" id="SuK-m5-gzK"/>
                             <constraint firstItem="dNC-ad-u17" firstAttribute="centerX" secondItem="3F5-6P-B3x" secondAttribute="centerX" id="VH0-eK-jvU"/>
                             <constraint firstItem="Hpy-dH-maM" firstAttribute="leading" secondItem="YEh-RK-VN1" secondAttribute="leading" id="Vau-fF-ZZN"/>
@@ -430,6 +435,7 @@
                             <constraint firstItem="3F5-6P-B3x" firstAttribute="centerY" secondItem="JkC-L0-7EL" secondAttribute="centerY" id="cbu-gR-dM8"/>
                             <constraint firstItem="Qde-Fj-IGv" firstAttribute="width" secondItem="q64-a7-JWi" secondAttribute="width" id="chi-dH-Fz3"/>
                             <constraint firstItem="APf-xY-z5O" firstAttribute="top" secondItem="QvC-U5-gVt" secondAttribute="bottom" constant="6" id="fUk-as-toV"/>
+                            <constraint firstItem="DbN-3L-bg3" firstAttribute="centerX" secondItem="TIB-Zw-QKC" secondAttribute="centerX" id="fa7-lZ-25a"/>
                             <constraint firstItem="zCJ-Kt-R6R" firstAttribute="centerX" secondItem="WUz-SV-r2V" secondAttribute="centerX" id="gN8-aM-fo2"/>
                             <constraint firstItem="TIB-Zw-QKC" firstAttribute="centerX" secondItem="3F5-6P-B3x" secondAttribute="centerX" id="gXY-h8-QWX"/>
                             <constraint firstItem="Db1-4y-3dv" firstAttribute="width" secondItem="TIB-Zw-QKC" secondAttribute="width" multiplier="0.160417" constant="194.5" id="gr1-yj-U9k"/>
@@ -461,6 +467,7 @@
                         <outlet property="missionsView" destination="zCJ-Kt-R6R" id="c17-My-Oqy"/>
                         <outlet property="pte" destination="1Qb-a0-zCj" id="u62-uE-V2A"/>
                         <outlet property="rankNameLabel" destination="dNC-ad-u17" id="We1-CA-8OY"/>
+                        <outlet property="rankProgress" destination="DbN-3L-bg3" id="zhZ-dP-8ta"/>
                         <outlet property="sgt" destination="Tmz-Aw-Vwr" id="Txs-ie-DWe"/>
                         <outlet property="totalDeaths" destination="sar-mD-1WJ" id="ljB-eQ-kqt"/>
                         <outlet property="totalGames" destination="q64-a7-JWi" id="Ve1-wi-S0u"/>

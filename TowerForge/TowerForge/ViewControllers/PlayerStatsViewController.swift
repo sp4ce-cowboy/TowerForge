@@ -15,6 +15,7 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
 
     @IBOutlet private var rankNameLabel: UILabel!
     @IBOutlet private var characterImage: UIImageView!
+    @IBOutlet private var rankProgress: UIProgressView!
 
     @IBOutlet private var currentExp: UILabel!
     @IBOutlet private var totalKills: UILabel!
@@ -106,6 +107,9 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         totalDeaths.text = String("Deaths: \(deaths)")
         totalGames.text = String("Games: \(games)")
         kdRatio.text = String("K/D Ratio: ") + String(format: "%.2f", kd)
+
+        rankProgress.progress = Float(rankingEngine.percentageToNextRank())
+        Logger.log("Current progress is \(rankProgress.progress)", self)
     }
 
     func initializeRanks() {
