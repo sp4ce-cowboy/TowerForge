@@ -1277,6 +1277,7 @@
 		BAFFB93B2BB0A5AD00D8301F /* PlayerEvents */ = {
 			isa = PBXGroup;
 			children = (
+				3CD7DE392BCEB87900CB21F0 /* ConcedeEvent.swift */,
 				3CE951682BAEB719008B2785 /* RequestSpawnEvent.swift */,
 				523E5C4B2BC53F70007444DA /* WaveSpawnEvent.swift */,
 			);
@@ -1294,7 +1295,6 @@
 				3CCA1EEF2BD2861B009302F8 /* UpdatePostionEvent.swift */,
 				527A077B2BB3F4CC00CD9D08 /* KillEvent.swift */,
 				9BC60BC72BB9BE6D001A6737 /* DisabledEvent.swift */,
-				3CD7DE392BCEB87900CB21F0 /* ConcedeEvent.swift */,
 			);
 			path = GameEvents;
 			sourceTree = "<group>";

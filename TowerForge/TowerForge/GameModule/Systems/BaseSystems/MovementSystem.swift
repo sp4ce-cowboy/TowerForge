@@ -49,15 +49,6 @@ class MovementSystem: TFSystem {
         movementComponent.updatePosition(with: displacement)
     }
 
-    func updatePosition(for entityId: UUID, to position: CGPoint) {
-        guard let currentEntity = entityManager.entity(with: entityId),
-              let positionComponent = currentEntity.component(ofType: PositionComponent.self) else {
-            return
-        }
-
-        positionComponent.changeTo(to: position)
-    }
-
     private func processMovableComponent(_ movableComponent: MovableComponent, time: CGFloat) {
         guard movableComponent.shouldMove, let entity = movableComponent.entity,
               let player = entity.component(ofType: PlayerComponent.self)?.player else {
