@@ -175,6 +175,7 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
             // cell.progressPercentage.text = String(describing: Float(achievement.overallProgressRateRounded))
             let statusImageName = achievement.isComplete ? "checkmark.circle" : "x.circle"
             cell.statusImageView.image = UIImage(systemName: statusImageName)
+            cell.statusImageView.tintColor = achievement.isComplete ? .green : .red
 
             return cell
         }
@@ -193,6 +194,7 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         missionCell.missionImageView.image = UIImage(named: mission.imageIdentifier)
         let statusImageName = mission.isComplete ? "checkmark.circle" : "x.circle"
         missionCell.statusImageView.image = UIImage(systemName: statusImageName)
+        missionCell.statusImageView.tintColor = mission.isComplete ? .green : .red
 
         return missionCell
 
