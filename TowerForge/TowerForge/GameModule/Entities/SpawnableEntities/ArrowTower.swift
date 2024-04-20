@@ -41,6 +41,9 @@ class ArrowTower: BaseTower, PlayerSpawnable {
         self.addComponent(ShootingComponent(fireRate: ArrowTower.fireRate,
                                             range: ArrowTower.range,
                                             attackPower: ArrowTower.damage, shootingType: Bullet.self))
+        self.addComponent(DamageComponent(attackRate: 1,
+                                          attackPower: 1,
+                                          temporary: false))
     }
 
 }
