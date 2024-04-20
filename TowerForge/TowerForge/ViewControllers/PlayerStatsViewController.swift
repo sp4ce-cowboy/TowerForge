@@ -14,7 +14,7 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet private var missionsView: UITableView!
 
     @IBOutlet private var rankNameLabel: UILabel!
-    // @IBOutlet private var characterImage: UIImageView!
+    @IBOutlet private var characterImage: UIImageView!
 
     var achievements: AchievementsDatabase = getAchievements()
     var missions: MissionsDatabase = getMissions()
@@ -48,7 +48,7 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         achievementsView.dataSource = self
         missionsView.delegate = self
         missionsView.dataSource = self
-        
+
         achievementsView.allowsSelection = false
         missionsView.allowsSelection = false
 
@@ -56,7 +56,7 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         // rankImageView.image = UIImage(named: currentRank.imageIdentifer)
         rankNameLabel.text = String("--- Rank: \(rank.rawValue) ---")
 
-        // characterImage.image = UIImage(named: "melee-1")
+        characterImage.image = UIImage(named: "melee-1")
         reloadAchievements()
     }
 

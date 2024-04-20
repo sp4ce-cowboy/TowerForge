@@ -296,9 +296,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIB-Zw-QKC">
-                                <rect key="frame" x="163" y="370" width="240" height="284"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TIB-Zw-QKC">
+                                <rect key="frame" x="163" y="381" width="240" height="284"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="284" id="IYY-zE-Ytg"/>
+                                    <constraint firstAttribute="width" constant="240" id="VO1-lk-axe"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dJD-fA-97D"/>
@@ -318,17 +321,20 @@
                             <constraint firstItem="dNC-ad-u17" firstAttribute="leading" secondItem="dJD-fA-97D" secondAttribute="leading" constant="193" id="ajN-x8-Lfg"/>
                             <constraint firstItem="3F5-6P-B3x" firstAttribute="centerY" secondItem="JkC-L0-7EL" secondAttribute="centerY" id="cbu-gR-dM8"/>
                             <constraint firstItem="zCJ-Kt-R6R" firstAttribute="centerX" secondItem="WUz-SV-r2V" secondAttribute="centerX" id="gN8-aM-fo2"/>
+                            <constraint firstItem="TIB-Zw-QKC" firstAttribute="centerX" secondItem="3F5-6P-B3x" secondAttribute="centerX" id="gXY-h8-QWX"/>
                             <constraint firstItem="zCJ-Kt-R6R" firstAttribute="height" secondItem="WUz-SV-r2V" secondAttribute="height" multiplier="1.00541" id="kdr-zQ-B6U"/>
                             <constraint firstAttribute="bottomMargin" secondItem="WUz-SV-r2V" secondAttribute="bottom" constant="484" id="l2J-ai-7Ra"/>
                             <constraint firstItem="WUz-SV-r2V" firstAttribute="top" secondItem="JkC-L0-7EL" secondAttribute="bottom" constant="35" id="n9F-jB-a5V"/>
                             <constraint firstItem="zCJ-Kt-R6R" firstAttribute="top" secondItem="CRV-TP-zUJ" secondAttribute="bottom" constant="30" id="rXT-rf-OxI"/>
                             <constraint firstItem="dNC-ad-u17" firstAttribute="top" secondItem="3F5-6P-B3x" secondAttribute="bottom" constant="50" id="u5H-tG-c8m"/>
                             <constraint firstItem="dJD-fA-97D" firstAttribute="bottom" secondItem="WUz-SV-r2V" secondAttribute="bottom" constant="484" id="ui2-Tq-XqP"/>
+                            <constraint firstItem="TIB-Zw-QKC" firstAttribute="centerY" secondItem="dJD-fA-97D" secondAttribute="centerY" id="uqX-G0-NyP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oa5-Be-lEU"/>
                     <connections>
                         <outlet property="achievementsView" destination="WUz-SV-r2V" id="oXa-Af-QSO"/>
+                        <outlet property="characterImage" destination="TIB-Zw-QKC" id="Sbz-5y-Zt7"/>
                         <outlet property="missionsView" destination="zCJ-Kt-R6R" id="c17-My-Oqy"/>
                         <outlet property="rankNameLabel" destination="dNC-ad-u17" id="We1-CA-8OY"/>
                     </connections>
