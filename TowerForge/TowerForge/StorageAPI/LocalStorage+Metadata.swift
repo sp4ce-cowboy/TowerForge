@@ -57,8 +57,7 @@ extension LocalStorage {
         } catch {
             Logger.log("Error deleting metadata: \(error)", self)
         }
-
+        
         Logger.log("Metadata successfully deleted.", self)
     }
-
 }
