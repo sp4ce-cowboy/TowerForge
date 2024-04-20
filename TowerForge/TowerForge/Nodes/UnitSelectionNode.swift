@@ -25,12 +25,12 @@ class UnitSelectionNode: TFEntity {
     init() {
         super.init()
 
-        var position = CGPoint(x: 500, y: UnitNode.size.height / 2)
+        var position = PositionConstants.UNIT_NODE_START
         let possibleUnits: [(TFEntity & PlayerSpawnable).Type] = SpawnableEntities.playerSpawnableEntities
         for type in possibleUnits {
             let unitNode = UnitNode(ofType: type, position: position)
             unitNode.delegate = self
-            position.x += UnitNode.size.width
+            position.x += UnitNode.size.width - 10
             unitNodes.append(unitNode)
         }
 

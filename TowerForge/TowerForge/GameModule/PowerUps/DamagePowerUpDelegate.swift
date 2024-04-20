@@ -1,13 +1,13 @@
 //
-//  InvulnerabilityPowerUpDelegate.swift
+//  DamagePowerUpDelegate.swift
 //  TowerForge
 //
-//  Created by Keith Gan on 31/3/24.
+//  Created by Keith Gan on 19/4/24.
 //
 
 import Foundation
 
-class InvulnerabilityPowerUpDelegate: PowerUpNodeDelegate {
+class DamagePowerUpDelegate: PowerUpNodeDelegate {
     let eventManager: EventManager
 
     init(eventManager: EventManager) {
@@ -15,7 +15,7 @@ class InvulnerabilityPowerUpDelegate: PowerUpNodeDelegate {
     }
 
     func powerUpNodeDidSelect() {
-        let remoteEvent = RemotePowerupEvent(powerup: .Invulnerability, player: .ownPlayer,
+        let remoteEvent = RemotePowerupEvent(powerup: .Damage, player: .ownPlayer,
                                              source: eventManager.currentPlayer ?? .defaultPlayer)
         eventManager.add(remoteEvent)
     }

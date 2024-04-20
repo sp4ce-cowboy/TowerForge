@@ -13,6 +13,10 @@ class PowerUpDelegateFactory {
         switch type {
         case .Invulnerability:
             return InvulnerabilityPowerUpDelegate(eventManager: eventManager)
+        case .Damage:
+            return DamagePowerUpDelegate(eventManager: eventManager)
+        case .NoCost:
+            return NoCostPowerUpDelegate(eventManager: eventManager)
         }
     }
 }

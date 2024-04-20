@@ -14,7 +14,7 @@ protocol UnitNodeDelegate: AnyObject {
 
 class UnitNode: TFEntity {
     static var size: CGSize {
-        let height = UIScreen.main.bounds.height / 5
+        let height = SizeConstants.TOOLBAR_HEIGHT
         let width = height * 0.7
         return CGSize(width: width, height: height)
     }

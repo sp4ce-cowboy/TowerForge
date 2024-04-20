@@ -183,6 +183,10 @@
 		9B0406142BB89BE00026E903 /* PowerUpSelectionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0406132BB89BE00026E903 /* PowerUpSelectionNode.swift */; };
 		9B0406162BB89E140026E903 /* InvulnerabilityPowerUpDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0406152BB89E140026E903 /* InvulnerabilityPowerUpDelegate.swift */; };
 		9B0406182BB8A1E10026E903 /* PowerUpDelegateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0406172BB8A1E10026E903 /* PowerUpDelegateFactory.swift */; };
+		9B274DC42BD24B210062715C /* DamagePowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B274DC32BD24B210062715C /* DamagePowerUp.swift */; };
+		9B274DC62BD24C4F0062715C /* DamagePowerUpDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B274DC52BD24C4F0062715C /* DamagePowerUpDelegate.swift */; };
+		9B274DC82BD250420062715C /* NoCostPowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B274DC72BD250420062715C /* NoCostPowerUp.swift */; };
+		9B274DCA2BD252330062715C /* NoCostPowerUpDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B274DC92BD252320062715C /* NoCostPowerUpDelegate.swift */; };
 		9B8696552BAD759F0002377C /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8696542BAD759F0002377C /* Grid.swift */; };
 		9BC60BC82BB9BE6D001A6737 /* DisabledEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC60BC72BB9BE6D001A6737 /* DisabledEvent.swift */; };
 		9BD669682BAFDE5E00DC8C4C /* GridDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD669672BAFDE5E00DC8C4C /* GridDelegate.swift */; };
@@ -448,6 +452,10 @@
 		9B0406132BB89BE00026E903 /* PowerUpSelectionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpSelectionNode.swift; sourceTree = "<group>"; };
 		9B0406152BB89E140026E903 /* InvulnerabilityPowerUpDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvulnerabilityPowerUpDelegate.swift; sourceTree = "<group>"; };
 		9B0406172BB8A1E10026E903 /* PowerUpDelegateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerUpDelegateFactory.swift; sourceTree = "<group>"; };
+		9B274DC32BD24B210062715C /* DamagePowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamagePowerUp.swift; sourceTree = "<group>"; };
+		9B274DC52BD24C4F0062715C /* DamagePowerUpDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamagePowerUpDelegate.swift; sourceTree = "<group>"; };
+		9B274DC72BD250420062715C /* NoCostPowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCostPowerUp.swift; sourceTree = "<group>"; };
+		9B274DC92BD252320062715C /* NoCostPowerUpDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCostPowerUpDelegate.swift; sourceTree = "<group>"; };
 		9B8696542BAD759F0002377C /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		9BC60BC72BB9BE6D001A6737 /* DisabledEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledEvent.swift; sourceTree = "<group>"; };
 		9BD669672BAFDE5E00DC8C4C /* GridDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridDelegate.swift; sourceTree = "<group>"; };
@@ -962,6 +970,10 @@
 				9B0406172BB8A1E10026E903 /* PowerUpDelegateFactory.swift */,
 				9B04060F2BB879990026E903 /* InvulnerabilityPowerUp.swift */,
 				9B0406152BB89E140026E903 /* InvulnerabilityPowerUpDelegate.swift */,
+				9B274DC32BD24B210062715C /* DamagePowerUp.swift */,
+				9B274DC52BD24C4F0062715C /* DamagePowerUpDelegate.swift */,
+				9B274DC72BD250420062715C /* NoCostPowerUp.swift */,
+				9B274DC92BD252320062715C /* NoCostPowerUpDelegate.swift */,
 			);
 			path = PowerUps;
 			sourceTree = "<group>";
@@ -1608,6 +1620,7 @@
 				BA82C7672BCBCB00000515A0 /* StatisticsDatabase+Codable.swift in Sources */,
 				3CD37AA52BBEC10700222D8A /* FirebaseRemoteEventSubscriber.swift in Sources */,
 				BA82C7792BCC6943000515A0 /* CenturionAchievement.swift in Sources */,
+				9B274DC82BD250420062715C /* NoCostPowerUp.swift in Sources */,
 				52A794172BBC4F690083C976 /* GamePlayer.swift in Sources */,
 				3CBE72FD2BC8D64F00CC446A /* RemoteSyncPositionEvent.swift in Sources */,
 				3CE951632BAE037C008B2785 /* AiSystem.swift in Sources */,
@@ -1674,6 +1687,7 @@
 				527A07842BB3FD9A00CD9D08 /* TimerSystem.swift in Sources */,
 				BA82C7462BC8797F000515A0 /* StatisticsDatabase.swift in Sources */,
 				3C3CBDF72BB81D970001B8A9 /* TFCameraNode.swift in Sources */,
+				9B274DCA2BD252330062715C /* NoCostPowerUpDelegate.swift in Sources */,
 				BA82C76D2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift in Sources */,
 				3CE951562BACA0CF008B2785 /* Collidable.swift in Sources */,
 				BA82C7422BC86FE1000515A0 /* TotalGamesStatistic.swift in Sources */,
@@ -1691,6 +1705,7 @@
 				3C9955AF2BA48FD200D33FA5 /* MeleeUnit.swift in Sources */,
 				5240D0AD2BB33D4C004F1486 /* PositionSystem.swift in Sources */,
 				5295A2022BA9FBD9005018A8 /* SceneManagerDelegate.swift in Sources */,
+				9B274DC42BD24B210062715C /* DamagePowerUp.swift in Sources */,
 				52DF5FE12BA3349600135367 /* TFTextures.swift in Sources */,
 				520062582BA8ED73000DBA30 /* HomeComponent.swift in Sources */,
 				3CCA1EEE2BD247E8009302F8 /* RemoteRemovePowerupEvent.swift in Sources */,
@@ -1759,6 +1774,7 @@
 				3CE951672BAEAB0E008B2785 /* ContactSystem.swift in Sources */,
 				529190E32BBFB59B001D8821 /* StatePopupNode.swift in Sources */,
 				3CE951692BAEB719008B2785 /* RequestSpawnEvent.swift in Sources */,
+				9B274DC62BD24C4F0062715C /* DamagePowerUpDelegate.swift in Sources */,
 				BA82C7832BCD2B30000515A0 /* Mission.swift in Sources */,
 				3CFA72E72BC0398E0081337F /* RemoteEventManager.swift in Sources */,
 			);
