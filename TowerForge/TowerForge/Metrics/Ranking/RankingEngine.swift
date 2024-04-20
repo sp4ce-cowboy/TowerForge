@@ -30,7 +30,10 @@ class RankingEngine: InferenceEngine, InferenceDataDelegate {
     }
 
     var currentKd: Double {
-        getPermanentValueFor(TotalKillsStatistic.self) / getPermanentValueFor(TotalDeathsStatistic.self)
+        let kills = getPermanentValueFor(TotalKillsStatistic.self)
+        let deaths = getPermanentValueFor(TotalDeathsStatistic.self)
+
+        return kills > 0 && deaths > 0 ? kills / deaths : .zero
     }
 
     var currentExpAsString: String {
