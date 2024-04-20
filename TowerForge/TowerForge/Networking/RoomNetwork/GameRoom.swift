@@ -88,7 +88,7 @@ class GameRoom {
 
             let onAddCompleted = { (error: Error?, _: DatabaseReference) -> Void in
                 if let error = error {
-                    print("Error getting data: \(error.localizedDescription)")
+                    Logger.log("Error getting data: \(error.localizedDescription)", self)
                     completion(false)
                     return
                 }
@@ -110,7 +110,7 @@ class GameRoom {
 
     // Logic to start the game when players are ready
     func updatePlayerReady(completion: @escaping (RoomState) -> Void) {
-        print("Updating player start")
+        Logger.log("Updating player start", self)
         if self.roomState == .waitingForFinalConfirmation {
             self.updateRoomState(roomState: .gameOnGoing)
             completion(.gameOnGoing)
@@ -138,23 +138,23 @@ class GameRoom {
         }
         roomRef.child(roomName).removeValue { error, _ in
             if let error = error {
-                print("Error deleting room: \(error.localizedDescription)")
+                Logger.log("Error deleting room: \(error.localizedDescription)", self)
             } else {
-                print("Room deleted successfully.")
+                Logger.log("Room deleted successfully.", self)
             }
         }
     }
 
     // Updates the current room state in the class and database
     private func updateRoomState(roomState: RoomState) {
-        print("Updating room state from player")
+        Logger.log("Updating room state from player", self)
         let roomStateRef = FirebaseDatabaseReference(.Rooms).child(roomName).child("roomState")
         roomStateRef.setValue(roomState.rawValue) { error, _ in
             if let error = error {
-                print("Error updating room state: \(error.localizedDescription)")
+                Logger.log("Error updating room state: \(error.localizedDescription)", self)
             } else {
                 self.roomState = roomState
-                print("Room state updated successfully.")
+                Logger.log("Room state updated successfully.", self)
             }
         }
     }
@@ -211,7 +211,7 @@ class GameRoom {
         let playerRef = FirebaseDatabaseReference(.Rooms).child(roomName).child("players")
         playerRef.getData { error, snapshot in
             if let error = error {
-                print("Error getting data: \(error.localizedDescription)")
+                Logger.log("Error getting data: \(error.localizedDescription)", self)
                 completion(false)
                 return
             }
@@ -304,7 +304,7 @@ class GameRoom {
     private func attemptSetHost(player: GamePlayer) {
         let delegate = { (error: Error?, snapshot: DataSnapshot?) -> Void in
             if let error = error {
-                print("Error getting data: \(error.localizedDescription)")
+                Logger.log("Error getting data: \(error.localizedDescription)", self)
                 return
             }
 

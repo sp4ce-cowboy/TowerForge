@@ -31,7 +31,7 @@ class GameViewController: UIViewController {
         let auth = AuthenticationProvider()
         if auth.isUserLoggedIn() {
             auth.getUserDetails { data, _ in
-                print(data)
+                Logger.log(String(describing: data), self)
                 self.playerData = data
             }
         }
