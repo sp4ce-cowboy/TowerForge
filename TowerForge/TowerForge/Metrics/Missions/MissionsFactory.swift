@@ -13,7 +13,8 @@ class MissionsFactory {
         [
             String(describing: MassDamageMission.self): MassDamageMission.self,
             String(describing: MassKillMission.self): MassKillMission.self,
-            String(describing: MassDeathMission.self): MassDeathMission.self
+            String(describing: MassDeathMission.self): MassDeathMission.self,
+            String(describing: MassEffectMission.self): MassEffectMission.self
         ]
 
     static func registerMissionType<T: Mission>(_ stat: T) {

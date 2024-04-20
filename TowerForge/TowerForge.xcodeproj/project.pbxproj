@@ -200,6 +200,7 @@
 		BA436ADF2BD3CE9600BE3E4F /* CustomMissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436ADE2BD3CE9600BE3E4F /* CustomMissionCell.swift */; };
 		BA436AE12BD3D66800BE3E4F /* MassKillMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AE02BD3D66800BE3E4F /* MassKillMission.swift */; };
 		BA436AE32BD3D6FF00BE3E4F /* MassDeathMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AE22BD3D6FF00BE3E4F /* MassDeathMission.swift */; };
+		BA436AE72BD4180400BE3E4F /* MassEffectMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AE62BD4180400BE3E4F /* MassEffectMission.swift */; };
 		BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */; };
 		BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */; };
 		BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D412BAD9885009F0FFB /* DamageEventTests.swift */; };
@@ -476,6 +477,7 @@
 		BA436ADE2BD3CE9600BE3E4F /* CustomMissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMissionCell.swift; sourceTree = "<group>"; };
 		BA436AE02BD3D66800BE3E4F /* MassKillMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassKillMission.swift; sourceTree = "<group>"; };
 		BA436AE22BD3D6FF00BE3E4F /* MassDeathMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassDeathMission.swift; sourceTree = "<group>"; };
+		BA436AE62BD4180400BE3E4F /* MassEffectMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassEffectMission.swift; sourceTree = "<group>"; };
 		BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
 		BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		BA443D412BAD9885009F0FFB /* DamageEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEventTests.swift; sourceTree = "<group>"; };
@@ -1138,6 +1140,7 @@
 				BA82C78D2BCD2D2B000515A0 /* MassDamageMission.swift */,
 				BA436AE02BD3D66800BE3E4F /* MassKillMission.swift */,
 				BA436AE22BD3D6FF00BE3E4F /* MassDeathMission.swift */,
+				BA436AE62BD4180400BE3E4F /* MassEffectMission.swift */,
 			);
 			path = Implemented;
 			sourceTree = "<group>";
@@ -1604,6 +1607,7 @@
 				3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */,
 				BAEC99FA2BD13F2600E0C437 /* AbstractTypeWrapper.swift in Sources */,
 				5299D1432BC3AB38003EF746 /* GameRankProvider.swift in Sources */,
+				BA436AE72BD4180400BE3E4F /* MassEffectMission.swift in Sources */,
 				5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */,
 				3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */,
 				5295A20F2BAAE7CF005018A8 /* TeamController.swift in Sources */,
