@@ -5,7 +5,7 @@
 //  Created by Vanessa Mae on 14/03/24.
 //
 
-import Foundation
+import UIKit
 
 class SpriteComponent: TFComponent {
     var textures: TFTextures
@@ -14,6 +14,7 @@ class SpriteComponent: TFComponent {
     var alpha = 1.0
     var staticOnScreen = false
     var zPosition: CGFloat
+    var tint: UIColor = .white
 
     init(textureNames: [String], size: CGSize, animatableKey: String, zPosition: CGFloat = .zero) {
         self.textures = TFTextures(textureNames: textureNames, textureAtlasName: "Sprites")

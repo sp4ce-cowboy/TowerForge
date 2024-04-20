@@ -48,7 +48,7 @@ class DeathMatchMode: GameMode {
         guard gameState != .LOSE else {
             return
         }
-        guard remainingTime < 0 else {
+        guard remainingTime <= 0 else {
             return
         }
         if currentOwnKillCounter > currentOpponentKillCounter {

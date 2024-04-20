@@ -32,10 +32,11 @@ class TestRemoteEvent: TFRemoteEvent {
 }
 
 class TestEventTransformation: EventTransformation {
+    static var DURATION = CGFloat(5)
     var id = UUID()
     private(set) var didTransformEvent = false
 
-    required init(player: TowerForge.Player = .ownPlayer) {}
+    required init(player: TowerForge.Player = .ownPlayer, id: UUID = UUID()) {}
 
     func transformEvent(event: any TowerForge.TFEvent) -> any TowerForge.TFEvent {
         didTransformEvent = true

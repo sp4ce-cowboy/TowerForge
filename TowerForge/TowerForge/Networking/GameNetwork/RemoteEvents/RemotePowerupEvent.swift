@@ -14,6 +14,7 @@ class RemotePowerupEvent: TFRemoteEvent {
 
     let powerup: String
     let targetIsSource: Bool
+    let id: UUID
 
     init(powerup: PowerUp, player: Player, source: GamePlayer) {
         self.type = String(describing: RemotePowerupEvent.self)
@@ -22,6 +23,7 @@ class RemotePowerupEvent: TFRemoteEvent {
 
         self.powerup = powerup.rawValue
         self.targetIsSource = player == .ownPlayer
+        self.id = UUID()
     }
 
     func unpack(into eventManager: EventManager, for gamePlayer: UserPlayerId) {
@@ -29,7 +31,17 @@ class RemotePowerupEvent: TFRemoteEvent {
             return
         }
         let player: Player = (gamePlayer == source) == targetIsSource ? .ownPlayer : .oppositePlayer
-        let powerup = type.init(player: player)
+        let powerup = type.init(player: player, id: id)
         eventManager.addTransformation(eventTransformation: powerup)
+
+        guard eventManager.isHost else {
+            return
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + type.DURATION) {
+            let removeEvent = RemoteRemovePowerupEvent(id: self.id,
+                                                       source: GamePlayer(userPlayerId: gamePlayer, userName: ""))
+            eventManager.add(removeEvent)
+        }
     }
 }

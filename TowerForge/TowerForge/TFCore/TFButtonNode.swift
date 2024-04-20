@@ -27,10 +27,12 @@ private class TFButton: SKSpriteNode {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
         action?.onTouchBegan()
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
         action?.onTouchEnded()
     }
 

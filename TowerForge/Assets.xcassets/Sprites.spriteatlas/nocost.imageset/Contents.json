@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "wizard-frame.png",
+      "filename" : "nocost.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "nocost 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "nocost 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

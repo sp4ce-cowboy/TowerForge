@@ -92,7 +92,7 @@ extension GameViewController: SceneManagerDelegate {
     }
     func showGameOverScene(isWin: Bool, results: [GameResult]) {
         let gameOverScene = GameOverScene(win: isWin, results: results)
-        if let data = self.playerData {
+        if isWin, let data = self.playerData {
             for result in results {
                 if let leaderboardResult = result as? LeaderboardResult, let score = Double(leaderboardResult.value) {
                     let rank = GameRankProvider(type: leaderboardResult.variable)
@@ -133,7 +133,7 @@ extension GameViewController: SceneManagerDelegate {
 extension GameViewController: StatePopupDelegate {
     func onMenu() {
         isPaused = false
-        gameWorld?.concede(playerid: currentPlayer?.userPlayerId)
+        gameWorld?.concede(player: currentPlayer)
     }
 
     func onResume() {

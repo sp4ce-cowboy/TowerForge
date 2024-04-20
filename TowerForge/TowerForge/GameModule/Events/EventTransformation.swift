@@ -8,7 +8,8 @@
 import Foundation
 
 protocol EventTransformation: Identifiable, AnyObject {
-    var id: UUID { get}
-    init(player: Player)
+    static var DURATION: CGFloat { get } // Max duration
+    var id: UUID { get }
+    init(player: Player, id: UUID)
     func transformEvent(event: TFEvent) -> TFEvent
 }

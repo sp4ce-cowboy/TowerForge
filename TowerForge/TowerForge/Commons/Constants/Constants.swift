@@ -48,30 +48,45 @@ class Constants {
 }
 
 struct PositionConstants {
+    private static let TOOLBAR_MID_Y = SizeConstants.TOOLBAR_HEIGHT / 2
+
+    static let POINTS_OWN = CGPoint(x: 70 / SizeConstants.SCALE_RATIO, y: TOOLBAR_MID_Y)
+
     // Death Match Mode Properties Positions
-    static let DEATH_MATCH_POINT_OWN = CGPoint(x: 300, y: 50)
-    static let DEATH_MATCH_POINT_OPP = CGPoint(x: 300, y: 110)
+    static let DEATH_MATCH_POINT_OWN = CGPoint(x: 270 / SizeConstants.SCALE_RATIO,
+                                               y: TOOLBAR_MID_Y + SizeConstants.DEATH_MATCH_POINT_SIZE.height / 2 + 10)
+    static let DEATH_MATCH_POINT_OPP = CGPoint(x: 270 / SizeConstants.SCALE_RATIO,
+                                               y: TOOLBAR_MID_Y - SizeConstants.DEATH_MATCH_POINT_SIZE.height / 2 - 10)
 
     // Capture the Flag Mode Properties
-    static let CTF_POINT_OWN = CGPoint(x: 300, y: 50)
-    static let CTF_POINT_OPP = CGPoint(x: 300, y: 110)
+    static let CTF_POINT_OWN = CGPoint(x: 270 / SizeConstants.SCALE_RATIO,
+                                       y: TOOLBAR_MID_Y + SizeConstants.CTF_POINT_SIZE.height / 2 + 10)
+    static let CTF_POINT_OPP = CGPoint(x: 270 / SizeConstants.SCALE_RATIO,
+                                       y: TOOLBAR_MID_Y - SizeConstants.CTF_POINT_SIZE.height / 2 - 10)
 
     // Survival Mode Properties
-    static let SURVIVAL_POINT_OWN = CGPoint(x: 300, y: 100)
+    static let SURVIVAL_POINT_OWN = CGPoint(x: 270 / SizeConstants.SCALE_RATIO, y: TOOLBAR_MID_Y)
 
-    static let SUBTITLE_LABEL_OFFSET = CGPoint(x: 0, y: -30)
+    // Unit Node
+    static let UNIT_NODE_START = CGPoint(x: 450 / SizeConstants.SCALE_RATIO, y: TOOLBAR_MID_Y)
+
+    static let SUBTITLE_LABEL_OFFSET = CGPoint(x: 0, y: -30 / SizeConstants.SCALE_RATIO)
 }
 
 struct SizeConstants {
+    static let SCALE_RATIO = GameWorld.worldSize.height / UIScreen.main.bounds.height
+    static let TOOLBAR_HEIGHT = UIScreen.main.bounds.height / 5
+
+    static let POINT_SIZE = CGSize(width: 100 / SCALE_RATIO, height: 100 / SCALE_RATIO)
 
     // Death Match Mode Properties Size
-    static let DEATH_MATCH_POINT_SIZE = CGSize(width: 50, height: 50)
+    static let DEATH_MATCH_POINT_SIZE = CGSize(width: 50 / SCALE_RATIO, height: 50 / SCALE_RATIO)
 
     // Capture the Flag Mode Properties Size
-    static let CTF_POINT_SIZE = CGSize(width: 50, height: 50)
+    static let CTF_POINT_SIZE = CGSize(width: 50 / SCALE_RATIO, height: 50 / SCALE_RATIO)
 
     // Survival Mode Properties Size
-    static let SURVIVAL_POINT_SIZE = CGSize(width: 100, height: 100)
+    static let SURVIVAL_POINT_SIZE = CGSize(width: 80 / SCALE_RATIO, height: 80 / SCALE_RATIO)
 
     static let SCREEN_SIZE = CGSize(width: UIScreen.main.bounds.width,
                                     height: UIScreen.main.bounds.height)

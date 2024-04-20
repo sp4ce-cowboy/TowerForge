@@ -14,10 +14,10 @@ class RemoteConcedeEvent: TFRemoteEvent {
 
     let targetIsSource: Bool
 
-    init(source: UserPlayerId, targetIsSource: Bool) {
+    init(source: GamePlayer, targetIsSource: Bool) {
         self.type = String(describing: RemoteConcedeEvent.self)
         self.timeStamp = Date().timeIntervalSince1970
-        self.source = source
+        self.source = source.userPlayerId
         self.targetIsSource = targetIsSource
     }
 

@@ -11,8 +11,12 @@ class PowerUpDelegateFactory {
 
     static func createPowerUpDelegate(type: PowerUp, eventManager: EventManager) -> PowerUpNodeDelegate {
         switch type {
-        case .invulnerability:
+        case .Invulnerability:
             return InvulnerabilityPowerUpDelegate(eventManager: eventManager)
+        case .Damage:
+            return DamagePowerUpDelegate(eventManager: eventManager)
+        case .NoCost:
+            return NoCostPowerUpDelegate(eventManager: eventManager)
         }
     }
 }
