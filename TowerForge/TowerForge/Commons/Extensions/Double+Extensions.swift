@@ -8,7 +8,7 @@
 import Foundation
 
 extension Double {
-    static var unit: Double { 1.0 }
+    static let unit: Double = 1.0
     var half: Double { self * 0.5 }
     var twice: Double { self * 2.0 }
     var oneHalf: Double { self * 1.5 }
@@ -18,13 +18,13 @@ extension Double {
 }
 
 extension Int {
-    static var unit: Int { 1 }
-    static var zero: Int { 0 }
-    static var negativeUnit: Int { -1 }
+    static let unit: Int = 1
+    static let zero: Int = 0
+    static let negativeUnit: Int = -1
 }
 
 extension CGFloat {
-    static var unit: Double { Double.unit }
+    static let unit = CGFloat(Double.unit)
     var half: Double { Double(self).half }
     var twice: Double { Double(self).twice }
     var square: Double { Double(self).square }

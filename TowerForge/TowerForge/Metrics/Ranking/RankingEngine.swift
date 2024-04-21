@@ -9,16 +9,22 @@ import Foundation
 
 /// The RankingEngine is responsible for generating rank and exp information.
 class RankingEngine: InferenceEngine, InferenceDataDelegate {
+    unowned var statisticsEngine: StatisticsEngine
 
-    // TODO: Consider expanding to more formula for .e.g double exp.
     static var defaultExpFormula: ((StatisticsDatabase) -> Double) = {
         $0.statistics.values.map { $0.rankValue }.reduce(into: .zero) { $0 += $1 }
     }
 
-    unowned var statisticsEngine: StatisticsEngine
+    init(_ statisticsEngine: StatisticsEngine) {
+        self.statisticsEngine = statisticsEngine
+    }
+
+    deinit {
+        Logger.log("DEINIT: RankingEngine is deinitialized", self)
+    }
 
     var statisticsDatabase: StatisticsDatabase {
-        statisticsEngine.statistics
+        statisticsEngine.statisticsDatabase
     }
 
     var currentExp: Double {
@@ -29,8 +35,12 @@ class RankingEngine: InferenceEngine, InferenceDataDelegate {
         Rank.allCases.first { $0.valueRange.contains(Int(self.currentExp)) } ?? .PRIVATE
     }
 
-    var currentKd: Double {
-        getPermanentValueFor(TotalKillsStatistic.self) / getPermanentValueFor(TotalDeathsStatistic.self)
+    /// Returns the current kill/death ratio as a double between 0 and 1.
+    var currentKdRatio: Double {
+        let kills = getPermanentValueFor(TotalKillsStatistic.self)
+        let deaths = getPermanentValueFor(TotalDeathsStatistic.self)
+
+        return kills > 0 && deaths > 0 ? kills / deaths : .zero
     }
 
     var currentExpAsString: String {
@@ -46,13 +56,21 @@ class RankingEngine: InferenceEngine, InferenceDataDelegate {
         currentRank.isOfficer()
     }
 
-    init(_ statisticsEngine: StatisticsEngine) {
-        self.statisticsEngine = statisticsEngine
+    func getPermanentValueFor<T: Statistic>(_ stat: T.Type) -> Double {
+        statisticsDatabase.getStatistic(for: stat.asType)?.permanentValue ?? .zero
     }
 
     func updateOnReceive() {  }
 
-    func getPermanentValueFor<T: Statistic>(_ stat: T.Type) -> Double {
-        statisticsDatabase.getStatistic(for: stat.asType)?.permanentValue ?? .zero
+    func percentageToNextRank() -> Double {
+        let minScore = currentRank.valueRange.lowerBound
+        let currentScore = Int(currentExp)
+        let maxScore = currentRank.valueRange.upperBound
+        let range = Double(maxScore - minScore)
+        let adjustedScore = Double(currentScore - minScore)
+        let percentageToNextRank = adjustedScore / range
+
+        return percentageToNextRank
+
     }
 }

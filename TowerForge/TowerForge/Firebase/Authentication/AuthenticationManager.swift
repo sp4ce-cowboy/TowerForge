@@ -86,7 +86,9 @@ class AuthenticationManager: AuthenticationProtocol {
             let userData = AuthenticationData(userId: user.uid,
                                               email: email,
                                               username: user.displayName)
-            StorageManager.onLogin(with: userData.userId) // TODO: Consider if there might be a better way to do this
+            // StorageManager.onLogin(with: userData.userId) // TODO: Consider if there might be a better way to do this
+            // Constants.CURRENT_PLAYER_ID = userData.userId
+            Logger.log("LOGIN: userId is \(userData.userId), email is \(userData.email)", self)
             self.delegate?.onLogin()
             completion(userData, nil)
         }
@@ -96,7 +98,6 @@ class AuthenticationManager: AuthenticationProtocol {
         do {
             try Auth.auth().signOut()
             self.delegate?.onLogout()
-            StorageManager.onLogout()
             completion(nil)
         } catch let error as NSError {
             completion(error)
@@ -106,6 +107,7 @@ class AuthenticationManager: AuthenticationProtocol {
         if let currentUser = Auth.auth().currentUser {
             // User is currently logged in, fetch user data
             Logger.log(String(describing: currentUser), self)
+
             let userData = AuthenticationData(userId: currentUser.uid,
                                               email: currentUser.email ?? "",
                                               username: currentUser.displayName)

@@ -200,6 +200,14 @@
 		BA436ADF2BD3CE9600BE3E4F /* CustomMissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436ADE2BD3CE9600BE3E4F /* CustomMissionCell.swift */; };
 		BA436AE12BD3D66800BE3E4F /* MassKillMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AE02BD3D66800BE3E4F /* MassKillMission.swift */; };
 		BA436AE32BD3D6FF00BE3E4F /* MassDeathMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AE22BD3D6FF00BE3E4F /* MassDeathMission.swift */; };
+		BA436AE72BD4180400BE3E4F /* MassEffectMission.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AE62BD4180400BE3E4F /* MassEffectMission.swift */; };
+		BA436AEA2BD42F5400BE3E4F /* StorageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AE92BD42F5400BE3E4F /* StorageHandler.swift */; };
+		BA436AEC2BD42F7800BE3E4F /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AEB2BD42F7800BE3E4F /* LocalStorage.swift */; };
+		BA436AEE2BD42F8100BE3E4F /* RemoteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AED2BD42F8100BE3E4F /* RemoteStorage.swift */; };
+		BA436AF02BD437D900BE3E4F /* LocalStorage+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AEF2BD437D900BE3E4F /* LocalStorage+Metadata.swift */; };
+		BA436AF22BD443A500BE3E4F /* RemoteStorage+Access.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AF12BD443A500BE3E4F /* RemoteStorage+Access.swift */; };
+		BA436AF42BD4AB8400BE3E4F /* StorageHandler+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AF32BD4AB8400BE3E4F /* StorageHandler+Auth.swift */; };
+		BA436AF62BD4AC2200BE3E4F /* StorageHandler+Conflict.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AF52BD4AC2200BE3E4F /* StorageHandler+Conflict.swift */; };
 		BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */; };
 		BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */; };
 		BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D412BAD9885009F0FFB /* DamageEventTests.swift */; };
@@ -220,18 +228,12 @@
 		BA82C75F2BCB1528000515A0 /* AchievementsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C75E2BCB1528000515A0 /* AchievementsDatabase.swift */; };
 		BA82C7612BCBBA8A000515A0 /* FiftyKillsAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7602BCBBA8A000515A0 /* FiftyKillsAchievement.swift */; };
 		BA82C7632BCBBB2A000515A0 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7622BCBBB2A000515A0 /* Double+Extensions.swift */; };
-		BA82C7652BCBC868000515A0 /* LocalStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7642BCBC868000515A0 /* LocalStorageManager.swift */; };
 		BA82C7672BCBCB00000515A0 /* StatisticsDatabase+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7662BCBCB00000515A0 /* StatisticsDatabase+Codable.swift */; };
-		BA82C7692BCBD21F000515A0 /* RemoteStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7682BCBD21F000515A0 /* RemoteStorageManager.swift */; };
-		BA82C76B2BCBD682000515A0 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C76A2BCBD682000515A0 /* StorageManager.swift */; };
 		BA82C76D2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C76C2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift */; };
 		BA82C76F2BCBDE91000515A0 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C76E2BCBDE91000515A0 /* Metadata.swift */; };
-		BA82C7732BCBF657000515A0 /* LocalMetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7722BCBF657000515A0 /* LocalMetadataManager.swift */; };
 		BA82C7752BCC689F000515A0 /* AchievementsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7742BCC689F000515A0 /* AchievementsFactory.swift */; };
-		BA82C7772BCC6913000515A0 /* HundredKillsAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7762BCC6913000515A0 /* HundredKillsAchievement.swift */; };
+		BA82C7772BCC6913000515A0 /* ThousandKillsAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7762BCC6913000515A0 /* ThousandKillsAchievement.swift */; };
 		BA82C7792BCC6943000515A0 /* CenturionAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7782BCC6943000515A0 /* CenturionAchievement.swift */; };
-		BA82C77B2BCD05DC000515A0 /* MetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C77A2BCD05DC000515A0 /* MetadataManager.swift */; };
-		BA82C77D2BCD07F4000515A0 /* RemoteMetadataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C77C2BCD07F4000515A0 /* RemoteMetadataManager.swift */; };
 		BA82C7802BCD284D000515A0 /* InferenceEngineFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C77F2BCD284D000515A0 /* InferenceEngineFactory.swift */; };
 		BA82C7832BCD2B30000515A0 /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7822BCD2B30000515A0 /* Mission.swift */; };
 		BA82C7862BCD2B44000515A0 /* MissionTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7852BCD2B44000515A0 /* MissionTypeWrapper.swift */; };
@@ -247,7 +249,6 @@
 		BA82C79D2BCDD9ED000515A0 /* InferenceEngineTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C79C2BCDD9ED000515A0 /* InferenceEngineTypeWrapper.swift */; };
 		BA82C79F2BCE7FBA000515A0 /* AbstractGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C79E2BCE7FBA000515A0 /* AbstractGoal.swift */; };
 		BA82C7A22BCE8138000515A0 /* AbstractGoalTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7A12BCE8138000515A0 /* AbstractGoalTypeWrapper.swift */; };
-		BAEC99FA2BD13F2600E0C437 /* AbstractTypeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC99F92BD13F2600E0C437 /* AbstractTypeWrapper.swift */; };
 		BAEC99FC2BD15AAB00E0C437 /* StorageDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC99FB2BD15AAB00E0C437 /* StorageDatabase.swift */; };
 		BAEC99FE2BD15E0200E0C437 /* PlayerStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC99FD2BD15E0200E0C437 /* PlayerStatsViewController.swift */; };
 		BAEC9A002BD1A4B700E0C437 /* CustomAchievementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC99FF2BD1A4B700E0C437 /* CustomAchievementCell.swift */; };
@@ -476,6 +477,14 @@
 		BA436ADE2BD3CE9600BE3E4F /* CustomMissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMissionCell.swift; sourceTree = "<group>"; };
 		BA436AE02BD3D66800BE3E4F /* MassKillMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassKillMission.swift; sourceTree = "<group>"; };
 		BA436AE22BD3D6FF00BE3E4F /* MassDeathMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassDeathMission.swift; sourceTree = "<group>"; };
+		BA436AE62BD4180400BE3E4F /* MassEffectMission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassEffectMission.swift; sourceTree = "<group>"; };
+		BA436AE92BD42F5400BE3E4F /* StorageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageHandler.swift; sourceTree = "<group>"; };
+		BA436AEB2BD42F7800BE3E4F /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		BA436AED2BD42F8100BE3E4F /* RemoteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStorage.swift; sourceTree = "<group>"; };
+		BA436AEF2BD437D900BE3E4F /* LocalStorage+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+Metadata.swift"; sourceTree = "<group>"; };
+		BA436AF12BD443A500BE3E4F /* RemoteStorage+Access.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteStorage+Access.swift"; sourceTree = "<group>"; };
+		BA436AF32BD4AB8400BE3E4F /* StorageHandler+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageHandler+Auth.swift"; sourceTree = "<group>"; };
+		BA436AF52BD4AC2200BE3E4F /* StorageHandler+Conflict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageHandler+Conflict.swift"; sourceTree = "<group>"; };
 		BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
 		BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		BA443D412BAD9885009F0FFB /* DamageEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEventTests.swift; sourceTree = "<group>"; };
@@ -496,18 +505,12 @@
 		BA82C75E2BCB1528000515A0 /* AchievementsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsDatabase.swift; sourceTree = "<group>"; };
 		BA82C7602BCBBA8A000515A0 /* FiftyKillsAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiftyKillsAchievement.swift; sourceTree = "<group>"; };
 		BA82C7622BCBBB2A000515A0 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Double+Extensions.swift"; path = "TowerForge/Commons/Extensions/Double+Extensions.swift"; sourceTree = SOURCE_ROOT; };
-		BA82C7642BCBC868000515A0 /* LocalStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
 		BA82C7662BCBCB00000515A0 /* StatisticsDatabase+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsDatabase+Codable.swift"; sourceTree = "<group>"; };
-		BA82C7682BCBD21F000515A0 /* RemoteStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStorageManager.swift; sourceTree = "<group>"; };
-		BA82C76A2BCBD682000515A0 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		BA82C76C2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsDatabase+Merge.swift"; sourceTree = "<group>"; };
 		BA82C76E2BCBDE91000515A0 /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
-		BA82C7722BCBF657000515A0 /* LocalMetadataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMetadataManager.swift; sourceTree = "<group>"; };
 		BA82C7742BCC689F000515A0 /* AchievementsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsFactory.swift; sourceTree = "<group>"; };
-		BA82C7762BCC6913000515A0 /* HundredKillsAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HundredKillsAchievement.swift; sourceTree = "<group>"; };
+		BA82C7762BCC6913000515A0 /* ThousandKillsAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThousandKillsAchievement.swift; sourceTree = "<group>"; };
 		BA82C7782BCC6943000515A0 /* CenturionAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenturionAchievement.swift; sourceTree = "<group>"; };
-		BA82C77A2BCD05DC000515A0 /* MetadataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataManager.swift; sourceTree = "<group>"; };
-		BA82C77C2BCD07F4000515A0 /* RemoteMetadataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMetadataManager.swift; sourceTree = "<group>"; };
 		BA82C77F2BCD284D000515A0 /* InferenceEngineFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InferenceEngineFactory.swift; sourceTree = "<group>"; };
 		BA82C7822BCD2B30000515A0 /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
 		BA82C7852BCD2B44000515A0 /* MissionTypeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionTypeWrapper.swift; sourceTree = "<group>"; };
@@ -524,7 +527,6 @@
 		BA82C79E2BCE7FBA000515A0 /* AbstractGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractGoal.swift; sourceTree = "<group>"; };
 		BA82C7A12BCE8138000515A0 /* AbstractGoalTypeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractGoalTypeWrapper.swift; sourceTree = "<group>"; };
 		BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TowerForceTestPlan.xctestplan; sourceTree = "<group>"; };
-		BAEC99F92BD13F2600E0C437 /* AbstractTypeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractTypeWrapper.swift; sourceTree = "<group>"; };
 		BAEC99FB2BD15AAB00E0C437 /* StorageDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDatabase.swift; sourceTree = "<group>"; };
 		BAEC99FD2BD15E0200E0C437 /* PlayerStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatsViewController.swift; sourceTree = "<group>"; };
 		BAEC99FF2BD1A4B700E0C437 /* CustomAchievementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAchievementCell.swift; sourceTree = "<group>"; };
@@ -913,7 +915,7 @@
 				5295A2082BAAE14B005018A8 /* ViewControllers */,
 				52DF5FDB2BA32CEF00135367 /* LevelModule */,
 				BAFFB9332BB0A24400D8301F /* GameModule */,
-				BAFFB9512BB342E200D8301F /* Storage */,
+				BA436AE82BD42F1100BE3E4F /* StorageAPI */,
 				BA2F5ABF2BC80BD200CBD8E9 /* Metrics */,
 			);
 			path = TowerForge;
@@ -1038,6 +1040,22 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		BA436AE82BD42F1100BE3E4F /* StorageAPI */ = {
+			isa = PBXGroup;
+			children = (
+				BA82C76E2BCBDE91000515A0 /* Metadata.swift */,
+				BA436AE92BD42F5400BE3E4F /* StorageHandler.swift */,
+				BA436AF32BD4AB8400BE3E4F /* StorageHandler+Auth.swift */,
+				BA436AF52BD4AC2200BE3E4F /* StorageHandler+Conflict.swift */,
+				BAEC99FB2BD15AAB00E0C437 /* StorageDatabase.swift */,
+				BA436AEB2BD42F7800BE3E4F /* LocalStorage.swift */,
+				BA436AEF2BD437D900BE3E4F /* LocalStorage+Metadata.swift */,
+				BA436AED2BD42F8100BE3E4F /* RemoteStorage.swift */,
+				BA436AF12BD443A500BE3E4F /* RemoteStorage+Access.swift */,
+			);
+			path = StorageAPI;
+			sourceTree = "<group>";
+		};
 		BA443D402BAD9872009F0FFB /* EventTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1084,7 +1102,7 @@
 			isa = PBXGroup;
 			children = (
 				BA82C7602BCBBA8A000515A0 /* FiftyKillsAchievement.swift */,
-				BA82C7762BCC6913000515A0 /* HundredKillsAchievement.swift */,
+				BA82C7762BCC6913000515A0 /* ThousandKillsAchievement.swift */,
 				BA82C7782BCC6943000515A0 /* CenturionAchievement.swift */,
 			);
 			path = Implemented;
@@ -1138,6 +1156,7 @@
 				BA82C78D2BCD2D2B000515A0 /* MassDamageMission.swift */,
 				BA436AE02BD3D66800BE3E4F /* MassKillMission.swift */,
 				BA436AE22BD3D6FF00BE3E4F /* MassDeathMission.swift */,
+				BA436AE62BD4180400BE3E4F /* MassEffectMission.swift */,
 			);
 			path = Implemented;
 			sourceTree = "<group>";
@@ -1383,7 +1402,6 @@
 			children = (
 				BAFFB9482BB0ABC400D8301F /* Logger.swift */,
 				BAFFB9692BB9A64000D8301F /* ObjectSet.swift */,
-				BAEC99F92BD13F2600E0C437 /* AbstractTypeWrapper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1399,21 +1417,6 @@
 				3C07CB202BC287DD00207C38 /* GameModuleTestsUtils.swift */,
 			);
 			path = GameModuleTests;
-			sourceTree = "<group>";
-		};
-		BAFFB9512BB342E200D8301F /* Storage */ = {
-			isa = PBXGroup;
-			children = (
-				BAEC99FB2BD15AAB00E0C437 /* StorageDatabase.swift */,
-				BA82C76E2BCBDE91000515A0 /* Metadata.swift */,
-				BA82C77A2BCD05DC000515A0 /* MetadataManager.swift */,
-				BA82C76A2BCBD682000515A0 /* StorageManager.swift */,
-				BA82C7642BCBC868000515A0 /* LocalStorageManager.swift */,
-				BA82C7722BCBF657000515A0 /* LocalMetadataManager.swift */,
-				BA82C7682BCBD21F000515A0 /* RemoteStorageManager.swift */,
-				BA82C77C2BCD07F4000515A0 /* RemoteMetadataManager.swift */,
-			);
-			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1598,12 +1601,13 @@
 				9B0406122BB889940026E903 /* PowerUpNode.swift in Sources */,
 				3CCF9CAF2BAB1A96004D170E /* SceneUpdateDelegate.swift in Sources */,
 				BA82C7402BC8674A000515A0 /* StatisticsFactory.swift in Sources */,
+				BA436AF42BD4AB8400BE3E4F /* StorageHandler+Auth.swift in Sources */,
 				3CAC4A692BB697A400A5D22E /* SpriteRenderStage.swift in Sources */,
 				523C29302BBD0916004C6EAC /* GameWaitingRoomViewController.swift in Sources */,
 				BA2F5AC12BC80BE500CBD8E9 /* Statistic.swift in Sources */,
 				3C9955A12BA47DA500D33FA5 /* BaseTower.swift in Sources */,
-				BAEC99FA2BD13F2600E0C437 /* AbstractTypeWrapper.swift in Sources */,
 				5299D1432BC3AB38003EF746 /* GameRankProvider.swift in Sources */,
+				BA436AE72BD4180400BE3E4F /* MassEffectMission.swift in Sources */,
 				5250B42F2BAE0DB000F16CF6 /* LabelComponent.swift in Sources */,
 				3CCF9CB32BAB1F42004D170E /* SystemManager.swift in Sources */,
 				5295A20F2BAAE7CF005018A8 /* TeamController.swift in Sources */,
@@ -1630,7 +1634,6 @@
 				BA82C75A2BCB0DFD000515A0 /* AchievementTypeWrapper.swift in Sources */,
 				3C9955C22BA5838900D33FA5 /* EventOutput.swift in Sources */,
 				523E5C4C2BC53F70007444DA /* WaveSpawnEvent.swift in Sources */,
-				BA82C77D2BCD07F4000515A0 /* RemoteMetadataManager.swift in Sources */,
 				5240D0912BAF3453004F1486 /* Life.swift in Sources */,
 				52A794192BBC630F0083C976 /* RoomData.swift in Sources */,
 				BA82C7632BCBBB2A000515A0 /* Double+Extensions.swift in Sources */,
@@ -1669,7 +1672,6 @@
 				BA436ADF2BD3CE9600BE3E4F /* CustomMissionCell.swift in Sources */,
 				3C3CBDF92BB821500001B8A9 /* TFScene.swift in Sources */,
 				BA82C79F2BCE7FBA000515A0 /* AbstractGoal.swift in Sources */,
-				BA82C7652BCBC868000515A0 /* LocalStorageManager.swift in Sources */,
 				9B8696552BAD759F0002377C /* Grid.swift in Sources */,
 				527A077E2BB3F75700CD9D08 /* Timer.swift in Sources */,
 				52578B872BA6209700B4D76C /* DamageComponent.swift in Sources */,
@@ -1692,7 +1694,9 @@
 				9B0406162BB89E140026E903 /* InvulnerabilityPowerUpDelegate.swift in Sources */,
 				5295A2152BAAF335005018A8 /* UnitSelectionNode.swift in Sources */,
 				52DF5FF92BA35D2B00135367 /* MovableComponent.swift in Sources */,
+				BA436AEA2BD42F5400BE3E4F /* StorageHandler.swift in Sources */,
 				5299D1342BC31067003EF746 /* AuthenticationProtocol.swift in Sources */,
+				BA436AF22BD443A500BE3E4F /* RemoteStorage+Access.swift in Sources */,
 				527A07822BB3F8D300CD9D08 /* TimerProp.swift in Sources */,
 				52DF5FDE2BA32D7E00135367 /* EntityManager.swift in Sources */,
 				3CBE72FB2BC8D63E00CC446A /* RemoteDamageEvent.swift in Sources */,
@@ -1707,24 +1711,26 @@
 				52A794092BBC35F20083C976 /* Constant.swift in Sources */,
 				3C9955C82BA5865C00D33FA5 /* ConcurrentEvent.swift in Sources */,
 				52F268702BB4B319009599AD /* GameModeViewController.swift in Sources */,
+				BA436AEC2BD42F7800BE3E4F /* LocalStorage.swift in Sources */,
 				BA82C7862BCD2B44000515A0 /* MissionTypeWrapper.swift in Sources */,
 				BA82C7502BC8A20A000515A0 /* TotalDeathsStatistic.swift in Sources */,
 				527A07762BB3E4CF00CD9D08 /* GameState.swift in Sources */,
 				3C9955AD2BA483B100D33FA5 /* TFSystem.swift in Sources */,
 				BA82C79D2BCDD9ED000515A0 /* InferenceEngineTypeWrapper.swift in Sources */,
-				BA82C77B2BCD05DC000515A0 /* MetadataManager.swift in Sources */,
 				3CAC4A672BB6975200A5D22E /* RenderStage.swift in Sources */,
 				BA82C75D2BCB1451000515A0 /* InferenceEngine.swift in Sources */,
 				3C9955BE2BA57E4B00D33FA5 /* EventManager.swift in Sources */,
+				BA436AF02BD437D900BE3E4F /* LocalStorage+Metadata.swift in Sources */,
 				BAFFB9852BBDBA7D00D8301F /* MediaEnums.swift in Sources */,
 				527A07842BB3FD9A00CD9D08 /* TimerSystem.swift in Sources */,
 				BA82C7462BC8797F000515A0 /* StatisticsDatabase.swift in Sources */,
+				BA436AEE2BD42F8100BE3E4F /* RemoteStorage.swift in Sources */,
 				3C3CBDF72BB81D970001B8A9 /* TFCameraNode.swift in Sources */,
 				9B274DCA2BD252330062715C /* NoCostPowerUpDelegate.swift in Sources */,
 				BA82C76D2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift in Sources */,
 				3CE951562BACA0CF008B2785 /* Collidable.swift in Sources */,
 				BA82C7422BC86FE1000515A0 /* TotalGamesStatistic.swift in Sources */,
-				BA82C7772BCC6913000515A0 /* HundredKillsAchievement.swift in Sources */,
+				BA82C7772BCC6913000515A0 /* ThousandKillsAchievement.swift in Sources */,
 				BA2F5ABE2BC80A8B00CBD8E9 /* Achievement.swift in Sources */,
 				3CBECF8C2BBE9A41005EF39B /* TFRemoteEvent.swift in Sources */,
 				5240D0A92BB333B5004F1486 /* PointProp.swift in Sources */,
@@ -1738,6 +1744,7 @@
 				3C9955AF2BA48FD200D33FA5 /* MeleeUnit.swift in Sources */,
 				5240D0AD2BB33D4C004F1486 /* PositionSystem.swift in Sources */,
 				5295A2022BA9FBD9005018A8 /* SceneManagerDelegate.swift in Sources */,
+				BA436AF62BD4AC2200BE3E4F /* StorageHandler+Conflict.swift in Sources */,
 				9B274DC42BD24B210062715C /* DamagePowerUp.swift in Sources */,
 				52DF5FE12BA3349600135367 /* TFTextures.swift in Sources */,
 				520062582BA8ED73000DBA30 /* HomeComponent.swift in Sources */,
@@ -1758,14 +1765,12 @@
 				52A794062BBC32A10083C976 /* FirebaseRepositoryProtocol.swift in Sources */,
 				3CD7DE382BCEB6D200CB21F0 /* RemoteConcedeEvent.swift in Sources */,
 				BA82C7442BC86FFE000515A0 /* GameStartEvent.swift in Sources */,
-				BA82C7692BCBD21F000515A0 /* RemoteStorageManager.swift in Sources */,
 				9B0406102BB879990026E903 /* InvulnerabilityPowerUp.swift in Sources */,
 				BA436AE12BD3D66800BE3E4F /* MassKillMission.swift in Sources */,
 				5299D1412BC3AA3A003EF746 /* GameRankData.swift in Sources */,
 				52F930E72BC63F7F003D11B5 /* LeaderboardSelectionViewController.swift in Sources */,
 				BA82C76F2BCBDE91000515A0 /* Metadata.swift in Sources */,
 				BA82C7752BCC689F000515A0 /* AchievementsFactory.swift in Sources */,
-				BA82C76B2BCBD682000515A0 /* StorageManager.swift in Sources */,
 				9BD669682BAFDE5E00DC8C4C /* GridDelegate.swift in Sources */,
 				52DF5FEB2BA3400C00135367 /* TFAnimatableNode.swift in Sources */,
 				3C3CBDFF2BB8708A0001B8A9 /* CGPoint+Extensions.swift in Sources */,
@@ -1803,7 +1808,6 @@
 				BA82C7902BCD2FAF000515A0 /* TotalDamageDealtStatistic.swift in Sources */,
 				3CD37AA32BBEC0F900222D8A /* FirebaseRemoteEventPublisher.swift in Sources */,
 				3CAC4A6B2BB6992F00A5D22E /* TFNode.swift in Sources */,
-				BA82C7732BCBF657000515A0 /* LocalMetadataManager.swift in Sources */,
 				3CBE73012BC8D69A00CC446A /* RemoteLifeEvent.swift in Sources */,
 				3CAC4A6D2BB6A13B00A5D22E /* PositionRenderStage.swift in Sources */,
 				BA82C7942BCDAA83000515A0 /* InferenceDataDelegate.swift in Sources */,

@@ -7,16 +7,23 @@
 
 import Foundation
 
-class StatisticsEngine {
+class StatisticsEngine: InferenceDataDelegate {
     /// Core storage of Statistics
-    var statistics = StatisticsDatabase()
+    weak var statsEngineDelegate: StatisticsEngineDelegate?
+    var statisticsDatabase: StatisticsDatabase
     var eventStatisticLinks = EventStatisticLinkDatabase()
     var inferenceEngines: [InferenceEngineTypeWrapper: InferenceEngine] = [:]
 
-    init() {
+    init(with storageHandler: StatisticsEngineDelegate) {
+        self.statsEngineDelegate = storageHandler
+        self.statisticsDatabase = storageHandler.statisticsDatabase
         self.initializeStatistics()
         self.setUpLinks()
         self.setUpInferenceEngines()
+    }
+
+    deinit {
+        Logger.log("DEINIT: StatisticsEngine is deinitialized", self)
     }
 
     /// Add statistics links manually
@@ -25,14 +32,13 @@ class StatisticsEngine {
         for key in links.keys {
             links[key]?.forEach {
                 eventStatisticLinks.addStatisticLink(for: key.type,
-                                                     with: statistics.getStatistic(for: $0))
+                                                     with: statisticsDatabase.getStatistic(for: $0))
             }
         }
     }
 
     private func initializeStatistics() {
         eventStatisticLinks = StatisticsFactory.getDefaultEventLinkDatabase()
-        loadStatistics()
     }
 
     private func setUpInferenceEngines() {
@@ -50,8 +56,9 @@ class StatisticsEngine {
     }
 
     /// Transfers over all transient metrics within statistics to permanent value.
-    func finalize() {
-        statistics.statistics.values.forEach { $0.finalizeStatistic() }
+    func finalizeAndSave() {
+        Logger.log("------------------- STATISTICS ARE FINALIZED ----------------------- ", self)
+        statisticsDatabase.statistics.values.forEach { $0.finalizeStatistic() }
         saveStatistics()
     }
 
@@ -62,40 +69,17 @@ class StatisticsEngine {
             return
         }
 
-        // stats.forEach { $0.update(for: eventType) }
         stats.forEach { $0.update(for: event) }
         saveStatistics()
     }
 
-    /// TODO: Consider if passing the stats database directly is better or
-    /// to follow delegate pattern and have unowned statsEngine/db variables inside
-    /// InferenceEngines
     func notifyInferenceEngines() {
         inferenceEngines.values.forEach { $0.updateOnReceive() }
     }
 
-    func getCurrentRank() -> Rank? {
-        if let rankEngine = inferenceEngines[RankingEngine.asType] as? RankingEngine {
-            return rankEngine.currentRank
-        }
-        return nil
-    }
-
-    func getCurrentExp() -> Double? {
-        if let rankEngine = inferenceEngines[RankingEngine.asType] as? RankingEngine {
-            return rankEngine.currentExp
-        }
-        return nil
-    }
-
     private func saveStatistics() {
-        _ = StorageManager.saveUniversally(statistics)
-    }
-
-    private func loadStatistics() {
-        if let loadedStats = StorageManager.loadUniversally() {
-            statistics = loadedStats
-        }
+        Logger.log("STATISTICS_ENGINE SAVE: Statistics save triggered", self)
+        statsEngineDelegate?.save()
     }
 
 }

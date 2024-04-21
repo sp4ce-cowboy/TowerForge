@@ -34,6 +34,7 @@ class StorageEnums {
     enum StorageConflictResolution: String {
         case MERGE
         case KEEP_LATEST_ONLY
+        case PRESERVE_LOCAL
     }
 
     struct DynamicCodingKeys: CodingKey {

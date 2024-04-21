@@ -32,6 +32,9 @@ protocol Statistic: AnyObject, Codable {
     /// The significance value which this Statistic holds in generating XP
     static var expMultiplier: Double { get }
 
+    /// Function to specify merging of Statistics
+    func merge<T: Statistic>(with that: T) -> T?
+
     /// Returns a StatisticUpdateLinkDatabase pertaining to this Statistic.
     /// Conforming Statistic types will have to implement their own links between event
     /// types and the action to take upon reception of that event's execution.
@@ -46,6 +49,10 @@ extension Statistic {
 
     init() {
         self.init(permanentValue: .zero, currentValue: .zero, maxCurrentValue: .zero)
+    }
+
+    func toString() -> String {
+        "[\(prettyName): \(permanentValue)]"
     }
 
     static func equals(lhs: Self, rhs: Self) -> Bool {
@@ -136,18 +143,6 @@ extension Statistic {
     func getEventLinksOnly() -> [TFEventTypeWrapper] {
         self.getStatisticUpdateLinks().getAllEventTypes()
     }
-
-    /*func update<T: TFEvent>(for event: T) {
-     let eventType = T.asType
-     guard let updateLink = self.getStatisticUpdateLinks().getStatisticUpdateActor(for: eventType) else {
-     return
-     }
-     
-     updateLink.updateStatistic(statistic: self, withEvent: T.self)
-     
-     updateLink?(self)
-     Logger.log("Value update for eventType \(eventType)", self)
-     }*/
 
     /// Updates the statistic according to an UpdateActor that is retrieved from the
     /// StatisticsUpdateLinkDatabase

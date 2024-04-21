@@ -17,7 +17,7 @@ class AchievementsEngine: InferenceEngine, InferenceDataDelegate {
     var achievementsDatabase: AchievementsDatabase
 
     var statisticsDatabase: StatisticsDatabase {
-        statisticsEngine.statistics
+        statisticsEngine.statisticsDatabase
     }
 
     init(_ statisticsEngine: StatisticsEngine) {

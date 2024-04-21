@@ -53,4 +53,24 @@ final class TotalKillsStatistic: Statistic {
 
           self.init(permanentValue: value, currentValue: current, maxCurrentValue: max)
     }
+
+    func merge<T: Statistic>(with that: T) -> T? {
+        guard let that = that as? Self else {
+            return nil
+        }
+
+        let largerPermanent = Double.maximum(self.permanentValue, that.permanentValue)
+        let largerCurrent = Double.maximum(self.currentValue, that.currentValue)
+        let largerMaxCurrent = Double.maximum(self.maximumCurrentValue, that.maximumCurrentValue)
+
+        guard let stat = Self(permanentValue: largerPermanent,
+                              currentValue: largerCurrent,
+                              maxCurrentValue: largerMaxCurrent) as? T else {
+            Logger.log("Statistic merging failed for \(self.toString())", self)
+            return nil
+        }
+
+        return stat
+    }
+
 }

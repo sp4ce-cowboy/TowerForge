@@ -19,7 +19,9 @@ class GameWorld {
     private var renderer: Renderer?
     private let worldBounds: CGRect
     private var popup: StatePopupNode
-    private var statisticsEngine = StatisticsEngine()
+
+    private var storageHandler = StorageHandler()
+    private var statisticsEngine: StatisticsEngine
 
     unowned var scene: GameScene? { didSet { setUpScene() } }
     unowned var delegate: SceneManagerDelegate?
@@ -33,6 +35,8 @@ class GameWorld {
         powerUpSelectionNode = PowerUpSelectionNode(eventManager: gameEngine.eventManager)
         grid = Grid(screenSize: worldBounds)
         popup = StatePopupNode()
+        storageHandler = StorageHandler()
+        statisticsEngine = StatisticsEngine(with: storageHandler)
 
         setUp()
     }
@@ -126,6 +130,6 @@ extension GameWorld: GameEngineDelegate {
     func onGameCompleted(gameState: GameState, gameResults: [GameResult]) {
         Logger.log("\(gameState)", self)
         delegate?.showGameOverScene(isWin: gameState == .WIN, results: gameResults)
-        statisticsEngine.finalize()
+        statisticsEngine.finalizeAndSave()
     }
 }

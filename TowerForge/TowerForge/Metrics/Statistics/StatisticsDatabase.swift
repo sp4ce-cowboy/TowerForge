@@ -23,7 +23,17 @@ final class StatisticsDatabase: StorageDatabase {
         statistics[statName]
     }
 
+    func getPermanentValueFor<T: Statistic>(_ stat: T.Type) -> Double {
+        self.getStatistic(for: stat.asType)?.permanentValue ?? .zero
+    }
+
     func setToDefault() {
         statistics = StatisticsFactory.getDefaultStatisticsDatabase().statistics
+    }
+
+    func toString() -> String {
+        var output = ""
+        statistics.values.forEach { output += ($0.toString() + "\n") }
+        return output
     }
 }

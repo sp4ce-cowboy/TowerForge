@@ -12,7 +12,7 @@ class AchievementsFactory {
     static var availableAchievementTypes: [String: Achievement.Type] =
         [
             String(describing: FiftyKillsAchievement.self): FiftyKillsAchievement.self,
-            String(describing: HundredKillsAchievement.self): HundredKillsAchievement.self,
+            String(describing: ThousandKillsAchievement.self): ThousandKillsAchievement.self,
             String(describing: CenturionAchievement.self): CenturionAchievement.self
         ]
 

@@ -7,7 +7,9 @@
 
 import Foundation
 
-protocol StorageDatabase: Codable {
+protocol StorageDatabase: Codable, AnyObject {
     func encode(to encoder: Encoder) throws
     init(from decoder: Decoder) throws
+
+    static func merge(this: Self?, that: Self?) -> Self?
 }
