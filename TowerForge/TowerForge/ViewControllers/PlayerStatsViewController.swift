@@ -32,7 +32,6 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet private var col: UILabel!
     @IBOutlet private var gen: UILabel!
 
-    // static var staticEngine = StatisticsEngine(with: StorageHandler())
     var statisticsEngine = StatisticsEngine(with: StorageHandler())
     var statisticsDatabase: StatisticsDatabase { statisticsEngine.statisticsDatabase }
     var achievements: AchievementsDatabase = getAchievements()
@@ -41,7 +40,7 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
 
     var rank: Rank { rankingEngine.currentRank }
     var exp: String { rankingEngine.currentExpAsString }
-    var kd: Double { rankingEngine.currentKd }
+    var kd: Double { rankingEngine.currentKdRatio }
     var kills: Int { Int(rankingEngine.getPermanentValueFor(TotalKillsStatistic.self)) }
     var deaths: Int { Int(rankingEngine.getPermanentValueFor(TotalDeathsStatistic.self)) }
     var games: Int { Int(rankingEngine.getPermanentValueFor(TotalGamesStatistic.self)) }

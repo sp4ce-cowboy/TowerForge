@@ -14,20 +14,6 @@ class StatisticsEngine: InferenceDataDelegate {
     var eventStatisticLinks = EventStatisticLinkDatabase()
     var inferenceEngines: [InferenceEngineTypeWrapper: InferenceEngine] = [:]
 
-    /*init() {
-        self.initializeStatistics()
-        self.loadStatistics()
-        self.setUpLinks()
-        self.setUpInferenceEngines()
-    }*/
-
-    /*init(with statistics: StatisticsDatabase) {
-        self.statisticsDatabase = statistics
-        self.initializeStatistics()
-        self.setUpLinks()
-        self.setUpInferenceEngines()
-    }*/
-
     init(with storageHandler: StatisticsEngineDelegate) {
         self.statsEngineDelegate = storageHandler
         self.statisticsDatabase = storageHandler.statisticsDatabase
@@ -87,31 +73,13 @@ class StatisticsEngine: InferenceDataDelegate {
         saveStatistics()
     }
 
-    /// TODO: Consider if passing the stats database directly is better or
-    /// to follow delegate pattern and have unowned statsEngine/db variables inside
-    /// InferenceEngines
     func notifyInferenceEngines() {
         inferenceEngines.values.forEach { $0.updateOnReceive() }
     }
 
     private func saveStatistics() {
         Logger.log("STATISTICS_ENGINE SAVE: Statistics save triggered", self)
-        Logger.log("STATISTICS_ENGINE SAVE: \(String(describing: statsEngineDelegate?.statisticsDatabase.toString()))", self)
         statsEngineDelegate?.save()
-        // _ = StorageManager.saveUniversally(statistics)
     }
-
-    private func saveStatisticsLocally() {
-        Logger.log("STATISTICS_ENGINE LOCAL SAVE: Local  save triggered", self)
-        Logger.log("STATISTICS_ENGINE LOCAL SAVE: \(String(describing: statsEngineDelegate?.statisticsDatabase.toString()))", self)
-        statsEngineDelegate?.localSave()
-        // _ = StorageManager.saveUniversally(statistics)
-    }
-
-    /*private func loadStatistics() {
-        if let loadedStats = StorageManager.loadUniversally() {
-            statisticsDatabase = loadedStats
-        }
-    }*/
 
 }

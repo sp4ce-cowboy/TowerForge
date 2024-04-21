@@ -35,7 +35,8 @@ class RankingEngine: InferenceEngine, InferenceDataDelegate {
         Rank.allCases.first { $0.valueRange.contains(Int(self.currentExp)) } ?? .PRIVATE
     }
 
-    var currentKd: Double {
+    /// Returns the current kill/death ratio as a double between 0 and 1.
+    var currentKdRatio: Double {
         let kills = getPermanentValueFor(TotalKillsStatistic.self)
         let deaths = getPermanentValueFor(TotalDeathsStatistic.self)
 

@@ -177,17 +177,3 @@ extension Statistic {
         self.init(permanentValue: value, currentValue: current, maxCurrentValue: max)
     }
 }
-
-/*/// This extension allows Statistic to be merged
-extension Statistic {
-
-    static func merge<T: Statistic>(this: T, that: T) -> T {
-        let largerPermanent = max(this.permanentValue, that.permanentValue)
-        let largerCurrent = max(this.currentValue, that.currentValue)
-        let largerMaxCurrent = max(this.maximumCurrentValue, that.maximumCurrentValue)
-
-        return T(permanentValue: largerPermanent,
-                 currentValue: largerCurrent,
-                 maxCurrentValue: largerMaxCurrent)
-    }
-}*/

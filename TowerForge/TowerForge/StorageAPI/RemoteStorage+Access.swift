@@ -26,7 +26,7 @@ extension RemoteStorage {
         RemoteStorage.checkIfPlayerDatabaseExists(for: playerId) { storageExists in
             // Check for player metadata existence
             RemoteStorage.checkIfPlayerMetadataExists(for: playerId) { metadataExists in
-                // Check for any inconsistencies
+                // Check for any inconsistencies, if either one don't exist, consider player to be non-existent
                 if (storageExists && !metadataExists) || (!storageExists && metadataExists) {
                     Logger.log("Inconsistency error: Storage Exists: \(storageExists), Metadata Exists: \(metadataExists)")
                 }
@@ -145,48 +145,4 @@ extension RemoteStorage {
             }
         }
     }
-
-    /*static func loadStorageFromFirebase(player: String) -> StatisticsDatabase? {
-        guard Self.checkIfPlayerStorageExists(for: player) else {
-            return nil
-        }
-
-        var stats: StatisticsDatabase?
-        Self.loadDataFromFirebase(for: .Statistics,
-                                  player: player) { (statisticsDatabase: StatisticsDatabase?, error: Error?) in
-            if let error = error {
-                Logger.log("Error loading storage from firebase: \(error)", self)
-            } else if let statistics = statisticsDatabase {
-                Logger.log("Successfully loaded statistics from firebase", self)
-                stats = statistics
-            } else {
-                // No error and no database implies that database is empty, return nil
-                Logger.log("No error and empty database, new one will NOT be auto-created", self)
-            }
-        }
-
-        return stats
-    }
-
-    static func loadMetadataFromFirebase(player: String) async -> Metadata? {
-        guard await Self.checkIfPlayerMetadataExistsAsync(for: player) else {
-            return nil
-        }
-
-        var metadata: Metadata?
-        Self.loadDataFromFirebase(for: .Statistics,
-                                  player: player) { (remoteMetadata: Metadata?, error: Error?) in
-            if let error = error {
-                Logger.log("Error loading storage from firebase: \(error)", self)
-            } else if let currentMetadata = remoteMetadata {
-                Logger.log("Successfully loaded statistics from firebase", self)
-                metadata = currentMetadata
-            } else {
-                // No error and no database implies that database is empty, return nil
-                Logger.log("No error and empty database, new one will NOT be auto-created", self)
-            }
-        }
-
-        return metadata
-    }*/
 }
