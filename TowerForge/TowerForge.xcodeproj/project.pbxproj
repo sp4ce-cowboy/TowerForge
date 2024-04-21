@@ -207,6 +207,7 @@
 		BA436AF02BD437D900BE3E4F /* LocalStorage+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AEF2BD437D900BE3E4F /* LocalStorage+Metadata.swift */; };
 		BA436AF22BD443A500BE3E4F /* RemoteStorage+Access.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AF12BD443A500BE3E4F /* RemoteStorage+Access.swift */; };
 		BA436AF42BD4AB8400BE3E4F /* StorageHandler+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AF32BD4AB8400BE3E4F /* StorageHandler+Auth.swift */; };
+		BA436AF62BD4AC2200BE3E4F /* StorageHandler+Conflict.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA436AF52BD4AC2200BE3E4F /* StorageHandler+Conflict.swift */; };
 		BA443D3D2BAD9557009F0FFB /* RemoveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */; };
 		BA443D3F2BAD9774009F0FFB /* RemoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */; };
 		BA443D422BAD9885009F0FFB /* DamageEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA443D412BAD9885009F0FFB /* DamageEventTests.swift */; };
@@ -490,6 +491,7 @@
 		BA436AEF2BD437D900BE3E4F /* LocalStorage+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+Metadata.swift"; sourceTree = "<group>"; };
 		BA436AF12BD443A500BE3E4F /* RemoteStorage+Access.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteStorage+Access.swift"; sourceTree = "<group>"; };
 		BA436AF32BD4AB8400BE3E4F /* StorageHandler+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageHandler+Auth.swift"; sourceTree = "<group>"; };
+		BA436AF52BD4AC2200BE3E4F /* StorageHandler+Conflict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageHandler+Conflict.swift"; sourceTree = "<group>"; };
 		BA443D3C2BAD9557009F0FFB /* RemoveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveSystem.swift; sourceTree = "<group>"; };
 		BA443D3E2BAD9774009F0FFB /* RemoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEvent.swift; sourceTree = "<group>"; };
 		BA443D412BAD9885009F0FFB /* DamageEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEventTests.swift; sourceTree = "<group>"; };
@@ -1058,6 +1060,7 @@
 			children = (
 				BA436AE92BD42F5400BE3E4F /* StorageHandler.swift */,
 				BA436AF32BD4AB8400BE3E4F /* StorageHandler+Auth.swift */,
+				BA436AF52BD4AC2200BE3E4F /* StorageHandler+Conflict.swift */,
 				BAEC99FB2BD15AAB00E0C437 /* StorageDatabase.swift */,
 				BA436AEB2BD42F7800BE3E4F /* LocalStorage.swift */,
 				BA436AEF2BD437D900BE3E4F /* LocalStorage+Metadata.swift */,
@@ -1774,6 +1777,7 @@
 				3C9955AF2BA48FD200D33FA5 /* MeleeUnit.swift in Sources */,
 				5240D0AD2BB33D4C004F1486 /* PositionSystem.swift in Sources */,
 				5295A2022BA9FBD9005018A8 /* SceneManagerDelegate.swift in Sources */,
+				BA436AF62BD4AC2200BE3E4F /* StorageHandler+Conflict.swift in Sources */,
 				9B274DC42BD24B210062715C /* DamagePowerUp.swift in Sources */,
 				52DF5FE12BA3349600135367 /* TFTextures.swift in Sources */,
 				520062582BA8ED73000DBA30 /* HomeComponent.swift in Sources */,

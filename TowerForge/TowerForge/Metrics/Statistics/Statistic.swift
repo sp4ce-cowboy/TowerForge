@@ -181,9 +181,9 @@ extension Statistic {
     func merge(with that: Self) -> Self {
         let this = self
 
-        let largerPermanent = Double.maximum(this.permanentValue, that.permanentValue)
-        let largerCurrent = Double.maximum(this.currentValue, that.currentValue)
-        let largerMaxCurrent = Double.maximum(this.maximumCurrentValue, that.maximumCurrentValue)
+        let largerPermanent = max(this.permanentValue, that.permanentValue)
+        let largerCurrent = max(this.currentValue, that.currentValue)
+        let largerMaxCurrent = max(this.maximumCurrentValue, that.maximumCurrentValue)
 
         return Self(permanentValue: largerPermanent,
                     currentValue: largerCurrent,
@@ -191,9 +191,9 @@ extension Statistic {
     }
 
     static func merge(this: Self, that: Self) -> Self {
-        let largerPermanent = Double.maximum(this.permanentValue, that.permanentValue)
-        let largerCurrent = Double.maximum(this.currentValue, that.currentValue)
-        let largerMaxCurrent = Double.maximum(this.maximumCurrentValue, that.maximumCurrentValue)
+        let largerPermanent = max(this.permanentValue, that.permanentValue)
+        let largerCurrent = max(this.currentValue, that.currentValue)
+        let largerMaxCurrent = max(this.maximumCurrentValue, that.maximumCurrentValue)
 
         return Self(permanentValue: largerPermanent,
                     currentValue: largerCurrent,

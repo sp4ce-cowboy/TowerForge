@@ -13,6 +13,7 @@ class StorageHandler: AuthenticationDelegate {
     static let fileName = Constants.LOCAL_STORAGE_FILE_NAME
     static let metadataName = Constants.METADATA_FILE_NAME
 
+    static var CONFLICT_RESOLUTION: StorageConflictResolution { Constants.CONFLICT_RESOLTION }
     static var currentPlayerId: String { Constants.CURRENT_PLAYER_ID }
     static var currentDeviceId: String { Constants.CURRENT_DEVICE_ID }
 

@@ -62,6 +62,8 @@ extension StorageHandler {
 
     /// Returns true if re-login success, false otherwise
     func onReLogin(completion: @escaping (Bool) -> Void) {
+        // Executed upon confirmation that both types of data exist remotely
+        // 1. Load metadata from firebase
         RemoteStorage.loadMetadataFromFirebase(player: Self.currentPlayerId) { remoteMetadata, _ in
             guard let remoteMetadata = remoteMetadata else {
                 Logger.log("RELOGIN ERROR: REMOTE METADATA NOT FOUND")
@@ -69,6 +71,7 @@ extension StorageHandler {
                 return
             }
 
+            // 2. Load statistics from firebase
             RemoteStorage.loadDatabaseFromFirebase(player: Self.currentPlayerId) { remoteStorage, _ in
                 guard let remoteStorage = remoteStorage else {
                     Logger.log("RELOGIN ERROR: REMOTE STORAGE NOT FOUND")
@@ -76,26 +79,19 @@ extension StorageHandler {
                     return
                 }
 
-                guard let finalStorage = StatisticsDatabase.merge(this: remoteStorage, that: self.statisticsDatabase) else {
-                    Logger.log("RELOGIN ERROR: REMOTE STORAGE NOT FOUND")
-                    completion(false)
-                    return
-                }
-
-                LocalStorage.saveDatabaseToLocalStorage(finalStorage)
-                RemoteStorage.saveDatabaseToFirebase(player: Self.currentPlayerId,
-                                                     with: finalStorage) { saveStorageSuccess in
-                    if !saveStorageSuccess {
+                // 3. Resolve conflict between remote statistics and current statistics
+                Self.resolveConflict(this: remoteStorage, that: self.statisticsDatabase) { resolvedStats in
+                    guard let finalStorage = resolvedStats else {
+                        Logger.log("RELOGIN ERROR: CONFLICT RESOLUTION FAILURE")
                         completion(false)
                         return
                     }
 
-                    self.metadata = remoteMetadata
-                    RemoteStorage.saveMetadataToFirebase(player: Self.currentPlayerId, with: self.metadata) {
-                        saveMetadataSuccess in
+                    // 4. Update current instance to resolve storage
+                    self.statisticsDatabase = finalStorage
 
-                        completion(saveMetadataSuccess)
-                    }
+                    // 4. Save newly resolved storage universally
+                    self.save()
                 }
             }
         }
