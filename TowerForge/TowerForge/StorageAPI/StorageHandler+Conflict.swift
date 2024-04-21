@@ -46,7 +46,7 @@ extension StorageHandler {
                 }
 
             case .Remote:
-                RemoteStorageManager.loadDatabaseFromFirebase { statsData, error in
+                RemoteStorage.loadDatabaseFromFirebase(player: Self.currentPlayerId) { statsData, error in
                     if let error = error {
                         Logger.log("Error occurred loading from database: \(error)", self)
                         completion(nil)
