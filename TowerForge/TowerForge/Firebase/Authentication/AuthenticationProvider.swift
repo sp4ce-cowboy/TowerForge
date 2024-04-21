@@ -55,12 +55,16 @@ class AuthenticationProvider {
         observers.forEach { $0.onLogout() }
     }
 
-    func getCurrentUserId() -> String? {
-        var currentUserId: String?
-        self.authenticationManager.getUserData { authData, _ in
-            currentUserId = authData?.userId
+    func getCurrentUserId(completion: @escaping (String?, Error?) -> Void) {
+        self.authenticationManager.getUserData { authData, error in
+            if let error = error {
+                Logger.log("Error retrieving CurrentUserId \(error)", self)
+                completion(nil, error)
+            } else if let playerId = authData?.userId {
+                Logger.log("Successfully retrieved currentUserId", self)
+                completion(playerId, nil)
+            }
         }
-        return currentUserId
     }
 }
 

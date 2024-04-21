@@ -16,7 +16,7 @@ class StorageHandler: AuthenticationDelegate {
     static var currentPlayerId: String { Constants.CURRENT_PLAYER_ID }
     static var currentDeviceId: String { Constants.CURRENT_DEVICE_ID }
 
-    private let authenticationProvider = AuthenticationProvider()
+    let authenticationProvider = AuthenticationProvider()
     var statisticsDatabase = StatisticsDatabase()
     var metadata = Metadata()
 
@@ -56,105 +56,57 @@ class StorageHandler: AuthenticationDelegate {
 
     /// Universal save
     func save() {
-        Logger.log("SAVE: Saving Stats and Metadata to LocalStorage", Self.self)
-        LocalStorage.saveDatabaseToLocalStorage(statisticsDatabase)
+        Logger.log("U-SAVE: Saving Stats and Metadata Universally", Self.self)
+        self.localSave()
+        self.remoteSave()
+    }
+
+    func localSave() {
+        Logger.log("L-SAVE: Saving Stats and Metadata to LocalStorage", Self.self)
+        LocalStorage.saveDatabaseToLocalStorage(self.statisticsDatabase)
         metadata.updateTimeToNow()
-        LocalStorage.saveMetadataToLocalStorage(metadata)
+        LocalStorage.saveMetadataToLocalStorage(self.metadata)
+    }
+
+    func remoteSave() {
+        Logger.log("R-SAVE: Saving Stats and Metadata to RemoteData", Self.self)
+        RemoteStorage.saveDatabaseToFirebase(player: Self.currentPlayerId, with: self.statisticsDatabase) {
+            if $0 {
+                Logger.log("R-SAVE-DB SUCCESS")
+            } else {
+                Logger.log("R-SAVE-DB FAILURE")
+            }
+        }
+
+        metadata.updateTimeToNow()
+        RemoteStorage.saveMetadataToFirebase(player: Self.currentPlayerId, with: self.metadata) {
+            if $0 {
+                Logger.log("R-SAVE-MD SUCCESS")
+            } else {
+                Logger.log("R-SAVE-MD FAILURE")
+            }
+        }
     }
 
     /// Universal delete
     func delete() {
-        Logger.log("DELETE: Deleting Stats and Metadata to LocalStorage", Self.self)
+        Logger.log("U-DELETE: Deleting Stats and Metadata Universally", Self.self)
+        self.statisticsDatabase.setToDefault()
+        self.metadata = Metadata()
+        self.localDelete()
+        self.remoteDelete()
+    }
+
+    func localDelete() {
+        Logger.log("L-DELETE: Deleting Stats and Metadata from LocalStorage", Self.self)
         LocalStorage.deleteDatabaseFromLocalStorage()
         LocalStorage.deleteMetadataFromLocalStorage()
     }
 
-    func onLogin() {
-        Task {
-            await onAsyncLogin()
-        }
-    }
-
-    func onAsyncLogin() async {
-        Logger.log("IMPT: onLogin IS CALLED FROM STORAGE_HANDLER", Self.self)
-
-        guard let userId = authenticationProvider.getCurrentUserId() else {
-            Logger.log("IMPT: onLogin failed due to userId nil from STORAGE_HANDLER", Self.self)
-            return
-        }
-
-        /// Update the playerId and metadata locally
-        self.localUpdatePlayerIdAndMetadata(with: userId)
-        if await checkIfRemotePlayerDataExists() {
-            await self.onReLogin()
-        } else {
-            self.onFirstLogin()
-        }
-
-        // if they don't, execute onFirstLogin
-
-        // if they do, execute onReLogin
-    }
-
-    func localUpdatePlayerIdAndMetadata(with userId: String) {
-        Constants.CURRENT_PLAYER_ID = userId
-        metadata.updateIdentifierToCurrentID()
-        self.save()
-    }
-
-    /// Returns true only if both Metadata and Storage exist
-    func checkIfRemotePlayerDataExists() async -> Bool {
-        let storageExists = RemoteStorage.checkIfPlayerStorageExists(for: Self.currentPlayerId)
-        let metadataExists = await RemoteStorage.checkIfPlayerMetadataExistsAsync(for: Self.currentPlayerId)
-
-        if (storageExists && !metadataExists) || (!storageExists && metadataExists) {
-            Logger.log("Inconsisteny error: Storage Exists: \(storageExists), Metadata Exists: \(metadataExists)")
-        }
-
-        return storageExists && metadataExists
-    }
-
-    func onLogout() {
-        Logger.log("IMPT: onLOGOUT IS CALLED FROM STORAGE_HANDLER", Self.self)
-        self.save() // Save any potential unsaved changes
-        metadata.resetIdentifier() // Reset metadata to original value
-        Logger.log("--- metadata reset to \(metadata.uniqueIdentifier)", Self.self)
-        self.save() // Save updated metadata
-    }
-
-    /// Returns true if re-login success, false otherwise
-    func onReLogin() async -> Bool {
-        // Fetch metadata
-        guard let remoteMetadata = await RemoteStorage.loadMetadataFromFirebase(player: Self.currentPlayerId) else {
-            Logger.log("RELOGIN ERROR: REMOTE METADATA NOT FOUND")
-            return false
-        }
-
-        // Fetch storage
-        guard let remoteStorage = RemoteStorage.loadStorageFromFirebase(player: Self.currentPlayerId) else {
-            Logger.log("RELOGIN ERROR: REMOTE STORAGE NOT FOUND")
-            return false
-        }
-
-        var finalStorage = StatisticsDatabase.merge(this: remoteStorage, that: statisticsDatabase)
-
-        // Merge storage - MERGE
-        // Merge metadata - KEEP LATEST
-        // Set storage to merged storage
-        // Save new storage to file
-        // Universal save will automatically update metadata
-        // Universal save to remote
-
-        return true
-
-    }
-
-    func onFirstLogin() {
-        RemoteStorage.saveStorageToFirebase(player: Self.currentPlayerId,
-                                            with: statisticsDatabase)
-
-        RemoteStorage.saveMetadataToFirebase(player: Self.currentPlayerId,
-                                             with: metadata)
+    func remoteDelete() {
+        Logger.log("R-DELETE: Deleting Stats and Metadata from LocalStorage", Self.self)
+        RemoteStorage.deleteDatabaseFromFirebase(player: Self.currentPlayerId)
+        RemoteStorage.deleteMetadataFromFirebase(player: Self.currentPlayerId)
     }
 
 }

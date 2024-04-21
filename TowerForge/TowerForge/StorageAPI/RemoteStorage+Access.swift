@@ -13,17 +13,6 @@ import Foundation
 /// functions, for both storage and metadata.
 extension RemoteStorage {
 
-    /// Checks if a player's metadata exists without requiring a closure input
-    /*static func checkIfPlayerMetadataExists(for playerId: String) -> Bool {
-        var exists = false
-
-        Self.remoteStorageExists(for: .Metadata, player: playerId) { bool in
-            exists = bool
-        }
-
-        return exists
-    }*/
-
     static func checkIfPlayerMetadataExistsAsync(for playerId: String) async -> Bool {
         await withCheckedContinuation { continuation in
             Self.remoteStorageExists(for: .Metadata, player: playerId) { exists in
@@ -32,23 +21,48 @@ extension RemoteStorage {
         }
     }
 
-    /// Checks if a player's statistics exists without requiring a closure input
-    static func checkIfPlayerStorageExists(for playerId: String) -> Bool {
-        var exists = false
+    static func checkIfRemotePlayerDataExists(playerId: String, completion: @escaping (Bool) -> Void) {
+        // Check for player storage existence
+        RemoteStorage.checkIfPlayerDatabaseExists(for: playerId) { storageExists in
+            // Check for player metadata existence
+            RemoteStorage.checkIfPlayerMetadataExists(for: playerId) { metadataExists in
+                // Check for any inconsistencies
+                if (storageExists && !metadataExists) || (!storageExists && metadataExists) {
+                    Logger.log("Inconsistency error: Storage Exists: \(storageExists), Metadata Exists: \(metadataExists)")
+                }
 
-        Self.remoteStorageExists(for: .Statistics, player: playerId) { bool in
-            exists = bool
+                // Return the combined result
+                completion(storageExists && metadataExists)
+            }
         }
-
-        return exists
     }
 
-    static func saveMetadataToFirebase(player: String, with inputData: Metadata) {
+    /// Checks if a player's metadata exists
+    static func checkIfPlayerMetadataExists(for playerId: String,
+                                            completion: @escaping (Bool) -> Void) {
+
+        Self.remoteStorageExists(for: .Metadata, player: playerId, completion: completion)
+    }
+
+    /// Checks if a player's statistics exists
+    static func checkIfPlayerDatabaseExists(for playerId: String,
+                                            completion: @escaping (Bool) -> Void) {
+
+        Self.remoteStorageExists(for: .Statistics, player: playerId, completion: completion)
+    }
+
+    /// Checks if a player's statistics exists without requiring a closure input
+
+    static func saveMetadataToFirebase(player: String,
+                                       with inputData: Metadata,
+                                       completion: @escaping (Bool) -> Void) {
         let metadataCompletion: (Error?) -> Void = { error in
             if let error = error {
                 Logger.log("Saving metadata to firebase error: \(error)", self)
+                completion(false)
             } else {
                 Logger.log("Saving metadata to firebase success", self)
+                completion(true)
             }
         }
 
@@ -58,12 +72,16 @@ extension RemoteStorage {
                                 completion: metadataCompletion)
     }
 
-    static func saveStorageToFirebase(player: String, with inputData: StatisticsDatabase) {
+    static func saveDatabaseToFirebase(player: String,
+                                       with inputData: StatisticsDatabase,
+                                       completion: @escaping (Bool) -> Void) {
         let storageCompletion: (Error?) -> Void = { error in
             if let error = error {
                 Logger.log("Saving storage to firebase error: \(error)", self)
+                completion(false)
             } else {
                 Logger.log("Saving storage to firebase success", self)
+                completion(true)
             }
         }
 
@@ -79,7 +97,7 @@ extension RemoteStorage {
             if let error = error {
                 Logger.log("Deleting metadata from firebase error: \(error)", self)
             } else {
-                Logger.log("Saving Metadata from firebase success", self)
+                Logger.log("Deleting Metadata from firebase success", self)
             }
         }
 
@@ -87,7 +105,7 @@ extension RemoteStorage {
     }
 
     /// Deletes storage for the specific player from Firebase
-    static func deleteStorageFromFirebase(player: String) {
+    static func deleteDatabaseFromFirebase(player: String) {
         let completion: (Error?) -> Void = { error in
             if let error = error {
                 Logger.log("Deleting storage from firebase error: \(error)", self)
@@ -99,7 +117,36 @@ extension RemoteStorage {
         Self.deleteDataFromFirebase(for: .Statistics, player: player, completion: completion)
     }
 
-    static func loadStorageFromFirebase(player: String) -> StatisticsDatabase? {
+    static func loadMetadataFromFirebase(player: String,
+                                         completion: @escaping (Metadata?, Error?) -> Void) {
+        Self.checkIfPlayerDatabaseExists(for: player) { exists in
+            guard exists else {
+                completion(nil, nil) // Consider custom error
+                return
+            }
+
+            Self.loadDataFromFirebase(for: .Metadata, player: player) { (metadata: Metadata?, error: Error?) in
+                completion(metadata, error)
+            }
+        }
+    }
+
+    static func loadDatabaseFromFirebase(player: String,
+                                        completion: @escaping (StatisticsDatabase?, Error?) -> Void) {
+        Self.checkIfPlayerDatabaseExists(for: player) { exists in
+            guard exists else {
+                completion(nil, nil) // Consider custom error
+                return
+            }
+
+            Self.loadDataFromFirebase(for: .Statistics,
+                                      player: player) { (statistics: StatisticsDatabase?, error: Error?) in
+                completion(statistics, error)
+            }
+        }
+    }
+
+    /*static func loadStorageFromFirebase(player: String) -> StatisticsDatabase? {
         guard Self.checkIfPlayerStorageExists(for: player) else {
             return nil
         }
@@ -141,5 +188,5 @@ extension RemoteStorage {
         }
 
         return metadata
-    }
+    }*/
 }

@@ -178,6 +178,18 @@ extension Statistic {
 /// This extension allows Statistic to be merged
 extension Statistic {
 
+    func merge(with that: Self) -> Self {
+        let this = self
+
+        let largerPermanent = Double.maximum(this.permanentValue, that.permanentValue)
+        let largerCurrent = Double.maximum(this.currentValue, that.currentValue)
+        let largerMaxCurrent = Double.maximum(this.maximumCurrentValue, that.maximumCurrentValue)
+
+        return Self(permanentValue: largerPermanent,
+                    currentValue: largerCurrent,
+                    maxCurrentValue: largerMaxCurrent)
+    }
+
     static func merge(this: Self, that: Self) -> Self {
         let largerPermanent = Double.maximum(this.permanentValue, that.permanentValue)
         let largerCurrent = Double.maximum(this.currentValue, that.currentValue)
