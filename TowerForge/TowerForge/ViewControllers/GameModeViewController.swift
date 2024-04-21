@@ -56,7 +56,7 @@ class GameModeViewController: UIViewController {
         if authenticationProvider.isUserLoggedIn() {
             authenticationProvider.logout { err in
                 if let err = err {
-                    print(err)
+                    Logger.log(err.localizedDescription, self)
                 }
             }
         } else {

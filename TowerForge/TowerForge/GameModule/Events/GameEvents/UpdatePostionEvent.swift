@@ -19,8 +19,8 @@ struct UpdatePostionEvent: TFEvent {
     }
 
     func execute(in target: any EventTarget) -> EventOutput {
-        if let movementSystem = target.system(ofType: MovementSystem.self) {
-            movementSystem.updatePosition(for: entityId, to: position)
+        if let positionSystem = target.system(ofType: PositionSystem.self) {
+            positionSystem.updatePosition(for: entityId, to: position)
         }
         return EventOutput()
     }

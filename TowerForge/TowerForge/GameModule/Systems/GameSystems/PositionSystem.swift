@@ -34,6 +34,15 @@ class PositionSystem: TFSystem {
         }
     }
 
+    func updatePosition(for entityId: UUID, to position: CGPoint) {
+        guard let currentEntity = entityManager.entity(with: entityId),
+              let positionComponent = currentEntity.component(ofType: PositionComponent.self) else {
+            return
+        }
+
+        positionComponent.changeTo(to: position)
+    }
+
     func handleOutOfGame(entity: TFEntity) {
         guard let playerComponent = entity.component(ofType: PlayerComponent.self) else {
             return

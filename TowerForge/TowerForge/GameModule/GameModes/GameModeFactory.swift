@@ -7,12 +7,18 @@
 
 import Foundation
 
-enum Mode {
+enum Mode: String {
     case deathMatch
     case captureTheFlag
     case survivalLevelOne
     case survivalLevelTwo
     case survivalLevelThree
+}
+
+extension Mode {
+    static func fromString(_ value: String) -> Mode? {
+        Mode(rawValue: value)
+    }
 }
 
 class GameModeFactory {
