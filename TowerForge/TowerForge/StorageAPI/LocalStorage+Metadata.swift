@@ -13,11 +13,11 @@ extension LocalStorage {
         if let metadata = LocalStorage.loadMetadataFromLocalStorage() {
             Logger.log("--- Metadata exists locally", Self.self)
             Constants.CURRENT_PLAYER_ID = metadata.uniqueIdentifier
-            Constants.CURRENT_DEVICE_ID = metadata.uniqueIdentifier
+            Constants.CURRENT_DEVICE_ID = metadata.deviceIdentifier
         } else {
             let defaultMetadata = Metadata()
             Constants.CURRENT_PLAYER_ID = defaultMetadata.uniqueIdentifier
-            Constants.CURRENT_DEVICE_ID = defaultMetadata.uniqueIdentifier
+            Constants.CURRENT_DEVICE_ID = defaultMetadata.deviceIdentifier
 
             LocalStorage.saveMetadataToLocalStorage(defaultMetadata)
             Logger.log("--- Created and saved a new empty metadata file.", Self.self)

@@ -15,18 +15,23 @@ class Metadata: StorageDatabase, Comparable, Equatable {
     static var currentPlayerId: String { Constants.CURRENT_PLAYER_ID }
     static var currentDeviceId: String { Constants.CURRENT_DEVICE_ID }
 
+    var deviceIdentifier: String
     var uniqueIdentifier: String
     var lastUpdated: Date
 
     init(lastUpdated: Date = .now,
-         uniqueIdentifier: String = Metadata.currentPlayerId) {
+         uniqueIdentifier: String = Metadata.currentPlayerId,
+         deviceIdentifer: String = Metadata.currentDeviceId) {
         self.lastUpdated = lastUpdated
         self.uniqueIdentifier = uniqueIdentifier
+        self.deviceIdentifier = deviceIdentifer
     }
 
     init() {
         self.lastUpdated = .now
-        self.uniqueIdentifier = UUID().uuidString
+        let id = UUID().uuidString
+        self.uniqueIdentifier = id
+        self.deviceIdentifier = id
     }
 
     func updateTimeToNow() {
@@ -36,12 +41,12 @@ class Metadata: StorageDatabase, Comparable, Equatable {
 
     func updateIdentifierToCurrentID() {
         uniqueIdentifier = Self.currentPlayerId
-        Logger.log("Metadata id updated to \(self.uniqueIdentifier)", self)
+        Logger.log("Metadata id updated to currentPlayer \(self.uniqueIdentifier)", self)
     }
 
     func resetIdentifier() {
         uniqueIdentifier = Self.currentDeviceId
-        Logger.log("Metadata id updated to \(self.uniqueIdentifier)", self)
+        Logger.log("Metadata id updated to currentDevice \(self.uniqueIdentifier)", self)
     }
 
     static func == (lhs: Metadata, rhs: Metadata) -> Bool {
