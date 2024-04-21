@@ -232,7 +232,7 @@
 		BA82C76D2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C76C2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift */; };
 		BA82C76F2BCBDE91000515A0 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C76E2BCBDE91000515A0 /* Metadata.swift */; };
 		BA82C7752BCC689F000515A0 /* AchievementsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7742BCC689F000515A0 /* AchievementsFactory.swift */; };
-		BA82C7772BCC6913000515A0 /* HundredKillsAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7762BCC6913000515A0 /* HundredKillsAchievement.swift */; };
+		BA82C7772BCC6913000515A0 /* ThousandKillsAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7762BCC6913000515A0 /* ThousandKillsAchievement.swift */; };
 		BA82C7792BCC6943000515A0 /* CenturionAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7782BCC6943000515A0 /* CenturionAchievement.swift */; };
 		BA82C7802BCD284D000515A0 /* InferenceEngineFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C77F2BCD284D000515A0 /* InferenceEngineFactory.swift */; };
 		BA82C7832BCD2B30000515A0 /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA82C7822BCD2B30000515A0 /* Mission.swift */; };
@@ -509,7 +509,7 @@
 		BA82C76C2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatisticsDatabase+Merge.swift"; sourceTree = "<group>"; };
 		BA82C76E2BCBDE91000515A0 /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 		BA82C7742BCC689F000515A0 /* AchievementsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsFactory.swift; sourceTree = "<group>"; };
-		BA82C7762BCC6913000515A0 /* HundredKillsAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HundredKillsAchievement.swift; sourceTree = "<group>"; };
+		BA82C7762BCC6913000515A0 /* ThousandKillsAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThousandKillsAchievement.swift; sourceTree = "<group>"; };
 		BA82C7782BCC6943000515A0 /* CenturionAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenturionAchievement.swift; sourceTree = "<group>"; };
 		BA82C77F2BCD284D000515A0 /* InferenceEngineFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InferenceEngineFactory.swift; sourceTree = "<group>"; };
 		BA82C7822BCD2B30000515A0 /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
@@ -1102,7 +1102,7 @@
 			isa = PBXGroup;
 			children = (
 				BA82C7602BCBBA8A000515A0 /* FiftyKillsAchievement.swift */,
-				BA82C7762BCC6913000515A0 /* HundredKillsAchievement.swift */,
+				BA82C7762BCC6913000515A0 /* ThousandKillsAchievement.swift */,
 				BA82C7782BCC6943000515A0 /* CenturionAchievement.swift */,
 			);
 			path = Implemented;
@@ -1730,7 +1730,7 @@
 				BA82C76D2BCBD8F7000515A0 /* StatisticsDatabase+Merge.swift in Sources */,
 				3CE951562BACA0CF008B2785 /* Collidable.swift in Sources */,
 				BA82C7422BC86FE1000515A0 /* TotalGamesStatistic.swift in Sources */,
-				BA82C7772BCC6913000515A0 /* HundredKillsAchievement.swift in Sources */,
+				BA82C7772BCC6913000515A0 /* ThousandKillsAchievement.swift in Sources */,
 				BA2F5ABE2BC80A8B00CBD8E9 /* Achievement.swift in Sources */,
 				3CBECF8C2BBE9A41005EF39B /* TFRemoteEvent.swift in Sources */,
 				5240D0A92BB333B5004F1486 /* PointProp.swift in Sources */,

@@ -53,38 +53,12 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         return missionsEngine!.missionsDatabase
     }
 
-    /*static func getRankingEngine() -> RankingEngine {
-        let statsEngine = StatisticsEngine(with: StorageHandler())
-        guard let rankEngine = staticEngine.inferenceEngines[RankingEngine.asType]
-                                                                    as? RankingEngine else {
-            Logger.log("PLAYER STATS: Error - Ranking engine cannot be found or cast")
-            return RankingEngine(staticEngine)
-        }
-        return rankEngine
-    }*/
-
     static func getAchievements() -> AchievementsDatabase {
         let statsEngine = StatisticsEngine(with: StorageHandler())
         let achEngine = statsEngine.inferenceEngines[AchievementsEngine.asType] as? AchievementsEngine
         achEngine!.achievementsDatabase.setToDefault()
         return achEngine!.achievementsDatabase
     }
-
-    // Designated initializer for programmatic instantiation
-    /*init() {
-        self.statisticsEngine = StatisticsEngine(with: StorageHandler())
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    // Required initializer for loading the view controller from a storyboard
-    required init?(coder: NSCoder) {
-        self.statisticsEngine = StatisticsEngine(with: StorageHandler())
-        super.init(coder: coder)
-
-        // You might set a default value for myProperty here, or perhaps
-        // this initializer will never actually be used in your app if you're
-        // not loading this view controller from a storyboard.
-    }*/
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,26 +71,13 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         achievementsView.allowsSelection = false
         missionsView.allowsSelection = false
 
-        // initializeBackground()
-
         initializePlayerStats()
         initializeRanks()
         highlightCurrentRank()
         reloadAll()
     }
 
-    func initializeBackground() {
-        /* TODO: Add background image
-         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "stone-tile")
-        backgroundImage.contentMode = .scaleAspectFill
-        view.addSubview(backgroundImage) // Add the image view to the view hierarchy
-        view.sendSubviewToBack(backgroundImage) // Send the image to the background
-         */
-    }
-
     func initializePlayerStats() {
-        // rankImageView.image = UIImage(named: currentRank.imageIdentifer)
         rankNameLabel.text = String("--- Rank: \(rank.rawValue) ---")
         characterImage.image = rank.isOfficer() ? UIImage(named: "Shooter-1") : UIImage(named: "melee-1")
         currentExp.text = String("XP: \(exp)")
@@ -176,27 +137,35 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == achievementsView {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
-                                                           for: indexPath) as? CustomAchievementCell else {
-                fatalError("Could not dequeue CustomAchievementCell")
-            }
-
-            let achievementPair = achievements.asSortedArray[indexPath.row]
-            let achievement = achievementPair.value
-
-            // Configure the cell elements
-            cell.nameLabel.text = achievement.name
-            cell.descriptionLabel.text = achievement.description
-            cell.achievementImageView.image = UIImage(named: achievement.imageIdentifier)
-            cell.progressView.progress = Float(achievement.overallProgressRateRounded)
-            // cell.progressPercentage.text = String(describing: Float(achievement.overallProgressRateRounded))
-            let statusImageName = achievement.isComplete ? "checkmark.circle" : "x.circle"
-            cell.statusImageView.image = UIImage(systemName: statusImageName)
-            cell.statusImageView.tintColor = achievement.isComplete ? .green : .red
-
-            return cell
+            return getCustomAchievementCell(tableView: tableView, cellForRowAt: indexPath)
         }
 
+        return getCustomMissionCell(tableView: tableView, cellForRowAt: indexPath)
+    }
+
+    func getCustomAchievementCell(tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell",
+                                                       for: indexPath) as? CustomAchievementCell else {
+            fatalError("Could not dequeue CustomAchievementCell")
+        }
+
+        let achievementPair = achievements.asSortedArray[indexPath.row]
+        let achievement = achievementPair.value
+
+        // Configure the cell elements
+        cell.nameLabel.text = achievement.name
+        cell.descriptionLabel.text = achievement.description
+        cell.achievementImageView.image = UIImage(named: achievement.imageIdentifier)
+        cell.progressView.progress = Float(achievement.overallProgressRateRounded)
+        // cell.progressPercentage.text = String(describing: Float(achievement.overallProgressRateRounded))
+        let statusImageName = achievement.isComplete ? "checkmark.circle" : "x.circle"
+        cell.statusImageView.image = UIImage(systemName: statusImageName)
+        cell.statusImageView.tintColor = achievement.isComplete ? .green : .red
+
+        return cell
+    }
+
+    func getCustomMissionCell(tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let missionCell = tableView.dequeueReusableCell(withIdentifier: "cell",
                                                               for: indexPath) as? CustomMissionCell else {
             fatalError("Could not dequeue CustomMissionCell")
@@ -214,7 +183,6 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         missionCell.statusImageView.tintColor = mission.isComplete ? .green : .red
 
         return missionCell
-
     }
 
     func reloadAll() {
