@@ -27,7 +27,7 @@ class GameRoomViewController: UIViewController {
         let playerOne = GamePlayer(userName: playerName)
         gameRoom = GameRoom(roomName: roomName) { success in
             if success {
-                print("Now joining the room \(success)")
+                Logger.log("Now joining the room \(success)", self)
                 self.joinRoom(player: playerOne)
             } else {
                 self.gameRoom = nil
@@ -39,11 +39,11 @@ class GameRoomViewController: UIViewController {
         // Create a game room
         gameRoom?.joinRoom(player: player, completion: { success in
             if success {
-                print("Successfully joined the room")
+                Logger.log("Successfully joined the room", self)
                 self.currentPlayer = player
                 self.performSegue(withIdentifier: "segueToWaitingRoom", sender: self)
             } else {
-                print("Failed to join room")
+                Logger.log("Failed to join room", self)
             }
         })
     }
@@ -54,7 +54,7 @@ class GameRoomViewController: UIViewController {
                 guard let currentPlayer = self.currentPlayer else {
                     return
                 }
-                print("Before segueing \(gameRoom?.playerOne)")
+                Logger.log("Before segueing \(String(describing: gameRoom?.playerOne))", self)
                 destinationVC.currentPlayer = currentPlayer
                 destinationVC.gameRoom = gameRoom
             }
@@ -73,7 +73,7 @@ class GameRoomViewController: UIViewController {
                 self.gameRoom = room
                 self.joinRoom(player: player)
             } else {
-                print("Room not found")
+                Logger.log("Room not found", self)
             }
         }
     }

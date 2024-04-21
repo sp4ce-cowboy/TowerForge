@@ -13,6 +13,7 @@ class GameRoom {
     private(set) var roomState: RoomState?
     private(set) var roomId: RoomId?
     private(set) var host: UserPlayerId?
+    private(set) var gameMode: Mode?
 
     private(set) var playerOne: GamePlayer?
     private(set) var playerTwo: GamePlayer?
@@ -62,7 +63,8 @@ class GameRoom {
         let roomId = UUID().uuidString
         self.roomState = .empty
         roomRef.updateChildValues(["roomId": roomId,
-                                   "roomState": RoomState.empty.rawValue
+                                   "roomState": RoomState.empty.rawValue,
+                                   "gameMode": Mode.captureTheFlag.rawValue
                                   ]) { err, _ in
             if err != nil {
                 completion?(err, nil)
@@ -86,7 +88,7 @@ class GameRoom {
 
             let onAddCompleted = { (error: Error?, _: DatabaseReference) -> Void in
                 if let error = error {
-                    print("Error getting data: \(error.localizedDescription)")
+                    Logger.log("Error getting data: \(error.localizedDescription)", self)
                     completion(false)
                     return
                 }
@@ -108,7 +110,7 @@ class GameRoom {
 
     // Logic to start the game when players are ready
     func updatePlayerReady(completion: @escaping (RoomState) -> Void) {
-        print("Updating player start")
+        Logger.log("Updating player start", self)
         if self.roomState == .waitingForFinalConfirmation {
             self.updateRoomState(roomState: .gameOnGoing)
             completion(.gameOnGoing)
@@ -118,29 +120,41 @@ class GameRoom {
         }
     }
 
+    func updateGameMode(to mode: Mode) {
+        let roomStateRef = FirebaseDatabaseReference(.Rooms).child(roomName).child("gameMode")
+        roomStateRef.setValue(mode.rawValue) { error, _ in
+            if let error = error {
+                Logger.log("Error updating game mode: \(error.localizedDescription)", self)
+            } else {
+                self.gameMode = mode
+                Logger.log("Game mode updated successfully.", self)
+            }
+        }
+    }
+
     func deleteRoom() {
         guard roomState == .gameOnGoing else {
             return
         }
         roomRef.child(roomName).removeValue { error, _ in
             if let error = error {
-                print("Error deleting room: \(error.localizedDescription)")
+                Logger.log("Error deleting room: \(error.localizedDescription)", self)
             } else {
-                print("Room deleted successfully.")
+                Logger.log("Room deleted successfully.", self)
             }
         }
     }
 
     // Updates the current room state in the class and database
     private func updateRoomState(roomState: RoomState) {
-        print("Updating room state from player")
+        Logger.log("Updating room state from player", self)
         let roomStateRef = FirebaseDatabaseReference(.Rooms).child(roomName).child("roomState")
         roomStateRef.setValue(roomState.rawValue) { error, _ in
             if let error = error {
-                print("Error updating room state: \(error.localizedDescription)")
+                Logger.log("Error updating room state: \(error.localizedDescription)", self)
             } else {
                 self.roomState = roomState
-                print("Room state updated successfully.")
+                Logger.log("Room state updated successfully.", self)
             }
         }
     }
@@ -197,7 +211,7 @@ class GameRoom {
         let playerRef = FirebaseDatabaseReference(.Rooms).child(roomName).child("players")
         playerRef.getData { error, snapshot in
             if let error = error {
-                print("Error getting data: \(error.localizedDescription)")
+                Logger.log("Error getting data: \(error.localizedDescription)", self)
                 completion(false)
                 return
             }
@@ -260,6 +274,9 @@ class GameRoom {
             if let hostData = snapshotValue["host"] as? UserPlayerId {
                 self?.host = hostData
             }
+            if let gameModeData = snapshotValue["gameMode"] as? String {
+                self?.gameMode = Mode.fromString(gameModeData)
+            }
             self?.gameRoomDelegate?.onRoomChange()
         }
     }
@@ -287,7 +304,7 @@ class GameRoom {
     private func attemptSetHost(player: GamePlayer) {
         let delegate = { (error: Error?, snapshot: DataSnapshot?) -> Void in
             if let error = error {
-                print("Error getting data: \(error.localizedDescription)")
+                Logger.log("Error getting data: \(error.localizedDescription)", self)
                 return
             }
 

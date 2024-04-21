@@ -18,13 +18,13 @@
         <!--GameViewController-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController storyboardIdentifier="GameViewController" title="GameViewController" wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" id="BV1-FR-VrT" customClass="GameViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
+                <viewController storyboardIdentifier="GameViewController" title="GameViewController" wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="BV1-FR-VrT" customClass="GameViewController" customModule="TowerForge" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="954"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRf-Sx-cuP">
-                                <rect key="frame" x="30.5" y="25.5" width="75.5" height="51.5"/>
+                                <rect key="frame" x="33" y="24" width="70.5" height="47.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FRf-Sx-cuP" secondAttribute="height" multiplier="114:77" id="lB7-gB-moQ"/>
                                 </constraints>
@@ -45,6 +45,7 @@
                             <constraint firstItem="FRf-Sx-cuP" firstAttribute="height" secondItem="3se-qz-xqx" secondAttribute="height" multiplier="0.05" id="RZy-b6-PfV"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="9Rh-a0-sTy"/>
                     <connections>
                         <outlet property="gamePopupButton" destination="FRf-Sx-cuP" id="9ja-00-9KT"/>
@@ -1163,6 +1164,38 @@
                                     <constraint firstItem="Co9-Tp-uCr" firstAttribute="leading" secondItem="5Uk-mA-EC2" secondAttribute="leading" id="x30-A1-Q3C"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aoz-og-1yQ" userLabel="Mode View">
+                                <rect key="frame" x="888" y="256" width="409.5" height="102.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S7R-Bw-5rH" userLabel="Mode Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="409.5" height="102.5"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="square-button"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GameMode" textAlignment="center" lineBreakMode="headTruncation" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lmN-ut-46y" userLabel="Mode Label">
+                                        <rect key="frame" x="82" y="20.5" width="245.5" height="61.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="lmN-ut-46y" secondAttribute="height" multiplier="4:1" id="xqr-Mm-mKQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Nosifer-Regular" family="Nosifer" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="S7R-Bw-5rH" firstAttribute="leading" secondItem="Aoz-og-1yQ" secondAttribute="leading" id="1Qj-2n-zuL"/>
+                                    <constraint firstItem="lmN-ut-46y" firstAttribute="centerY" secondItem="Aoz-og-1yQ" secondAttribute="centerY" id="4uz-WO-CUt"/>
+                                    <constraint firstItem="S7R-Bw-5rH" firstAttribute="trailing" secondItem="Aoz-og-1yQ" secondAttribute="trailing" id="71T-Eb-ztC"/>
+                                    <constraint firstItem="S7R-Bw-5rH" firstAttribute="bottom" secondItem="Aoz-og-1yQ" secondAttribute="bottom" id="DJB-4e-Wka"/>
+                                    <constraint firstItem="lmN-ut-46y" firstAttribute="centerY" secondItem="Aoz-og-1yQ" secondAttribute="centerY" id="DVo-Ye-uLq"/>
+                                    <constraint firstItem="lmN-ut-46y" firstAttribute="centerX" secondItem="Aoz-og-1yQ" secondAttribute="centerX" id="Hm0-6u-wXJ"/>
+                                    <constraint firstItem="S7R-Bw-5rH" firstAttribute="top" secondItem="Aoz-og-1yQ" secondAttribute="top" id="klp-sR-8l2"/>
+                                    <constraint firstItem="lmN-ut-46y" firstAttribute="height" secondItem="S7R-Bw-5rH" secondAttribute="height" multiplier="0.6" id="o3b-hj-yi6"/>
+                                    <constraint firstAttribute="width" secondItem="Aoz-og-1yQ" secondAttribute="height" multiplier="4:1" id="pYV-u4-7Vj"/>
+                                    <constraint firstItem="lmN-ut-46y" firstAttribute="centerX" secondItem="Aoz-og-1yQ" secondAttribute="centerX" id="wcc-U2-tOh"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gvy-hn-x7x" userLabel="Leave View">
                                 <rect key="frame" x="888" y="665.5" width="409.5" height="102.5"/>
                                 <subviews>
@@ -1205,16 +1238,23 @@
                             <constraint firstItem="Gvy-hn-x7x" firstAttribute="centerX" secondItem="CDD-vN-KX1" secondAttribute="centerX" multiplier="1.6" id="5eD-hh-aU2"/>
                             <constraint firstItem="FSQ-sC-jDO" firstAttribute="height" secondItem="CDD-vN-KX1" secondAttribute="height" multiplier="0.7" id="9CQ-fQ-MCK"/>
                             <constraint firstItem="5Uk-mA-EC2" firstAttribute="centerY" secondItem="CDD-vN-KX1" secondAttribute="centerY" id="Avk-yS-EL7"/>
+                            <constraint firstItem="Aoz-og-1yQ" firstAttribute="width" secondItem="Aoz-og-1yQ" secondAttribute="height" multiplier="4:1" id="CcO-iK-n2z"/>
+                            <constraint firstItem="Aoz-og-1yQ" firstAttribute="centerY" secondItem="CDD-vN-KX1" secondAttribute="centerY" multiplier="0.6" id="D2f-gj-QqC"/>
                             <constraint firstItem="Gvy-hn-x7x" firstAttribute="width" secondItem="5Uk-mA-EC2" secondAttribute="width" id="Dpc-j9-B22"/>
                             <constraint firstItem="5Uk-mA-EC2" firstAttribute="centerX" secondItem="CDD-vN-KX1" secondAttribute="centerX" multiplier="1.6" id="J8j-7j-lPc"/>
                             <constraint firstItem="Gvy-hn-x7x" firstAttribute="centerY" secondItem="CDD-vN-KX1" secondAttribute="centerY" multiplier="1.4" id="Qov-Q2-veN"/>
+                            <constraint firstItem="Aoz-og-1yQ" firstAttribute="height" secondItem="5Uk-mA-EC2" secondAttribute="height" id="V6V-Lt-Sog"/>
                             <constraint firstItem="Gvy-hn-x7x" firstAttribute="height" secondItem="5Uk-mA-EC2" secondAttribute="height" id="aFU-z0-ILN"/>
+                            <constraint firstItem="Aoz-og-1yQ" firstAttribute="centerX" secondItem="CDD-vN-KX1" secondAttribute="centerX" multiplier="1.6" id="d1X-gL-sY7"/>
+                            <constraint firstItem="Aoz-og-1yQ" firstAttribute="width" secondItem="5Uk-mA-EC2" secondAttribute="width" id="frQ-It-D3U"/>
                             <constraint firstItem="FSQ-sC-jDO" firstAttribute="centerX" secondItem="CDD-vN-KX1" secondAttribute="centerX" multiplier="0.7" id="qU6-Ob-94D"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RIh-Gm-msf"/>
                     <connections>
                         <outlet property="ListStackView" destination="FSQ-sC-jDO" id="21H-Es-ph1"/>
+                        <outlet property="modeButton" destination="S7R-Bw-5rH" id="27p-av-ThH"/>
+                        <outlet property="modeLabel" destination="lmN-ut-46y" id="dZz-9H-HR9"/>
                         <outlet property="startButton" destination="Co9-Tp-uCr" id="aH9-mw-OQ5"/>
                         <segue destination="BV1-FR-VrT" kind="show" identifier="segueToGame" id="22u-0c-ugI"/>
                     </connections>

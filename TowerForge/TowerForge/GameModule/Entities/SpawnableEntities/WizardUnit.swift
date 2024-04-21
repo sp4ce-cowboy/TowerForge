@@ -32,6 +32,9 @@ class WizardUnit: BaseUnit, PlayerSpawnable {
         self.addComponent(ShootingComponent(fireRate: WizardUnit.attackRate,
                                             range: WizardUnit.range,
                                             attackPower: WizardUnit.attackPower, shootingType: WizardBall.self))
+        self.addComponent(DamageComponent(attackRate: .unit,
+                                          attackPower: .unit,
+                                          temporary: false))
     }
 
     required init(position: CGPoint, player: Player, id: UUID) {
