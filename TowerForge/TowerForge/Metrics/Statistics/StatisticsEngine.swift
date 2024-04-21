@@ -71,6 +71,7 @@ class StatisticsEngine: InferenceDataDelegate {
 
     /// Transfers over all transient metrics within statistics to permanent value.
     func finalizeAndSave() {
+        Logger.log("------------------- STATISTICS ARE FINALIZED ----------------------- ", self)
         statisticsDatabase.statistics.values.forEach { $0.finalizeStatistic() }
         saveStatistics()
     }
@@ -84,7 +85,7 @@ class StatisticsEngine: InferenceDataDelegate {
 
         // stats.forEach { $0.update(for: eventType) }
         stats.forEach { $0.update(for: event) }
-        // saveStatistics()
+        //saveStatistics()
     }
 
     /// TODO: Consider if passing the stats database directly is better or
@@ -110,7 +111,7 @@ class StatisticsEngine: InferenceDataDelegate {
 
     private func saveStatistics() {
         Logger.log("STATISTICS_ENGINE SAVE: Statistics save triggered", self)
-        // Logger.log("STATISTICS_ENGINE SAVE: \(String(describing: statsEngineDelegate?.statisticsDatabase.toString()))", self)
+        Logger.log("STATISTICS_ENGINE SAVE: \(String(describing: statsEngineDelegate?.statisticsDatabase.toString()))", self)
         statsEngineDelegate?.save()
         // _ = StorageManager.saveUniversally(statistics)
     }

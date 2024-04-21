@@ -62,6 +62,7 @@ extension StorageHandler {
 
     /// Returns true if re-login success, false otherwise
     func onReLogin(completion: @escaping (Bool) -> Void) {
+        Logger.log("RE-LOGIN ENTERED", self)
         // Executed upon confirmation that both types of data exist remotely
         // 1. Load metadata from firebase
         RemoteStorage.loadMetadataFromFirebase(player: Self.currentPlayerId) { remoteMetadata, _ in
