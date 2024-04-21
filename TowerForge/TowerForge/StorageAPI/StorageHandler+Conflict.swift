@@ -68,11 +68,16 @@ extension StorageHandler {
 
         switch CONFLICT_RESOLUTION {
         case .MERGE:
+            Logger.log("RESOLVE --- THIS DB is \(String(describing: this.toString()))", self)
+            Logger.log("RESOLVE --- THAT DB is \(String(describing: that.toString()))", self)
             completion(StatisticsDatabase.merge(this: this, that: that))
+            return
         case .KEEP_LATEST_ONLY:
             Self.loadLatest { completion($0) }
+            return
         case .PRESERVE_LOCAL:
             completion(this)
+            return
         }
     }
 

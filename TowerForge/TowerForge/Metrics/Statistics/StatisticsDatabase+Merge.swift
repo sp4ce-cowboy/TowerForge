@@ -37,22 +37,21 @@ extension StatisticsDatabase: Equatable {
             return nil
         }
 
+        Logger.log("MERGE --- THIS DB is \(String(describing: this?.toString()))", self)
+        Logger.log("MERGE --- THAT DB is \(String(describing: that?.toString()))", self)
+
         var lhs = StatisticsDatabase()
         var rhs = StatisticsDatabase()
 
         if let this = this {
             lhs = this
-        } else {
-            lhs.setToDefault()
         }
 
         if let that = that {
             rhs = that
-        } else {
-            rhs.setToDefault()
         }
 
-        let mergedStats = StatisticsFactory.getDefaultStatisticsDatabase()
+        let mergedStats = StatisticsDatabase()
 
         // Merge lhs statistics
         for (key, lhsStat) in lhs.statistics {
@@ -60,9 +59,15 @@ extension StatisticsDatabase: Equatable {
         }
 
         for (key, rhsStat) in rhs.statistics {
+            Logger.log("MERGE-LOOP: Statistic RHS \(key) is " +
+                       "\(String(describing: rhsStat.toString()))", self)
             if let lhsStat = mergedStats.statistics[key] {
+                Logger.log("MERGE-LOOP: Statistic LHS \(key) is " +
+                           "\(String(describing: lhsStat.toString()))", self)
+
                 mergedStats.statistics[key] = lhsStat.merge(with: rhsStat)
-                Logger.log("MERGE-LOOP: Statistic \(key) updated to " +
+
+                Logger.log("MERGE-LOOP: MERGED Statistic \(key) updated to " +
                            "\(String(describing: mergedStats.statistics[key]?.toString()))", self)
             } else {
                 mergedStats.statistics[key] = rhsStat
