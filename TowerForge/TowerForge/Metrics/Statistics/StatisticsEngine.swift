@@ -67,7 +67,6 @@ class StatisticsEngine: InferenceDataDelegate {
    func update<T: TFEvent>(with event: T) {
        self.updateStatisticsOnReceive(event)
        self.notifyInferenceEngines()
-
     }
 
     /// Transfers over all transient metrics within statistics to permanent value.
@@ -84,7 +83,6 @@ class StatisticsEngine: InferenceDataDelegate {
             return
         }
 
-        // stats.forEach { $0.update(for: eventType) }
         stats.forEach { $0.update(for: event) }
         saveStatistics()
     }

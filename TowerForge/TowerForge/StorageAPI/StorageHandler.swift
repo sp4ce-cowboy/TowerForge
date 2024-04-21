@@ -76,6 +76,9 @@ class StorageHandler: AuthenticationDelegate, StatisticsEngineDelegate {
     }
 
     func remoteSave() {
+        guard authenticationProvider.isUserLoggedIn() else {
+            return
+        }
         Logger.log("R-SAVE: Saving Stats and Metadata to RemoteData for \(Self.currentPlayerId)", Self.self)
         RemoteStorage.saveDatabaseToFirebase(player: Self.currentPlayerId, with: self.statisticsDatabase) {
             if $0 {

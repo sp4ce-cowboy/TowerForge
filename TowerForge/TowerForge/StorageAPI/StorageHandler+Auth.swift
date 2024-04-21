@@ -41,18 +41,18 @@ extension StorageHandler {
                 // Asynchronously check if remote data exists for currentPlayerId
                 self.checkIfRemotePlayerDataExists { exists in
                     if exists {
+                        Logger.log("ONLOGIN ---- REMOTE PLAYER DATA EXISTS")
                         self.onReLogin { reloginSuccess in
                             if !reloginSuccess {
                                 Logger.log("RE-LOGIN FAILED: Remote player exists but Re-login failure", self)
                             }
                         }
                     } else {
+                        Logger.log("ONLOGIN ---- REMOTE PLAYER DATA DOESN'T EXIST")
                         self.onFirstLogin()
                     }
                 }
             }
-
-            self.remoteSave()
         }
     }
 
@@ -63,7 +63,7 @@ extension StorageHandler {
 
     func onFirstLogin() {
         Logger.log("FIRST LOGIN ENTERED", self)
-        self.remoteSave()
+        self.save()
     }
 
     /// Returns true if re-login success, false otherwise
