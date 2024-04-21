@@ -43,10 +43,14 @@ extension StatisticsDatabase: Equatable {
 
         if let this = this {
             lhs = this
+        } else {
+            lhs.setToDefault()
         }
 
         if let that = that {
             rhs = that
+        } else {
+            rhs.setToDefault()
         }
 
         let mergedStats = StatisticsFactory.getDefaultStatisticsDatabase()
