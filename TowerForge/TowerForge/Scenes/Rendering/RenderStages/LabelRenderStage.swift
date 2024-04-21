@@ -65,6 +65,7 @@ class LabelRenderStage: RenderStage {
         labelNode.fontSize = labelComponent.fontSize
         labelNode.horizontalAlignmentMode = labelComponent.horizontalAlignment
         labelNode.verticalAlignmentMode = labelComponent.verticalAlignment
+        labelNode.zPosition = 100_000
         labelNode.name = LabelRenderStage.name
 
         if let subtitle = labelComponent.subtitle {
