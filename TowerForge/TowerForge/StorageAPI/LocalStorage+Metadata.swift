@@ -10,8 +10,10 @@ import Foundation
 /// This extension adds utility methods specifically for local metadata operations
 extension LocalStorage {
     static func initializeMetadataToLocalStorage() {
-        if LocalStorage.loadMetadataFromLocalStorage() != nil {
+        if let metadata = LocalStorage.loadMetadataFromLocalStorage() {
             Logger.log("--- Metadata exists locally", Self.self)
+            Constants.CURRENT_PLAYER_ID = metadata.uniqueIdentifier
+            Constants.CURRENT_DEVICE_ID = metadata.uniqueIdentifier
         } else {
             let defaultMetadata = Metadata()
             Constants.CURRENT_PLAYER_ID = defaultMetadata.uniqueIdentifier

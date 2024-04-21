@@ -7,7 +7,12 @@
 
 import Foundation
 
-class StorageHandler: AuthenticationDelegate {
+protocol StatisticsEngineDelegate: AnyObject {
+    var statisticsDatabase: StatisticsDatabase { get set }
+    func save()
+}
+
+class StorageHandler: AuthenticationDelegate, StatisticsEngineDelegate {
 
     static let folderName = Constants.LOCAL_STORAGE_CONTAINER_NAME
     static let fileName = Constants.LOCAL_STORAGE_FILE_NAME
@@ -42,7 +47,6 @@ class StorageHandler: AuthenticationDelegate {
 
     deinit {
         Logger.log("StorageHandler: Deinit is called", self)
-        save()
     }
 
     /// Initializes empty statistics and metadata if they don't already exist locally
@@ -57,7 +61,7 @@ class StorageHandler: AuthenticationDelegate {
 
     /// Universal save
     func save() {
-        Logger.log("U-SAVE: Saving Stats and Metadata Universally", Self.self)
+        Logger.log("U-SAVE: Saving Stats and Metadata Universally for \(Self.currentPlayerId)", Self.self)
         self.localSave()
         self.remoteSave()
     }
@@ -70,21 +74,21 @@ class StorageHandler: AuthenticationDelegate {
     }
 
     func remoteSave() {
-        Logger.log("R-SAVE: Saving Stats and Metadata to RemoteData", Self.self)
+        Logger.log("R-SAVE: Saving Stats and Metadata to RemoteData for \(Self.currentPlayerId)", Self.self)
         RemoteStorage.saveDatabaseToFirebase(player: Self.currentPlayerId, with: self.statisticsDatabase) {
             if $0 {
-                Logger.log("R-SAVE-DB SUCCESS")
+                Logger.log("R-SAVE-DB SUCCESS", self)
             } else {
-                Logger.log("R-SAVE-DB FAILURE")
+                Logger.log("R-SAVE-DB FAILURE", self)
             }
         }
 
         metadata.updateTimeToNow()
         RemoteStorage.saveMetadataToFirebase(player: Self.currentPlayerId, with: self.metadata) {
             if $0 {
-                Logger.log("R-SAVE-MD SUCCESS")
+                Logger.log("R-SAVE-MD SUCCESS", self)
             } else {
-                Logger.log("R-SAVE-MD FAILURE")
+                Logger.log("R-SAVE-MD FAILURE", self)
             }
         }
     }

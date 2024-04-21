@@ -60,12 +60,12 @@ final class TotalKillsStatistic: Statistic {
         }
 
         let largerPermanent = max(self.permanentValue, that.permanentValue)
-        let largerCurrent = max(self.currentValue, that.currentValue)
         let largerMaxCurrent = max(self.maximumCurrentValue, that.maximumCurrentValue)
 
         guard let stat = Self(permanentValue: largerPermanent,
-                              currentValue: largerCurrent,
+                              currentValue: .zero,
                               maxCurrentValue: largerMaxCurrent) as? T else {
+            Logger.log("Statistic merging failed", self)
             return nil
         }
 

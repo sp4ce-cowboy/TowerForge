@@ -64,11 +64,11 @@ extension StatisticsDatabase: Equatable {
             if let lhsStat = mergedStats.statistics[key] {
                 mergedStats.statistics[key] = lhsStat.merge(with: rhsStat)
                 Logger.log("MERGE-LOOP: Statistic \(key) updated to " +
-                           "\(String(describing: mergedStats.statistics[key]))", self)
+                           "\(String(describing: mergedStats.statistics[key]?.toString()))", self)
             } else {
                 mergedStats.statistics[key] = rhsStat
                 Logger.log("MERGE-LOOP: Statistic \(key) created with " +
-                           "\(String(describing: mergedStats.statistics[key]))", self)
+                           "\(String(describing: mergedStats.statistics[key]?.toString()))", self)
             }
         }
 

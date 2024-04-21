@@ -11,7 +11,7 @@ class MissionsEngine: InferenceEngine, InferenceDataDelegate {
     unowned var statisticsEngine: StatisticsEngine
     var missionsDatabase: MissionsDatabase
     var statisticsDatabase: StatisticsDatabase {
-        statisticsEngine.statistics
+        statisticsEngine.statisticsDatabase
     }
 
     init(_ statisticsEngine: StatisticsEngine) {

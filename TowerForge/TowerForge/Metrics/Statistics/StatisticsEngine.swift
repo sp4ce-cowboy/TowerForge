@@ -7,24 +7,37 @@
 
 import Foundation
 
-class StatisticsEngine {
+class StatisticsEngine: InferenceDataDelegate {
     /// Core storage of Statistics
-    var statistics = StatisticsDatabase()
+    weak var statsEngineDelegate: StatisticsEngineDelegate?
+    var statisticsDatabase: StatisticsDatabase
     var eventStatisticLinks = EventStatisticLinkDatabase()
     var inferenceEngines: [InferenceEngineTypeWrapper: InferenceEngine] = [:]
 
-    init() {
+    /*init() {
         self.initializeStatistics()
         self.loadStatistics()
         self.setUpLinks()
         self.setUpInferenceEngines()
-    }
+    }*/
 
-    init(with statistics: StatisticsDatabase) {
-        self.statistics = statistics
+    /*init(with statistics: StatisticsDatabase) {
+        self.statisticsDatabase = statistics
         self.initializeStatistics()
         self.setUpLinks()
         self.setUpInferenceEngines()
+    }*/
+
+    init(with storageHandler: StatisticsEngineDelegate) {
+        self.statsEngineDelegate = storageHandler
+        self.statisticsDatabase = storageHandler.statisticsDatabase
+        self.initializeStatistics()
+        self.setUpLinks()
+        self.setUpInferenceEngines()
+    }
+
+    deinit {
+        Logger.log("DEINIT: StatisticsEngine is deinitialized", self)
     }
 
     /// Add statistics links manually
@@ -33,7 +46,7 @@ class StatisticsEngine {
         for key in links.keys {
             links[key]?.forEach {
                 eventStatisticLinks.addStatisticLink(for: key.type,
-                                                     with: statistics.getStatistic(for: $0))
+                                                     with: statisticsDatabase.getStatistic(for: $0))
             }
         }
     }
@@ -57,8 +70,8 @@ class StatisticsEngine {
     }
 
     /// Transfers over all transient metrics within statistics to permanent value.
-    func finalize() {
-        statistics.statistics.values.forEach { $0.finalizeStatistic() }
+    func finalizeAndSave() {
+        statisticsDatabase.statistics.values.forEach { $0.finalizeStatistic() }
         saveStatistics()
     }
 
@@ -71,7 +84,7 @@ class StatisticsEngine {
 
         // stats.forEach { $0.update(for: eventType) }
         stats.forEach { $0.update(for: event) }
-        saveStatistics()
+        // saveStatistics()
     }
 
     /// TODO: Consider if passing the stats database directly is better or
@@ -96,13 +109,16 @@ class StatisticsEngine {
     }
 
     private func saveStatistics() {
-        _ = StorageManager.saveUniversally(statistics)
+        Logger.log("STATISTICS_ENGINE SAVE: Statistics save triggered", self)
+        // Logger.log("STATISTICS_ENGINE SAVE: \(String(describing: statsEngineDelegate?.statisticsDatabase.toString()))", self)
+        statsEngineDelegate?.save()
+        // _ = StorageManager.saveUniversally(statistics)
     }
 
-    private func loadStatistics() {
+    /*private func loadStatistics() {
         if let loadedStats = StorageManager.loadUniversally() {
-            statistics = loadedStats
+            statisticsDatabase = loadedStats
         }
-    }
+    }*/
 
 }

@@ -32,15 +32,12 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet private var col: UILabel!
     @IBOutlet private var gen: UILabel!
 
-    var statsEngine = StatisticsEngine()
-
+    // static var staticEngine = StatisticsEngine(with: StorageHandler())
+    var statisticsEngine = StatisticsEngine(with: StorageHandler())
+    var statisticsDatabase: StatisticsDatabase { statisticsEngine.statisticsDatabase }
     var achievements: AchievementsDatabase = getAchievements()
     var missions: MissionsDatabase = getMissions()
-
-    var rankingEngine: RankingEngine {
-        let rankEngine = statsEngine.inferenceEngines[RankingEngine.asType] as? RankingEngine
-        return rankEngine!
-    }
+    var rankingEngine: RankingEngine { RankingEngine(statisticsEngine) }
 
     var rank: Rank { rankingEngine.currentRank }
     var exp: String { rankingEngine.currentExpAsString }
@@ -49,25 +46,45 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
     var deaths: Int { Int(rankingEngine.getPermanentValueFor(TotalDeathsStatistic.self)) }
     var games: Int { Int(rankingEngine.getPermanentValueFor(TotalGamesStatistic.self)) }
 
-    static func getAchievements() -> AchievementsDatabase {
-        let statsEngine = StatisticsEngine()
-        let achEngine = statsEngine.inferenceEngines[AchievementsEngine.asType] as? AchievementsEngine
-        achEngine!.achievementsDatabase.setToDefault()
-        return achEngine!.achievementsDatabase
-    }
-
     static func getMissions() -> MissionsDatabase {
-        let statsEngine = StatisticsEngine()
+        let statsEngine = StatisticsEngine(with: StorageHandler())
         let missionsEngine = statsEngine.inferenceEngines[MissionsEngine.asType] as? MissionsEngine
         missionsEngine!.missionsDatabase.setToDefault()
         return missionsEngine!.missionsDatabase
     }
 
-    static func getRankingEngine() -> RankingEngine {
-        let statsEngine = StatisticsEngine()
-        let rankEngine = statsEngine.inferenceEngines[RankingEngine.asType] as? RankingEngine
-        return rankEngine!
+    /*static func getRankingEngine() -> RankingEngine {
+        let statsEngine = StatisticsEngine(with: StorageHandler())
+        guard let rankEngine = staticEngine.inferenceEngines[RankingEngine.asType]
+                                                                    as? RankingEngine else {
+            Logger.log("PLAYER STATS: Error - Ranking engine cannot be found or cast")
+            return RankingEngine(staticEngine)
+        }
+        return rankEngine
+    }*/
+
+    static func getAchievements() -> AchievementsDatabase {
+        let statsEngine = StatisticsEngine(with: StorageHandler())
+        let achEngine = statsEngine.inferenceEngines[AchievementsEngine.asType] as? AchievementsEngine
+        achEngine!.achievementsDatabase.setToDefault()
+        return achEngine!.achievementsDatabase
     }
+
+    // Designated initializer for programmatic instantiation
+    /*init() {
+        self.statisticsEngine = StatisticsEngine(with: StorageHandler())
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    // Required initializer for loading the view controller from a storyboard
+    required init?(coder: NSCoder) {
+        self.statisticsEngine = StatisticsEngine(with: StorageHandler())
+        super.init(coder: coder)
+
+        // You might set a default value for myProperty here, or perhaps
+        // this initializer will never actually be used in your app if you're
+        // not loading this view controller from a storyboard.
+    }*/
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +102,7 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         initializePlayerStats()
         initializeRanks()
         highlightCurrentRank()
-        reloadAchievements()
+        reloadAll()
     }
 
     func initializeBackground() {
@@ -152,7 +169,7 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
         if tableView == achievementsView {
             return achievements.count
         } else if tableView == missionsView {
-            return missions.missions.count
+            return missions.count
         }
         return 0
     }
@@ -200,9 +217,11 @@ class PlayerStatsViewController: UIViewController, UITableViewDataSource, UITabl
 
     }
 
-    func reloadAchievements() {
+    func reloadAll() {
         achievementsView.reloadData()
+        missionsView.reloadData()
         rankNameLabel.reloadInputViews()
+        view.reloadInputViews()
     }
 
 }

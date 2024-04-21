@@ -104,11 +104,12 @@ extension StorageHandler {
     }
 
     func onLogout() {
+        Constants.CURRENT_PLAYER_ID = Constants.CURRENT_DEVICE_ID
         Logger.log("LOGOUT: CALLED FROM STORAGE_HANDLER", Self.self)
         self.save() // Save any potential unsaved changes
         metadata.resetIdentifier() // Reset metadata to original value
         Logger.log("LOGOUT: metadata reset to \(metadata.uniqueIdentifier)", Self.self)
-        self.save() // Save updated metadata
+        self.localSave() // Save updated metadata
     }
 
     /// Returns true if re-login success, false otherwise

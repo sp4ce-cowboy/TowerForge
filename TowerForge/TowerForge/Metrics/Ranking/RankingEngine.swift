@@ -9,16 +9,22 @@ import Foundation
 
 /// The RankingEngine is responsible for generating rank and exp information.
 class RankingEngine: InferenceEngine, InferenceDataDelegate {
+    unowned var statisticsEngine: StatisticsEngine
 
-    // TODO: Consider expanding to more formula for .e.g double exp.
     static var defaultExpFormula: ((StatisticsDatabase) -> Double) = {
         $0.statistics.values.map { $0.rankValue }.reduce(into: .zero) { $0 += $1 }
     }
 
-    unowned var statisticsEngine: StatisticsEngine
+    init(_ statisticsEngine: StatisticsEngine) {
+        self.statisticsEngine = statisticsEngine
+    }
+
+    deinit {
+        Logger.log("DEINIT: RankingEngine is deinitialized", self)
+    }
 
     var statisticsDatabase: StatisticsDatabase {
-        statisticsEngine.statistics
+        statisticsEngine.statisticsDatabase
     }
 
     var currentExp: Double {
@@ -49,15 +55,11 @@ class RankingEngine: InferenceEngine, InferenceDataDelegate {
         currentRank.isOfficer()
     }
 
-    init(_ statisticsEngine: StatisticsEngine) {
-        self.statisticsEngine = statisticsEngine
-    }
-
-    func updateOnReceive() {  }
-
     func getPermanentValueFor<T: Statistic>(_ stat: T.Type) -> Double {
         statisticsDatabase.getStatistic(for: stat.asType)?.permanentValue ?? .zero
     }
+
+    func updateOnReceive() {  }
 
     func percentageToNextRank() -> Double {
         let minScore = currentRank.valueRange.lowerBound
