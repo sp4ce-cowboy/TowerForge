@@ -19,9 +19,13 @@ struct KillEvent: TFEvent {
     }
 
     func execute(in target: any EventTarget) -> EventOutput {
+        var success = false
         if let removeSystem = target.system(ofType: RemoveSystem.self) {
-            removeSystem.handleRemove(for: entityId)
+            success = removeSystem.handleRemove(for: entityId)
+        }
 
+        guard success else {
+            return EventOutput()
         }
 
         if let statsSystem = target.system(ofType: StatisticSystem.self) {
