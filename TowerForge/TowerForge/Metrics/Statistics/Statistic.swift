@@ -32,6 +32,9 @@ protocol Statistic: AnyObject, Codable {
     /// The significance value which this Statistic holds in generating XP
     static var expMultiplier: Double { get }
 
+    /// Function to specify merging of Statistics
+    func merge<T: Statistic>(with that: T) -> T?
+
     /// Returns a StatisticUpdateLinkDatabase pertaining to this Statistic.
     /// Conforming Statistic types will have to implement their own links between event
     /// types and the action to take upon reception of that event's execution.
@@ -177,18 +180,6 @@ extension Statistic {
 
 /// This extension allows Statistic to be merged
 extension Statistic {
-
-    func merge(with that: Self) -> Self {
-        let this = self
-
-        let largerPermanent = max(this.permanentValue, that.permanentValue)
-        let largerCurrent = max(this.currentValue, that.currentValue)
-        let largerMaxCurrent = max(this.maximumCurrentValue, that.maximumCurrentValue)
-
-        return Self(permanentValue: largerPermanent,
-                    currentValue: largerCurrent,
-                    maxCurrentValue: largerMaxCurrent)
-    }
 
     static func merge<T: Statistic>(this: T, that: T) -> T {
         let largerPermanent = max(this.permanentValue, that.permanentValue)

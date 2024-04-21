@@ -55,4 +55,22 @@ final class TotalDeathsStatistic: Statistic {
           self.init(permanentValue: value, currentValue: current)
     }
 
+    func merge<T: Statistic>(with that: T) -> T? {
+        guard let that = that as? Self else {
+            return nil
+        }
+
+        let largerPermanent = max(self.permanentValue, that.permanentValue)
+        let largerCurrent = max(self.currentValue, that.currentValue)
+        let largerMaxCurrent = max(self.maximumCurrentValue, that.maximumCurrentValue)
+
+        guard let stat = Self(permanentValue: largerPermanent,
+                              currentValue: largerCurrent,
+                              maxCurrentValue: largerMaxCurrent) as? T else {
+            return nil
+        }
+
+        return stat
+    }
+
 }

@@ -19,7 +19,8 @@ extension StatisticsDatabase: Equatable {
         return lhs.statistics.keys.allSatisfy {
             (lhs.statistics[$0]?.statisticName == rhs.statistics[$0]?.statisticName) &&
             (lhs.statistics[$0]?.permanentValue == rhs.statistics[$0]?.permanentValue) &&
-            (lhs.statistics[$0]?.currentValue == rhs.statistics[$0]?.currentValue)
+            (lhs.statistics[$0]?.currentValue == rhs.statistics[$0]?.currentValue) &&
+            (lhs.statistics[$0]?.maximumCurrentValue == rhs.statistics[$0]?.maximumCurrentValue)
         }
     }
 
