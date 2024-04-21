@@ -9,11 +9,6 @@ import Foundation
 
 /// This extension adds authentication methods to StorageHandler
 extension StorageHandler {
-    /*func onLogin() {
-        Task {
-            onAsyncLogin()
-        }
-    }*/
 
     func onLogin() {
         Logger.log("LOGIN: IS CALLED FROM STORAGE HANDLER", Self.self)
@@ -88,8 +83,6 @@ extension StorageHandler {
 
                 // 3. Resolve conflict between remote statistics and current statistics
                 Self.resolveConflict(this: self.statisticsDatabase, that: remoteStorage) { resolvedStats in
-                    Logger.log("ONRELOGIN --- THIS DB is \(String(describing: self.statisticsDatabase.toString()))", self)
-                    Logger.log("ONRELOGIN --- THAT DB is \(String(describing: remoteStorage.toString()))", self)
                     guard let finalStorage = resolvedStats else {
                         Logger.log("RELOGIN ERROR: CONFLICT RESOLUTION FAILURE")
                         completion(false)
