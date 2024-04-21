@@ -39,6 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Games should use this method to pause the game.
 
         /// TODO: ADD PAUSE METHOD HERE
+        guard let navigationController = window?.rootViewController as? UINavigationController,
+           let gameViewController = navigationController.topViewController as? GameViewController else {
+            return
+        }
+
+        if gameViewController.roomId != nil {
+            gameViewController.onMenu()
+        } else {
+            gameViewController.pause()
+        }
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {

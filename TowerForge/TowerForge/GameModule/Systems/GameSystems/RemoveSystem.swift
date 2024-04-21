@@ -12,7 +12,7 @@ class RemoveSystem: TFSystem {
 
     /// Removes the provided entity
     /// - Parameter entityId: The UUID of the associated TFEntity to be removed
-    func handleRemove(for entityId: UUID) {
+    func handleRemove(for entityId: UUID) -> Bool {
         entityManager.removeEntity(with: entityId)
     }
 }

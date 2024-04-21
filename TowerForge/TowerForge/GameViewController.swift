@@ -19,8 +19,7 @@ class GameViewController: UIViewController {
 
     @IBOutlet private var gamePopupButton: UIButton!
     @IBAction private func onStatePressed(_ sender: Any) {
-        isPaused = (roomId == nil && currentPlayer == nil) // Allow pausing only on singleplayer.
-        gameWorld?.presentStatePopup()
+        self.pause()
     }
 
     override func viewDidLoad() {
@@ -63,6 +62,11 @@ class GameViewController: UIViewController {
         self.gameWorld?.scene = scene
         self.gameWorld?.delegate = self
         self.gameWorld?.statePopupDelegate = self
+    }
+
+    func pause() {
+        isPaused = (roomId == nil && currentPlayer == nil) // Allow pausing only on singleplayer.
+        gameWorld?.presentStatePopup()
     }
 }
 

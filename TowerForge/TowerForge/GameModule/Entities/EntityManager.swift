@@ -35,14 +35,15 @@ class EntityManager {
         /// assert(checkRepresentation())
     }
 
-    func removeEntity(with id: UUID) {
+    func removeEntity(with id: UUID) -> Bool {
         guard let entity = entitiesMap.removeValue(forKey: id) else {
-            return
+            return false
         }
 
         for (key, _) in entity.components {
             componentsMap[key]?.removeValue(forKey: entity.id)
         }
+        return true
         /// assert(checkRepresentation())
     }
 

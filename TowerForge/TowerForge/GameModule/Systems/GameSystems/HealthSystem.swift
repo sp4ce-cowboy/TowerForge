@@ -25,6 +25,11 @@ class HealthSystem: TFSystem {
             return
         }
 
+        // Only handle DamageEvents when the entity taking damage is not already waiting to removed
+        guard healthComponent.currentHealth > 0 else {
+            return
+        }
+
         healthComponent.adjustHealth(amount: hp)
 
         guard healthComponent.currentHealth <= 0 else {
@@ -32,9 +37,9 @@ class HealthSystem: TFSystem {
         }
 
         if eventManager.isHost {
-            let remoteRemoveEvent = RemoteKillEvent(id: entityId, player: playerComponent.player,
-                                                    source: eventManager.currentPlayer ?? .defaultPlayer)
-            eventManager.add(remoteRemoveEvent)
+            let remoteKillEvent = RemoteKillEvent(id: entityId, player: playerComponent.player,
+                                                  source: eventManager.currentPlayer ?? .defaultPlayer)
+            eventManager.add(remoteKillEvent)
         }
     }
 }
