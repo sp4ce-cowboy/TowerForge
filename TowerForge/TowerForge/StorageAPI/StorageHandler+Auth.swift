@@ -24,7 +24,7 @@ extension StorageHandler {
             }
 
             if let error = error {
-                Logger.log("IMPT: onLogin failed due to error: \(error.localizedDescription) from STORAGE_HANDLER", self)
+                Logger.log("IMPT: onLogin failed from STORAGE_HANDLER: \(error.localizedDescription)", self)
                 return
             }
 

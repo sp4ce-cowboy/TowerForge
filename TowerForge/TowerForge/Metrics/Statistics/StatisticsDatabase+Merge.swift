@@ -48,38 +48,26 @@ extension StatisticsDatabase: Equatable {
             rhs = that
         }
 
-        let mergedStats = StatisticsDatabase()
+        let mergedStats = StatisticsFactory.getDefaultStatisticsDatabase()
 
         // Merge lhs statistics
         for (key, lhsStat) in lhs.statistics {
             mergedStats.statistics[key] = lhsStat
         }
 
-        // Merge rhs statistics and resolve conflicts
         for (key, rhsStat) in rhs.statistics {
             if let lhsStat = mergedStats.statistics[key] {
-
-                // If lhs has the key, compare and choose the one with the greater magnitude.
-                if lhsStat.permanentValue < rhsStat.permanentValue || lhsStat.currentValue < rhsStat.currentValue {
-
-                    mergedStats.statistics[key]?.permanentValue = Double.maximumMagnitude(lhsStat.permanentValue,
-                                                                                          rhsStat.permanentValue)
-
-                    mergedStats.statistics[key]?.currentValue = Double.maximumMagnitude(lhsStat.currentValue,
-                                                                                        rhsStat.currentValue)
-
-                    mergedStats.statistics[key]?.currentValue = Double.maximumMagnitude(lhsStat.maximumCurrentValue,
-                                                                                        rhsStat.maximumCurrentValue)
-                }
-                // If they are equal, lhsStat is already set, so do nothing.
+                mergedStats.statistics[key] = lhsStat.merge(with: rhsStat)
+                Logger.log("MERGE-LOOP: Statistic \(key) updated to " +
+                           "\(String(describing: mergedStats.statistics[key]))", self)
             } else {
-
-                // If lhs does not have the key, simply add the rhs stat.
                 mergedStats.statistics[key] = rhsStat
+                Logger.log("MERGE-LOOP: Statistic \(key) created with " +
+                           "\(String(describing: mergedStats.statistics[key]))", self)
             }
         }
 
-        Logger.log("SDB: Merged stats contain \(mergedStats.toString())")
+        Logger.log("SDB: Merged stats contain \(mergedStats.toString())", self)
         return mergedStats
     }
 }
