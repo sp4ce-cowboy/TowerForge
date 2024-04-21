@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
 
         /// Initialize all local storage
-        // StorageManager.initializeAllStorage()
         StorageHandler.initializeLocalStorageIfNotPresent()
 
         /// Prepare audio player to begin playing music

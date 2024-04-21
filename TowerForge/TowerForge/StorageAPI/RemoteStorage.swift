@@ -37,7 +37,7 @@ class RemoteStorage {
     /// Saves the input StorageDatabase to firebase
     static func saveDataToFirebase(for ref: FirebaseReference,
                                    player: String,
-                                   with inputData: StorageDatabase,
+                                   with inputData: any StorageDatabase,
                                    completion: @escaping (Error?) -> Void) {
         let databaseReference = FirebaseDatabaseReference(ref)
 
