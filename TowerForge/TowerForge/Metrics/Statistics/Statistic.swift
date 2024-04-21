@@ -178,7 +178,7 @@ extension Statistic {
     }
 }
 
-/// This extension allows Statistic to be merged
+/*/// This extension allows Statistic to be merged
 extension Statistic {
 
     static func merge<T: Statistic>(this: T, that: T) -> T {
@@ -190,4 +190,4 @@ extension Statistic {
                  currentValue: largerCurrent,
                  maxCurrentValue: largerMaxCurrent)
     }
-}
+}*/

@@ -67,6 +67,7 @@ class StatisticsEngine: InferenceDataDelegate {
    func update<T: TFEvent>(with event: T) {
        self.updateStatisticsOnReceive(event)
        self.notifyInferenceEngines()
+
     }
 
     /// Transfers over all transient metrics within statistics to permanent value.
@@ -85,7 +86,7 @@ class StatisticsEngine: InferenceDataDelegate {
 
         // stats.forEach { $0.update(for: eventType) }
         stats.forEach { $0.update(for: event) }
-        //saveStatistics()
+        saveStatistics()
     }
 
     /// TODO: Consider if passing the stats database directly is better or
@@ -95,24 +96,17 @@ class StatisticsEngine: InferenceDataDelegate {
         inferenceEngines.values.forEach { $0.updateOnReceive() }
     }
 
-    func getCurrentRank() -> Rank? {
-        if let rankEngine = inferenceEngines[RankingEngine.asType] as? RankingEngine {
-            return rankEngine.currentRank
-        }
-        return nil
-    }
-
-    func getCurrentExp() -> Double? {
-        if let rankEngine = inferenceEngines[RankingEngine.asType] as? RankingEngine {
-            return rankEngine.currentExp
-        }
-        return nil
-    }
-
     private func saveStatistics() {
         Logger.log("STATISTICS_ENGINE SAVE: Statistics save triggered", self)
         Logger.log("STATISTICS_ENGINE SAVE: \(String(describing: statsEngineDelegate?.statisticsDatabase.toString()))", self)
         statsEngineDelegate?.save()
+        // _ = StorageManager.saveUniversally(statistics)
+    }
+
+    private func saveStatisticsLocally() {
+        Logger.log("STATISTICS_ENGINE LOCAL SAVE: Local  save triggered", self)
+        Logger.log("STATISTICS_ENGINE LOCAL SAVE: \(String(describing: statsEngineDelegate?.statisticsDatabase.toString()))", self)
+        statsEngineDelegate?.localSave()
         // _ = StorageManager.saveUniversally(statistics)
     }
 

@@ -35,7 +35,9 @@ extension StorageHandler {
 
             // Update the playerId and metadata locally
             self.localUpdatePlayerIdAndMetadata(with: userId)
+            self.remoteSave()
 
+            /*
             // Asynchronously check if remote data exists for currentPlayerId
             self.checkIfRemotePlayerDataExists { exists in
                 if exists {
@@ -47,7 +49,7 @@ extension StorageHandler {
                 } else {
                     self.onFirstLogin()
                 }
-            }
+            }*/
         }
     }
 
@@ -57,9 +59,11 @@ extension StorageHandler {
     }
 
     func onFirstLogin() {
+        Logger.log("FIRST LOGIN ENTERED", self)
         self.remoteSave()
     }
 
+    /*
     /// Returns true if re-login success, false otherwise
     func onReLogin(completion: @escaping (Bool) -> Void) {
         Logger.log("RE-LOGIN ENTERED", self)
@@ -81,7 +85,7 @@ extension StorageHandler {
                 }
 
                 // 3. Resolve conflict between remote statistics and current statistics
-                Self.resolveConflict(this: remoteStorage, that: self.statisticsDatabase) { resolvedStats in
+                Self.resolveConflict(this: self.statisticsDatabase, that: remoteStorage) { resolvedStats in
                     guard let finalStorage = resolvedStats else {
                         Logger.log("RELOGIN ERROR: CONFLICT RESOLUTION FAILURE")
                         completion(false)
@@ -96,7 +100,7 @@ extension StorageHandler {
                 }
             }
         }
-    }
+    }*/
 
     func localUpdatePlayerIdAndMetadata(with userId: String) {
         Constants.CURRENT_PLAYER_ID = userId

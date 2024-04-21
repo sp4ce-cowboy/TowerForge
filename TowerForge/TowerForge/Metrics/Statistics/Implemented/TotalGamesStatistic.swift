@@ -29,7 +29,7 @@ final class TotalGamesStatistic: Statistic {
     func getStatisticUpdateLinks() -> StatisticUpdateLinkDatabase {
         let eventType = TFEventTypeWrapper(type: GameStartEvent.self)
         let eventUpdateClosure: (Statistic, GameStartEvent?) -> Void = { statistic, event in
-            statistic.updateCurrentValue(by: 1.0)
+            statistic.updatePermanentValue(by: 1.0)
             Logger.log("Updating statistic with event detail: \(String(describing: event))", self)
         }
 
@@ -57,13 +57,14 @@ final class TotalGamesStatistic: Statistic {
             return nil
         }
 
-        let largerPermanent = max(self.permanentValue, that.permanentValue)
-        let largerMaxCurrent = max(self.maximumCurrentValue, that.maximumCurrentValue)
+        let largerPermanent = Double.maximum(self.permanentValue, that.permanentValue)
+        let largerCurrent = Double.maximum(self.currentValue, that.currentValue)
+        let largerMaxCurrent = Double.maximum(self.maximumCurrentValue, that.maximumCurrentValue)
 
         guard let stat = Self(permanentValue: largerPermanent,
-                              currentValue: .zero,
+                              currentValue: largerCurrent,
                               maxCurrentValue: largerMaxCurrent) as? T else {
-            Logger.log("Statistic merging failed", self)
+            Logger.log("Statistic merging failed for \(self.toString())", self)
             return nil
         }
 

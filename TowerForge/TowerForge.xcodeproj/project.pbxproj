@@ -1058,6 +1058,7 @@
 		BA436AE82BD42F1100BE3E4F /* StorageAPI */ = {
 			isa = PBXGroup;
 			children = (
+				BA82C76E2BCBDE91000515A0 /* Metadata.swift */,
 				BA436AE92BD42F5400BE3E4F /* StorageHandler.swift */,
 				BA436AF32BD4AB8400BE3E4F /* StorageHandler+Auth.swift */,
 				BA436AF52BD4AC2200BE3E4F /* StorageHandler+Conflict.swift */,
@@ -1437,7 +1438,6 @@
 		BAFFB9512BB342E200D8301F /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				BA82C76E2BCBDE91000515A0 /* Metadata.swift */,
 				BA82C77A2BCD05DC000515A0 /* MetadataManager.swift */,
 				BA82C76A2BCBD682000515A0 /* StorageManager.swift */,
 				BA82C7642BCBC868000515A0 /* LocalStorageManager.swift */,

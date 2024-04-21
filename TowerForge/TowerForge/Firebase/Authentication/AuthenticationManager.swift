@@ -108,7 +108,7 @@ class AuthenticationManager: AuthenticationProtocol {
     func getUserData(completion: @escaping (AuthenticationData?, Error?) -> Void) {
         if let currentUser = Auth.auth().currentUser {
             // User is currently logged in, fetch user data
-            print(currentUser)
+            Logger.log("Current user is \(currentUser)", self)
             let userData = AuthenticationData(userId: currentUser.uid,
                                               email: currentUser.email ?? "",
                                               username: currentUser.displayName)

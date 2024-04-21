@@ -128,6 +128,8 @@ class StorageManager {
             finalStorage = StatisticsDatabase.merge(this: this, that: that)
         case .KEEP_LATEST_ONLY:
             finalStorage = Self.loadLatest()
+        case .PRESERVE_LOCAL:
+            finalStorage = this
         }
 
         return finalStorage

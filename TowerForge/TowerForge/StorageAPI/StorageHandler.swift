@@ -10,6 +10,7 @@ import Foundation
 protocol StatisticsEngineDelegate: AnyObject {
     var statisticsDatabase: StatisticsDatabase { get set }
     func save()
+    func localSave()
 }
 
 class StorageHandler: AuthenticationDelegate, StatisticsEngineDelegate {

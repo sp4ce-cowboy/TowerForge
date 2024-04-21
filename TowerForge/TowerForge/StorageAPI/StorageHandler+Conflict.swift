@@ -71,6 +71,8 @@ extension StorageHandler {
             completion(StatisticsDatabase.merge(this: this, that: that))
         case .KEEP_LATEST_ONLY:
             Self.loadLatest { completion($0) }
+        case .PRESERVE_LOCAL:
+            completion(this)
         }
     }
 
