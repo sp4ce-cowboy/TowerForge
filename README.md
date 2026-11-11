@@ -6,6 +6,8 @@
 An entity–component–system game engine, online multiplayer, three game modes, and a metrics
 and progress system that follows the player across devices. Built by a team of four for NUS CS3217.
 
+**3rd place, CS3217 category, at NUS's 24th Term Project Showcase (STePS), April 2024** · [Trailer](https://youtu.be/VvzcrGrfUsE)
+
 [![Swift](https://img.shields.io/badge/Swift-5-F05138?logo=swift&logoColor=white)](https://www.swift.org/documentation/)
 [![SpriteKit](https://img.shields.io/badge/SpriteKit-game%20engine-000000?logo=apple&logoColor=white)](https://developer.apple.com/documentation/spritekit)
 [![UIKit](https://img.shields.io/badge/UIKit-storyboards-2396F3?logo=apple&logoColor=white)](https://developer.apple.com/documentation/uikit)
@@ -21,6 +23,7 @@ and progress system that follows the player across devices. Built by a team of f
 ![Swift](https://img.shields.io/badge/Swift-12.2k%20lines%20(team)-555?style=flat-square)
 ![Reports](https://img.shields.io/badge/project%20reports-4%20%C2%B7%2027k%20words-555?style=flat-square)
 [![WakaTime](https://img.shields.io/badge/WakaTime-105%20h-555?style=flat-square&logo=wakatime&logoColor=white)](https://wakatime.com)
+[![STePS](https://img.shields.io/badge/STePS%202024-3rd%20place-555?style=flat-square)](https://uvents.nus.edu.sg/event/24th-steps/module/CS3217/project/4)
 
 </div>
 
@@ -46,6 +49,7 @@ and progress system that follows the player across devices. Built by a team of f
 |---|---|
 | **What** | A lane-based tower-defence game: spend coins to send units and build towers, push into the enemy base, protect your own. Play against an AI or anyone online |
 | **Context** | NUS [CS3217](https://cs3217.github.io/cs3217-docs/) *Software Engineering on Modern Application Platforms*, final team project, Mar – Apr 2024 |
+| **Recognition** | 3rd place in the CS3217 category at NUS's 24th School of Computing Term Project Showcase (STePS), 17 Apr 2024: [showcase entry](https://uvents.nus.edu.sg/event/24th-steps/module/CS3217/project/4), [trailer](https://youtu.be/VvzcrGrfUsE), [course project page](https://cs3217-2324.github.io/group-project-tower-forge/) |
 | **Team** | [Keith Gan](https://github.com/keith-gan), [Phua Zheng Ze](https://github.com/zheng-ze), [Rubesh Suresh](https://github.com/sp4ce-cowboy), [Vanessa Mae](https://github.com/Vanessamae23) |
 | **My role** | The game engine and ECS systems layer; the StorageAPI (local and cloud persistence with conflict resolution, cross-device progress); the MetricsAPI (statistics, achievements, missions, ranks) and the Player screen; the sound manager; power-ups with Keith; CI/CD, SwiftLint and the GitHub setup |
 | **Status** | Complete; App Store release (single-player first) pending |
@@ -154,6 +158,7 @@ Hours per week (2024)                  My commits per week (merges excluded)
 
 **Skills:** Swift · SpriteKit · UIKit · entity–component–system architecture · Firebase (Realtime Database, Authentication) · offline-first sync and conflict resolution · event-driven design · SOLID · AVFoundation · GitHub Actions CI · SwiftLint · team development (4 developers)
 
+- Co-built TowerForge, a real-time multiplayer iPad tower-defence game in Swift, SpriteKit and Firebase, in a team of four; it placed 3rd in the CS3217 category at NUS's 24th School of Computing Term Project Showcase (STePS, April 2024).
 - Engineered offline-first player progress for TowerForge, a multiplayer iPad game in Swift. Statistics persist locally (Codable, FileManager) and sync to Firebase Realtime Database with player, device and timestamp metadata. Three pluggable conflict-resolution strategies merge progress across devices on login.
 - Designed an event-driven metrics system: game events feed a statistics engine, and pluggable inference engines behind one protocol read the same statistics to drive achievements, missions and an eight-tier rank system. New goal types need no new storage (Single Responsibility and Open–Closed).
 - Built the game engine and systems layer of a SpriteKit entity–component–system codebase shared by four developers. Systems can be toggled and are stepped every frame by a system manager, and a protocol-backed engine reports results through delegates.
