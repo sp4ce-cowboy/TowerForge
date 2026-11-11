@@ -38,7 +38,7 @@ the lanes, build arrow towers to hold your line, and break through before the en
 through yours.
 
 HOW TO PLAY
-1. Coins build up during the game (top left of the bar at the bottom).
+1. Coins build up during the game: the TF coin at the left of the bottom bar shows them.
 2. Tap a card at the bottom to pick a unit: melee, soldier, wizard or arrow tower.
 3. Tap a lane on the field to deploy it there.
 4. Tap a power-up on the right (free units, more damage, or a shield) when you need it.
