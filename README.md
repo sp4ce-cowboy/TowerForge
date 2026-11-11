@@ -26,10 +26,10 @@ and progress system that follows the player across devices. Built by a team of f
 
 > [!NOTE]
 > This consolidated README page was added by
-> [Claude](https://docs.anthropic.com/en/docs/claude-code) on 11 Nov 2026 using my
+> [Claude Opus 5.5](https://docs.anthropic.com/en/docs/claude-code) in Nov 2026 using my
 > [agentic-repo-analysis](https://github.com/sp4ce-cowboy/agentic-workflows) skill, from the
 > project's code, git history and the team's reports. The project itself is from Mar – Apr 2024. The
-> original README is in **[DOCUMENTATION.md](DOCUMENTATION.md)**. The team's proposal, sprint
+> original README is in **[README-ORIGINAL.md](README-ORIGINAL.md)**. The team's proposal, sprint
 > reports and final report are in **[docs/reports](docs/reports)**, and the technical write-up is in
 > **[ARCHITECTURE.md](ARCHITECTURE.md)**.
 
@@ -45,7 +45,7 @@ and progress system that follows the player across devices. Built by a team of f
 | | |
 |---|---|
 | **What** | A lane-based tower-defence game: spend coins to send units and build towers, push into the enemy base, protect your own. Play against an AI or anyone online |
-| **Context** | NUS CS3217 *Software Engineering on Modern Application Platforms*, final team project, Mar – Apr 2024 |
+| **Context** | NUS [CS3217](https://cs3217.github.io/cs3217-docs/) *Software Engineering on Modern Application Platforms*, final team project, Mar – Apr 2024 |
 | **Team** | [Keith Gan](https://github.com/keith-gan), [Phua Zheng Ze](https://github.com/zheng-ze), [Rubesh Suresh](https://github.com/sp4ce-cowboy), [Vanessa Mae](https://github.com/Vanessamae23) |
 | **My role** | The game engine and ECS systems layer; the StorageAPI (local and cloud persistence with conflict resolution, cross-device progress); the MetricsAPI (statistics, achievements, missions, ranks) and the Player screen; the sound manager; power-ups with Keith; CI/CD, SwiftLint and the GitHub setup |
 | **Status** | Complete; App Store release (single-player first) pending |
@@ -127,13 +127,6 @@ More in [ARCHITECTURE.md](ARCHITECTURE.md).
 | **CI/CD**<br><img alt="GitHub Actions" src="https://img.shields.io/badge/GitHub%20Actions-xcodebuild-2088FF?logo=githubactions&logoColor=white"> | Build and simulator tests on every push, plus SwiftLint: [`ios.yml`](.github/workflows/ios.yml) | [GitHub Actions](https://docs.github.com/actions) |
 | **Team engineering** | Four developers, 25 branches, 82 pull requests, sprint planning and two sprint reports: [docs/reports](docs/reports) | — |
 
-## App Store
-
-Publishing on the App Store is **pending**. The first release will be **single-player**
-(against the AI), with online multiplayer and accounts to follow. The game runs on iPad
-(iPadOS 16+), and a [privacy policy](privacy-policy.md) is prepared. The release is planned
-once an Apple Developer Program membership is in place.
-
 ## Coding stats
 
 My own numbers, from git and [WakaTime](https://wakatime.com).
@@ -157,14 +150,9 @@ Hours per week (2024)                  My commits per week (merges excluded)
 22 Apr  █                       2.8    22 Apr                        0
 ```
 
-## Getting started
-
-1. Open `TowerForge/TowerForge.xcodeproj` in Xcode 15 or later. Swift Package Manager fetches
-   the Firebase SDK.
-2. Pick an iPad simulator or device on iPadOS 16+, and run. Multiplayer, accounts and the
-   leaderboard use the bundled Firebase project.
-
 ## On my resume
+
+**Skills:** Swift · SpriteKit · UIKit · entity–component–system architecture · Firebase (Realtime Database, Authentication) · offline-first sync and conflict resolution · event-driven design · SOLID · AVFoundation · GitHub Actions CI · SwiftLint · team development (4 developers)
 
 - Engineered offline-first player progress for TowerForge, a multiplayer iPad game in Swift. Statistics persist locally (Codable, FileManager) and sync to Firebase Realtime Database with player, device and timestamp metadata. Three pluggable conflict-resolution strategies merge progress across devices on login.
 - Designed an event-driven metrics system: game events feed a statistics engine, and pluggable inference engines behind one protocol read the same statistics to drive achievements, missions and an eight-tier rank system. New goal types need no new storage (Single Responsibility and Open–Closed).
@@ -173,4 +161,16 @@ Hours per week (2024)                  My commits per week (merges excluded)
 - Implemented sync flows aware of Firebase Authentication (first login, re-login on a new device, logout) and an AVFoundation sound manager. Co-built the power-ups, implemented as event transformations that rewrite queued game events.
 - Set up the team's CI on GitHub Actions (xcodebuild build and simulator tests on every push and pull request) and SwiftLint, for a team that worked across 25 branches and 82 pull requests.
 
-**Skills:** Swift · SpriteKit · UIKit · entity–component–system architecture · Firebase (Realtime Database, Authentication) · offline-first sync and conflict resolution · event-driven design · SOLID · AVFoundation · GitHub Actions CI · SwiftLint · team development (4 developers)
+## App Store
+
+Publishing on the App Store is **pending**. The first release will be **single-player**
+(against the AI), with online multiplayer and accounts to follow. The game runs on iPad
+(iPadOS 16+), and a [privacy policy](privacy-policy.md) is prepared. The release is planned
+once an Apple Developer Program membership is in place.
+
+## Getting started
+
+1. Open `TowerForge/TowerForge.xcodeproj` in Xcode 15 or later. Swift Package Manager fetches
+   the Firebase SDK.
+2. Pick an iPad simulator or device on iPadOS 16+, and run. Multiplayer, accounts and the
+   leaderboard use the bundled Firebase project.
