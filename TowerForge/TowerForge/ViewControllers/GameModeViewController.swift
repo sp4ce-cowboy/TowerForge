@@ -22,13 +22,15 @@ class GameModeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         authenticationProvider.addObserver(self)
+        
+        /*
         if authenticationProvider.isUserLoggedIn() {
             loginButtonLabel.text = "Logout"
             rankingView.isHidden = false
         } else {
             loginButtonLabel.text = "Login"
             rankingView.isHidden = true
-        }
+        }*/
     }
 
     deinit {
@@ -89,12 +91,12 @@ class GameModeViewController: UIViewController {
 
 extension GameModeViewController: AuthenticationDelegate {
     func onLogin() {
-        loginButtonLabel.text = "Logout"
+        //loginButtonLabel.text = "Logout"
         rankingView.isHidden = false
     }
 
     func onLogout() {
-        loginButtonLabel.text = "Login"
+        //loginButtonLabel.text = "Login"
         rankingView.isHidden = true
     }
 }
