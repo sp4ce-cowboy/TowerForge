@@ -46,7 +46,21 @@ and progress system that follows the player across devices. Built by a team of f
 | **Context** | NUS CS3217 *Software Engineering on Modern Application Platforms*, final team project, Mar – Apr 2024 |
 | **Team** | [Keith Gan](https://github.com/keith-gan), [Phua Zheng Ze](https://github.com/zheng-ze), [Rubesh Suresh](https://github.com/sp4ce-cowboy), [Vanessa Mae](https://github.com/Vanessamae23) |
 | **My role** | The game engine and ECS systems layer; the StorageAPI (local and cloud persistence with conflict resolution, cross-device progress); the MetricsAPI (statistics, achievements, missions, ranks) and the Player screen; the sound manager; power-ups with Keith; CI/CD, SwiftLint and the GitHub setup |
-| **Status** | Complete; App Store publishing pending (privacy policy prepared) |
+| **Status** | Complete; App Store release (single-player first) pending |
+
+## The course
+
+[CS3217](https://cs3217.github.io/cs3217-docs/) is NUS's course on software engineering for
+modern application platforms, taught on iOS in Swift. It is known as one of the most demanding
+software-engineering courses in the School of Computing. [Prof. Ben Leong](https://www.comp.nus.edu.sg/~bleong/)
+ran its early editions (from 2011, when it was taught in Objective-C). In the course's own words
+from that time: [*"CS3217 is really not for everyone. It's really quite hardcore and meant for the
+most highly motivated to push themselves."*](https://comp.nus.edu.sg/~bleong/teaching/cs3217s11-midterm.htm)
+
+The course has two halves. In the first, each student builds a physics game alone, from
+scratch (mine is [Space Peggle](https://github.com/sp4ce-cowboy/SpacePeggle)). In the second,
+teams of four design and ship an app of their own over the rest of the semester, through a
+proposal, two sprints with written reports, and a final report. TowerForge is that second half.
 
 ## Features
 
@@ -99,7 +113,7 @@ More in [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## Skills shown
 
-| Skill | Where it shows | Docs |
+| Skill | Where it shows (click the links for the code) | Docs |
 |---|---|---|
 | **Game architecture (ECS)**<br><img alt="SpriteKit" src="https://img.shields.io/badge/SpriteKit-ECS-000000?logo=apple&logoColor=white"> | The systems layer and game engine I built: [`TFSystem`](https://github.com/sp4ce-cowboy/TowerForge/blob/19840737a5882af53b65b0e3dfaddc7427e55922/TowerForge/TowerForge/GameModule/Systems/TFSystem.swift), [`SystemManager`](https://github.com/sp4ce-cowboy/TowerForge/blob/19840737a5882af53b65b0e3dfaddc7427e55922/TowerForge/TowerForge/GameModule/Systems/SystemManager.swift), [`GameEngine`](https://github.com/sp4ce-cowboy/TowerForge/blob/19840737a5882af53b65b0e3dfaddc7427e55922/TowerForge/TowerForge/GameModule/GameEngine.swift) | [SpriteKit](https://developer.apple.com/documentation/spritekit) |
 | **Event-driven analytics** | Events feed a statistics engine that notifies its inference engines: [`StatisticSystem`](https://github.com/sp4ce-cowboy/TowerForge/blob/19840737a5882af53b65b0e3dfaddc7427e55922/TowerForge/TowerForge/GameModule/Systems/BaseSystems/StatisticSystem.swift), [`StatisticsEngine`](https://github.com/sp4ce-cowboy/TowerForge/blob/19840737a5882af53b65b0e3dfaddc7427e55922/TowerForge/TowerForge/Metrics/Statistics/StatisticsEngine.swift#L53-L78) | [Observer pattern](https://en.wikipedia.org/wiki/Observer_pattern) |
@@ -113,9 +127,10 @@ More in [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## App Store
 
-Publishing on the App Store is **pending**. The game runs on iPad (iPadOS 16+), and a
-[privacy policy](privacy-policy.md) is prepared. The release is planned once an Apple
-Developer Program membership is in place.
+Publishing on the App Store is **pending**. The first release will be **single-player**
+(against the AI), with online multiplayer and accounts to follow. The game runs on iPad
+(iPadOS 16+), and a [privacy policy](privacy-policy.md) is prepared. The release is planned
+once an Apple Developer Program membership is in place.
 
 ## Coding stats
 
@@ -123,7 +138,7 @@ My own numbers, from git and [WakaTime](https://wakatime.com).
 
 | | |
 |---|---|
-| **Commits** | **250**, the most on the team (of 647) |
+| **Commits** | **250** (of 647 in the repo) |
 | **Code** | about **4,000** of the 12,200 Swift lines in the final game, and 9,600 Swift lines added overall |
 | **Time** | **105 h** of coding: 103 h during the project (18 Mar – 22 Apr 2024) |
 | **Peak week** | **46 h** (15 – 21 Apr 2024, the final week) |
@@ -149,7 +164,9 @@ Hours per week (2024)
 
 ## On my resume
 
-- Built the metrics system for TowerForge, a multiplayer iPad tower-defence game in Swift and SpriteKit. Game events feed a statistics engine, and pluggable inference engines read the same statistics to drive achievements, missions and an eight-tier rank system, so new goals need no new storage.
-- Engineered offline-first player progress: statistics persist locally first and sync to Firebase Realtime Database, with metadata (player, device, last update) and three conflict-resolution strategies (merge per statistic, keep latest, preserve local), so progress carries across devices on login.
-- Built the game engine's systems layer in a four-person entity–component–system codebase, plus the sound manager and power-ups. Set up CI (xcodebuild and simulator tests on GitHub Actions) and SwiftLint for the team.
-- Built the Player screen in UIKit: rank progression from Private to General with an XP progress bar and a character that changes with rank, live career statistics (kills, deaths, K/D ratio, games, XP), and achievement and mission lists whose progress bars are driven by the inference engines.
+- Engineered offline-first player progress for TowerForge, a multiplayer iPad game in Swift. Statistics persist locally (Codable, FileManager) and sync to Firebase Realtime Database with player, device and timestamp metadata. Three pluggable conflict-resolution strategies merge progress across devices on login.
+- Designed an event-driven metrics system: game events feed a statistics engine, and pluggable inference engines behind one protocol read the same statistics to drive achievements, missions and an eight-tier rank system. New goal types need no new storage (Single Responsibility and Open–Closed).
+- Built the game engine and systems layer of a SpriteKit entity–component–system codebase shared by four developers. Systems can be toggled and are stepped every frame by a system manager, and a protocol-backed engine reports results through delegates.
+- Built the Player screen in UIKit: rank progression from Private to General with an XP bar and a character that changes with rank, live career statistics (kills, deaths, K/D ratio, games, XP), and achievement and mission lists driven by the inference engines.
+- Implemented sync flows aware of Firebase Authentication (first login, re-login on a new device, logout) and an AVFoundation sound manager. Co-built the power-ups, implemented as event transformations that rewrite queued game events.
+- Set up the team's CI on GitHub Actions (xcodebuild build and simulator tests on every push and pull request) and SwiftLint, for a team that worked across 25 branches and 82 pull requests.
