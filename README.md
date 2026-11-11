@@ -1,9 +1,155 @@
+<div align="center">
+
 # TowerForge
 
-TowerForge is a strategic tower defense game set in a fictional world where players must defend their fortress from waves of enemy invaders. Players strategically place various towers along the enemy's path to destroy them before they breach the fortress gates and lose. As the game progresses, players earn game points to place more fortresses or summon more units and unlock to fend off increasingly challenging waves of enemies.
+**A real-time multiplayer tower-defence game for iPad, built in Swift with SpriteKit and Firebase.**<br>
+An entity–component–system game engine, online multiplayer, three game modes, and a metrics
+and progress system that follows the player across devices. Built by a team of four for NUS CS3217.
 
+[![Swift](https://img.shields.io/badge/Swift-5-F05138?logo=swift&logoColor=white)](https://www.swift.org/documentation/)
+[![SpriteKit](https://img.shields.io/badge/SpriteKit-game%20engine-000000?logo=apple&logoColor=white)](https://developer.apple.com/documentation/spritekit)
+[![UIKit](https://img.shields.io/badge/UIKit-storyboards-2396F3?logo=apple&logoColor=white)](https://developer.apple.com/documentation/uikit)
+[![iPadOS](https://img.shields.io/badge/iPadOS-16+-000000?logo=ios&logoColor=white)](https://developer.apple.com/ipados/)
+[![Firebase](https://img.shields.io/badge/Firebase%20iOS%20SDK-10.23-DD2C00?logo=firebase&logoColor=white)](https://firebase.google.com/docs/ios/setup)
+[![Realtime Database](https://img.shields.io/badge/Firebase-Realtime%20Database%20%C2%B7%20Auth-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com/docs/database)
+[![XCTest](https://img.shields.io/badge/XCTest-unit%20%2B%20UI%20tests-147EFB?logo=xcode&logoColor=white)](https://developer.apple.com/documentation/xctest)
+[![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-build%20%2B%20test-2088FF?logo=githubactions&logoColor=white)](.github/workflows/ios.yml)
+[![SwiftLint](https://img.shields.io/badge/SwiftLint-enforced-F05138?logo=swift&logoColor=white)](https://realm.github.io/SwiftLint/)
+[![App Store](https://img.shields.io/badge/App%20Store-publishing%20pending-lightgrey?logo=appstore&logoColor=white)](#app-store)
 
-<img width="869" align="center" alt="image" src="https://github.com/cs3217-2324/group-project-tower-forge/assets/19762596/819ccb87-4934-4616-bc29-a7c9360b8992">
+![Commits](https://img.shields.io/badge/my%20commits-250-555?style=flat-square&logo=git&logoColor=white)
+![Swift](https://img.shields.io/badge/Swift-12.2k%20lines%20(team)-555?style=flat-square)
+![Reports](https://img.shields.io/badge/project%20reports-4%20%C2%B7%2027k%20words-555?style=flat-square)
+[![WakaTime](https://img.shields.io/badge/WakaTime-105%20h-555?style=flat-square&logo=wakatime&logoColor=white)](https://wakatime.com)
 
+</div>
 
-<!-- [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/fjBsXZsi) -->
+> [!NOTE]
+> This consolidated README page was added by [Claude](https://docs.anthropic.com/en/docs/claude-code)
+> using my [agentic-repo-analysis](https://github.com/sp4ce-cowboy/agentic-workflows) skill, from the
+> project's code, git history and the team's reports. The original README is in
+> **[DOCUMENTATION.md](DOCUMENTATION.md)**. The team's proposal, sprint reports and final report are in
+> **[docs/reports](docs/reports)**, and the technical write-up is in **[ARCHITECTURE.md](ARCHITECTURE.md)**.
+
+<p align="center">
+  <img width="32%" alt="Start screen" src="docs/images/start-screen.png" />
+  <img width="32%" alt="A Death Match against the AI: units clash across the lanes" src="docs/images/gameplay.png" />
+  <img width="32%" alt="Player screen: rank, statistics, achievements and missions" src="docs/images/player-screen.png" />
+</p>
+<p align="center"><sub>Start screen · Death Match against the AI · Player screen with ranks, achievements and missions (iPad simulator)</sub></p>
+
+## At a glance
+
+| | |
+|---|---|
+| **What** | A lane-based tower-defence game: spend coins to send units and build towers, push into the enemy base, protect your own. Play against an AI or anyone online |
+| **Context** | NUS CS3217 *Software Engineering on Modern Application Platforms*, final team project, Mar – Apr 2024 |
+| **Team** | [Keith Gan](https://github.com/keith-gan), [Phua Zheng Ze](https://github.com/zheng-ze), [Rubesh Suresh](https://github.com/sp4ce-cowboy), [Vanessa Mae](https://github.com/Vanessamae23) |
+| **My role** | The game engine and ECS systems layer; the StorageAPI (local and cloud persistence with conflict resolution, cross-device progress); the MetricsAPI (statistics, achievements, missions, ranks) and the Player screen; the sound manager; power-ups with Keith; CI/CD, SwiftLint and the GitHub setup |
+| **Status** | Complete; App Store publishing pending (privacy policy prepared) |
+
+## Features
+
+- **Three game modes:** Capture the Flag, Death Match and Survival.
+- **Single-player against an AI** that picks units and spawn tiles at random intervals.
+- **Online multiplayer:** players join game rooms backed by Firebase Realtime Database, and
+  every action is synchronised between both players.
+- **Units and towers:** melee, soldier and wizard units, and arrow towers. Each has its own
+  speed, projectile and health.
+- **Power-ups:** invulnerability, a damage boost and free units.
+- **Accounts and leaderboard:** Firebase Authentication and global rankings.
+- **Ranks, achievements and missions:** army-style ranks from Private to General, earned
+  through XP. Achievements (e.g. *Centurion*: 100 kills and 100 deaths) and per-game
+  missions (e.g. *Mass Damage*: 1,000 damage in one game).
+- **Progress on every device:** play offline, log in anywhere, and your history follows you,
+  merged across devices.
+
+## Architecture in brief
+
+```mermaid
+flowchart LR
+    subgraph ECS["Entity–component–system"]
+        E[Entities] --- C[Components] --- S["Systems<br/>(SystemManager)"]
+    end
+    GE["GameEngine<br/>(GameWorld)"] --> ECS
+    EV["Events API<br/>event queue · manager"] --> S
+    S --> R["Rendering API<br/>SpriteKit"]
+    S -->|StatisticSystem| ST["StatisticsEngine"]
+    ST --> INF["InferenceEngines<br/>Achievements · Missions · Ranking"]
+    ST --> STO["StorageHandler"]
+    STO --> L[(Local · FileManager)]
+    STO --> F[(Firebase Realtime DB)]
+    NET["Network API<br/>game rooms"] <--> F
+```
+
+- **Entity–component–system.** Entities hold components (data). Systems apply behaviour
+  every frame through a `SystemManager`. Base classes (units, towers, projectiles) add
+  object-oriented reuse on top: a hybrid ECS and OOP design.
+- **Event-driven.** Spawning, damage, removal, power-ups and game-over are events in a queue,
+  applied in order, and mirrored to the other player in multiplayer.
+- **Metrics without coupling** (my work). The game emits events. A `StatisticSystem` turns
+  them into statistics, and separate inference engines read those same statistics:
+  achievements, missions and ranking. Collecting data and interpreting it are kept apart, so
+  a new achievement is a new interpretation, not new storage.
+- **Dual storage with conflict resolution** (my work). Progress is written locally first,
+  then synced to Firebase. On login, local and remote progress are reconciled with one of
+  three strategies (`MERGE`, `KEEP_LATEST_ONLY`, `PRESERVE_LOCAL`).
+
+More in [ARCHITECTURE.md](ARCHITECTURE.md).
+
+## Skills shown
+
+| Skill | Where it shows | Docs |
+|---|---|---|
+| **Game architecture (ECS)**<br><img alt="SpriteKit" src="https://img.shields.io/badge/SpriteKit-ECS-000000?logo=apple&logoColor=white"> | The systems layer and game engine I built: [`TFSystem`](https://github.com/sp4ce-cowboy/TowerForge/blob/19840737a5882af53b65b0e3dfaddc7427e55922/TowerForge/TowerForge/GameModule/Systems/TFSystem.swift), [`SystemManager`](https://github.com/sp4ce-cowboy/TowerForge/blob/19840737a5882af53b65b0e3dfaddc7427e55922/TowerForge/TowerForge/GameModule/Systems/SystemManager.swift), [`GameEngine`](https://github.com/sp4ce-cowboy/TowerForge/blob/19840737a5882af53b65b0e3dfaddc7427e55922/TowerForge/TowerForge/GameModule/GameEngine.swift) | [SpriteKit](https://developer.apple.com/documentation/spritekit) |
+| **Event-driven analytics** | Events feed a statistics engine that notifies its inference engines: [`StatisticSystem`](https://github.com/sp4ce-cowboy/TowerForge/blob/19840737a5882af53b65b0e3dfaddc7427e55922/TowerForge/TowerForge/GameModule/Systems/BaseSystems/StatisticSystem.swift), [`StatisticsEngine`](https://github.com/sp4ce-cowboy/TowerForge/blob/19840737a5882af53b65b0e3dfaddc7427e55922/TowerForge/TowerForge/Metrics/Statistics/StatisticsEngine.swift#L53-L78) | [Observer pattern](https://en.wikipedia.org/wiki/Observer_pattern) |
+| **Protocol-oriented design** | One `InferenceEngine` protocol, three interpretations of the same data: [`InferenceEngine`](https://github.com/sp4ce-cowboy/TowerForge/blob/19840737a5882af53b65b0e3dfaddc7427e55922/TowerForge/TowerForge/Metrics/Inference/InferenceEngine.swift), [`AchievementsEngine`](https://github.com/sp4ce-cowboy/TowerForge/blob/19840737a5882af53b65b0e3dfaddc7427e55922/TowerForge/TowerForge/Metrics/Achievements/AchievementsEngine.swift), [`RankingEngine`](https://github.com/sp4ce-cowboy/TowerForge/blob/19840737a5882af53b65b0e3dfaddc7427e55922/TowerForge/TowerForge/Metrics/Ranking/RankingEngine.swift) | [Protocols](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/protocols/) |
+| **Offline-first sync & conflict resolution**<br><img alt="Firebase" src="https://img.shields.io/badge/Firebase-Realtime%20DB-FFCA28?logo=firebase&logoColor=black"> | Metadata-driven choice of the latest source, and three resolution strategies: [`StorageHandler+Conflict`](https://github.com/sp4ce-cowboy/TowerForge/blob/19840737a5882af53b65b0e3dfaddc7427e55922/TowerForge/TowerForge/StorageAPI/StorageHandler%2BConflict.swift#L14-L84); per-statistic merge: [`StatisticsDatabase+Merge`](https://github.com/sp4ce-cowboy/TowerForge/blob/19840737a5882af53b65b0e3dfaddc7427e55922/TowerForge/TowerForge/Metrics/Statistics/StatisticsDatabase%2BMerge.swift#L33-L82) | [Realtime Database](https://firebase.google.com/docs/database/ios/start) |
+| **Authentication flows**<br><img alt="Firebase Auth" src="https://img.shields.io/badge/Firebase-Auth-FFCA28?logo=firebase&logoColor=black"> | First login, re-login on a new device, logout, each with the right sync behaviour: [`StorageHandler+Auth`](https://github.com/sp4ce-cowboy/TowerForge/blob/19840737a5882af53b65b0e3dfaddc7427e55922/TowerForge/TowerForge/StorageAPI/StorageHandler%2BAuth.swift#L13-L117) | [Firebase Auth](https://firebase.google.com/docs/auth/ios/start) |
+| **Persistence**<br><img alt="Codable" src="https://img.shields.io/badge/Codable-FileManager-F05138?logo=swift&logoColor=white"> | `Codable` statistics, a metadata file (player, device, last update), local cache plus remote backup: [StorageAPI](https://github.com/sp4ce-cowboy/TowerForge/tree/19840737a5882af53b65b0e3dfaddc7427e55922/TowerForge/TowerForge/StorageAPI) | [Codable](https://developer.apple.com/documentation/swift/codable) |
+| **Audio**<br><img alt="AVFoundation" src="https://img.shields.io/badge/AVFoundation-sound-000000?logo=apple&logoColor=white"> | The sound manager: [`AudioManager`](https://github.com/sp4ce-cowboy/TowerForge/blob/19840737a5882af53b65b0e3dfaddc7427e55922/TowerForge/TowerForge/Commons/Sounds/AudioManager.swift) | [AVFoundation](https://developer.apple.com/documentation/avfoundation) |
+| **CI/CD**<br><img alt="GitHub Actions" src="https://img.shields.io/badge/GitHub%20Actions-xcodebuild-2088FF?logo=githubactions&logoColor=white"> | Build and simulator tests on every push, plus SwiftLint: [`ios.yml`](.github/workflows/ios.yml) | [GitHub Actions](https://docs.github.com/actions) |
+| **Team engineering** | Four developers, 25 branches, 82 pull requests, sprint planning and two sprint reports: [docs/reports](docs/reports) | — |
+
+## App Store
+
+Publishing on the App Store is **pending**. The game runs on iPad (iPadOS 16+), and a
+[privacy policy](privacy-policy.md) is prepared. The release is planned once an Apple
+Developer Program membership is in place.
+
+## Coding stats
+
+My own numbers, from git and [WakaTime](https://wakatime.com).
+
+| | |
+|---|---|
+| **Commits** | **250**, the most on the team (of 647) |
+| **Code** | about **4,000** of the 12,200 Swift lines in the final game, and 9,600 Swift lines added overall |
+| **Time** | **105 h** of coding: 103 h during the project (18 Mar – 22 Apr 2024) |
+| **Peak week** | **46 h** (15 – 21 Apr 2024, the final week) |
+| **Peak day** | **16.5 h** (21 Apr 2024) |
+| **Longest push** | **16.8 h** without a break longer than 3 h (Sun 21 Apr 08:43 → Mon 22 Apr 01:32) |
+
+```text
+Hours per week (2024)
+18 Mar  █████                 11.8
+25 Mar  █████                 11.3
+01 Apr  ████                   8.6
+08 Apr  ██████████            22.5
+15 Apr  ████████████████████  46.4
+22 Apr  █                      2.8
+```
+
+## Getting started
+
+1. Open `TowerForge/TowerForge.xcodeproj` in Xcode 15 or later. Swift Package Manager fetches
+   the Firebase SDK.
+2. Pick an iPad simulator or device on iPadOS 16+, and run. Multiplayer, accounts and the
+   leaderboard use the bundled Firebase project.
+
+## On my resume
+
+- Built the metrics system for TowerForge, a multiplayer iPad tower-defence game in Swift and SpriteKit. Game events feed a statistics engine, and pluggable inference engines read the same statistics to drive achievements, missions and an eight-tier rank system, so new goals need no new storage.
+- Engineered offline-first player progress: statistics persist locally first and sync to Firebase Realtime Database, with metadata (player, device, last update) and three conflict-resolution strategies (merge per statistic, keep latest, preserve local), so progress carries across devices on login.
+- Built the game engine's systems layer in a four-person entity–component–system codebase, plus the sound manager and power-ups. Set up CI (xcodebuild and simulator tests on GitHub Actions) and SwiftLint for the team.
+- Built the Player screen in UIKit: rank progression from Private to General with an XP progress bar and a character that changes with rank, live career statistics (kills, deaths, K/D ratio, games, XP), and achievement and mission lists whose progress bars are driven by the inference engines.
