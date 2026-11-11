@@ -4,6 +4,8 @@
 //
 //  Created by Vanessa Mae on 03/04/24.
 //
+// Online-only: compiled when Firebase is linked (the App Store build is single-player).
+#if canImport(FirebaseDatabase)
 
 import UIKit
 
@@ -142,3 +144,4 @@ class GameWaitingRoomViewController: UIViewController {
         }
     }
 }
+#endif

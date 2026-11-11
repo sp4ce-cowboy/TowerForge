@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(FirebaseDatabase)
 import FirebaseDatabaseInternal
+#endif
 
 enum RankType: String, CaseIterable {
     case TotalKill
@@ -25,6 +27,8 @@ enum RankType: String, CaseIterable {
     }
 }
 
+// Online-only: compiled when Firebase is linked (the App Store build is single-player).
+#if canImport(FirebaseDatabase)
 class GameRankProvider {
     private let ranksRef: DatabaseReference
     init(type: String) {
@@ -77,3 +81,4 @@ class GameRankProvider {
         }
     }
 }
+#endif

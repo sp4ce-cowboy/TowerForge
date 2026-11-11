@@ -10,7 +10,9 @@ import SpriteKit
 class GameViewController: UIViewController {
     private var gameWorld: GameWorld?
     private var playerData: AuthenticationData?
+    #if canImport(FirebaseDatabase)
     private var gameRankProvider: GameRankProvider?
+    #endif
     var gameMode: Mode?
     var isPaused = false
     var roomId: RoomId?
@@ -96,6 +98,7 @@ extension GameViewController: SceneManagerDelegate {
     }
     func showGameOverScene(isWin: Bool, results: [GameResult]) {
         let gameOverScene = GameOverScene(win: isWin, results: results)
+        #if canImport(FirebaseDatabase)
         if isWin, let data = self.playerData {
             for result in results {
                 if let leaderboardResult = result as? LeaderboardResult, let score = Double(leaderboardResult.value) {
@@ -107,6 +110,7 @@ extension GameViewController: SceneManagerDelegate {
                 }
             }
         }
+        #endif
         gameOverScene.sceneManagerDelegate = self
         gamePopupButton.isHidden = true
         showScene(scene: gameOverScene)
@@ -127,9 +131,11 @@ extension GameViewController: SceneManagerDelegate {
             scene.scaleMode = .resizeFill
             view.presentScene(scene)
             view.ignoresSiblingOrder = true // to render nodes more efficiently
+            #if DEBUG
             view.showsFPS = true
             view.showsNodeCount = true
             view.showsPhysics = true
+            #endif
         }
     }
 }

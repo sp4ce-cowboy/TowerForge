@@ -4,6 +4,8 @@
 //
 //  Created by Zheng Ze on 4/4/24.
 //
+// Online-only: compiled when Firebase is linked (the App Store build is single-player).
+#if canImport(FirebaseDatabase)
 
 import Foundation
 import FirebaseDatabase
@@ -34,3 +36,4 @@ class FirebaseRemoteEventSubscriber: TFRemoteEventSubscriber {
         }
     }
 }
+#endif

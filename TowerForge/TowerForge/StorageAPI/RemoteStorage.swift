@@ -7,6 +7,7 @@
 
 import Foundation
 
+#if canImport(FirebaseDatabase)
 /// Utility class to provide static methods for accessing remote storage
 class RemoteStorage {
 
@@ -110,3 +111,36 @@ class RemoteStorage {
     }
 
 }
+#else
+/// Offline build without Firebase: there is no remote storage. Nothing exists remotely, saves
+/// and deletes succeed without doing anything, and loads return nothing.
+class RemoteStorage {
+
+    private init() { }
+
+    static func remoteStorageExists(for ref: FirebaseReference,
+                                    player: String,
+                                    completion: @escaping (Bool) -> Void) {
+        completion(false)
+    }
+
+    static func saveDataToFirebase(for ref: FirebaseReference,
+                                   player: String,
+                                   with inputData: any StorageDatabase,
+                                   completion: @escaping (Error?) -> Void) {
+        completion(nil)
+    }
+
+    static func deleteDataFromFirebase(for ref: FirebaseReference,
+                                       player: String,
+                                       completion: @escaping (Error?) -> Void) {
+        completion(nil)
+    }
+
+    static func loadDataFromFirebase<T: StorageDatabase>(for ref: FirebaseReference,
+                                                         player: String,
+                                                         completion: @escaping (T?, Error?) -> Void) {
+        completion(nil, nil)
+    }
+}
+#endif

@@ -6,13 +6,16 @@
 //
 
 import Foundation
+#if canImport(FirebaseAuth)
 import FirebaseAuth
+#endif
 
 protocol AuthenticationDelegate: AnyObject {
     func onLogout()
     func onLogin()
 }
 
+#if canImport(FirebaseAuth)
 class AuthenticationManager: AuthenticationProtocol {
     private var authStateHandle: AuthStateDidChangeListenerHandle?
     private var delegate: AuthenticationDelegate?
@@ -121,3 +124,24 @@ class AuthenticationManager: AuthenticationProtocol {
     }
 
 }
+#else
+/// Offline build without Firebase: there are no accounts, so nobody is ever logged in.
+class AuthenticationManager: AuthenticationProtocol {
+    private static let unavailable = NSError(domain: "Authentication", code: 0,
+                                             userInfo: [NSLocalizedDescriptionKey: "Accounts aren't available in this version."])
+
+    func isUserLoggedIn() -> Bool { false }
+    func setListener(delegate: AuthenticationDelegate) { }
+    func registerUser(email: String, username: String, password: String,
+                      onFinish: @escaping (AuthenticationData?, Error?) -> Void) {
+        onFinish(nil, Self.unavailable)
+    }
+    func loginUser(email: String, password: String, completion: @escaping (AuthenticationData?, Error?) -> Void) {
+        completion(nil, Self.unavailable)
+    }
+    func logoutUser(completion: @escaping (Error?) -> Void) { completion(nil) }
+    func getUserData(completion: @escaping (AuthenticationData?, Error?) -> Void) {
+        completion(nil, Self.unavailable)
+    }
+}
+#endif

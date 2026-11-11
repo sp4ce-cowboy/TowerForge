@@ -4,6 +4,8 @@
 //
 //  Created by Vanessa Mae on 10/04/24.
 //
+// Online-only: compiled when Firebase is linked (the App Store build is single-player).
+#if canImport(FirebaseDatabase)
 
 import Foundation
 import UIKit
@@ -46,3 +48,4 @@ class LeaderboardSelectionViewController: UITabBarController {
         self.setViewControllers(viewControllers, animated: false)
     }
 }
+#endif

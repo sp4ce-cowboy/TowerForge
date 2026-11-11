@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(FirebaseDatabase)
 import FirebaseDatabaseInternal
+#endif
 
 final class StatisticsDatabase: StorageDatabase {
     var statistics: [StatisticTypeWrapper: Statistic] = [:]

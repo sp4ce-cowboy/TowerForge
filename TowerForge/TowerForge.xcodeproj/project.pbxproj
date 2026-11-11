@@ -88,10 +88,6 @@
 		523923E72BADC8530044BA61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 523923E62BADC8530044BA61 /* LaunchScreen.storyboard */; };
 		523AA3BD2BB88ED10041E60D /* WizardBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523AA3BC2BB88ED10041E60D /* WizardBall.swift */; };
 		523AA3BF2BB88FBF0041E60D /* WizardUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523AA3BE2BB88FBF0041E60D /* WizardUnit.swift */; };
-		523C29212BBCF1A8004C6EAC /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 523C29202BBCF1A8004C6EAC /* FirebaseDatabase */; };
-		523C29232BBCF1A8004C6EAC /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 523C29222BBCF1A8004C6EAC /* FirebaseDatabaseSwift */; };
-		523C29252BBCFA13004C6EAC /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 523C29242BBCFA13004C6EAC /* FirebaseDatabase */; };
-		523C29272BBCFA13004C6EAC /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 523C29262BBCFA13004C6EAC /* FirebaseDatabaseSwift */; };
 		523C29282BBCFD93004C6EAC /* Nosifer-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5240D0952BB04E57004F1486 /* Nosifer-Regular.ttf */; };
 		523C29302BBD0916004C6EAC /* GameWaitingRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C292F2BBD0916004C6EAC /* GameWaitingRoomViewController.swift */; };
 		523E5C4C2BC53F70007444DA /* WaveSpawnEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523E5C4B2BC53F70007444DA /* WaveSpawnEvent.swift */; };
@@ -129,17 +125,13 @@
 		5295A20F2BAAE7CF005018A8 /* TeamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A20E2BAAE7CF005018A8 /* TeamController.swift */; };
 		5295A2132BAAEA16005018A8 /* UnitNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2122BAAEA16005018A8 /* UnitNode.swift */; };
 		5295A2152BAAF335005018A8 /* UnitSelectionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295A2142BAAF335005018A8 /* UnitSelectionNode.swift */; };
-		5298D7932BBC2AC9005177A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5298D7922BBC2AC9005177A1 /* GoogleService-Info.plist */; };
 		5299D1302BC31002003EF746 /* AuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299D12F2BC31002003EF746 /* AuthenticationProvider.swift */; };
 		5299D1322BC31050003EF746 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299D1312BC31050003EF746 /* AuthenticationManager.swift */; };
 		5299D1342BC31067003EF746 /* AuthenticationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299D1332BC31067003EF746 /* AuthenticationProtocol.swift */; };
-		5299D1362BC3122A003EF746 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5299D1352BC3122A003EF746 /* FirebaseAuth */; };
-		5299D1382BC3122A003EF746 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 5299D1372BC3122A003EF746 /* FirebaseAuthCombine-Community */; };
 		5299D13C2BC3670E003EF746 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299D13B2BC3670E003EF746 /* LoginViewController.swift */; };
 		5299D13E2BC36E61003EF746 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299D13D2BC36E61003EF746 /* RegisterViewController.swift */; };
 		5299D1412BC3AA3A003EF746 /* GameRankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299D1402BC3AA3A003EF746 /* GameRankData.swift */; };
 		5299D1432BC3AB38003EF746 /* GameRankProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299D1422BC3AB38003EF746 /* GameRankProvider.swift */; };
-		529CE65C2BC3B4D9007F71C8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 529CE65B2BC3B4D9007F71C8 /* FirebaseAuth */; };
 		529F91882BA6D7A7009551D9 /* SoldierUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529F91872BA6D7A7009551D9 /* SoldierUnit.swift */; };
 		52A794022BBC2EB30083C976 /* FirebaseReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794012BBC2EB30083C976 /* FirebaseReference.swift */; };
 		52A794042BBC2FBF0083C976 /* FirebaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A794032BBC2FBF0083C976 /* FirebaseRepository.swift */; };
@@ -261,11 +253,10 @@
 		BAFFB9752BBD833400D8301F /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9742BBD833400D8301F /* AudioManager.swift */; };
 		BAFFB97C2BBD83B200D8301F /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB9762BBD83B200D8301F /* beep.mp3 */; };
 		BAFFB97D2BBD83B200D8301F /* hit-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB9772BBD83B200D8301F /* hit-sound.mp3 */; };
-		BAFFB97E2BBD83B200D8301F /* field-of-memories-soundtrack.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB9782BBD83B200D8301F /* field-of-memories-soundtrack.mp3 */; };
+		BAFFB97E2BBD83B200D8301F /* bravery-run.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB9782BBD83B200D8301F /* bravery-run.mp3 */; };
 		BAFFB97F2BBD83B200D8301F /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB9792BBD83B200D8301F /* lose.mp3 */; };
 		BAFFB9802BBD83B200D8301F /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB97A2BBD83B200D8301F /* success.mp3 */; };
 		BAFFB9812BBD83B200D8301F /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB97B2BBD83B200D8301F /* jump.mp3 */; };
-		BAFFB9832BBD8CA800D8301F /* Entering-the-stronghold.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAFFB9822BBD8CA800D8301F /* Entering-the-stronghold.mp3 */; };
 		BAFFB9852BBDBA7D00D8301F /* MediaEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFFB9842BBDBA7D00D8301F /* MediaEnums.swift */; };
 /* End PBXBuildFile section */
 
@@ -406,7 +397,6 @@
 		5295A20E2BAAE7CF005018A8 /* TeamController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamController.swift; sourceTree = "<group>"; };
 		5295A2122BAAEA16005018A8 /* UnitNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitNode.swift; sourceTree = "<group>"; };
 		5295A2142BAAF335005018A8 /* UnitSelectionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitSelectionNode.swift; sourceTree = "<group>"; };
-		5298D7922BBC2AC9005177A1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5299D12F2BC31002003EF746 /* AuthenticationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProvider.swift; sourceTree = "<group>"; };
 		5299D1312BC31050003EF746 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		5299D1332BC31067003EF746 /* AuthenticationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationProtocol.swift; sourceTree = "<group>"; };
@@ -539,11 +529,10 @@
 		BAFFB9742BBD833400D8301F /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		BAFFB9762BBD83B200D8301F /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
 		BAFFB9772BBD83B200D8301F /* hit-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "hit-sound.mp3"; sourceTree = "<group>"; };
-		BAFFB9782BBD83B200D8301F /* field-of-memories-soundtrack.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "field-of-memories-soundtrack.mp3"; sourceTree = "<group>"; };
+		BAFFB9782BBD83B200D8301F /* bravery-run.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bravery-run.mp3"; sourceTree = "<group>"; };
 		BAFFB9792BBD83B200D8301F /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
 		BAFFB97A2BBD83B200D8301F /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = success.mp3; sourceTree = "<group>"; };
 		BAFFB97B2BBD83B200D8301F /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
-		BAFFB9822BBD8CA800D8301F /* Entering-the-stronghold.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Entering-the-stronghold.mp3"; sourceTree = "<group>"; };
 		BAFFB9842BBDBA7D00D8301F /* MediaEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaEnums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -552,10 +541,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				523C29232BBCF1A8004C6EAC /* FirebaseDatabaseSwift in Frameworks */,
-				5299D1362BC3122A003EF746 /* FirebaseAuth in Frameworks */,
-				523C29212BBCF1A8004C6EAC /* FirebaseDatabase in Frameworks */,
-				5299D1382BC3122A003EF746 /* FirebaseAuthCombine-Community in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,9 +548,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				523C29272BBCFA13004C6EAC /* FirebaseDatabaseSwift in Frameworks */,
-				529CE65C2BC3B4D9007F71C8 /* FirebaseAuth in Frameworks */,
-				523C29252BBCFA13004C6EAC /* FirebaseDatabase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,7 +862,6 @@
 			isa = PBXGroup;
 			children = (
 				BABB7C052BA9A41000D54DAE /* TowerForceTestPlan.xctestplan */,
-				5298D7922BBC2AC9005177A1 /* GoogleService-Info.plist */,
 				52DF5FB42BA32B2600135367 /* Assets.xcassets */,
 				52DF5FA62BA32B2300135367 /* TowerForge */,
 				52DF5FC02BA32B2600135367 /* TowerForgeTests */,
@@ -1215,9 +1196,8 @@
 			isa = PBXGroup;
 			children = (
 				BAFFB9742BBD833400D8301F /* AudioManager.swift */,
-				BAFFB9822BBD8CA800D8301F /* Entering-the-stronghold.mp3 */,
 				BAFFB9762BBD83B200D8301F /* beep.mp3 */,
-				BAFFB9782BBD83B200D8301F /* field-of-memories-soundtrack.mp3 */,
+				BAFFB9782BBD83B200D8301F /* bravery-run.mp3 */,
 				BAFFB9772BBD83B200D8301F /* hit-sound.mp3 */,
 				BAFFB97B2BBD83B200D8301F /* jump.mp3 */,
 				BAFFB9792BBD83B200D8301F /* lose.mp3 */,
@@ -1437,10 +1417,6 @@
 			);
 			name = TowerForge;
 			packageProductDependencies = (
-				523C29202BBCF1A8004C6EAC /* FirebaseDatabase */,
-				523C29222BBCF1A8004C6EAC /* FirebaseDatabaseSwift */,
-				5299D1352BC3122A003EF746 /* FirebaseAuth */,
-				5299D1372BC3122A003EF746 /* FirebaseAuthCombine-Community */,
 			);
 			productName = TowerForge;
 			productReference = 52DF5FA42BA32B2300135367 /* TowerForge.app */;
@@ -1461,9 +1437,6 @@
 			);
 			name = TowerForgeTests;
 			packageProductDependencies = (
-				523C29242BBCFA13004C6EAC /* FirebaseDatabase */,
-				523C29262BBCFA13004C6EAC /* FirebaseDatabaseSwift */,
-				529CE65B2BC3B4D9007F71C8 /* FirebaseAuth */,
 			);
 			productName = TowerForgeTests;
 			productReference = 52DF5FBD2BA32B2600135367 /* TowerForgeTests.xctest */;
@@ -1520,7 +1493,6 @@
 			);
 			mainGroup = 52DF5F9B2BA32B2200135367;
 			packageReferences = (
-				523C291F2BBCF1A8004C6EAC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 52DF5FA52BA32B2300135367 /* Products */;
 			projectDirPath = "";
@@ -1543,15 +1515,13 @@
 				BAFFB97D2BBD83B200D8301F /* hit-sound.mp3 in Resources */,
 				BAFFB97C2BBD83B200D8301F /* beep.mp3 in Resources */,
 				BAFFB9812BBD83B200D8301F /* jump.mp3 in Resources */,
-				5298D7932BBC2AC9005177A1 /* GoogleService-Info.plist in Resources */,
 				BAFFB97F2BBD83B200D8301F /* lose.mp3 in Resources */,
-				BAFFB9832BBD8CA800D8301F /* Entering-the-stronghold.mp3 in Resources */,
 				52DF5FAA2BA32B2300135367 /* GameScene.sks in Resources */,
 				52DF5FB52BA32B2600135367 /* Assets.xcassets in Resources */,
 				52DF5FB82BA32B2600135367 /* Launch Screen.storyboard in Resources */,
 				BAFFB9802BBD83B200D8301F /* success.mp3 in Resources */,
 				52DF5FAC2BA32B2300135367 /* Actions.sks in Resources */,
-				BAFFB97E2BBD83B200D8301F /* field-of-memories-soundtrack.mp3 in Resources */,
+				BAFFB97E2BBD83B200D8301F /* bravery-run.mp3 in Resources */,
 				523923E72BADC8530044BA61 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2026,7 +1996,8 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TowerForge/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TowerForge;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tiny Frontline";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2041,7 +2012,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nus.TowerForge;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sp4cecowboy.tinyfrontline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -2064,7 +2035,8 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TowerForge/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = TowerForge;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tiny Frontline";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.action-games";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2079,7 +2051,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nus.TowerForge;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sp4cecowboy.tinyfrontline;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -2098,11 +2070,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BPB6799M73;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nus.TowerForgeTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sp4cecowboy.tinyfrontline.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -2122,11 +2094,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BPB6799M73;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nus.TowerForgeTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sp4cecowboy.tinyfrontline.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -2145,11 +2117,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BPB6799M73;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nus.TowerForgeUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sp4cecowboy.tinyfrontline.uitests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -2168,11 +2140,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BPB6799M73;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nus.TowerForgeUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sp4cecowboy.tinyfrontline.uitests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -2227,52 +2199,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		523C291F2BBCF1A8004C6EAC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.23.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		523C29202BBCF1A8004C6EAC /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 523C291F2BBCF1A8004C6EAC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
-		};
-		523C29222BBCF1A8004C6EAC /* FirebaseDatabaseSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 523C291F2BBCF1A8004C6EAC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabaseSwift;
-		};
-		523C29242BBCFA13004C6EAC /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 523C291F2BBCF1A8004C6EAC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
-		};
-		523C29262BBCFA13004C6EAC /* FirebaseDatabaseSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 523C291F2BBCF1A8004C6EAC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabaseSwift;
-		};
-		5299D1352BC3122A003EF746 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 523C291F2BBCF1A8004C6EAC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		5299D1372BC3122A003EF746 /* FirebaseAuthCombine-Community */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 523C291F2BBCF1A8004C6EAC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseAuthCombine-Community";
-		};
-		529CE65B2BC3B4D9007F71C8 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 523C291F2BBCF1A8004C6EAC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
 /* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 52DF5F9C2BA32B2200135367 /* Project object */;

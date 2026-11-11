@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(FirebaseDatabase)
 import FirebaseDatabase
+#endif
 
 enum FirebaseReference: String {
     case Game
@@ -17,9 +19,11 @@ enum FirebaseReference: String {
     case Metadata
 }
 
+#if canImport(FirebaseDatabase)
 func FirebaseDatabaseReference(_ reference: FirebaseReference) -> DatabaseReference {
 
     Database.database(url: Constants.DATABASE_URL)
         .reference()
         .child(reference.rawValue)
 }
+#endif

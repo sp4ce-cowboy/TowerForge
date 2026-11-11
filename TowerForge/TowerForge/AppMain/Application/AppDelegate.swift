@@ -6,7 +6,9 @@
 //
 
 import UIKit
+#if canImport(FirebaseCore)
 import Firebase
+#endif
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,8 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.overrideUserInterfaceStyle = .light
         }
 
+        #if canImport(FirebaseCore)
         /// Connect to Firebase
         FirebaseApp.configure()
+        #endif
 
         /// Initialize all local storage
         StorageHandler.initializeLocalStorageIfNotPresent()

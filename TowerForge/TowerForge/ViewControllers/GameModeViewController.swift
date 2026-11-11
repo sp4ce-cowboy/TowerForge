@@ -22,15 +22,9 @@ class GameModeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         authenticationProvider.addObserver(self)
-        
-        /*
-        if authenticationProvider.isUserLoggedIn() {
-            loginButtonLabel.text = "Logout"
-            rankingView.isHidden = false
-        } else {
-            loginButtonLabel.text = "Login"
-            rankingView.isHidden = true
-        }*/
+
+        // The global ranking needs an account; the single-player App Store build has none.
+        rankingView.isHidden = !authenticationProvider.isUserLoggedIn()
     }
 
     deinit {

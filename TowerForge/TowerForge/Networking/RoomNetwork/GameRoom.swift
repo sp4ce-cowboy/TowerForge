@@ -4,6 +4,8 @@
 //
 //  Created by Vanessa Mae on 02/04/24.
 //
+// Online-only: compiled when Firebase is linked (the App Store build is single-player).
+#if canImport(FirebaseDatabase)
 
 import Foundation
 import FirebaseDatabaseInternal
@@ -317,3 +319,4 @@ class GameRoom {
         FirebaseDatabaseReference(.Rooms).child(roomName).getData(completion: delegate)
     }
 }
+#endif

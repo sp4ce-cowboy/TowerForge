@@ -21,6 +21,7 @@ class EventManager {
         eventQueue = []
         eventHandler = [:]
 
+        #if canImport(FirebaseDatabase)
         if let roomId = roomId, let currentPlayer = currentPlayer {
             let publisher = FirebaseRemoteEventPublisher(roomId: roomId)
             let subscriber = FirebaseRemoteEventSubscriber(roomId: roomId, eventManager: self)
@@ -28,6 +29,7 @@ class EventManager {
             self.currentPlayer = currentPlayer
             self.isHost = isHost
         }
+        #endif
     }
 
     func add(_ event: TFEvent) {

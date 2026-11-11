@@ -4,6 +4,8 @@
 //
 //  Created by Vanessa Mae on 02/04/24.
 //
+// Online-only: compiled when Firebase is linked (the App Store build is single-player).
+#if canImport(FirebaseDatabase)
 
 import Foundation
 import FirebaseDatabase
@@ -51,3 +53,4 @@ final class FirebaseRepository: FirebaseRepositoryProtocol {
             childReference.setValue(jsonDictionary)
         }
 }
+#endif

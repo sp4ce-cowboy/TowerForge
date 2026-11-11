@@ -9,7 +9,7 @@ import Foundation
 
 final class FiftyKillsAchievement: Achievement {
     var name: String = "50 Kills"
-    var description: String = "Attain 50 total kills in TowerForge"
+    var description: String = "Attain 50 total kills in Tiny Frontline"
     var currentParameters: [StatisticTypeWrapper: any Statistic]
 
     static var definedParameters: [StatisticTypeWrapper: Double] {

@@ -37,7 +37,7 @@ class Constants {
     static var SOUND_EFFECTS_ENABLED = true
 
     /// Universal background audio soundtrack to play during game modes
-    static let GAME_BACKGROUND_AUDIO: String = BackgroundMusic.gameMode.rawValue
+    static let GAME_BACKGROUND_AUDIO: String = BackgroundMusic.main.rawValue  // one track for menus and games
 
     /// Universal background audio soundtrack to play during non-game modes
     static let MAIN_BACKGROUND_AUDIO: String = BackgroundMusic.main.rawValue

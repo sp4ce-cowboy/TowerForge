@@ -26,7 +26,6 @@ class MediaEnums {
     /// and its RawValue represents the audio track file name associated with
     /// that sound effect.
     enum BackgroundMusic: String, CaseIterable {
-        case main = "field-of-memories-soundtrack.mp3"
-        case gameMode = "Entering-the-stronghold.mp3"
+        case main = "bravery-run.mp3"
     }
 }
