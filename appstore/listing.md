@@ -37,6 +37,13 @@ Tiny Frontline is a lane-based strategy game for iPad. Spend coins to send pixel
 the lanes, build arrow towers to hold your line, and break through before the enemy breaks
 through yours.
 
+HOW TO PLAY
+1. Coins build up during the game (top left of the bar at the bottom).
+2. Tap a card at the bottom to pick a unit: melee, soldier, wizard or arrow tower.
+3. Tap a lane on the field to deploy it there.
+4. Tap a power-up on the right (free units, more damage, or a shield) when you need it.
+5. The button at the top left pauses the game.
+
 FEATURES
 • Three modes: Death Match, Capture the Flag and Survival.
 • Melee fighters, soldiers, wizards and arrow towers, each with its own speed, attack and health.
@@ -55,7 +62,12 @@ Font License).
 
 ## App Review notes
 
-No account or sign-in is needed. Tap Start, then choose Death Match, Capture the Flag or
-Survival (Survival asks for a level). In a game, tap a unit card at the bottom, then tap a
-lane to send that unit. The Player screen shows rank, achievements and missions. The original
+No account or sign-in is needed. How to play:
+1. Tap Start, then choose Death Match, Capture the Flag or Survival (Survival asks for a level).
+2. In a game, coins build up over time. Tap a unit card at the bottom (melee, soldier, wizard
+or arrow tower), then tap a lane on the field: the unit is deployed in that lane. A card stays
+selected, so further taps deploy more of the same unit while coins last.
+3. The three icons on the right of the bar are power-ups: free units, a damage boost and a shield.
+4. The button at the top left pauses the game.
+The Player screen (from the start screen) shows rank, achievements and missions. The original
 project's online multiplayer and leaderboards are not part of this version.
