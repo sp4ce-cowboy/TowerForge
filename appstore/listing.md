@@ -11,7 +11,7 @@ Store metadata for the single-player App Store release of TowerForge (branch
 | SKU | tinyfrontline-2026 |
 | Category | Games, subcategories Strategy and Casual |
 | Price | Free; 174 of 175 regions (not China mainland, where games need an approval number) |
-| Age rating | From the questionnaire: mild cartoon violence and weapons (pixel soldiers with swords and guns) |
+| Age rating | 9+ (mild cartoon violence and weapons: pixel soldiers with swords and guns) |
 | Release | Manual, after approval |
 | Copyright | 2024 sp4ce-cowboy and the TowerForge team |
 | Support URL | https://github.com/sp4ce-cowboy/TowerForge/issues |
