@@ -25,11 +25,13 @@ and progress system that follows the player across devices. Built by a team of f
 </div>
 
 > [!NOTE]
-> This consolidated README page was added by [Claude](https://docs.anthropic.com/en/docs/claude-code)
-> using my [agentic-repo-analysis](https://github.com/sp4ce-cowboy/agentic-workflows) skill, from the
-> project's code, git history and the team's reports. The original README is in
-> **[DOCUMENTATION.md](DOCUMENTATION.md)**. The team's proposal, sprint reports and final report are in
-> **[docs/reports](docs/reports)**, and the technical write-up is in **[ARCHITECTURE.md](ARCHITECTURE.md)**.
+> This consolidated README page was added by
+> [Claude](https://docs.anthropic.com/en/docs/claude-code) on 11 Nov 2026 using my
+> [agentic-repo-analysis](https://github.com/sp4ce-cowboy/agentic-workflows) skill, from the
+> project's code, git history and the team's reports. The project itself is from Mar – Apr 2024. The
+> original README is in **[DOCUMENTATION.md](DOCUMENTATION.md)**. The team's proposal, sprint
+> reports and final report are in **[docs/reports](docs/reports)**, and the technical write-up is in
+> **[ARCHITECTURE.md](ARCHITECTURE.md)**.
 
 <p align="center">
   <img width="32%" alt="Start screen" src="docs/images/start-screen.png" />
@@ -146,13 +148,13 @@ My own numbers, from git and [WakaTime](https://wakatime.com).
 | **Longest push** | **16.8 h** without a break longer than 3 h (Sun 21 Apr 08:43 → Mon 22 Apr 01:32) |
 
 ```text
-Hours per week (2024)
-18 Mar  █████                 11.8
-25 Mar  █████                 11.3
-01 Apr  ████                   8.6
-08 Apr  ██████████            22.5
-15 Apr  ████████████████████  46.4
-22 Apr  █                      2.8
+Hours per week (2024)                  My commits per week (merges excluded)
+18 Mar  █████                  11.8    18 Mar  ██████████           51
+25 Mar  █████                  11.3    25 Mar  ████                 21
+01 Apr  ████                    8.6    01 Apr  ██████               31
+08 Apr  ██████████             22.5    08 Apr  █████████            43
+15 Apr  ████████████████████   46.4    15 Apr  ████████████████     79
+22 Apr  █                       2.8    22 Apr                        0
 ```
 
 ## Getting started
@@ -170,3 +172,5 @@ Hours per week (2024)
 - Built the Player screen in UIKit: rank progression from Private to General with an XP bar and a character that changes with rank, live career statistics (kills, deaths, K/D ratio, games, XP), and achievement and mission lists driven by the inference engines.
 - Implemented sync flows aware of Firebase Authentication (first login, re-login on a new device, logout) and an AVFoundation sound manager. Co-built the power-ups, implemented as event transformations that rewrite queued game events.
 - Set up the team's CI on GitHub Actions (xcodebuild build and simulator tests on every push and pull request) and SwiftLint, for a team that worked across 25 branches and 82 pull requests.
+
+**Skills:** Swift · SpriteKit · UIKit · entity–component–system architecture · Firebase (Realtime Database, Authentication) · offline-first sync and conflict resolution · event-driven design · SOLID · AVFoundation · GitHub Actions CI · SwiftLint · team development (4 developers)
