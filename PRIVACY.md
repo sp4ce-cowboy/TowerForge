@@ -14,9 +14,7 @@ four at the National University of Singapore, published by
   Deleting the app deletes it.
 - The app contains no third-party code or services.
 
-If this ever changes, this page will be updated first. (The online multiplayer version in this
-repository, which used Firebase, isn't on the App Store; its policy is
-[privacy-policy.md](privacy-policy.md).)
+If this ever changes, this page will be updated first.
 
 Questions: open an issue at
 [github.com/sp4ce-cowboy/TowerForge/issues](https://github.com/sp4ce-cowboy/TowerForge/issues).
