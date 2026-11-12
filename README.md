@@ -21,7 +21,6 @@ and progress system that follows the player across devices. Built by a team of f
 
 ![Commits](https://img.shields.io/badge/my%20commits-250-555?style=flat-square&logo=git&logoColor=white)
 ![Swift](https://img.shields.io/badge/Swift-12.2k%20lines%20(team)-555?style=flat-square)
-![Reports](https://img.shields.io/badge/project%20reports-4%20%C2%B7%2027k%20words-555?style=flat-square)
 [![WakaTime](https://img.shields.io/badge/WakaTime-105%20h-555?style=flat-square&logo=wakatime&logoColor=white)](https://wakatime.com)
 [![STePS](https://img.shields.io/badge/STePS%202024-3rd%20prize-555?style=flat-square)](docs/images/steps-2024-3rd-prize.jpg)
 
