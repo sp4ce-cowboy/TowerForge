@@ -53,7 +53,8 @@ FEATURES
 • No ads, no in-app purchases, no accounts and no tracking. Works offline.
 
 Tiny Frontline started as TowerForge, a team project by four students at the National
-University of Singapore: Keith Gan, Phua Zheng Ze, Rubesh Suresh and Vanessa Mae. This is its
+University of Singapore: Keith Gan, Phua Zheng Ze, Rubesh Suresh and Vanessa Mae. It was
+showcased at the School of Computing's Term Project Showcase (STePS) in April 2024. This is its
 single-player edition. Source code: github.com/sp4ce-cowboy/TowerForge
 
 CREDITS
