@@ -68,6 +68,19 @@ scratch (mine is [Space Peggle](https://github.com/sp4ce-cowboy/SpacePeggle)). I
 teams of four design and ship an app of their own over the rest of the semester, through a
 proposal, two sprints with written reports, and a final report. TowerForge is that second half.
 
+## STePS 2024
+
+TowerForge was shown at NUS School of Computing's 24th Term Project Showcase (STePS) on
+17 April 2024, and won **3rd prize** in the CS3217 category
+([results](docs/images/steps-2024-3rd-prize.jpg), [showcase entry](https://uvents.nus.edu.sg/event/24th-steps/module/CS3217/project/4)).
+
+<p align="center">
+  <img width="38%" alt="TowerForge's poster for the 24th STePS" src="docs/images/steps-2024-poster.png" />
+  &nbsp;
+  <a href="https://youtu.be/VvzcrGrfUsE"><img width="54%" alt="TowerForge trailer on YouTube" src="https://img.youtube.com/vi/VvzcrGrfUsE/hqdefault.jpg" /></a>
+</p>
+<p align="center"><sub>The team's STePS poster · the <a href="https://youtu.be/VvzcrGrfUsE">trailer</a> (YouTube)</sub></p>
+
 ## Features
 
 - **Three game modes:** Capture the Flag, Death Match and Survival.
