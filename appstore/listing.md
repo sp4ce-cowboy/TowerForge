@@ -54,7 +54,7 @@ FEATURES
 
 Tiny Frontline started as TowerForge, a team project by four students at the National
 University of Singapore: Keith Gan, Phua Zheng Ze, Rubesh Suresh and Vanessa Mae. This is its
-single-player edition.
+single-player edition. Source code: github.com/sp4ce-cowboy/TowerForge
 
 CREDITS
 Music: "Bravery Run" (CC0, OpenGameArt.org). Sound effects: Pixabay. Font: Nosifer (SIL Open
