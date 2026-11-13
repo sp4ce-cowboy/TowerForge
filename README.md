@@ -129,7 +129,7 @@ flowchart LR
 
 More in [ARCHITECTURE.md](ARCHITECTURE.md).
 
-## Skills shown
+## Skills covered
 
 | Skill | Where it shows (click the links for the code) | Docs |
 |---|---|---|
